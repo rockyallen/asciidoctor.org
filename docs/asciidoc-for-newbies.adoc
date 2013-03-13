@@ -190,17 +190,17 @@ Best of all, it only requires a text editor to read or write it.
 We'll now delve into the AsciiDoc syntax.
 Hopefully you'll agree that it just makes sense.
 
-== Writing in Asciidoc: First Steps
+== Writing in AsciiDoc: First Steps
 
-By the end of this section, you'll have composed your first document in AsciiDoc--hopefully looking back in amazement about how natural it felt.
+By the end of this section, you'll have composed your first document in AsciiDoc--hopefully looking back in amazement at how natural it felt.
 
-Our story begins in your favorite text editor...
+Your story begins in your favorite text editor...
 
 === ``It's just text, mate.''
 
-Since the AsciiDoc syntax is just [mono]#plain# [mono]#text#, you can write an AsciiDoc document using _any_ text editor.
-You don't need those complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
-In fact, you _shouldn't_ use these programs because they add cruft to the document that you can't see and wrecks havoc on your document.
+Since AsciiDoc syntax is just [mono]#plain# [mono]#text#, you can write an AsciiDoc document using _any_ text editor.
+You don't need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
+In fact, you _shouldn't_ use these programs because they add cruft to the document that you can't see and wreacks havoc on your document.
 
 TIP: While it's true any text editor will do, I recommend selecting an editor that supports syntax highlighting for AsciiDoc.
 The *[red]##c##[green]##o##[purple]##l##[orange]##o##[blue]##r##* added by syntax highlighting adds contrast to the text, which makes it easier to read.
@@ -214,9 +214,9 @@ If you're a programmer (or a write with an inner geek), you'll likely prefer *VI
 All of these editors support syntax highlighting for AsciiDoc.
 
 TIP: You don't need any special tooling to write in AsciiDoc.
-However, if you really want to see the final HTML output while you are writing, refer to the link:editing-with-live-preview.html[Editing with Live Preview] tutorial to learn how to set up that environment.
+However, if you want to see the final HTML output while you are writing, refer to the link:editing-with-live-preview.html[Editing with Live Preview] tutorial to learn how to set up that environment.
 
-Open up your favorite text editor and let's start writing some AsciiDoc!
+Open your favorite text editor and let's start writing with AsciiDoc!
 
 === Content is king!
 
@@ -227,7 +227,7 @@ All that is required to create a valid AsciiDoc document is one or more paragrap
 In AsciiDoc, the main structural element is the paragraph.
 A paragraph consists of adjacent lines of text.
 
-When you need a new paragraph, just hit the Enter key twice and keep on typing.
+When you need a new paragraph, just hit the Enter key twice and continue typing.
 ....
 
 *In other words, you write AsciiDoc like you're writing an e-mail.*
@@ -260,7 +260,7 @@ If you want line breaks in a paragraph to be preserved, add the following attrib
 This setting applies to the whole document.
 ****
 
-=== Titles, titles, titles
+=== Titles
 
 AsciiDoc supports three types of titles:
 
@@ -268,16 +268,18 @@ AsciiDoc supports three types of titles:
 - Section title
 - Block title
 
-This section will cover each type and explain how and when to use them.
+This section will define each title type and explain how and when to use them.
 
-==== The document title and header
+==== Document title
 
 Just as every e-mail has a subject, every document (typically) has a title.
-As you'd expect, the title goes at the top of the document. Keep in mind this is an _optional_ part of an AsciiDoc document.
+The title goes at the top of the document. 
+
+TIP:A document title is an _optional_ feature of an AsciiDoc document.
 
 To create a document title, begin the first line of the document with one equal sign followed by at least one space (++= ++) and then the title text. This syntax is the simplest (and thus recommended) way to declare a document title.
 
-Here's an example of a document with a title and an abbreviated paragraph:
+Here's an example of the document title syntax and an abbreviated paragraph:
 
 ----
 = Lightweight Markup Languages
@@ -286,9 +288,9 @@ According to Wikipedia...
 ----
 
 Notice the blank line between the title line and the first line of content.
-This blank line separates the document header from the document body (in this case a preamble paragraph).
-The document header stores the document title, document metadata and document-wide settings.
-(If the title line not offset by a blank line, it gets interpreted as a section title, which we'll discuss later).
+This blank line separates the document header from the document body (in this case a paragraph).
+The document title is stored in the document's header along with any metadata and document-wide settings.
+(If the title line is not offset by a blank line, it gets interpreted as a section title, which we'll discuss later).
 
 The document now has a title, but who's the author?
 Good question.
@@ -310,14 +312,14 @@ Doc Writer <doc.writer@asciidoc.org>
 According to Wikipedia...
 ----
 
-The header now consists of a title, an author and a date.
-This information will be formatted appropriately when the document is rendered.
+The header now containes a document title, an author and a date.
+This information will be formatted when the document is rendered.
 
 *That's all there is to it.
 You're now writing in AsciiDoc!*
 
 NOTE: The header, including the document title, is _not required_.
-If absent, the AsciiDoc processor will happy render whatever content is present.
+If absent, the AsciiDoc processor will happily render whatever content is present.
 The header is only used when rendering a full document.
 It's excluded from the output of an embedded document.
 
@@ -327,13 +329,13 @@ That's accomplished using section titles.
 
 ==== Section titles
 
-Sections are used to partition the document into a content hierarchy.
 In AsciiDoc, sections are created using section titles.
+Sections are used to partition the document into a content hierarchy.
 
-A section title uses the same syntax as a document title, except the line may begin with up to five equal signs instead than just one.
+A section title uses the same syntax as a document title, except the line may begin with two to five equal signs instead of just a single equal sign.
 The number of equal signs represents the nesting level (using a 0-based index).
 
-Here are all the section levels permitted in an AsciiDoc document, show below the document title:
+Here are all the section levels permitted in an AsciiDoc document, shown below the document title:
 
 ----
 = Document Title (Level 0)
@@ -353,31 +355,19 @@ NOTE: When the document is rendered as HTML 5 (using the built-in html5 backend)
 
 Section levels cannot be choosen arbitrarily. There are two rules you must follow:
 
-. A document can only have a level 0 section (other than the document title) if the +doctype+ is set to +book+ (the default is article)
+. A document can only have a single level 0 section (in addition to the document title) if the +doctype+ is set to +book+ (the default is article)
 . Section levels cannot be skipped when nesting sections
 
-For example, the following document is illegal:
+For example, the following syntax is illegal:
 
 ----
 = Document Title
 
 == First Section
 
-==== Nested Section
+==== Illegal Nested Section
 
 = Illegal Level 0 Section
-----
-
-Any text the proceeds the first section becomes the preamble of the document:
-
-----
-= Document Title
-
-preamble
-
-another preamble paragraph
-
-== First Section
 ----
 
 Once the first section is reached, content gets associated with the section that proceeds it:
@@ -391,20 +381,35 @@ Content of first section
 
 Content of nested section
 
-== Section Section
+== Second Section
 
-Content of section section
+Content of second section
+----
+
+===== Preamble
+
+Text can proceed the first section. 
+It is called the preamble, though you don't need to use any syntax to designate this text.
+
+----
+= Document Title
+
+preamble
+
+another preamble paragraph
+
+== First Section
 ----
 
 ==== Block titles
 
 ...
 
-=== Mild punctuation
+=== Basic punctuation
 
 ...
 
-=== Lists, lists, lists
+=== Lists
 
 There are three types of lists supported in AsciiDoc:
 
@@ -412,9 +417,9 @@ There are three types of lists supported in AsciiDoc:
 - Ordered list
 - Labeled list
 
-Unordered and ordered lists are structurally very similar. You can then of them both as outline lists that just use different markers. Labeled lists, in contrast, behave quite differently.
+Unordered and ordered lists are structurally similar. You can think of them both as outlines that just use different markers. Labeled lists, in contrast, behave quite differently.
 
-Let's look at how to define the different types of lists individually, then how to mix and match them and finally how to include complex content inside a single list item.
+Let's look at how to define each list type, then how to mix and match them and finally how to include complex content inside a single list item.
 
 ==== Outline lists: ordered and unordered
 
