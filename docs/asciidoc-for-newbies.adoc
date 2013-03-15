@@ -6,6 +6,15 @@ ifdef::asciidoctor[]
 endif::asciidoctor[]
 :toc:
 
+////
+TODO:
+
+- brief bit comparing AsciiDoc to Markdown
+- section on delimited blocks (focus on listings and source highlighting)
+- mention a few places it's being used
+- where does Asciidoctor fit in? Perhaps mention it's a drop-in replacement for the asciidoc command?
+////
+
 ++++
 <style>
 .prewrap pre {
@@ -57,8 +66,8 @@ AsciiDoc can translate documents written using this syntax into numerous formats
 
 Therefore, AsciiDoc is two things:
 
-. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text footnote:[AsciiDoc is over 10 years old. It was introduced in 2002.]
-. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF footnote:[There's a modern implementation of AsciiDoc written in Ruby, named http://asciidoctor.org[Asciidoctor].]
+. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.]
+. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF footnote:[There's a modern implementation of AsciiDoc, written in Ruby, named http://asciidoctor.org[Asciidoctor].]
 
 Now that we've established what AsciiDoc is, let's consider why we need it.
 
@@ -126,7 +135,7 @@ Why make it harder?
 
 *We _need_ to find an easier way to write!*
 
-=== Using what works
+=== Using what you know
 
 'What if you could write docs like you write e-mail?'
 
@@ -260,13 +269,15 @@ If you want line breaks in a paragraph to be preserved, add the following attrib
 This setting applies to the whole document.
 ****
 
-=== Titles
+// TODO admonition blocks
+
+=== Titles, titles, titles
 
 AsciiDoc supports three types of titles:
 
-- Document title
-- Section title
-- Block title
+. Document title
+. Section title
+. Block title
 
 This section will define each title type and explain how and when to use them.
 
@@ -413,45 +424,590 @@ another preamble paragraph
 
 There are three types of lists supported in AsciiDoc:
 
-- Unordered list
-- Ordered list
-- Labeled list
+. Unordered
+. Ordered
+. Labeled
 
-Unordered and ordered lists are structurally similar. You can think of them both as outlines that just use different markers. Labeled lists, in contrast, behave quite differently.
+Unordered and ordered lists are structurally very similar. You can think of them as outline lists that use different types of markers (i.e., bullets). In contrast, labeled lists are a collection of labels that each have supporting content and they are rarely nested.
 
-Let's look at how to define each list type, then how to mix and match them and finally how to include complex content inside a single list item.
+Let's look at how to define each type of list, then explore how to mix and match them. We'll also cover how to include complex content inside a list item.
 
-==== Outline lists: ordered and unordered
+==== Lists of things
 
-...
+If you had to create a list of items in an e-mail, how would you do it? Chances are, what you'd type is exactly how you define an outline list in AsciiDoc.
+
+Here's an example of a grocery list written as an unordered list in AsciiDoc:
+
+----
+* Milk
+* Eggs
+* Bread
+* Lettuce
+* Tomatoes
+----
+
+Was your instinct to use a hypen instead of an asterisk? Guess what? That works too:
+
+----
+- Milk
+- Eggs
+- Bread
+- Lettuce
+- Tomatoes
+----
+
+In either case, you don't need to see the output. You already know how it will look ;)
+
+NOTE: The marker must be aligned with the left margin and the item text must be offset from the marker by at least one space.
+
+What if you wanted to group the grocery list by aisle? Then you might organize it as a nested list.
+
+To get a nested item, just add another asterisk in front of the item:
+
+----
+* Produce
+** Lettuce
+** Tomatoes
+* Bakery
+** Bread
+* Diary
+** Milk
+** Eggs
+----
+
+You can have up to five levels of nesting:
+
+----
+* Kingdom
+** Phylum
+*** Class
+**** Order
+***** Family
+----
+
+The hyphen doesn't work for nested lists since repeating hypens are used for other purposes in AsciiDoc.
+
+[TIP]
+====
+Since a hyphen only works for a single level nesting in an AsciiDoc list, I recommend reserving the hyphen for lists that only have a single level:
+
+.List without nested items
+----
+- Ubuntu
+- Fedora
+- Slackware
+----
+
+For lists that have more than one level, use asterisks:
+
+.List with nested items
+----
+* Linux
+** Ubuntu
+** Fedora
+** Slackware
+* BSD
+** FreeBSD
+** NetBSD
+* MacOSX
+----
+
+Technically, the number of asterisks doesn't represent the nesting level. Rather, a new level is created for each unique marker. However, it's much more intuitive to follow the convention:
+
+ # of asterisks = level of nesting
+
+After all, we are shooting for plain text markup that is readable _as is_.
+====
+
+==== Ordering the things
+
+Sometimes, we need to number the items in a list. Instinctually, you might prefix each item with a number, like in this next list:
+
+----
+1. Protons
+2. Electrons
+3. Neutrons
+----
+
+Since numbers in an ordered list are sequential, you can leave them off an AsciiDoc will calculate them automatically:
+
+----
+. Protons
+. Electrons
+. Neutrons
+----
+
+Like with unordered lists, you create a nested item by using multiple dots in front of the item:
+
+----
+. Introduction
+. Getting Started
+.. Installing the program
+.. Launching the program
+. Titles
+.. Document
+.. Section
+.. Block
+. Lists
+.. Outline
+... Unordered
+... Ordered
+.. Labeled
+----
+
+[TIP]
+====
+Similar to asterisks in unordered lists, the number of dots doesn't represent the nesting level. Rather, a new level is created for each unique marker. However, it's much more intuitive to follow the convention:
+
+ # of dots = level of nesting
+
+After all, we are shooting for plain text markup that is readable _as is_.
+====
+
+AsciiDoc selects a different number scheme for each level of nesting. Here's how the previous list renders:
+
+. Introduction
+. Getting Started
+.. Installing the program
+.. Launching the program
+. Titles
+.. Document
+.. Section
+.. Block
+. Lists
+.. Outline
+... Unordered
+... Ordered
+.. Labeled
+
+The following table shows the number scheme used by default for each nesting level:
+
+.Order list numbering schemes by level
+[cols="2,3,3" options="header"]
+|===
+|List Level |Numbering Scheme      |CSS class (HTML backend)
+|1
+|Arabic
+|arabic
+
+|2
+|Lower Alpha
+|loweralpha
+
+|3
+|Lower Roman
+|lowerroman
+
+|4
+|Upper Alpha
+|upperalpha
+
+|5
+|Upper Roman
+|upperroman
+|===
+
+You can override the number scheme for any level by setting its style (first position in a block attribute list). You can also set the starting number using the +start+ attribute:
+
+----
+[lowerroman, start="5"]
+. Five
+. Six
+[loweralpha]
+.. a
+.. b
+.. c
+. Seven
+----
+
+==== Titling a list
+
+You can give any block element, such as a list, a title by prefixing the line with a dot immediately followed by the text (without leaving any space after the dot).
+
+Here are examples of two lists with titles:
+
+----
+.Shopping list
+* Milk
+* Eggs
+* Bread
+
+.Parts of an atom
+. Protons
+. Electrons
+. Neutrons
+----
 
 ==== Labeled lists
 
-...
+Labeled lists are useful when you need to include commentary about each item in a list. Each item consists of a label followed by:
 
-==== Nesting and mixing lists
+* a separator (typically a double colon, +::+)
+* at least one space or endline
+* the item's content
 
-...
+Here's a labeled list that identifies various parts of a computer:
 
-==== Complex content in list items
+----
+CPU:: The brain of the computer.
+Hard drive:: Permanent storage for operating system and/or user files.
+RAM:: Temporarily stores information the CPU uses during operation.
+Keyboard:: Used to enter text or control items on the screen.
+Mouse:: Used to point to and select items on your computer screen. 
+Monitor:: Displays information in visual form using text and graphics.
+----
+
+By default, the content of each item is displayed below the label when rendered. If you want the label and content to appear on the same line, add the horizontal style to the list.
+
+----
+[horizontal]
+CPU:: The brain of the computer.
+Hard drive:: Permanent storage for operating system and/or user files.
+RAM:: Temporarily stores information the CPU uses during operation.
+----
+
+The content of a labeled list can be any AsciiDoc element. For instance, we could rewrite the grocery list from above so that each aisle is a label rather than a parent outline list item.
+
+----
+.Grocery list, organized by aisle
+Produce::
+* Lettuce
+* Tomatoes
+Bakery::
+* Bread
+Diary::
+* Milk
+* Eggs
+----
+
+Labeled lists are _very_ lenient about whitespace, so you can spread the items out and even indent the content if that makes it more readable for you:
+
+----
+.Grocery list, organized by aisle
+
+Produce::
+
+  * Lettuce
+  * Tomatoes
+
+Bakery::
+
+  * Bread
+
+Diary::
+
+  * Milk
+  * Eggs
+----
+
+==== Hybrid lists
+
+You can mix the three list types in a single list. AsciiDoc works hard to infer the relationships between the items that are most intuitive to us humans.
+
+Here's a simple example of nesting an unordered list inside of an ordered list:
+
+----
+. Linux
+* Ubuntu
+* Fedora
+* Slackware
+. BSD
+* FreeBSD
+* NetBSD
+. MacOSX
+----
+
+Again, you can spread the items out and indent the nested lists if that makes it more readable for you:
+
+----
+. Linux
+  * Ubuntu
+  * Fedora
+  * Slackware
+
+. BSD
+  * FreeBSD
+  * NetBSD
+
+. MacOSX
+----
+
+Here's a list that mixes all three types of lists:
+
+----
+Operating Systems::
+
+  . Linux
+    * Ubuntu
+    * Fedora
+    * Slackware
+  
+  . BSD
+    * FreeBSD
+    * NetBSD
+  
+  . MacOSX
+
+Cloud Providers::
+
+  . PaaS
+    * OpenShift
+    * CloudBees
+
+  . IaaS
+    * Amazon EC2
+    * Rackspace
+----
+
+==== Complex list content
+
+So far, all of the list items have only had one line of text (aside from nested lists). However, a list item can hold any type of AsciiDoc content, including paragraphs, listing blocks and even tables. We'll start with the simplest case and continue adding on.
+
+Like with regular paragraph text, the text of a list item can wrap across any number of lines, as long as all the lines are adjacent. For example:
+
+----
+* The header in AsciiDoc is optional, but if
+  it is used it must start with a document title.
+
+* Optional Author and Revision information
+  immediately follows the header title.
+
+* The document header must be separated from
+  the remainder of the document by one or more
+  blank lines and cannot contain blank lines.
+----
+
+TIP: When items contain more than one line of text, leave a blank line before the next item to make the list easier to read.
+
+If you want to attach additional paragraphs to a list item, you "add" them together using a _list continuation_. A list continuation is a +{plus}+ symbol on a line by itself, immediately adjacent to the two elements it's connecting. Here's an example:
+
+----
+* The header in AsciiDoc must start with a
+  document title.
++
+The header is optional.
+
+* Optional Author and Revision information
+  immediately follows the header title.
+----
+
+You can use the list continuation any number of times in a single list item. Using that list continuation, you can attach any type of block element.
+
+Here's an example that attaches both a listing block and an admonition paragraph to the first item:
+
+[listing]
+....
+* The header in AsciiDoc must start with a
+  document title.
++
+----
+= Document Title
+----
++
+NOTE: The header is optional.
+
+* Optional Author and Revision information
+  immediately follows the header title.
++
+----
+= Document Title
+Doc Writer <doc.writer@asciidoc.org>
+v1.0, 2013-01-01
+----
+....
+
+// (more?)
+
+==== Dividing lists
+
+If you have adjacent lists, they have the tendency to want to fuse together. To force the lists apart, place a line comment between them, offset on either side by a blank line. Here's an example:
+
+----
+* Apples
+* Oranges
+* Bananas
+
+// list divider
+
+* Walnuts
+* Almonds
+* Cashews
+----
+
+== Rendering your document
+
+You've created your document. Now what? Although AsciiDoc is designed to be readable in raw form, you're readers probably aren't going to appreciate getting a plain text file. Aesthetics matter. You want to dress up your text in nice typography and colors, adjust the font sizes to adhere to the "golden ratio" and give it the respect it deserves.
+
+That's where the AsciiDoc processor comes in. The processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF. AsciiDoc provides a set of default templates in the tin, but you can customize them to get just about any output you want. We'll cover the most common usages in this document.
+
+In order to use the AsciiDoc processor, you first have to install it.
+
+=== Installing AsciiDoc
+
+The AsciiDoc processor is a Python script and can therefore run on any system that has Python installed.footnote:[At the time of writing, the AsciiDoc processor does not work with Python 3.]
+
+==== Package manager install
+
+The quickest way to install AsciiDoc is through the package manager on your system. Here are the commands for several popular package management systems:
+
+.Ubuntu / Debian
+ sudo apt-get install asciidoc
+
+.Fedora
+ sudo yum -y install asciidoc
+
+.MacOSX
+ brew install asciidoc
+
+NOTE: If Python isn't already installed, it should be installed as a dependency of the package.
+
+If the install was successful, you should be able to execute the +asciidoc+ and +a2x+ commands from a command prompt:
+
+ $> asciidoc --version
+ asciidoc 8.6.8
+ $> a2x --version
+ a2x 8.6.8
+
+==== Manual install
+
+If you can't get the AsciiDoc processor using a package manager, you can install it manually following these steps:
+
+. Make sure you have Python 2 installed on your system
+. http://sourceforge.net/projects/asciidoc/files/latest/download[Download the distribution archive] from the AsciiDoc website.
+. Extract the archive into a directory where you keep your programs
+. Find the +asciidoc.py+ and +a2x.py+ files in the extracted directory
+. Rename these files to +asciidoc+ and +a2x+, respectively
+. Add the extracted directory to your PATH environment variable
+
+For more details on the manual install, see the http://asciidoc.org/INSTALL.html[AsciiDoc Installation Guide].
+
+If the install was successful, you should be able to execute the +asciidoc+ and +a2x+ commands from a command prompt:
+
+ $> asciidoc --version
+ asciidoc 8.6.8
+ $> a2x --version
+ a2x 8.6.8
+
+=== Converting a document to HTML 5
+
+There are two HTML backends that come with AsciiDoc:
+
+xhtml11:: Creates an HTML document that adheres to the XHTML 1.1 specification and uses CSS2 for styling
+html5:: Create an HTML document that adheres to the HTML 5 specification and uses CSS3 for styling
+
+The default backend in AsciiDoc is *xhtml11*. If you don't specify a backend, the AsciiDoc processor will assume you want to use *xhtml11*. We want to look forward, so we're going to use the *html5* backend.
+
+Let's convert our document to HTML 5. In your command prompt, switch to the directory that contains the document and execute the following command:
+
+ $> asciidoc -b html5 sample.ad
+
+You won't see any messages printed to the console. If you type +ls+ (or view the directory in a file manager), there is a new file named +sample.html+.
+
+ $> ls
+ sample.ad  sample.html
+
+AsciiDoc derives the name of the output document from the name of the input document by simply changing the file extension.
+
+The document uses CSS for styling and JavaScript for generating parts of the document such as the table of contents and footnotes, which it embeds into the document so you don't have to worry about managing extra resources.
+
+However, if you have image references in your document, you still have to move those with the output document. To have the images embedded into the document as well, pass the +data-uri+ attribute to the processor:
+
+ $> asciidoc -b html5 -a data-uri sample.ad
+
+If you want the document to include a table of contents, pass the +toc+ attribute to the processor:
+
+ $> asciidoc -b html5 -a data-uri -a toc sample.ad
+
+If you want to use +data-uri+ and +toc+ by default, you can add them to the header of the document:
+
+----
+= Document Title
+Doc Writer <doc.writer@asciidoc.org>
+2012-01-01
+:data-uri:
+:toc:
+
+Content...
+----
+
+Admittedly, the default stylesheet that comes with AsciiDoc is quite...blue. AsciiDoc ships with two additional themes, flask and volnitsky. People tend to prefer the flask theme, which you can enable using the +theme+ attribute:
+
+ $> asciidoc -b html5 -a theme=flask sample.ad
+
+You can create your own theme. See the http://asciidoc.org/userguide.html#X99[Themes] chapter in the AsciiDoc User Guide for details.
+
+If you'd rather supply your own stylesheet, you can specify the relative path to it using the +stylesheet+ attribute:
+
+ $> asciidoc -b html5 -a stylesheet=mystyles.css sample.ad
+
+The custom styles will be embedded into the document, as with the default stylesheet.
+
+// TODO -a icons and -a iconsdir
+
+One of the strengths of AsciiDoc is that it can output to a variety of formats, not just HTML.
+
+=== Converting a document to DocBook
+
+Writing in DocBook is inhumane. The utility of DocBook is providing a portable document format. Since AsciiDoc was designed with DocBook output in mind, the conversion is very good.
+
+AsciiDoc provides a DocBook 4.5 backend out of the box. To convert the document to this format, call the processor with the backend flag set to *docbook*:
+
+ $> asciidoc -b docbook sample.ad
+
+A new XML document, named +sample.xml+, will now be present in the current directory:
+
+ $> ls
+ sample.ad  sample.html  sample.xml
+
+If you're on Linux, you can view the DocBook file using Yelp:
+
+ $> yelp sample.xml
+
+DocBook is only an intermediary format in the AsciiDoc toolchain. You'll either feed it into a system that processes DocBook (like https://fedorahosted.org/publican[publican]), or you can convert it to PDF using the AsciiDoc processor.
+
+=== Converting the document to PDF
+
+PDF is a nice format for presenting a final version of a document. For legacy reasons, the convertion to PDF is handled by a separate program in the AsciiDoc distribution, +a2x+.
+
++a2x+ can accept a DocBook file as input and produce a PDF:
+
+ $> a2x -f pdf sample.xml
+
+A new PDF document, named +sample.pdf+, will now be present in the current directory:
+
+ $> ls
+ sample.ad  sample.html  sample.pdf  sample.xml
+
+You can view the PDF using any PDF viewer. Go ahead, take a look!
+
+Yes, you just created that PDF. Yes, it was that easy.
+
+Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, +a2x+ can go directly from AsciiDoc to PDF in a single call:
+
+ $> a2x -f pdf sample.ad
+
+// TODO creating slides
+
+==== Output galore
+
+There's really no end to the customization you can do to the output that the AsciiDoc processor(s) generate. We've just scratched the surface here. Keep in mind that this magazine was produced from AsciiDoc, so never underestimate how far you can make the output stretch.
+
+If you want to start tweaking the output that is generated, refer to instructions in the http://asciidoc.org/userguide.html[AsciiDoc User Guide].
+
+== Where else you can try AsciiDoc
+
+== Who's using AsciiDoc?
+
+== Next Steps
 
 ...
 
 ////
-=== Staying close to the code
-
-[quote, 'http://blog.stoyanstefanov.com/asciidoc[Stoyan Stefanov]']
-____
-The best software for writing a computer book is simply your favorite code editor...as close to [the] source code as possible.
-
-Removing friction out of typing is an enormous help.
-[S]omething like AsciiDoc or Markdown makes the process so much easier.
-____
-////
-
 == Writing in AsciiDoc: Tables and Layouts
 
 === Easy tables
+
+// Explain how they are similar to lists
 
 .Software
 [options="header"]
@@ -467,11 +1023,16 @@ ____
 |TorqueBox
 |Application Server
 |===
+////
 
-== Rendering the Document
+////
+=== Staying close to the code
 
-...
+[quote, 'http://blog.stoyanstefanov.com/asciidoc[Stoyan Stefanov]']
+____
+The best software for writing a computer book is simply your favorite code editor...as close to [the] source code as possible.
 
-== Next Steps
-
-...
+Removing friction out of typing is an enormous help.
+[S]omething like AsciiDoc or Markdown makes the process so much easier.
+____
+////
