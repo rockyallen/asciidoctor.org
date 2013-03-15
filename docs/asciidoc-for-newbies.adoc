@@ -9,7 +9,9 @@ endif::asciidoctor[]
 ////
 TODO:
 
+- delimited blocks, including admonition blocks
 - brief bit comparing AsciiDoc to Markdown
+- attributes
 - section on delimited blocks (focus on listings and source highlighting)
 - mention a few places it's being used
 - where does Asciidoctor fit in? Perhaps mention it's a drop-in replacement for the asciidoc command?
@@ -44,8 +46,8 @@ TODO:
 </style>
 ++++
 
-This guide provides a gentle introduction to http://asciidoc.org[AsciiDoc], a [mono]#plain# [mono]#text# documentation syntax and processor.
-This introduction is intended for anyone who wants to reduce the effort required to write and publish content, whether for technical documentation, articles, websites or even good ol'-fashioned prose.
+This guide provides a gentle introduction to http://asciidoc.org[AsciiDoc], a [mono]#plain# [mono]#text# documentation *syntax* and *processor*.
+This introduction is intended for anyone who wants to reduce the work required to write and publish content, whether it be for technical documentation, articles, websites or good ol'-fashioned prose.
 
 In this guide, you'll learn:
 
@@ -55,19 +57,19 @@ In this guide, you'll learn:
 - How to create your first AsciiDoc document
 - How to add other structural elements such as lists, quotes and source code
 
-_In addition to covering the AsciiDoc basics, this guide also presents a set of recommended practices (((conventions?))) to help you create more consistent documents and maximize your writing productivity._
+_In addition to covering the AsciiDoc basics, this guide also recommends a set of conventions to help you create more consistent documents and maximize your writing productivity._
 
-Before we get into how to compose a document in AsciiDoc, we'll briefly explore what it is, what need it fills and why you should consider using it as the foundation for your next writing project.
+Before we get into how you compose a document in AsciiDoc, we'll briefly explore what it is, what need it fills and why you should consider using it as the foundation for your next writing project.
 
 == What is AsciiDoc?
 
 AsciiDoc is a plain text document format for writing notes, documentation, articles, books, ebooks, web pages, slide decks, blog posts, man pages and more.
-AsciiDoc can translate documents written using this syntax into numerous formats (i.e., backends), including HTML 5, DocBook 4.5, PDF, ePUB and man pages.
+An AsciiDoc processor can translate documents written using the AsciiDoc syntax into various formats (called _backends_), including HTML 5, DocBook 4.5 and PDF.
 
-Therefore, AsciiDoc is two things:
+Thus, AsciiDoc is two things:
 
-. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.]
-. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF footnote:[There's a modern implementation of AsciiDoc, written in Ruby, named http://asciidoctor.org[Asciidoctor].]
+. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text{empty}footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.]
+. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF{empty}footnote:[There's a modern implementation of AsciiDoc, written in Ruby, named http://asciidoctor.org[Asciidoctor].]
 
 Now that we've established what AsciiDoc is, let's consider why we need it.
 
@@ -77,10 +79,10 @@ As humans, we seem to have no trouble talking or thinking.
 In fact, we're fluent in it.
 It's an activity that just happens whenever a thought ``hits'' us.
 
-_Writing rarely comes so easy._
+_Writing, on the other hand, rarely comes so easy._
 
-When it's time to write our thoughts down, we 'struggle' to find the words--or, at least, how to arrange and organize them.
-That damn inner critic disrupts the stream of conciousness we coast on when talking or thinking.
+When it's time to write our thoughts down, we _struggle_ to find the words--or, at least, how to arrange and organize them.
+That _damn_ inner critic disrupts the stream of conciousness we coast on while talking or thinking.
 
 _Or does it?_
 
@@ -89,22 +91,24 @@ _Or does it?_
 Let's ponder our daily lives.
 We respond to dozens of e-mail and social media messages every day.
 That involves communication through writing.
-That's right, _writing_.
-Yet, admist the flurry of typing that occurs when we respond to an e-mail, we hardly even realize we're doing it...and so fluently!
+That's right, _writing!_
+
+Yet, admist the flurry of typing that occurs when we respond to an e-mail, we hardly even realize we're doing it...and _fluently!_
+
+As it turns out...
 
 [quote, 'http://blog.stoyanstefanov.com/asciidoc[Stoyan Stefanov]']
 Most people are OK with writing e-mails.
 They don't consider this writing.
 There's no writer's block.
-Someone asks you a question, you reply and type away.
+Someone asks you a question, you [press] reply and type away.
 
-'So why do we struggle to write ``documents'', such as articles, wiki pages, documentation, books and the like?'
+_So why do we struggle to write ``documents''? You know, articles, wiki pages, documentation, books and such._
 
-//While other challenges certainly exist,
-One of the main reasons we struggle is because we don't write documents the same way we write e-mail.
+One of the main reasons we struggle to write documents is because we don't write them the same way we write e-mail.
 Instead, we get tied up with complex word processing tools, bury the content in XML schemas (e.g., HTML and DocBook) or wrestle with finicky WSYWIG editors.
 
-.Word processors, the writer's block
+.Word processors, the real writer's block
 ****
 When you're in the writing (i.e., http://blog.stoyanstefanov.com/writing-vs-typing/[typing]) phase, you want the words to flow onto the screen with minimal distractions and interruptions.
 Flow, not just time, is essential.
@@ -112,24 +116,25 @@ Flow, not just time, is essential.
 Most word processors excel at distracting you from writing.
 The result: you write less (ironic, huh?).
 
-Before typing the first word on a blank white screen, you're forced to think about what font family you want, what font size you want, what lines spacing you want and so on.
-Once you get going, auto-correct, spelling and grammar suggestions entice you to backtrack and lose your next thought.
-``Smart'' quotes and links mess up the text as fast as you can enter it.
+With a word processor, before you type the first word on a blank white screen, you're forced to think about what font family you want, what font size you want, what lines spacing you want and so on.
+Once you do get going, auto-correct, spelling and grammar suggestions entice you to backtrack and lose your next thought.
+``Smart'' quotes and auto-linking messes up the text as fast as you can enter it.
 If you paste text, it likely gets added to the document with a different font family, size and even color.
 
 *Undo. Undo. Undo!*
 
-Let's not even talk about inserting source code. The designers of the program clearly did not.
+Let's not even talk about inserting source code.
+The designers of the program clearly did not.
 
-*Reformat. Reformat. Reformat!*
+*Format. Format. Format!*
 
 After using a word processor, you rightfully conclude it's trying to _sabotage_ your writing process.
 ****
 
-We struggle to write documents because *we get distracted with stuff that isn't writing*.
+We struggle to write documents because *we get distracted by stuff that isn't writing*.
 
-Writing documents, especially technical documentation, is already hard enough.
-Why make it harder?
+Writing documents, especially technical documentation, is hard enough.
+Why do we make it harder?
 //We don't want to use tools that make it even harder.
 //or? more difficult.
 
@@ -139,10 +144,11 @@ Why make it harder?
 
 'What if you could write docs like you write e-mail?'
 
-Imagine being able to forget about the layout, typesetting and styling (and even some of the semantics), let the thoughts flow and just 'write'.
+Imagine being able to forget about layout, typesetting and styling (and even some of the semantics) and just _write_.
+Let your thoughts flow.
 That's the idea behind *lightweight markup languages* such as Markdown and AsciiDoc.
 
-Here's how MarkDown was introduced:
+Here's how MarkDown was first introduced:
 
 [quote, John Gruber, Creator of Markdown]
 ____
@@ -153,7 +159,7 @@ A Markdown-formatted document should be publishable as-is, as plain text, withou
 The single biggest source of inspiration for Markdown's syntax is the format of plain text e-mail.
 ____
 
-Here's how AsciiDoc was introduced:
+Similarly, here's how AsciiDoc was introduced:
 
 [quote, Stuart Rackham, Creator of AsciiDoc]
 ____
@@ -178,7 +184,9 @@ A user unfamiliar with AsciiDoc can figure out the semantics by looking
 "based on time-tested plain text conventions from the last 40 years of computing."
 "simple, intuitive and as such is easily proofed and edited."
 designed for people, not computers
-"Writing with MultiMarkdown allows you to separate the content and structure of your document from the formatting. You focus on the actual writing, without having to worry about making the styles of your chapter headers match, or ensuring the proper spacing between paragraphs. And with a little forethought, a single plain text document can easily be converted into multiple output formats without having to rewrite the entire thing or format it by hand."
+"Writing with MultiMarkdown allows you to separate the content and structure of your document from the formatting.
+You focus on the actual writing, without having to worry about making the styles of your chapter headers match, or ensuring the proper spacing between paragraphs.
+And with a little forethought, a single plain text document can easily be converted into multiple output formats without having to rewrite the entire thing or format it by hand."
 ////
 
 AsciiDoc, in particular, is about writing with ease.
@@ -199,9 +207,9 @@ Best of all, it only requires a text editor to read or write it.
 We'll now delve into the AsciiDoc syntax.
 Hopefully you'll agree that it just makes sense.
 
-== Writing in AsciiDoc: First Steps
+== Writing in AsciiDoc: First steps
 
-By the end of this section, you'll have composed your first document in AsciiDoc--hopefully looking back in amazement at how natural it felt.
+By the end of this section, you'll have composed your AsciiDoc document--hopefully looking back in amazement about how natural it felt.
 
 Your story begins in your favorite text editor...
 
@@ -209,7 +217,7 @@ Your story begins in your favorite text editor...
 
 Since AsciiDoc syntax is just [mono]#plain# [mono]#text#, you can write an AsciiDoc document using _any_ text editor.
 You don't need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
-In fact, you _shouldn't_ use these programs because they add cruft to the document that you can't see and wreacks havoc on your document.
+In fact, you _shouldn't_ use these programs because they add cruft to the document that you can't see and wreaks havoc on your document.
 
 TIP: While it's true any text editor will do, I recommend selecting an editor that supports syntax highlighting for AsciiDoc.
 The *[red]##c##[green]##o##[purple]##l##[orange]##o##[blue]##r##* added by syntax highlighting adds contrast to the text, which makes it easier to read.
@@ -219,24 +227,24 @@ The most popular application for editing plain text on MacOSX is *TextMate*.
 A similar choice on Linux is *GEdit*.
 On Windows, you should stay away from Notepad and Wordpad because the plain text they produce is not cross-platform friendly.
 Opt instead for a competent text editor like *Notepad+*.
-If you're a programmer (or a write with an inner geek), you'll likely prefer *VIM* or *Emacs*, available across platforms.
-All of these editors support syntax highlighting for AsciiDoc.
+If you're a programmer (or a writer with an inner geek), you'll likely prefer *VIM* or *Emacs*, both available across platforms.
+All of these editors support http://asciidoc.org/#_editor_support[syntax highlighting for AsciiDoc].
 
 TIP: You don't need any special tooling to write in AsciiDoc.
-However, if you want to see the final HTML output while you are writing, refer to the link:editing-with-live-preview.html[Editing with Live Preview] tutorial to learn how to set up that environment.
+However, if you want to see the final HTML output while you are writing, refer to the link:editing-with-live-preview.html[Editing with Live Preview] tutorial to learn how to set up instant preview.
 
-Open your favorite text editor and let's start writing with AsciiDoc!
+Open your favorite text editor and let's start writing in AsciiDoc!
 
 === Content is king!
 
-All that is required to create a valid AsciiDoc document is one or more paragraphs:
+All that's required to create a valid AsciiDoc document is one or more paragraphs:
 
 [role="prewrap"]
 ....
 In AsciiDoc, the main structural element is the paragraph.
 A paragraph consists of adjacent lines of text.
 
-When you need a new paragraph, just hit the Enter key twice and continue typing.
+When you want to start a new paragraph, just hit the Enter key twice and continue typing.
 ....
 
 *In other words, you write AsciiDoc like you're writing an e-mail.*
@@ -262,14 +270,37 @@ or put each sentence on a separate line
 and the line breaks won't appear in the output.
 ....
 
-If you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document (below the title, author and revision lines).
+If you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document (below the title, author and revision lines):
 
  :hardbreaks:
 
-This setting applies to the whole document.
+The hard line breaks setting applies to the whole document.
 ****
 
-// TODO admonition blocks
+There are certain statements that you want to place more emphasis by taking them out of the flow and labeling them with a priority.
+These are called _admonition_ paragraphs.
+You make an admonition paragraph by prefixing it with a uppercase label, such as in this note:
+
+----
+NOTE: Admonition paragraphs call attention to special words of advice.
+----
+
+The following labels are recognized:
+
+* NOTE
+* TIP
+* WARNING
+* CAUTION
+* IMPORTANT
+
+The label is displayed in the gutter of the paragraph.
+By default, the text of the label is used.
+If the +icons+ attribute is set on the document, an icon will be used instead.
+
+NOTE: Admonitions can also encapsulate any block content, which we'll cover later.
+
+If paragraphs are the meat of the content, then titles and sections are the bones.
+Let's explore how to give structure to our document.
 
 === Titles, titles, titles
 
@@ -284,11 +315,12 @@ This section will define each title type and explain how and when to use them.
 ==== Document title
 
 Just as every e-mail has a subject, every document (typically) has a title.
-The title goes at the top of the document. 
+The title goes at the top of the document.
 
-TIP:A document title is an _optional_ feature of an AsciiDoc document.
+TIP: A document title is an _optional_ feature of an AsciiDoc document.
 
-To create a document title, begin the first line of the document with one equal sign followed by at least one space (++= ++) and then the title text. This syntax is the simplest (and thus recommended) way to declare a document title.
+To create a document title, begin the first line of the document with one equal sign followed by at least one space (++= ++) and then the title text.
+This syntax is the simplest (and thus recommended) way to declare a document title.
 
 Here's an example of the document title syntax and an abbreviated paragraph:
 
@@ -362,9 +394,11 @@ Here are all the section levels permitted in an AsciiDoc document, shown below t
 == Another Level 1 Section
 ----
 
-NOTE: When the document is rendered as HTML 5 (using the built-in html5 backend), each section title becomes a heading element where the heading level matches the number of equal signs. For example, a level 1 section maps to an +<h2>+ element.
+NOTE: When the document is rendered as HTML 5 (using the built-in html5 backend), each section title becomes a heading element where the heading level matches the number of equal signs.
+For example, a level 1 section maps to an +<h2>+ element.
 
-Section levels cannot be choosen arbitrarily. There are two rules you must follow:
+Section levels cannot be choosen arbitrarily.
+There are two rules you must follow:
 
 . A document can only have a single level 0 section (in addition to the document title) if the +doctype+ is set to +book+ (the default is article)
 . Section levels cannot be skipped when nesting sections
@@ -399,7 +433,7 @@ Content of second section
 
 ===== Preamble
 
-Text can proceed the first section. 
+Text can proceed the first section.
 It is called the preamble, though you don't need to use any syntax to designate this text.
 
 ----
@@ -416,21 +450,83 @@ another preamble paragraph
 
 ...
 
-=== Basic punctuation
+=== Some mild punctuation
 
-...
+When you write, there are certain words and phrases you'll want to emphasis.
+You may do so to communicate intonation you'd use when speaking the word.
+In other cases, you want to give a word or phrase special meaning, such as a reference to a file path or source code construct.
 
-=== Lists
+In an e-mail, you might "speak" a word louder by surrounding the word with asterisks.
+
+----
+I can't believe it, he *won*!
+----
+
+In AsciiDoc, that punctuation makes the text bold.
+AsciiDoc refers to this markup as _quoted text_.
+The term quote is used liberally here to apply to any symbols that surround text in order to apply emphasis or special meaning.
+
+Here are all the forms of quoted text that AsciiDoc recognizes.
+
+* \*Asterisks* around text make it *bold*
+* \'Single quotes' around text make it 'italic'
+* \_Underscores_ around text also make it _italic_
+* \+Pluses+ around text make it _monospaced_
+* \#Hashes# around text allows it to be assigned a [kbd]#role#
+* \^Carrots^ around text make it ^superscript^
+* \~Tildes~ around text make it ~subscript~
+* `Smart' single quotes consist of a \`leading backtick and trailing single quote'.
+* ``Smart'' double quotes consist of \\``two leading backticks and two trailing single quotes''.
+
+When you want to place emphasis somewhere other than at the boundaries of a word, then you need to double up the punctuation.
+For instance, to emphasis the first letter of a word, you would surround it in double asterisks:
+
+----
+**F**our scores and seven years ago...
+----
+
+Any quoted text can be prefixed with an attribute list.
+The first positional attribute is treated as a role.
+The role can be used to apply custom styling to the text.
+For instance:
+
+----
+Type the word [kbd]#asciidoc# into the search bar.
+----
+
+If you are getting quoted text behavior where you don't want it, simply prefix the punctuation with a backslash:
+
+----
+\*Stars* will not become bold, but rather surrounded by asterisks.
+----
+
+You can also enclose text in backticks to make it monospaced.
+The backticks also prevent any further processing of the text, so it gets rendered exactly as it's written.
+
+----
+The asterisks in this `*monospaced phrase*` will appear in the output.
+----
+
+This mild punctuation does not take away from the readability of the text.
+In fact, you could argue that it makes the text easier to read.
+What's important is that these are conventions with which you are likely already familiar.
+
+Punctuation is used in AsciiDoc to create another very common type of element in documents, _lists!_
+
+=== Lists, lists, lists
 
 There are three types of lists supported in AsciiDoc:
 
-. Unordered
-. Ordered
-. Labeled
+. _Unordered_
+. [mono]#Ordered#
+. *Labeled*
 
-Unordered and ordered lists are structurally very similar. You can think of them as outline lists that use different types of markers (i.e., bullets). In contrast, labeled lists are a collection of labels that each have supporting content and they are rarely nested.
+_Unordered_ and [mono]#ordered# lists are structurally very similar.
+You can think of them as outline lists that use different types of markers (i.e., bullets).
+In contrast, *labeled* lists are a collection of labels that each have supporting content and they are rarely nested.
 
-Let's look at how to define each type of list, then explore how to mix and match them. We'll also cover how to include complex content inside a list item.
+Let's explore how to define each type of list, then play around with mixing and matching them.
+We'll also cover how you include complex content inside a list item.
 
 ==== Lists of things
 
@@ -456,7 +552,8 @@ Was your instinct to use a hypen instead of an asterisk? Guess what? That works 
 - Tomatoes
 ----
 
-In either case, you don't need to see the output. You already know how it will look ;)
+In either case, you don't need to see the output.
+You already know how it will look ;)
 
 NOTE: The marker must be aligned with the left margin and the item text must be offset from the marker by at least one space.
 
@@ -512,7 +609,9 @@ For lists that have more than one level, use asterisks:
 * MacOSX
 ----
 
-Technically, the number of asterisks doesn't represent the nesting level. Rather, a new level is created for each unique marker. However, it's much more intuitive to follow the convention:
+Technically, the number of asterisks doesn't represent the nesting level.
+Rather, a new level is created for each unique marker.
+However, it's much more intuitive to follow the convention:
 
  # of asterisks = level of nesting
 
@@ -521,7 +620,8 @@ After all, we are shooting for plain text markup that is readable _as is_.
 
 ==== Ordering the things
 
-Sometimes, we need to number the items in a list. Instinctually, you might prefix each item with a number, like in this next list:
+Sometimes, we need to number the items in a list.
+Instinctually, you might prefix each item with a number, like in this next list:
 
 ----
 1. Protons
@@ -557,14 +657,17 @@ Like with unordered lists, you create a nested item by using multiple dots in fr
 
 [TIP]
 ====
-Similar to asterisks in unordered lists, the number of dots doesn't represent the nesting level. Rather, a new level is created for each unique marker. However, it's much more intuitive to follow the convention:
+Similar to asterisks in unordered lists, the number of dots doesn't represent the nesting level.
+Rather, a new level is created for each unique marker.
+However, it's much more intuitive to follow the convention:
 
  # of dots = level of nesting
 
 After all, we are shooting for plain text markup that is readable _as is_.
 ====
 
-AsciiDoc selects a different number scheme for each level of nesting. Here's how the previous list renders:
+AsciiDoc selects a different number scheme for each level of nesting.
+Here's how the previous list renders:
 
 . Introduction
 . Getting Started
@@ -607,7 +710,8 @@ The following table shows the number scheme used by default for each nesting lev
 |upperroman
 |===
 
-You can override the number scheme for any level by setting its style (first position in a block attribute list). You can also set the starting number using the +start+ attribute:
+You can override the number scheme for any level by setting its style (first position in a block attribute list).
+You can also set the starting number using the +start+ attribute:
 
 ----
 [lowerroman, start="5"]
@@ -640,7 +744,8 @@ Here are examples of two lists with titles:
 
 ==== Labeled lists
 
-Labeled lists are useful when you need to include commentary about each item in a list. Each item consists of a label followed by:
+Labeled lists are useful when you need to include commentary about each item in a list.
+Each item consists of a label followed by:
 
 * a separator (typically a double colon, +::+)
 * at least one space or endline
@@ -653,11 +758,12 @@ CPU:: The brain of the computer.
 Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.
 Keyboard:: Used to enter text or control items on the screen.
-Mouse:: Used to point to and select items on your computer screen. 
+Mouse:: Used to point to and select items on your computer screen.
 Monitor:: Displays information in visual form using text and graphics.
 ----
 
-By default, the content of each item is displayed below the label when rendered. If you want the label and content to appear on the same line, add the horizontal style to the list.
+By default, the content of each item is displayed below the label when rendered.
+If you want the label and content to appear on the same line, add the horizontal style to the list.
 
 ----
 [horizontal]
@@ -666,7 +772,8 @@ Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.
 ----
 
-The content of a labeled list can be any AsciiDoc element. For instance, we could rewrite the grocery list from above so that each aisle is a label rather than a parent outline list item.
+The content of a labeled list can be any AsciiDoc element.
+For instance, we could rewrite the grocery list from above so that each aisle is a label rather than a parent outline list item.
 
 ----
 .Grocery list, organized by aisle
@@ -702,7 +809,8 @@ Diary::
 
 ==== Hybrid lists
 
-You can mix the three list types in a single list. AsciiDoc works hard to infer the relationships between the items that are most intuitive to us humans.
+You can mix the three list types in a single list.
+AsciiDoc works hard to infer the relationships between the items that are most intuitive to us humans.
 
 Here's a simple example of nesting an unordered list inside of an ordered list:
 
@@ -761,9 +869,12 @@ Cloud Providers::
 
 ==== Complex list content
 
-So far, all of the list items have only had one line of text (aside from nested lists). However, a list item can hold any type of AsciiDoc content, including paragraphs, listing blocks and even tables. We'll start with the simplest case and continue adding on.
+So far, all of the list items have only had one line of text (aside from nested lists).
+However, a list item can hold any type of AsciiDoc content, including paragraphs, listing blocks and even tables.
+We'll start with the simplest case and continue adding on.
 
-Like with regular paragraph text, the text of a list item can wrap across any number of lines, as long as all the lines are adjacent. For example:
+Like with regular paragraph text, the text of a list item can wrap across any number of lines, as long as all the lines are adjacent.
+For example:
 
 ----
 * The header in AsciiDoc is optional, but if
@@ -779,7 +890,9 @@ Like with regular paragraph text, the text of a list item can wrap across any nu
 
 TIP: When items contain more than one line of text, leave a blank line before the next item to make the list easier to read.
 
-If you want to attach additional paragraphs to a list item, you "add" them together using a _list continuation_. A list continuation is a +{plus}+ symbol on a line by itself, immediately adjacent to the two elements it's connecting. Here's an example:
+If you want to attach additional paragraphs to a list item, you "add" them together using a _list continuation_.
+A list continuation is a +{plus}+ symbol on a line by itself, immediately adjacent to the two elements it's connecting.
+Here's an example:
 
 ----
 * The header in AsciiDoc must start with a
@@ -791,7 +904,8 @@ The header is optional.
   immediately follows the header title.
 ----
 
-You can use the list continuation any number of times in a single list item. Using that list continuation, you can attach any type of block element.
+You can use the list continuation any number of times in a single list item.
+Using that list continuation, you can attach any type of block element.
 
 Here's an example that attaches both a listing block and an admonition paragraph to the first item:
 
@@ -820,7 +934,9 @@ v1.0, 2013-01-01
 
 ==== Dividing lists
 
-If you have adjacent lists, they have the tendency to want to fuse together. To force the lists apart, place a line comment between them, offset on either side by a blank line. Here's an example:
+If you have adjacent lists, they have the tendency to want to fuse together.
+To force the lists apart, place a line comment between them, offset on either side by a blank line.
+Here's an example:
 
 ----
 * Apples
@@ -834,21 +950,32 @@ If you have adjacent lists, they have the tendency to want to fuse together. To 
 * Cashews
 ----
 
+== More building blocks
+
+...
+
 == Rendering your document
 
-You've created your document. Now what? Although AsciiDoc is designed to be readable in raw form, you're readers probably aren't going to appreciate getting a plain text file. Aesthetics matter. You want to dress up your text in nice typography and colors, adjust the font sizes to adhere to the "golden ratio" and give it the respect it deserves.
+You've created your document.
+Now what? Although AsciiDoc is designed to be readable in raw form, you're readers probably aren't going to appreciate getting a plain text file.
+Aesthetics matter.
+You want to dress up your text in nice typography and colors, adjust the font sizes to adhere to the "golden ratio" and give it the respect it deserves.
 
-That's where the AsciiDoc processor comes in. The processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF. AsciiDoc provides a set of default templates in the tin, but you can customize them to get just about any output you want. We'll cover the most common usages in this document.
+That's where the AsciiDoc processor comes in.
+The processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
+AsciiDoc provides a set of default templates in the tin, but you can customize them to get just about any output you want.
+We'll cover the most common usages in this document.
 
 In order to use the AsciiDoc processor, you first have to install it.
 
 === Installing AsciiDoc
 
-The AsciiDoc processor is a Python script and can therefore run on any system that has Python installed.footnote:[At the time of writing, the AsciiDoc processor does not work with Python 3.]
+The AsciiDoc processor is a Python script and can be run on any system that has Python installed.footnote:[At the time of writing, the AsciiDoc processor does not work with Python 3.]
 
-==== Package manager install
+==== Installing via a package manager
 
-The quickest way to install AsciiDoc is through the package manager on your system. Here are the commands for several popular package management systems:
+The quickest way to install AsciiDoc is through the package manager on your system.
+Here are the commands for several popular package management systems:
 
 .Ubuntu / Debian
  sudo apt-get install asciidoc
@@ -868,7 +995,7 @@ If the install was successful, you should be able to execute the +asciidoc+ and 
  $> a2x --version
  a2x 8.6.8
 
-==== Manual install
+==== Installing manually
 
 If you can't get the AsciiDoc processor using a package manager, you can install it manually following these steps:
 
@@ -895,13 +1022,17 @@ There are two HTML backends that come with AsciiDoc:
 xhtml11:: Creates an HTML document that adheres to the XHTML 1.1 specification and uses CSS2 for styling
 html5:: Create an HTML document that adheres to the HTML 5 specification and uses CSS3 for styling
 
-The default backend in AsciiDoc is *xhtml11*. If you don't specify a backend, the AsciiDoc processor will assume you want to use *xhtml11*. We want to look forward, so we're going to use the *html5* backend.
+The default backend in AsciiDoc is *xhtml11*.
+If you don't specify a backend, the AsciiDoc processor will assume you want to use *xhtml11*.
+We want to look forward, so we're going to use the *html5* backend.
 
-Let's convert our document to HTML 5. In your command prompt, switch to the directory that contains the document and execute the following command:
+Let's convert our document to HTML 5.
+In your command prompt, switch to the directory that contains the document and execute the following command:
 
  $> asciidoc -b html5 sample.ad
 
-You won't see any messages printed to the console. If you type +ls+ (or view the directory in a file manager), there is a new file named +sample.html+.
+You won't see any messages printed to the console.
+If you type +ls+ (or view the directory in a file manager), there is a new file named +sample.html+.
 
  $> ls
  sample.ad  sample.html
@@ -910,7 +1041,8 @@ AsciiDoc derives the name of the output document from the name of the input docu
 
 The document uses CSS for styling and JavaScript for generating parts of the document such as the table of contents and footnotes, which it embeds into the document so you don't have to worry about managing extra resources.
 
-However, if you have image references in your document, you still have to move those with the output document. To have the images embedded into the document as well, pass the +data-uri+ attribute to the processor:
+However, if you have image references in your document, you still have to move those with the output document.
+To have the images embedded into the document as well, pass the +data-uri+ attribute to the processor:
 
  $> asciidoc -b html5 -a data-uri sample.ad
 
@@ -930,11 +1062,14 @@ Doc Writer <doc.writer@asciidoc.org>
 Content...
 ----
 
-Admittedly, the default stylesheet that comes with AsciiDoc is quite...blue. AsciiDoc ships with two additional themes, flask and volnitsky. People tend to prefer the flask theme, which you can enable using the +theme+ attribute:
+Admittedly, the default stylesheet that comes with AsciiDoc is quite...blue.
+AsciiDoc ships with two additional themes, flask and volnitsky.
+People tend to prefer the flask theme, which you can enable using the +theme+ attribute:
 
  $> asciidoc -b html5 -a theme=flask sample.ad
 
-You can create your own theme. See the http://asciidoc.org/userguide.html#X99[Themes] chapter in the AsciiDoc User Guide for details.
+You can create your own theme.
+See the http://asciidoc.org/userguide.html#X99[Themes] chapter in the AsciiDoc User Guide for details.
 
 If you'd rather supply your own stylesheet, you can specify the relative path to it using the +stylesheet+ attribute:
 
@@ -948,9 +1083,12 @@ One of the strengths of AsciiDoc is that it can output to a variety of formats, 
 
 === Converting a document to DocBook
 
-Writing in DocBook is inhumane. The utility of DocBook is providing a portable document format. Since AsciiDoc was designed with DocBook output in mind, the conversion is very good.
+Writing in DocBook is inhumane.
+The utility of DocBook is providing a portable document format.
+Since AsciiDoc was designed with DocBook output in mind, the conversion is very good.
 
-AsciiDoc provides a DocBook 4.5 backend out of the box. To convert the document to this format, call the processor with the backend flag set to *docbook*:
+AsciiDoc provides a DocBook 4.5 backend out of the box.
+To convert the document to this format, call the processor with the backend flag set to *docbook*:
 
  $> asciidoc -b docbook sample.ad
 
@@ -963,11 +1101,13 @@ If you're on Linux, you can view the DocBook file using Yelp:
 
  $> yelp sample.xml
 
-DocBook is only an intermediary format in the AsciiDoc toolchain. You'll either feed it into a system that processes DocBook (like https://fedorahosted.org/publican[publican]), or you can convert it to PDF using the AsciiDoc processor.
+DocBook is only an intermediary format in the AsciiDoc toolchain.
+You'll either feed it into a system that processes DocBook (like https://fedorahosted.org/publican[publican]), or you can convert it to PDF using the AsciiDoc processor.
 
 === Converting the document to PDF
 
-PDF is a nice format for presenting a final version of a document. For legacy reasons, the convertion to PDF is handled by a separate program in the AsciiDoc distribution, +a2x+.
+PDF is a nice format for presenting a final version of a document.
+For legacy reasons, the convertion to PDF is handled by a separate program in the AsciiDoc distribution, +a2x+.
 
 +a2x+ can accept a DocBook file as input and produce a PDF:
 
@@ -978,9 +1118,11 @@ A new PDF document, named +sample.pdf+, will now be present in the current direc
  $> ls
  sample.ad  sample.html  sample.pdf  sample.xml
 
-You can view the PDF using any PDF viewer. Go ahead, take a look!
+You can view the PDF using any PDF viewer.
+Go ahead, take a look!
 
-Yes, you just created that PDF. Yes, it was that easy.
+Yes, you just created that PDF.
+Yes, it was that easy.
 
 Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, +a2x+ can go directly from AsciiDoc to PDF in a single call:
 
@@ -990,7 +1132,9 @@ Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in 
 
 ==== Output galore
 
-There's really no end to the customization you can do to the output that the AsciiDoc processor(s) generate. We've just scratched the surface here. Keep in mind that this magazine was produced from AsciiDoc, so never underestimate how far you can make the output stretch.
+There's really no end to the customization you can do to the output that the AsciiDoc processor(s) generate.
+We've just scratched the surface here.
+Keep in mind that this magazine was produced from AsciiDoc, so never underestimate how far you can make the output stretch.
 
 If you want to start tweaking the output that is generated, refer to instructions in the http://asciidoc.org/userguide.html[AsciiDoc User Guide].
 
@@ -998,12 +1142,12 @@ If you want to start tweaking the output that is generated, refer to instruction
 
 == Who's using AsciiDoc?
 
-== Next Steps
+== Next steps
 
 ...
 
 ////
-== Writing in AsciiDoc: Tables and Layouts
+== Writing in AsciiDoc: Tables and layouts
 
 === Easy tables
 
