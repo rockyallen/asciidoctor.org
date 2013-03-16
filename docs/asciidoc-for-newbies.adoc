@@ -12,13 +12,15 @@ endif::asciidoctor[]
 ////
 TODO:
 
-- fix the location of the backends section
-- where does Asciidoctor fit in? Perhaps mention it's a drop-in replacement for the asciidoc command? perhaps a sidebar?
-- clearly define the block attribute list, mention the attributes only apply to that block, that they are aggregate
-- mention the required quoting of block attributes when using AsciiDoc
+- conclusion
+- fill out the "Why AsciiDoc works" section
+- move "Who's using AsciiDoc?" to one of the opening sections
+- generating slides
 
 - brief bit comparing AsciiDoc to Markdown
 - mention a few places AsciiDoc is being used
+- clearly define the block attribute list, mention the attributes only apply to that block, that they are aggregate
+- mention the required quoting of block attributes when using AsciiDoc
 ////
 
 ifdef::basebackend-html[]
@@ -62,6 +64,7 @@ In this guide, you'll learn:
 - The basic structure of an AsciiDoc document
 - How to create your first AsciiDoc document
 - How to add other structural elements such as lists, quotes and source code
+- How to render an AsciiDoc document to HTML, DocBook and PDF
 
 _In addition to covering the AsciiDoc basics, this guide also recommends a set of conventions to help you create more consistent documents and maximize your writing productivity._
 
@@ -92,7 +95,7 @@ That _damn_ inner critic disrupts the stream of conciousness we coast on while t
 
 _Or does it?_
 
-=== Writing e-mail vs writing documents
+=== Writing e-mail vs documents
 
 Let's ponder our daily lives.
 We respond to dozens of e-mail and social media messages every day.
@@ -109,7 +112,8 @@ They don't consider this writing.
 There's no writer's block.
 Someone asks you a question, you [press] reply and type away.
 
-_So why do we struggle to write ``documents''? You know, articles, wiki pages, documentation, books and such._
+_So why do we struggle to write ``documents''?
+You know, articles, wiki pages, documentation, books and such._
 
 One of the main reasons we struggle to write documents is because we don't write them the same way we write e-mail.
 Instead, we get tied up with complex word processing tools, bury the content in XML schemas (e.g., HTML and DocBook) or wrestle with finicky WSYWIG editors.
@@ -176,7 +180,8 @@ ____
 
 These languages are designed to enable humans to write documents, and for other humans to be able to read them, *_as is_*, in _raw_ form.
 
-=== Why AsciiDoc works
+//=== Why AsciiDoc works
+=== The zen of AsciiDoc
 
 ////
 - It's readable
@@ -203,14 +208,6 @@ It also happens to recognize time-tested, plain text conventions for marking up 
 In other words, the syntax is probably close to what you've been using in your e-mails.
 A user unfamiliar with AsciiDoc can figure out the structure and semantics (i.e., what you meant) just by looking.
 Best of all, it only requires a text editor to read or write it.
-
-// FIXME
-...
-
-=== Backends for every occasion
-
-// FIXME
-...
 
 We'll now delve into the AsciiDoc syntax.
 Hopefully you'll agree that it just makes sense.
@@ -264,7 +261,7 @@ Although the file extension doesn't matter when running the file through the Asc
 That's all there is to it!
 *You're writing AsciiDoc!*
 
-.Wrapping lines of text
+.Wrapped text and hard line breaks
 ****
 [listing]
 [role="prewrap"]
@@ -289,11 +286,18 @@ Adjacent lines like these are combined to form a single paragraph. That means yo
 ....
 ////
 
-If you are using Asciidoctor, and you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document (below the title, author and revision lines):
+If you want line breaks in a paragraph to be preserved, simply add a space followed by a plus sign at the end of the sentence:
+
+----
+Roses are red, +
+Violets are blue.
+----
+
+Alternatively, if you're using Asciidoctor and you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document (below the title, author and revision lines):
 
  :hardbreaks:
 
-The hard line breaks setting applies to the whole document.
+Keep in mind that the hard line breaks setting applies to the whole document.
 This feature is only available in Asciidoctor at the time of writing.
 ****
 
@@ -319,261 +323,13 @@ If the +icons+ attribute is set on the document, an icon will be used instead.
 
 NOTE: Admonitions can also encapsulate any block content, which we'll cover later.
 
-If paragraphs are the meat of the content, then titles and sections are the bones.
-Let's explore how to give structure to our document.
+All words and no emphasis makes the document monotonous.
+Let's find out how to give our paragraphs some emotion.
 
-=== Titles, titles, titles
+=== Mild punctuation, strong impact
 
-AsciiDoc supports three types of titles:
-
-. Document title
-. Section title
-. Block title
-
-This section will define each title type and explain how and when to use them.
-
-==== Document title
-
-Just as every e-mail has a subject, every document (typically) has a title.
-The title goes at the top of the document.
-
-TIP: A document title is an _optional_ feature of an AsciiDoc document.
-
-To create a document title, begin the first line of the document with one equal sign followed by at least one space (++= ++), then the text of the title.
-This syntax is the simplest (and thus recommended) way to declare a document title.
-
-Here's an example of the document title syntax and an abbreviated paragraph:
-
-----
-= Lightweight Markup Languages
-
-According to Wikipedia...
-----
-
-The document title is part of the document header.
-So what else can go in the header?
-Good question.
-
-===== The document header
-
-Notice the blank line between the title line and the first line of content in the previous example.
-This blank line separates the document header from the document body (in this case a paragraph).
-The document title is stored in the document's header along with any metadata and document-wide attributes.
-
-CAUTION: If the title line is not offset by a blank line, it gets interpreted as a section title, which we'll discuss later.
-
-Your document now has a title, but what about an author?
-Just as every e-mail has a sender, every document must surely have an author.
-Let's see how to add additional information to the header.
-
-There are two optional lines of text you can add immediately below the document title for defining common document attributes:
-
-Line 1:: Author name and an optional e-mail address
-Line 2:: An optional revision, a date and an option remark
-
-Let's add these lines to our document:
-
-----
-= Lightweight Markup Languages
-Doc Writer <doc.writer@asciidoc.org>
-v1.0, 2012-01-01
-
-According to Wikipedia...
-----
-
-The header now containes a document title, an author, a revision number and a date.
-This information will be formatted when the document is rendered.
-
-NOTE: The header, including the document title, is _not required_.
-If absent, the AsciiDoc processor will happily render whatever content is present.
-The header is only used when rendering a full document.
-It's excluded from the output of an embedded document.
-
-The document header can also be used to define attributes.
-
-===== Document attributes
-
-Attributes are one of the features that sets AsciiDoc apart from other lightweight markup languages.
-You can use attributes to toggle features or to store dynamic or reusable content.
-
-Most often, attributes are defined in the document header.
-There are scenarios where they can be defined inline, but we'll focus on the more common usage.
-An attribute entry consists of a name surrounded by colons at the beginning of the line followed by at least one space, then the content.
-The content is optional.
-
-Here's an example of an attribute that stores the version of an application:
-
-----
-= User Guide
-Doc Writer <doc.writer@asciidoc.org>
-2012-01-01
-:appversion: 1.0.0
-----
-
-IMPORTANT: There should be no blank lines between the first attribute entry and the rest of the header.
-
-Now you can refer to this attribute anywhere in the document (where attribute substitution is performed) by surrounding the name in curly braces:
-
-----
-The current version of the application is {appversion}.
-----
-
-Attributes are also commonly used to store URLs, which can get quite lengthy.
-Here's an example:
-
-----
-:fedpkg: https://apps.fedoraproject.org/packages/asciidoc
-----
-
-Here's the attribute in use:
-
-----
-Information about the AsciiDoc package in Fedora is found at {fedpkg}.
-----
-
-Document attributes can also be used to toggle settings or set configuration variables that control the output generated by the AsciiDoc processor.
-
-For example, to include a table of contents in the document, you can define the +toc+ attribute:
-
-----
-:toc:
-----
-
-To undefine an attribute, place a ! at the end of the name:
-
-----
-:linkcss!:
-----
-
-You can also set the base path to images (default: +./images+), icons (default: +./images/icons+), stylesheets (default: +./stylesheets+) and JavaScript files (default: +./javascripts+):
-
-----
-:imagesdir: ./images
-:iconsdir: ./icons
-:stylesdir: ./styles
-:scriptsdir: ./js
-----
-
-For a complete list of which attributes can be assigned to control the output, consult the {userguide}#X88[Backend Attributes] chapter of the AsciiDoc User Guide.
-To see which intrinsic attributes are available, consult the {userguide}#X60[Intrinsic Attributes] chapter.
-
-TIP: Attribute values can also be set and overridden when invoking the AsciiDoc processor
-We'll explore that feature later on.
-
-When you find yourself typing the same text repeatedly, or text that often needs to be updated, consider assigning it to a document attribute and use that instead.
-
-For short documents, the document title alone may be sufficient.
-As your document gets longer, you'll want to organize the content into sections.
-That's accomplished using section titles.
-
-==== Section titles
-
-In AsciiDoc, sections are created using section titles.
-Sections are used to partition the document into a content hierarchy.
-
-A section title uses the same syntax as a document title, except the line may begin with two to five equal signs instead of just a single equal sign.
-The number of equal signs represents the nesting level (using a 0-based index).
-
-Here are all the section levels permitted in an AsciiDoc document, shown below the document title:
-
-----
-= Document Title (Level 0)
-
-== Level 1 Section
-
-=== Level 2 Section
-
-==== Level 3 Section
-
-===== Level 4 Section
-
-== Another Level 1 Section
-----
-
-NOTE: When the document is rendered as HTML 5 (using the built-in html5 backend), each section title becomes a heading element where the heading level matches the number of equal signs.
-For example, a level 1 section maps to an +<h2>+ element.
-
-Section levels cannot be choosen arbitrarily.
-There are two rules you must follow:
-
-. A document can only have a single level 0 section (in addition to the document title) if the +doctype+ is set to +book+ (the default is article)
-. Section levels cannot be skipped when nesting sections
-
-For example, the following syntax is illegal:
-
-----
-= Document Title
-
-== First Section
-
-==== Illegal Nested Section
-
-= Illegal Level 0 Section
-----
-
-Once the first section is reached, content gets associated with the section that proceeds it:
-
-----
-== First Section
-
-Content of first section
-
-=== Nested Section
-
-Content of nested section
-
-== Second Section
-
-Content of second section
-----
-
-To have the sections be auto-numbered, define the +numbered+ attribute in the document header:
-
-----
-:numbered:
-----
-
-You can also use this attribute entry in arbitrary places in the document to toggle numbering for a portion of the document.
-
-===== Preamble
-
-Text can proceed the first section.
-It is called the preamble, though you don't need to use any syntax to designate this text.
-
-----
-= Document Title
-
-preamble
-
-another preamble paragraph
-
-== First Section
-----
-
-==== Block titles
-
-You can assign a title to any paragraph, list or block element.
-The title is used to label the content.
-
-In most cases, the title is displayed immediately above the content.
-If the content is a figure or image, the title is displayed below the content.
-
-Here's an example of a list with a title:
-
-----
-.TODO list
-- Learn the AsciiDoc syntax
-- Install AsciiDoc
-- Write my document in AsciiDoc
-----
-
-Block titles will be covered in more detail in the section covering delimited blocks.
-
-=== Some mild punctuation
-
-When you write, there are certain words and phrases you'll want to _emphasize_.
-You may do so to communicate intonation you'd use when speaking the word.
-In other cases, you may want to give a word or phrase special meaning, such as a reference to a file path or inline source code.
+We style certain words and phrases in text to communicate intonation we'd use when speaking.
+In other cases, we may want to give a word or phrase special meaning, such as a reference to a file path or inline source code.
 
 AsciiDoc refers to this markup as _quoted text_.
 The term ``quote'' is used liberally here to apply to any symbols that surround text in order to apply emphasis or special meaning.
@@ -735,7 +491,8 @@ We'll also cover how you include complex content inside a list item.
 
 ==== Lists of things
 
-If you had to create a list of items in an e-mail, how would you do it? Chances are, what you'd type is exactly how you define an outline list in AsciiDoc.
+If you had to create a list of items in an e-mail, how would you do it?
+Chances are, what you'd type is exactly how you define an outline list in AsciiDoc.
 
 Here's an example of a grocery list written as an unordered list in AsciiDoc:
 
@@ -747,7 +504,9 @@ Here's an example of a grocery list written as an unordered list in AsciiDoc:
 * Tomatoes
 ----
 
-Was your instinct to use a hypen instead of an asterisk? Guess what? That works too:
+Was your instinct to use a hypen instead of an asterisk?
+Guess what?
+That works too:
 
 ----
 - Milk
@@ -762,7 +521,8 @@ You already know how it will look ;)
 
 NOTE: The marker must be aligned with the left margin and the item text must be offset from the marker by at least one space.
 
-What if you wanted to group the grocery list by aisle? Then you might organize it as a nested list.
+What if you wanted to group the grocery list by aisle?
+Then you might organize it as a nested list.
 
 To get a nested item, just add another asterisk in front of the item:
 
@@ -1247,7 +1007,257 @@ For inline images, the optional title is displayed as a tooltip.
 
 You can also include other types of media, such as audio and video. Consult the {userguide}#X98[Audio and video block macros] section of the AsciiDoc User Guide for details.
 
-== The building blocks of AsciiDoc
+If paragraphs and lists are the meat of the document, then titles and sections are its bones.
+Let's explore how to give structure to our document.
+
+=== Titles, titles, titles
+
+AsciiDoc supports three types of titles:
+
+. Document title
+. Section title
+. Block title
+
+This section will define each title type and explain how and when to use them.
+
+==== Document title
+
+Just as every e-mail has a subject, every document (typically) has a title.
+The title goes at the top of the document.
+
+TIP: A document title is an _optional_ feature of an AsciiDoc document.
+
+To create a document title, begin the first line of the document with one equal sign followed by at least one space (++= ++), then the text of the title.
+This syntax is the simplest (and thus recommended) way to declare a document title.
+
+Here's an example of the document title syntax and an abbreviated paragraph:
+
+----
+= Lightweight Markup Languages
+
+According to Wikipedia...
+----
+
+The document title is part of the document header.
+So what else can go in the header?
+Good question.
+
+===== The document header
+
+Notice the blank line between the title line and the first line of content in the previous example.
+This blank line separates the document header from the document body (in this case a paragraph).
+The document title is stored in the document's header along with any metadata and document-wide attributes.
+
+CAUTION: If the title line is not offset by a blank line, it gets interpreted as a section title, which we'll discuss later.
+
+Your document now has a title, but what about an author?
+Just as every e-mail has a sender, every document must surely have an author.
+Let's see how to add additional information to the header.
+
+There are two optional lines of text you can add immediately below the document title for defining common document attributes:
+
+Line 1:: Author name and an optional e-mail address
+Line 2:: An optional revision, a date and an option remark
+
+Let's add these lines to our document:
+
+----
+= Lightweight Markup Languages
+Doc Writer <doc.writer@asciidoc.org>
+v1.0, 2012-01-01
+
+According to Wikipedia...
+----
+
+The header now containes a document title, an author, a revision number and a date.
+This information will be formatted when the document is rendered.
+
+NOTE: The header, including the document title, is _not required_.
+If absent, the AsciiDoc processor will happily render whatever content is present.
+The header is only used when rendering a full document.
+It's excluded from the output of an embedded document.
+
+The document header can also be used to define attributes.
+
+===== Document attributes
+
+Attributes are one of the features that sets AsciiDoc apart from other lightweight markup languages.
+You can use attributes to toggle features or to store dynamic or reusable content.
+
+Most often, attributes are defined in the document header.
+There are scenarios where they can be defined inline, but we'll focus on the more common usage.
+An attribute entry consists of a name surrounded by colons at the beginning of the line followed by at least one space, then the content.
+The content is optional.
+
+Here's an example of an attribute that stores the version of an application:
+
+----
+= User Guide
+Doc Writer <doc.writer@asciidoc.org>
+2012-01-01
+:appversion: 1.0.0
+----
+
+IMPORTANT: There should be no blank lines between the first attribute entry and the rest of the header.
+
+Now you can refer to this attribute anywhere in the document (where attribute substitution is performed) by surrounding the name in curly braces:
+
+----
+The current version of the application is {appversion}.
+----
+
+Attributes are also commonly used to store URLs, which can get quite lengthy.
+Here's an example:
+
+----
+:fedpkg: https://apps.fedoraproject.org/packages/asciidoc
+----
+
+Here's the attribute in use:
+
+----
+Information about the AsciiDoc package in Fedora is found at {fedpkg}.
+----
+
+Document attributes can also be used to toggle settings or set configuration variables that control the output generated by the AsciiDoc processor.
+
+For example, to include a table of contents in the document, you can define the +toc+ attribute:
+
+----
+:toc:
+----
+
+To undefine an attribute, place a ! at the end of the name:
+
+----
+:linkcss!:
+----
+
+You can also set the base path to images (default: +./images+), icons (default: +./images/icons+), stylesheets (default: +./stylesheets+) and JavaScript files (default: +./javascripts+):
+
+----
+:imagesdir: ./images
+:iconsdir: ./icons
+:stylesdir: ./styles
+:scriptsdir: ./js
+----
+
+For a complete list of which attributes can be assigned to control the output, consult the {userguide}#X88[Backend Attributes] chapter of the AsciiDoc User Guide.
+To see which intrinsic attributes are available, consult the {userguide}#X60[Intrinsic Attributes] chapter.
+
+TIP: Attribute values can also be set and overridden when invoking the AsciiDoc processor
+We'll explore that feature later on.
+
+When you find yourself typing the same text repeatedly, or text that often needs to be updated, consider assigning it to a document attribute and use that instead.
+
+For short documents, the document title alone may be sufficient.
+As your document gets longer, you'll want to organize the content into sections.
+That's accomplished using section titles.
+
+==== Section titles
+
+In AsciiDoc, sections are created using section titles.
+Sections are used to partition the document into a content hierarchy.
+
+A section title uses the same syntax as a document title, except the line may begin with two to five equal signs instead of just a single equal sign.
+The number of equal signs represents the nesting level (using a 0-based index).
+
+Here are all the section levels permitted in an AsciiDoc document, shown below the document title:
+
+----
+= Document Title (Level 0)
+
+== Level 1 Section
+
+=== Level 2 Section
+
+==== Level 3 Section
+
+===== Level 4 Section
+
+== Another Level 1 Section
+----
+
+NOTE: When the document is rendered as HTML 5 (using the built-in html5 backend), each section title becomes a heading element where the heading level matches the number of equal signs.
+For example, a level 1 section maps to an +<h2>+ element.
+
+Section levels cannot be choosen arbitrarily.
+There are two rules you must follow:
+
+. A document can only have a single level 0 section (in addition to the document title) if the +doctype+ is set to +book+ (the default is article)
+. Section levels cannot be skipped when nesting sections
+
+For example, the following syntax is illegal:
+
+----
+= Document Title
+
+== First Section
+
+==== Illegal Nested Section
+
+= Illegal Level 0 Section
+----
+
+Once the first section is reached, content gets associated with the section that proceeds it:
+
+----
+== First Section
+
+Content of first section
+
+=== Nested Section
+
+Content of nested section
+
+== Second Section
+
+Content of second section
+----
+
+To have the sections auto-numbered, define the +numbered+ attribute in the document header:
+
+----
+:numbered:
+----
+
+You can also use this attribute entry in arbitrary places in the document to toggle numbering for a portion of the document.
+
+===== Preamble
+
+Text can proceed the first section.
+It is called the preamble, though you don't need to use any syntax to designate this text.
+
+----
+= Document Title
+
+preamble
+
+another preamble paragraph
+
+== First Section
+----
+
+==== Block titles
+
+You can assign a title to any paragraph, list or block element.
+The title is used to label the content.
+
+In most cases, the title is displayed immediately above the content.
+If the content is a figure or image, the title is displayed below the content.
+
+Here's an example of a list with a title:
+
+----
+.TODO list
+- Learn the AsciiDoc syntax
+- Install AsciiDoc
+- Write my document in AsciiDoc
+----
+
+Block titles will be covered in more detail in the section covering delimited blocks.
+
+== Building blocks in AsciiDoc
 
 AsciiDoc provides a nice set of components for including non-paragraph text--such as quotes, source code listings, sidebars and tables--in your document.
 These components are referred to as _delimited blocks_ because they are surrounded by delimiter lines.
@@ -1376,8 +1386,8 @@ There are several types of metadata:
 
 * Title
 * Id (i.e., anchor)
-* Style
-* Extra attributes
+* Style (first unnamed block attribute)
+* Named block attributes
 
 Here's an example of a block that includes all types of metadata:
 
@@ -1400,9 +1410,9 @@ Here's the metadata extracted from this block:
 Title:: Gettysburg Address
 Id:: gettysburg
 Style:: quote
-Extra attributes::
-  * attribution="Abraham Lincoln"
-  * citetitle="Dedication of the Soldiers' National Cemetery"
+Named block attributes::
+  attribution::: Abraham Lincoln
+  citetitle::: Dedication of the Soldiers' National Cemetery
 
 Some metadata is used as supplementary content, such as the title, whereas other metadata controls how the block is rendered, such as the style.
 Consult the {userguide}#X104[Delimited Blocks] chapter in the AsciiDoc User Guide for a full list of the metadata that is applicable for each block.
@@ -1690,23 +1700,30 @@ That's a pretty powerful option.
 
 == Rendering your document
 
-You've created your document.
-Now what? Although AsciiDoc is designed to be readable in raw form, you're readers probably aren't going to appreciate getting a plain text file.
+You've created an AsciiDoc document.
+_Now what?_
+
+It's time to render the document into a presentable format.
+
+While AsciiDoc is designed to be readable in raw form, the intended audience for that format is the writers and editors.
+Readers aren't going to appreciate the raw text nearly as much.
 Aesthetics matter.
-You want to dress up your text in nice typography and colors, adjust the font sizes to adhere to the ``golden ratio'' and give it the respect it deserves.
-
+You'll want to apply nice typography with font size that adhere to the ``golden ratio'', colors, icons and images to give it the respect it deserves.
 That's where the AsciiDoc processor comes in.
-The processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
-AsciiDoc provides a set of default templates in the tin, but you can customize them to get just about any output you want.
-We'll cover the most common usages in this document.
 
-In order to use the AsciiDoc processor, you first have to install it.
+An AsciiDoc processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
+AsciiDoc ships with a set of default templates in the tin, but you can customize the templates or create your own to get excactly the output you want.
+We'll cover the most common usages of the processor in this document.
+
+Before you can use an AsciiDoc processor, you have to install one.
 
 === Installing AsciiDoc
 
-The AsciiDoc processor is a Python script and can be run on any system that has Python installed.footnote:[At the time of writing, the AsciiDoc processor does not work with Python 3.]
+The original AsciiDoc processor is a Python script and can be run on any system that has Python 2 installed.footnote:[At the time of writing, the AsciiDoc processor does not work with Python 3.]
+There's a modern implementation written in Ruby named Asciidoctor.
+If decide to use Asciidoctor, you'll still need to install the Python version for some conversions--such as generating a PDF--that Asciidoctor doesn't handle at the time of this writing.
 
-==== Installing via a package manager
+==== Installing AsciiDoc via a package manager
 
 The quickest way to install AsciiDoc is through the package manager on your system.
 Here are the commands for several popular package management systems:
@@ -1729,7 +1746,7 @@ If the install was successful, you should be able to execute the +asciidoc+ and 
  $> a2x --version
  a2x 8.6.8
 
-==== Installing manually
+==== Installing AsciiDoc manually
 
 If you can't get the AsciiDoc processor using a package manager, you can install it manually following these steps:
 
@@ -1775,7 +1792,7 @@ AsciiDoc derives the name of the output document from the name of the input docu
 
 The document uses CSS for styling and JavaScript for generating parts of the document such as the table of contents and footnotes, which it embeds into the document so you don't have to worry about managing extra resources.
 
-However, if you have image references in your document, you still have to move those with the output document.
+If you have image references in your document, you still have to move those with the output document.
 To have the images embedded into the document as well, pass the +data-uri+ attribute to the processor:
 
  $> asciidoc -b html5 -a data-uri sample.ad
@@ -1812,6 +1829,55 @@ If you'd rather supply your own stylesheet, you can specify the relative path to
 The custom styles will be embedded into the document, as with the default stylesheet.
 
 // TODO -a icons and -a iconsdir
+
+.Using Asciidoctor
+****
+Asciidoctor, an implementation of the Asciidoctor processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
+Asciidoctor provides both a commandline tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBoook 4.5 and custom output formats.
+
+Asciidoctor is published as a RubyGem.
+If you have Ruby on your system, you can install Asciidoctor using the +gem+ command:
+
+ $> gem install asciidoctor
+
+If you are running Fedora 18 or higher, you can install it using +yum+, which will also install Ruby if it's not yet installed on your system:
+
+ $> sudo yum install rubygem-asciidoctor
+
+To use Asciidoctor, you simply replace +asciidoc+ with +asciidoctor+ in any of the commands in this section.
+For example, to generate an HTML document:
+
+ $> asciidoctor sample.ad
+
+In Asciidoctor, the *html5* backend is the default, so there's no need to specify a backend explicity to generate an HTML 5 document.
+
+Asciidoctor also provides a Ruby API, so you can generate an HTML document directly from a Ruby application:
+
+[source,ruby]
+----
+require 'asciidoctor'
+
+Asciidoctor.render_file('sample.ad', :in_place => true)
+----
+
+Alternatively, you can capture the HTML output into a variable instead of writing it to a file:
+
+[source,ruby]
+----
+html = Asciidoctor.render_file('sample.ad', :header_footer => true)
+puts html
+----
+
+To generate DocBook, just specify the backend option:
+
+[source,ruby]
+----
+Asciidoctor.render_file('sample.ad', :in_place => true,
+    :backend => 'docbook')
+----
+
+You can learn more about Asciidoctor and how it differs from the AsciiDoc processor on the http://asciidoctor.org[Asciidoctor project page].
+****
 
 One of the strengths of AsciiDoc is that it can output to a variety of formats, not just HTML.
 
@@ -1874,18 +1940,30 @@ If you want to start tweaking the output that is generated, refer to instruction
 
 == What else can AsciiDoc do?
 
+We've covered many of the features of the AsciiDoc syntax, but it still has much more depth.
+AsciiDoc is simple enough for a README, yet can scale to meet the requirements of a publisher.
+
+Here are some of the features that the AsciiDoc syntax supports:
+
 * footnotes
 * indexes
+* multi-line attributes
 * preprocessor directive (conditional markup)
 * mathematical formulas
 * musical notation
 * diagrams
-* filters
+* block filters
+* themes
 * custom blocks, macros and output formats
+
+Consult the {userguide}[AsciiDoc User Guide] to continue exploring the AsciiDoc syntax and processor.
 
 == Where else you can try AsciiDoc
 
-== Who's using AsciiDoc?
+// FIXME
+...
+
+//== Who's using AsciiDoc?
 
 == Conclusion
 
@@ -1896,6 +1974,16 @@ If you get stuck, be sure to browse the {userguide}#_gotchas[Gotchas] section of
 When all else fails, send your question to the http://groups.google.com/group/asciidoc[AsciiDoc discussion list].
 
 ...
+
+////
+[glossary]
+admonition paragraph
+admonition block
+backends
+quoted text
+list continuation
+cross reference
+////
 
 ////
 === Staying close to the code
