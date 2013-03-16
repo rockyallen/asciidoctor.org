@@ -9,11 +9,14 @@ endif::asciidoctor[]
 ////
 TODO:
 
-- delimited blocks, including admonition blocks
+- attributes (cover in header section)
+- links and images
+- tables
+- $$ and +++ (perhaps in quoted text section)
+- block titles section empty
+
 - brief bit comparing AsciiDoc to Markdown
-- attributes
-- section on delimited blocks (focus on listings and source highlighting)
-- mention a few places it's being used
+- mention a few places AsciiDoc is being used
 - where does Asciidoctor fit in? Perhaps mention it's a drop-in replacement for the asciidoc command?
 ////
 
@@ -227,8 +230,8 @@ The most popular application for editing plain text on MacOSX is *TextMate*.
 A similar choice on Linux is *GEdit*.
 On Windows, you should stay away from Notepad and Wordpad because the plain text they produce is not cross-platform friendly.
 Opt instead for a competent text editor like *Notepad+*.
-If you're a programmer (or a writer with an inner geek), you'll likely prefer *VIM* or *Emacs*, both available across platforms.
-All of these editors support http://asciidoc.org/#_editor_support[syntax highlighting for AsciiDoc].
+If you're a programmer (or a writer with an inner geek), you'll likely prefer *VIM*, *Emacs* or *Sublime Text*, all available across platforms.
+All of these editors provide http://asciidoc.org/#_editor_support[syntax highlighting for AsciiDoc].
 
 TIP: You don't need any special tooling to write in AsciiDoc.
 However, if you want to see the final HTML output while you are writing, refer to the link:editing-with-live-preview.html[Editing with Live Preview] tutorial to learn how to set up instant preview.
@@ -482,7 +485,7 @@ When you want to place emphasis somewhere other than at the boundaries of a word
 For instance, to emphasis the first letter of a word, you would surround it in double asterisks:
 
 ----
-**F**our scores and seven years ago...
+**F**our score and seven years ago...
 ----
 
 Any quoted text can be prefixed with an attribute list.
@@ -506,6 +509,46 @@ The backticks also prevent any further processing of the text, so it gets render
 ----
 The asterisks in this `*monospaced phrase*` will appear in the output.
 ----
+
+AsciiDoc also recognizes well-known textual representation of symbols, arrows and dashes:
+
+[options="header"]
+|===
+|Name |AsciiDoc Source |As Rendered
+
+|copyright
+|$$(C)$$
+|(C)
+
+|registered trademark
+|$$(R)$$
+|(R)
+
+|trademark
+|$$(TM)$$
+|(TM)
+
+|em dash (between words)
+|$$--$$
+|{empty}--{empty}
+
+|ellipses
+|$$...$$
+|...
+
+|arrows
+|$$-> => <- <=$$
+|-> => <- <=
+
+|apostrophe
+|$$Sam's$$
+|Sam's
+
+|XML entity (e.g., dagger)
+|$$&#8224;$$
+|&#8224;
+
+|===
 
 This mild punctuation does not take away from the readability of the text.
 In fact, you could argue that it makes the text easier to read.
@@ -950,7 +993,254 @@ Here's an example:
 * Cashews
 ----
 
+=== Links and images
+
+...
+
 == More building blocks
+
+AsciiDoc provides a nice set of components for including non-paragraph text--such as quotes, source code listings, sidebars and tables--in your document.
+These components are referred to as _delimited blocks_ because they are surrounded by delimiter lines.
+
+You've already seen many examples of the listing block, which is surrounded by lines with four or more hypens.
+
+[listing]
+....
+----
+This is an example of a _listing block_.
+The content inside is rendered as <pre> text.
+----
+....
+
+Within the boundaries of a delimited block, you can enter any AsciiDoc content and blank lines.
+The block doesn't end until the ending delimiter is found.
+The delimiters around the block determine the type of block, how the content is processed and rendered and what elements are used to wrap the content in the ouput.
+
+Here's how the block above appears when rendered as HTML:
+
+----
+This is an example of a _listing block_.
+The content inside is rendered as <pre> text.
+----
+
+Here's the HTML that gets generated:
+
+----
+<div class="listingblock">
+  <div class="content monospaced">
+    <pre>This is an example of a _listing block_.
+The content inside is rendered as &lt;pre&gt; text.</pre>
+  </div>
+</div>
+----
+
+You should notice a few things about how the content is processed:
+
+* the HTML tag +<pre>+ is escaped
+* then endlines are preserved
+* the phrase "listing block" is not italicized, despite having underscores around it.
+
+Literal blocks don't receive the full set of substitutions normally applied to a paragraph.
+Each block is processed according to it's purpose.
+Since a listing block is typically used for source code, substitutions are not desirable.
+
+The following table identifies the delimited blocks that AsciiDoc provides by default, their purpose and what substitutions are performed on its content.
+
+[cols="1,1m,1,1" options="header"]
+|===
+|Name (Style) |Delimiter |Purpose |Subsitutions
+
+|comment
+|$$////$$
+|Private notes that are not displayed in the output
+|None
+
+|example
+|$$====$$
+|Designates example content or defines an admonition block
+|Normal
+
+|literal
+|$$....$$
+|Output text to be displayed exactly as entered
+|Verbatim
+
+|listing, source
+|$$----$$
+|Source code or keyboard input to be displayed as entered
+|Verbatim
+
+|open
+|$$--$$
+|Anonymous block that can act as any other block (except _pass_ or _table_)
+|Varies
+
+|pass
+|$$++++$$
+|Raw text that should be passed through unprocessed
+|None
+
+|quote, verse
+|$$___$$
+|A quotation or verse with optional attribution
+|Normal
+
+|sidebar
+|$$****$$
+|Aside text rendered outside the flow of the document
+|Normal
+
+|table
+|$$\|===$$
+|Used to display tabular content or advanced layouts
+|Varies
+
+|===
+
+This table shows the subsitutions performed by each substitution group referenced in the previous table.
+
+[options="header"]
+|===
+|Name     |Special characters |Callouts |Quotes |Attributes |Replacements |Macros |Post replacements
+h|Normal   |Yes                |No       |Yes    |Yes        |Yes          |Yes    |Yes
+h|Verbatim |Yes                |Yes      |No     |No         |No           |No     |No
+h|None     |No                 |No       |No     |No         |No           |No     |No
+|===
+
+...
+
+=== Block metadata
+
+Metadata can be assigned to any blocks.
+There are several types of metadata:
+
+* Title
+* Id (i.e., anchor)
+* Style
+* Extra attributes
+
+Here's an example of a block that includes all types of metadata:
+
+----
+.Gettysburg Address
+[[gettysburg]]
+[quote, Abraham Lincoln, Soldiers' National Cemetery Dedication]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation...
+
+Now we are engaged in a great civil war, testing whether
+that nation, or any nation so conceived and so dedicated,
+can long endure. ...
+____
+----
+
+Here's the metadata extracted from this block:
+
+Title:: Gettysburg Address
+Id:: gettysburg
+Style:: quote
+Extra attributes::
+  * attribution="Abraham Lincoln"
+  * citetitle="Dedication of the Soldiers' National Cemetery"
+
+Some metadata is used as supplementary content, such as the title, whereas other metadata controls how the block is rendered, such as the style.
+Consult the http://asciidoc.org/userguide.html#X104[Delimited Blocks] chapter in the AsciiDoc User Guide for a full list of the metadata that is applicable for each block.
+
+=== Masquarading blocks
+
+Some blocks can masquarade as other blocks, a feature which is controlled by the block style.
+The block style is the first positional attribute in the block attribute list.
+
+For instance, an example block can act as an admonition block:
+
+----
+[NOTE]
+====
+This is an example of an admonition block.
+
+Unlike an admonition paragraph, it may contain any AsciiDoc content.
+The style can be any one of the admonition labels:
+
+* NOTE
+* TIP
+* WARNING
+* CAUTION
+* IMPORTANT
+====
+----
+
+At the start of this tutorial, remember how painful we said it is to insert source code into a document using a traditional word processor. They just aren't designed for that use case. *AsciiDoc is!*
+
+Inserting source code in an AsciiDoc is incredibly easy. Just shove the raw code into a listing block.
+
+[listing]
+....
+----
+require 'asciidoctor'
+
+puts Asciidoctor.render_file('sample.ad', :header_footer => true)
+----
+....
+
+To enable syntax highlighting in the output, set the style on the block to +source+ and specify the source language in the second attribute position.
+
+[listing]
+....
+[source,ruby]
+----
+require 'asciidoctor'
+
+puts Asciidoctor.render_file('sample.ad', :header_footer => true)
+----
+....
+
+You can even use source code that's in a separate file. Just use the AsciiDoc include macro:
+
+[listing]
+....
+[source,ruby]
+----
+\include::example.rb[]
+----
+....
+
+
+The most versatile of all, an open block can act as any other block, with the exception of _pass_ and _table_.
+
+----
+[sidebar]
+.Related information
+--
+This is aside text.
+
+It is used to present information related to the main content.
+--
+----
+
+The style can also be used in the absense of block delimiters.
+
+=== When delimiters are optional
+
+If the content is contiguous (not interrupted by blank lines), you can forgo the use of the block delimiters and instead use the block style above a paragraph to repurpose it as one of the delimited block types.
+
+This format is often used for single-line listings:
+
+----
+[listing]
+sudo yum install asciidoc
+----
+
+or single-line quotes:
+
+----
+[quote]
+Never do today what you can put off til tomorrow.
+----
+
+...
+
+=== Tables
 
 ...
 
