@@ -12,11 +12,10 @@ endif::asciidoctor[]
 ////
 TODO:
 
-- conclusion
 - fill out the "Why AsciiDoc works" section
 - move "Who's using AsciiDoc?" to one of the opening sections
-- generating slides
 
+- consult https://gist.github.com/mojavelinux/4761050 for ideas to integrate
 - brief bit comparing AsciiDoc to Markdown
 - mention a few places AsciiDoc is being used
 - clearly define the block attribute list, mention the attributes only apply to that block, that they are aggregate
@@ -55,7 +54,7 @@ ifdef::basebackend-html[]
 endif::basebackend-html[]
 
 This guide provides a gentle introduction to http://asciidoc.org[AsciiDoc], a [mono]#plain# [mono]#text# documentation *syntax* and *processor*.
-This introduction is intended for anyone who wants to reduce the work required to write and publish content, whether it be for technical documentation, articles, websites or good ol'-fashioned prose.
+This introduction is intended for anyone who wants to reduce the work required to write and publish content, whether it be for technical documentation, articles, web pages or good ol'-fashioned prose.
 
 In this guide, you'll learn:
 
@@ -73,7 +72,7 @@ Before we get into how you compose a document in AsciiDoc, we'll briefly explore
 == What is AsciiDoc?
 
 AsciiDoc is a plain text document format for writing notes, documentation, articles, books, ebooks, web pages, slide decks, blog posts, man pages and more.
-An AsciiDoc processor can translate documents written using the AsciiDoc syntax into various formats (called _backends_), including HTML 5, DocBook 4.5 and PDF.
+AsciiDoc is also a text processor and toolchain that translates documents written in the AsciiDoc syntax into various formats (called _backends_), including HTML 5, DocBook 4.5 and PDF.
 
 Thus, AsciiDoc is two things:
 
@@ -84,9 +83,9 @@ Now that we've established what AsciiDoc is, let's consider why we need it.
 
 == Why AsciiDoc?
 
-As humans, we seem to have no trouble talking or thinking.
+As humans, we have no difficulty talking or thinking.
 In fact, we're fluent in it.
-It's an activity that just happens whenever a thought ``hits'' us.
+It's an activity that just happens whenever a thought ``strikes'' us.
 
 _Writing, on the other hand, rarely comes so easy._
 
@@ -97,7 +96,7 @@ _Or does it?_
 
 === Writing e-mail vs documents
 
-Let's ponder our daily lives.
+Let's reflect on daily life.
 We respond to dozens of e-mail and social media messages every day.
 That involves communication through writing.
 That's right, _writing!_
@@ -115,8 +114,9 @@ Someone asks you a question, you [press] reply and type away.
 _So why do we struggle to write ``documents''?
 You know, articles, wiki pages, documentation, books and such._
 
-One of the main reasons we struggle to write documents is because we don't write them the same way we write e-mail.
-Instead, we get tied up with complex word processing tools, bury the content in XML schemas (e.g., HTML and DocBook) or wrestle with finicky WSYWIG editors.
+One of the main reasons is that we don't write documents the same way we write e-mail.
+//One of the main reasons we struggle to write documents is because we don't write them the same way we write e-mail.
+Instead, we get tied up fiddling with complex word processing tools, we bury the content in XML schemas (e.g., HTML and DocBook) or we wrestle with finicky WSYWIG editors.
 
 .Word processors, the real writer's block
 ****
@@ -145,8 +145,6 @@ We struggle to write documents because *we get distracted by stuff that isn't wr
 
 Writing documents, especially technical documentation, is hard enough.
 Why do we make it harder?
-//We don't want to use tools that make it even harder.
-//or? more difficult.
 
 *We _need_ to find an easier way to write!*
 
@@ -200,14 +198,28 @@ You focus on the actual writing, without having to worry about making the styles
 And with a little forethought, a single plain text document can easily be converted into multiple output formats without having to rewrite the entire thing or format it by hand."
 ////
 
-AsciiDoc, in particular, is about writing with ease.
+AsciiDoc is about focusing on expressing your ideas and writing with ease; writing zen.
 AsciiDoc is easy to write and its easy to read (in raw form).
+That means it's not only easy to write, but also easy to proof and edit.
 After all, it's plain text, just like that familiar e-mail.
 
-It also happens to recognize time-tested, plain text conventions for marking up or structuring the text when you sense it's needed.
+AsciiDoc allows you the separate the content and structure from formatting.
+You can focus on the actual writing and only worry about tweaking the output when you are ready to render the document.
+The plain-text of an AsciiDoc document is easily converted to a variety of output formats, beautifully formatted, without having to rewrite or repurpose the content.
+
+The AsciiDoc syntax is easy to understand because it recognizes time-tested, plain text conventions for marking up or structuring the text.
 In other words, the syntax is probably close to what you've been using in your e-mails.
 A user unfamiliar with AsciiDoc can figure out the structure and semantics (i.e., what you meant) just by looking.
 Best of all, it only requires a text editor to read or write it.
+
+You could say that the AsciiDoc syntax tries to be the simplest thing that can possibly work for producing the types of documents you want to create.
+It's designed for humans first, not computers.
+
+////
+=== Who's using AsciiDoc?
+
+...
+////
 
 We'll now delve into the AsciiDoc syntax.
 Hopefully you'll agree that it just makes sense.
@@ -231,7 +243,7 @@ The highlighting also gives you hints when you've entered proper syntax for an i
 The most popular application for editing plain text on MacOSX is *TextMate*.
 A similar choice on Linux is *GEdit*.
 On Windows, you should stay away from Notepad and Wordpad because the plain text they produce is not cross-platform friendly.
-Opt instead for a competent text editor like *Notepad+*.
+Opt instead for a competent text editor like *Notepad++*.
 If you're a programmer (or a writer with an inner geek), you'll likely prefer *VIM*, *Emacs* or *Sublime Text*, all available across platforms.
 All of these editors provide http://asciidoc.org/#_editor_support[syntax highlighting for AsciiDoc].
 
@@ -260,6 +272,8 @@ Although the file extension doesn't matter when running the file through the Asc
 
 That's all there is to it!
 *You're writing AsciiDoc!*
+
+TIP: If you want to find out how to render the document to HTML, DocBook or PDF, jump ahead to the section on <<rendering_your_document>>.
 
 .Wrapped text and hard line breaks
 ****
@@ -487,7 +501,7 @@ You can think of them as outline lists that use different types of markers (i.e.
 In contrast, *labeled* lists are a collection of labels that each have supporting content and they are rarely nested.
 
 Let's explore how to define each type of list, then play around with mixing and matching them.
-We'll also cover how you include complex content inside a list item.
+You'll also learn how to include complex content inside a list item.
 
 ==== Lists of things
 
@@ -650,7 +664,7 @@ Here's how the previous list renders:
 
 The following table shows the number scheme used by default for each nesting level:
 
-.Order list numbering schemes by level
+.Ordered list numbering scheme by level
 [cols="2,3,3" options="header"]
 |===
 |List Level |Numbering Scheme      |CSS class (HTML backend)
@@ -1023,7 +1037,7 @@ This section will define each title type and explain how and when to use them.
 ==== Document title
 
 Just as every e-mail has a subject, every document (typically) has a title.
-The title goes at the top of the document.
+The title goes at the top of an AsciiDoc document.
 
 TIP: A document title is an _optional_ feature of an AsciiDoc document.
 
@@ -1255,7 +1269,7 @@ Here's an example of a list with a title:
 - Write my document in AsciiDoc
 ----
 
-Block titles will be covered in more detail in the section covering delimited blocks.
+Speaking of block titles, let's dig into blocks and discover which types of blocks AsciiDoc supports.
 
 == Building blocks in AsciiDoc
 
@@ -1376,8 +1390,7 @@ h|Verbatim |Yes                |Yes      |No     |No         |No           |No  
 h|None     |No                 |No       |No     |No         |No           |No     |No
 |===
 
-// FIXME
-...
+You can control how blocks are displayed using block metadata.
 
 === Block metadata
 
@@ -1452,7 +1465,7 @@ Just shove the raw code into a listing block.
 ----
 require 'asciidoctor'
 
-puts Asciidoctor.render_file('sample.ad', :header_footer => true)
+puts Asciidoctor.render_file('sample.adoc', :header_footer => true)
 ----
 ....
 
@@ -1464,7 +1477,7 @@ To enable syntax highlighting in the output, set the style on the block to +sour
 ----
 require 'asciidoctor'
 
-puts Asciidoctor.render_file('sample.ad', :header_footer => true)
+puts Asciidoctor.render_file('sample.adoc', :header_footer => true)
 ----
 ....
 
@@ -1487,7 +1500,7 @@ To really show how well-suited AsciiDoc is for technical documentation, it also 
 ----
 require 'asciidoctor' #1
 
-puts Asciidoctor.render_file('sample.ad', :header_footer => true) #2
+puts Asciidoctor.render_file('sample.adoc', :header_footer => true) #2
 ----
 \<1> Imports the library
 \<2> Reads, parses and renders the file
@@ -1527,8 +1540,7 @@ or single-line quotes:
 Never do today what you can put off til tomorrow.
 ----
 
-// FIXME
-...
+While most blocks are linear, tables give you the ability to layout content horizontally as well.
 
 === A new perspective on tables
 
@@ -1698,6 +1710,26 @@ or using an +include::[]+ directive:
 
 That's a pretty powerful option.
 
+== What else can AsciiDoc do?
+
+We've covered many of the features of the AsciiDoc syntax, but it still has much more depth.
+AsciiDoc is simple enough for a README, yet can scale to meet the requirements of a publisher.
+
+Here are some of the features that the AsciiDoc syntax supports:
+
+* footnotes
+* indexes
+* multi-line attributes
+* preprocessor directive (conditional markup)
+* mathematical formulas
+* musical notation
+* diagrams
+* block filters
+* themes
+* custom blocks, macros and output formats
+
+Consult the {userguide}[AsciiDoc User Guide] to continue exploring the AsciiDoc syntax and processor.
+
 == Rendering your document
 
 You've created an AsciiDoc document.
@@ -1705,11 +1737,11 @@ _Now what?_
 
 It's time to render the document into a presentable format.
 
-While AsciiDoc is designed to be readable in raw form, the intended audience for that format is the writers and editors.
+While AsciiDoc is designed to be readable in raw form, the intended audience for that format are writers and editors.
 Readers aren't going to appreciate the raw text nearly as much.
 Aesthetics matter.
-You'll want to apply nice typography with font size that adhere to the ``golden ratio'', colors, icons and images to give it the respect it deserves.
-That's where the AsciiDoc processor comes in.
+You'll want to apply nice typography with font sizes that adhere to the ``golden ratio'', colors, icons and images to give it the respect it deserves.
+That's where the AsciiDoc processor comes in (*after* you have done the writing).
 
 An AsciiDoc processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
 AsciiDoc ships with a set of default templates in the tin, but you can customize the templates or create your own to get excactly the output you want.
@@ -1780,13 +1812,13 @@ We want to look forward, so we're going to use the *html5* backend.
 Let's convert our document to HTML 5.
 In your command prompt, switch to the directory that contains the document and execute the following command:
 
- $> asciidoc -b html5 sample.ad
+ $> asciidoc -b html5 sample.adoc
 
 You won't see any messages printed to the console.
 If you type +ls+ (or view the directory in a file manager), there is a new file named +sample.html+.
 
  $> ls
- sample.ad  sample.html
+ sample.adoc  sample.html
 
 AsciiDoc derives the name of the output document from the name of the input document by simply changing the file extension.
 
@@ -1795,11 +1827,11 @@ The document uses CSS for styling and JavaScript for generating parts of the doc
 If you have image references in your document, you still have to move those with the output document.
 To have the images embedded into the document as well, pass the +data-uri+ attribute to the processor:
 
- $> asciidoc -b html5 -a data-uri sample.ad
+ $> asciidoc -b html5 -a data-uri sample.adoc
 
 If you want the document to include a table of contents, pass the +toc+ attribute to the processor:
 
- $> asciidoc -b html5 -a data-uri -a toc sample.ad
+ $> asciidoc -b html5 -a data-uri -a toc sample.adoc
 
 If you want to use +data-uri+ and +toc+ by default, you can add them to the header of the document:
 
@@ -1813,18 +1845,18 @@ Doc Writer <doc.writer@asciidoc.org>
 Content...
 ----
 
-Admittedly, the default stylesheet that comes with AsciiDoc is quite...blue.
+The default stylesheet that comes with AsciiDoc is quite...blue.
 AsciiDoc ships with two additional themes, flask and volnitsky.
 People tend to prefer the flask theme, which you can enable using the +theme+ attribute:
 
- $> asciidoc -b html5 -a theme=flask sample.ad
+ $> asciidoc -b html5 -a theme=flask sample.adoc
 
 You can create your own theme.
 See the {userguide}#X99[Themes] chapter in the AsciiDoc User Guide for details.
 
 If you'd rather supply your own stylesheet, you can specify the relative path to it using the +stylesheet+ attribute:
 
- $> asciidoc -b html5 -a stylesheet=mystyles.css sample.ad
+ $> asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc
 
 The custom styles will be embedded into the document, as with the default stylesheet.
 
@@ -1847,7 +1879,7 @@ If you are running Fedora 18 or higher, you can install it using +yum+, which wi
 To use Asciidoctor, you simply replace +asciidoc+ with +asciidoctor+ in any of the commands in this section.
 For example, to generate an HTML document:
 
- $> asciidoctor sample.ad
+ $> asciidoctor sample.adoc
 
 In Asciidoctor, the *html5* backend is the default, so there's no need to specify a backend explicity to generate an HTML 5 document.
 
@@ -1857,14 +1889,14 @@ Asciidoctor also provides a Ruby API, so you can generate an HTML document direc
 ----
 require 'asciidoctor'
 
-Asciidoctor.render_file('sample.ad', :in_place => true)
+Asciidoctor.render_file('sample.adoc', :in_place => true)
 ----
 
 Alternatively, you can capture the HTML output into a variable instead of writing it to a file:
 
 [source,ruby]
 ----
-html = Asciidoctor.render_file('sample.ad', :header_footer => true)
+html = Asciidoctor.render_file('sample.adoc', :header_footer => true)
 puts html
 ----
 
@@ -1872,7 +1904,7 @@ To generate DocBook, just specify the backend option:
 
 [source,ruby]
 ----
-Asciidoctor.render_file('sample.ad', :in_place => true,
+Asciidoctor.render_file('sample.adoc', :in_place => true,
     :backend => 'docbook')
 ----
 
@@ -1890,12 +1922,12 @@ Since AsciiDoc was designed with DocBook output in mind, the conversion is very 
 AsciiDoc provides a DocBook 4.5 backend out of the box.
 To convert the document to this format, call the processor with the backend flag set to *docbook*:
 
- $> asciidoc -b docbook sample.ad
+ $> asciidoc -b docbook sample.adoc
 
 A new XML document, named +sample.xml+, will now be present in the current directory:
 
  $> ls
- sample.ad  sample.html  sample.xml
+ sample.adoc  sample.html  sample.xml
 
 If you're on Linux, you can view the DocBook file using Yelp:
 
@@ -1916,7 +1948,7 @@ For legacy reasons, the convertion to PDF is handled by a separate program in th
 A new PDF document, named +sample.pdf+, will now be present in the current directory:
 
  $> ls
- sample.ad  sample.html  sample.pdf  sample.xml
+ sample.adoc  sample.html  sample.pdf  sample.xml
 
 You can view the PDF using any PDF viewer.
 Go ahead, take a look!
@@ -1926,11 +1958,27 @@ Yes, it was that easy.
 
 Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, +a2x+ can go directly from AsciiDoc to PDF in a single call:
 
- $> a2x -f pdf sample.ad
+ $> a2x -f pdf sample.adoc
 
-// TODO creating slides
+AsciiDoc can also be used for creating HTML-based presentations.
+This use further demonstrates the reusability of the AsciiDoc syntax.
 
-==== Output galore
+=== Producing HTML-based presentations
+
+The conversion to HTML-based slides is handled by a custom backend.
+The backends usually requires that you adhere to a set of conventions to define a slide and its content.
+But there's nothing in that content that restricts the document from being converted to a regular HTML page or PDF.
+
+The first backend creates was the one for http://imakewebthings.com/deck.js[deck.js].
+You have to put the backend files where AsciiDoc can find them.
+Then you simply run the processor on your AsciiDoc document with the deckjs backend enabled:
+
+ $> asciidoc -b deckjs slides.adoc
+
+Asciidoctor has backends for generating deck.js, dzslides and reveal.js presentations as well.
+Backends for other presentation frameworks are in the works.
+
+=== Output galore
 
 There's really no end to the customization you can do to the output that the AsciiDoc processor(s) generate.
 We've just scratched the surface here.
@@ -1938,42 +1986,40 @@ Keep in mind that this magazine was produced from AsciiDoc, so never underestima
 
 If you want to start tweaking the output that is generated, refer to instructions in the {userguide}[AsciiDoc User Guide].
 
-== What else can AsciiDoc do?
+=== Where else is AsciiDoc rendered?
 
-We've covered many of the features of the AsciiDoc syntax, but it still has much more depth.
-AsciiDoc is simple enough for a README, yet can scale to meet the requirements of a publisher.
+The easiest way to experiment with AsciiDoc is online.
+AsciiDoc document in a GitHub repository or a http://gist.github.com[gist] is automatically rendered as HTML and displayed in the web interface.
 
-Here are some of the features that the AsciiDoc syntax supports:
+If you have a project on GitHub, you can write the README or any other documentation in AsciiDoc and the GitHub interface will show the HTML output for visitors to view.
 
-* footnotes
-* indexes
-* multi-line attributes
-* preprocessor directive (conditional markup)
-* mathematical formulas
-* musical notation
-* diagrams
-* block filters
-* themes
-* custom blocks, macros and output formats
+// image?
 
-Consult the {userguide}[AsciiDoc User Guide] to continue exploring the AsciiDoc syntax and processor.
+Gists, in particular, are a great way to experiment with AsciiDoc.
+Just create a new gist, name the file with the extension +.adoc+ and enter AsciiDoc markup.
+You can save the document as public or secret.
+If you want to try AsciiDoc without installing any software, a gist is a great way to get started.
 
-== Where else you can try AsciiDoc
+// image?
 
-// FIXME
-...
+== Wrap-up
 
-//== Who's using AsciiDoc?
+While there's plenty more of the AsciiDoc syntax and toolchain to explore, you know more than enough about it to write a range of documentation, from a basic README, to an article like this one, to a comprehensive user guide.
 
-== Conclusion
+Writing in AsciiDoc should be no more complex than writing an e-mail.
+All you need to compose a document in AsciiDoc is open a text editor and type regular paragraphs.
+Only when you need additional semantics or formatting do you need to introduce markup.
+Let your instinct guide you when you need to remember what punctuation to use.
+The AsciiDoc syntax is based on time-tested plain-text conventions from the last several decades of computing.
+Hopefully you agree that the markup does not detract from the readability of the text in raw form, as that's a key goal of lightweight markup languages like AsciiDoc.
 
-// FIXME
-...
+As humans, communication is what connnects us through the ages and allows us to pass on knowledge.
+AsciiDoc enables you to focus on communicating rather than distracting you with other stuff that just gets in the way.
+Copy the text of an e-mail into a document and see how easy it to repurpose it as documentation.
+Almost immediately, you'll find your writing zen and enjoy the rewarding experience of producing.
 
-If you get stuck, be sure to browse the {userguide}#_gotchas[Gotchas] section of the AsciiDoc User Guide and the http://asciidoc.org/faq.html[AsciiDoc FAQ] to find answers.
+If you get stuck working with the syntax, be sure to browse the {userguide}#_gotchas[Gotchas] section of the AsciiDoc User Guide and the http://asciidoc.org/faq.html[AsciiDoc FAQ] to find answers.
 When all else fails, send your question to the http://groups.google.com/group/asciidoc[AsciiDoc discussion list].
-
-...
 
 ////
 [glossary]
