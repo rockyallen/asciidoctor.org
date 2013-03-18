@@ -12,13 +12,13 @@ endif::asciidoctor[]
 ////
 TODO:
 
+- literal paragraphs
+- clarification about doctypes and level-0 sections (perhaps in an admonition block)
 - fill out the "Why AsciiDoc works" section
-- move "Who's using AsciiDoc?" to one of the opening sections
+- move "Who's using AsciiDoc?" to one of the opening sections, mention some examples
 
 - consult https://gist.github.com/mojavelinux/4761050 for ideas to integrate
 - brief bit comparing AsciiDoc to Markdown
-- mention a few places AsciiDoc is being used
-- clearly define the block attribute list, mention the attributes only apply to that block, that they are aggregate
 - mention the required quoting of block attributes when using AsciiDoc
 ////
 
@@ -82,8 +82,8 @@ AsciiDoc is also a text processor and toolchain that translates documents writte
 
 Thus, AsciiDoc is two things:
 
-. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text{empty}footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.]
-. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF{empty}footnote:[There's a modern implementation of AsciiDoc, written in Ruby, named http://asciidoctor.org[Asciidoctor].]
+. A mature, http://en.wikipedia.org/wiki/Lightweight_markup_language[lightweight markup language] (i.e., syntax) for authoring documents in plain text{empty}footnote:[AsciiDoc is over 10 years old. It was first introduced in 2002.].
+. A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF{empty}footnote:[There's a modern implementation of AsciiDoc, written in Ruby, named http://asciidoctor.org[Asciidoctor].].
 
 Now that we've established what AsciiDoc is, let's consider why we need it.
 
@@ -1457,6 +1457,8 @@ Style:: quote
 Named block attributes::
   attribution::: Abraham Lincoln
   citetitle::: Dedication of the Soldiers' National Cemetery
+
+TIP: A block can have multiple block attribute lines. The attributes will be aggreated. If there is a name conflict, the last attribute defined wins.
 
 Some metadata is used as supplementary content, such as the title, whereas other metadata controls how the block is rendered, such as the style.
 Consult the {userguide}#X104[Delimited Blocks] chapter in the AsciiDoc User Guide for a full list of the metadata that is applicable for each block.
