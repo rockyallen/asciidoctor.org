@@ -49,6 +49,12 @@ ifdef::basebackend-html[]
 .purple {
   color: purple;
 }
+.dlist dt {
+  margin-bottom: 6px;
+}
+.dlist dd {
+  margin-left: 20px;
+}
 </style>
 ++++
 endif::basebackend-html[]
@@ -254,7 +260,9 @@ Open your favorite text editor and let's start writing in AsciiDoc!
 
 === Content is king!
 
-All that's required to create a valid AsciiDoc document is one or more paragraphs:
+All that's required to create a valid AsciiDoc document is one or more paragraphs.
+Regular paragraph text does not require any special markup in AsciiDoc.
+Just type away!
 
 [listing]
 [role="prewrap"]
@@ -346,6 +354,7 @@ We style certain words and phrases in text to communicate intonation we'd use wh
 In other cases, we may want to give a word or phrase special meaning, such as a reference to a file path or inline source code.
 
 AsciiDoc refers to this markup as _quoted text_.
+It's a form of inline markup.
 The term ``quote'' is used liberally here to apply to any symbols that surround text in order to apply emphasis or special meaning.
 
 ==== Quoted text
@@ -360,8 +369,9 @@ In AsciiDoc, this does what you expect.
 It outputs the text *won* in bold.
 This is one example of quoted text.
 
-Here are all the forms of quoted text that AsciiDoc recognizes:
+Here are the forms of quoted text that AsciiDoc recognizes:
 
+////
 * +\*Asterisks*+ around text make it *bold*
 * +\'Single quotes'+ around text make it 'italic'
 * +\_Underscores_+ around text also make it _italic_
@@ -371,6 +381,22 @@ Here are all the forms of quoted text that AsciiDoc recognizes:
 * +\~Tildes~+ around text make it ~subscript~
 * ++$$`$$++One leading backtick and one trailing single quote++$$'$$++ wrap the text in single `smart quotes'
 * ++$$``$$++Two leading backticks and two trailing single quotes++''++ wrap the text in double ``smart quotes''
+////
+
+*$$*Bold*$$*:: One asterisk (+*+) on either side of a word or phrase makes it bold.
+'$$'Italic'$$':: Single quotes around a word or phrase makes it italic.
+_$$_Italic_$$_:: One underscore (+_+) on either side of a word or phrase also makes it italic.
+*_$$*_Bold italic_*$$_*:: Bold markup around a word or phrase in italic makes it bold italic.
+_Reversing the order of the markup won't produce the same result_.
++$$+Monospace+$$+:: One plus (`+`) on either side of a word or phrase makes it monospaced (i.e., constant width).
++*$$+*Monospace bold*+$$*+:: Monospace markup around a word or phrase in bold makes it monospace bold.
++_$$+_Monospace italic_+$$_+:: Monospace markup around a word or phrase in italic makes it monospace italic.
+_Reversing the order of the markup won't produce the same result_.
+$$#Open style#$$:: One hash (+#+) on either side of a word or phrase makes it possible to assign it a role (i.e., CSS class).
+^$$^Superscript^$$^:: One caret (+^+) on either side of a word or phrase makes it superscript.
+~$$~Subscript~$$~:: One tilde (+~+) on either side of a word or phrase makes it subscript.
+Single $$`smart quotes'$$:: One leading backtick (++$$`$$++) and one trailing single quote (++$$'$$++) around a word or phrase encloses it in single `smart quotes'.
+Double $$``smart quotes''$$:: Two leading backticks (++$$``$$++) and two trailing single quotes (++''++) around a word or phrase encloses it in double ``smart quotes''.
 
 When you want to quote text (e.g., place emphasis) somewhere other than at the boundaries of a word, you need to double up the punctuation.
 For instance, to emphasis the first letter of a word, you need to surround it in double asterisks:
@@ -408,7 +434,7 @@ Backslash escaping::
 To prevent punctuation from being interpreted, proceed it with a backslash:
 +
 ----
-\*Stars* will not become bold, but rather appear as *Stars*.
+\*Stars* will not be bold, but rather appear as *Stars*.
 The backslash character is automatically removed.
 ----
 
@@ -417,27 +443,28 @@ Double dollar enclosure::
 To exclude a phrase from substitutions, enclose it in double dollars (+$$+):
 +
 ----
-$$*Stars*$$ will not become bold, but rather appear as *Stars*.
-Special characters will still be escaped so, $$<p>$$ appears as <p>.
+$$*Stars*$$ will not be bold, but rather appear as *Stars*.
+Special characters are still escaped so, $$<p>$$ appears as <p>.
 Double dollar is commonly used to wrap URLs containing punctuation.
 ----
 
-Triple plus enclosure::
+Triple plus enclosure & inline pass macro::
 
-To exclude a phrase from substitutions and disable escaping of special characters, enclose it in triple pluses (+$$+++$$+):
+To exclude a phrase from substitutions and disable escaping of special characters, enclose it in triple pluses (+$$+++$$+) or the inline +$$pass:[]$$+ macro:
 +
 ----
-The markup +++<u>underline me</u>+++ will render as underlined text.
-Triple plus is commonly used to output custom inline HTML or XML.
+The markup +++<u>underline me</u>+++ renders as underlined text.
+The markup pass:[<u>underline me</u>] produces the same result.
+Triple plus and pass:[] are often used to output custom HTML or XML.
 ----
 
 Backticks enclosure::
 
 To exclude a phrase from substitutions, disable escaping of special characters and render it as monospaced text, enclosue it in backticks (+`+):
-
++
 ----
 This `*literal*` will appear as *literal* in a monospace font.
-Backticks are commonly used around inline code containing punctuation.
+Backticks are commonly used around inline code containing markup.
 ----
 
 ==== Replacements
@@ -498,7 +525,7 @@ There are three types of lists supported in AsciiDoc:
 
 _Unordered_ and [mono]#ordered# lists are structurally very similar.
 You can think of them as outline lists that use different types of markers (i.e., bullets).
-In contrast, *labeled* lists are a collection of labels that each have supporting content and they are rarely nested.
+In contrast, *labeled* lists--also called variable or term-definition lists--are a collection of labels that each have supporting content and they are rarely nested.
 
 Let's explore how to define each type of list, then play around with mixing and matching them.
 You'll also learn how to include complex content inside a list item.
@@ -870,7 +897,7 @@ For example:
 TIP: When items contain more than one line of text, leave a blank line before the next item to make the list easier to read.
 
 If you want to attach additional paragraphs to a list item, you ``add'' them together using a _list continuation_.
-A list continuation is a +{plus}+ symbol on a line by itself, immediately adjacent to the two elements it's connecting.
+A list continuation is a +$$+$$+ symbol on a line by itself, immediately adjacent to the two blocks it's connecting.
 Here's an example:
 
 ----
@@ -1002,14 +1029,15 @@ If you want to specify alt text, insert it inside the square brackets:
 image::sunset.jpg[Sunset]
 ----
 
-You can also give the image a title (i.e., caption) and set the dimensions:
+You can also give the image an id, a title (i.e., caption) and set its dimensions:
 
 ----
+[[img-sunset]]
 .A sunset from our journey
 image::sunset.jpg[Sunset, width="300", height="200"]
 ----
 
-The title of a block image will be displayed underneath the image.
+The title of a block image is displayed underneath the image when rendered.
 
 If you want to include an image inline, use the +image:+ prefix instead (notice there is only one colon):
 
@@ -1019,7 +1047,8 @@ Press the image:save.png[Save, title="Save"] button.
 
 For inline images, the optional title is displayed as a tooltip.
 
-You can also include other types of media, such as audio and video. Consult the {userguide}#X98[Audio and video block macros] section of the AsciiDoc User Guide for details.
+You can also include other types of media, such as audio and video.
+Consult the {userguide}#X98[Audio and video block macros] section of the AsciiDoc User Guide for details.
 
 If paragraphs and lists are the meat of the document, then titles and sections are its bones.
 Let's explore how to give structure to our document.
@@ -1273,12 +1302,12 @@ Speaking of block titles, let's dig into blocks and discover which types of bloc
 
 == Building blocks in AsciiDoc
 
-AsciiDoc provides a nice set of components for including non-paragraph text--such as quotes, source code listings, sidebars and tables--in your document.
+AsciiDoc provides a nice set of components for including non-paragraph text--such as quotes, code listings, sidebars and tables--in your document.
 These components are referred to as _delimited blocks_ because they are surrounded by delimiter lines.
 
 === Delimited blocks
 
-You've already seen many examples of the listing block, which is surrounded by lines with four or more hypens.
+You've already seen many examples of the listing block (i.e., code block), which is surrounded by lines with four or more hypens.
 
 [listing]
 ....
@@ -1354,7 +1383,7 @@ The following table identifies the delimited blocks that AsciiDoc provides by de
 
 |pass
 |$$++++$$
-|Raw text that should be passed through unprocessed
+|Raw text that is passed through unprocessed
 |None
 
 |quote, verse
@@ -1402,7 +1431,7 @@ There are several types of metadata:
 * Style (first unnamed block attribute)
 * Named block attributes
 
-Here's an example of a block that includes all types of metadata:
+Here's an example of a quote block that includes all types of metadata:
 
 ----
 .Gettysburg Address
@@ -1435,6 +1464,8 @@ Consult the {userguide}#X104[Delimited Blocks] chapter in the AsciiDoc User Guid
 Some blocks can masquarade as other blocks, a feature which is controlled by the block style.
 The block style is the first positional attribute in the block attribute list.
 
+==== Admonition blocks
+
 For instance, an example block can act as an admonition block:
 
 ----
@@ -1452,6 +1483,8 @@ The style can be any one of the admonition labels:
 * IMPORTANT
 ====
 ----
+
+==== Listing and source code blocks
 
 At the start of this tutorial, remember how painful we said it is to insert source code into a document using a traditional word processor.
 They just aren't designed for that use case.
@@ -1492,19 +1525,24 @@ Just use the AsciiDoc include macro:
 ----
 ....
 
-To really show how well-suited AsciiDoc is for technical documentation, it also supports callouts in source code:
+To really show how well-suited AsciiDoc is for technical documentation, it also supports code callouts.
+Code callouts are used to explain lines of source code.
+The explanations are specified below the listing and keyed by number.
+Here's an example:
 
 [listing]
 ....
 [source,ruby]
 ----
-require 'asciidoctor' #1
+require 'asciidoctor' \<1>
 
-puts Asciidoctor.render_file('sample.adoc', :header_footer => true) #2
+puts Asciidoctor.render_file('sample.adoc', :header_footer => true) \<2>
 ----
 \<1> Imports the library
 \<2> Reads, parses and renders the file
 ....
+
+==== Open blocks
 
 The most versatile block of all is the open block.
 An open block can act as any other block, with the exception of _pass_ and _table_.
@@ -1520,7 +1558,24 @@ It is used to present information related to the main content.
 --
 ----
 
-The style can also be used in the absense of block delimiters.
+==== Passthrough blocks
+
+The "anything goes" mechanism in AsciiDoc is the passthrough block.
+As its name implies, this block passes its contents through directly to the output document.
+When you've encountered a complex requirement that you can meet using the AsciiDoc syntax, just put the output you want inside a passthrough block.
+
+----
+++++
+<video poster="images/movie-reel.png">
+  <source src="videos/writing-zen.webm" type="video/webm">
+</video>
+++++
+----
+
+WARNING: Using a passthrough block couples your document to a specific output format, such as HTML.
+You can use http://asciidoc.org/userguide.html#_conditional_inclusion_macros[conditional inclusion macros] to declare passthrough markup for each of the backends you nee to support.
+
+The block style can be used in the absense of block delimiters to promote a paragraph to a block element.
 
 === Delimiters optional
 
@@ -1549,9 +1604,9 @@ They are easy to create, easy to read in raw form and also remarkably sophistica
 I recommend that you use tables sparingly because they interrupt the conversation with your readers.
 When they are the most suitable way to present the information, know that you've got a powerful tool in your hands.
 
-You can think of a table as a delimited block that contains one or more bulletted lists.
-The list marker is a pipe (+|+).
-Each list represents one row in the table.
+You can think of a table as a delimited block that contains one or more bulleted lists.
+The list marker is a vertical bar (+|+).
+Each list represents one row in the table and must have the same number of items.
 
 Here's a simple example of a table with two columns and three rows:
 
@@ -1606,7 +1661,7 @@ We could define the header cells on one line so that the +cols+ attribute is not
 
 The content of each item (i.e., cell) can span multiple lines, as is the case with other lists in AsciiDoc.
 Unlike other lists, the content of each cell may contain blank lines without the need for a list continuation to hold them together.
-A new cell begins when another non-escaped pipe (+|+) is encountered.
+A new cell begins when another non-escaped vertical bar (+|+) is encountered.
 
 ----
 [options="header"]
@@ -1673,7 +1728,7 @@ It's designed for:
 |===
 ----
 
-Alternatively, you can apply the AsciiDoc style to an individual cell by prefixing the pipe with an +a+:
+Alternatively, you can apply the AsciiDoc style to an individual cell by prefixing the vertical bar with an +a+:
 
 ----
 a|Mozilla Firefox is an open-source web browser.
@@ -1719,6 +1774,7 @@ Here are some of the features that the AsciiDoc syntax supports:
 
 * footnotes
 * indexes
+* appendix, preface, dedication, partintro
 * multi-line attributes
 * preprocessor directive (conditional markup)
 * mathematical formulas
@@ -1918,6 +1974,7 @@ One of the strengths of AsciiDoc is that it can output to a variety of formats, 
 Writing in DocBook is inhumane.
 The utility of DocBook is providing a portable document format.
 Since AsciiDoc was designed with DocBook output in mind, the conversion is very good.
+There's a corresponding DocBook element for each markup in the AsciiDoc syntax.
 
 AsciiDoc provides a DocBook 4.5 backend out of the box.
 To convert the document to this format, call the processor with the backend flag set to *docbook*:
@@ -2021,15 +2078,15 @@ Almost immediately, you'll find your writing zen and enjoy the rewarding experie
 If you get stuck working with the syntax, be sure to browse the {userguide}#_gotchas[Gotchas] section of the AsciiDoc User Guide and the http://asciidoc.org/faq.html[AsciiDoc FAQ] to find answers.
 When all else fails, send your question to the http://groups.google.com/group/asciidoc[AsciiDoc discussion list].
 
-////
+== Glossary
+
 [glossary]
-admonition paragraph
-admonition block
-backends
-quoted text
-list continuation
-cross reference
-////
+admonition paragraph:: a callout paragraph that has a label or icon indicating its priority
+admonition block:: a callout block containing complex content that has a label or icon indicating its priority
+backend:: a set of templates for converting AsciiDoc source to different output format
+cross reference:: a link from one location in the document to another location marked by an anchor
+list continuation:: a plus sign on a line by itself that connects adjacent lines of text to a list item
+quoted text:: text which is enclosed in special punctuation to give it emphasis or special meaning
 
 ////
 === Staying close to the code
@@ -2041,4 +2098,9 @@ The best software for writing a computer book is simply your favorite code edito
 Removing friction out of typing is an enormous help.
 [S]omething like AsciiDoc or Markdown makes the process so much easier.
 ____
+////
+
+////
+Too many inconvenient things get in the way of good writing.
+http://ninjasandrobots.com/write-better-draft
 ////
