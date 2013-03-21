@@ -1,13 +1,15 @@
-require 'asciidoctor'
-require 'erubis'
+#require 'asciidoctor'
+#require 'erubis'
 
-guard 'shell' do
-  watch(/^.+\.(?:ad|adoc|asciidoc)$/) {|m|
-    puts "Change detected in #{m[0]}, regenerating..."
-    Asciidoctor.render_file(m[0], :in_place => true, :eruby => 'erubis', :safe => Asciidoctor::SafeMode::SAFE)
-  }
-end
+#guard :shell do
+#  watch(/^.+\.(?:ad|asc|adoc|asciidoc)$/) {|m|
+#    puts "Change detected in #{m[0]}, regenerating..."
+#    Asciidoctor.render_file(m[0], :in_place => true, :eruby => 'erubis', :safe => Asciidoctor::SafeMode::SAFE, :attributes => {'preview' => ''})
+#  }
+#end
 
-guard 'livereload' do
+guard :asciidoc, :watch_ext => %w(adoc), :eruby => 'erubis'
+
+guard :livereload do
   watch(%r{^.+\.(css|js|html)$})
 end
