@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Asciidoctor::Reader - API Documentation for Asciidoctor 0.1.1</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/asciidoctor/reader.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    <nav id="sections-section" class="section">
+  <h3 class="section-header">Sections</h3>
+  <ul class="link-list">
+    
+      <li><a href="#5Buntitled-5D"></a></li>
+    
+      <li><a href="#Public">Public</a></li>
+    
+      <li><a href="#Internal">Internal</a></li>
+    
+  </ul>
+</nav>
+
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">Object
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-advance">#advance</a>
+    
+    <li ><a href="#method-i-chomp_last-21">#chomp_last!</a>
+    
+    <li ><a href="#method-i-consume_comments">#consume_comments</a>
+    
+    <li ><a href="#method-i-consume_line_comments">#consume_line_comments</a>
+    
+    <li ><a href="#method-i-empty-3F">#empty?</a>
+    
+    <li ><a href="#method-i-get_line">#get_line</a>
+    
+    <li ><a href="#method-i-grab_lines_until">#grab_lines_until</a>
+    
+    <li ><a href="#method-i-has_more_lines-3F">#has_more_lines?</a>
+    
+    <li ><a href="#method-i-lines">#lines</a>
+    
+    <li ><a href="#method-i-normalize_data">#normalize_data</a>
+    
+    <li ><a href="#method-i-peek_line">#peek_line</a>
+    
+    <li ><a href="#method-i-peek_lines">#peek_lines</a>
+    
+    <li ><a href="#method-i-preprocess_conditional_inclusion">#preprocess_conditional_inclusion</a>
+    
+    <li ><a href="#method-i-preprocess_include">#preprocess_include</a>
+    
+    <li ><a href="#method-i-preprocess_next_line">#preprocess_next_line</a>
+    
+    <li ><a href="#method-i-resolve_expr_val">#resolve_expr_val</a>
+    
+    <li ><a href="#method-i-sanitize_attribute_name">#sanitize_attribute_name</a>
+    
+    <li ><a href="#method-i-skip_blank_lines">#skip_blank_lines</a>
+    
+    <li ><a href="#method-i-skip_comment_lines">#skip_comment_lines</a>
+    
+    <li ><a href="#method-i-unshift">#unshift</a>
+    
+    <li ><a href="#method-i-unshift_line">#unshift_line</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_asciidoc.html">README.asciidoc</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Asciidoctor.html">Asciidoctor</a>
+  
+    <li><a href="../Asciidoctor/AbstractBlock.html">Asciidoctor::AbstractBlock</a>
+  
+    <li><a href="../Asciidoctor/AbstractNode.html">Asciidoctor::AbstractNode</a>
+  
+    <li><a href="../Asciidoctor/AttributeList.html">Asciidoctor::AttributeList</a>
+  
+    <li><a href="../Asciidoctor/BaseTemplate.html">Asciidoctor::BaseTemplate</a>
+  
+    <li><a href="../Asciidoctor/Block.html">Asciidoctor::Block</a>
+  
+    <li><a href="../Asciidoctor/Callouts.html">Asciidoctor::Callouts</a>
+  
+    <li><a href="../Asciidoctor/Cli.html">Asciidoctor::Cli</a>
+  
+    <li><a href="../Asciidoctor/Cli/Invoker.html">Asciidoctor::Cli::Invoker</a>
+  
+    <li><a href="../Asciidoctor/Cli/Options.html">Asciidoctor::Cli::Options</a>
+  
+    <li><a href="../Asciidoctor/Debug.html">Asciidoctor::Debug</a>
+  
+    <li><a href="../Asciidoctor/DocBook45.html">Asciidoctor::DocBook45</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockExampleTemplate.html">Asciidoctor::DocBook45::BlockExampleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockFloatingTitleTemplate.html">Asciidoctor::DocBook45::BlockFloatingTitleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockImageTemplate.html">Asciidoctor::DocBook45::BlockImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockListingTemplate.html">Asciidoctor::DocBook45::BlockListingTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockLiteralTemplate.html">Asciidoctor::DocBook45::BlockLiteralTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockOlistTemplate.html">Asciidoctor::DocBook45::BlockOlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockOpenTemplate.html">Asciidoctor::DocBook45::BlockOpenTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockPageBreakTemplate.html">Asciidoctor::DocBook45::BlockPageBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockParagraphTemplate.html">Asciidoctor::DocBook45::BlockParagraphTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockPassTemplate.html">Asciidoctor::DocBook45::BlockPassTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockPreambleTemplate.html">Asciidoctor::DocBook45::BlockPreambleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockQuoteTemplate.html">Asciidoctor::DocBook45::BlockQuoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockRulerTemplate.html">Asciidoctor::DocBook45::BlockRulerTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockSidebarTemplate.html">Asciidoctor::DocBook45::BlockSidebarTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/EmbeddedTemplate.html">Asciidoctor::DocBook45::EmbeddedTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineAnchorTemplate.html">Asciidoctor::DocBook45::InlineAnchorTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/SectionTemplate.html">Asciidoctor::DocBook45::SectionTemplate</a>
+  
+    <li><a href="../Asciidoctor/Document.html">Asciidoctor::Document</a>
+  
+    <li><a href="../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockDlistTemplate.html">Asciidoctor::HTML5::BlockDlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockExampleTemplate.html">Asciidoctor::HTML5::BlockExampleTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockFloatingTitleTemplate.html">Asciidoctor::HTML5::BlockFloatingTitleTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockImageTemplate.html">Asciidoctor::HTML5::BlockImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockListingTemplate.html">Asciidoctor::HTML5::BlockListingTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockLiteralTemplate.html">Asciidoctor::HTML5::BlockLiteralTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockOlistTemplate.html">Asciidoctor::HTML5::BlockOlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockOpenTemplate.html">Asciidoctor::HTML5::BlockOpenTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockPageBreakTemplate.html">Asciidoctor::HTML5::BlockPageBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockParagraphTemplate.html">Asciidoctor::HTML5::BlockParagraphTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockPassTemplate.html">Asciidoctor::HTML5::BlockPassTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockPreambleTemplate.html">Asciidoctor::HTML5::BlockPreambleTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockQuoteTemplate.html">Asciidoctor::HTML5::BlockQuoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockRulerTemplate.html">Asciidoctor::HTML5::BlockRulerTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockSidebarTemplate.html">Asciidoctor::HTML5::BlockSidebarTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/EmbeddedTemplate.html">Asciidoctor::HTML5::EmbeddedTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineAnchorTemplate.html">Asciidoctor::HTML5::InlineAnchorTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/SectionTemplate.html">Asciidoctor::HTML5::SectionTemplate</a>
+  
+    <li><a href="../Asciidoctor/Helpers.html">Asciidoctor::Helpers</a>
+  
+    <li><a href="../Asciidoctor/Inline.html">Asciidoctor::Inline</a>
+  
+    <li><a href="../Asciidoctor/Lexer.html">Asciidoctor::Lexer</a>
+  
+    <li><a href="../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
+  
+    <li><a href="../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+  
+    <li><a href="../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
+  
+    <li><a href="../Asciidoctor/Renderer.html">Asciidoctor::Renderer</a>
+  
+    <li><a href="../Asciidoctor/SafeMode.html">Asciidoctor::SafeMode</a>
+  
+    <li><a href="../Asciidoctor/Section.html">Asciidoctor::Section</a>
+  
+    <li><a href="../Asciidoctor/Substituters.html">Asciidoctor::Substituters</a>
+  
+    <li><a href="../Asciidoctor/Table.html">Asciidoctor::Table</a>
+  
+    <li><a href="../Asciidoctor/Table/Cell.html">Asciidoctor::Table::Cell</a>
+  
+    <li><a href="../Asciidoctor/Table/Column.html">Asciidoctor::Table::Column</a>
+  
+    <li><a href="../Asciidoctor/Table/ParserContext.html">Asciidoctor::Table::ParserContext</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Asciidoctor::Reader</h1>
+
+  <div id="description" class="description">
+    
+<p>Methods for retrieving lines from AsciiDoc source files</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-normalize_data" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">normalize_data</span><span
+            class="method-args">(data)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Private: Normalize raw input, used for the outermost <a
+href="Reader.html">Reader</a>.</p>
+
+<p>This method strips whitespace from the end of every line ofthe source data
+and appends a LF (i.e., Unix endline). Thiswhitespace substitution is very
+important to how Asciidoctorworks.</p>
+
+<p>Any leading or trailing blank lines are also removed.</p>
+
+<p>The normalized lines are assigned to the @lines instance variable.</p>
+<dl class="rdoc-list note-list"><dt>data
+<dd>
+<p>A String Array of input data to be normalized</p>
+</dd></dl>
+
+<p>returns nothing</p>
+          
+          
+
+          
+          <div class="method-source-code" id="normalize_data-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 612</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_data</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-comment"># normalize line ending to LF (purging occurrences of CRLF)</span>
+  <span class="ruby-comment"># this rstrip is *very* important to how Asciidoctor works</span>
+  <span class="ruby-ivar">@lines</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{line.rstrip}\n&quot;</span> }
+
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">shift</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@lineno</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-comment"># Process bibliography references, so they're available when text</span>
+  <span class="ruby-comment"># before the reference is being rendered.</span>
+  <span class="ruby-comment"># FIXME we don't have support for bibliography lists yet, so disable for now</span>
+  <span class="ruby-comment"># plus, this should be done while we are walking lines above</span>
+  <span class="ruby-comment">#@lines.each do |line|</span>
+  <span class="ruby-comment">#  if biblio = line.match(REGEXP[:biblio])</span>
+  <span class="ruby-comment">#    @document.register(:ids, biblio[1])</span>
+  <span class="ruby-comment">#  end</span>
+  <span class="ruby-comment">#end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- normalize_data-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- normalize_data-method -->
+
+    
+      <div id="method-i-peek_lines" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">peek_lines</span><span
+            class="method-args">(number = 1)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO document &amp; test me!</p>
+          
+          
+
+          
+          <div class="method-source-code" id="peek_lines-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 243</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">peek_lines</span>(<span class="ruby-identifier">number</span> = <span class="ruby-value">1</span>)
+  <span class="ruby-identifier">lines</span> = []
+  <span class="ruby-identifier">idx</span> = <span class="ruby-value">0</span>
+  (<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-identifier">number</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@preprocess_source</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@next_line_preprocessed</span>
+      <span class="ruby-identifier">advanced</span> = <span class="ruby-identifier">preprocess_next_line</span>
+      <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">advanced</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>)
+      <span class="ruby-identifier">idx</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">advanced</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">idx</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-comment"># QUESTION do we need to dup?</span>
+    <span class="ruby-identifier">lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@lines</span>[<span class="ruby-identifier">idx</span>].<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">idx</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">lines</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- peek_lines-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- peek_lines-method -->
+
+    
+      <div id="method-i-resolve_expr_val" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resolve_expr_val</span><span
+            class="method-args">(str)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Private: Resolve the value of one side of the expression</p>
+          
+          
+
+          
+          <div class="method-source-code" id="resolve_expr_val-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 567</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">resolve_expr_val</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">str</span>
+  <span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">||</span>
+      <span class="ruby-identifier">val</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'\'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'\'</span>)
+    <span class="ruby-identifier">type</span> = <span class="ruby-value">:s</span>
+    <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>]
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">'{'</span>
+    <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">val</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:s</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'true'</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">'false'</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'.'</span>)
+      <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_f</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">val</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">val</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- resolve_expr_val-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- resolve_expr_val-method -->
+
+    
+      <div id="method-i-skip_blank_lines" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">skip_blank_lines</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Private: Strip off leading blank lines in the Array of lines.</p>
+
+<h3 id="method-i-skip_blank_lines-label-Examples">Examples<span><a href="#method-i-skip_blank_lines-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&quot;\t\n&quot;</span>, <span class="ruby-string">&quot;Foo\n&quot;</span>, <span class="ruby-string">&quot;Bar\n&quot;</span>, <span class="ruby-string">&quot;\n&quot;</span>]
+
+<span class="ruby-identifier">skip_blank_lines</span>
+=<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
+
+<span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;Foo\n&quot;</span>, <span class="ruby-string">&quot;Bar\n&quot;</span>]
+</pre>
+
+<p>Returns an Integer of the number of lines skipped</p>
+          
+          
+
+          
+          <div class="method-source-code" id="skip_blank_lines-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 101</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">skip_blank_lines</span>
+  <span class="ruby-identifier">skipped</span> = <span class="ruby-value">0</span>
+  <span class="ruby-comment"># optimized code for shortest execution path</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">get_line</span>).<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">skipped</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">next_line</span>
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span> 
+
+  <span class="ruby-identifier">skipped</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- skip_blank_lines-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- skip_blank_lines-method -->
+
+    
+      <div id="method-i-skip_comment_lines" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">skip_comment_lines</span><span
+            class="method-args">(options = {})</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Reader.html#method-i-consume_comments">consume_comments</a>
+        </div>
+        
+      </div><!-- skip_comment_lines-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+  
+  
+  <section id="Public" class="documentation-section">
+    
+    <div class="documentation-section-title">
+      <h2 class="section-header">
+        Public
+      </h2>
+      <span class="section-click-top">
+        <a href="#top">&uarr; top</a>
+      </span>
+    </div>
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-lineno" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lineno</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Get the 1-based offset of the current line.</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-source" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">source</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Get the document source as a String Array of lines.</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-Public-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(data = nil, document = nil, preprocess = false, &block)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialize the <a href="Reader.html">Reader</a> object.</p>
+<dl class="rdoc-list note-list"><dt>data
+<dd>
+<p>The Array of Strings holding the Asciidoc source document. Theoriginal
+instance of this Array is not modified (default: nil)</p>
+</dd><dt>document
+<dd>
+<p>The document with which this reader is associated. Used to accessdocument
+attributes (default: nil)</p>
+</dd><dt>preprocess
+<dd>
+<p>A flag indicating whether to run the preprocessor on these lines.Only
+enable for the outer-most <a href="Reader.html">Reader</a>. If this
+argument is true,a <a href="Document.html">Document</a> object must also be
+supplied.(default: false)</p>
+</dd><dt>block
+<dd>
+<p>A block that can be used to retrieve external Asciidocdata to include in
+this document.</p>
+</dd></dl>
+
+<h3 id="method-c-new-label-Examples">Examples<span><a href="#method-c-new-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">data</span>   = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-identifier">filename</span>)
+<span class="ruby-identifier">reader</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Reader</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">data</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 28</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">data</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">document</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">preprocess</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">data</span> = [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-comment"># TODO use Struct to track file/lineno info; track as file changes; offset for sub-readers</span>
+  <span class="ruby-ivar">@lineno</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">preprocess</span>
+    <span class="ruby-ivar">@lines</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">entries</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-ivar">@preprocess_source</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">data</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-comment"># NOTE we assume document is not nil!</span>
+    <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">document</span>
+    <span class="ruby-ivar">@preprocess_source</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@include_block</span> = <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">block</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">normalize_data</span>(<span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">entries</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">data</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@lines</span> = []
+    <span class="ruby-ivar">@preprocess_source</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@source</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">dup</span>
+
+  <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@unescape_next_line</span> = <span class="ruby-keyword">false</span>
+
+  <span class="ruby-ivar">@conditionals_stack</span> = []
+  <span class="ruby-ivar">@skipping</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@eof</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-Public-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-advance" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">advance</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Advance to the next line by discarding the line at the front of the stack</p>
+
+<p>Removes the line at the front of the stack without any processing.</p>
+
+<p>returns a boolean indicating whether there was a line to discard</p>
+          
+          
+
+          
+          <div class="method-source-code" id="advance-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 211</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">advance</span>
+  <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-comment"># we assume that we're advancing over a line of known content</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@lineno</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">shift</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- advance-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- advance-method -->
+
+    
+      <div id="method-i-chomp_last-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">chomp_last!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Chomp the String on the last line if this reader contains at least one line</p>
+
+<p>Delegates to chomp!</p>
+
+<p>Returns nil</p>
+          
+          
+
+          
+          <div class="method-source-code" id="chomp_last-21-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 483</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">chomp_last!</span>
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">chomp!</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>)
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- chomp_last-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- chomp_last-21-method -->
+
+    
+      <div id="method-i-consume_comments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">consume_comments</span><span
+            class="method-args">(options = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Consume consecutive lines containing line- or block-level comments.</p>
+
+<p>Returns the Array of lines that were consumed</p>
+
+<h3 id="method-i-consume_comments-label-Examples">Examples<span><a href="#method-i-consume_comments-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;// foo\n&quot;</span>, <span class="ruby-string">&quot;////\n&quot;</span>, <span class="ruby-string">&quot;foo bar\n&quot;</span>, <span class="ruby-string">&quot;////\n&quot;</span>, <span class="ruby-string">&quot;actual text\n&quot;</span>]
+
+<span class="ruby-identifier">comment_lines</span> = <span class="ruby-identifier">consume_comments</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;// foo\n&quot;</span>, <span class="ruby-string">&quot;////\n&quot;</span>, <span class="ruby-string">&quot;foo bar\n&quot;</span>, <span class="ruby-string">&quot;////\n&quot;</span>]
+
+<span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;actual text\n&quot;</span>]
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="consume_comments-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">consume_comments</span>(<span class="ruby-identifier">options</span> = {})
+  <span class="ruby-identifier">comment_lines</span> = []
+  <span class="ruby-identifier">preprocess</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:preprocess</span>, <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">get_line</span>(<span class="ruby-identifier">preprocess</span>)).<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:include_blank_lines</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
+      <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_line</span>
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">commentish</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'//'</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment_blk</span>]))
+      <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_line</span>
+      <span class="ruby-identifier">comment_lines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">grab_lines_until</span>(<span class="ruby-value">:terminator</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>], <span class="ruby-value">:grab_last_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:preprocess</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)))
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">commentish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
+      <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_line</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># throw it back</span>
+      <span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">next_line</span>
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">comment_lines</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- consume_comments-source -->
+          
+        </div>
+
+        
+        <div class="aliases">
+          Also aliased as: <a href="Reader.html#method-i-skip_comment_lines">skip_comment_lines</a>
+        </div>
+        
+
+        
+      </div><!-- consume_comments-method -->
+
+    
+      <div id="method-i-consume_line_comments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">consume_line_comments</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Consume consecutive lines containing line comments.</p>
+
+<p>Returns the Array of lines that were consumed</p>
+
+<h3 id="method-i-consume_line_comments-label-Examples">Examples<span><a href="#method-i-consume_line_comments-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;// foo\n&quot;</span>, <span class="ruby-string">&quot;bar\n&quot;</span>]
+
+<span class="ruby-identifier">comment_lines</span> = <span class="ruby-identifier">consume_comments</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;// foo\n&quot;</span>]
+
+<span class="ruby-ivar">@lines</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;bar\n&quot;</span>]
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="consume_line_comments-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">consume_line_comments</span>
+  <span class="ruby-identifier">comment_lines</span> = []
+  <span class="ruby-comment"># optimized code for shortest execution path</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">get_line</span>).<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
+      <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_line</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">next_line</span>
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">comment_lines</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- consume_line_comments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- consume_line_comments-method -->
+
+    
+      <div id="method-i-empty-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">empty?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check whether this reader is empty (contains no lines)</p>
+
+<p>If preprocessing is enabled for this <a href="Reader.html">Reader</a>, and
+there are lines remaining,the next line is preprocessed before checking
+whether there are more lines.</p>
+
+<p>Returns true if @lines is empty, otherwise false.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="empty-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
+  <span class="ruby-operator">!</span><span class="ruby-identifier">has_more_lines?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- empty-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- empty-3F-method -->
+
+    
+      <div id="method-i-get_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_line</span><span
+            class="method-args">(preprocess = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get the next line of source data. Consumes the line returned.</p>
+<dl class="rdoc-list note-list"><dt>preprocess
+<dd>
+<p>A Boolean flag indicating whether to evaluate preprocessingdirectives
+(macros) before reading line (default: true)</p>
+</dd></dl>
+
+<p>Returns the String of the next line of the source data if data is
+present.Returns nil if there is no more data.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="get_line-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 186</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_line</span>(<span class="ruby-identifier">preprocess</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">preprocess</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@preprocess_source</span> <span class="ruby-operator">&amp;&amp;</span>
+      <span class="ruby-operator">!</span><span class="ruby-ivar">@next_line_preprocessed</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">preprocess_next_line</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@lineno</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@unescape_next_line</span>
+      <span class="ruby-ivar">@unescape_next_line</span> = <span class="ruby-keyword">false</span>
+      <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">shift</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">shift</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- get_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- get_line-method -->
+
+    
+      <div id="method-i-grab_lines_until" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">grab_lines_until</span><span
+            class="method-args">(options = {}) { |this_line| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return all the lines from `@lines` until we (1) run out them,(2) find a
+blank line with :break_on_blank_lines =&gt; true, or (3) finda line for
+which the given block evals to true.</p>
+<dl class="rdoc-list note-list"><dt>options
+<dd>
+<p>an optional Hash of processing options:* :break_on_blank_lines may be used
+to specify to break onblank lines* :skip_first_line may be used to tell the
+reader to advancebeyond the first line before beginning the scan*
+:preserve_last_line may be used to specify that the Stringcausing the
+method to stop processing lines should bepushed back onto the `lines`
+Array.* :grab_last_line may be used to specify that the Stringcausing the
+method to stop processing lines should beincluded in the lines being
+returned</p>
+</dd></dl>
+
+<p>Returns the Array of lines forming the next segment.</p>
+
+<h3 id="method-i-grab_lines_until-label-Examples">Examples<span><a href="#method-i-grab_lines_until-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">reader</span> = <span class="ruby-constant">Reader</span>.<span class="ruby-identifier">new</span> [<span class="ruby-string">&quot;First paragraph\n&quot;</span>, <span class="ruby-string">&quot;Second paragraph\n&quot;</span>,
+                     <span class="ruby-string">&quot;Open block\n&quot;</span>, <span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&quot;Can have blank lines\n&quot;</span>,
+                     <span class="ruby-string">&quot;--\n&quot;</span>, <span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">&quot;In a different segment\n&quot;</span>]
+
+<span class="ruby-identifier">reader</span>.<span class="ruby-identifier">grab_lines_until</span>
+=<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;First paragraph\n&quot;</span>, <span class="ruby-string">&quot;Second paragraph\n&quot;</span>, <span class="ruby-string">&quot;Open block\n&quot;</span>]
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="grab_lines_until-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 514</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">grab_lines_until</span>(<span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">buffer</span> = []
+
+  <span class="ruby-identifier">finis</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">advance</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:skip_first_line</span>]
+  <span class="ruby-comment"># save options to locals for minor optimization</span>
+  <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:terminator</span>]
+  <span class="ruby-identifier">terminator</span>.<span class="ruby-identifier">chomp!</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">terminator</span>
+  <span class="ruby-identifier">break_on_blank_lines</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:break_on_blank_lines</span>]
+  <span class="ruby-identifier">break_on_list_continuation</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:break_on_list_continuation</span>]
+  <span class="ruby-identifier">skip_line_comments</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:skip_line_comments</span>]
+  <span class="ruby-identifier">preprocess</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:preprocess</span>, <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">this_line</span> = <span class="ruby-identifier">get_line</span>(<span class="ruby-identifier">preprocess</span>)).<span class="ruby-identifier">nil?</span>
+    <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Reader processing line: '#{this_line}'&quot;</span> }
+    <span class="ruby-identifier">finis</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">terminator</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">chomp</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">terminator</span>
+    <span class="ruby-identifier">finis</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">finis</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">break_on_blank_lines</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">finis</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">finis</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">break_on_list_continuation</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">chomp</span> <span class="ruby-operator">==</span> <span class="ruby-constant">LIST_CONTINUATION</span>
+    <span class="ruby-identifier">finis</span> = <span class="ruby-keyword">true</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">finis</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">this_line</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">finis</span>
+      <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">this_line</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:grab_last_line</span>]
+      <span class="ruby-identifier">unshift_line</span>(<span class="ruby-identifier">this_line</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:preserve_last_line</span>]
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">skip_line_comments</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
+      <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">this_line</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">buffer</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- grab_lines_until-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- grab_lines_until-method -->
+
+    
+      <div id="method-i-has_more_lines-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_more_lines?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check whether there are any lines left to read.</p>
+
+<p>If preprocessing is enabled for this <a href="Reader.html">Reader</a>, and
+there are lines remaining,the next line is preprocessed before checking
+whether there are more lines.</p>
+
+<p>Returns true if @lines is empty, or false otherwise.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="has_more_lines-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 67</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_more_lines?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>)
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@preprocess_source</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@next_line_preprocessed</span>
+    <span class="ruby-identifier">preprocess_next_line</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">:</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_more_lines-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_more_lines-3F-method -->
+
+    
+      <div id="method-i-lines" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lines</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get a copy of the remaining Array of String lines parsed from the source</p>
+          
+          
+
+          
+          <div class="method-source-code" id="lines-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lines</span>
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">dup</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lines-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lines-method -->
+
+    
+      <div id="method-i-peek_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">peek_line</span><span
+            class="method-args">(preprocess = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get the next line of source data. Does not consume the line returned.</p>
+<dl class="rdoc-list note-list"><dt>preprocess
+<dd>
+<p>A Boolean flag indicating whether to evaluate preprocessingdirectives
+(macros) before reading line (default: true)</p>
+</dd></dl>
+
+<p>Returns a String dup of the next line of the source data if data is
+present.Returns nil if there is no more data.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="peek_line-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 230</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">peek_line</span>(<span class="ruby-identifier">preprocess</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">preprocess</span>
+    <span class="ruby-comment"># QUESTION do we need to dup?</span>
+    <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@eof</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">has_more_lines?</span>
+    <span class="ruby-comment"># QUESTION do we need to dup?</span>
+    <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- peek_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- peek_line-method -->
+
+    
+      <div id="method-i-sanitize_attribute_name" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">sanitize_attribute_name</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Convert a string to a legal attribute name.</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>The String holding the Asciidoc attribute name.</p>
+</dd></dl>
+
+<p>Returns a String with the legal name.</p>
+
+<h3 id="method-i-sanitize_attribute_name-label-Examples">Examples<span><a href="#method-i-sanitize_attribute_name-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<pre class="ruby"><span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'Foo Bar'</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foobar'</span>
+
+<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'foo'</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foo'</span>
+
+<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'Foo 3 #-Billy'</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foo3-billy'</span>
+</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="sanitize_attribute_name-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 562</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-constant">Lexer</span>.<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-identifier">name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- sanitize_attribute_name-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- sanitize_attribute_name-method -->
+
+    
+      <div id="method-i-unshift" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unshift</span><span
+            class="method-args">(*new_lines)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Push Array of lines onto the front of the Array of source data, unless
+`lines` has no non-nil values.</p>
+
+<p>Returns nil</p>
+          
+          
+
+          
+          <div class="method-source-code" id="unshift-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 466</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unshift</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">new_lines</span>)
+  <span class="ruby-identifier">size</span> = <span class="ruby-identifier">new_lines</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">new_lines</span>)
+    <span class="ruby-comment"># assume that what we are putting back on is already processed for directives</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-ivar">@eof</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@lineno</span> <span class="ruby-operator">-=</span> <span class="ruby-identifier">size</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- unshift-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unshift-method -->
+
+    
+      <div id="method-i-unshift_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">unshift_line</span><span
+            class="method-args">(line)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Push the String line onto the beginning of the Array of source data.</p>
+
+<p>Since this line was (assumed to be) previously retrieved through thereader,
+it is marked as preprocessed.</p>
+
+<p>returns nil</p>
+          
+          
+
+          
+          <div class="method-source-code" id="unshift_line-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 455</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">unshift_line</span>(<span class="ruby-identifier">line</span>)
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">unshift</span> <span class="ruby-identifier">line</span>
+  <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-ivar">@eof</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@lineno</span> <span class="ruby-operator">-=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- unshift_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- unshift_line-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- Public -->
+
+  
+  
+  <section id="Internal" class="documentation-section">
+    
+    <div class="documentation-section-title">
+      <h2 class="section-header">
+        Internal
+      </h2>
+      <span class="section-click-top">
+        <a href="#top">&uarr; top</a>
+      </span>
+    </div>
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-Internal-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-preprocess_conditional_inclusion" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">preprocess_conditional_inclusion</span><span
+            class="method-args">(directive, target, delimiter, text)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Preprocess the directive (macro) to conditionally include content.</p>
+
+<p>Preprocess the conditional inclusion directive (ifdef, ifndef,
+ifeval,endif) under the cursor. If the <a href="Reader.html">Reader</a> is
+currently skipping content, thensimply track the open and close delimiters
+of any nested conditionalblocks. If the <a href="Reader.html">Reader</a> is
+not skipping, mark whether the condition issatisfied and continue
+preprocessing recursively until the next line ofavailable content is found.</p>
+<dl class="rdoc-list note-list"><dt>directive
+<dd>
+<p>The conditional inclusion directive (ifdef, ifndef, ifeval, endif)</p>
+</dd><dt>target
+<dd>
+<p>The target, which is the name of one or more attributes that areused in the
+condition (blank in the case of the ifeval directive)</p>
+</dd><dt>delimiter
+<dd>
+<p>The conditional delimiter for multiple attributes (‘+’ means allattributes
+must be defined or undefined, ‘,’ means any of the attributescan be defined
+or undefined.</p>
+</dd><dt>text
+<dd>
+<p>The text associated with this directive (occurring between the square
+brackets)Used for a single-line conditional block in the case of the ifdef
+orifndef directives, and for the conditional expression for the ifeval
+directive.</p>
+</dd></dl>
+
+<p>returns a Boolean indicating whether the cursor advanced, or nil if
+thereare no more lines available.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="preprocess_conditional_inclusion-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 319</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">preprocess_conditional_inclusion</span>(<span class="ruby-identifier">directive</span>, <span class="ruby-identifier">target</span>, <span class="ruby-identifier">delimiter</span>, <span class="ruby-identifier">text</span>)
+  <span class="ruby-comment"># must have a target before brackets if ifdef or ifndef</span>
+  <span class="ruby-comment"># must not have text between brackets if endif</span>
+  <span class="ruby-comment"># don't honor match if it doesn't meet this criteria</span>
+  <span class="ruby-keyword">if</span> ((<span class="ruby-identifier">directive</span> <span class="ruby-operator">==</span> <span class="ruby-string">'ifdef'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">directive</span> <span class="ruby-operator">==</span> <span class="ruby-string">'ifndef'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">empty?</span>) <span class="ruby-operator">||</span>
+      (<span class="ruby-identifier">directive</span> <span class="ruby-operator">==</span> <span class="ruby-string">'endif'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>)
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">directive</span> <span class="ruby-operator">==</span> <span class="ruby-string">'endif'</span>
+    <span class="ruby-identifier">stack_size</span> = <span class="ruby-ivar">@conditionals_stack</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">stack_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">pair</span> = <span class="ruby-ivar">@conditionals_stack</span>.<span class="ruby-identifier">last</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">target</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">pair</span>[<span class="ruby-value">:target</span>]
+        <span class="ruby-ivar">@conditionals_stack</span>.<span class="ruby-identifier">pop</span>
+        <span class="ruby-ivar">@skipping</span> = <span class="ruby-ivar">@conditionals_stack</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@conditionals_stack</span>.<span class="ruby-identifier">last</span>[<span class="ruby-value">:skipping</span>]
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: ERROR: line #{@lineno + 1}: mismatched macro: endif::#{target}[], expected endif::#{pair[:target]}[]&quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: ERROR: line #{@lineno + 1}: unmatched macro: endif::#{target}[]&quot;</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">advance</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">preprocess_next_line</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">skip</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@skipping</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-identifier">directive</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'ifdef'</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">delimiter</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-comment"># if the attribute is undefined, then skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-operator">!</span><span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">target</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">','</span>
+        <span class="ruby-comment"># if any attribute is defined, then don't skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">target</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span> }
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'+'</span>
+        <span class="ruby-comment"># if any attribute is undefined, then skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'+'</span>).<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span> }
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'ifndef'</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">delimiter</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-comment"># if the attribute is defined, then skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">target</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-string">','</span>
+        <span class="ruby-comment"># if any attribute is undefined, then don't skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">target</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span> }
+      <span class="ruby-keyword">when</span> <span class="ruby-string">'+'</span>
+        <span class="ruby-comment"># if any attribute is defined, then skip</span>
+        <span class="ruby-identifier">skip</span> = <span class="ruby-identifier">target</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'+'</span>).<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span> }
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'ifeval'</span>
+      <span class="ruby-comment"># the text in brackets must match an expression</span>
+      <span class="ruby-comment"># don't honor match if it doesn't meet this criteria</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">target</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">expr_match</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:eval_expr</span>]))
+        <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-identifier">lhs</span> = <span class="ruby-identifier">resolve_expr_val</span>(<span class="ruby-identifier">expr_match</span>[<span class="ruby-value">1</span>])
+      <span class="ruby-identifier">op</span> = <span class="ruby-identifier">expr_match</span>[<span class="ruby-value">2</span>]
+      <span class="ruby-identifier">rhs</span> = <span class="ruby-identifier">resolve_expr_val</span>(<span class="ruby-identifier">expr_match</span>[<span class="ruby-value">3</span>])
+
+      <span class="ruby-identifier">skip</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">lhs</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">op</span>.<span class="ruby-identifier">to_sym</span>, <span class="ruby-identifier">rhs</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@skipping</span> = <span class="ruby-identifier">skip</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">advance</span>
+  <span class="ruby-comment"># single line conditional inclusion</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">directive</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'ifeval'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@skipping</span>
+      <span class="ruby-identifier">unshift_line</span> <span class="ruby-node">&quot;#{text.rstrip}\n&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-comment"># conditional inclusion block</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@conditionals_stack</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:target</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">target</span>, <span class="ruby-value">:skip</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">skip</span>, <span class="ruby-value">:skipping</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@skipping</span>}
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">preprocess_next_line</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- preprocess_conditional_inclusion-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- preprocess_conditional_inclusion-method -->
+
+    
+      <div id="method-i-preprocess_include" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">preprocess_include</span><span
+            class="method-args">(target)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Preprocess the directive (macro) to include the target document.</p>
+
+<p>Preprocess the directive to include the target document. The scenariosare
+as follows:</p>
+
+<p>If <a href="SafeMode.html">SafeMode</a> is SECURE or greater, the directive
+is ignore and the includedirective line is emitted verbatim.</p>
+
+<p>Otherwise, if an include handler is specified (currently controlled by
+aclosure block), pass the target to that block and expect an Array of
+Stringlines in return.</p>
+
+<p>Otherwise, if the include-depth attribute is greater than 0, normalize
+thetarget path and read the lines onto the beginning of the Array of
+sourcedata.</p>
+
+<p>If none of the above apply, emit the include directive line verbatim.</p>
+<dl class="rdoc-list note-list"><dt>target
+<dd>
+<p>The name of the source document to include as specified in thetarget slot
+of the include::[] macro</p>
+</dd></dl>
+
+<p>returns a Boolean indicating whether the line under the cursor has changed.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="preprocess_include-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 425</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">preprocess_include</span>(<span class="ruby-identifier">target</span>)
+  <span class="ruby-comment"># if running in SafeMode::SECURE or greater, don't process this directive</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-comment"># assume that if a block is given, the developer wants</span>
+  <span class="ruby-comment"># to handle when and how to process the include, even</span>
+  <span class="ruby-comment"># if the include-depth attribute is 0</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@include_block</span>
+    <span class="ruby-identifier">advance</span>
+    <span class="ruby-comment"># FIXME this borks line numbers</span>
+    <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-operator">*</span><span class="ruby-ivar">@include_block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">target</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{l.rstrip}\n&quot;</span>})
+  <span class="ruby-comment"># FIXME currently we're not checking the upper bound of the include depth</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'include-depth'</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">advance</span>
+    <span class="ruby-comment"># FIXME this borks line numbers</span>
+    <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-operator">*</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readlines</span>(<span class="ruby-ivar">@document</span>.<span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-string">'include file'</span>)).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{l.rstrip}\n&quot;</span>})
+    <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- preprocess_include-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- preprocess_include-method -->
+
+    
+      <div id="method-i-preprocess_next_line" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">preprocess_next_line</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Preprocess the next line until the cursor is at a line of content</p>
+
+<p>Evaluate preprocessor macros on the next line, continuing to do so untilthe
+cursor arrives at a line of included content. That line is marked
+aspreprocessed so that preprocessing is not performed multiple times.</p>
+
+<p>returns a Boolean indicating whether the cursor advanced, or nil if
+thereare no more lines available.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="preprocess_next_line-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/reader.rb, line 268</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">preprocess_next_line</span>
+  <span class="ruby-comment"># this return could be happening from a recursive call</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@eof</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">next_line</span> = <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'if'</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:ifdef_macro</span>]))
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+      <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-ivar">@unescape_next_line</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">preprocess_conditional_inclusion</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">match</span>.<span class="ruby-identifier">captures</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@skipping</span>
+    <span class="ruby-identifier">advance</span>
+    <span class="ruby-comment"># skip over comment blocks, we don't want to process directives in them</span>
+    <span class="ruby-identifier">skip_comment_lines</span> <span class="ruby-value">:include_blank_lines</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:preprocess</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-identifier">preprocess_next_line</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'include::'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:include_macro</span>])
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+      <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-ivar">@unescape_next_line</span> = <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">preprocess_include</span>(<span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>])
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@next_line_preprocessed</span> = <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- preprocess_next_line-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- preprocess_next_line-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- Internal -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.0.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
