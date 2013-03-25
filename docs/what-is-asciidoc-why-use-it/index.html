@@ -1,0 +1,363 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>What is AsciiDoc? Why do we need it? | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>What is AsciiDoc? Why do we need it?</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p><em>Writing is hard.</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>Why, then, do we insist on making it even more difficult by burying the content in XML schemas like DocBook, allowing ourselves to get distracted by complex word processors or battling with finicky WYSIWYG editors?</p>
+</div>
+<div class="paragraph">
+    
+  <p>Imagine if writing documentation was as easy as writing an email.
+<strong>It can be.</strong>
+It starts with writing documentation in the same format we use to write e-mail: plain text embellished with subtle, intuitive markup.</p>
+</div>
+<div class="paragraph">
+    
+  <p>That&#8217;s the idea behind lightweight markup languages such as Markdown and AsciiDoc.
+Their plain-text syntax feels natural and keeps you focused on the content.
+It&#8217;s designed for humans to read, write and edit in raw form, yet can still be translated to output formats such as HTML for presentation.</p>
+</div>
+<div class="paragraph">
+    
+  <p>In this introduction to AsciiDoc, you&#8217;ll learn that dropping the angle brackets is the key to getting past the fear of writing documentation and discovering writing zen.
+It also means reaching broader audiences with the message you want to share that&#8217;s currently locked inside your head.</p>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="what-is-asciidoc">What is AsciiDoc?</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>AsciiDoc is a plain text document format for writing notes, articles, documentation, books, ebooks, web pages, slide decks, blog posts, man pages and more.
+AsciiDoc is also a text processor and toolchain that translates documents written in the AsciiDoc syntax into various formats (called <em>backends</em>), including HTML 5, DocBook 4.5 and PDF.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Thus, AsciiDoc is two things:</p>
+</div>
+<div class="olist arabic">
+  
+  <ol class="arabic">
+    <li>
+      <p>A mature, <a href="http://en.wikipedia.org/wiki/Lightweight_markup_language">lightweight markup language</a> (i.e., syntax) for authoring documents in plain text<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.</p>
+    </li>
+    <li>
+      <p>A software tool, written in Python, that converts the text to a fully-formatted document for presentation like HTML or PDF<span class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span>.</p>
+    </li>
+  </ol>
+</div>
+<div class="paragraph">
+    
+  <p>AsciiDoc is in the family of <a href="http://en.wikipedia.org/wiki/Lightweight_markup_language">lightweight markup languages</a>, the most reknown of which is Markdown.
+Extending beyond Markdown, AsciiDoc supports all the structural elements necessary for drafting articles, technical manuals, books, presentations and prose.
+That means it&#8217;s capable of meeting even the most advanced publishing requirements and technical semantics.
+As proof, many O&#8217;Reilly authors, including <a href="https://github.com/matthewmccullough">Matthew McCullough</a>, <a href="https://github.com/tlberglund">Tim Berglund</a>, <a href="https://github.com/oreillymedia/etudes-for-erlang">Simon St.Laurent</a> and <a href="http://www.apeth.net/matt/iosbooktoolchain.html">Matt Neuburg</a>, have all used AsciiDoc to write their books for the iconic O&#8217;Reilly technical library.</p>
+</div>
+<div class="paragraph">
+    
+  <p>One way to think of AsciiDoc is as a shorthand replacement for <a href="http://www.docbook.org/whatis">DocBook</a>, which it&#8217;s capable of generating.
+It can also produce beautiful HTML 5, PDFs, eBooks, man pages and even slide decks.
+AsciiDoc has you covered from first draft to publishing.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Now that we&#8217;ve established what AsciiDoc is, let&#8217;s consider why we need it.</p>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="why-asciidoc">Why AsciiDoc?</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>As humans, we have no difficulty talking or thinking.
+In fact, we&#8217;re fluent in it.
+It&#8217;s an activity that just happens whenever a thought comes to mind.</p>
+</div>
+<div class="paragraph">
+    
+  <p><em>Writing, on the other hand, rarely feels so easy.</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>When it&#8217;s time to write our thoughts down, we <em>struggle</em> to find the words&#8212;or, at least, how to arrange and organize them.
+That <em>damn</em> inner critic disrupts the stream of conciousness we coast on while talking or thinking.</p>
+</div>
+<div class="paragraph">
+    
+  <p>It&#8217;s reasonable to conclude that writing is just hard.</p>
+</div>
+<div class="paragraph">
+    
+  <p><em>Or is it?</em></p>
+</div>
+<div class="sect2">
+  <h3 id="writing-e-mails-vs-writing-documents">Writing e-mails vs writing documents</h3>
+<div class="paragraph">
+    
+  <p>Writing e-mail is easy.
+In fact, we do it all the time.
+We respond to dozens of e-mail and social media messages every day.
+That involves communication through writing.
+That&#8217;s right, <em>writing!</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>Yet, admist the flurry of typing that occurs when we respond to an e-mail, we hardly even realize we&#8217;re doing it&#8230;and <em>fluently!</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>As it turns out&#8230;</p>
+</div>
+<div class="quoteblock">
+  
+  <blockquote>
+Most people are OK with writing e-mails.
+They don&#8217;t consider this writing.
+There&#8217;s no writer&#8217;s block.
+Someone asks you a question, you [press] reply and type away.
+  </blockquote>
+  <div class="attribution">
+    &#8212; <a href="http://blog.stoyanstefanov.com/asciidoc">Stoyan Stefanov</a>
+  </div>
+</div>
+<div class="paragraph">
+    
+  <p><em>So why do we struggle to write <strong>documents</strong>?</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>One of the main reasons is that we don&#8217;t write documents the same way we write e-mail.
+Instead, we allow ourselves to get distracted by complex word processors, bury the content in XML schemas like DocBook, or battle with finicky WYSIWYG editors.
+Why?</p>
+</div>
+
+</div>
+<div class="sect2">
+  <h3 id="word-processors-the-real-writer-s-block">Word processors, the real writer&#8217;s block</h3>
+<div class="paragraph">
+    
+  <p>When you&#8217;re in the writing (i.e., <a href="http://blog.stoyanstefanov.com/writing-vs-typing/">typing</a>) phase, you want the words to flow onto the screen with minimal distractions and interruptions.
+Flow, not just time, is essential.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Most word processors excel at distracting you from writing.
+The result: <em>you write less</em> (ironic, huh?).</p>
+</div>
+<div class="paragraph">
+    
+  <p>In a word processor, before you can type the first word on a blank white screen, you&#8217;re forced to think about what font family you want, what font size you want, what lines spacing you want and so on.
+Once you do get going, auto-correct, spelling and grammar suggestions entice you to backtrack and lose your next thought.
+&#8220;Smart&#8221; quotes and auto-linking messes with the text as fast as you can enter it.
+If you paste text, it likely gets added to the document with a different font family, size and even color.</p>
+</div>
+<div class="paragraph">
+    
+  <p><strong>Undo. Undo. Undo!</strong></p>
+</div>
+<div class="paragraph">
+    
+  <p>Let&#8217;s not even talk about inserting source code.
+The designers of word processors clearly did not.</p>
+</div>
+<div class="paragraph">
+    
+  <p><strong>Format. Format. Format!</strong></p>
+</div>
+<div class="paragraph">
+    
+  <p>After burning time fighting with its interface, you rightfully conclude that the word processor is trying to <em>sabotage</em> your writing process.</p>
+</div>
+<div class="paragraph">
+    
+  <p>We struggle to write documents because <strong>we get distracted by stuff that isn&#8217;t writing</strong>.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Writing documents, especially technical documentation, is hard enough.
+Why make it harder?</p>
+</div>
+<div class="paragraph">
+    
+  <p><strong>We <em>need</em> to find an easier way to write!</strong></p>
+</div>
+
+</div>
+<div class="sect2">
+  <h3 id="use-what-you-know">Use what you know</h3>
+<div class="paragraph">
+    
+  <p><em>What if you could write docs like you write e-mail?</em></p>
+</div>
+<div class="paragraph">
+    
+  <p>Imagine being able to forget about layout, typesetting and styling (and even some of the semantics) and just <em>write</em>;
+to let your thoughts flow.
+That&#8217;s the idea behind <strong>lightweight markup languages</strong> such as Markdown and AsciiDoc.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Here&#8217;s how MarkDown was first introduced:</p>
+</div>
+<div class="quoteblock">
+  
+  <blockquote>
+<div class="paragraph">
+    
+  <p>The overriding design goal for Markdown&#8217;s formatting syntax is to make it as readable as possible.</p>
+</div>
+<div class="paragraph">
+    
+  <p>A Markdown-formatted document should be publishable as-is, as plain text, without looking like it&#8217;s been marked up with tags or formatting instructions.</p>
+</div>
+<div class="paragraph">
+    
+  <p>The single biggest source of inspiration for Markdown&#8217;s syntax is the format of plain text e-mail.</p>
+</div>
+
+  </blockquote>
+  <div class="attribution">
+    <cite>Creator of Markdown</cite>
+    <br>
+    &#8212; John Gruber
+  </div>
+</div>
+<div class="paragraph">
+    
+  <p>Similarly, here&#8217;s how AsciiDoc was introduced:</p>
+</div>
+<div class="quoteblock">
+  
+  <blockquote>
+<div class="paragraph">
+    
+  <p>You write an AsciiDoc document the same way you would write a normal text document.
+There are no markup tags or weird format notations.
+AsciiDoc files are designed to be viewed, edited and printed directly or translated to other presentation formats.</p>
+</div>
+
+  </blockquote>
+  <div class="attribution">
+    <cite>Creator of AsciiDoc</cite>
+    <br>
+    &#8212; Stuart Rackham
+  </div>
+</div>
+<div class="paragraph">
+    
+  <p>These languages are designed to enable humans to write documents, and for other humans to be able to read them, <strong><em>as is</em></strong>, in <em>raw</em> form.</p>
+</div>
+<div class="paragraph">
+    
+  <p>Here&#8217;s a basic example of an AsciiDoc document:</p>
+</div>
+<div class="listingblock">
+  
+  <div class="content monospaced">
+    <pre class="highlight"><code class="asciidoc">= Introduction to AsciiDoc
+Doc Writer &lt;doc@example.com&gt;
+
+An introduction to http://asciidoc.org[AsciiDoc].
+
+== First Section
+
+* item 1
+* item 2
+
+[source,ruby]
+puts "Hello, World!"</code></pre>
+  </div>
+</div>
+<div class="paragraph">
+    
+  <p><em>It&#8217;s plain text syntax&#8230;I <strong>know</strong> this.</em></p>
+</div>
+
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="the-zen-of-asciidoc">The zen of AsciiDoc</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>AsciiDoc works because:</p>
+</div>
+<div class="ulist">
+  
+  <ul>
+    <li>
+      <p>It&#8217;s readable</p>
+    </li>
+    <li>
+      <p>It&#8217;s comprehensive</p>
+    </li>
+    <li>
+      <p>It&#8217;s extensible</p>
+    </li>
+    <li>
+      <p>It produces beautiful output (HTML, DocBook, PDF, ePub and more)</p>
+    </li>
+  </ul>
+</div>
+<div class="paragraph">
+    
+  <p>AsciiDoc is about being able to focus on expressing your ideas and writing with ease.
+In other words, it&#8217;s about discovering <em>writing zen</em>.
+AsciiDoc is easy to write and its easy to read (in raw form).
+It&#8217;s also easy to proof and edit.
+After all, it&#8217;s plain text, just like that familiar e-mail.</p>
+</div>
+<div class="paragraph">
+    
+  <p>AsciiDoc allows you to separate the content and structure from the formatting.
+You can focus on the actual writing and only worry about tweaking the output when you are ready to render the document.
+The plain-text of an AsciiDoc document is easily converted to a variety of output formats, beautifully formatted, without having to rewrite or repurpose the content.</p>
+</div>
+<div class="paragraph">
+    
+  <p>The AsciiDoc syntax is easy to understand because it recognizes time-tested, plain text conventions for marking up or structuring the text.
+In other words, the syntax is probably close to what you&#8217;ve been using in your e-mails.
+The punctuation in AsciiDoc was carefully chosen to look like what they mean.
+A user unfamiliar with AsciiDoc can figure out the structure and semantics (i.e., what you meant) just by looking at it.
+Best of all, <strong>it only requires a text editor to read or write it</strong>.</p>
+</div>
+<div class="paragraph">
+    
+  <p>You could say that the AsciiDoc syntax tries to be the simplest thing that can possibly work for producing the types of documents you want to create.
+It&#8217;s designed for humans first, not computers.</p>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="next-steps">Next steps</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>With an understanding of what AsciiDoc is and why it&#8217;s (so desperately) needed, you&#8217;re encouraged to delve into the AsciiDoc syntax covered in the <a href="asciidoc-writers-guide/">AsciiDoc Writer&#8217;s Guide</a>.
+Hopefully you&#8217;ll agree that the syntax just makes sense.</p>
+</div>
+
+  </div>
+</div>
+
+</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/edit/develop/docs/what-is-asciidoc-why-use-it.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/raw/develop/docs/what-is-asciidoc-why-use-it.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/commits/develop/docs/what-is-asciidoc-why-use-it.adoc">History</a></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor, the Asciidoctor project provides plugins for Maven, Gradle and Guard, packages for operating systems such as Fedora and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-bottom: -3px"></a><br><i class="icon-github-sign"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.github.com">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Built on Foundation. Baked by Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation()</script><script src="/javascripts/vendor/highlight.min.js"></script><script>hljs.initHighlightingOnLoad()</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
