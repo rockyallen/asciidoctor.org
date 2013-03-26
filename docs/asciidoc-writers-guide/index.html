@@ -136,7 +136,7 @@ To start a new paragraph, just hit Enter twice and continue typing.</pre>
 <div class="paragraph">
     
   <p>Save the file with a file extension of <tt>.ad</tt> or <tt>.adoc</tt>.
-Although the file extension doesn&#8217;t matter when running the file through the Asciidoctor processor locally, it&#8217;s used in other contexts (such as on GitHub) to indicate that it&#8217;s an AsciiDoc document.</p>
+Although the file extension doesn&#8217;t matter when running the file through an AsciiDoc processor, it&#8217;s used in other contexts (such as by your editor or GitHub) to indicate it&#8217;s an AsciiDoc document.</p>
 </div>
 <div class="admonitionblock">
   <table>
@@ -498,7 +498,7 @@ Triple plus and pass:[] are often used to output custom HTML or XML.</pre>
       Backticks enclosure
     </dt>
     <dd>
-      <p>To exclude a phrase from substitutions, disable escaping of special characters and render it as monospaced text, enclosue it in backticks (<tt>`</tt>):</p>
+      <p>To exclude a phrase from substitutions, disable escaping of special characters and render it as monospaced text, enclose it in backticks (<tt>`</tt>):</p>
 <div class="listingblock">
   
   <div class="content monospaced">
@@ -641,7 +641,7 @@ Chances are, what you&#8217;d type is exactly how you define an outline list in 
 </div>
 <div class="paragraph">
     
-  <p>Was your instinct to use a hypen instead of an asterisk?
+  <p>Was your instinct to use a hyphen instead of an asterisk?
 Guess what?
 That works too:</p>
 </div>
@@ -710,7 +710,7 @@ Then you might organize it as a nested list.</p>
 </div>
 <div class="paragraph">
     
-  <p>The hyphen doesn&#8217;t work for nested lists since repeating hypens are used for other purposes in AsciiDoc.</p>
+  <p>The hyphen doesn&#8217;t work for nested lists since repeating hyphens are used for other purposes in AsciiDoc.</p>
 </div>
 <div class="admonitionblock">
   <table>
@@ -1309,6 +1309,59 @@ v1.0, 2013-01-01
 ----</pre>
   </div>
 </div>
+<div class="paragraph">
+    
+  <p>Here&#8217;s how the source is rendered:</p>
+</div>
+<div class="exampleblock">
+  <div class="title">Example 2. A list with complex content</div>
+  <div class="content">
+<div class="ulist">
+  
+  <ul>
+    <li>
+      <p>The header in AsciiDoc must start with a
+document title.</p>
+<div class="listingblock">
+  
+  <div class="content monospaced">
+    <pre>= Document Title</pre>
+  </div>
+</div>
+<div class="admonitionblock">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/note.png" alt="Note">
+      </td>
+      <td class="content">
+        
+        The header is optional.
+
+      </td>
+    </tr>
+  </table>
+</div>
+
+    </li>
+    <li>
+      <p>Optional Author and Revision information
+immediately follows the header title.</p>
+<div class="listingblock">
+  
+  <div class="content monospaced">
+    <pre>= Document Title
+Doc Writer &lt;doc.writer@asciidoc.org&gt;
+v1.0, 2013-01-01</pre>
+  </div>
+</div>
+
+    </li>
+  </ul>
+</div>
+
+  </div>
+</div>
 
 </div>
 <div class="sect3">
@@ -1647,7 +1700,7 @@ According to Wikipedia...</pre>
 </div>
 <div class="paragraph">
     
-  <p>The header now containes a document title, an author, a revision number and a date.
+  <p>The header now contains a document title, an author, a revision number and a date.
 This information will be formatted when the document is rendered.</p>
 </div>
 <div class="admonitionblock">
@@ -1867,7 +1920,7 @@ For example, a level 1 section (2 equal signs) maps to an <tt>&lt;h2&gt;</tt> el
 </div>
 <div class="paragraph">
     
-  <p>Section levels cannot be choosen arbitrarily.
+  <p>Section levels cannot be chosen arbitrarily.
 There are two rules you must follow:</p>
 </div>
 <div class="olist arabic">
@@ -2015,7 +2068,7 @@ These components are referred to as <em>delimited blocks</em> because they are s
   <h3 id="delimited-blocks">Delimited blocks</h3>
 <div class="paragraph">
     
-  <p>You&#8217;ve already seen many examples of the listing block (i.e., code block), which is surrounded by lines with four or more hypens.</p>
+  <p>You&#8217;ve already seen many examples of the listing block (i.e., code block), which is surrounded by lines with four or more hyphens.</p>
 </div>
 <div class="listingblock">
   
@@ -2030,7 +2083,7 @@ The content inside is rendered as &lt;pre&gt; text.
     
   <p>Within the boundaries of a delimited block, you can enter any content or blank lines.
 The block doesn&#8217;t end until the ending delimiter is found.
-The delimiters around the block determine the type of block, how the content is processed and rendered and what elements are used to wrap the content in the ouput.</p>
+The delimiters around the block determine the type of block, how the content is processed and rendered and what elements are used to wrap the content in the output.</p>
 </div>
 <div class="paragraph">
     
@@ -2098,7 +2151,7 @@ Since a listing block is typically used for source code, substitutions are not d
       <th class="tableblock halign-left valign-top">Name (Style)</th>
       <th class="tableblock halign-left valign-top">Line delimiter</th>
       <th class="tableblock halign-left valign-top">Purpose</th>
-      <th class="tableblock halign-left valign-top">Subsitutions</th>
+      <th class="tableblock halign-left valign-top">Substitutions</th>
     </tr>
   </thead>
   <tbody>
@@ -2178,7 +2231,7 @@ The reader will never see the long delimiters anyway since they are not carried 
 </div>
 <div class="paragraph">
     
-  <p>This table shows the subsitutions performed by each substitution group referenced in the previous table.</p>
+  <p>This table shows the substitutions performed by each substitution group referenced in the previous table.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 100%; ">
   <colgroup>
@@ -2345,7 +2398,7 @@ ____</pre>
       <td class="content">
         
         A block can have multiple block attribute lines.
-The attributes will be aggreated.
+The attributes will be aggregated.
 If there is a name conflict, the last attribute defined wins.
 
       </td>
@@ -2360,10 +2413,10 @@ Consult the <a href="http://asciidoc.org/userguide.html#X104">Delimited Blocks</
 
 </div>
 <div class="sect2">
-  <h3 id="masquarading-blocks">Masquarading blocks</h3>
+  <h3 id="masquerading-blocks">Masquerading blocks</h3>
 <div class="paragraph">
     
-  <p>Some blocks can masquarade as other blocks, a feature which is controlled by the block style.
+  <p>Some blocks can masquerade as other blocks, a feature which is controlled by the block style.
 The block style is the first positional attribute in the block attribute list.</p>
 </div>
 <div class="sect3">
@@ -2605,7 +2658,7 @@ Since we are putting each column on a separate line, we have to be explicit abou
 </div>
 <div class="paragraph">
     
-  <p>We can give the table a header row by adding it as the first list and setting the headers option on the table:</p>
+  <p>We can make the first row of the table the header by setting the <tt>header</tt> option on the table.</p>
 </div>
 <div class="listingblock">
   
@@ -2860,7 +2913,7 @@ That&#8217;s where the AsciiDoc processor comes in (<strong>after</strong> you h
 <div class="paragraph">
     
   <p>An AsciiDoc processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
-AsciiDoc ships with a set of default templates in the tin, but you can customize the templates or create your own to get excactly the output you want.
+AsciiDoc ships with a set of default templates in the tin, but you can customize the templates or create your own to get exactly the output you want.
 We&#8217;ll cover the most common usages of the processor in this document.</p>
 </div>
 <div class="paragraph">
@@ -3128,7 +3181,7 @@ People tend to prefer the flask theme, which you can enable using the <tt>theme<
 <div class="paragraph">
     
   <p>Asciidoctor, an implementation of the AsciiDoc processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
-Asciidoctor provides both a commandline tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBoook 4.5 and custom output formats.</p>
+Asciidoctor provides both a commandline tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBook 4.5 and custom output formats.</p>
 </div>
 <div class="paragraph">
     
@@ -3143,7 +3196,7 @@ If you have Ruby on your system, you can install Asciidoctor using the <tt>gem</
 </div>
 <div class="paragraph">
     
-  <p>If you are running Fedora 18 or higher, you can install it using <tt>yum</tt>, which will also install Ruby if it&#8217;s not yet installed on your system:</p>
+  <p>If you are running Fedora 17 or higher, you can install it using <tt>yum</tt>, which will also install Ruby if it&#8217;s not yet installed on your system:</p>
 </div>
 <div class="literalblock">
   
@@ -3164,7 +3217,7 @@ For example, to generate an HTML document:</p>
 </div>
 <div class="paragraph">
     
-  <p>In Asciidoctor, the <strong>html5</strong> backend is the default, so there&#8217;s no need to specify a backend explicity to generate an HTML 5 document.</p>
+  <p>In Asciidoctor, the <strong>html5</strong> backend is the default, so there&#8217;s no need to specify a backend explicitly to generate an HTML 5 document.</p>
 </div>
 <div class="paragraph">
     
@@ -3265,7 +3318,7 @@ You&#8217;ll either feed it into a system that processes DocBook (like <a href="
 <div class="paragraph">
     
   <p>PDF is a nice format for presenting a final version of a document.
-For legacy reasons, the convertion to PDF is handled by a separate program in the AsciiDoc distribution, <tt>a2x</tt>.</p>
+For legacy reasons, the conversion to PDF is handled by a separate program in the AsciiDoc distribution, <tt>a2x</tt>.</p>
 </div>
 <div class="paragraph">
     
@@ -3296,7 +3349,7 @@ Go ahead, take a look!</p>
 <div class="paragraph">
     
   <p><strong>Yes, you just created that PDF.
-Yes, it was that easy!</strong></p>
+It was that easy!</strong></p>
 </div>
 <div class="paragraph">
     
@@ -3397,7 +3450,7 @@ Hopefully you agree that the markup does not detract from the readability of the
 </div>
 <div class="paragraph">
     
-  <p>As humans, communication is what connnects us through the ages and allows us to pass on knowledge.
+  <p>As humans, communication is what connects us through the ages and allows us to pass on knowledge.
 AsciiDoc enables you to focus on communicating rather than distracting you with other stuff that just gets in the way.
 Copy the text of an e-mail into a document and see how easy it to repurpose it as documentation.
 Almost immediately, you&#8217;ll find your writing zen and enjoy the rewarding experience of producing.</p>
