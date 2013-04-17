@@ -79,7 +79,7 @@ compatibility. The march is on towards full compliance and beyond.
 </div>
 <div class="paragraph">
     
-  <p>Or if you prefer bundler, add asciidoctor to your <tt>Gemfile</tt> file:</p>
+  <p>Or if you prefer bundler, add the asciidoctor gem to your Gemfile,</p>
 </div>
 <div class="literalblock">
   
@@ -90,13 +90,28 @@ gem 'asciidoctor'</pre>
 </div>
 <div class="paragraph">
     
-  <p>and install it with bundler:</p>
+  <p>then install it using bundler:</p>
 </div>
 <div class="literalblock">
   
   <div class="content monospaced">
     <pre>bundle install</pre>
   </div>
+</div>
+<div class="paragraph">
+    
+  <p>If you&#8217;re running Fedora, you can install the gem using yum:</p>
+</div>
+<div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>sudo yum install rubygem-asciidoctor</pre>
+  </div>
+</div>
+<div class="paragraph">
+    
+  <p>The benefit of installing the gem via yum is that yum will also install
+Ruby if it&#8217;s not already on your machine.</p>
 </div>
 
   </div>
@@ -416,7 +431,11 @@ cells with AsciiDoc content</p>
     </li>
     <li>
       <p>AsciiDoc doesn&#8217;t carry over the doctype attribute passed from the
-commandline when rendering AsciiDoc content cells, whereas Asciidoctor does</p>
+commandline when rendering AsciiDoc table cells, whereas Asciidoctor does</p>
+    </li>
+    <li>
+      <p>Asciidoctor does not require commas between attributes with quoted
+values in a block attribute list</p>
     </li>
     <li>
       <p>Asciidoctor strips the file extension from the target image when
@@ -525,12 +544,21 @@ is used in name</p>
 document header (adds id attribute to <tt>&lt;body&gt;</tt> tag)</p>
     </li>
     <li>
+      <p>Asciidoctor allows the author and revision attributes to be referenced
+in subsequent attribute entries in header (unlike AsciiDoc)</p>
+    </li>
+    <li>
       <p>Assigning value to the <tt>listing-caption</tt> attribute will enable
 automatic captions for listings (like examples, tables and figures)</p>
     </li>
     <li>
       <p>The <tt>ifeval::[]</tt> macro is constrained for the strict purpose of
 comparing values of attributes</p>
+    </li>
+    <li>
+      <p>The <tt>include::[]</tt> macro is converted to a link to the target document
+when SafeMode is SECURE or greater (this makes for a friendly
+experience on GitHub)</p>
     </li>
   </ul>
 </div>
@@ -717,6 +745,47 @@ implementation, you will be personally responsible for providing patches
 in a timely fashion. If critical issues for a particular implementation
 exist at the time of a major release, support for that Ruby version may
 be dropped.</p>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="resources">Resources</h2>
+  <div class="sectionbody">
+<div class="dlist">
+  
+  <dl>
+    <dt class="hdlist1">
+      Project home page
+    </dt>
+    <dd>
+      <p><a href="http://asciidoctor.org">http://asciidoctor.org</a></p>
+    </dd>
+    <dt class="hdlist1">
+      Source repository
+    </dt>
+    <dd>
+      <p><a href="http://github.com/asciidoctor/asciidoctor">http://github.com/asciidoctor/asciidoctor</a></p>
+    </dd>
+    <dt class="hdlist1">
+      Issue tracker
+    </dt>
+    <dd>
+      <p><a href="https://github.com/asciidoctor/asciidoctor/issues">https://github.com/asciidoctor/asciidoctor/issues</a></p>
+    </dd>
+    <dt class="hdlist1">
+      Mailinglist / forum
+    </dt>
+    <dd>
+      <p><a href="http://discuss.asciidoctor.org">http://discuss.asciidoctor.org</a></p>
+    </dd>
+    <dt class="hdlist1">
+      GitHub organization
+    </dt>
+    <dd>
+      <p><a href="http://github.com/asciidoctor">http://github.com/asciidoctor</a></p>
+    </dd>
+  </dl>
 </div>
 
   </div>
