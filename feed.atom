@@ -2,9 +2,229 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>http://asciidoctor.org/</id>
 <title>Asciidoctor</title>
-<updated>2013-04-16T16:42:55-06:00</updated>
+<updated>2013-04-18T21:43:51-06:00</updated>
 <link href="http://asciidoctor.org/feed.atom" rel="self" type="application/atom+xml" />
 <link href="http://asciidoctor.org/" rel="alternate" type="text/html" />
+<entry>
+<id>http://asciidoctor.org/news/2013/04/18/enjoy-the-magic-of-asciidoctor-in-java/</id>
+<title>Enjoy the magic of Asciidoctor in Java</title>
+<updated>2013-04-18T21:43:51-06:00</updated>
+<published>2013-04-18T21:43:51-06:00</published>
+<link href="http://asciidoctor.org/news/2013/04/18/enjoy-the-magic-of-asciidoctor-in-java/" rel="alternate" type="text/html" />
+<category scheme="http://asciidoctor.org/news/tags" term="announcement" />
+<category scheme="http://asciidoctor.org/news/tags" term="plugin" />
+<summary>
+The asciidoctor-java-integration is the official means of using Asciidoctor to render all your AsciiDoc documentation using Java instead of Ruby.
+
+
+  
+
+
+  Installation
+  
+
+    
+  Since asciidoctor-java-integration is a standard jar file, the only thing you should do is add library into classpath.
+
+
+  Dependency declaration in Maven
+  
+    &lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+    &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+  
+
+
+  
+ ......
+</summary>
+<content type="html">
+&lt;div id=&quot;preamble&quot;&gt;
+  &lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;The &lt;tt&gt;asciidoctor-java-integration&lt;/tt&gt; is the official means of using &lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt; to render all your &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; documentation using Java instead of Ruby.&lt;/p&gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+  &lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+  &lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;Since &lt;tt&gt;asciidoctor-java-integration&lt;/tt&gt; is a standard jar file, the only thing you should do is add library into classpath.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Dependency declaration in Maven&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;xml&quot;&gt;&amp;lt;dependencies&amp;gt;
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;asciidoctor-java-integration&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;${asciidoctor.version}&amp;lt;/version&amp;gt;                   &lt;img src=&quot;http://asciidoctor.org/images/icons/callouts/1.png&quot; alt=&quot;1&quot;&gt;
+  &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+  
+  &lt;table&gt;&lt;tr&gt;
+&lt;td&gt;&lt;img src=&quot;http://asciidoctor.org/images/icons/callouts/1.png&quot; alt=&quot;1&quot;&gt;&lt;/td&gt;
+      &lt;td&gt;As this library tracks the version of Asciidoctor, you can use which every version of Asciidoctor you prefer.&lt;/td&gt;
+    &lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+  &lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+  &lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;The core interface of &lt;tt&gt;asciidoctor-java-integration&lt;/tt&gt; is &lt;tt&gt;Asciidoctor&lt;/tt&gt; interface. It provides two methods for rendering asciidoc content, &lt;tt&gt;render&lt;/tt&gt; and &lt;tt&gt;renderFile&lt;/tt&gt;. Both of them returns a string with rendered content.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class=&quot;tableblock frame-all grid-all&quot; style=&quot;width: 100%; &quot;&gt;
+&lt;caption class=&quot;title&quot;&gt;Table 1. Method description&lt;/caption&gt;
+  &lt;colgroup&gt;
+&lt;col style=&quot;width: 33%;&quot;&gt;
+&lt;col style=&quot;width: 66%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Name&lt;/th&gt;
+      &lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;tt&gt;render&lt;/tt&gt;&lt;/p&gt;&lt;/td&gt;
+      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Parse the AsciiDoc content into a Document and render it to the specified backend format.&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;tt&gt;renderFile&lt;/tt&gt;&lt;/p&gt;&lt;/td&gt;
+      &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Parse the content of AsciiDoc file into a Document and render it to the specified backend format.&lt;/p&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;Also a factory method is provided to create an instance of &lt;tt&gt;Asciidoctor&lt;/tt&gt; interface.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Creation of Asciidoctor interface&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;import static org.asciidoctor.Asciidoctor.Factory.create;
+import org.asciidoctor.Asciidoctor;
+
+Asciidoctor asciidoctor = create();&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;And then we can call &lt;tt&gt;render&lt;/tt&gt; methods depending on our requirements.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Rendering a String&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;String rendered = asciidoctor.render(&quot;*This* is it.&quot;, Collections.EMPTY_MAP);
+System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;But also you can render the content of a file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Rendering a File&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;String rendered = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, Collections.EMPTY_MAP);
+System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+  &lt;h3 id=&quot;options&quot;&gt;Options&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;&lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt; supports different kind of options, like &lt;tt&gt;in_place&lt;/tt&gt; which renders the output inside a file, &lt;tt&gt;template_dir&lt;/tt&gt; used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example &lt;tt&gt;attributes&lt;/tt&gt; option where we can set key-value pairs of attributes that will be used within asciidoc document.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;The second parameter of &lt;tt&gt;render&lt;/tt&gt; methods are a &lt;tt&gt;java.util.Map&lt;/tt&gt; where we can set all these options.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Example of using in_place Option and backend Attribute&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;Map&amp;lt;String, Object&amp;gt; attributes = new HashMap&amp;lt;String, Object&amp;gt;();
+attributes.put(&quot;backend&quot;, &quot;docbook&quot;);
+
+Map&amp;lt;String, Object&amp;gt; options = new HashMap&amp;lt;String, Object&amp;gt;();
+options.put(&quot;in_place&quot;, true);
+options.put(&quot;attributes&quot;, attributes);
+
+String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;See that in previous example we have created a Map, where we have put the options and attributes (creating a Map too) required to render input as docbook and generate an output file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;But &lt;tt&gt;asciidoctor-java-integration&lt;/tt&gt; also provides two builder classes to create these maps in a more readable form.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;&lt;tt&gt;AttributesBuilder&lt;/tt&gt; is provided for creating a map with required attributes set, and &lt;tt&gt;OptionsBuilder&lt;/tt&gt; can be used for options. Previous example but using these classes looks like:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Example setting attributes and options&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;import static org.asciidoctor.AttributesBuilder.attributes;
+import static org.asciidoctor.OptionsBuilder.options;
+
+...
+
+Map&amp;lt;String, Object&amp;gt; attributes = attributes().backend(&quot;docbook&quot;).asMap();
+Map&amp;lt;String, Object&amp;gt; options = options().inPlace(true).attributes(attributes).asMap();
+
+String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+  &lt;h3 id=&quot;utilities&quot;&gt;Utilities&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with &lt;em&gt;.asc&lt;/em&gt;, &lt;em&gt;.asciidoc&lt;/em&gt;, &lt;em&gt;.ad&lt;/em&gt; or &lt;em&gt;.adoc&lt;/em&gt;. This class is &lt;tt&gt;AsciidocDirectoryWalker&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+  &lt;div class=&quot;title&quot;&gt;Example of finding all asciidoc&lt;/div&gt;
+  &lt;div class=&quot;content monospaced&quot;&gt;
+    &lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java&quot;&gt;DirectoryWalker directoryWalker = new AsciidocDirectoryWalker(&quot;docs&quot;);
+List&amp;lt;File&amp;gt; asciidocFiles = directoryWalker.scan();&lt;/code&gt;&lt;/pre&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+  &lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;/h2&gt;
+  &lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+    
+  &lt;p&gt;You can contribute with patches, better documentation, feature requests, any help you&amp;#8217;re able to provide.&lt;/p&gt;
+&lt;/div&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
 <entry>
 <id>http://asciidoctor.org/news/2013/04/16/introducing-the-asciidoctor-maven-plugin/</id>
 <title>Introducing the Asciidoctor Maven plugin</title>
