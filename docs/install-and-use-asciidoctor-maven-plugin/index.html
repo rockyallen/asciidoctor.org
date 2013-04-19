@@ -1,0 +1,162 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installing and Using the Asciidoctor Maven Plugin | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing and Using the Asciidoctor Maven Plugin</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>The <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin">asciidoctor-maven-plugin</a> is the official means of using Asciidoctor to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://maven.apache.org">Apache Maven</a>.</p>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="installation">Installation</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>As this is a typical Maven plugin, there isn&#8217;t much to do to use it, simply add it to your plugins section in your pom:</p>
+</div>
+<div class="listingblock">
+  <div class="title">Plugin declaration</div>
+  <div class="content monospaced">
+    <pre class="highlight"><code class="xml">...
+&lt;plugins&gt;
+  &lt;plugin&gt;
+    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+    &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   <img src="/images/icons/callouts/1.png" alt="1">
+    ...
+  &lt;/plugin&gt;
+&lt;/plugins&gt;
+...</code></pre>
+  </div>
+</div>
+<div class="colist arabic">
+  
+  <table>
+    <tr>
+      <td><img src="/images/icons/callouts/1.png" alt="1"></td>
+      <td>As this plugin tracks the version of asciidoctor, you can use which ever version of Asciidoctor you prefer.</td>
+    </tr>
+  </table>
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="usage">Usage</h2>
+  <div class="sectionbody">
+<div class="listingblock">
+  <div class="title">Execution setup</div>
+  <div class="content monospaced">
+    <pre class="highlight"><code class="xml">...
+  &lt;plugin&gt;
+    ...
+    &lt;executions&gt;
+      &lt;execution&gt;
+        &lt;id&gt;output-html&lt;/id&gt;                                    <img src="/images/icons/callouts/1.png" alt="1">
+        &lt;phase&gt;generate-resources&lt;/phase&gt;                       <img src="/images/icons/callouts/2.png" alt="2">
+        &lt;goals&gt;
+          &lt;goal&gt;process-asciidoc&lt;/goal&gt;                         <img src="/images/icons/callouts/3.png" alt="3">
+        &lt;/goals&gt;
+      &lt;/execution&gt;
+    &lt;/executions&gt;
+    ...
+  &lt;/plugin&gt;
+...</code></pre>
+  </div>
+</div>
+<div class="colist arabic">
+  
+  <table>
+    <tr>
+      <td><img src="/images/icons/callouts/1.png" alt="1"></td>
+      <td>This is simply an unique id for the execution</td>
+    </tr>
+    <tr>
+      <td><img src="/images/icons/callouts/2.png" alt="2"></td>
+      <td>The asciidoctor-maven-plugin does not run in a specific phase, so one must be specified</td>
+    </tr>
+    <tr>
+      <td><img src="/images/icons/callouts/3.png" alt="3"></td>
+      <td>The (only for the moment) asciidoctor maven plugin goal</td>
+    </tr>
+  </table>
+</div>
+<div class="sect2">
+  <h3 id="configuration-options">Configuration options</h3>
+<div class="paragraph">
+    
+  <p>Currently there are only three configuration options that the asciidoctor-maven-plugin uses:</p>
+</div>
+<div class="ulist">
+  
+  <ul>
+    <li>
+      <p>sourceDirectory&#8201;&#8212;&#8201;defaults to <tt>${basedir}/src/main/asciidoc</tt></p>
+    </li>
+    <li>
+      <p>outputDirectory&#8201;&#8212;&#8201;defaults to <tt>${project.build.directory}/generated-docs</tt></p>
+    </li>
+    <li>
+      <p>backend&#8201;&#8212;&#8201;defaults to <tt>docbook</tt></p>
+    </li>
+    <li>
+      <p>doctype&#8201;&#8212;&#8201;defaults to <tt>article</tt></p>
+    </li>
+    <li>
+      <p>attributes&#8201;&#8212;&#8201;a Map&lt;String,String&gt; of attributes to pass to Asciidoctor, defaults to <tt>null</tt></p>
+    </li>
+  </ul>
+</div>
+<div class="paragraph">
+    
+  <p>More will be added in the future to take advantage of other options and attributes of Asciidoctor.
+These settings can all be changed in the <tt>&lt;configuration&gt;</tt> section of the plugin section:</p>
+</div>
+<div class="listingblock">
+  <div class="title">Plugin configuration options</div>
+  <div class="content monospaced">
+    <pre class="highlight"><code class="xml">&lt;plugin&gt;
+  ...
+    &lt;/executions&gt;
+    &lt;configuration&gt;
+      &lt;sourceDirectory&gt;src/main/doc&lt;/sourceDirectory&gt;
+      &lt;outputDirectory&gt;target/docs&lt;/outputDirectory&gt;
+      &lt;backend&gt;html&lt;/backend&gt;
+      &lt;doctype&gt;book&lt;/doctype&gt;
+      &lt;attributes&gt;
+        &lt;stylesheet&gt;my-theme.css&lt;/stylesheet&gt;
+      &lt;/attributes&gt;
+    &lt;/configuration&gt;
+    ...
+&lt;/plugin&gt;
+...</code></pre>
+  </div>
+</div>
+
+</div>
+
+  </div>
+</div>
+<div class="sect1">
+  <h2 id="resources-and-help">Resources and Help</h2>
+  <div class="sectionbody">
+<div class="paragraph">
+    
+  <p>If you&#8217;re interested in modifying or impoving this plugin, checkout the <a href="hack-asciidoctor-maven-plugin/">Hacking on the Asciidoctor Maven plugin guide</a>.
+To file an issue regarding this plugin, visit the <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin/issues">plugin&#8217;s repository</a>.</p>
+</div>
+
+  </div>
+</div>
+
+</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/edit/develop/docs/install-and-use-asciidoctor-maven-plugin.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/raw/develop/docs/install-and-use-asciidoctor-maven-plugin.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/commits/develop/docs/install-and-use-asciidoctor-maven-plugin.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li><li><a href="/docs/asciidoc-quick-reference.pdf" style="text-decoration: none" title="Download PDF"><i class="icon-file-alt icon-2x"></i></a></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-bottom: -3px"></a><br><i class="icon-github-sign"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.github.com">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Built on Foundation. Baked by Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
