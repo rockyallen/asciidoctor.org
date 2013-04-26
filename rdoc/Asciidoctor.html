@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor - API Documentation for Asciidoctor 0.1.1</title>
+<title>module Asciidoctor - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -62,11 +62,11 @@
     <li>lib/asciidoctor/cli/options.rb
     <li>lib/asciidoctor/debug.rb
     <li>lib/asciidoctor/document.rb
-    <li>lib/asciidoctor/errors.rb
     <li>lib/asciidoctor/helpers.rb
     <li>lib/asciidoctor/inline.rb
     <li>lib/asciidoctor/lexer.rb
     <li>lib/asciidoctor/list_item.rb
+    <li>lib/asciidoctor/path_resolver.rb
     <li>lib/asciidoctor/reader.rb
     <li>lib/asciidoctor/renderer.rb
     <li>lib/asciidoctor/section.rb
@@ -119,7 +119,7 @@
 
   <ul>
   
-    <li class="file"><a href="./README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="./README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -155,6 +155,8 @@
   
     <li><a href="./Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="./Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="./Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -189,9 +191,13 @@
   
     <li><a href="./Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="./Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="./Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="./Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -215,9 +221,13 @@
   
     <li><a href="./Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="./Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="./Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="./Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="./Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -253,9 +263,13 @@
   
     <li><a href="./Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="./Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="./Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="./Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -285,7 +299,7 @@
   
     <li><a href="./Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="./Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="./Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="./Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -359,8 +373,6 @@ This section has a paragraph block and an olist block.
 <span class="ruby-keyword">end</span>
 </pre>
 
-<p>Base project exception</p>
-
   </div><!-- description -->
 
   
@@ -398,6 +410,11 @@ engine</p>
         <dd class="description">
         
       
+        <dt id="COMPLIANCE">COMPLIANCE
+        
+        <dd class="description"><p>Flags to control compliance with the behavior of AsciiDoc</p>
+        
+      
         <dt id="DEFAULT_BACKEND">DEFAULT_BACKEND
         
         <dd class="description"><p>The backend determines the format of the rendered output, default to html5</p>
@@ -416,6 +433,21 @@ engine</p>
         <dt id="DEFAULT_PAGE_WIDTHS">DEFAULT_PAGE_WIDTHS
         
         <dd class="description"><p>Default page widths for calculating absolute widths</p>
+        
+      
+        <dt id="DEFAULT_STYLESHEET_KEYS">DEFAULT_STYLESHEET_KEYS
+        
+        <dd class="description">
+        
+      
+        <dt id="DEFAULT_STYLESHEET_NAME">DEFAULT_STYLESHEET_NAME
+        
+        <dd class="description">
+        
+      
+        <dt id="DEFAULT_STYLESHEET_PATH">DEFAULT_STYLESHEET_PATH
+        
+        <dd class="description">
         
       
         <dt id="DELIMITED_BLOCKS">DELIMITED_BLOCKS
@@ -463,6 +495,11 @@ engine</p>
         <dd class="description">
         
       
+        <dt id="PARAGRAPH_STYLES">PARAGRAPH_STYLES
+        
+        <dd class="description"><p>NOTE: AsciiDoc doesn’t support pass style for paragraph</p>
+        
+      
         <dt id="QUOTE_SUBS">QUOTE_SUBS
         
         <dd class="description"><p>unconstrained quotes:: can appear anywhereconstrained quotes:: must be
@@ -486,12 +523,27 @@ here] or [enclosed [text] here]</p>
 it explicitlyorder is significant</p>
         
       
+        <dt id="ROOT_PATH">ROOT_PATH
+        
+        <dd class="description"><p>The root path of the <a href="Asciidoctor.html">Asciidoctor</a> gem</p>
+        
+      
+        <dt id="SECTION_LEVELS">SECTION_LEVELS
+        
+        <dd class="description">
+        
+      
         <dt id="SPECIAL_CHARS">SPECIAL_CHARS
         
         <dd class="description">
         
       
         <dt id="SPECIAL_CHARS_PATTERN">SPECIAL_CHARS_PATTERN
+        
+        <dd class="description">
+        
+      
+        <dt id="VERBATIM_STYLES">VERBATIM_STYLES
         
         <dd class="description">
         
@@ -582,8 +634,12 @@ Asciidoctor::Document#initialize for details</p>
 
           
           <div class="method-source-code" id="load-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 589</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 672</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">monitor</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:monitor</span>, <span class="ruby-keyword">false</span>))
+    <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-keyword">end</span>
+
   <span class="ruby-identifier">lines</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">File</span>)
     <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] <span class="ruby-operator">||=</span> {}
@@ -609,7 +665,19 @@ Asciidoctor::Document#initialize for details</p>
     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Unsupported input type: #{input.class}&quot;</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">lines</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) 
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+    <span class="ruby-identifier">read_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+    <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">lines</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>) 
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+    <span class="ruby-identifier">parse_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+    <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:read</span>] = <span class="ruby-identifier">read_time</span>
+    <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:parse</span>] = <span class="ruby-identifier">parse_time</span>
+    <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:load</span>] = <span class="ruby-identifier">read_time</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">parse_time</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">doc</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- load-source -->
           
@@ -658,7 +726,7 @@ Asciidoctor::Document#initialize for details</p>
 
           
           <div class="method-source-code" id="load_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 630</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 729</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -721,24 +789,29 @@ Asciidoctor::Document#initialize for details</p>
 <p>a callback block for handling include::[] directives</p>
 </dd></dl>
 
-<p>returns nothing if the rendered output String is written to a
-file,otherwise the rendered output String is returned</p>
+<p>returns the <a href="Asciidoctor/Document.html">Document</a> object if the
+rendered result String is written to afile, otherwise the rendered result
+String</p>
           
           
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 663</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 762</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">in_place</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:in_place</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:to_file</span>)
   <span class="ruby-identifier">to_dir</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:to_dir</span>)
   <span class="ruby-identifier">mkdirs</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:mkdirs</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-identifier">monitor</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:monitor</span>, <span class="ruby-keyword">false</span>)
 
   <span class="ruby-identifier">write_in_place</span> = <span class="ruby-identifier">in_place</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">File</span>)
   <span class="ruby-identifier">write_to_target</span> = <span class="ruby-identifier">to_file</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">to_dir</span>
+  <span class="ruby-identifier">stream_output</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">to_file</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">to_file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:write</span>)
 
-  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">':in_place with input file must not accompany :to_dir or :to_file'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">write_in_place</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">write_to_target</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">write_in_place</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">write_to_target</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'the option :in_place cannot be used with either the :to_dir or :to_file option'</span>
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:header_footer</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">write_in_place</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">write_to_target</span>)
     <span class="ruby-identifier">options</span>[<span class="ruby-value">:header_footer</span>] = <span class="ruby-keyword">true</span>
@@ -746,21 +819,26 @@ file,otherwise the rendered output String is returned</p>
 
   <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">write_in_place</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">to_file</span> <span class="ruby-operator">==</span> <span class="ruby-string">'/dev/null'</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">doc</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">write_in_place</span>
     <span class="ruby-identifier">to_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">input</span>.<span class="ruby-identifier">path</span>), <span class="ruby-node">&quot;#{doc.attributes['docname']}#{doc.attributes['outfilesuffix']}&quot;</span>)
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">write_to_target</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">write_to_target</span>
+    <span class="ruby-identifier">working_dir</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:base_dir</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:base_dir</span>]) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>)
+    <span class="ruby-comment"># QUESTION should the jail be the working_dir or doc.base_dir???</span>
+    <span class="ruby-identifier">jail</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">working_dir</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">to_dir</span>
-      <span class="ruby-identifier">to_dir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">to_dir</span>, <span class="ruby-string">'to_dir'</span>, <span class="ruby-keyword">false</span>)
+      <span class="ruby-identifier">to_dir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">to_dir</span>, <span class="ruby-identifier">working_dir</span>, <span class="ruby-identifier">jail</span>, <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'to_dir'</span>, <span class="ruby-value">:recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">to_file</span>
-        <span class="ruby-comment"># normalize again, to_file could have dirty bits</span>
-        <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-identifier">to_dir</span>), <span class="ruby-string">'to_file'</span>, <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-identifier">to_dir</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'to_dir'</span>, <span class="ruby-value">:recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
         <span class="ruby-comment"># reestablish to_dir as the final target directory (in the case to_file had directory segments)</span>
         <span class="ruby-identifier">to_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">to_file</span>)
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">to_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">to_dir</span>, <span class="ruby-node">&quot;#{doc.attributes['docname']}#{doc.attributes['outfilesuffix']}&quot;</span>)
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">to_file</span>
-      <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-string">'to_file'</span>, <span class="ruby-keyword">false</span>)
+      <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-identifier">working_dir</span>, <span class="ruby-identifier">jail</span>, <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'to_dir'</span>, <span class="ruby-value">:recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
+      <span class="ruby-comment"># establish to_dir as the final target directory (in the case to_file had directory segments)</span>
       <span class="ruby-identifier">to_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">to_file</span>)
     <span class="ruby-keyword">end</span>
 
@@ -774,11 +852,46 @@ file,otherwise the rendered output String is returned</p>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
+  <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+  <span class="ruby-identifier">output</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">render</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+    <span class="ruby-identifier">render_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+    <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:render</span>] = <span class="ruby-identifier">render_time</span>
+    <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:load_render</span>] = <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:load</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">render_time</span>
+  <span class="ruby-keyword">end</span>
+
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">to_file</span>
-    <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">render</span> }
-    <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">stream_output</span>
+      <span class="ruby-identifier">to_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">output</span>.<span class="ruby-identifier">rstrip</span>
+      <span class="ruby-comment"># ensure there's a trailing endline</span>
+      <span class="ruby-identifier">to_file</span>.<span class="ruby-identifier">write</span> <span class="ruby-string">&quot;\n&quot;</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">to_file</span>, <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">output</span> }
+      <span class="ruby-comment"># these assignments primarily for testing, diagnostics or reporting</span>
+      <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'outfile'</span>] = <span class="ruby-identifier">outfile</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">to_file</span>)
+      <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'outdir'</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">outfile</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">monitor</span>
+      <span class="ruby-identifier">write_time</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">start</span>
+      <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:write</span>] = <span class="ruby-identifier">write_time</span>
+      <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:total</span>] = <span class="ruby-identifier">monitor</span>[<span class="ruby-value">:load_render</span>] <span class="ruby-operator">+</span> <span class="ruby-identifier">write_time</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># NOTE document cannot control this behavior if safe &gt;= SafeMode::SERVER</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'copycss'</span>) <span class="ruby-operator">&amp;&amp;</span>
+        <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'linkcss'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">DEFAULT_STYLESHEET_KEYS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'stylesheet'</span>))
+      <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'fileutils'</span>
+      <span class="ruby-identifier">outdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'outdir'</span>)
+      <span class="ruby-identifier">stylesdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'stylesdir'</span>), <span class="ruby-identifier">outdir</span>,
+          <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">outdir</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">stylesdir</span>
+      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-constant">DEFAULT_STYLESHEET_PATH</span>, <span class="ruby-identifier">stylesdir</span>, <span class="ruby-value">:preserve</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">doc</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">render</span>
+    <span class="ruby-identifier">output</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render-source -->
@@ -818,14 +931,15 @@ Asciidoctor::Document#initialize for details</p>
 <p>a callback block for handling include::[] directives</p>
 </dd></dl>
 
-<p>returns nothing if the rendered output String is written to a
-file,otherwise the rendered output String is returned</p>
+<p>returns the <a href="Asciidoctor/Document.html">Document</a> object if the
+rendered result String is written to afile, otherwise the rendered result
+String</p>
           
           
 
           
           <div class="method-source-code" id="render_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 726</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 869</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>

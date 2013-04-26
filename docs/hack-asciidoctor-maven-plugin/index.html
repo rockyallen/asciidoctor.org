@@ -1,22 +1,18 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Hacking on the Asciidoctor Maven Plugin | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Hacking on the Asciidoctor Maven Plugin</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
   <div class="sectionbody">
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>The <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin">asciidoctor-maven-plugin</a> is the official means of using Asciidoctor to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://maven.apache.org">Apache Maven</a>.
 For help running this plugin, review the <a href="install-and-use-asciidoctor-maven-plugin">How do I install and use the Asciidoctor Maven plugin guide</a>.</p>
 </div>
-
   </div>
 </div>
 <div class="sect1">
   <h2 id="hacking">Hacking</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>Developer setup for hacking on this project isn&#8217;t very difficult.
 The requirements are very small:</p>
-</div>
-<div class="ulist">
+</div><div class="ulist">
   
   <ul>
     <li>
@@ -33,60 +29,45 @@ The requirements are very small:</p>
     </li>
   </ul>
 </div>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>Everything else will be brought in by either Maven or Bundler.</p>
-</div>
-<div class="sect2">
+</div><div class="sect2">
   <h3 id="updating-the-gems-in-the-project">Updating the gems in the project</h3>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>All of the gems for the project must be self contained so they&#8217;re included in the final jar. To update the gems in the project, simply issue:</p>
-</div>
-<div class="literalblock">
+</div><div class="literalblock">
   
   <div class="content monospaced">
     <pre>bundle install --path src/main/resources --standalone --clean</pre>
   </div>
 </div>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>from the project root.
 This will retrieve any new versions since the last install, or Gemfile change, install them into the correct location and clean any unused versions.</p>
 </div>
-
 </div>
-
   </div>
-</div>
-<div class="sect1">
+</div><div class="sect1">
   <h2 id="testing">Testing</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p><a href="http://spockframework.org">Spock</a> is used for testing the calling of the jRuby code from the Mojo. This will be downloaded by Maven. Tests are run simply by:</p>
-</div>
-<div class="literalblock">
+</div><div class="literalblock">
   
   <div class="content monospaced">
     <pre>mvn clean test</pre>
   </div>
 </div>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>Or any of the other goals which run tests. If I can figure out a good way to setup a ruby testing environment I&#8217;ll do that as well, but none exists at this time.</p>
 </div>
-
   </div>
-</div>
-<div class="sect1">
+</div><div class="sect1">
   <h2 id="issues">Issues</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>To file an issue regarding this plugin, visit the <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin/issues">plugin&#8217;s repository</a>.</p>
 </div>
-
   </div>
 </div>
 

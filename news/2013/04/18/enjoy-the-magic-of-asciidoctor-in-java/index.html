@@ -3,21 +3,17 @@
   Installation
  ..."><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/18/enjoy-the-magic-of-asciidoctor-in-java/">Enjoy the magic of Asciidoctor in Java</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-18T21:43:51-06:00">Thursday, April 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
   <div class="sectionbody">
-<div class="paragraph">
-    
-  <p>The <tt>asciidoctor-java-integration</tt> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
+<div class="paragraph">  
+  <p>The <code>asciidoctor-java-integration</code> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
 </div>
-
   </div>
 </div>
 <div class="sect1">
   <h2 id="installation">Installation</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
-  <p>Since <tt>asciidoctor-java-integration</tt> is a standard jar file, the only thing you should do is add library into classpath.</p>
-</div>
-<div class="listingblock">
+<div class="paragraph">  
+  <p>Since <code>asciidoctor-java-integration</code> is a standard jar file, the only thing you should do is add library into classpath.</p>
+</div><div class="listingblock">
   <div class="title">Dependency declaration in Maven</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="xml">&lt;dependencies&gt;
@@ -40,19 +36,16 @@
 </div>
 
   </div>
-</div>
-<div class="sect1">
+</div><div class="sect1">
   <h2 id="usage">Usage</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
-  <p>The core interface of <tt>asciidoctor-java-integration</tt> is <tt>Asciidoctor</tt> interface. It provides two methods for rendering asciidoc content, <tt>render</tt> and <tt>renderFile</tt>. Both of them returns a string with rendered content.</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 100%; ">
+<div class="paragraph">  
+  <p>The core interface of <code>asciidoctor-java-integration</code> is <code>Asciidoctor</code> interface. It provides two methods for rendering asciidoc content, <code>render</code> and <code>renderFile</code>. Both of them returns a string with rendered content.</p>
+</div><table class="tableblock frame-all grid-all" style="width:100%; ">
   <caption class="title">Table 1. Method description</caption>
   <colgroup>
-    <col style="width: 33%;">
-    <col style="width: 66%;">
+    <col style="width:33%;">
+    <col style="width:66%;">
   </colgroup>
   <thead>
     <tr>
@@ -62,20 +55,18 @@
   </thead>
   <tbody>
     <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><tt>render</tt></p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><code>render</code></p></td>
       <td class="tableblock halign-left valign-top"><p class="tableblock">Parse the AsciiDoc content into a Document and render it to the specified backend format.</p></td>
     </tr>
     <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><tt>renderFile</tt></p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderFile</code></p></td>
       <td class="tableblock halign-left valign-top"><p class="tableblock">Parse the content of AsciiDoc file into a Document and render it to the specified backend format.</p></td>
     </tr>
   </tbody>
 </table>
-<div class="paragraph">
-    
-  <p>Also a factory method is provided to create an instance of <tt>Asciidoctor</tt> interface.</p>
-</div>
-<div class="listingblock">
+<div class="paragraph">  
+  <p>Also a factory method is provided to create an instance of <code>Asciidoctor</code> interface.</p>
+</div><div class="listingblock">
   <div class="title">Creation of Asciidoctor interface</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">import static org.asciidoctor.Asciidoctor.Factory.create;
@@ -84,22 +75,18 @@ import org.asciidoctor.Asciidoctor;
 Asciidoctor asciidoctor = create();</code></pre>
   </div>
 </div>
-<div class="paragraph">
-    
-  <p>And then we can call <tt>render</tt> methods depending on our requirements.</p>
-</div>
-<div class="listingblock">
+<div class="paragraph">  
+  <p>And then we can call <code>render</code> methods depending on our requirements.</p>
+</div><div class="listingblock">
   <div class="title">Rendering a String</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">String rendered = asciidoctor.render("*This* is it.", Collections.EMPTY_MAP);
 System.out.println(rendered);</code></pre>
   </div>
 </div>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>But also you can render the content of a file.</p>
-</div>
-<div class="listingblock">
+</div><div class="listingblock">
   <div class="title">Rendering a File</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">String rendered = asciidoctor.renderFile("docs/sample.adoc", Collections.EMPTY_MAP);
@@ -108,15 +95,11 @@ System.out.println(rendered);</code></pre>
 </div>
 <div class="sect2">
   <h3 id="options">Options</h3>
-<div class="paragraph">
-    
-  <p><a href="http://asciidoctor.org">Asciidoctor</a> supports different kind of options, like <tt>in_place</tt> which renders the output inside a file, <tt>template_dir</tt> used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example <tt>attributes</tt> option where we can set key-value pairs of attributes that will be used within asciidoc document.</p>
-</div>
-<div class="paragraph">
-    
-  <p>The second parameter of <tt>render</tt> methods are a <tt>java.util.Map</tt> where we can set all these options.</p>
-</div>
-<div class="listingblock">
+<div class="paragraph">  
+  <p><a href="http://asciidoctor.org">Asciidoctor</a> supports different kind of options, like <code>in_place</code> which renders the output inside a file, <code>template_dir</code> used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example <code>attributes</code> option where we can set key-value pairs of attributes that will be used within asciidoc document.</p>
+</div><div class="paragraph">  
+  <p>The second parameter of <code>render</code> methods are a <code>java.util.Map</code> where we can set all these options.</p>
+</div><div class="listingblock">
   <div class="title">Example of using in_place Option and backend Attribute</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
@@ -129,19 +112,13 @@ options.put("attributes", attributes);
 String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
   </div>
 </div>
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>See that in previous example we have created a Map, where we have put the options and attributes (creating a Map too) required to render input as docbook and generate an output file.</p>
-</div>
-<div class="paragraph">
-    
-  <p>But <tt>asciidoctor-java-integration</tt> also provides two builder classes to create these maps in a more readable form.</p>
-</div>
-<div class="paragraph">
-    
-  <p><tt>AttributesBuilder</tt> is provided for creating a map with required attributes set, and <tt>OptionsBuilder</tt> can be used for options. Previous example but using these classes looks like:</p>
-</div>
-<div class="listingblock">
+</div><div class="paragraph">  
+  <p>But <code>asciidoctor-java-integration</code> also provides two builder classes to create these maps in a more readable form.</p>
+</div><div class="paragraph">  
+  <p><code>AttributesBuilder</code> is provided for creating a map with required attributes set, and <code>OptionsBuilder</code> can be used for options. Previous example but using these classes looks like:</p>
+</div><div class="listingblock">
   <div class="title">Example setting attributes and options</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">import static org.asciidoctor.AttributesBuilder.attributes;
@@ -156,14 +133,11 @@ String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre
   </div>
 </div>
 
-</div>
-<div class="sect2">
+</div><div class="sect2">
   <h3 id="utilities">Utilities</h3>
-<div class="paragraph">
-    
-  <p>A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with <em>.asc</em>, <em>.asciidoc</em>, <em>.ad</em> or <em>.adoc</em>. This class is <tt>AsciidocDirectoryWalker</tt>.</p>
-</div>
-<div class="listingblock">
+<div class="paragraph">  
+  <p>A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with <em>.asc</em>, <em>.asciidoc</em>, <em>.ad</em> or <em>.adoc</em>. This class is <code>AsciidocDirectoryWalker</code>.</p>
+</div><div class="listingblock">
   <div class="title">Example of finding all asciidoc</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="java">DirectoryWalker directoryWalker = new AsciidocDirectoryWalker("docs");
@@ -172,17 +146,13 @@ List&lt;File&gt; asciidocFiles = directoryWalker.scan();</code></pre>
 </div>
 
 </div>
-
   </div>
-</div>
-<div class="sect1">
+</div><div class="sect1">
   <h2 id="contributing">Contributing</h2>
   <div class="sectionbody">
-<div class="paragraph">
-    
+<div class="paragraph">  
   <p>You can contribute with patches, better documentation, feature requests, any help you&#8217;re able to provide.</p>
 </div>
-
   </div>
 </div>
 

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::DocBook45::InlineAnchorTemplate - API Documentation for Asciidoctor 0.1.1</title>
+<title>class Asciidoctor::DocBook45::InlineAnchorTemplate - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -75,6 +75,8 @@
     
     <li ><a href="#method-i-anchor">#anchor</a>
     
+    <li ><a href="#method-i-result">#result</a>
+    
     <li ><a href="#method-i-template">#template</a>
     
   </ul>
@@ -88,7 +90,7 @@
 
   <ul>
   
-    <li class="file"><a href="../../README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="../../README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -124,6 +126,8 @@
   
     <li><a href="../../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -158,9 +162,13 @@
   
     <li><a href="../../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -184,9 +192,13 @@
   
     <li><a href="../../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="../../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -222,9 +234,13 @@
   
     <li><a href="../../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="../../Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -254,7 +270,7 @@
   
     <li><a href="../../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="../../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="../../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="../../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -324,7 +340,7 @@
 
           
           <div class="method-source-code" id="anchor-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 526</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 593</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">type</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:ref</span>
@@ -347,6 +363,39 @@
       </div><!-- anchor-method -->
 
     
+      <div id="method-i-result" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result</span><span
+            class="method-args">(node)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 606</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
+  <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">target</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">text</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">type</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result-method -->
+
+    
       <div id="method-i-template" class="method-detail ">
         
         <div class="method-heading">
@@ -366,13 +415,10 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 539</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
-    <span class="ruby-comment"># hot piece of code, optimized for speed</span>
-    <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
-&lt;%#encoding:UTF-8%&gt;&lt;%= template.anchor(@target, @text, @type) %&gt;
-    EOS</span>
-  <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 610</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
+  <span class="ruby-value">:invoke_result</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- template-source -->
           
         </div>

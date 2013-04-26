@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::AttributeList - API Documentation for Asciidoctor 0.1.1</title>
+<title>class Asciidoctor::AttributeList - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -118,7 +118,7 @@
 
   <ul>
   
-    <li class="file"><a href="../README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="../README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -154,6 +154,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -188,9 +190,13 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -214,9 +220,13 @@
   
     <li><a href="../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -252,9 +262,13 @@
   
     <li><a href="../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -284,7 +298,7 @@
   
     <li><a href="../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -417,6 +431,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">pos_attrs</span>)
   <span class="ruby-identifier">pos_attrs</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">index</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">pos</span> = <span class="ruby-identifier">index</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
     <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">pos</span>]).<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
@@ -508,7 +523,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="parse_attribute-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_attribute</span>(<span class="ruby-identifier">index</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">pos_attrs</span> = [])
   <span class="ruby-identifier">single_quoted_value</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">skip_blank</span>
@@ -580,9 +595,11 @@ whengiven a posattrs array either during parsing or after the fact.</p>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">resolved_value</span> = <span class="ruby-identifier">value</span>
     <span class="ruby-comment"># example: options=&quot;opt1,opt2,opt3&quot;</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'options'</span>
+    <span class="ruby-comment"># opts is an alias for options</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'options'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'opts'</span>
+      <span class="ruby-identifier">name</span> = <span class="ruby-string">'options'</span>
       <span class="ruby-identifier">resolved_value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">CSV_SPLIT_PATTERN</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
-        <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">o</span> <span class="ruby-operator">+</span> <span class="ruby-string">'-option'</span>] = <span class="ruby-keyword">nil</span>
+        <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">o</span> <span class="ruby-operator">+</span> <span class="ruby-string">'-option'</span>] = <span class="ruby-string">''</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">single_quoted_value</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@block</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">resolved_value</span> = <span class="ruby-ivar">@block</span>.<span class="ruby-identifier">apply_normal_subs</span>(<span class="ruby-identifier">value</span>)
@@ -621,7 +638,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="parse_attribute_value-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 182</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_attribute_value</span>(<span class="ruby-identifier">quote</span>)
   <span class="ruby-comment"># empty quoted value</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">peek</span>(<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">quote</span>
@@ -732,7 +749,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="scan_name-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 206</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">scan_name</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span> <span class="ruby-constant">NAME_PATTERN</span>
 <span class="ruby-keyword">end</span></pre>
@@ -765,7 +782,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="scan_to_delimiter-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 210</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 213</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">scan_to_delimiter</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span> <span class="ruby-constant">BOUNDARY_PATTERNS</span>[<span class="ruby-ivar">@delimiter</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -798,7 +815,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="scan_to_quote-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 214</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 217</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">scan_to_quote</span>(<span class="ruby-identifier">quote</span>)
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">scan</span> <span class="ruby-constant">BOUNDARY_PATTERNS</span>[<span class="ruby-identifier">quote</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -831,7 +848,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="skip_blank-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 201</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">skip_blank</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span> <span class="ruby-constant">SKIP_PATTERNS</span>[<span class="ruby-value">:blank</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -864,7 +881,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
           
           <div class="method-source-code" id="skip_delimiter-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 202</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">skip_delimiter</span>
   <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">skip</span> <span class="ruby-constant">SKIP_PATTERNS</span>[<span class="ruby-ivar">@delimiter</span>]
 <span class="ruby-keyword">end</span></pre>

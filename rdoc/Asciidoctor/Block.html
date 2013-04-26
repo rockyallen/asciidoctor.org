@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Block - API Documentation for Asciidoctor 0.1.1</title>
+<title>class Asciidoctor::Block - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -104,7 +104,7 @@
 
   <ul>
   
-    <li class="file"><a href="../README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="../README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -140,6 +140,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -174,9 +176,13 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -200,9 +206,13 @@
   
     <li><a href="../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -238,9 +248,13 @@
   
     <li><a href="../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -270,7 +284,7 @@
   
     <li><a href="../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -349,7 +363,7 @@
 
           
           <div class="method-source-code" id="splain-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 43</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">splain</span>(<span class="ruby-identifier">parent_level</span> = <span class="ruby-value">0</span>)
   <span class="ruby-identifier">parent_level</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
   <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Block id: #{id}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
@@ -536,6 +550,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>, <span class="ruby-identifier">buffer</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-ivar">@buffer</span> = <span class="ruby-identifier">buffer</span>
+  <span class="ruby-ivar">@caption</span> = <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -582,11 +597,10 @@ characters and entities converted to their HTML equivalents.</p>
 
           
           <div class="method-source-code" id="content-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 96</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
-
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@context</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:preamble</span>, <span class="ruby-value">:open</span>, <span class="ruby-value">:example</span>, <span class="ruby-value">:sidebar</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:preamble</span>, <span class="ruby-value">:open</span>
     <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">render</span> }.<span class="ruby-identifier">join</span>
   <span class="ruby-comment"># lists get iterated in the template (for now)</span>
   <span class="ruby-comment"># list items recurse into this block when their text and content methods are called</span>
@@ -596,14 +610,14 @@ characters and entities converted to their HTML equivalents.</p>
     <span class="ruby-identifier">apply_literal_subs</span>(<span class="ruby-ivar">@buffer</span>)
   <span class="ruby-keyword">when</span> <span class="ruby-value">:pass</span>
     <span class="ruby-identifier">apply_passthrough_subs</span>(<span class="ruby-ivar">@buffer</span>)
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:quote</span>, <span class="ruby-value">:verse</span>, <span class="ruby-value">:admonition</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:admonition</span>, <span class="ruby-value">:example</span>, <span class="ruby-value">:sidebar</span>, <span class="ruby-value">:quote</span>, <span class="ruby-value">:verse</span>
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-identifier">apply_normal_subs</span>(<span class="ruby-ivar">@buffer</span>)
+      <span class="ruby-identifier">apply_para_subs</span>(<span class="ruby-ivar">@buffer</span>)
     <span class="ruby-keyword">else</span>
       <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">render</span> }.<span class="ruby-identifier">join</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">apply_normal_subs</span>(<span class="ruby-ivar">@buffer</span>)
+    <span class="ruby-identifier">apply_para_subs</span>(<span class="ruby-ivar">@buffer</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- content-source -->
@@ -638,7 +652,7 @@ block’s template.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>
   <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Now rendering #{@context} block for #{self}&quot;</span> }
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">playback_attributes</span> <span class="ruby-ivar">@attributes</span>

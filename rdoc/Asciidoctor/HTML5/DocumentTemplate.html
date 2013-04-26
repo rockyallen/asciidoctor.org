@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::HTML5::DocumentTemplate - API Documentation for Asciidoctor 0.1.1</title>
+<title>class Asciidoctor::HTML5::DocumentTemplate - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -100,7 +100,7 @@
 
   <ul>
   
-    <li class="file"><a href="../../README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="../../README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -136,6 +136,8 @@
   
     <li><a href="../../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -170,9 +172,13 @@
   
     <li><a href="../../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -196,9 +202,13 @@
   
     <li><a href="../../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="../../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -234,9 +244,13 @@
   
     <li><a href="../../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="../../Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -266,7 +280,7 @@
   
     <li><a href="../../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="../../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="../../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="../../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -405,41 +419,48 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
 &lt;%#encoding:UTF-8%&gt;&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&gt;
+&lt;html&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&lt;% end %&gt;&gt;
   &lt;head&gt;
     &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=&lt;%= attr :encoding %&gt;&quot;&gt;
     &lt;meta name=&quot;generator&quot; content=&quot;Asciidoctor &lt;%= attr 'asciidoctor-version' %&gt;&quot;&gt;
-    &lt;% if attr? :description %&gt;&lt;meta name=&quot;description&quot; content=&quot;&lt;%= attr :description %&gt;&quot;&gt;&lt;% end %&gt;
-    &lt;% if attr? :keywords %&gt;&lt;meta name=&quot;keywords&quot; content=&quot;&lt;%= attr :keywords %&gt;&quot;&gt;&lt;% end %&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;% if attr? :description %&gt;
+    &lt;meta name=&quot;description&quot; content=&quot;&lt;%= attr :description %&gt;&quot;&gt;
+    &lt;% end %&gt;
+    &lt;% if attr? :keywords %&gt;
+    &lt;meta name=&quot;keywords&quot; content=&quot;&lt;%= attr :keywords %&gt;&quot;&gt;
+    &lt;% end %&gt;
     &lt;title&gt;&lt;%= doctitle %&gt;&lt;/title&gt;
-    &lt;% if attr? :toc %&gt;
+    &lt;% if DEFAULT_STYLESHEET_KEYS.include?(attr 'stylesheet') %&gt;
+    &lt;% if @safe &gt;= SafeMode::SECURE || (attr? 'linkcss') %&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(DEFAULT_STYLESHEET_NAME, (attr :stylesdir, '')) %&gt;&quot;&gt;
+    &lt;% else %&gt;
     &lt;style&gt;
-#toc &gt; ol { padding-left: 0; }
-#toc ol { list-style-type: none; }
+&lt;%= read_asset DEFAULT_STYLESHEET_PATH %&gt;
     &lt;/style&gt;
     &lt;% end %&gt;
-    &lt;% unless attr(:stylesheet, '').empty? %&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= (attr? :stylesdir) ? File.join((attr :stylesdir), (attr :stylesheet)) : (attr :stylesheet) %&gt;&quot;&gt;
-    &lt;% end %&gt;
-    &lt;%
-    case attr 'source-highlighter' %&gt;&lt;%
-    when 'coderay' %&gt;
+    &lt;% elsif attr? :stylesheet %&gt;
+    &lt;% if attr? 'linkcss' %&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path((attr :stylesheet), attr(:stylesdir, '')) %&gt;&quot;&gt;
+    &lt;% else %&gt;
     &lt;style&gt;
-pre.highlight { border: none; background-color: #F8F8F8; }
-pre.highlight code, pre.highlight pre { color: #333; }
-pre.highlight span.line-numbers { display: inline-block; margin-right: 4px; padding: 1px 4px; }
-pre.highlight .line-numbers { background-color: #D5F6F6; color: gray; }
-pre.highlight .line-numbers pre { color: gray; }
-&lt;% if (attr 'coderay-css', 'class') == 'class' %&gt;&lt;%= template.class.default_coderay_stylesheet %&gt;&lt;% end %&gt;
-    &lt;/style&gt;&lt;%
+&lt;%= read_asset normalize_system_path(attr(:stylesheet), attr(:stylesdir, '')), true %&gt;
+    &lt;/style&gt;
+    &lt;% end %&gt;
+    &lt;% end %&gt;
+    &lt;% case attr 'source-highlighter' %&gt;&lt;%
+    when 'coderay' %&gt;
+    &lt;% if (attr 'coderay-css', 'class') == 'class' %&gt;
+    &lt;style&gt;
+&lt;%= template.class.default_coderay_stylesheet %&gt;
+    &lt;/style&gt;
+    &lt;% end %&gt;&lt;%
     when 'highlightjs' %&gt;
     &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= (attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3') %&gt;/styles/&lt;%= (attr 'highlightjs-theme', 'default') %&gt;.min.css&quot;&gt;
-    &lt;style&gt;
-pre code { background-color: #F8F8F8; padding: 0; }
-    &lt;/style&gt;
     &lt;script src=&quot;&lt;%= (attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3') %&gt;/highlight.min.js&quot;&gt;&lt;/script&gt;
     &lt;script&gt;hljs.initHighlightingOnLoad()&lt;/script&gt;
     &lt;% end %&gt;
+&lt;%= docinfo %&gt;
   &lt;/head&gt;
   &lt;body#{id} class=&quot;&lt;%= doctype %&gt;&quot;&lt;% if attr? 'max-width' %&gt; style=&quot;max-width: &lt;%= attr 'max-width' %&gt;;&quot;&lt;% end %&gt;&gt;
     &lt;% unless noheader %&gt;
@@ -448,14 +469,14 @@ pre code { background-color: #F8F8F8; padding: 0; }
       &lt;% unless notitle %&gt;
       &lt;h1&gt;&lt;%= @header.title %&gt;&lt;/h1&gt;
       &lt;% end %&gt;
-      &lt;% if attr? :author %&gt;&lt;span id=&quot;author&quot;&gt;&lt;%= attr :author %&gt;&lt;/span&gt;&lt;br&gt;&lt;% end %&gt;
-      &lt;% if attr? :email %&gt;&lt;span id=&quot;email&quot; class=&quot;monospaced&quot;&gt;&amp;lt;&lt;%= attr :email %&gt;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;% end %&gt;
+      &lt;% if attr? :author %&gt;&lt;span id=&quot;author&quot;&gt;&lt;%= attr :author %&gt;&lt;/span&gt;&lt;br&gt;
+      &lt;% if attr? :email %&gt;&lt;span id=&quot;email&quot;&gt;&lt;%= sub_macros(attr :email) %&gt;&lt;/span&gt;&lt;br&gt;&lt;% end %&gt;&lt;% end %&gt;
       &lt;% if attr? :revnumber %&gt;&lt;span id=&quot;revnumber&quot;&gt;version &lt;%= attr :revnumber %&gt;&lt;%= attr?(:revdate) ? ',' : '' %&gt;&lt;/span&gt;&lt;% end %&gt;
       &lt;% if attr? :revdate %&gt;&lt;span id=&quot;revdate&quot;&gt;&lt;%= attr :revdate %&gt;&lt;/span&gt;&lt;% end %&gt;
       &lt;% if attr? :revremark %&gt;&lt;br&gt;&lt;span id=&quot;revremark&quot;&gt;&lt;%= attr :revremark %&gt;&lt;/span&gt;&lt;% end %&gt;
       &lt;% end %&gt;
-      &lt;% if attr? :toc %&gt;
-      &lt;div id=&quot;toc&quot;&gt;
+      &lt;% if (attr? :toc) &amp;&amp; (attr? 'toc-placement', 'auto') %&gt;
+      &lt;div id=&quot;toc&quot; class=&quot;&lt;%= attr 'toc-class', 'toc' %&gt;&quot;&gt;
         &lt;div id=&quot;toctitle&quot;&gt;&lt;%= attr 'toc-title' %&gt;&lt;/div&gt;
 &lt;%= template.class.outline(self, (attr :toclevels, 2).to_i) %&gt;
       &lt;/div&gt;
@@ -465,8 +486,7 @@ pre code { background-color: #F8F8F8; padding: 0; }
     &lt;div id=&quot;content&quot;&gt;
 &lt;%= content %&gt;
     &lt;/div&gt;
-    &lt;% if footnotes? %&gt;
-    &lt;div id=&quot;footnotes&quot;&gt;
+    &lt;% unless !footnotes? || attr?(:nofootnotes) %&gt;&lt;div id=&quot;footnotes&quot;&gt;
       &lt;hr&gt;
       &lt;% footnotes.each do |fn| %&gt;
       &lt;div class=&quot;footnote&quot; id=&quot;_footnote_&lt;%= fn.index %&gt;&quot;&gt;

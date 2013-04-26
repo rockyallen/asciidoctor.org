@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::AbstractBlock - API Documentation for Asciidoctor 0.1.1</title>
+<title>class Asciidoctor::AbstractBlock - API Documentation for Asciidoctor 0.1.2</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -91,6 +91,8 @@
     
     <li ><a href="#method-i-5B-5D">#[]</a>
     
+    <li ><a href="#method-i-assign_caption">#assign_caption</a>
+    
     <li ><a href="#method-i-assign_index">#assign_index</a>
     
     <li ><a href="#method-i-blocks-3F">#blocks?</a>
@@ -122,7 +124,7 @@
 
   <ul>
   
-    <li class="file"><a href="../README_asciidoc.html">README.asciidoc</a>
+    <li class="file"><a href="../README_adoc.html">README.adoc</a>
   
   </ul>
 </nav>
@@ -158,6 +160,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockAdmonitionTemplate.html">Asciidoctor::DocBook45::BlockAdmonitionTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockAudioTemplate.html">Asciidoctor::DocBook45::BlockAudioTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockColistTemplate.html">Asciidoctor::DocBook45::BlockColistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockDlistTemplate.html">Asciidoctor::DocBook45::BlockDlistTemplate</a>
@@ -192,9 +196,13 @@
   
     <li><a href="../Asciidoctor/DocBook45/BlockTableTemplate.html">Asciidoctor::DocBook45::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/BlockTocTemplate.html">Asciidoctor::DocBook45::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/BlockUlistTemplate.html">Asciidoctor::DocBook45::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/BlockVerseTemplate.html">Asciidoctor::DocBook45::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/BlockVideoTemplate.html">Asciidoctor::DocBook45::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/DocumentTemplate.html">Asciidoctor::DocBook45::DocumentTemplate</a>
   
@@ -218,9 +226,13 @@
   
     <li><a href="../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
+    <li><a href="../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockAdmonitionTemplate.html">Asciidoctor::HTML5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockAudioTemplate.html">Asciidoctor::HTML5::BlockAudioTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockColistTemplate.html">Asciidoctor::HTML5::BlockColistTemplate</a>
   
@@ -256,9 +268,13 @@
   
     <li><a href="../Asciidoctor/HTML5/BlockTableTemplate.html">Asciidoctor::HTML5::BlockTableTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/BlockTocTemplate.html">Asciidoctor::HTML5::BlockTocTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/BlockUlistTemplate.html">Asciidoctor::HTML5::BlockUlistTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/BlockVerseTemplate.html">Asciidoctor::HTML5::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/BlockVideoTemplate.html">Asciidoctor::HTML5::BlockVideoTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/DocumentTemplate.html">Asciidoctor::HTML5::DocumentTemplate</a>
   
@@ -288,7 +304,7 @@
   
     <li><a href="../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
-    <li><a href="../Asciidoctor/ProjectError.html">Asciidoctor::ProjectError</a>
+    <li><a href="../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
     <li><a href="../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
   
@@ -563,6 +579,74 @@ href="Block.html">Block</a> resides</p>
 
         
       </div><!-- 5B-5D-method -->
+
+    
+      <div id="method-i-assign_caption" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">assign_caption</span><span
+            class="method-args">(caption = nil, key = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Generate a caption and assign it to this block if oneis not already
+assigned.</p>
+
+<p>If the block has a title and a caption prefix is availablefor this block,
+then build a caption from this information,assign it a number and store it
+to the caption attribute onthe block.</p>
+
+<p>If an explicit caption has been specified on this block, thendo nothing.</p>
+<dl class="rdoc-list note-list"><dt>key
+<dd>
+<p>The prefix of the caption and counter attribute names.If not provided, the
+name of the context for this blockis used. (default: nil).</p>
+</dd></dl>
+
+<p>returns nothing</p>
+          
+          
+
+          
+          <div class="method-source-code" id="assign_caption-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">assign_caption</span>(<span class="ruby-identifier">caption</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-identifier">title?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@caption</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">caption</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'caption'</span>)
+      <span class="ruby-ivar">@caption</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'caption'</span>)
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">title?</span>
+      <span class="ruby-identifier">key</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@context</span>.<span class="ruby-identifier">to_s</span>
+      <span class="ruby-identifier">caption_key</span> = <span class="ruby-node">&quot;#{key}-caption&quot;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">caption_key</span>)
+        <span class="ruby-identifier">caption_title</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{key}-caption&quot;</span>]
+        <span class="ruby-identifier">caption_num</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">counter_increment</span>(<span class="ruby-node">&quot;#{key}-number&quot;</span>, <span class="ruby-keyword">self</span>)
+        <span class="ruby-ivar">@caption</span> = <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'caption'</span>] = <span class="ruby-node">&quot;#{caption_title} #{caption_num}. &quot;</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-ivar">@caption</span> = <span class="ruby-identifier">caption</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@caption</span> = <span class="ruby-identifier">caption</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- assign_caption-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- assign_caption-method -->
 
     
       <div id="method-i-blocks-3F" class="method-detail ">
@@ -980,7 +1064,7 @@ order)</p>
 
           
           <div class="method-source-code" id="assign_index-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 239</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assign_index</span>(<span class="ruby-identifier">section</span>)
   <span class="ruby-identifier">section</span>.<span class="ruby-identifier">index</span> = <span class="ruby-ivar">@next_section_index</span>
   <span class="ruby-ivar">@next_section_index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
@@ -1020,7 +1104,7 @@ appears in document order.</p>
 
           
           <div class="method-source-code" id="reindex_sections-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 210</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 251</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_sections</span>
   <span class="ruby-ivar">@next_section_index</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">block</span><span class="ruby-operator">|</span>
