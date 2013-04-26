@@ -213,19 +213,64 @@ puts html</code></pre>
 <div class="paragraph">  
   <p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
 It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
-When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied by default.
-Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
-</div><div class="paragraph">  
-  <p>Also note that the <code>asciidoctor.css</code> file is automatically linked to the generated document.
-If you prefer to embed the stylesheet into the document, include the <code>linkcss!</code> attribute in the rendering argument.</p>
-</div><div class="literalblock">
+When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied and linked automatically by default.
+However, <code>asciidoctor.css</code> is not automatically available to the generated HTML document; you have two choices:</p>
+</div><div class="olist arabic">
+  
+  <ol class="arabic">
+    <li>
+      <p>If you prefer to copy <code>asciidoctor.css</code> to the output location and link to it from the generated document, set the <code>copycss</code> attribute:</p>
+<div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>$&gt; asciidoctor -a copycss sample.adoc</pre>
+  </div>
+</div>
+
+    </li>
+    <li>
+      <p>If you prefer to embed the stylesheet into the document, unset the <code>linkcss</code> attribute:</p>
+<div class="literalblock">
   
   <div class="content monospaced">
     <pre>$&gt; asciidoctor -a linkcss! sample.adoc</pre>
   </div>
 </div>
+
+    </li>
+  </ol>
+</div>
 <div class="paragraph">  
-  <p>The generated output can also be produced without the default styles.</p>
+  <p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
+</div><div class="admonitionblock tip">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/tip.png" alt="Tip">
+      </td>
+      <td class="content">
+        
+        <code>linkcss!</code> (which implies "embed css") embeds any stylesheet, not just <code>asciidoctor.css</code>.
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="admonitionblock important">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/important.png" alt="Important">
+      </td>
+      <td class="content">
+        
+        <code>linkcss</code> is set by default, unlike in AsciiDoc.
+We believe linking to the stylesheet is a better default, certainly a accepted practice on the web.
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="paragraph">  
+  <p>If you unset the stylesheet attribute, Asciidoctor will generate HTML without any styles:</p>
 </div><div class="literalblock">
   
   <div class="content monospaced">
@@ -260,6 +305,14 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
   
   <div class="content monospaced">
     <pre>$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
+  </div>
+</div>
+<div class="paragraph">  
+  <p>To have Asciidoctor embed the contents of the stylesheet in the generate HTML document, use:</p>
+</div><div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
   </div>
 </div>
 <div class="paragraph">  
@@ -359,7 +412,8 @@ See the <a href="http://asciidoc.org/userguide.html#X99">Themes</a> chapter in t
       </td>
       <td class="content">
         
-        Currently, Asciidoctor does not support the <code>theme</code> attribute. Stylesheets can only be applied via the <code>stylesheet</code> attribute.
+        Currently, Asciidoctor does not support the <code>theme</code> attribute.
+Stylesheets can only be applied via the <code>stylesheet</code> attribute.
       </td>
     </tr>
   </table>
