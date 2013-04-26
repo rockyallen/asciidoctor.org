@@ -105,12 +105,11 @@ a2x 8.6.8</pre>
 </div>
   </div>
 </div><div class="sect1">
-  <h2 id="installing-asciidoctor">Installing Asciidoctor</h2>
+  <h2 id="installing-or-updating-asciidoctor">Installing or Updating Asciidoctor</h2>
   <div class="sectionbody">
 <div class="paragraph">  
   <p>Asciidoctor is published as a RubyGem.
-It currently works with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 on Linux, Mac and
-Windows.</p>
+It currently works with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 on Linux, Mac and Windows.</p>
 </div><div class="paragraph">  
   <p>If you have Ruby on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
 </div><div class="literalblock">
@@ -120,13 +119,43 @@ Windows.</p>
   </div>
 </div>
 <div class="paragraph">  
-  <p>If the <code>asciidoctor</code> gem installed successfully, the <code>asciidoctor</code> command-line interface should be available on your PATH.
+  <p>If you already have Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
+</div><div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>$&gt; gem update asciidoctor</pre>
+  </div>
+</div>
+<div class="admonitionblock tip">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/tip.png" alt="Tip">
+      </td>
+      <td class="content">
+        
+        <div class="paragraph">  
+  <p>If you accidentally use <code>gem install</code> instead of <code>gem update</code> then you will have both versions installed.
+If you wish to remove the older version use the <code>gem</code> command:</p>
+</div><div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>$&gt; gem cleanup asciidoctor</pre>
+  </div>
+</div>
+
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="paragraph">  
+  <p>If the <code>asciidoctor</code> gem installed or updated successfully, the <code>asciidoctor</code> command-line interface should be available on your PATH.
 To invoke it, simply execute:</p>
 </div><div class="literalblock">
   
   <div class="content monospaced">
     <pre>$&gt; asciidoctor --version
-Asciidoctor 0.1.1 [http://asciidoctor.org]</pre>
+Asciidoctor 0.1.2 [http://asciidoctor.org]</pre>
   </div>
 </div>
 <div class="sect2">
@@ -138,6 +167,42 @@ Asciidoctor 0.1.1 [http://asciidoctor.org]</pre>
   <div class="content monospaced">
     <pre>$&gt; sudo yum install rubygem-asciidoctor</pre>
   </div>
+</div>
+<div class="paragraph">  
+  <p>Or you can update it using:</p>
+</div><div class="literalblock">
+  
+  <div class="content monospaced">
+    <pre>$&gt; sudo yum update rubygem-asciidoctor</pre>
+  </div>
+</div>
+<div class="admonitionblock tip">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/tip.png" alt="Tip">
+      </td>
+      <td class="content">
+        
+        Your Fedora system may be configured to automatically update packages, in which case no further action is required by you.
+Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are unsure.
+      </td>
+    </tr>
+  </table>
+</div>
+<div class="admonitionblock note">
+  <table>
+    <tr>
+      <td class="icon">
+        <img src="/images/icons/note.png" alt="Note">
+      </td>
+      <td class="content">
+        
+        The <code>yum</code> package update will not be available at the same time as the <code>gem</code>, it may take several weeks before it becomes available.
+If you must have the latest version now, then use the <code>gem</code> method instead.
+      </td>
+    </tr>
+  </table>
 </div>
 <div class="paragraph">  
   <p>Now you&#8217;re ready to convert your AsciiDoc document to a variety of formats!</p>
@@ -238,7 +303,7 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 </div>
 <div class="paragraph">  
   <p>Additional guides are listed on the <a href="/docs">Documentation</a> page.
-Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org/">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
+Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
 </div>
   </div>
 </div>
