@@ -215,11 +215,11 @@ puts html</code></pre>
 It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
 When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied and linked automatically by default.
 However, <code>asciidoctor.css</code> is not automatically available to the generated HTML document; you have two choices:</p>
-</div><div class="olist arabic">
+</div><div class="ulist">
   
-  <ol class="arabic">
+  <ul>
     <li>
-      <p>If you prefer to copy <code>asciidoctor.css</code> to the output location and link to it from the generated document, set the <code>copycss</code> attribute:</p>
+      <p>If you prefer to copy <code>asciidoctor.css</code> to the linked location, then include <code>copycss</code>:</p>
 <div class="literalblock">
   
   <div class="content monospaced">
@@ -229,7 +229,7 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 
     </li>
     <li>
-      <p>If you prefer to embed the stylesheet into the document, unset the <code>linkcss</code> attribute:</p>
+      <p>If you prefer to embed the stylesheet into the document, include the <code>linkcss!</code> attribute in the rendering argument:</p>
 <div class="literalblock">
   
   <div class="content monospaced">
@@ -238,11 +238,9 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 </div>
 
     </li>
-  </ol>
+  </ul>
 </div>
-<div class="paragraph">  
-  <p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
-</div><div class="admonitionblock tip">
+<div class="admonitionblock tip">
   <table>
     <tr>
       <td class="icon">
@@ -250,27 +248,15 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
       </td>
       <td class="content">
         
-        <code>linkcss!</code> (which implies "embed css") embeds any stylesheet, not just <code>asciidoctor.css</code>.
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="admonitionblock important">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/important.png" alt="Important">
-      </td>
-      <td class="content">
-        
-        <code>linkcss</code> is set by default, unlike in AsciiDoc.
-We believe linking to the stylesheet is a better default, certainly a accepted practice on the web.
+        <code>linkcss!</code> embeds any stylesheet, not just <code>asciidoctor.css</code>.
       </td>
     </tr>
   </table>
 </div>
 <div class="paragraph">  
-  <p>If you unset the stylesheet attribute, Asciidoctor will generate HTML without any styles:</p>
+  <p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
+</div><div class="paragraph">  
+  <p>The generated output can also be produced without the default styles.</p>
 </div><div class="literalblock">
   
   <div class="content monospaced">
@@ -305,14 +291,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
   
   <div class="content monospaced">
     <pre>$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
-  </div>
-</div>
-<div class="paragraph">  
-  <p>To have Asciidoctor embed the contents of the stylesheet in the generate HTML document, use:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
   </div>
 </div>
 <div class="paragraph">  
@@ -412,8 +390,7 @@ See the <a href="http://asciidoc.org/userguide.html#X99">Themes</a> chapter in t
       </td>
       <td class="content">
         
-        Currently, Asciidoctor does not support the <code>theme</code> attribute.
-Stylesheets can only be applied via the <code>stylesheet</code> attribute.
+        Currently, Asciidoctor does not support the <code>theme</code> attribute. Stylesheets can only be applied via the <code>stylesheet</code> attribute.
       </td>
     </tr>
   </table>
