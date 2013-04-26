@@ -314,7 +314,7 @@ href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">github.com
 
 <p><a href="http://Asciidoctor">homepage</a> is a pure Ruby processor for
 converting <a href="http://AsciiDoc">asciidoc</a> source files and strings
-into HTML 5, DocBook 4.5 and other formats. It's <a
+into HTML 5, DocBook 4.5 and other formats. It&#39;s <a
 href="http://rubygems.org/gems/asciidoctor[published">rubygems.org/gems/asciidoctor[published</a>
 as a RubyGem] and is available under the MIT open source license.</p>
 
@@ -324,16 +324,16 @@ Status, link=“<a
 href="https://travis-ci.org/asciidoctor/asciidoctor">travis-ci.org/asciidoctor/asciidoctor</a>”]</p>
 
 <p><a href="Asciidoctor.html">Asciidoctor</a> uses a set of built-in ERB
-templates to render the document to HTML 5 or DocBook 4.5. We've matched
-the rendered output as close as possible to the default output of the
-native Python processor. You can override this behavior by providing <a
+templates to render the document to HTML 5 or DocBook 4.5. We&#39;ve
+matched the rendered output as close as possible to the default output of
+the native Python processor. You can override this behavior by providing <a
 href="http://Tilt">tilt</a>-compatible templates. See
 &lt;&lt;usage,Usage&gt;&gt; for more details.</p>
 
 <p><a href="Asciidoctor.html">Asciidoctor</a> currently works (read as
-'tested') with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius
-1.2.4 (on Linux, Mac and Windows). We expect it will work with other
-versions of Ruby as well and would welcome help in testing it out.</p>
+&#39;tested&#39;) with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and
+Rubinius 1.2.4 (on Linux, Mac and Windows). We expect it will work with
+other versions of Ruby as well and would welcome help in testing it out.</p>
 
 <p>The initial code from which <a href="Asciidoctor.html">Asciidoctor</a>
 started emerged from the <a href="http://Git SCM site repo">gitscm-next</a>
@@ -344,10 +344,10 @@ repository] on GitHub.</p>
 
 <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>NOTE: We’re working hard to make <a href="Asciidoctor.html">Asciidoctor</a>
-a drop-in replacement for AsciiDoc. We’re very close, with over 700 tests
-that ensure compatibility. The march is on towards full compliance and
-beyond.</p>
+<p>NOTE: We&#39;re working hard to make <a
+href="Asciidoctor.html">Asciidoctor</a> a drop-in replacement for AsciiDoc.
+We&#39;re very close, with over 700 tests that ensure compatibility. The
+march is on towards full compliance and beyond.</p>
 
 <p>To install the gem:</p>
 
@@ -355,19 +355,19 @@ beyond.</p>
 
 <p>Or if you prefer bundler, add the asciidoctor gem to your Gemfile,</p>
 
-<pre>source 'https://rubygems.org'
-gem 'asciidoctor'</pre>
+<pre>source &#39;https://rubygems.org&#39;
+gem &#39;asciidoctor&#39;</pre>
 
 <p>then install it using bundler:</p>
 
 <pre>bundle install</pre>
 
-<p>If you’re running Fedora, you can install the gem using yum:</p>
+<p>If you&#39;re running Fedora, you can install the gem using yum:</p>
 
 <pre>sudo yum install rubygem-asciidoctor</pre>
 
 <p>The benefit of installing the gem via yum is that yum will also install
-Ruby if it’s not already on your machine.</p>
+Ruby if it&#39;s not already on your machine.</p>
 
 <h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
@@ -407,14 +407,14 @@ the source file. This mode is very similar to the safe mode of
 <p>To use <a href="Asciidoctor.html">Asciidoctor</a> in your application, you
 first need to require the gem:</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'asciidoctor'</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;asciidoctor&#39;</span>
 </pre>
 
 <p>With that in place, you can start processing AsciiDoc documents.</p>
 
 <p>.Loading a document To parse a file into an +Asciidoctor::Document+ object:</p>
 
-<pre>doc = Asciidoctor.load_file('your_file.asciidoc')</pre>
+<pre>doc = Asciidoctor.load_file(&#39;your_file.asciidoc&#39;)</pre>
 
 <p>You can get information about the document:</p>
 
@@ -425,40 +425,40 @@ puts doc.attributes</pre>
 
 <p>.Rendering files To render a file containing AsciiDoc markup to HTML 5:</p>
 
-<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">'your_file.asciidoc'</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">&#39;your_file.asciidoc&#39;</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
 </pre>
 
 <p>The command will output to the file <code>your_file.html</code> in the same
 directory. You can render the file to DocBook 4.5 by setting the
-<code>backend</code> attribute to ‘docbook’:</p>
+<code>backend</code> attribute to &#39;docbook&#39;:</p>
 
-<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">'your_file.asciidoc'</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'backend'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'docbook'</span>})
+<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">&#39;your_file.asciidoc&#39;</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">&#39;backend&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;docbook&#39;</span>})
 </pre>
 
 <p>The command will output to the file <code>your_file.xml</code> in the same
-directory. (If you’re on Linux, you can view the file using yelp).</p>
+directory. (If you&#39;re on Linux, you can view the file using yelp).</p>
 
 <p>.Rendering strings To render an AsciiDoc-formatted string:</p>
 
-<pre>puts Asciidoctor.render('*This* is it.')</pre>
+<pre>puts Asciidoctor.render(&#39;*This* is it.&#39;)</pre>
 
 <p>When rendering a string, the header and footer are excluded by default to
 make <a href="Asciidoctor.html">Asciidoctor</a> consistent with other
 lightweight markup engines like Markdown. If you want the header and
 footer, just enable it using the <code>:header_footer</code> option:</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;*This* is it.&#39;</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
 </pre>
 
-<p>Now you’ll get a full HTML 5 file. As before, you can also produce DocBook
-4.5:</p>
+<p>Now you&#39;ll get a full HTML 5 file. As before, you can also produce
+DocBook 4.5:</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'backend'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'docbook'</span>})
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;*This* is it.&#39;</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">&#39;backend&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;docbook&#39;</span>})
 </pre>
 
-<p>If you don’t like the output you see, you can change it. Any of it!</p>
+<p>If you don&#39;t like the output you see, you can change it. Any of it!</p>
 
 <p>.Custom templates <a href="Asciidoctor.html">Asciidoctor</a> allows you to
 override the <a href="http://built-in templates">templates</a>-compatible
@@ -469,16 +469,16 @@ templates in this directory instead of its built-in templates for any
 elements for which it finds a matching template. It will fallback to its
 default templates for everything else.</p>
 
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">template_dir</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'templates'</span>)
+<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;*This* is it.&#39;</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+  :<span class="ruby-identifier">template_dir</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;templates&#39;</span>)
 </pre>
 
 <p>The Document and Section templates should begin with <code>document.</code>
 and <code>section.</code>, respectively. The file extension is used by Tilt
 to determine which view framework it will use to use to render the
-template. For instance, if you want to write the template in ERB, you’d
+template. For instance, if you want to write the template in ERB, you&#39;d
 name these two templates <code>document.html.erb</code> and
-<code>section.html.erb</code>. To use Haml, you’d name them
+<code>section.html.erb</code>. To use Haml, you&#39;d name them
 <code>document.html.haml</code> and <code>section.html.haml</code>.</p>
 
 <p>Templates for block elements, like a Paragraph or Sidebar, would begin with
@@ -494,11 +494,11 @@ option.</p>
 
 <p>While <a href="Asciidoctor.html">Asciidoctor</a> aims to be compliant with
 the AsciiDoc syntax, there are some differences which are important to keep
-in mind. In some cases, it’s to enforce a rule we believe is too lax or
-ambiguous in AsciiDoc. In other cases, it’s a tradeoff for speed, smarter
-processing or a feature we just haven’t yet implemented. (You’ll also
-notice that <a href="Asciidoctor.html">Asciidoctor</a> executes about 25x
-as fast as AsciiDoc).</p>
+in mind. In some cases, it&#39;s to enforce a rule we believe is too lax or
+ambiguous in AsciiDoc. In other cases, it&#39;s a tradeoff for speed,
+smarter processing or a feature we just haven&#39;t yet implemented.
+(You&#39;ll also notice that <a href="Asciidoctor.html">Asciidoctor</a>
+executes about 25x as fast as AsciiDoc).</p>
 
 <p>Here are the known cases where <a href="Asciidoctor.html">Asciidoctor</a>
 differs from AsciiDoc:</p>
@@ -507,7 +507,7 @@ differs from AsciiDoc:</p>
 when using the API (+SafeMode::SECURE+)</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> safe mode is even more safe than
-AsciiDoc's safe mode</p>
+AsciiDoc&#39;s safe mode</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> enforces symmetric block
 delimiters (the length of start and end delimiters for a block must match!)</p>
@@ -515,8 +515,8 @@ delimiters (the length of start and end delimiters for a block must match!)</p>
 <p>Section title underlines must be within 1 character of the length of the
 title (AsciiDoc allows an offset of 3)</p>
 </li><li>
-<p>Asciidoctor’s default HTML backend matches AsciiDoc’s HTML 5 backend
-(whereas XHTML 1.1 is the default HTML backend in AsciiDoc)</p>
+<p>Asciidoctor&#39;s default HTML backend matches AsciiDoc&#39;s HTML 5
+backend (whereas XHTML 1.1 is the default HTML backend in AsciiDoc)</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> adds viewport meta tag to
 +&lt;head&gt;+ to optimize mobile viewing</p>
@@ -537,7 +537,7 @@ as the section id</p>
 section title before generating the id (makes for cleaner section ids)</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> uses +&lt;code&gt;+ instead of
-+&lt;span class="monospace"&gt;+ around inline literal text in the HTML
++&lt;span class=“monospace”&gt;+ around inline literal text in the HTML
 backend</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> does not wrap email next to
@@ -578,7 +578,7 @@ attributes</p>
 content in monospaced table cells</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> skips over line comments in
-tables, whereas AsciiDoc doesn't</p>
+tables, whereas AsciiDoc doesn&#39;t</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> uses its own API rather than a
 command line invocation to handle table cells that have AsciiDoc content</p>
@@ -586,7 +586,7 @@ command line invocation to handle table cells that have AsciiDoc content</p>
 <p><a href="Asciidoctor.html">Asciidoctor</a> supports resolving variables
 from parent document in table cells with AsciiDoc content</p>
 </li><li>
-<p>AsciiDoc doesn’t carry over the doctype attribute passed from the
+<p>AsciiDoc doesn&#39;t carry over the doctype attribute passed from the
 commandline when rendering AsciiDoc table cells, whereas <a
 href="Asciidoctor.html">Asciidoctor</a> does</p>
 </li><li>
@@ -614,10 +614,10 @@ title syntax inside a delimited block by simply ignoring it (AsciiDoc
 issues warnings)</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> honors the alternate style name
-"discrete" for a floating title (i.e., +[discrete]+)</p>
+“discrete” for a floating title (i.e., +[discrete]+)</p>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> supports syntax highlighting of
-listing or literal blocks that have the "source" style out of the box</p>
+listing or literal blocks that have the “source” style out of the box</p>
 </li></ul>
 
 <p>** <a href="Asciidoctor.html">Asciidoctor</a> honors the source-highlighter
@@ -643,7 +643,7 @@ use</p>
 </dd></dl>
 </li><li>
 <p><a href="Asciidoctor.html">Asciidoctor</a> does not support deprecated
-tables (you don't want them anyway)</p>
+tables (you don&#39;t want them anyway)</p>
 </li><li>
 <p>Use can set the extension for icons using the <code>icontype</code>
 attribute (AsciiDoc defaults to .png)</p>
@@ -707,14 +707,14 @@ SafeMode is SECURE or greater (this makes for a friendly experience on
 GitHub)</p>
 </li></ul>
 
-<p>If there’s a difference you don’t see in this list, check the
-{issues}[issue tracker] to see if it’s an outstanding feature, or file an
-issue to report the difference.</p>
+<p>If there&#39;s a difference you don&#39;t see in this list, check the
+{issues}[issue tracker] to see if it&#39;s an outstanding feature, or file
+an issue to report the difference.</p>
 
 <h2 id="label-Contributing">Contributing<span><a href="#label-Contributing">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>In the spirit of {freesoftware}[free software], ‘everyone’ is encouraged to
-help improve this project.</p>
+<p>In the spirit of {freesoftware}[free software], &#39;everyone&#39; is
+encouraged to help improve this project.</p>
 
 <p>Here are some ways <strong>you</strong> can contribute:</p>
 <ul><li>
@@ -728,7 +728,7 @@ help improve this project.</p>
 </li><li>
 <p>by writing specifications</p>
 </li><li>
-<p>by writing code – ‘No patch is too small.’</p>
+<p>by writing code – &#39;No patch is too small.&#39;</p>
 </li></ul>
 
 <p>** fix typos ** add comments ** clean up inconsistent whitespace ** write
@@ -779,7 +779,7 @@ documented, go back to step 7. . Add, commit, and push your changes. .
 <p>Rubinius 1.2.4</p>
 </li></ul>
 
-<p>If something doesn’t work on one of these interpreters, it should be
+<p>If something doesn&#39;t work on one of these interpreters, it should be
 considered a bug.</p>
 
 <p>If you would like this library to support another Ruby version, you may

@@ -406,7 +406,7 @@
     <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">block</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
       <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;v&quot;</span> <span class="ruby-operator">*</span> (<span class="ruby-value">60</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">parent_level</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>))
       <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Block ##{i} is a #{block.class}&quot;</span>)
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Name is #{block.title rescue 'n/a'}&quot;</span>)
+      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Name is #{block.title rescue &#39;n/a&#39;}&quot;</span>)
       <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;=&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">40</span>)
       <span class="ruby-identifier">block</span>.<span class="ruby-identifier">splain</span>(<span class="ruby-identifier">parent_level</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:splain</span>
       <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;^&quot;</span> <span class="ruby-operator">*</span> (<span class="ruby-value">60</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">parent_level</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>))
@@ -645,10 +645,11 @@
 <p>Here are the rules for when a folding occurs:</p>
 
 <p>Given: this list item has at least one blockWhen: the first block is a
-paragraph that’s not connected by a list continuationOr: the first block is
-an indented paragraph that’s adjacent (wrapped line)Or: the first block is
-an indented paragraph that’s not connected by a list continuationThen: then
-drop the first block and fold it’s content (buffer) into the list text</p>
+paragraph that&#39;s not connected by a list continuationOr: the first
+block is an indented paragraph that&#39;s adjacent (wrapped line)Or: the
+first block is an indented paragraph that&#39;s not connected by a list
+continuationThen: then drop the first block and fold it&#39;s content
+(buffer) into the list text</p>
 
 <p>Returns nothing</p>
           
@@ -661,7 +662,7 @@ drop the first block and fold it’s content (buffer) into the list text</p>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Block</span>) <span class="ruby-operator">&amp;&amp;</span>
       ((<span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:paragraph</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">continuation_connects_first_block</span>) <span class="ruby-operator">||</span>
       ((<span class="ruby-identifier">content_adjacent</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">continuation_connects_first_block</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:literal</span> <span class="ruby-operator">&amp;&amp;</span>
-          <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'options'</span>, []).<span class="ruby-identifier">include?</span>(<span class="ruby-string">'listparagraph'</span>)))
+          <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;options&#39;</span>, []).<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;listparagraph&#39;</span>)))
 
     <span class="ruby-identifier">block</span> = <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">shift</span>
     <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>

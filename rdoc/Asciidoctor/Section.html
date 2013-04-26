@@ -324,8 +324,8 @@ to its @blocks Array.</p>
 <h3 id="label-Examples">Examples<span><a href="#label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <pre class="ruby"><span class="ruby-identifier">section</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Section</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">section</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">'Section 1'</span>
-<span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span> = <span class="ruby-string">'sect1'</span>
+<span class="ruby-identifier">section</span>.<span class="ruby-identifier">title</span> = <span class="ruby-string">&#39;Section 1&#39;</span>
+<span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span> = <span class="ruby-string">&#39;sect1&#39;</span>
 
 <span class="ruby-identifier">section</span>.<span class="ruby-identifier">size</span>
 =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
@@ -556,9 +556,9 @@ of one</p>
 <h3 id="method-i-content-label-Examples">Examples<span><a href="#method-i-content-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <pre class="ruby"><span class="ruby-identifier">section</span> = <span class="ruby-constant">Section</span>.<span class="ruby-identifier">new</span>
-<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'foo'</span>
-<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'bar'</span>
-<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'baz'</span>
+<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;foo&#39;</span>
+<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;bar&#39;</span>
+<span class="ruby-identifier">section</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;baz&#39;</span>
 <span class="ruby-identifier">section</span>.<span class="ruby-identifier">content</span>
 <span class="ruby-string">&quot;&lt;div class=\&quot;paragraph\&quot;&gt;&lt;p&gt;foo&lt;/p&gt;&lt;/div&gt;\n&lt;div class=\&quot;paragraph\&quot;&gt;&lt;p&gt;bar&lt;/p&gt;&lt;/div&gt;\n&lt;div class=\&quot;paragraph\&quot;&gt;&lt;p&gt;baz&lt;/p&gt;&lt;/div&gt;&quot;</span>
 </pre>
@@ -596,11 +596,11 @@ of one</p>
           
           <p>Generate a String id for this section.</p>
 
-<p>The generated id is prefixed with value of the ‘idprefix’ attribute,
-whichis an underscore by default.</p>
+<p>The generated id is prefixed with value of the &#39;idprefix&#39;
+attribute, whichis an underscore by default.</p>
 
 <p><a href="Section.html">Section</a> id synthesis can be disabled by
-undefining the 'sectids' attribute.</p>
+undefining the &#39;sectids&#39; attribute.</p>
 
 <p>If the generated id is already in use in the document, a count is
 appendeduntil a unique id is found.</p>
@@ -624,10 +624,10 @@ appendeduntil a unique id is found.</p>
           <div class="method-source-code" id="generate_id-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_id</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'sectids'</span>
-    <span class="ruby-identifier">separator</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'idseparator'</span>, <span class="ruby-string">'_'</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;sectids&#39;</span>
+    <span class="ruby-identifier">separator</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;idseparator&#39;</span>, <span class="ruby-string">&#39;_&#39;</span>)
     <span class="ruby-comment"># FIXME define constants for these regexps</span>
-    <span class="ruby-identifier">base_id</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'idprefix'</span>, <span class="ruby-string">'_'</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">/&amp;#[0-9]+;/</span>, <span class="ruby-identifier">separator</span>).
+    <span class="ruby-identifier">base_id</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;idprefix&#39;</span>, <span class="ruby-string">&#39;_&#39;</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">title</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-node">/&amp;#[0-9]+;/</span>, <span class="ruby-identifier">separator</span>).
         <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\W+/</span>, <span class="ruby-identifier">separator</span>).<span class="ruby-identifier">tr_s</span>(<span class="ruby-identifier">separator</span>, <span class="ruby-identifier">separator</span>).<span class="ruby-identifier">chomp</span>(<span class="ruby-identifier">separator</span>)
     <span class="ruby-identifier">gen_id</span> = <span class="ruby-identifier">base_id</span>
     <span class="ruby-identifier">cnt</span> = <span class="ruby-value">2</span>
@@ -674,7 +674,7 @@ and all its childBlocks.</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>
   <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Now rendering section for #{self}&quot;</span> }
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">playback_attributes</span> <span class="ruby-ivar">@attributes</span>
-  <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'section'</span>, <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;section&#39;</span>, <span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render-source -->
           
@@ -739,7 +739,7 @@ the delimiter should not beappended to the final level(default: nil)</p>
 <span class="ruby-identifier">sect1_1_1</span>.<span class="ruby-identifier">sectnum</span>
 <span class="ruby-comment"># =&gt; 1.1.1.</span>
 
-<span class="ruby-identifier">sect1_1_1</span>.<span class="ruby-identifier">sectnum</span>(<span class="ruby-string">','</span>, <span class="ruby-keyword">false</span>)
+<span class="ruby-identifier">sect1_1_1</span>.<span class="ruby-identifier">sectnum</span>(<span class="ruby-string">&#39;,&#39;</span>, <span class="ruby-keyword">false</span>)
 <span class="ruby-comment"># =&gt; 1,1,1</span>
 </pre>
 
@@ -750,8 +750,8 @@ the delimiter should not beappended to the final level(default: nil)</p>
           
           <div class="method-source-code" id="sectnum-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 155</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">sectnum</span>(<span class="ruby-identifier">delimiter</span> = <span class="ruby-string">'.'</span>, <span class="ruby-identifier">append</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">append</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">append</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">delimiter</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">sectnum</span>(<span class="ruby-identifier">delimiter</span> = <span class="ruby-string">&#39;.&#39;</span>, <span class="ruby-identifier">append</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-identifier">append</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">append</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">delimiter</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@level</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
     <span class="ruby-node">&quot;#{@parent.sectnum(delimiter)}#{@index + 1}#{append}&quot;</span>
   <span class="ruby-keyword">else</span>

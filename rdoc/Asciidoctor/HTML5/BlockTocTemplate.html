@@ -342,21 +342,21 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
     <span class="ruby-identifier">doc</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>
 
-    <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'toc'</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;toc&#39;</span>)
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">id</span>
       <span class="ruby-identifier">id_attr</span> = <span class="ruby-node">%Q( id=&quot;#{node.id}&quot;)</span>
-      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">''</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">embedded?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'toc-placement'</span>, <span class="ruby-string">'auto'</span>)
-      <span class="ruby-identifier">id_attr</span> = <span class="ruby-string">' id=&quot;toc&quot;'</span>
-      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">' id=&quot;toctitle&quot;'</span>
+      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">embedded?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;toc-placement&#39;</span>, <span class="ruby-string">&#39;auto&#39;</span>)
+      <span class="ruby-identifier">id_attr</span> = <span class="ruby-string">&#39; id=&quot;toc&quot;&#39;</span>
+      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">&#39; id=&quot;toctitle&quot;&#39;</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">id_attr</span> = <span class="ruby-string">''</span>
-      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">''</span>
+      <span class="ruby-identifier">id_attr</span> = <span class="ruby-string">&#39;&#39;</span>
+      <span class="ruby-identifier">title_id_attr</span> = <span class="ruby-string">&#39;&#39;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">title</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'toc-title'</span>)
-    <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'levels'</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'levels'</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'toclevels'</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">to_i</span>
-    <span class="ruby-identifier">role</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'role'</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'role'</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'toc-class'</span>, <span class="ruby-string">'toc'</span>)
+    <span class="ruby-identifier">title</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">&#39;toc-title&#39;</span>)
+    <span class="ruby-identifier">levels</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;levels&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;levels&#39;</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;toclevels&#39;</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">role</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;role&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;role&#39;</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;toc-class&#39;</span>, <span class="ruby-string">&#39;toc&#39;</span>)
 
     <span class="ruby-node">%Q(\n&lt;div#{id_attr} class=&quot;#{role}&quot;&gt;
 &lt;div#{title_id_attr} class=&quot;title&quot;&gt;#{title}&lt;/div&gt;

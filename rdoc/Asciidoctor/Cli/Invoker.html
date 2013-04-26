@@ -479,14 +479,14 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
       <span class="ruby-keyword">end</span>
     }
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">infile</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">infile</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span>
       <span class="ruby-comment"># allow use of block to supply stdin, particularly useful for tests</span>
       <span class="ruby-identifier">input</span> = <span class="ruby-identifier">block_given?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">yield</span> <span class="ruby-operator">:</span> <span class="ruby-constant">STDIN</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">input</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">infile</span>)
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">outfile</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">infile</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">outfile</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">outfile</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'/dev/null'</span>))
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">outfile</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">infile</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">outfile</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">outfile</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;/dev/null&#39;</span>))
       <span class="ruby-identifier">opts</span>[<span class="ruby-value">:to_file</span>] = (<span class="ruby-ivar">@out</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">$stdout</span>)
     <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">outfile</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">opts</span>[<span class="ruby-value">:to_file</span>] = <span class="ruby-identifier">outfile</span>
@@ -498,16 +498,16 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
     <span class="ruby-comment"># FIXME this should be :monitor, :profile or :timings rather than :verbose</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[<span class="ruby-value">:verbose</span>]
-      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time to read and parse source: #{'%05.5f' % monitor[:parse]}&quot;</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time to render document: #{'%05.5f' % monitor[:render]}&quot;</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Total time to read, parse and render: #{'%05.5f' % monitor[:load_render]}&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time to read and parse source: #{&#39;%05.5f&#39; % monitor[:parse]}&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Time to render document: #{&#39;%05.5f&#39; % monitor[:render]}&quot;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Total time to read, parse and render: #{&#39;%05.5f&#39; % monitor[:load_render]}&quot;</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Exception</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@options</span>[<span class="ruby-value">:trace</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">SystemExit</span> <span class="ruby-operator">===</span> <span class="ruby-identifier">e</span>
     <span class="ruby-identifier">err</span> = (<span class="ruby-ivar">@err</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">$stderr</span>)
     <span class="ruby-identifier">err</span>.<span class="ruby-identifier">print</span> <span class="ruby-node">&quot;#{e.class}: &quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">RuntimeError</span>
     <span class="ruby-identifier">err</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>
-    <span class="ruby-identifier">err</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">'  Use --trace for backtrace'</span>
+    <span class="ruby-identifier">err</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;  Use --trace for backtrace&#39;</span>
     <span class="ruby-ivar">@code</span> = <span class="ruby-value">1</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -542,7 +542,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
           <div class="method-source-code" id="read_error-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_error</span>
-  <span class="ruby-operator">!</span><span class="ruby-ivar">@err</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@err</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@err</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@err</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- read_error-source -->
           
@@ -575,7 +575,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
           <div class="method-source-code" id="read_output-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_output</span>
-  <span class="ruby-operator">!</span><span class="ruby-ivar">@out</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@out</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@out</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@out</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- read_output-source -->
           

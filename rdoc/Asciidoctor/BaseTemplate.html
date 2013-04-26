@@ -532,8 +532,8 @@ hasthis same issue.</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attribute</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">key</span>)
   <span class="ruby-identifier">type</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">?</span> <span class="ruby-value">:attr</span> <span class="ruby-operator">:</span> <span class="ruby-value">:var</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:attr</span>
-    <span class="ruby-comment"># example: &lt;% if attr? 'foo' %&gt; bar=&quot;&lt;%= attr 'foo' %&gt;&quot;&lt;% end %&gt;</span>
-    <span class="ruby-node">%Q(&lt;% if attr? '#{key}' %&gt; #{name}=&quot;&lt;%= attr '#{key}' %&gt;&quot;&lt;% end %&gt;)</span>
+    <span class="ruby-comment"># example: &lt;% if attr? &#39;foo&#39; %&gt; bar=&quot;&lt;%= attr &#39;foo&#39; %&gt;&quot;&lt;% end %&gt;</span>
+    <span class="ruby-node">%Q(&lt;% if attr? &#39;#{key}&#39; %&gt; #{name}=&quot;&lt;%= attr &#39;#{key}&#39; %&gt;&quot;&lt;% end %&gt;)</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-comment"># example: &lt;% if foo %&gt; bar=&quot;&lt;%= foo %&gt;&quot;&lt;% end %&gt;</span>
     <span class="ruby-node">%Q(&lt;% if #{key} %&gt; #{name}=&quot;&lt;%= #{key} %&gt;&quot;&lt;% end %&gt;)</span>
@@ -570,9 +570,9 @@ hasthis same issue.</p>
           <div class="method-source-code" id="attrvalue-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attrvalue</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">sibling</span> = <span class="ruby-keyword">true</span>)
-  <span class="ruby-identifier">delimiter</span> = <span class="ruby-identifier">sibling</span> <span class="ruby-operator">?</span> <span class="ruby-string">' '</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
-  <span class="ruby-comment"># example: &lt;% if attr? 'foo' %&gt;&lt;%= attr 'foo' %&gt;&lt;% end %&gt;</span>
-  <span class="ruby-node">%Q(&lt;% if attr? '#{key}' %&gt;#{delimiter}&lt;%= attr '#{key}' %&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-identifier">delimiter</span> = <span class="ruby-identifier">sibling</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-comment"># example: &lt;% if attr? &#39;foo&#39; %&gt;&lt;%= attr &#39;foo&#39; %&gt;&lt;% end %&gt;</span>
+  <span class="ruby-node">%Q(&lt;% if attr? &#39;#{key}&#39; %&gt;#{delimiter}&lt;%= attr &#39;#{key}&#39; %&gt;&lt;% end %&gt;)</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- attrvalue-source -->
           
@@ -638,7 +638,7 @@ hasthis same issue.</p>
           <div class="method-source-code" id="common_attrs_erb-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">common_attrs_erb</span>
-  <span class="ruby-string">%q{&lt;%= template.common_attrs(@id, (attr 'role'), (attr 'reftext')) %&gt;}</span>
+  <span class="ruby-string">%q{&lt;%= template.common_attrs(@id, (attr &#39;role&#39;), (attr &#39;reftext&#39;)) %&gt;}</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- common_attrs_erb-source -->
           
@@ -671,7 +671,7 @@ hasthis same issue.</p>
           <div class="method-source-code" id="id-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">id</span>
-  <span class="ruby-identifier">attribute</span>(<span class="ruby-string">'id'</span>, <span class="ruby-string">'@id'</span>)
+  <span class="ruby-identifier">attribute</span>(<span class="ruby-string">&#39;id&#39;</span>, <span class="ruby-string">&#39;@id&#39;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- id-source -->
           
@@ -775,8 +775,8 @@ specified</p>
   <span class="ruby-identifier">type</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>) <span class="ruby-operator">?</span> <span class="ruby-value">:attr</span> <span class="ruby-operator">:</span> <span class="ruby-value">:var</span>
   <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:attr</span>
-    <span class="ruby-identifier">key_str</span> = <span class="ruby-identifier">dynamic</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(&quot;#{key}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;'#{key}'&quot;</span>
-    <span class="ruby-comment"># example: &lt;% if attr? 'foo' %&gt;&lt;bar&gt;&lt;%= attr 'foo' %&gt;&lt;/bar&gt;&lt;% end %&gt;</span>
+    <span class="ruby-identifier">key_str</span> = <span class="ruby-identifier">dynamic</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(&quot;#{key}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;&#39;#{key}&#39;&quot;</span>
+    <span class="ruby-comment"># example: &lt;% if attr? &#39;foo&#39; %&gt;&lt;bar&gt;&lt;%= attr &#39;foo&#39; %&gt;&lt;/bar&gt;&lt;% end %&gt;</span>
     <span class="ruby-node">%Q(&lt;% if attr? #{key_str} %&gt;&lt;#{name}&gt;&lt;%= attr #{key_str} %&gt;&lt;/#{name}&gt;&lt;% end %&gt;)</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-comment"># example: &lt;% unless foo.to_s.empty? %&gt;&lt;bar&gt;&lt;%= foo %&gt;&lt;/bar&gt;&lt;% end %&gt;</span>
@@ -847,7 +847,7 @@ specified</p>
           <div class="method-source-code" id="title_div-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_div</span>(<span class="ruby-identifier">opts</span> = {})
-  <span class="ruby-node">%Q(&lt;% if title? %&gt;&lt;div class=&quot;title&quot;&gt;#{opts.has_key?(:caption) ? '&lt;%= @caption %&gt;' : ''}&lt;%= title %&gt;&lt;/div&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-node">%Q(&lt;% if title? %&gt;&lt;div class=&quot;title&quot;&gt;#{opts.has_key?(:caption) ? &#39;&lt;%= @caption %&gt;&#39; : &#39;&#39;}&lt;%= title %&gt;&lt;/div&gt;&lt;% end %&gt;)</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- title_div-source -->
           
@@ -881,7 +881,7 @@ specified</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_tag</span>(<span class="ruby-identifier">optional</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">optional</span>
-    <span class="ruby-string">%q{&lt;%= title? ? &quot;&lt;title&gt;#{title}&lt;/title&gt;&quot; : '' %&gt;}</span>
+    <span class="ruby-string">%q{&lt;%= title? ? &quot;&lt;title&gt;#{title}&lt;/title&gt;&quot; : &#39;&#39; %&gt;}</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-string">%q{&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;}</span>
   <span class="ruby-keyword">end</span>
@@ -955,7 +955,7 @@ entitiesconverted to an endline character.</p>
           <div class="method-source-code" id="compact-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">compact</span>(<span class="ruby-identifier">str</span>)
-  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">BLANK_LINES_PATTERN</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">LINE_FEED_ENTITY</span>, <span class="ruby-string">&quot;\n&quot;</span>)
+  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">BLANK_LINES_PATTERN</span>, <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">LINE_FEED_ENTITY</span>, <span class="ruby-string">&quot;\n&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- compact-source -->
           
@@ -982,7 +982,7 @@ entitiesconverted to an endline character.</p>
           
           <p>Preserve endlines by replacing them with the HTML line feed entity.</p>
 
-<p>If the compact flag on the document’s renderer is true, perform
+<p>If the compact flag on the document&#39;s renderer is true, perform
 thereplacement. Otherwise, return the text unprocessed.</p>
 <dl class="rdoc-list note-list"><dt>text
 <dd>
@@ -1031,11 +1031,12 @@ instance of <a href="AbstractNode.html">Asciidoctor::AbstractNode</a>.</p>
 thetemplate data and then evaluates that template in the context of
 thesupplied concrete instance of <a
 href="AbstractNode.html">Asciidoctor::AbstractNode</a>. This instance
-isaccessible to the template data via the local variable named ‘template’.</p>
+isaccessible to the template data via the local variable named
+&#39;template&#39;.</p>
 
-<p>If the compact flag on the document’s renderer is true and the view context
-isdocument or embedded, then blank lines in the output are compacted.
-Otherwise,the rendered output is returned unprocessed.</p>
+<p>If the compact flag on the document&#39;s renderer is true and the view
+context isdocument or embedded, then blank lines in the output are
+compacted. Otherwise,the rendered output is returned unprocessed.</p>
 <dl class="rdoc-list note-list"><dt>node
 <dd>
 <p>The concrete instance of AsciiDoctor::AbstractNode to render</p>
@@ -1060,7 +1061,7 @@ Otherwise,the rendered output is returned unprocessed.</p>
     <span class="ruby-identifier">result</span> = <span class="ruby-identifier">tmpl</span>.<span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">get_binding</span>(<span class="ruby-keyword">self</span>))
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@view</span> <span class="ruby-operator">==</span> <span class="ruby-string">'document'</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@view</span> <span class="ruby-operator">==</span> <span class="ruby-string">'embedded'</span>) <span class="ruby-operator">&amp;&amp;</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@view</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;document&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@view</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;embedded&#39;</span>) <span class="ruby-operator">&amp;&amp;</span>
       <span class="ruby-identifier">node</span>.<span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">compact</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">nested?</span>
     <span class="ruby-identifier">compact</span> <span class="ruby-identifier">result</span>
   <span class="ruby-keyword">else</span>

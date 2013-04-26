@@ -352,7 +352,7 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 317</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
-&lt;%#encoding:UTF-8%&gt;&lt;% tags = (template.class::LIST_TAGS[attr :style] || template.class::LIST_TAGS['labeled']) %&gt;
+&lt;%#encoding:UTF-8%&gt;&lt;% tags = (template.class::LIST_TAGS[attr :style] || template.class::LIST_TAGS[&#39;labeled&#39;]) %&gt;
 &lt;% if tags[:list] %&gt;&lt;&lt;%= tags[:list] %&gt;#{common_attrs_erb}&gt;&lt;% end %&gt;
   #{title_tag}
   &lt;% content.each do |dt, dd| %&gt;

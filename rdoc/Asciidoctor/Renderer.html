@@ -455,13 +455,13 @@ templates.</p>
 
   <span class="ruby-identifier">backend</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:backend</span>]
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">backend</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">'html5'</span>, <span class="ruby-string">'docbook45'</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;html5&#39;</span>, <span class="ruby-string">&#39;docbook45&#39;</span>
     <span class="ruby-identifier">eruby</span> = <span class="ruby-identifier">load_eruby</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:eruby</span>]
-    <span class="ruby-comment">#Helpers.require_library 'asciidoctor/backends/' + backend</span>
-    <span class="ruby-identifier">require</span> <span class="ruby-string">'asciidoctor/backends/'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">backend</span>
+    <span class="ruby-comment">#Helpers.require_library &#39;asciidoctor/backends/&#39; + backend</span>
+    <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;asciidoctor/backends/&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">backend</span>
     <span class="ruby-comment"># Load up all the template classes that we know how to render for this backend</span>
     <span class="ruby-constant">BaseTemplate</span>.<span class="ruby-identifier">template_classes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">tc</span><span class="ruby-operator">|</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tc</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'::'</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">backend</span> <span class="ruby-operator">+</span> <span class="ruby-string">'::'</span>) <span class="ruby-comment"># optimization</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tc</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;::&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">backend</span> <span class="ruby-operator">+</span> <span class="ruby-string">&#39;::&#39;</span>) <span class="ruby-comment"># optimization</span>
         <span class="ruby-identifier">view_name</span>, <span class="ruby-identifier">view_backend</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">extract_view_mapping</span>(<span class="ruby-identifier">tc</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">view_backend</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">backend</span>
           <span class="ruby-ivar">@views</span>[<span class="ruby-identifier">view_name</span>] = <span class="ruby-identifier">tc</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">view_name</span>, <span class="ruby-identifier">eruby</span>)
@@ -474,9 +474,9 @@ templates.</p>
 
   <span class="ruby-comment"># If user passed in a template dir, let them override our base templates</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">template_dir</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:template_dir</span>)
-    <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'tilt'</span>
+    <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">&#39;tilt&#39;</span>
 
-    <span class="ruby-identifier">template_glob</span> = <span class="ruby-string">'*'</span>
+    <span class="ruby-identifier">template_glob</span> = <span class="ruby-string">&#39;*&#39;</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">engine</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:template_engine</span>])
       <span class="ruby-identifier">template_glob</span> = <span class="ruby-node">&quot;*.#{engine}&quot;</span>
       <span class="ruby-comment"># example: templates/haml</span>
@@ -491,12 +491,12 @@ templates.</p>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-identifier">view_opts</span> = {
-      <span class="ruby-value">:erb</span> =<span class="ruby-operator">&gt;</span>  { <span class="ruby-value">:trim</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'&lt;&gt;'</span> },
-      <span class="ruby-value">:haml</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:attr_wrapper</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'&quot;'</span>, <span class="ruby-value">:ugly</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:escape_attrs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> },
+      <span class="ruby-value">:erb</span> =<span class="ruby-operator">&gt;</span>  { <span class="ruby-value">:trim</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;&lt;&gt;&#39;</span> },
+      <span class="ruby-value">:haml</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:attr_wrapper</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;&quot;&#39;</span>, <span class="ruby-value">:ugly</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:escape_attrs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> },
       <span class="ruby-value">:slim</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:disable_escape</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:sort_attrs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:pretty</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
     }
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">backend</span> <span class="ruby-operator">==</span> <span class="ruby-string">'html5'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">backend</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;html5&#39;</span>
       <span class="ruby-identifier">view_opts</span>[<span class="ruby-value">:haml</span>][<span class="ruby-value">:format</span>] = <span class="ruby-identifier">view_opts</span>[<span class="ruby-value">:slim</span>][<span class="ruby-value">:format</span>] = <span class="ruby-value">:html5</span>
     <span class="ruby-keyword">end</span>
 
@@ -504,28 +504,28 @@ templates.</p>
       <span class="ruby-identifier">msg</span> = []
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Views going in are like so:&quot;</span>
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@views</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}: #{v}&quot;</span>}
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;=&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">*</span> <span class="ruby-string">&quot;\n&quot;</span>
     }
 
     <span class="ruby-identifier">slim_loaded</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-identifier">helpers</span> = <span class="ruby-keyword">nil</span>
     
-    <span class="ruby-comment"># Grab the files in the top level of the directory (we're not traversing)</span>
+    <span class="ruby-comment"># Grab the files in the top level of the directory (we&#39;re not traversing)</span>
     <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">template_dir</span>, <span class="ruby-identifier">template_glob</span>)).
         <span class="ruby-identifier">select</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span> <span class="ruby-identifier">f</span> }.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">basename</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">template</span>)
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">basename</span> <span class="ruby-operator">==</span> <span class="ruby-string">'helpers.rb'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">basename</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;helpers.rb&#39;</span>
         <span class="ruby-identifier">helpers</span> = <span class="ruby-identifier">template</span>
         <span class="ruby-keyword">next</span>
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">name_parts</span> = <span class="ruby-identifier">basename</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'.'</span>)
+      <span class="ruby-identifier">name_parts</span> = <span class="ruby-identifier">basename</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;.&#39;</span>)
       <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name_parts</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span>
       <span class="ruby-identifier">view_name</span> = <span class="ruby-identifier">name_parts</span>.<span class="ruby-identifier">first</span> 
       <span class="ruby-identifier">ext_name</span> = <span class="ruby-identifier">name_parts</span>.<span class="ruby-identifier">last</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'slim'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">slim_loaded</span>
-        <span class="ruby-comment"># slim doesn't get loaded by Tilt</span>
-        <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'slim'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext_name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;slim&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">slim_loaded</span>
+        <span class="ruby-comment"># slim doesn&#39;t get loaded by Tilt</span>
+        <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">&#39;slim&#39;</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">next</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">Tilt</span>.<span class="ruby-identifier">registered?</span> <span class="ruby-identifier">ext_name</span>
       <span class="ruby-ivar">@views</span>[<span class="ruby-identifier">view_name</span>] = <span class="ruby-constant">Tilt</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">template</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">view_opts</span>[<span class="ruby-identifier">ext_name</span>.<span class="ruby-identifier">to_sym</span>])
@@ -537,7 +537,7 @@ templates.</p>
       <span class="ruby-identifier">msg</span> = []
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Views going in are like so:&quot;</span>
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@views</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}: #{v}&quot;</span>}
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
+      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;=&#39;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
       <span class="ruby-identifier">msg</span> <span class="ruby-operator">*</span> <span class="ruby-string">&quot;\n&quot;</span>
     }
   <span class="ruby-keyword">end</span>
@@ -591,7 +591,7 @@ ignored, really)</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 110</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">object</span>, <span class="ruby-identifier">locals</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@views</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">view</span>
-    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Couldn't find a view in @views for #{view}&quot;</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Couldn&#39;t find a view in @views for #{view}&quot;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;View for #{view} is #{@views[view]}, object is #{object}&quot;</span> }
   <span class="ruby-keyword">end</span>
@@ -655,11 +655,11 @@ ignored, really)</p>
 
 <h3 id="method-c-camelcase_to_underscore-label-Examples">Examples<span><a href="#method-c-camelcase_to_underscore-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-string">'BlockSidebar'</span>)
-<span class="ruby-comment"># =&gt; 'block_sidebar'</span>
+<pre class="ruby"><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-string">&#39;BlockSidebar&#39;</span>)
+<span class="ruby-comment"># =&gt; &#39;block_sidebar&#39;</span>
 
-<span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-string">'BlockUlist'</span>)
-<span class="ruby-comment"># =&gt; 'block_ulist'</span>
+<span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-string">&#39;BlockUlist&#39;</span>)
+<span class="ruby-comment"># =&gt; &#39;block_ulist&#39;</span>
 </pre>
 
 <p>Returns the String converted from CamelCase to underscore-delimited</p>
@@ -670,8 +670,8 @@ ignored, really)</p>
           <div class="method-source-code" id="camelcase_to_underscore-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 184</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-identifier">str</span>)
-  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:upper:]]+)([[:upper:]][[:alpha:]])/</span>, <span class="ruby-string">'\1_\2'</span>).
-      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:lower:]])([[:upper:]])/</span>, <span class="ruby-string">'\1_\2'</span>).<span class="ruby-identifier">downcase</span>
+  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:upper:]]+)([[:upper:]][[:alpha:]])/</span>, <span class="ruby-string">&#39;\1_\2&#39;</span>).
+      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:lower:]])([[:upper:]])/</span>, <span class="ruby-string">&#39;\1_\2&#39;</span>).<span class="ruby-identifier">downcase</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- camelcase_to_underscore-source -->
           
@@ -711,10 +711,10 @@ name and backend</p>
 <h3 id="method-c-extract_view_mapping-label-Examples">Examples<span><a href="#method-c-extract_view_mapping-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <pre class="ruby"><span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">extract_view_mapping</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML5</span><span class="ruby-operator">::</span><span class="ruby-constant">DocumentTemplate</span>)
-<span class="ruby-comment"># =&gt; ['document', 'html5']</span>
+<span class="ruby-comment"># =&gt; [&#39;document&#39;, &#39;html5&#39;]</span>
 
 <span class="ruby-constant">Renderer</span>.<span class="ruby-identifier">extract_view_mapping</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">DocBook45</span><span class="ruby-operator">::</span><span class="ruby-constant">BlockSidebarTemplate</span>)
-<span class="ruby-comment"># =&gt; ['block_sidebar', 'docbook45']</span>
+<span class="ruby-comment"># =&gt; [&#39;block_sidebar&#39;, &#39;docbook45&#39;]</span>
 </pre>
 
 <p>Returns A two-element String Array mapped as [view_name, backend], where
@@ -727,9 +727,9 @@ backend may be nil</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 163</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">extract_view_mapping</span>(<span class="ruby-identifier">qualified_class</span>)
   <span class="ruby-identifier">view_name</span>, <span class="ruby-identifier">backend</span> = <span class="ruby-identifier">qualified_class</span>.<span class="ruby-identifier">to_s</span>.
-      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/^Asciidoctor::/</span>, <span class="ruby-string">''</span>).
-      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/Template$/</span>, <span class="ruby-string">''</span>).
-      <span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">reverse</span>
+      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/^Asciidoctor::/</span>, <span class="ruby-string">&#39;&#39;</span>).
+      <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/Template$/</span>, <span class="ruby-string">&#39;&#39;</span>).
+      <span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;::&#39;</span>).<span class="ruby-identifier">reverse</span>
   <span class="ruby-identifier">view_name</span> = <span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-identifier">view_name</span>)
   <span class="ruby-identifier">backend</span> = <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">downcase</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">backend</span>.<span class="ruby-identifier">nil?</span>
   [<span class="ruby-identifier">view_name</span>, <span class="ruby-identifier">backend</span>]
@@ -766,7 +766,7 @@ backend may be nil</p>
           <p>Load the eRuby implementation</p>
 <dl class="rdoc-list note-list"><dt>name
 <dd>
-<p>the String name of the eRuby implementation (default: ‘erb’)</p>
+<p>the String name of the eRuby implementation (default: &#39;erb&#39;)</p>
 </dd></dl>
 
 <p>returns the eRuby implementation class</p>
@@ -777,15 +777,15 @@ backend may be nil</p>
           <div class="method-source-code" id="load_eruby-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_eruby</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span>[<span class="ruby-string">'erb'</span>, <span class="ruby-string">'erubis'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
-    <span class="ruby-identifier">name</span> = <span class="ruby-string">'erb'</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span>[<span class="ruby-string">&#39;erb&#39;</span>, <span class="ruby-string">&#39;erubis&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+    <span class="ruby-identifier">name</span> = <span class="ruby-string">&#39;erb&#39;</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-identifier">name</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'erb'</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;erb&#39;</span>
     <span class="ruby-operator">::</span><span class="ruby-constant">ERB</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'erubis'</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;erubis&#39;</span>
     <span class="ruby-operator">::</span><span class="ruby-constant">Erubis</span><span class="ruby-operator">::</span><span class="ruby-constant">FastEruby</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

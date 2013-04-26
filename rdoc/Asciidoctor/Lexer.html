@@ -484,8 +484,8 @@ could invoke filter in here, before and after parsing</p>
   <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">block_context</span>, <span class="ruby-identifier">buffer</span>)
   <span class="ruby-comment"># should supports_caption be necessary?</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">supports_caption</span>
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'title'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'title'</span>)
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'caption'</span>)
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;title&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;title&#39;</span>)
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;caption&#39;</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">nil?</span>
@@ -648,7 +648,7 @@ could invoke filter in here, before and after parsing</p>
   <span class="ruby-identifier">match</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_entry</span>]) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span>
     <span class="ruby-identifier">name</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>]
-    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-constant">LINE_BREAK</span>
       <span class="ruby-identifier">value</span>.<span class="ruby-identifier">chop!</span>.<span class="ruby-identifier">rstrip!</span>
       <span class="ruby-keyword">while</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">advance</span>
@@ -663,7 +663,7 @@ could invoke filter in here, before and after parsing</p>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'!'</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;!&#39;</span>)
       <span class="ruby-comment"># a nil value signals the attribute should be deleted (undefined)</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">chop</span>
@@ -832,7 +832,7 @@ or nil if not</p>
 
       <span class="ruby-comment"># special case for fenced code blocks</span>
       <span class="ruby-identifier">tip_alt</span> = <span class="ruby-identifier">tip</span>.<span class="ruby-identifier">chop</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'```'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'~~~'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;```&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;~~~&#39;</span>
         <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">tip_alt</span>
         <span class="ruby-identifier">tl</span> = <span class="ruby-value">3</span>
       <span class="ruby-keyword">end</span>
@@ -938,7 +938,7 @@ otherwise</p>
 
         <div class="method-description">
           
-          <p>Make sure the <a href="Lexer.html">Lexer</a> object doesn’t get
+          <p>Make sure the <a href="Lexer.html">Lexer</a> object doesn&#39;t get
 initialized.</p>
 
 <p>Raises RuntimeError if this constructor is invoked.</p>
@@ -949,7 +949,7 @@ initialized.</p>
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 31</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
-  <span class="ruby-identifier">raise</span> <span class="ruby-string">'Au contraire, mon frere. No lexer instances will be running around.'</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;Au contraire, mon frere. No lexer instances will be running around.&#39;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -1010,7 +1010,7 @@ processed lines</p>
   <span class="ruby-comment"># Skip ahead to the block content</span>
   <span class="ruby-identifier">skipped</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">skip_blank_lines</span>
 
-  <span class="ruby-comment"># bail if we've reached the end of the parent block or document</span>
+  <span class="ruby-comment"># bail if we&#39;ve reached the end of the parent block or document</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
 
   <span class="ruby-comment"># check for option to find list item text only</span>
@@ -1046,8 +1046,8 @@ processed lines</p>
     <span class="ruby-identifier">terminator</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-comment"># QUESTION put this inside call to rekey attributes?</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">1</span>
-      <span class="ruby-identifier">explicit_style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>]
-      <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>]
+      <span class="ruby-identifier">explicit_style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>]
+      <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>]
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">delimited_blk_match</span> = <span class="ruby-identifier">is_delimited_block?</span>(<span class="ruby-identifier">this_line</span>, <span class="ruby-keyword">true</span>)
@@ -1055,11 +1055,11 @@ processed lines</p>
       <span class="ruby-identifier">block_context</span> = <span class="ruby-identifier">delimited_blk_match</span>.<span class="ruby-identifier">context</span>
       <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">delimited_blk_match</span>.<span class="ruby-identifier">terminator</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">style</span>
-        <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-identifier">block_context</span>.<span class="ruby-identifier">to_s</span>
+        <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-identifier">block_context</span>.<span class="ruby-identifier">to_s</span>
       <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">block_context</span>.<span class="ruby-identifier">to_s</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">delimited_blk_match</span>.<span class="ruby-identifier">masq</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">style</span>
           <span class="ruby-identifier">block_context</span> = <span class="ruby-identifier">style</span>.<span class="ruby-identifier">to_sym</span>
-        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">delimited_blk_match</span>.<span class="ruby-identifier">masq</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'admonition'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ADMONITION_STYLES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">style</span>)
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">delimited_blk_match</span>.<span class="ruby-identifier">masq</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;admonition&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">ADMONITION_STYLES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">style</span>)
           <span class="ruby-identifier">block_context</span> = <span class="ruby-value">:admonition</span>
         <span class="ruby-keyword">else</span>
           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: line #{reader.lineno}: invalid style for #{block_context} block: #{style}&quot;</span>
@@ -1086,7 +1086,7 @@ processed lines</p>
 
         <span class="ruby-comment"># process lines normally</span>
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:text</span>]
-          <span class="ruby-comment"># NOTE we're letting break lines (ruler, page_break, etc) have attributes</span>
+          <span class="ruby-comment"># NOTE we&#39;re letting break lines (ruler, page_break, etc) have attributes</span>
           <span class="ruby-keyword">if</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:break_line</span>]))
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-constant">BREAK_LINES</span>[<span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>]])
             <span class="ruby-keyword">break</span>
@@ -1096,16 +1096,16 @@ processed lines</p>
             <span class="ruby-identifier">blk_ctx</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_sym</span>
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">blk_ctx</span>)
             <span class="ruby-keyword">if</span> <span class="ruby-identifier">blk_ctx</span> <span class="ruby-operator">==</span> <span class="ruby-value">:image</span>
-              <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">'alt'</span>, <span class="ruby-string">'width'</span>, <span class="ruby-string">'height'</span>]
+              <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">&#39;alt&#39;</span>, <span class="ruby-string">&#39;width&#39;</span>, <span class="ruby-string">&#39;height&#39;</span>]
             <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">blk_ctx</span> <span class="ruby-operator">==</span> <span class="ruby-value">:video</span>
-              <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">'poster'</span>, <span class="ruby-string">'width'</span>, <span class="ruby-string">'height'</span>]
+              <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">&#39;poster&#39;</span>, <span class="ruby-string">&#39;width&#39;</span>, <span class="ruby-string">&#39;height&#39;</span>]
             <span class="ruby-keyword">else</span>
               <span class="ruby-identifier">posattrs</span> = []
             <span class="ruby-keyword">end</span>
 
             <span class="ruby-keyword">unless</span> <span class="ruby-identifier">style</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">explicit_style</span>
-              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'alt'</span>] = <span class="ruby-identifier">style</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">blk_ctx</span> <span class="ruby-operator">==</span> <span class="ruby-value">:image</span>
-              <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'style'</span>)
+              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;alt&#39;</span>] = <span class="ruby-identifier">style</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">blk_ctx</span> <span class="ruby-operator">==</span> <span class="ruby-value">:image</span>
+              <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;style&#39;</span>)
               <span class="ruby-identifier">style</span> = <span class="ruby-keyword">nil</span>
             <span class="ruby-keyword">end</span>
 
@@ -1120,17 +1120,17 @@ processed lines</p>
               <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
             <span class="ruby-keyword">end</span>
 
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'target'</span>] = <span class="ruby-identifier">target</span>
-            <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'title'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'title'</span>)
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;target&#39;</span>] = <span class="ruby-identifier">target</span>
+            <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;title&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;title&#39;</span>)
             <span class="ruby-keyword">if</span> <span class="ruby-identifier">blk_ctx</span> <span class="ruby-operator">==</span> <span class="ruby-value">:image</span>
               <span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:images</span>, <span class="ruby-identifier">target</span>)
-              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'alt'</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">target</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">target</span>))
+              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;alt&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">basename</span>(<span class="ruby-identifier">target</span>, <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">target</span>))
               <span class="ruby-comment"># QUESTION should video or audio have an auto-numbered caption?</span>
-              <span class="ruby-identifier">block</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'caption'</span>), <span class="ruby-string">'figure'</span>
+              <span class="ruby-identifier">block</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;caption&#39;</span>), <span class="ruby-string">&#39;figure&#39;</span>
             <span class="ruby-keyword">end</span>
             <span class="ruby-keyword">break</span>
 
-          <span class="ruby-comment"># NOTE we're letting the toc macro have attributes</span>
+          <span class="ruby-comment"># NOTE we&#39;re letting the toc macro have attributes</span>
           <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:toc</span>]))
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:toc</span>)
             <span class="ruby-identifier">block</span>.<span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>], [], <span class="ruby-value">:sub_result</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:into</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attributes</span>)
@@ -1139,10 +1139,10 @@ processed lines</p>
           <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
 
-        <span class="ruby-comment"># haven't found anything yet, continue</span>
+        <span class="ruby-comment"># haven&#39;t found anything yet, continue</span>
         <span class="ruby-keyword">if</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:colist</span>]))
           <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:colist</span>)
-          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-string">'arabic'</span>
+          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-string">&#39;arabic&#39;</span>
           <span class="ruby-identifier">items</span> = []
           <span class="ruby-identifier">block</span>.<span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">items</span>
           <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
@@ -1158,7 +1158,7 @@ processed lines</p>
               <span class="ruby-identifier">items</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">list_item</span>
               <span class="ruby-identifier">coids</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">callouts</span>.<span class="ruby-identifier">callout_ids</span>(<span class="ruby-identifier">items</span>.<span class="ruby-identifier">size</span>)
               <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">coids</span>.<span class="ruby-identifier">empty?</span>
-                <span class="ruby-identifier">list_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'coids'</span>] = <span class="ruby-identifier">coids</span>
+                <span class="ruby-identifier">list_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;coids&#39;</span>] = <span class="ruby-identifier">coids</span>
               <span class="ruby-keyword">else</span>
                 <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: line #{reader.lineno}: no callouts refer to list item #{items.size}&quot;</span>
               <span class="ruby-keyword">end</span>
@@ -1177,15 +1177,15 @@ processed lines</p>
           <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
           <span class="ruby-identifier">block</span> = <span class="ruby-identifier">next_outline_list</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-value">:olist</span>, <span class="ruby-identifier">parent</span>)
           <span class="ruby-comment"># QUESTION move this logic to next_outline_list?</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'style'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">block</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'style'</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;style&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">block</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;style&#39;</span>)
             <span class="ruby-identifier">marker</span> = <span class="ruby-identifier">block</span>.<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">marker</span>
-            <span class="ruby-keyword">if</span> <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'.'</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-string">&#39;.&#39;</span>
               <span class="ruby-comment"># first one makes more sense, but second on is AsciiDoc-compliant</span>
-              <span class="ruby-comment">#attributes['style'] = (ORDERED_LIST_STYLES[block.level - 1] || ORDERED_LIST_STYLES.first).to_s</span>
-              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = (<span class="ruby-constant">ORDERED_LIST_STYLES</span>[<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">to_s</span>
+              <span class="ruby-comment">#attributes[&#39;style&#39;] = (ORDERED_LIST_STYLES[block.level - 1] || ORDERED_LIST_STYLES.first).to_s</span>
+              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = (<span class="ruby-constant">ORDERED_LIST_STYLES</span>[<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">to_s</span>
             <span class="ruby-keyword">else</span>
               <span class="ruby-identifier">style</span> = <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">detect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">ORDERED_LIST_MARKER_PATTERNS</span>[<span class="ruby-identifier">s</span>]) }
-              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = (<span class="ruby-identifier">style</span> <span class="ruby-operator">||</span> <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">to_s</span>
+              <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = (<span class="ruby-identifier">style</span> <span class="ruby-operator">||</span> <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">to_s</span>
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">break</span>
@@ -1195,10 +1195,10 @@ processed lines</p>
           <span class="ruby-identifier">block</span> = <span class="ruby-identifier">next_labeled_list</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">match</span>, <span class="ruby-identifier">parent</span>)
           <span class="ruby-keyword">break</span>
 
-        <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">'float'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">'discrete'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">is_section_title?</span>(<span class="ruby-identifier">this_line</span>, <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>)
+        <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;float&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;discrete&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">is_section_title?</span>(<span class="ruby-identifier">this_line</span>, <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>)
           <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
           <span class="ruby-identifier">float_id</span>, <span class="ruby-identifier">float_title</span>, <span class="ruby-identifier">float_level</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">parse_section_title</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
-          <span class="ruby-identifier">float_id</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'id'</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'id'</span>)
+          <span class="ruby-identifier">float_id</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;id&#39;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;id&#39;</span>)
           <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:floating_title</span>)
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">float_id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">float_id</span>.<span class="ruby-identifier">empty?</span>
             <span class="ruby-comment"># FIXME remove hack of creating throwaway Section to get at the generate_id method</span>
@@ -1215,7 +1215,7 @@ processed lines</p>
 
         <span class="ruby-comment"># FIXME create another set for &quot;passthrough&quot; styles</span>
         <span class="ruby-comment"># though partintro should likely be a dedicated block</span>
-        <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">style</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'normal'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'partintro'</span>
+        <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">style</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;normal&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;partintro&#39;</span>
           <span class="ruby-keyword">if</span> <span class="ruby-constant">PARAGRAPH_STYLES</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">style</span>)
             <span class="ruby-identifier">block_context</span> = <span class="ruby-identifier">style</span>.<span class="ruby-identifier">to_sym</span>
             <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
@@ -1233,10 +1233,10 @@ processed lines</p>
           <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
 
-        <span class="ruby-identifier">break_at_list</span> = (<span class="ruby-identifier">skipped</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent_context</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'list'</span>))
+        <span class="ruby-identifier">break_at_list</span> = (<span class="ruby-identifier">skipped</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent_context</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;list&#39;</span>))
 
         <span class="ruby-comment"># a literal paragraph is contiguous lines starting at least one space</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'normal'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:lit_par</span>])
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;normal&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:lit_par</span>])
           <span class="ruby-comment"># So we need to actually include this one in the grab_lines group</span>
           <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
           <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">grab_lines_until</span>(
@@ -1245,7 +1245,7 @@ processed lines</p>
               <span class="ruby-value">:preserve_last_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
             <span class="ruby-comment"># a preceding blank line (skipped &gt; 0) indicates we are in a list continuation</span>
             <span class="ruby-comment"># and therefore we should not break at a list item</span>
-            <span class="ruby-comment"># (this won't stop breaking on item of same level since we've already parsed them out)</span>
+            <span class="ruby-comment"># (this won&#39;t stop breaking on item of same level since we&#39;ve already parsed them out)</span>
             <span class="ruby-comment"># QUESTION can we turn this block into a lambda or function call?</span>
             (<span class="ruby-identifier">break_at_list</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:any_list</span>])) <span class="ruby-operator">||</span>
             (<span class="ruby-constant">COMPLIANCE</span>[<span class="ruby-value">:block_terminates_paragraph</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">is_delimited_block?</span>(<span class="ruby-identifier">line</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_line</span>])))
@@ -1255,16 +1255,16 @@ processed lines</p>
           <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
             <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:leading_blanks</span>])[<span class="ruby-value">1</span>].<span class="ruby-identifier">length</span> }.<span class="ruby-identifier">min</span>
             <span class="ruby-keyword">if</span> <span class="ruby-identifier">offset</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-              <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-node">/^\s{1,#{offset}}/</span>, <span class="ruby-string">''</span>) }
+              <span class="ruby-identifier">buffer</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span> <span class="ruby-identifier">l</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-node">/^\s{1,#{offset}}/</span>, <span class="ruby-string">&#39;&#39;</span>) }
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>
 
           <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:literal</span>, <span class="ruby-identifier">buffer</span>)
           <span class="ruby-comment"># a literal gets special meaning inside of a definition list</span>
           <span class="ruby-keyword">if</span> <span class="ruby-constant">LIST_CONTEXTS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">parent_context</span>)
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] <span class="ruby-operator">||=</span> []
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;options&#39;</span>] <span class="ruby-operator">||=</span> []
             <span class="ruby-comment"># TODO this feels hacky, better way to distinguish from explicit literal block?</span>
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'listparagraph'</span>
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;options&#39;</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;listparagraph&#39;</span>
           <span class="ruby-keyword">end</span>
 
         <span class="ruby-comment"># a paragraph is contiguous nonblank/noncontinuation lines</span>
@@ -1277,13 +1277,13 @@ processed lines</p>
               <span class="ruby-value">:skip_line_comments</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
             <span class="ruby-comment"># a preceding blank line (skipped &gt; 0) indicates we are in a list continuation</span>
             <span class="ruby-comment"># and therefore we should not break at a list item</span>
-            <span class="ruby-comment"># (this won't stop breaking on item of same level since we've already parsed them out)</span>
+            <span class="ruby-comment"># (this won&#39;t stop breaking on item of same level since we&#39;ve already parsed them out)</span>
             <span class="ruby-comment"># QUESTION can we turn this block into a lambda or function call?</span>
             (<span class="ruby-identifier">break_at_list</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:any_list</span>])) <span class="ruby-operator">||</span>
             (<span class="ruby-constant">COMPLIANCE</span>[<span class="ruby-value">:block_terminates_paragraph</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">is_delimited_block?</span>(<span class="ruby-identifier">line</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_line</span>])))
           }
 
-          <span class="ruby-comment"># NOTE we need this logic because we've asked the reader to skip</span>
+          <span class="ruby-comment"># NOTE we need this logic because we&#39;ve asked the reader to skip</span>
           <span class="ruby-comment"># line comments, which may leave us w/ an empty buffer if those</span>
           <span class="ruby-comment"># were the only lines found</span>
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">empty?</span>
@@ -1297,12 +1297,12 @@ processed lines</p>
           <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:text</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">admonition_match</span> = <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:admonition_inline</span>]))
             <span class="ruby-identifier">buffer</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">admonition_match</span>.<span class="ruby-identifier">post_match</span>.<span class="ruby-identifier">lstrip</span>
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:admonition</span>, <span class="ruby-identifier">buffer</span>)
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-identifier">admonition_match</span>[<span class="ruby-value">1</span>]
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'name'</span>] = <span class="ruby-identifier">admonition_name</span> = <span class="ruby-identifier">admonition_match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
-            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'caption'</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{admonition_name}-caption&quot;</span>]
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-identifier">admonition_match</span>[<span class="ruby-value">1</span>]
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;name&#39;</span>] = <span class="ruby-identifier">admonition_name</span> = <span class="ruby-identifier">admonition_match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">downcase</span>
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;caption&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{admonition_name}-caption&quot;</span>]
           <span class="ruby-keyword">else</span>
             <span class="ruby-comment"># QUESTION is this necessary?</span>
-            <span class="ruby-comment">#if style == 'normal' &amp;&amp; [' ', &quot;\t&quot;].include?(buffer.first[0..0])</span>
+            <span class="ruby-comment">#if style == &#39;normal&#39; &amp;&amp; [&#39; &#39;, &quot;\t&quot;].include?(buffer.first[0..0])</span>
             <span class="ruby-comment">#  # QUESTION should we only trim leading blanks?</span>
             <span class="ruby-comment">#  buffer.map! &amp;:lstrip</span>
             <span class="ruby-comment">#end</span>
@@ -1320,8 +1320,8 @@ processed lines</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block_context</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">case</span> <span class="ruby-identifier">block_context</span>
       <span class="ruby-keyword">when</span> <span class="ruby-value">:admonition</span>
-        <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'name'</span>] = <span class="ruby-identifier">admonition_name</span> = <span class="ruby-identifier">style</span>.<span class="ruby-identifier">downcase</span>
-        <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'caption'</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{admonition_name}-caption&quot;</span>]
+        <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;name&#39;</span>] = <span class="ruby-identifier">admonition_name</span> = <span class="ruby-identifier">style</span>.<span class="ruby-identifier">downcase</span>
+        <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;caption&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{admonition_name}-caption&quot;</span>]
         <span class="ruby-identifier">block</span> = <span class="ruby-identifier">build_block</span>(<span class="ruby-identifier">block_context</span>, <span class="ruby-value">:complex</span>, <span class="ruby-identifier">terminator</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>)
 
       <span class="ruby-keyword">when</span> <span class="ruby-value">:comment</span>
@@ -1333,12 +1333,12 @@ processed lines</p>
 
       <span class="ruby-keyword">when</span> <span class="ruby-value">:listing</span>, <span class="ruby-value">:fenced_code</span>, <span class="ruby-value">:source</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:fenced_code</span>
-          <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-string">'source'</span>
+          <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-string">&#39;source&#39;</span>
           <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">this_line</span>[<span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">strip</span>
-          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'language'</span>] = <span class="ruby-identifier">lang</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;language&#39;</span>] = <span class="ruby-identifier">lang</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">empty?</span>
           <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">terminator</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">terminator</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>
         <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">block_context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:source</span>
-          <span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, [<span class="ruby-keyword">nil</span>, <span class="ruby-string">'language'</span>, <span class="ruby-string">'linenums'</span>])
+          <span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, [<span class="ruby-keyword">nil</span>, <span class="ruby-string">&#39;language&#39;</span>, <span class="ruby-string">&#39;linenums&#39;</span>])
         <span class="ruby-keyword">end</span>
         <span class="ruby-identifier">block</span> = <span class="ruby-identifier">build_block</span>(<span class="ruby-value">:listing</span>, <span class="ruby-value">:verbatim</span>, <span class="ruby-identifier">terminator</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-keyword">true</span>)
 
@@ -1356,7 +1356,7 @@ processed lines</p>
         <span class="ruby-identifier">block</span> = <span class="ruby-identifier">next_table</span>(<span class="ruby-identifier">block_reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
 
       <span class="ruby-keyword">when</span> <span class="ruby-value">:quote</span>, <span class="ruby-value">:verse</span>
-        <span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, [<span class="ruby-keyword">nil</span>, <span class="ruby-string">'attribution'</span>, <span class="ruby-string">'citetitle'</span>])
+        <span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, [<span class="ruby-keyword">nil</span>, <span class="ruby-string">&#39;attribution&#39;</span>, <span class="ruby-string">&#39;citetitle&#39;</span>])
         <span class="ruby-identifier">block</span> = <span class="ruby-identifier">build_block</span>(<span class="ruby-identifier">block_context</span>, (<span class="ruby-identifier">block_context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:verse</span> <span class="ruby-operator">?</span> <span class="ruby-value">:verbatim</span> <span class="ruby-operator">:</span> <span class="ruby-value">:complex</span>), <span class="ruby-identifier">terminator</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>)
 
       <span class="ruby-keyword">else</span>
@@ -1372,12 +1372,12 @@ processed lines</p>
   <span class="ruby-comment"># REVIEW we may no longer need this check</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">block</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-comment"># REVIEW seems like there is a better way to organize this wrap-up</span>
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span>      <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'id'</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'id'</span>)
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span>     = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'title'</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title?</span>
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">caption</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'caption'</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span>      <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;id&#39;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;id&#39;</span>)
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span>     = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;title&#39;</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title?</span>
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">caption</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;caption&#39;</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
     <span class="ruby-comment"># AsciiDoc always use [id] as the reftext in HTML output,</span>
-    <span class="ruby-comment"># but I'd like to do better in Asciidoctor</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'reftext'</span>)
+    <span class="ruby-comment"># but I&#39;d like to do better in Asciidoctor</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;reftext&#39;</span>)
       <span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:ids</span>, [<span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span>])
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">block</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">attributes</span>)
@@ -1423,7 +1423,7 @@ attributes.</p>
 start of documentinto a preamble <a href="Block.html">Block</a>. If there
 are no such blocks, the preamble isdropped.</p>
 
-<p>Since we are reading line-by-line, there’s a chance that metadatathat
+<p>Since we are reading line-by-line, there&#39;s a chance that metadatathat
 should be associated with the following block gets consumed.To deal with
 this case, the method returns a running Hash of“orphaned” attributes that
 get passed to the next <a href="Section.html">Section</a> or <a
@@ -1469,11 +1469,11 @@ href="Section.html">Section</a> and Hash of orphaned attributes</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_section</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = {})
   <span class="ruby-identifier">preamble</span> = <span class="ruby-keyword">false</span>
 
-  <span class="ruby-comment"># FIXME if attributes[1] is a verbatim style, then don't check for section</span>
+  <span class="ruby-comment"># FIXME if attributes[1] is a verbatim style, then don&#39;t check for section</span>
 
   <span class="ruby-comment"># check if we are at the start of processing the document</span>
   <span class="ruby-comment"># NOTE we could drop a hint in the attributes to indicate</span>
-  <span class="ruby-comment"># that we are at a section title (so we don't have to check)</span>
+  <span class="ruby-comment"># that we are at a section title (so we don&#39;t have to check)</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Document</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span>
       (<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">has_header?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">is_next_line_section?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>))
 
@@ -1484,10 +1484,10 @@ href="Section.html">Section</a> and Hash of orphaned attributes</p>
     <span class="ruby-identifier">section</span> = <span class="ruby-identifier">parent</span>
 
     <span class="ruby-identifier">current_level</span> = <span class="ruby-value">0</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'fragment'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;fragment&#39;</span>
       <span class="ruby-identifier">expected_next_levels</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-comment"># small tweak to allow subsequent level-0 sections for book doctype</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">doctype</span> <span class="ruby-operator">==</span> <span class="ruby-string">'book'</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">doctype</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;book&#39;</span>
       <span class="ruby-identifier">expected_next_levels</span> = [<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">expected_next_levels</span> = [<span class="ruby-value">1</span>]
@@ -1496,11 +1496,11 @@ href="Section.html">Section</a> and Hash of orphaned attributes</p>
     <span class="ruby-identifier">section</span> = <span class="ruby-identifier">initialize_section</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
     <span class="ruby-comment"># clear attributes, except for title which carries over</span>
     <span class="ruby-comment"># section title to next block of content</span>
-    <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'title'</span>}
+    <span class="ruby-identifier">attributes</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete_if</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">k</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;title&#39;</span>}
     <span class="ruby-identifier">current_level</span> = <span class="ruby-identifier">section</span>.<span class="ruby-identifier">level</span>
     <span class="ruby-comment"># subsections in preface &amp; appendix in multipart books start at level 2</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">current_level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">special</span> <span class="ruby-operator">&amp;&amp;</span>
-        <span class="ruby-identifier">section</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span> <span class="ruby-operator">==</span> <span class="ruby-string">'book'</span> <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-string">'preface'</span>, <span class="ruby-string">'appendix'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">section</span>.<span class="ruby-identifier">sectname</span>)
+        <span class="ruby-identifier">section</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;book&#39;</span> <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-string">&#39;preface&#39;</span>, <span class="ruby-string">&#39;appendix&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">section</span>.<span class="ruby-identifier">sectname</span>)
       <span class="ruby-identifier">expected_next_levels</span> = [<span class="ruby-identifier">current_level</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span>]
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">expected_next_levels</span> = [<span class="ruby-identifier">current_level</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]
@@ -1523,15 +1523,15 @@ href="Section.html">Section</a> and Hash of orphaned attributes</p>
 
     <span class="ruby-identifier">next_level</span> = <span class="ruby-identifier">is_next_line_section?</span> <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_level</span>
-      <span class="ruby-identifier">next_level</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'leveloffset'</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-identifier">next_level</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;leveloffset&#39;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span>
       <span class="ruby-identifier">doctype</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">doctype</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doctype</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'book'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doctype</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;book&#39;</span>
         <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: ERROR: line #{reader.lineno + 1}: only book doctypes can contain level 0 sections&quot;</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">current_level</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">section</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Document</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
         <span class="ruby-keyword">unless</span> <span class="ruby-identifier">expected_next_levels</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">expected_next_levels</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">next_level</span>)
           <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: line #{reader.lineno + 1}: section title out of sequence: &quot;</span> <span class="ruby-operator">+</span>
-              <span class="ruby-node">&quot;expected #{expected_next_levels.size &gt; 1 ? 'levels' : 'level'} #{expected_next_levels * ' or '}, &quot;</span> <span class="ruby-operator">+</span>
+              <span class="ruby-node">&quot;expected #{expected_next_levels.size &gt; 1 ? &#39;levels&#39; : &#39;level&#39;} #{expected_next_levels * &#39; or &#39;}, &quot;</span> <span class="ruby-operator">+</span>
               <span class="ruby-node">&quot;got level #{next_level}&quot;</span>
         <span class="ruby-keyword">end</span>
         <span class="ruby-comment"># the attributes returned are those that are orphaned</span>
@@ -1548,8 +1548,8 @@ href="Section.html">Section</a> and Hash of orphaned attributes</p>
         (<span class="ruby-identifier">preamble</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">section</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">new_block</span>
         <span class="ruby-identifier">attributes</span> = {}
       <span class="ruby-keyword">else</span>
-        <span class="ruby-comment"># don't clear attributes if we don't find a block because they may</span>
-        <span class="ruby-comment"># be trailing attributes that didn't get associated with a block</span>
+        <span class="ruby-comment"># don&#39;t clear attributes if we don&#39;t find a block because they may</span>
+        <span class="ruby-comment"># be trailing attributes that didn&#39;t get associated with a block</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
@@ -1683,14 +1683,14 @@ document,which are automatically removed by the reader.</p>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_next_line_document_title?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">block_attributes</span>)
     <span class="ruby-identifier">document</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">document</span>.<span class="ruby-identifier">title</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">parse_section_title</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
     <span class="ruby-comment"># QUESTION: should this be encapsulated in document?</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'id'</span>)
-      <span class="ruby-identifier">document</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">block_attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'id'</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">block_attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;id&#39;</span>)
+      <span class="ruby-identifier">document</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">block_attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;id&#39;</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">parse_header_metadata</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'doctitle'</span>
-    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'doctitle'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;doctitle&#39;</span>
+    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;doctitle&#39;</span>]
   <span class="ruby-keyword">end</span>
  
   <span class="ruby-identifier">document</span>.<span class="ruby-identifier">clear_playback_attributes</span> <span class="ruby-identifier">block_attributes</span>
@@ -1742,8 +1742,8 @@ document</p>
 <h3 id="method-c-parse_header_metadata-label-Examples">Examples<span><a href="#method-c-parse_header_metadata-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <pre class="ruby"><span class="ruby-identifier">parse_header_metadata</span>(<span class="ruby-constant">Reader</span>.<span class="ruby-identifier">new</span> [<span class="ruby-string">&quot;Author Name &lt;author@example.org&gt;\n&quot;</span>, <span class="ruby-string">&quot;v1.0, 2012-12-21: Coincide w/ end of world.\n&quot;</span>])
-<span class="ruby-comment"># =&gt; {'author' =&gt; 'Author Name', 'firstname' =&gt; 'Author', 'lastname' =&gt; 'Name', 'email' =&gt; 'author@example.org',</span>
-<span class="ruby-comment">#       'revnumber' =&gt; '1.0', 'revdate' =&gt; '2012-12-21', 'revremark' =&gt; 'Coincide w/ end of world.'}</span>
+<span class="ruby-comment"># =&gt; {&#39;author&#39; =&gt; &#39;Author Name&#39;, &#39;firstname&#39; =&gt; &#39;Author&#39;, &#39;lastname&#39; =&gt; &#39;Name&#39;, &#39;email&#39; =&gt; &#39;author@example.org&#39;,</span>
+<span class="ruby-comment">#       &#39;revnumber&#39; =&gt; &#39;1.0&#39;, &#39;revdate&#39; =&gt; &#39;2012-12-21&#39;, &#39;revremark&#39; =&gt; &#39;Coincide w/ end of world.&#39;}</span>
 </pre>
           
           
@@ -1759,7 +1759,7 @@ document</p>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">author_metadata</span> = {}
-    <span class="ruby-identifier">keys</span> = [<span class="ruby-string">'author'</span>, <span class="ruby-string">'authorinitials'</span>, <span class="ruby-string">'firstname'</span>, <span class="ruby-string">'middlename'</span>, <span class="ruby-string">'lastname'</span>, <span class="ruby-string">'email'</span>]
+    <span class="ruby-identifier">keys</span> = [<span class="ruby-string">&#39;author&#39;</span>, <span class="ruby-string">&#39;authorinitials&#39;</span>, <span class="ruby-string">&#39;firstname&#39;</span>, <span class="ruby-string">&#39;middlename&#39;</span>, <span class="ruby-string">&#39;lastname&#39;</span>, <span class="ruby-string">&#39;email&#39;</span>]
     <span class="ruby-identifier">author_line</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">get_line</span>
     <span class="ruby-identifier">author_line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:semicolon_delim</span>]).<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">author_entry</span>, <span class="ruby-identifier">idx</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">author_entry</span>.<span class="ruby-identifier">strip!</span>
@@ -1776,26 +1776,26 @@ document</p>
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">author_entry</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:author_info</span>])
-        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:firstname</span>]] = <span class="ruby-identifier">fname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">'_'</span>, <span class="ruby-string">' '</span>)
+        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:firstname</span>]] = <span class="ruby-identifier">fname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39; &#39;</span>)
         <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = <span class="ruby-identifier">fname</span>
         <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:authorinitials</span>]] = <span class="ruby-identifier">fname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">nil?</span>
-          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:middlename</span>]] = <span class="ruby-identifier">mname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">'_'</span>, <span class="ruby-string">' '</span>)
-          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:lastname</span>]] = <span class="ruby-identifier">lname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">'_'</span>, <span class="ruby-string">' '</span>)
-          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = [<span class="ruby-identifier">fname</span>, <span class="ruby-identifier">mname</span>, <span class="ruby-identifier">lname</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">' '</span>
+          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:middlename</span>]] = <span class="ruby-identifier">mname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39; &#39;</span>)
+          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:lastname</span>]] = <span class="ruby-identifier">lname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39; &#39;</span>)
+          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = [<span class="ruby-identifier">fname</span>, <span class="ruby-identifier">mname</span>, <span class="ruby-identifier">lname</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">&#39; &#39;</span>
           <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:authorinitials</span>]] = [<span class="ruby-identifier">fname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>], <span class="ruby-identifier">mname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>], <span class="ruby-identifier">lname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]].<span class="ruby-identifier">join</span>
         <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">nil?</span>
-          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:lastname</span>]] = <span class="ruby-identifier">lname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">'_'</span>, <span class="ruby-string">' '</span>)
-          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = [<span class="ruby-identifier">fname</span>, <span class="ruby-identifier">lname</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">' '</span>
+          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:lastname</span>]] = <span class="ruby-identifier">lname</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">tr</span>(<span class="ruby-string">&#39;_&#39;</span>, <span class="ruby-string">&#39; &#39;</span>)
+          <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = [<span class="ruby-identifier">fname</span>, <span class="ruby-identifier">lname</span>].<span class="ruby-identifier">join</span> <span class="ruby-string">&#39; &#39;</span>
           <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:authorinitials</span>]] = [<span class="ruby-identifier">fname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>], <span class="ruby-identifier">lname</span>[<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]].<span class="ruby-identifier">join</span>
         <span class="ruby-keyword">end</span>
         <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:email</span>]] = <span class="ruby-identifier">match</span>[<span class="ruby-value">4</span>] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:firstname</span>]] = <span class="ruby-identifier">author_entry</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">squeeze</span>(<span class="ruby-string">' '</span>)
+        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]] = <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:firstname</span>]] = <span class="ruby-identifier">author_entry</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">squeeze</span>(<span class="ruby-string">&#39; &#39;</span>)
         <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:authorinitials</span>]] = <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:firstname</span>]][<span class="ruby-value">0</span>, <span class="ruby-value">1</span>]
       <span class="ruby-keyword">end</span>
 
-      <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">'authorcount'</span>] = <span class="ruby-identifier">idx</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">&#39;authorcount&#39;</span>] = <span class="ruby-identifier">idx</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
       <span class="ruby-comment"># only assign the _1 attributes if there are multiple authors</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">idx</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
         <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
@@ -1803,9 +1803,9 @@ document</p>
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">idx</span>.<span class="ruby-identifier">zero?</span>
-        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">'authors'</span>] = <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]]
+        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">&#39;authors&#39;</span>] = <span class="ruby-identifier">author_metadata</span>[<span class="ruby-identifier">map</span>[<span class="ruby-value">:author</span>]]
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">'authors'</span>] = <span class="ruby-node">&quot;#{author_metadata['authors']}, #{author_metadata[map[:author]]}&quot;</span>
+        <span class="ruby-identifier">author_metadata</span>[<span class="ruby-string">&#39;authors&#39;</span>] = <span class="ruby-node">&quot;#{author_metadata[&#39;authors&#39;]}, #{author_metadata[map[:author]]}&quot;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
@@ -1828,9 +1828,9 @@ document</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
       <span class="ruby-identifier">rev_line</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">get_line</span> 
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">rev_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:revision_info</span>])
-        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">'revdate'</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">strip</span>
-        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">'revnumber'</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">rstrip</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
-        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">'revremark'</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">rstrip</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">&#39;revdate&#39;</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">strip</span>
+        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">&#39;revnumber&#39;</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">rstrip</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-identifier">rev_metadata</span>[<span class="ruby-string">&#39;revremark&#39;</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">rstrip</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-comment"># throw it back</span>
         <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">rev_line</span>
@@ -1891,14 +1891,14 @@ document</p>
 
 <h3 id="method-c-sanitize_attribute_name-label-Examples">Examples<span><a href="#method-c-sanitize_attribute_name-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'Foo Bar'</span>)
-=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foobar'</span>
+<pre class="ruby"><span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">&#39;Foo Bar&#39;</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;foobar&#39;</span>
 
-<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'foo'</span>)
-=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foo'</span>
+<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">&#39;foo&#39;</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;foo&#39;</span>
 
-<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">'Foo 3 #-Billy'</span>)
-=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'foo3-billy'</span>
+<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-string">&#39;Foo 3 #-Billy&#39;</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;foo3-billy&#39;</span>
 </pre>
           
           
@@ -1907,7 +1907,7 @@ document</p>
           <div class="method-source-code" id="sanitize_attribute_name-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1910</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:illegal_attr_name_chars</span>], <span class="ruby-string">''</span>).<span class="ruby-identifier">downcase</span>
+  <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:illegal_attr_name_chars</span>], <span class="ruby-string">&#39;&#39;</span>).<span class="ruby-identifier">downcase</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- sanitize_attribute_name-source -->
           
@@ -1962,7 +1962,7 @@ document</p>
 
         <div class="method-description">
           
-          <p>Catalog any callouts found in the text, but don’t process them</p>
+          <p>Catalog any callouts found in the text, but don&#39;t process them</p>
 <dl class="rdoc-list note-list"><dt>text
 <dd>
 <p>The String of text in which to look for callouts</p>
@@ -1982,7 +1982,7 @@ document</p>
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:callout_scan</span>]) {
     <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
     <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
-    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">&#39;\&#39;</span>
     <span class="ruby-identifier">document</span>.<span class="ruby-identifier">callouts</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>])
   }
 <span class="ruby-keyword">end</span></pre>
@@ -2009,7 +2009,7 @@ document</p>
 
         <div class="method-description">
           
-          <p>Catalog any inline anchors found in the text, but don’t process them</p>
+          <p>Catalog any inline anchors found in the text, but don&#39;t process them</p>
 <dl class="rdoc-list note-list"><dt>text
 <dd>
 <p>The String text in which to look for inline anchors</p>
@@ -2029,11 +2029,11 @@ document</p>
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:anchor_macro</span>]) {
     <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
     <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
-    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
-    <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
-    <span class="ruby-identifier">id</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:dbl_quoted</span>], <span class="ruby-string">'\2'</span>)
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">&#39;\&#39;</span>
+    <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-identifier">id</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:dbl_quoted</span>], <span class="ruby-string">&#39;\2&#39;</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:m_dbl_quoted</span>], <span class="ruby-string">'\2'</span>)
+      <span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:m_dbl_quoted</span>], <span class="ruby-string">&#39;\2&#39;</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:ids</span>, [<span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span>])
   }
@@ -2067,7 +2067,7 @@ the rules that determine what comprises a list item.</p>
 
 <p>Grab lines until a sibling list item is found, or the block is broken by
 aterminator (such as a line comment). Definition lists are more greedy
-ifthey don’t have optional inline item text…they want that text</p>
+ifthey don&#39;t have optional inline item text…they want that text</p>
 <dl class="rdoc-list note-list"><dt>reader
 <dd>
 <p>The <a href="Reader.html">Reader</a> from which to retrieve the lines.</p>
@@ -2095,11 +2095,11 @@ labeled lists)</p>
   <span class="ruby-identifier">buffer</span> = []
 
   <span class="ruby-comment"># three states for continuation: :inactive, :active &amp; :frozen</span>
-  <span class="ruby-comment"># :frozen signifies we've detected sequential continuation lines &amp;</span>
+  <span class="ruby-comment"># :frozen signifies we&#39;ve detected sequential continuation lines &amp;</span>
   <span class="ruby-comment"># continuation is not permitted until reset </span>
   <span class="ruby-identifier">continuation</span> = <span class="ruby-value">:inactive</span>
 
-  <span class="ruby-comment"># if we are within a nested list, we don't throw away the list</span>
+  <span class="ruby-comment"># if we are within a nested list, we don&#39;t throw away the list</span>
   <span class="ruby-comment"># continuation marks because they will be processed when grabbing</span>
   <span class="ruby-comment"># the lines for those nested lists</span>
   <span class="ruby-identifier">within_nested_list</span> = <span class="ruby-keyword">false</span>
@@ -2111,9 +2111,9 @@ labeled lists)</p>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
     <span class="ruby-identifier">this_line</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">get_line</span>
 
-    <span class="ruby-comment"># if we've arrived at a sibling item in this list, we've captured</span>
+    <span class="ruby-comment"># if we&#39;ve arrived at a sibling item in this list, we&#39;ve captured</span>
     <span class="ruby-comment"># the complete list item and can begin processing it</span>
-    <span class="ruby-comment"># the remainder of the method determines whether we've reached</span>
+    <span class="ruby-comment"># the remainder of the method determines whether we&#39;ve reached</span>
     <span class="ruby-comment"># the termination of the list</span>
     <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_sibling_list_item?</span>(<span class="ruby-identifier">this_line</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">sibling_trait</span>)
 
@@ -2143,21 +2143,21 @@ labeled lists)</p>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">continuation</span> <span class="ruby-operator">==</span> <span class="ruby-value">:active</span>
         <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">this_line</span>
         <span class="ruby-comment"># grab all the lines in the block, leaving the delimiters in place</span>
-        <span class="ruby-comment"># we're being more strict here about the terminator, but I think that's a good thing</span>
+        <span class="ruby-comment"># we&#39;re being more strict here about the terminator, but I think that&#39;s a good thing</span>
         <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">concat</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">grab_lines_until</span>(<span class="ruby-value">:terminator</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">terminator</span>, <span class="ruby-value">:grab_last_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
         <span class="ruby-identifier">continuation</span> = <span class="ruby-value">:inactive</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-keyword">break</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-comment"># technically attr_line only breaks if ensuing line is not a list item</span>
-    <span class="ruby-comment"># which really means attr_line only breaks if it's acting as a block delimiter</span>
+    <span class="ruby-comment"># which really means attr_line only breaks if it&#39;s acting as a block delimiter</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dlist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">continuation</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:active</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_line</span>])
       <span class="ruby-keyword">break</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">continuation</span> <span class="ruby-operator">==</span> <span class="ruby-value">:active</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
         <span class="ruby-comment"># literal paragraphs have special considerations (and this is one of </span>
         <span class="ruby-comment"># two entry points into one)</span>
-        <span class="ruby-comment"># if we don't process it as a whole, then a line in it that looks like a</span>
+        <span class="ruby-comment"># if we don&#39;t process it as a whole, then a line in it that looks like a</span>
         <span class="ruby-comment"># list item will throw off the exit from it</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:lit_par</span>])
           <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">unshift_line</span> <span class="ruby-identifier">this_line</span>
@@ -2166,7 +2166,7 @@ labeled lists)</p>
               <span class="ruby-value">:break_on_blank_lines</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
               <span class="ruby-value">:break_on_list_continuation</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
             <span class="ruby-comment"># we may be in an indented list disguised as a literal paragraph</span>
-            <span class="ruby-comment"># so we need to make sure we don't slurp up a legitimate sibling</span>
+            <span class="ruby-comment"># so we need to make sure we don&#39;t slurp up a legitimate sibling</span>
             <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dlist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">is_sibling_list_item?</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">sibling_trait</span>)
           }
           <span class="ruby-identifier">continuation</span> = <span class="ruby-value">:inactive</span>
@@ -2209,7 +2209,7 @@ labeled lists)</p>
                   <span class="ruby-value">:break_on_blank_lines</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
                   <span class="ruby-value">:break_on_list_continuation</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
                 <span class="ruby-comment"># we may be in an indented list disguised as a literal paragraph</span>
-                <span class="ruby-comment"># so we need to make sure we don't slurp up a legitimate sibling</span>
+                <span class="ruby-comment"># so we need to make sure we don&#39;t slurp up a legitimate sibling</span>
                 <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:dlist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">is_sibling_list_item?</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">sibling_trait</span>)
               }
             <span class="ruby-comment"># TODO any way to combine this with the check after skipping blank lines?</span>
@@ -2226,7 +2226,7 @@ labeled lists)</p>
               <span class="ruby-keyword">break</span>
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">else</span> <span class="ruby-comment"># only dlist in need of item text, so slurp it up!</span>
-            <span class="ruby-comment"># pop the blank line so it's not interpretted as a list continuation</span>
+            <span class="ruby-comment"># pop the blank line so it&#39;s not interpretted as a list continuation</span>
             <span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">pop</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">within_nested_list</span>
             <span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">this_line</span>
             <span class="ruby-identifier">has_text</span> = <span class="ruby-keyword">true</span>
@@ -2316,8 +2316,8 @@ href="Section.html">Section</a></p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialize_section</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = {})
   <span class="ruby-identifier">section</span> = <span class="ruby-constant">Section</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">parent</span>
   <span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">section</span>.<span class="ruby-identifier">title</span>, <span class="ruby-identifier">section</span>.<span class="ruby-identifier">level</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">parse_section_title</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">section</span>.<span class="ruby-identifier">document</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'id'</span>)
-    <span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'id'</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;id&#39;</span>)
+    <span class="ruby-identifier">section</span>.<span class="ruby-identifier">id</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;id&#39;</span>]
   <span class="ruby-keyword">else</span>
     <span class="ruby-comment"># generate an id if one was not *embedded* in the heading line</span>
     <span class="ruby-comment"># or as an anchor above the section</span>
@@ -2333,12 +2333,12 @@ href="Section.html">Section</a></p>
     <span class="ruby-identifier">section</span>.<span class="ruby-identifier">special</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-identifier">document</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>
     <span class="ruby-comment"># FIXME refactor to use assign_caption (also check requirements)</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">sectname</span> <span class="ruby-operator">==</span> <span class="ruby-string">'appendix'</span> <span class="ruby-operator">&amp;&amp;</span>
-        <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'caption'</span>) <span class="ruby-operator">&amp;&amp;</span>
-        <span class="ruby-operator">!</span><span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'caption'</span>)
-      <span class="ruby-identifier">number</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">counter</span>(<span class="ruby-string">'appendix-number'</span>, <span class="ruby-string">'A'</span>)
-      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'caption'</span>] = <span class="ruby-node">&quot;#{document.attributes['appendix-caption']} #{number}: &quot;</span>
-      <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeEntry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'appendix-number'</span>, <span class="ruby-identifier">number</span>).<span class="ruby-identifier">save_to</span>(<span class="ruby-identifier">attributes</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">sectname</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;appendix&#39;</span> <span class="ruby-operator">&amp;&amp;</span>
+        <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;caption&#39;</span>) <span class="ruby-operator">&amp;&amp;</span>
+        <span class="ruby-operator">!</span><span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;caption&#39;</span>)
+      <span class="ruby-identifier">number</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">counter</span>(<span class="ruby-string">&#39;appendix-number&#39;</span>, <span class="ruby-string">&#39;A&#39;</span>)
+      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;caption&#39;</span>] = <span class="ruby-node">&quot;#{document.attributes[&#39;appendix-caption&#39;]} #{number}: &quot;</span>
+      <span class="ruby-constant">Document</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeEntry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;appendix-number&#39;</span>, <span class="ruby-identifier">number</span>).<span class="ruby-identifier">save_to</span>(<span class="ruby-identifier">attributes</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">section</span>.<span class="ruby-identifier">sectname</span> = <span class="ruby-node">&quot;sect#{section.level}&quot;</span>
@@ -2434,7 +2434,7 @@ positioned at a section title,false otherwise</p>
           <div class="method-source-code" id="is_next_line_section-3F-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_next_line_section?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-string">'float'</span>, <span class="ruby-string">'discrete'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>])
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-string">&#39;float&#39;</span>, <span class="ruby-string">&#39;discrete&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>])
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
   <span class="ruby-identifier">is_section_title?</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_lines</span>(<span class="ruby-value">2</span>))
 <span class="ruby-keyword">end</span></pre>
@@ -2597,7 +2597,7 @@ for the parent list (according to its type). Next, parse those linesinto
 blocks and associate them with the <a href="ListItem.html">ListItem</a> (in
 the case of alabeled list, the definition <a
 href="ListItem.html">ListItem</a>). Finally, fold the first blockinto the
-item’s text attribute according to rules described in <a
+item&#39;s text attribute according to rules described in <a
 href="ListItem.html">ListItem</a>.</p>
 <dl class="rdoc-list note-list"><dt>reader
 <dd>
@@ -2653,7 +2653,7 @@ parent list <a href="Block.html">Block</a>.</p>
 
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">subsequent_line</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">continuation_connects_first_block</span> = (<span class="ruby-identifier">subsequent_line</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;\n&quot;</span>)
-      <span class="ruby-comment"># if there's no continuation connecting the first block, then</span>
+      <span class="ruby-comment"># if there&#39;s no continuation connecting the first block, then</span>
       <span class="ruby-comment"># treat the lines as paragraph text (activated when has_text = false)</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">continuation_connects_first_block</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:dlist</span>
         <span class="ruby-identifier">has_text</span> = <span class="ruby-keyword">false</span>
@@ -2753,7 +2753,7 @@ belongs</p>
     <span class="ruby-comment"># determine if we are moving up or down in nesting</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">items</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">marker</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">items</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">marker</span>
       <span class="ruby-comment"># assume list is nested by default, but then check to see if we are</span>
-      <span class="ruby-comment"># popping out of a nested list by matching an ancestor's list marker</span>
+      <span class="ruby-comment"># popping out of a nested list by matching an ancestor&#39;s list marker</span>
       <span class="ruby-identifier">this_item_level</span> = <span class="ruby-identifier">list_block</span>.<span class="ruby-identifier">level</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
       <span class="ruby-identifier">p</span> = <span class="ruby-identifier">parent</span>
       <span class="ruby-keyword">while</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">list_type</span>
@@ -2774,7 +2774,7 @@ belongs</p>
       <span class="ruby-keyword">break</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">this_item_level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">list_block</span>.<span class="ruby-identifier">level</span>
       <span class="ruby-comment"># If this next list level is down one from the</span>
-      <span class="ruby-comment"># current Block's, append it to content of the current list item</span>
+      <span class="ruby-comment"># current Block&#39;s, append it to content of the current list item</span>
       <span class="ruby-identifier">items</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">blocks</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_block</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">list_block</span>)
     <span class="ruby-keyword">end</span>
 
@@ -2833,11 +2833,11 @@ from the provided reader</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1692</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_table</span>(<span class="ruby-identifier">table_reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
   <span class="ruby-identifier">table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
-  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'title'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'title'</span>)
-  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'caption'</span>)
+  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;title&#39;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;title&#39;</span>)
+  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">assign_caption</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;caption&#39;</span>)
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'cols'</span>
-    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">create_columns</span>(<span class="ruby-identifier">parse_col_specs</span>(<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'cols'</span>]))
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;cols&#39;</span>
+    <span class="ruby-identifier">table</span>.<span class="ruby-identifier">create_columns</span>(<span class="ruby-identifier">parse_col_specs</span>(<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;cols&#39;</span>]))
     <span class="ruby-identifier">explicit_col_specs</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">explicit_col_specs</span> = <span class="ruby-keyword">false</span>
@@ -2849,14 +2849,14 @@ from the provided reader</p>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">table_reader</span>.<span class="ruby-identifier">has_more_lines?</span>
     <span class="ruby-identifier">line</span> = <span class="ruby-identifier">table_reader</span>.<span class="ruby-identifier">get_line</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;psv&#39;</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">starts_with_delimiter?</span> <span class="ruby-identifier">line</span>
         <span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
         <span class="ruby-comment"># push an empty cell spec if boundary at start of line</span>
         <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">close_open_cell</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">next_cell_spec</span>, <span class="ruby-identifier">line</span> = <span class="ruby-identifier">parse_cell_spec</span>(<span class="ruby-identifier">line</span>, <span class="ruby-value">:start</span>)
-        <span class="ruby-comment"># if the cell spec is not null, then we're at a cell boundary</span>
+        <span class="ruby-comment"># if the cell spec is not null, then we&#39;re at a cell boundary</span>
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">next_cell_spec</span>.<span class="ruby-identifier">nil?</span>
           <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">close_open_cell</span> <span class="ruby-identifier">next_cell_spec</span>
         <span class="ruby-keyword">else</span>
@@ -2868,20 +2868,20 @@ from the provided reader</p>
 
     <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">line</span>.<span class="ruby-identifier">empty?</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">match_delimiter</span>(<span class="ruby-identifier">line</span>)
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'csv'</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;csv&#39;</span>
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer_has_unclosed_quotes?</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>)
-            <span class="ruby-comment"># throw it back, it's too small</span>
+            <span class="ruby-comment"># throw it back, it&#39;s too small</span>
             <span class="ruby-identifier">line</span> = <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">skip_matched_delimiter</span>(<span class="ruby-identifier">m</span>)
             <span class="ruby-keyword">next</span>
           <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">else</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">'\'</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">&#39;\&#39;</span>
             <span class="ruby-identifier">line</span> = <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">skip_matched_delimiter</span>(<span class="ruby-identifier">m</span>, <span class="ruby-keyword">true</span>)
             <span class="ruby-keyword">next</span>
           <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
 
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;psv&#39;</span>
           <span class="ruby-identifier">next_cell_spec</span>, <span class="ruby-identifier">cell_text</span> = <span class="ruby-identifier">parse_cell_spec</span>(<span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>, <span class="ruby-value">:end</span>)
           <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">push_cell_spec</span> <span class="ruby-identifier">next_cell_spec</span>
           <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cell_text</span>
@@ -2896,11 +2896,11 @@ from the provided reader</p>
         <span class="ruby-comment"># suck up this line into the buffer and move on</span>
         <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
         <span class="ruby-comment"># QUESTION make this an option? (unwrap-option?)</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'csv'</span>
-          <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">rstrip!</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-string">' '</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;csv&#39;</span>
+          <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer</span>.<span class="ruby-identifier">rstrip!</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-string">&#39; &#39;</span>)
         <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">line</span> = <span class="ruby-string">''</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'csv'</span> <span class="ruby-operator">&amp;&amp;</span>
+        <span class="ruby-identifier">line</span> = <span class="ruby-string">&#39;&#39;</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;psv&#39;</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;csv&#39;</span> <span class="ruby-operator">&amp;&amp;</span>
             <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">buffer_has_unclosed_quotes?</span>)
           <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">keep_cell_open</span>
         <span class="ruby-keyword">else</span>
@@ -2916,7 +2916,7 @@ from the provided reader</p>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'colcount'</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">col_count</span>
+  <span class="ruby-identifier">table</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;colcount&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">col_count</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">explicit_col_specs</span>
     <span class="ruby-comment"># TODO further encapsulate this logic (into table perhaps?)</span>
@@ -2985,29 +2985,29 @@ not be captured</p>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_block_metadata_line</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
   <span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">commentish</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'//'</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment_blk</span>]))
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">commentish</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;//&#39;</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment_blk</span>]))
     <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>]
     <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">grab_lines_until</span>(<span class="ruby-value">:skip_first_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:preserve_last_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:terminator</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">terminator</span>, <span class="ruby-value">:preprocess</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">commentish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
-    <span class="ruby-comment"># do nothing, we'll skip it</span>
+    <span class="ruby-comment"># do nothing, we&#39;ll skip it</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:text</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_entry</span>]))
     <span class="ruby-identifier">process_attribute_entry</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">match</span>)
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:anchor</span>])
-    <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)
-    <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'id'</span>] = <span class="ruby-identifier">id</span>
+    <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>)
+    <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;id&#39;</span>] = <span class="ruby-identifier">id</span>
     <span class="ruby-comment"># AsciiDoc always use [id] as the reftext in HTML output,</span>
-    <span class="ruby-comment"># but I'd like to do better in Asciidoctor</span>
+    <span class="ruby-comment"># but I&#39;d like to do better in Asciidoctor</span>
     <span class="ruby-comment">#parent.document.register(:ids, id)</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">reftext</span>
-      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'reftext'</span>] = <span class="ruby-identifier">reftext</span>
+      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;reftext&#39;</span>] = <span class="ruby-identifier">reftext</span>
       <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:ids</span>, [<span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span>])
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:blk_attr_list</span>])
     <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>], [], <span class="ruby-value">:sub_input</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:into</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attributes</span>)
-  <span class="ruby-comment"># NOTE title doesn't apply to section, but we need to stash it for the first block</span>
+  <span class="ruby-comment"># NOTE title doesn&#39;t apply to section, but we need to stash it for the first block</span>
   <span class="ruby-comment"># TODO should issue an error if this is found above the document title</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">options</span>[<span class="ruby-value">:text</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:blk_title</span>]))
-    <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'title'</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;title&#39;</span>] = <span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>]
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">end</span>
@@ -3098,8 +3098,8 @@ not be captured</p>
           
           <p>Parse the cell specs for the current cell.</p>
 
-<p>The cell specs dictate the cell’s alignments, styles or filters,colspan,
-rowspan and/or repeating content.</p>
+<p>The cell specs dictate the cell&#39;s alignments, styles or
+filters,colspan, rowspan and/or repeating content.</p>
 
 <p>returns the Hash of attributes that indicate how to layoutand style this
 cell in the table.</p>
@@ -3111,9 +3111,9 @@ cell in the table.</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1852</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_cell_spec</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">pos</span> = <span class="ruby-value">:start</span>)
   <span class="ruby-comment"># the default for the end pos it {} since we</span>
-  <span class="ruby-comment"># know we're at a delimiter; when the pos</span>
+  <span class="ruby-comment"># know we&#39;re at a delimiter; when the pos</span>
   <span class="ruby-comment"># is start, we *may* be at a delimiter and</span>
-  <span class="ruby-comment"># nil indicates we're not</span>
+  <span class="ruby-comment"># nil indicates we&#39;re not</span>
   <span class="ruby-identifier">spec</span> = (<span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-value">:end</span> <span class="ruby-operator">?</span> {} <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">rest</span> = <span class="ruby-identifier">line</span>
 
@@ -3122,29 +3122,29 @@ cell in the table.</p>
     <span class="ruby-keyword">return</span> [<span class="ruby-identifier">spec</span>, <span class="ruby-identifier">line</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">rest</span> = (<span class="ruby-identifier">pos</span> <span class="ruby-operator">==</span> <span class="ruby-value">:start</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">m</span>.<span class="ruby-identifier">pre_match</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>]
-      <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">'.'</span>
+      <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&#39;.&#39;</span>
       <span class="ruby-identifier">colspec</span> = <span class="ruby-identifier">colspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">colspec</span>.<span class="ruby-identifier">to_i</span>
       <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">rowspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">rowspec</span>.<span class="ruby-identifier">to_i</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'+'</span>
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'colspan'</span>] = <span class="ruby-identifier">colspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">colspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'rowspan'</span>] = <span class="ruby-identifier">rowspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rowspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'*'</span>
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'repeatcol'</span>] = <span class="ruby-identifier">colspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">colspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;+&#39;</span>
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;colspan&#39;</span>] = <span class="ruby-identifier">colspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">colspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;rowspan&#39;</span>] = <span class="ruby-identifier">rowspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">rowspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">==</span> <span class="ruby-string">&#39;*&#39;</span>
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;repeatcol&#39;</span>] = <span class="ruby-identifier">colspec</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">colspec</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
     
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>]
-      <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">'.'</span>
+      <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&#39;.&#39;</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">colspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>].<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">colspec</span>)
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'halign'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>][<span class="ruby-identifier">colspec</span>]
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;halign&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>][<span class="ruby-identifier">colspec</span>]
       <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rowspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>].<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">rowspec</span>)
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'valign'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>][<span class="ruby-identifier">rowspec</span>]
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;valign&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>][<span class="ruby-identifier">rowspec</span>]
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>])
-      <span class="ruby-identifier">spec</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>[<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>]]
+      <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>[<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>]]
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span> 
 
@@ -3195,32 +3195,32 @@ in the table.</p>
   <span class="ruby-comment"># check for deprecated syntax</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">records</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:digits</span>])
     <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">to_i</span>) {
-      <span class="ruby-identifier">specs</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-string">'width'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
+      <span class="ruby-identifier">specs</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-string">&#39;width&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>}
     }
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">specs</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">records</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">records</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">record</span><span class="ruby-operator">|</span>
     <span class="ruby-comment"># TODO might want to use scan rather than this mega-regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span> = <span class="ruby-identifier">record</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:table_colspec</span>])
       <span class="ruby-identifier">spec</span> = {}
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>]
         <span class="ruby-comment"># make this an operation</span>
-        <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">'.'</span>
+        <span class="ruby-identifier">colspec</span>, <span class="ruby-identifier">rowspec</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span> <span class="ruby-string">&#39;.&#39;</span>
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">colspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>].<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">colspec</span>)
-          <span class="ruby-identifier">spec</span>[<span class="ruby-string">'halign'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>][<span class="ruby-identifier">colspec</span>]
+          <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;halign&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:h</span>][<span class="ruby-identifier">colspec</span>]
         <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rowspec</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>].<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">rowspec</span>)
-          <span class="ruby-identifier">spec</span>[<span class="ruby-string">'valign'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>][<span class="ruby-identifier">rowspec</span>]
+          <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;valign&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">ALIGNMENTS</span>[<span class="ruby-value">:v</span>][<span class="ruby-identifier">rowspec</span>]
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-comment"># TODO support percentage width</span>
-      <span class="ruby-identifier">spec</span>[<span class="ruby-string">'width'</span>] = <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+      <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;width&#39;</span>] = <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
 
       <span class="ruby-comment"># make this an operation</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>])
-        <span class="ruby-identifier">spec</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>[<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>]]
+        <span class="ruby-identifier">spec</span>[<span class="ruby-string">&#39;style&#39;</span>] = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">TEXT_STYLES</span>[<span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>]]
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-identifier">repeat</span> = <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
@@ -3335,7 +3335,7 @@ nil.</p>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">sect_level</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">0</span>
-    <span class="ruby-identifier">sect_level</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'leveloffset'</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-identifier">sect_level</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;leveloffset&#39;</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">to_i</span>
   <span class="ruby-keyword">end</span>
   [<span class="ruby-identifier">sect_id</span>, <span class="ruby-identifier">sect_title</span>, <span class="ruby-identifier">sect_level</span>, <span class="ruby-identifier">single_line</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -3393,10 +3393,10 @@ markerin its number series.</p>
           <div class="method-source-code" id="resolve_list_marker-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1579</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">resolve_list_marker</span>(<span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">marker</span>, <span class="ruby-identifier">ordinal</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">validate</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:olist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">marker</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'.'</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:olist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">marker</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;.&#39;</span>)
     <span class="ruby-identifier">resolve_ordered_list_marker</span>(<span class="ruby-identifier">marker</span>, <span class="ruby-identifier">ordinal</span>, <span class="ruby-identifier">validate</span>)
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:colist</span>
-    <span class="ruby-string">'&lt;1&gt;'</span>
+    <span class="ruby-string">&#39;&lt;1&gt;&#39;</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">marker</span>
   <span class="ruby-keyword">end</span>
@@ -3446,9 +3446,9 @@ sequence (default: false)</p>
 
 <h3 id="method-c-resolve_ordered_list_marker-label-Examples">Examples<span><a href="#method-c-resolve_ordered_list_marker-label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-identifier">marker</span> = <span class="ruby-string">'B.'</span>
+<pre class="ruby"><span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;B.&#39;</span>
 <span class="ruby-constant">Lexer</span><span class="ruby-operator">::</span><span class="ruby-identifier">resolve_ordered_list_marker</span>(<span class="ruby-identifier">marker</span>, <span class="ruby-value">1</span>, <span class="ruby-keyword">true</span>)
-<span class="ruby-comment"># =&gt; 'A.'</span>
+<span class="ruby-comment"># =&gt; &#39;A.&#39;</span>
 </pre>
 
 <p>Returns the String of the first marker in this number series</p>
@@ -3467,33 +3467,33 @@ sequence (default: false)</p>
         <span class="ruby-identifier">expected</span> = <span class="ruby-identifier">ordinal</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
         <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">to_i</span>
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">marker</span> = <span class="ruby-string">'1.'</span>
+      <span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;1.&#39;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:loweralpha</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">validate</span>
-        <span class="ruby-identifier">expected</span> = (<span class="ruby-string">'a'</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ordinal</span>).<span class="ruby-identifier">chr</span>
-        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">'.'</span>)
+        <span class="ruby-identifier">expected</span> = (<span class="ruby-string">&#39;a&#39;</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ordinal</span>).<span class="ruby-identifier">chr</span>
+        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39;.&#39;</span>)
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">marker</span> = <span class="ruby-string">'a.'</span>
+      <span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;a.&#39;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:upperalpha</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">validate</span>
-        <span class="ruby-identifier">expected</span> = (<span class="ruby-string">'A'</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ordinal</span>).<span class="ruby-identifier">chr</span>
-        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">'.'</span>)
+        <span class="ruby-identifier">expected</span> = (<span class="ruby-string">&#39;A&#39;</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">ord</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">ordinal</span>).<span class="ruby-identifier">chr</span>
+        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39;.&#39;</span>)
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">marker</span> = <span class="ruby-string">'A.'</span>
+      <span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;A.&#39;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:lowerroman</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">validate</span>
         <span class="ruby-comment"># TODO report this in roman numerals; see https://github.com/jamesshipton/roman-numeral/blob/master/lib/roman_numeral.rb</span>
         <span class="ruby-identifier">expected</span> = <span class="ruby-identifier">ordinal</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">')'</span>))
+        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39;)&#39;</span>))
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">marker</span> = <span class="ruby-string">'i)'</span>
+      <span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;i)&#39;</span>
     <span class="ruby-keyword">when</span> <span class="ruby-value">:upperroman</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">validate</span>
         <span class="ruby-comment"># TODO report this in roman numerals; see https://github.com/jamesshipton/roman-numeral/blob/master/lib/roman_numeral.rb</span>
         <span class="ruby-identifier">expected</span> = <span class="ruby-identifier">ordinal</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
-        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">')'</span>))
+        <span class="ruby-identifier">actual</span> = <span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">marker</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-string">&#39;)&#39;</span>))
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">marker</span> = <span class="ruby-string">'I)'</span>
+      <span class="ruby-identifier">marker</span> = <span class="ruby-string">&#39;I)&#39;</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">validate</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">expected</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">actual</span>
@@ -3541,7 +3541,7 @@ sequence (default: false)</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1919</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">value</span>)
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">downcase</span>
-  <span class="ruby-identifier">digits</span> = { <span class="ruby-string">'i'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-string">'v'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>, <span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span> }
+  <span class="ruby-identifier">digits</span> = { <span class="ruby-string">&#39;i&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-string">&#39;v&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>, <span class="ruby-string">&#39;x&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span> }
   <span class="ruby-identifier">result</span> = <span class="ruby-value">0</span>
   
   (<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-identifier">value</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
