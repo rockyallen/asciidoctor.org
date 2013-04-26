@@ -316,7 +316,7 @@
   <div id="description" class="description">
     
 <p>Methods and constants for managing AsciiDoc table content in a document.It
-supports all three of AsciiDoc&#39;s table formats: psv, dsv and csv.</p>
+supports all three of AsciiDoc’s table formats: psv, dsv and csv.</p>
 
   </div><!-- description -->
 
@@ -384,20 +384,20 @@ table</p>
   <span class="ruby-ivar">@rows</span> = <span class="ruby-constant">Rows</span>.<span class="ruby-identifier">new</span>([], [], [])
   <span class="ruby-ivar">@columns</span> = []
 
-  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;tablepcwidth&#39;</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'tablepcwidth'</span>
     <span class="ruby-comment"># smell like we need a utility method here</span>
     <span class="ruby-comment"># to resolve an integer width from potential bogus input</span>
-    <span class="ruby-identifier">pcwidth</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;width&#39;</span>]
+    <span class="ruby-identifier">pcwidth</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'width'</span>]
     <span class="ruby-identifier">pcwidth_intval</span> = <span class="ruby-identifier">pcwidth</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">abs</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">pcwidth_intval</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">pcwidth</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">pcwidth_intval</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">100</span>
       <span class="ruby-identifier">pcwidth_intval</span> = <span class="ruby-value">100</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;tablepcwidth&#39;</span>] = <span class="ruby-identifier">pcwidth_intval</span>
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'tablepcwidth'</span>] = <span class="ruby-identifier">pcwidth_intval</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;pagewidth&#39;</span>
-    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;tableabswidth&#39;</span>] <span class="ruby-operator">||=</span>
-        ((<span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;tablepcwidth&#39;</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>) <span class="ruby-operator">*</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;pagewidth&#39;</span>]).<span class="ruby-identifier">round</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'pagewidth'</span>
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'tableabswidth'</span>] <span class="ruby-operator">||=</span>
+        ((<span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'tablepcwidth'</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>) <span class="ruby-operator">*</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'pagewidth'</span>]).<span class="ruby-identifier">round</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -544,7 +544,7 @@ next_block)</p>
           <p>Get the rendered String content for this <a href="Block.html">Block</a>. 
 If the blockhas child blocks, the content method should cause them to
 berendered and returned as content that can be included in theparent
-block&#39;s template.</p>
+block’s template.</p>
           
           
 
@@ -556,7 +556,7 @@ block&#39;s template.</p>
   <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Parent is #{@parent}&quot;</span> }
   <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Renderer is #{renderer}&quot;</span> }
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">playback_attributes</span> <span class="ruby-ivar">@attributes</span>
-  <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">&#39;block_table&#39;</span>, <span class="ruby-keyword">self</span>) 
+  <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'block_table'</span>, <span class="ruby-keyword">self</span>) 
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render-source -->
           
@@ -624,13 +624,13 @@ spec</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create_columns</span>(<span class="ruby-identifier">col_specs</span>)
   <span class="ruby-identifier">total_width</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@columns</span> = <span class="ruby-identifier">col_specs</span>.<span class="ruby-identifier">inject</span>([]) {<span class="ruby-operator">|</span><span class="ruby-identifier">collector</span>, <span class="ruby-identifier">col_spec</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">total_width</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">col_spec</span>[<span class="ruby-string">&#39;width&#39;</span>]
+    <span class="ruby-identifier">total_width</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">col_spec</span>[<span class="ruby-string">'width'</span>]
     <span class="ruby-identifier">collector</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">Column</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-identifier">collector</span>.<span class="ruby-identifier">size</span>, <span class="ruby-identifier">col_spec</span>)
     <span class="ruby-identifier">collector</span>
   }
 
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@columns</span>.<span class="ruby-identifier">empty?</span>
-    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;colcount&#39;</span>] = <span class="ruby-ivar">@columns</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'colcount'</span>] = <span class="ruby-ivar">@columns</span>.<span class="ruby-identifier">size</span>
     <span class="ruby-identifier">even_width</span> = (<span class="ruby-value">100.0</span> <span class="ruby-operator">/</span> <span class="ruby-ivar">@columns</span>.<span class="ruby-identifier">size</span>).<span class="ruby-identifier">floor</span>
     <span class="ruby-ivar">@columns</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">assign_width</span>(<span class="ruby-identifier">total_width</span>, <span class="ruby-identifier">even_width</span>) }
   <span class="ruby-keyword">end</span>
@@ -672,18 +672,18 @@ on the table</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">partition_header_footer</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-comment"># set rowcount before splitting up body rows</span>
-  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;rowcount&#39;</span>] = <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">size</span>
+  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'rowcount'</span>] = <span class="ruby-ivar">@rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">size</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;header-option&#39;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'header-option'</span>)
     <span class="ruby-identifier">head</span> = <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">shift</span>
-    <span class="ruby-comment"># styles aren&#39;t applied to header row</span>
-    <span class="ruby-identifier">head</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;style&#39;</span>) }
+    <span class="ruby-comment"># styles aren't applied to header row</span>
+    <span class="ruby-identifier">head</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'style'</span>) }
     <span class="ruby-comment"># QUESTION why does AsciiDoc use an array for head? is it</span>
     <span class="ruby-comment"># possible to have more than one based on the syntax?</span>
     <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">head</span> = [<span class="ruby-identifier">head</span>]
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;footer-option&#39;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'footer-option'</span>)
     <span class="ruby-identifier">rows</span>.<span class="ruby-identifier">foot</span> = [<span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span>.<span class="ruby-identifier">pop</span>]
   <span class="ruby-keyword">end</span>
   

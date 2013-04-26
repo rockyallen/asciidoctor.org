@@ -680,13 +680,13 @@ located (default: nil)</p>
           <div class="method-source-code" id="generate_data_uri-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 251</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_data_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">&#39;base64&#39;</span>
+  <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'base64'</span>
 
-  <span class="ruby-identifier">mimetype</span> = <span class="ruby-string">&#39;image/&#39;</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">target_image</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+  <span class="ruby-identifier">mimetype</span> = <span class="ruby-string">'image/'</span> <span class="ruby-operator">+</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">target_image</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">asset_dir_key</span>
     <span class="ruby-comment">#asset_dir_path = normalize_system_path(@document.attr(asset_dir_key), nil, nil, :target_name =&gt; asset_dir_key)</span>
-    <span class="ruby-comment">#image_path = normalize_system_path(target_image, asset_dir_path, nil, :target_name =&gt; &#39;image&#39;)</span>
-    <span class="ruby-identifier">image_path</span> = <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">asset_dir_key</span>), <span class="ruby-keyword">nil</span>, <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;image&#39;</span>)
+    <span class="ruby-comment">#image_path = normalize_system_path(target_image, asset_dir_path, nil, :target_name =&gt; 'image')</span>
+    <span class="ruby-identifier">image_path</span> = <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">asset_dir_key</span>), <span class="ruby-keyword">nil</span>, <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'image'</span>)
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">image_path</span> = <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">target_image</span>)
   <span class="ruby-keyword">end</span>
@@ -694,14 +694,14 @@ located (default: nil)</p>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span> <span class="ruby-identifier">image_path</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: image to embed not found or not readable: #{image_path}&quot;</span>
     <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;data:#{mimetype}:base64,&quot;</span>
-    <span class="ruby-comment">#return &#39;data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==&#39;</span>
+    <span class="ruby-comment">#return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">bindata</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-constant">IO</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:binread</span>
     <span class="ruby-identifier">bindata</span> = <span class="ruby-constant">IO</span>.<span class="ruby-identifier">binread</span>(<span class="ruby-identifier">image_path</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">bindata</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">image_path</span>, <span class="ruby-string">&#39;rb&#39;</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> }
+    <span class="ruby-identifier">bindata</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">image_path</span>, <span class="ruby-string">'rb'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span> }
   <span class="ruby-keyword">end</span>
   <span class="ruby-node">&quot;data:#{mimetype};base64,#{Base64.encode64(bindata).delete(&quot;\n&quot;)}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -730,12 +730,12 @@ located (default: nil)</p>
           
           <p>Get the execution context of this object (via Kernel#binding).</p>
 
-<p>This method is used to set the &#39;self&#39; reference as well as local
-variablesthat map to this method&#39;s arguments during the evaluation of a
+<p>This method is used to set the ‘self’ reference as well as local
+variablesthat map to this method’s arguments during the evaluation of a
 backendtemplate.</p>
 
 <p>Each object in Ruby has a binding context that can be used to set the
-&#39;self&#39;reference in an evaluation context. Any arguments passed to
+‘self’reference in an evaluation context. Any arguments passed to
 thismethod are also available in the execution environment.</p>
 <dl class="rdoc-list note-list"><dt>template
 <dd>
@@ -782,16 +782,16 @@ inthat same environment.</p>
           <p>Construct a reference or data URI to an icon image for thespecified icon
 name.</p>
 
-<p>If the &#39;icon&#39; attribute is set on this block, the name is ignored
-and thevalue of this attribute is used as the  target image path.
+<p>If the ‘icon’ attribute is set on this block, the name is ignored and
+thevalue of this attribute is used as the  target image path.
 Otherwise,construct a target image path by concatenating the value of the
-&#39;iconsdir&#39;attribute, the icon name and the value of the
-&#39;icontype&#39; attribute(defaulting to &#39;png&#39;).</p>
+‘iconsdir’attribute, the icon name and the value of the ‘icontype’
+attribute(defaulting to ‘png’).</p>
 
 <p>The target image path is then passed through the <a
 href="AbstractNode.html#method-i-image_uri">image_uri()</a> method.  Ifthe
-&#39;data-uri&#39; attribute is set on the document, the image will
-besafely converted to a data URI.</p>
+‘data-uri’ attribute is set on the document, the image will besafely
+converted to a data URI.</p>
 
 <p>The return value of this method can be safely used in an image tag.</p>
 <dl class="rdoc-list note-list"><dt>name
@@ -807,10 +807,10 @@ besafely converted to a data URI.</p>
           <div class="method-source-code" id="icon_uri-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">icon_uri</span>(<span class="ruby-identifier">name</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icon&#39;</span>
-    <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;icon&#39;</span>), <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">'icon'</span>
+    <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">attr</span>(<span class="ruby-string">'icon'</span>), <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">image_uri</span>(<span class="ruby-node">&quot;#{name}.#{@document.attr(&#39;icontype&#39;, &#39;png&#39;)}&quot;</span>, <span class="ruby-string">&#39;iconsdir&#39;</span>)
+    <span class="ruby-identifier">image_uri</span>(<span class="ruby-node">&quot;#{name}.#{@document.attr('icontype', 'png')}&quot;</span>, <span class="ruby-string">'iconsdir'</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- icon_uri-source -->
@@ -843,9 +843,9 @@ besafely converted to a data URI.</p>
 <p>The target image is resolved relative to the directory retrieved from
 thespecified attribute key, if provided.</p>
 
-<p>If the &#39;data-uri&#39; attribute is set on the document, and the safe
-mode levelis less than SafeMode::SECURE, the image will be safely converted
-to a data URIby reading it from the same directory. If neither of these
+<p>If the ‘data-uri’ attribute is set on the document, and the safe mode
+levelis less than SafeMode::SECURE, the image will be safely converted to a
+data URIby reading it from the same directory. If neither of these
 conditionsare satisfied, a relative path (i.e., URL) will be returned.</p>
 
 <p>The return value of this method can be safely used in an image tag.</p>
@@ -855,7 +855,7 @@ conditionsare satisfied, a relative path (i.e., URL) will be returned.</p>
 </dd><dt>asset_dir_key
 <dd>
 <p>The String attribute key used to lookup the directory wherethe image is
-located (default: &#39;imagesdir&#39;)</p>
+located (default: ‘imagesdir’)</p>
 </dd></dl>
 
 <p>Returns A String reference or data URI for the target image</p>
@@ -865,10 +865,10 @@ located (default: &#39;imagesdir&#39;)</p>
           
           <div class="method-source-code" id="image_uri-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 227</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">&#39;imagesdir&#39;</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;:&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">'imagesdir'</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">':'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
     <span class="ruby-identifier">target_image</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;data-uri&#39;</span>)
+  <span class="ruby-keyword">elsif</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'data-uri'</span>)
     <span class="ruby-identifier">generate_data_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span>)
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">asset_dir_key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attr?</span>(<span class="ruby-identifier">asset_dir_key</span>)
     <span class="ruby-identifier">normalize_web_path</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">asset_dir_key</span>))
@@ -913,7 +913,7 @@ thespecified attribute key, if provided.</p>
 </dd><dt>asset_dir_key
 <dd>
 <p>The String attribute key used to lookup the directory wherethe media is
-located (default: &#39;imagesdir&#39;)</p>
+located (default: ‘imagesdir’)</p>
 </dd></dl>
 
 <p>Returns A String reference for the target media</p>
@@ -923,8 +923,8 @@ located (default: &#39;imagesdir&#39;)</p>
           
           <div class="method-source-code" id="media_uri-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 198</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">media_uri</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">&#39;imagesdir&#39;</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;:&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">media_uri</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">'imagesdir'</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">':'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
     <span class="ruby-identifier">target</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">asset_dir_key</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">attr?</span>(<span class="ruby-identifier">asset_dir_key</span>)
     <span class="ruby-identifier">normalize_web_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">asset_dir_key</span>))
@@ -967,7 +967,7 @@ the <a href="Document.html">Document</a> object.</p>
           
           <div class="method-source-code" id="normalize_asset_path-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 348</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">asset_ref</span>, <span class="ruby-identifier">asset_name</span> = <span class="ruby-string">&#39;path&#39;</span>, <span class="ruby-identifier">autocorrect</span> = <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">asset_ref</span>, <span class="ruby-identifier">asset_name</span> = <span class="ruby-string">'path'</span>, <span class="ruby-identifier">autocorrect</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">asset_ref</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">base_dir</span>, <span class="ruby-keyword">nil</span>,
       <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">asset_name</span>, <span class="ruby-value">:recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">autocorrect</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1195,7 +1195,7 @@ used for theAsciidoctor::Document to which this node belongs</p>
 
         <div class="method-description">
           
-          <p>Assign the value to the specified key in thisblock&#39;s attributes hash.</p>
+          <p>Assign the value to the specified key in thisblock’s attributes hash.</p>
 <dl class="rdoc-list note-list"><dt>key
 <dd>
 <p>The attribute key (or name)</p>
@@ -1250,7 +1250,7 @@ used for theAsciidoctor::Document to which this node belongs</p>
           <p>Update the attributes of this node with the new values inthe attributes
 argument.</p>
 
-<p>If an attribute already exists with the same key, it&#39;s value willbe
+<p>If an attribute already exists with the same key, it’s value willbe
 overridden.</p>
 <dl class="rdoc-list note-list"><dt>attributes
 <dd>

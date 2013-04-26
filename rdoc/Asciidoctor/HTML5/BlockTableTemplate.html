@@ -339,15 +339,15 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 560</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
-&lt;%#encoding:UTF-8%&gt;&lt;table#{id} class=&quot;tableblock frame-&lt;%= attr :frame, &#39;all&#39; %&gt; grid-&lt;%= attr :grid, &#39;all&#39;%&gt;#{role_class}&quot; style=&quot;&lt;%
-if !(attr? &#39;autowidth-option&#39;) %&gt;width:&lt;%= attr :tablepcwidth %&gt;%; &lt;% end %&gt;&lt;%
+&lt;%#encoding:UTF-8%&gt;&lt;table#{id} class=&quot;tableblock frame-&lt;%= attr :frame, 'all' %&gt; grid-&lt;%= attr :grid, 'all'%&gt;#{role_class}&quot; style=&quot;&lt;%
+if !(attr? 'autowidth-option') %&gt;width:&lt;%= attr :tablepcwidth %&gt;%; &lt;% end %&gt;&lt;%
 if attr? :float %&gt;float: &lt;%= attr :float %&gt;; &lt;% end %&gt;&quot;&gt;
   &lt;% if title? %&gt;
   &lt;caption class=&quot;title&quot;&gt;&lt;% unless @caption.nil? %&gt;&lt;%= @caption %&gt;&lt;% end %&gt;&lt;%= title %&gt;&lt;/caption&gt;
   &lt;% end %&gt;
   &lt;% if (attr :rowcount) &gt;= 0 %&gt;
   &lt;colgroup&gt;
-    &lt;% if attr? &#39;autowidth-option&#39; %&gt;
+    &lt;% if attr? 'autowidth-option' %&gt;
     &lt;% @columns.each do %&gt;
     &lt;col&gt;
     &lt;% end %&gt;
@@ -362,7 +362,7 @@ if attr? :float %&gt;float: &lt;%= attr :float %&gt;; &lt;% end %&gt;&quot;&gt;
     &lt;% @rows[tsec].each do |row| %&gt;
     &lt;tr&gt;
       &lt;% row.each do |cell| %&gt;
-      &lt;&lt;%= tsec == :head ? &#39;th&#39; : &#39;td&#39; %&gt; class=&quot;tableblock halign-&lt;%= cell.attr :halign %&gt; valign-&lt;%= cell.attr :valign %&gt;&quot;#{attribute(&#39;colspan&#39;, &#39;cell.colspan&#39;)}#{attribute(&#39;rowspan&#39;, &#39;cell.rowspan&#39;)}&gt;&lt;%
+      &lt;&lt;%= tsec == :head ? 'th' : 'td' %&gt; class=&quot;tableblock halign-&lt;%= cell.attr :halign %&gt; valign-&lt;%= cell.attr :valign %&gt;&quot;#{attribute('colspan', 'cell.colspan')}#{attribute('rowspan', 'cell.rowspan')}&gt;&lt;%
       if tsec == :head %&gt;&lt;%= cell.text %&gt;&lt;% else %&gt;&lt;%
       case cell.attr(:style)
         when :asciidoc %&gt;&lt;div&gt;&lt;%= cell.content %&gt;&lt;/div&gt;&lt;%
@@ -370,7 +370,7 @@ if attr? :float %&gt;float: &lt;%= attr :float %&gt;; &lt;% end %&gt;&quot;&gt;
         when :literal %&gt;&lt;div class=&quot;literal monospaced&quot;&gt;&lt;pre&gt;&lt;%= template.preserve_endlines(cell.text, self) %&gt;&lt;/pre&gt;&lt;/div&gt;&lt;%
         when :header %&gt;&lt;% cell.content.each do |text| %&gt;&lt;p class=&quot;tableblock header&quot;&gt;&lt;%= text %&gt;&lt;/p&gt;&lt;% end %&gt;&lt;%
         else %&gt;&lt;% cell.content.each do |text| %&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;%= text %&gt;&lt;/p&gt;&lt;% end %&gt;&lt;%
-      end %&gt;&lt;% end %&gt;&lt;/&lt;%= tsec == :head ? &#39;th&#39; : &#39;td&#39; %&gt;&gt;
+      end %&gt;&lt;% end %&gt;&lt;/&lt;%= tsec == :head ? 'th' : 'td' %&gt;&gt;
       &lt;% end %&gt;
     &lt;/tr&gt;
     &lt;% end %&gt;

@@ -395,8 +395,8 @@ track the next cell.</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 269</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">table</span>, <span class="ruby-identifier">attributes</span> = {})
   <span class="ruby-ivar">@table</span> = <span class="ruby-identifier">table</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;format&#39;</span>
-    <span class="ruby-ivar">@format</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;format&#39;</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'format'</span>
+    <span class="ruby-ivar">@format</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'format'</span>]
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">DATA_FORMATS</span>.<span class="ruby-identifier">include?</span> <span class="ruby-ivar">@format</span>
       <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Illegal table format: #@format&quot;</span>
     <span class="ruby-keyword">end</span>
@@ -404,14 +404,14 @@ track the next cell.</p>
     <span class="ruby-ivar">@format</span> = <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_DATA_FORMAT</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;psv&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">&#39;separator&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">nested?</span>
-    <span class="ruby-ivar">@delimiter</span> = <span class="ruby-string">&#39;!&#39;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'separator'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">nested?</span>
+    <span class="ruby-ivar">@delimiter</span> = <span class="ruby-string">'!'</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@delimiter</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&#39;separator&#39;</span>, <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_DELIMITERS</span>[<span class="ruby-ivar">@format</span>])
+    <span class="ruby-ivar">@delimiter</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'separator'</span>, <span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">DEFAULT_DELIMITERS</span>[<span class="ruby-ivar">@format</span>])
   <span class="ruby-keyword">end</span>
   <span class="ruby-ivar">@delimiter_re</span> = <span class="ruby-node">/#{Regexp.escape @delimiter}/</span>
   <span class="ruby-ivar">@col_count</span> = <span class="ruby-identifier">table</span>.<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">?</span> <span class="ruby-value">-1</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">table</span>.<span class="ruby-identifier">columns</span>.<span class="ruby-identifier">size</span>
-  <span class="ruby-ivar">@buffer</span> = <span class="ruby-string">&#39;&#39;</span>
+  <span class="ruby-ivar">@buffer</span> = <span class="ruby-string">''</span>
   <span class="ruby-ivar">@cell_specs</span> = []
   <span class="ruby-ivar">@cell_open</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@active_rowspans</span> = [<span class="ruby-value">0</span>]
@@ -604,8 +604,8 @@ effective number of cells in the current row.</p>
           
           <p>Determines whether the buffer has unclosed quotes. Used for CSV data.</p>
 
-<p>returns true if the buffer has unclosed quotes, false if it doesn&#39;t or
-it isn&#39;t quoted data</p>
+<p>returns true if the buffer has unclosed quotes, false if it doesn’t or it
+isn’t quoted data</p>
           
           
 
@@ -614,7 +614,7 @@ it isn&#39;t quoted data</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 325</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer_has_unclosed_quotes?</span>(<span class="ruby-identifier">append</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">record</span> = <span class="ruby-node">&quot;#@buffer#{append}&quot;</span>.<span class="ruby-identifier">strip</span>
-  <span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;&quot;&quot;&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>)
+  <span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'&quot;'</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- buffer_has_unclosed_quotes-3F-source -->
           
@@ -651,7 +651,7 @@ double quote),false otherwise</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 334</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer_quoted?</span>
   <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">lstrip!</span>
-  <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;&quot;&quot;&#39;</span>)
+  <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;&quot;'</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- buffer_quoted-3F-source -->
           
@@ -760,30 +760,30 @@ and begin a new one.</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 407</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">close_cell</span>(<span class="ruby-identifier">eol</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">cell_text</span> = <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">strip</span>
-  <span class="ruby-ivar">@buffer</span> = <span class="ruby-string">&#39;&#39;</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;psv&#39;</span>
+  <span class="ruby-ivar">@buffer</span> = <span class="ruby-string">''</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span>
     <span class="ruby-identifier">cell_spec</span> = <span class="ruby-identifier">take_cell_spec</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">cell_spec</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;asciidoctor: ERROR: table missing leading separator, recovering automatically&#39;</span>
+      <span class="ruby-identifier">puts</span> <span class="ruby-string">'asciidoctor: ERROR: table missing leading separator, recovering automatically'</span>
       <span class="ruby-identifier">cell_spec</span> = {}
       <span class="ruby-identifier">repeat</span> = <span class="ruby-value">1</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">repeat</span> = <span class="ruby-identifier">cell_spec</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">&#39;repeatcol&#39;</span>, <span class="ruby-value">1</span>)
-      <span class="ruby-identifier">cell_spec</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;repeatcol&#39;</span>)
+      <span class="ruby-identifier">repeat</span> = <span class="ruby-identifier">cell_spec</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'repeatcol'</span>, <span class="ruby-value">1</span>)
+      <span class="ruby-identifier">cell_spec</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'repeatcol'</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">cell_spec</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">repeat</span> = <span class="ruby-value">1</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;csv&#39;</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'csv'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'&quot;'</span>)
         <span class="ruby-comment"># this may not be perfect logic, but it hits the 99%</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&#39;&quot;&#39;</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'&quot;'</span>)
           <span class="ruby-comment"># unquote</span>
           <span class="ruby-identifier">cell_text</span> = <span class="ruby-identifier">cell_text</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>].<span class="ruby-identifier">strip</span>
         <span class="ruby-keyword">end</span>
         
         <span class="ruby-comment"># collapses escaped quotes</span>
-        <span class="ruby-identifier">cell_text</span> = <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">tr_s</span>(<span class="ruby-string">&#39;&quot;&#39;</span>, <span class="ruby-string">&#39;&quot;&#39;</span>)
+        <span class="ruby-identifier">cell_text</span> = <span class="ruby-identifier">cell_text</span>.<span class="ruby-identifier">tr_s</span>(<span class="ruby-string">'&quot;'</span>, <span class="ruby-string">'&quot;'</span>)
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
@@ -804,7 +804,7 @@ and begin a new one.</p>
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@col_visits</span> <span class="ruby-operator">+=</span> (<span class="ruby-identifier">cell</span>.<span class="ruby-identifier">colspan</span> <span class="ruby-operator">||</span> <span class="ruby-value">1</span>)
     <span class="ruby-ivar">@current_row</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">cell</span>
-    <span class="ruby-comment"># don&#39;t close the row if we&#39;re on the first line and the column count has not been set explicitly</span>
+    <span class="ruby-comment"># don't close the row if we're on the first line and the column count has not been set explicitly</span>
     <span class="ruby-comment"># TODO perhaps the col_count/linenum logic should be in end_of_row? (or a should_end_row? method)</span>
     <span class="ruby-identifier">close_row</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">end_of_row?</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-ivar">@col_count</span> <span class="ruby-operator">!=</span> <span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@linenum</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">eol</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">repeat</span>))
   }
@@ -885,7 +885,7 @@ resetting the rowArray and counter variables.</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 465</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">close_row</span>
   <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@current_row</span>
-  <span class="ruby-comment"># don&#39;t have to account for active rowspans here</span>
+  <span class="ruby-comment"># don't have to account for active rowspans here</span>
   <span class="ruby-comment"># since we know this is first row</span>
   <span class="ruby-ivar">@col_count</span> = <span class="ruby-ivar">@col_visits</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@col_count</span> <span class="ruby-operator">==</span> <span class="ruby-value">-1</span>
   <span class="ruby-ivar">@col_visits</span> = <span class="ruby-value">0</span>
@@ -951,7 +951,7 @@ plus any active rowspans.</p>
 
         <div class="method-description">
           
-          <p>Check whether we&#39;ve met the number of effective columns for the current
+          <p>Check whether we’ve met the number of effective columns for the current
 row.</p>
           
           
@@ -1106,7 +1106,7 @@ astack is used to carry over the spec to the next cell.</p>
           <div class="method-source-code" id="push_cell_spec-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 352</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">push_cell_spec</span>(<span class="ruby-identifier">cell_spec</span> = {})
-  <span class="ruby-comment"># this shouldn&#39;t be nil, but we check anyway</span>
+  <span class="ruby-comment"># this shouldn't be nil, but we check anyway</span>
   <span class="ruby-ivar">@cell_specs</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">cell_spec</span> <span class="ruby-operator">||</span> {})
   <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>

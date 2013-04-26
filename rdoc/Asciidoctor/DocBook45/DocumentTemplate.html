@@ -355,20 +355,20 @@
     &lt;% if attr? :author %&gt;
     &lt;% if attr? :authorcount, 1 %&gt;
     &lt;author&gt;
-      #{tag &#39;firstname&#39;, :firstname}
-      #{tag &#39;othername&#39;, :middlename}
-      #{tag &#39;surname&#39;, :lastname}
-      #{tag &#39;email&#39;, :email}
+      #{tag 'firstname', :firstname}
+      #{tag 'othername', :middlename}
+      #{tag 'surname', :lastname}
+      #{tag 'email', :email}
     &lt;/author&gt;
-    #{tag &#39;authorinitials&#39;, :authorinitials}
+    #{tag 'authorinitials', :authorinitials}
     &lt;% else %&gt;
     &lt;authorgroup&gt;
     &lt;% (1..(attr(:authorcount))).each do |idx| %&gt;
       &lt;author&gt; 
-        #{tag &#39;firstname&#39;, :&quot;firstname_\#{idx}&quot;, true}
-        #{tag &#39;othername&#39;, :&quot;middlename_\#{idx}&quot;, true}
-        #{tag &#39;surname&#39;, :&quot;lastname_\#{idx}&quot;, true}
-        #{tag &#39;email&#39;, :&quot;email_\#{idx}&quot;, true}
+        #{tag 'firstname', :&quot;firstname_\#{idx}&quot;, true}
+        #{tag 'othername', :&quot;middlename_\#{idx}&quot;, true}
+        #{tag 'surname', :&quot;lastname_\#{idx}&quot;, true}
+        #{tag 'email', :&quot;email_\#{idx}&quot;, true}
       &lt;/author&gt; 
     &lt;% end %&gt;
     &lt;/authorgroup&gt;
@@ -377,15 +377,15 @@
     &lt;% if (attr? :revnumber) || (attr? :revremark) %&gt;
     &lt;revhistory&gt;
       &lt;revision&gt;
-        #{tag &#39;revnumber&#39;, :revnumber}
-        #{tag &#39;date&#39;, :revdate}
-        #{tag &#39;authorinitials&#39;, :authorinitials}
-        #{tag &#39;revremark&#39;, :revremark}
+        #{tag 'revnumber', :revnumber}
+        #{tag 'date', :revdate}
+        #{tag 'authorinitials', :authorinitials}
+        #{tag 'revremark', :revremark}
       &lt;/revision&gt;
     &lt;/revhistory&gt;
     &lt;% end %&gt;
 &lt;%= docinfo %&gt;
-    #{tag &#39;orgname&#39;, :orgname}
+    #{tag 'orgname', :orgname}
     &lt;% end %&gt;
     EOF</span>
   <span class="ruby-keyword">end</span></pre>
@@ -425,15 +425,15 @@
 &lt;!DOCTYPE &lt;%= doctype %&gt; PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot; &quot;http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd&quot;&gt;
 &lt;% if attr? :toc %&gt;&lt;?asciidoc-toc?&gt;&lt;% end %&gt;
 &lt;% if attr? :numbered %&gt;&lt;?asciidoc-numbered?&gt;&lt;% end %&gt;
-&lt;% if doctype == &#39;book&#39; %&gt;
-&lt;book&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, &#39;en&#39; %&gt;&quot;&lt;% end %&gt;&gt;
+&lt;% if doctype == 'book' %&gt;
+&lt;book&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&lt;% end %&gt;&gt;
   &lt;bookinfo&gt;
 #{docinfo}
   &lt;/bookinfo&gt;
 &lt;%= content %&gt;
 &lt;/book&gt;
 &lt;% else %&gt;
-&lt;article&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, &#39;en&#39; %&gt;&quot;&lt;% end %&gt;&gt;
+&lt;article&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&lt;% end %&gt;&gt;
   &lt;articleinfo&gt;
 #{docinfo}
   &lt;/articleinfo&gt;
@@ -473,8 +473,8 @@
           <div class="method-source-code" id="title_tags-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_tags</span>(<span class="ruby-identifier">str</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;: &#39;</span>)
-    <span class="ruby-identifier">title</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">subtitle</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">rpartition</span>(<span class="ruby-string">&#39;: &#39;</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">': '</span>)
+    <span class="ruby-identifier">title</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">subtitle</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">rpartition</span>(<span class="ruby-string">': '</span>)
     <span class="ruby-node">%Q(&lt;title&gt;#{title}&lt;/title&gt;
   &lt;subtitle&gt;#{subtitle}&lt;/subtitle&gt;)</span>
   <span class="ruby-keyword">else</span>

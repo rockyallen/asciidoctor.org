@@ -378,9 +378,9 @@
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">encode_uri</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_encode_chars</span>]) <span class="ruby-keyword">do</span>
     <span class="ruby-identifier">match</span> = <span class="ruby-node">$&amp;</span>
-    <span class="ruby-identifier">buf</span> = <span class="ruby-string">&#39;&#39;</span>
+    <span class="ruby-identifier">buf</span> = <span class="ruby-string">''</span>
     <span class="ruby-identifier">match</span>.<span class="ruby-identifier">each_byte</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">buf</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">&#39;%%%02X&#39;</span>, <span class="ruby-identifier">c</span>)
+      <span class="ruby-identifier">buf</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">sprintf</span>(<span class="ruby-string">'%%%02X'</span>, <span class="ruby-identifier">c</span>)
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">buf</span>
   <span class="ruby-keyword">end</span>
@@ -460,8 +460,8 @@ returnvalue of delegating to Kernel#require</p>
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">$LOADED_FEATURES</span>.<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">main_script</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">p</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-identifier">main_script_path_segment</span>) }.<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;WARN: asciidoctor is autoloading &#39;#{name}&#39; in threaded environment. &quot;</span> <span class="ruby-operator">+</span>
-         <span class="ruby-node">&quot;The use of an explicit require &#39;#{name}&#39; statement is recommended.&quot;</span>
+      <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;WARN: asciidoctor is autoloading '#{name}' in threaded environment. &quot;</span> <span class="ruby-operator">+</span>
+         <span class="ruby-node">&quot;The use of an explicit require '#{name}' statement is recommended.&quot;</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">require</span> <span class="ruby-identifier">name</span>

@@ -370,17 +370,17 @@
     <span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">column</span>.<span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;colspan&#39;</span>
-      <span class="ruby-ivar">@colspan</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;colspan&#39;</span>]
-      <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;colspan&#39;</span>) 
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'colspan'</span>
+      <span class="ruby-ivar">@colspan</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'colspan'</span>]
+      <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'colspan'</span>) 
     <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;rowspan&#39;</span>
-      <span class="ruby-ivar">@rowspan</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;rowspan&#39;</span>]
-      <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;rowspan&#39;</span>) 
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'rowspan'</span>
+      <span class="ruby-ivar">@rowspan</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'rowspan'</span>]
+      <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'rowspan'</span>) 
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:asciidoc</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'style'</span>] <span class="ruby-operator">==</span> <span class="ruby-value">:asciidoc</span>
     <span class="ruby-ivar">@inner_document</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@text</span>, <span class="ruby-value">:header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@document</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -532,12 +532,12 @@ paragraphs</p>
           <div class="method-source-code" id="content-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
-  <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;style&#39;</span>)
+  <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attr</span>(<span class="ruby-string">'style'</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value">:asciidoc</span>
     <span class="ruby-ivar">@inner_document</span>.<span class="ruby-identifier">render</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">text</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">Table</span><span class="ruby-operator">::</span><span class="ruby-constant">BLANK_LINE_PATTERN</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">p</span><span class="ruby-operator">|</span>
-      <span class="ruby-operator">!</span><span class="ruby-identifier">style</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value">:header</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:quoted</span>, <span class="ruby-identifier">p</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attr</span>(<span class="ruby-string">&#39;style&#39;</span>)).<span class="ruby-identifier">render</span>
+      <span class="ruby-operator">!</span><span class="ruby-identifier">style</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-value">:header</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">p</span> <span class="ruby-operator">:</span> <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:quoted</span>, <span class="ruby-identifier">p</span>, <span class="ruby-value">:type</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attr</span>(<span class="ruby-string">'style'</span>)).<span class="ruby-identifier">render</span>
     }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
