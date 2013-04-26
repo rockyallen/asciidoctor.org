@@ -213,49 +213,18 @@ puts html</code></pre>
 <div class="paragraph">  
   <p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
 It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
-When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied and linked automatically by default.
-However, <code>asciidoctor.css</code> is not automatically available to the generated HTML document; you have two choices:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>If you prefer to copy <code>asciidoctor.css</code> to the linked location, then include <code>copycss</code>:</p>
-<div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; asciidoctor -a copycss sample.adoc</pre>
-  </div>
-</div>
-
-    </li>
-    <li>
-      <p>If you prefer to embed the stylesheet into the document, include the <code>linkcss!</code> attribute in the rendering argument:</p>
-<div class="literalblock">
+When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied by default.
+Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
+</div><div class="paragraph">  
+  <p>Also note that the <code>asciidoctor.css</code> file is automatically linked to the generated document.
+If you prefer to embed the stylesheet into the document, include the <code>linkcss!</code> attribute in the rendering argument.</p>
+</div><div class="literalblock">
   
   <div class="content monospaced">
     <pre>$&gt; asciidoctor -a linkcss! sample.adoc</pre>
   </div>
 </div>
-
-    </li>
-  </ul>
-</div>
-<div class="admonitionblock tip">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/tip.png" alt="Tip">
-      </td>
-      <td class="content">
-        
-        <code>linkcss!</code> embeds any stylesheet, not just <code>asciidoctor.css</code>.
-      </td>
-    </tr>
-  </table>
-</div>
 <div class="paragraph">  
-  <p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
-</div><div class="paragraph">  
   <p>The generated output can also be produced without the default styles.</p>
 </div><div class="literalblock">
   
