@@ -1,28 +1,76 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installing and Using the Asciidoctor Maven Plugin | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing and Using the Asciidoctor Maven Plugin</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
   <div class="sectionbody">
 <div class="paragraph">  
-  <p>The <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin">asciidoctor-maven-plugin</a> is the official means of using Asciidoctor to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://maven.apache.org">Apache Maven</a>.</p>
+  <p>The <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> is the official means of using <a href="/">Asciidoctor</a> to render your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://maven.apache.org">Apache Maven</a>.</p>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ol>
+  <li><a href="#distribution">1. Distribution</a></li>
+  <li><a href="#install-or-upgrade">2. Install or upgrade</a></li>
+  <li><a href="#usage">3. Usage</a></li>
+  <li><a href="#resources">4. Resources</a></li>
+</ol>
 </div>
   </div>
 </div>
 <div class="sect1">
-  <h2 id="installation">Installation</h2>
+  <h2 id="distribution">Distribution</h2>
+  <div class="sectionbody">
+<div class="paragraph">  
+  <p>The Asciidoctor Maven plugin is published to the Maven Central repository.
+The artifact information is summarized in the table below.</p>
+</div><table class="tableblock frame-all grid-all" style="width:100%; ">
+  <caption class="title">Plugin artifact information</caption>
+  <colgroup>
+    <col style="width:16%;">
+    <col style="width:33%;">
+    <col style="width:16%;">
+    <col style="width:33%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th class="tableblock halign-left valign-top">Group Id</th>
+      <th class="tableblock halign-left valign-top">Artifact Id</th>
+      <th class="tableblock halign-center valign-top">Version</th>
+      <th class="tableblock halign-left valign-top">Download</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+      <td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2%7Cmaven-plugin">0.1.2</a></p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.jar">jar</a></p></td>
+    </tr>
+    <tr>
+      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+      <td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1.1%7Cmaven-plugin">0.1.1.1</a></p></td>
+      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.jar">jar</a></p></td>
+    </tr>
+  </tbody>
+</table>
+<div class="paragraph">  
+  <p>This plugin depends on the <a href="http://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> library.
+If you want to learn more about the library, read the <a href="/docs/install-and-use-asciidoctor-java-integration">How to Install and Use the Asciidoctor Java Integration guide</a>.</p>
+</div>
+  </div>
+</div><div class="sect1">
+  <h2 id="install-or-upgrade">Install or upgrade</h2>
   <div class="sectionbody">
 <div class="paragraph">  
   <p>As this is a typical Maven plugin, there isn&#8217;t much to do to use it, simply add it to your plugins section in your pom:</p>
 </div><div class="listingblock">
   <div class="title">Plugin declaration</div>
   <div class="content monospaced">
-    <pre class="highlight"><code class="xml">...
-&lt;plugins&gt;
+    <pre class="highlight"><code class="xml">&lt;plugins&gt;
   &lt;plugin&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   <img src="/images/icons/callouts/1.png" alt="1">
-    ...
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <img src="/images/icons/callouts/1.png" alt="1">
   &lt;/plugin&gt;
-&lt;/plugins&gt;
-...</code></pre>
+&lt;/plugins&gt;</code></pre>
   </div>
 </div>
 <div class="colist arabic">
@@ -30,11 +78,15 @@
   <table>
     <tr>
       <td><img src="/images/icons/callouts/1.png" alt="1"></td>
-      <td>As this plugin tracks the version of asciidoctor, you can use which ever version of Asciidoctor you prefer.</td>
+      <td>This plugin tracks the version of Asciidoctor, so you can use which ever version of Asciidoctor you prefer.</td>
     </tr>
   </table>
 </div>
-
+<div class="paragraph">  
+  <p>Upgrading the plugin to the next version is simple.
+Just update the version in your Maven POM.
+All the necessary dependencies are retrieved from Maven Central the next time you run Maven.</p>
+</div>
   </div>
 </div><div class="sect1">
   <h2 id="usage">Usage</h2>
@@ -42,21 +94,19 @@
 <div class="listingblock">
   <div class="title">Execution setup</div>
   <div class="content monospaced">
-    <pre class="highlight"><code class="xml">...
-  &lt;plugin&gt;
-    ...
-    &lt;executions&gt;
-      &lt;execution&gt;
-        &lt;id&gt;output-html&lt;/id&gt;                                    <img src="/images/icons/callouts/1.png" alt="1">
-        &lt;phase&gt;generate-resources&lt;/phase&gt;                       <img src="/images/icons/callouts/2.png" alt="2">
-        &lt;goals&gt;
-          &lt;goal&gt;process-asciidoc&lt;/goal&gt;                         <img src="/images/icons/callouts/3.png" alt="3">
-        &lt;/goals&gt;
-      &lt;/execution&gt;
-    &lt;/executions&gt;
-    ...
-  &lt;/plugin&gt;
-...</code></pre>
+    <pre class="highlight"><code class="xml">&lt;plugin&gt;
+  ...
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;id&gt;generate-html&lt;/id&gt;             <img src="/images/icons/callouts/1.png" alt="1">
+      &lt;phase&gt;generate-resources&lt;/phase&gt;  <img src="/images/icons/callouts/2.png" alt="2">
+      &lt;goals&gt;
+        &lt;goal&gt;process-asciidoc&lt;/goal&gt;    <img src="/images/icons/callouts/3.png" alt="3">
+      &lt;/goals&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+  ...
+&lt;/plugin&gt;</code></pre>
   </div>
 </div>
 <div class="colist arabic">
@@ -64,51 +114,65 @@
   <table>
     <tr>
       <td><img src="/images/icons/callouts/1.png" alt="1"></td>
-      <td>This is simply an unique id for the execution</td>
+      <td>This is simply an unique id for the execution.</td>
     </tr>
     <tr>
       <td><img src="/images/icons/callouts/2.png" alt="2"></td>
-      <td>The asciidoctor-maven-plugin does not run in a specific phase, so one must be specified</td>
+      <td>The Asciidoctor Maven plugin does not run in a specific phase, so one must be specified.</td>
     </tr>
     <tr>
       <td><img src="/images/icons/callouts/3.png" alt="3"></td>
-      <td>The (only for the moment) asciidoctor maven plugin goal</td>
+      <td>The Asciidoctor Maven plugin goal.</td>
     </tr>
   </table>
 </div>
 <div class="sect2">
   <h3 id="configuration-options">Configuration options</h3>
 <div class="paragraph">  
-  <p>Currently there are only three configuration options that the asciidoctor-maven-plugin uses:</p>
-</div><div class="ulist">
+  <p>There are several configuration options that the Asciidoctor Maven plugin accepts:</p>
+</div><div class="dlist">
   
-  <ul>
-    <li>
-      <p>sourceDirectory&#8201;&#8212;&#8201;defaults to <code>${basedir}/src/main/asciidoc</code></p>
-    </li>
-    <li>
-      <p>outputDirectory&#8201;&#8212;&#8201;defaults to <code>${project.build.directory}/generated-docs</code></p>
-    </li>
-    <li>
-      <p>backend&#8201;&#8212;&#8201;defaults to <code>docbook</code></p>
-    </li>
-    <li>
-      <p>doctype&#8201;&#8212;&#8201;defaults to <code>article</code></p>
-    </li>
-    <li>
-      <p>attributes&#8201;&#8212;&#8201;a Map&lt;String,String&gt; of attributes to pass to Asciidoctor, defaults to <code>null</code></p>
-    </li>
-  </ul>
+  <dl>
+    <dt class="hdlist1">
+      sourceDirectory
+    </dt>
+    <dd>
+      <p>defaults to <em><span class="path">${basedir}/src/main/asciidoc</span></em></p>
+    </dd>
+    <dt class="hdlist1">
+      outputDirectory
+    </dt>
+    <dd>
+      <p>defaults to <em><span class="path">${project.build.directory}/generated-docs</span></em></p>
+    </dd>
+    <dt class="hdlist1">
+      backend
+    </dt>
+    <dd>
+      <p>defaults to <code>docbook</code></p>
+    </dd>
+    <dt class="hdlist1">
+      doctype
+    </dt>
+    <dd>
+      <p>defaults to <code>article</code></p>
+    </dd>
+    <dt class="hdlist1">
+      attributes
+    </dt>
+    <dd>
+      <p>a <code>Map&lt;String,String&gt;</code> of attributes to pass to Asciidoctor, defaults to <code>null</code></p>
+    </dd>
+  </dl>
 </div>
 <div class="paragraph">  
-  <p>More will be added in the future to take advantage of other options and attributes of Asciidoctor.
-These settings can all be changed in the <code>&lt;configuration&gt;</code> section of the plugin section:</p>
+  <p>More will be added in the future to take advantage of other Asciidoctor options and attributes.
+These settings can all be changed in the <code>&lt;configuration&gt;</code> section of the plugin:</p>
 </div><div class="listingblock">
   <div class="title">Plugin configuration options</div>
   <div class="content monospaced">
     <pre class="highlight"><code class="xml">&lt;plugin&gt;
-  ...
-    &lt;/executions&gt;
+    ...
     &lt;configuration&gt;
       &lt;sourceDirectory&gt;src/main/doc&lt;/sourceDirectory&gt;
       &lt;outputDirectory&gt;target/docs&lt;/outputDirectory&gt;
@@ -119,19 +183,20 @@ These settings can all be changed in the <code>&lt;configuration&gt;</code> sect
       &lt;/attributes&gt;
     &lt;/configuration&gt;
     ...
-&lt;/plugin&gt;
-...</code></pre>
+&lt;/plugin&gt;</code></pre>
   </div>
 </div>
 
 </div>
   </div>
 </div><div class="sect1">
-  <h2 id="resources-and-help">Resources and Help</h2>
+  <h2 id="resources">Resources</h2>
   <div class="sectionbody">
 <div class="paragraph">  
-  <p>If you&#8217;re interested in modifying or impoving this plugin, checkout the <a href="hack-asciidoctor-maven-plugin/">Hacking on the Asciidoctor Maven plugin guide</a>.
+  <p>If you&#8217;re interested in modifying or impoving this plugin, checkout the <a href="/docs/hack-asciidoctor-maven-plugin">Hacking on the Asciidoctor Maven plugin guide</a>.
 To file an issue regarding this plugin, visit the <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin/issues">plugin&#8217;s repository</a>.</p>
+</div><div class="paragraph">  
+  <p>Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
   </div>
 </div>
