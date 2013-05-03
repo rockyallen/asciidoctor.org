@@ -21,17 +21,18 @@ as a RubyGem</a> and is available under the MIT open source license.</p>
 to HTML 5 or DocBook 4.5. We&#8217;ve matched the rendered output as close as
 possible to the default output of the native Python processor. You can
 override this behavior by providing <a href="https://github.com/rtomayko/tilt">Tilt</a>-compatible templates.
-See the <a href="#usage">Usage section</a> for more details.</p>
+See the <a href="#usage">Usage</a> section for more details.</p>
 </div><div class="paragraph">  
   <p>Asciidoctor currently works (read as <em>tested</em>) with Ruby 1.8.7, Ruby
 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 (on Linux, Mac and
 Windows). We expect it will work with other versions of Ruby as well and
 would welcome help in testing it out.</p>
 </div><div class="paragraph">  
-  <p>The initial code from which Asciidoctor started emerged from the
-<a href="https://github.com/github/gitscm-next">Git SCM site repo</a>. Refer to commit history of
+  <p>The initial code from which Asciidoctor emerged was written by
+<a href="http://github.com/nickh">Nick Hengeveld</a> to process the git man pages for
+the <a href="https://github.com/github/gitscm-next">Git project site</a>. Refer to commit history of
 <a href="https://github.com/github/gitscm-next/commits/master/lib/asciidoc.rb">asciidoc.rb</a> to view the initial contributions and
-individual contributors.</p>
+contributors.</p>
 </div><div class="paragraph">  
   <p>The source code can now be found in the <a href="http://github.com/asciidoctor/asciidoctor">Asciidoctor source
 repository</a> on GitHub.</p>
@@ -291,6 +292,9 @@ the title (AsciiDoc allows an offset of 3)</p>
 (whereas XHTML 1.1 is the default HTML backend in AsciiDoc)</p>
     </li>
     <li>
+      <p>Asciidoctor adds viewport meta tag to <code>&lt;head&gt;</code> to optimize mobile viewing</p>
+    </li>
+    <li>
       <p>Asciidoctor handles inline anchors more cleanly</p>
 <div class="ulist">
   
@@ -311,13 +315,23 @@ the generated id</p>
 generating the id (makes for cleaner section ids)</p>
     </li>
     <li>
-      <p>Asciidoctor use <code>&lt;tt&gt;</code> instead of <code>&lt;span class="monospace"&gt;</code> around
+      <p>Asciidoctor uses <code>&lt;code&gt;</code> instead of <code>&lt;span class="monospace"&gt;</code> around
 inline literal text in the HTML backend</p>
+    </li>
+    <li>
+      <p>Asciidoctor does not wrap email next to author name in header in
+angle brackets</p>
+    </li>
+    <li>
+      <p>Asciidoctor allows email field to be a URL and renders it as such</p>
     </li>
     <li>
       <p>Asciidoctor is much more lenient about attribute list parsing (double
 quotes are rarely needed, though you may want to keep them for
 compatibility)</p>
+    </li>
+    <li>
+      <p>Asciidoctor recognizes <code>opts</code> as an alias for the <code>options</code> attribute.</p>
     </li>
     <li>
       <p>Asciidoctor creates xref labels using the text from the linked section
@@ -349,6 +363,12 @@ item</p>
       <p>In Asciidoctor, a horizontal ruler can have attributes</p>
     </li>
     <li>
+      <p>Asciidoctor wraps <code>&lt;col&gt;</code> elements in <code>&lt;colgroup&gt;</code> in tables</p>
+    </li>
+    <li>
+      <p>Asciidoctor uses <code>&lt;code&gt;</code> around content in monospaced table cells</p>
+    </li>
+    <li>
       <p>Asciidoctor skips over line comments in tables, whereas AsciiDoc doesn&#8217;t</p>
     </li>
     <li>
@@ -374,6 +394,17 @@ generating alt text if no alt text is provided</p>
     <li>
       <p>Asciidoctor reifies the toc in the header of the document instead of
 relying on JavaScript to create it</p>
+    </li>
+    <li>
+      <p>Asciidoctor sets CSS class on toc element, read from the <code>toc-class</code>
+attribute; defaults to toc attribute name (<code>toc</code> or <code>toc2</code>).</p>
+    </li>
+    <li>
+      <p>Asciidoctor honors the id, title, role and levels attributes set on
+the toc macro.</p>
+    </li>
+    <li>
+      <p>Asciidoctor does not output two tocs with the same id.</p>
     </li>
     <li>
       <p>Asciidoctor is nice about using a section title syntax inside a
@@ -432,8 +463,9 @@ anyway)</p>
 (AsciiDoc defaults to .png)</p>
     </li>
     <li>
-      <p>AsciiDoc uses the <code>&lt;blockquote&gt;</code> and <code>&lt;cite&gt;</code> tags in the HTML output
-for quote blocks, requiring some additional styling to match AsciiDoc</p>
+      <p>AsciiDoc uses the <code>&lt;blockquote&gt;</code> for the content and <code>&lt;cite&gt;</code> tag for
+attribution title in the HTML output for quote blocks, requiring some
+additional styling to match AsciiDoc</p>
 <div class="literalblock">
   
   <div class="content monospaced">
@@ -470,12 +502,17 @@ separator used in generated section ids (AsciiDoc hardcodes <code>_</code>)</p>
 is used in name</p>
     </li>
     <li>
-      <p>Asciidoctor allows the document id to be set using <a id="id"></a> above the
-document header (adds id attribute to <code>&lt;body&gt;</code> tag)</p>
-    </li>
-    <li>
       <p>Asciidoctor allows the author and revision attributes to be referenced
 in subsequent attribute entries in header (unlike AsciiDoc)</p>
+    </li>
+    <li>
+      <p>Asciidoctor allows multiple authors to be defined, separated by
+semicolon. In DocBook backend, the authors are listed in an
+<code>&lt;authorgroup&gt;</code> element.</p>
+    </li>
+    <li>
+      <p>Asciidoctor allows the document id to be set using <a id="id"></a> above the
+document header (adds id attribute to <code>&lt;body&gt;</code> tag)</p>
     </li>
     <li>
       <p>Assigning value to the <code>listing-caption</code> attribute will enable
@@ -700,8 +737,10 @@ be dropped.</p>
   <h2 id="authors">Authors</h2>
   <div class="sectionbody">
 <div class="paragraph">  
-  <p><strong>Asciidoctor</strong> was written by Ryan Waldron, Dan Allen and
-<a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a>.</p>
+  <p><strong>Asciidoctor</strong> was written by <a href="http://github.com/mojavelinux">Dan Allen</a>,
+<a href="http://github.com/erebor">Ryan Waldron</a>,
+<a href="http://github.com/lightguard">Jason Porter</a>, <a href="http://github.com/nickh">Nick
+Hengeveld</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a>.</p>
 </div><div class="paragraph">  
   <p><strong>AsciiDoc</strong> was written by Stuart Rackham and has received contributions
 from many other individuals.</p>
@@ -711,7 +750,8 @@ from many other individuals.</p>
   <h2 id="copyright">Copyright</h2>
   <div class="sectionbody">
 <div class="paragraph">  
-  <p>Copyright &#169; 2012 Ryan Waldron. See <a href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">LICENSE</a> for details.</p>
+  <p>Copyright &#169; 2012-2013 Dan Allen and Ryan Waldron. See
+<a href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">LICENSE</a> for details.</p>
 </div>
   </div>
 </div>
