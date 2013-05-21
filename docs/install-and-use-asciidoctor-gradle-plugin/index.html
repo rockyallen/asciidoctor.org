@@ -10,9 +10,9 @@ It is a port of the <a href="http://github.com/asciidoctor/asciidoctor-maven-plu
   <h2 id="installation">Installation</h2>
   <div class="sectionbody">
 <div class="paragraph">  
-  <p>Use the following snippet:</p>
+  <p>Use the following snippet in your Gradle build:</p>
 </div><div class="listingblock">
-  
+  <div class="title">build.gradle</div>
   <div class="content monospaced">
     <pre>buildscript {
     repositories {
@@ -26,6 +26,27 @@ It is a port of the <a href="http://github.com/asciidoctor/asciidoctor-maven-plu
 }
 
 apply plugin: 'asciidoctor'</pre>
+  </div>
+</div>
+<div class="paragraph">  
+  <p>Here&#8217;s an example showing an Asciidoctor plugin configuration that passes both options and attributes to the Asciidoctor processor:</p>
+</div><div class="listingblock">
+  <div class="title">build.gradle</div>
+  <div class="content monospaced">
+    <pre>//...
+
+asciidoctor {
+  outputDir = new File("$buildDir/docs")
+  options = [
+    eruby: 'erubis',
+    attributes: [
+      'source-highlighter': 'coderay',
+      toc: '',
+      idprefix: '',
+      idseparator: '-'
+    ]
+  ]
+}</pre>
   </div>
 </div>
 
