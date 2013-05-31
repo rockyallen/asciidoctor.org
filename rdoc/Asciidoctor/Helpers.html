@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor::Helpers - API Documentation for Asciidoctor 0.1.2</title>
+<title>module Asciidoctor::Helpers - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -80,6 +80,8 @@
   <ul class="link-list">
     
     <li ><a href="#method-c-encode_uri">::encode_uri</a>
+    
+    <li ><a href="#method-c-mkdir_p">::mkdir_p</a>
     
     <li ><a href="#method-c-require_library">::require_library</a>
     
@@ -182,6 +184,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -189,6 +193,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -254,6 +262,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -261,6 +271,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -321,6 +335,51 @@
 
     <!-- Methods -->
     
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-mkdir_p" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mkdir_p</span><span
+            class="method-args">(dir)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="mkdir_p-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/helpers.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">unless</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span> <span class="ruby-identifier">dir</span>
+    <span class="ruby-identifier">parent_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">dir</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">parent_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">dir</span>)) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent_dir</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'.'</span>
+      <span class="ruby-identifier">mkdir_p</span>(<span class="ruby-identifier">parent_dir</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">mkdir</span>(<span class="ruby-identifier">dir</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- mkdir_p-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- mkdir_p-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
   

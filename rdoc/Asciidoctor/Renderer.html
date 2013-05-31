@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Renderer - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::Renderer - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -196,6 +196,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -203,6 +205,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -268,6 +274,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -275,6 +283,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -381,7 +393,7 @@ templates.</p>
 
           
           <div class="method-source-code" id="views-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 120</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">views</span>
   <span class="ruby-identifier">readonly_views</span> = <span class="ruby-ivar">@views</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">readonly_views</span>.<span class="ruby-identifier">freeze</span>
@@ -496,17 +508,10 @@ templates.</p>
       <span class="ruby-value">:slim</span> =<span class="ruby-operator">&gt;</span> { <span class="ruby-value">:disable_escape</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:sort_attrs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:pretty</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> }
     }
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">backend</span> <span class="ruby-operator">==</span> <span class="ruby-string">'html5'</span>
+    <span class="ruby-comment"># workaround until we have a proper way to configure</span>
+    <span class="ruby-keyword">if</span> {<span class="ruby-string">'html5'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-string">'dzslides'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-string">'deckjs'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-string">'revealjs'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">backend</span>
       <span class="ruby-identifier">view_opts</span>[<span class="ruby-value">:haml</span>][<span class="ruby-value">:format</span>] = <span class="ruby-identifier">view_opts</span>[<span class="ruby-value">:slim</span>][<span class="ruby-value">:format</span>] = <span class="ruby-value">:html5</span>
     <span class="ruby-keyword">end</span>
-
-    <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> {
-      <span class="ruby-identifier">msg</span> = []
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Views going in are like so:&quot;</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@views</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}: #{v}&quot;</span>}
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">*</span> <span class="ruby-string">&quot;\n&quot;</span>
-    }
 
     <span class="ruby-identifier">slim_loaded</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-identifier">helpers</span> = <span class="ruby-keyword">nil</span>
@@ -532,14 +537,6 @@ templates.</p>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-identifier">require</span> <span class="ruby-identifier">helpers</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">helpers</span>.<span class="ruby-identifier">nil?</span>
-
-    <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> {
-      <span class="ruby-identifier">msg</span> = []
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot;Views going in are like so:&quot;</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@views</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{k}: #{v}&quot;</span>}
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'='</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">*</span> <span class="ruby-string">&quot;\n&quot;</span>
-    }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -588,12 +585,10 @@ ignored, really)</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 110</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">view</span>, <span class="ruby-identifier">object</span>, <span class="ruby-identifier">locals</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@views</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">view</span>
     <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;Couldn't find a view in @views for #{view}&quot;</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;View for #{view} is #{@views[view]}, object is #{object}&quot;</span> }
   <span class="ruby-keyword">end</span>
   
   <span class="ruby-ivar">@views</span>[<span class="ruby-identifier">view</span>].<span class="ruby-identifier">render</span>(<span class="ruby-identifier">object</span>, <span class="ruby-identifier">locals</span>)
@@ -668,7 +663,7 @@ ignored, really)</p>
 
           
           <div class="method-source-code" id="camelcase_to_underscore-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 184</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 167</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">camelcase_to_underscore</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:upper:]]+)([[:upper:]][[:alpha:]])/</span>, <span class="ruby-string">'\1_\2'</span>).
       <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/([[:lower:]])([[:upper:]])/</span>, <span class="ruby-string">'\1_\2'</span>).<span class="ruby-identifier">downcase</span>
@@ -724,7 +719,7 @@ backend may be nil</p>
 
           
           <div class="method-source-code" id="extract_view_mapping-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 163</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">extract_view_mapping</span>(<span class="ruby-identifier">qualified_class</span>)
   <span class="ruby-identifier">view_name</span>, <span class="ruby-identifier">backend</span> = <span class="ruby-identifier">qualified_class</span>.<span class="ruby-identifier">to_s</span>.
       <span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/^Asciidoctor::/</span>, <span class="ruby-string">''</span>).
@@ -775,7 +770,7 @@ backend may be nil</p>
 
           
           <div class="method-source-code" id="load_eruby-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/renderer.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">load_eruby</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span>[<span class="ruby-string">'erb'</span>, <span class="ruby-string">'erubis'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
     <span class="ruby-identifier">name</span> = <span class="ruby-string">'erb'</span>

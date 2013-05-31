@@ -1,118 +1,130 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
 </div>
-  </div>
+
+</div>
 </div>
 <div class="sect1">
-  <h2 id="introduction">Introduction</h2>
-  <div class="sectionbody">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
 <div class="imageblock feature right">
-  <div class="content">
-    <img src="/images/opal-logo.png" alt="Opal" width="200" height="200">
-  </div>
-  
+<div class="content">
+<img src="/images/opal-logo.png" alt="Opal" width="200" height="200">
 </div>
-<div class="paragraph">  
-  <p><a href="https://github.com/asciidoctor/asciidoctor.js">asciidoctor.js</a> uses the <a href="http://opalrb.org">Opal</a> Ruby-to-JavaScript cross compiler to generate a direct JavaScript port of <a href="http://asciidoctor.org">Asciidoctor</a>, an implementation of AsciiDoc. The result is AsciiDoc rendering in the browser!</p>
-</div><div class="paragraph">  
-  <p>The project consists primarily of a Rake build script that executes the Opal compiler on the Asciidoctor source code to produce the asciidoctor.js script.</p>
-</div><div class="paragraph">  
-  <p>Opal parses the Ruby code and any required libraries, then rewrites the code into JavaScript under the Opal namespace.
+
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoctor.js">asciidoctor.js</a> uses the <a href="http://opalrb.org">Opal</a> Ruby-to-JavaScript cross compiler to generate a direct JavaScript port of <a href="http://asciidoctor.org">Asciidoctor</a>, an implementation of AsciiDoc. The result is AsciiDoc rendering in the browser!</p>
+</div>
+<div class="paragraph">
+<p>The project consists primarily of a Rake build script that executes the Opal compiler on the Asciidoctor source code to produce the asciidoctor.js script.</p>
+</div>
+<div class="paragraph">
+<p>Opal parses the Ruby code and any required libraries, then rewrites the code into JavaScript under the Opal namespace.
 The resulting JavaScript can be executed in any JavaScript runtime environment, such as a browser or node.js application.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="proving-the-concept">Proving the concept</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>When I first discovered Opal, I thought to myself, "yeah, this could work."
-Little did I know that achieving this proof of concept was more than a small task.</p>
-</div><div class="paragraph">  
-  <p>The effort involved filling gaps in Opal to support all the features of the Ruby standard library that Asciidoctor uses, as well as changes in Asciidoctor to make it compatible with constraints imposed by JavaScript (such as immutable strings).</p>
-</div><div class="paragraph">  
-  <p>While there are still some shortcomings, I&#8217;m proud to say that asciidoctor.js can successfully render the complete AsciiDoc User Guide (a document that has served as a compliance benchmark throughout the development of Asciidoctor).</p>
+
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="the-scripts">The scripts</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>There are two scripts generated by the Rake build that are needed to run Asciidoctor in the browser:</p>
-</div><div class="dlist">
-  
-  <dl>
-    <dt class="hdlist1">
-      opal.js
-    </dt>
-    <dd>
-      <p>The Ruby runtime in JavaScript</p>
-    </dd>
-    <dt class="hdlist1">
-      asciidoctor.js
-    </dt>
-    <dd>
-      <p>The JavaScript port of Asciidoctor</p>
-    </dd>
-  </dl>
+</div>
+<div class="sect1">
+<h2 id="proving-the-concept">Proving the concept</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When I first discovered Opal, I thought to myself, "yeah, this could work."
+Little did I know that achieving this proof of concept was more than a small task.</p>
+</div>
+<div class="paragraph">
+<p>The effort involved filling gaps in Opal to support all the features of the Ruby standard library that Asciidoctor uses, as well as changes in Asciidoctor to make it compatible with constraints imposed by JavaScript (such as immutable strings).</p>
+</div>
+<div class="paragraph">
+<p>While there are still some shortcomings, I&#8217;m proud to say that asciidoctor.js can successfully render the complete AsciiDoc User Guide (a document that has served as a compliance benchmark throughout the development of Asciidoctor).</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-scripts">The scripts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two scripts generated by the Rake build that are needed to run Asciidoctor in the browser:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">opal.js</dt>
+<dd>
+<p>The Ruby runtime in JavaScript</p>
+</dd>
+<dt class="hdlist1">asciidoctor.js</dt>
+<dd>
+<p>The JavaScript port of Asciidoctor</p>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock warning">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/warning.png" alt="Warning">
-      </td>
-      <td class="content">
-        
-        <div class="paragraph">  
-  <p>Don&#8217;t fret over the large size of these files.
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+
+<div class="paragraph">
+<p>Don&#8217;t fret over the large size of these files.
 We haven&#8217;t even started to optimize, having only just achieved the proof of concept.</p>
-</div><div class="paragraph">  
-  <p>With that said, both files gzip rather nicely, bringing asciidoctor.js down from over 500K to around 90K.
+</div>
+<div class="paragraph">
+<p>With that said, both files gzip rather nicely, bringing asciidoctor.js down from over 500K to around 90K.
 There are options in Opal to generate more efficient code, but they are causing problems at the moment.
 Once we sort out those issues, the size of the generated files should become quite acceptable.</p>
 </div>
-      </td>
-    </tr>
-  </table>
+
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>You need to load both files into your JavaScript environment to use Asciidoctor.
+<div class="paragraph">
+<p>You need to load both files into your JavaScript environment to use Asciidoctor.
 For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (ideally at the bottom of the page):</p>
-</div><div class="listingblock">
-  
-  <div class="content monospaced">
-    <pre class="highlight"><code class="html">&lt;script src="opal.js"&gt;&lt;/script&gt;
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
 &lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>You can see these scripts in action by running the examples, described in the <a href="https://github.com/asciidoctor/asciidoctor.js#readme">README</a>.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="usage">Usage</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>To interact with the generated code, you either:</p>
-</div><div class="olist arabic">
-  
-  <ol class="arabic">
-    <li>
-      <p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
-    </li>
-    <li>
-      <p>Invoke the JavaScript APIs that Opal generates directly from JavaScript</p>
-    </li>
-  </ol>
+<div class="paragraph">
+<p>You can see these scripts in action by running the examples, described in the <a href="https://github.com/asciidoctor/asciidoctor.js#readme">README</a>.</p>
 </div>
-<div class="paragraph">  
-  <p>Here&#8217;s an example that shows how Ruby can interact with the native JavaScript environment to render a string of AsciiDoc in the browser:</p>
-</div><div class="listingblock">
-  
-  <div class="content monospaced">
-    <pre class="highlight"><code class="ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To interact with the generated code, you either:</p>
+</div>
+<div class="olist arabic">
+
+<ol class="arabic">
+<li>
+<p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
+</li>
+<li>
+<p>Invoke the JavaScript APIs that Opal generates directly from JavaScript</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example that shows how Ruby can interact with the native JavaScript environment to render a string of AsciiDoc in the browser:</p>
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="ruby language-ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
 Dan Allen
 2013-05-21
 
@@ -124,603 +136,621 @@ $window.addEventListener 'DOMContentLoaded', proc {
     :attributes =&gt; %w(notitle! anchors imagesdir=./images))
   $document.getElementById('content').innerHTML = html_doc
 }, false</code></pre>
-  </div>
+</div>
 </div>
 
-  </div>
-</div><div class="sect1">
-  <h2 id="changes-to-asciidoctor">Changes to Asciidoctor</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>At the moment, some changes are necessary in Asciidoctor to get it to compile with Opal.
+</div>
+</div>
+<div class="sect1">
+<h2 id="changes-to-asciidoctor">Changes to Asciidoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the moment, some changes are necessary in Asciidoctor to get it to compile with Opal.
 These changes are maintained in the asciidoctor.js branch of the Asciidoctor git repository, from which asciidoctor.js is compiled.
 The goal is to eventually eliminate all of these differences so that Asciidoctor can be compiled to JavaScript as is.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="go-play">Go play!</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Now it&#8217;s time to go play with asciidoctor.js.
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-play">Go play!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now it&#8217;s time to go play with asciidoctor.js.
 Explore what you can do with it and how it can be improved.
 Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the browser the best it can be!</p>
 </div>
-  </div>
+
+</div>
 </div>
 
+
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/javascript">javascript, </a><a href="/news/tags/port">port </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/17/asciidoctor-java-integration-0-1-2-1-released/">Asciidoctor Java integration 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-05-17T20:19:10-02:00">Friday, May 17, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
-</div><div class="paragraph">  
-  <p>The following issues have been resolved in version 0.1.2.1:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>Upgraded JRuby version to 1.7.4.
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
+</div>
+<div class="paragraph">
+<p>The following issues have been resolved in version 0.1.2.1:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>Upgraded JRuby version to 1.7.4.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/39">#39</a>.</p>
-    </li>
-    <li>
-      <p>Fixed a bug with <code>to_dir</code> and <code>to_file</code> options when <code>render</code> method was called.
+</li>
+<li>
+<p>Fixed a bug with <code>to_dir</code> and <code>to_file</code> options when <code>render</code> method was called.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/38">#38</a>.</p>
-    </li>
-    <li>
-      <p>Fixed  a NPE in <code>AsciidocDirectoryWalker</code> class when directory was not existing.
+</li>
+<li>
+<p>Fixed  a NPE in <code>AsciidocDirectoryWalker</code> class when directory was not existing.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/34">#34</a>.</p>
-    </li>
-    <li>
-      <p>Promoted <code>stylesheet</code> and <code>stylesdir</code> options to attributes in the fluent API.
+</li>
+<li>
+<p>Promoted <code>stylesheet</code> and <code>stylesdir</code> options to attributes in the fluent API.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/30">#30</a>.</p>
-    </li>
-    <li>
-      <p>Fixed a bug with boolean attributes (for JRuby <code>""</code> is true and <code>null</code> is false).
+</li>
+<li>
+<p>Fixed a bug with boolean attributes (for JRuby <code>""</code> is true and <code>null</code> is false).
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/29">#29</a>.</p>
-    </li>
-    <li>
-      <p>Promoted <code>linkcss</code> option to attributes in the fluent API.
+</li>
+<li>
+<p>Promoted <code>linkcss</code> option to attributes in the fluent API.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/28">#28</a>.</p>
-    </li>
-    <li>
-      <p>Promoted <code>toc</code> option to attributes in the fluent API.
+</li>
+<li>
+<p>Promoted <code>toc</code> option to attributes in the fluent API.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/27">#27</a>.</p>
-    </li>
-    <li>
-      <p>Added renderFiles method which renders a list of AsciiDoc files.
+</li>
+<li>
+<p>Added renderFiles method which renders a list of AsciiDoc files.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/23">#23</a>.</p>
-    </li>
-    <li>
-      <p>Added create method where you can pass the gem_path variable.
+</li>
+<li>
+<p>Added create method where you can pass the gem_path variable.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/22">#22</a>, you still need to do some work yourself for adapting to OSGi, but reflection is not required anymore.</p>
-    </li>
-    <li>
-      <p>Fixed a bug with copycss attribute which throws a fatal error when was set with linkcss attribute.
+</li>
+<li>
+<p>Fixed a bug with copycss attribute which throws a fatal error when was set with linkcss attribute.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/21">#21</a>.</p>
-    </li>
-    <li>
-      <p>Added Options and Attributes class to set parameters to Asciidoctor.
+</li>
+<li>
+<p>Added Options and Attributes class to set parameters to Asciidoctor.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/19">#19</a>.</p>
-    </li>
-    <li>
-      <p>Changed scope of gems to provided.
+</li>
+<li>
+<p>Changed scope of gems to provided.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/18">#18</a>.</p>
-    </li>
-  </ul>
+</li>
+</ul>
 </div>
-<div class="paragraph">  
-  <p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
+<div class="paragraph">
+<p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
 </div>
-  </div>
+
+</div>
 </div>
 
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/15/asciidoctor-maven-plugin-0-1-2-1-released/">Asciidoctor Maven plugin 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-05-15T19:06:41-06:00">Wednesday, May 15, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Some great things have happened for the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> since the last release, I&#8217;m happy to announce the release of version 0.1.2.1!</p>
-</div><div class="paragraph">  
-  <p>This release is still based upon the version 0.1.2 release of both the <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a> project and the <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> projects.
+<div class="sectionbody">
+<div class="paragraph">
+<p>Some great things have happened for the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> since the last release, I&#8217;m happy to announce the release of version 0.1.2.1!</p>
+</div>
+<div class="paragraph">
+<p>This release is still based upon the version 0.1.2 release of both the <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a> project and the <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> projects.
 This release contains bug fixes and a couple of new features, but is still fully compatible with the 0.1.2 release.</p>
-</div><table class="tableblock frame-all grid-all" style="width:100%; ">
-  <caption class="title">Plugin artifact information</caption>
-  <colgroup>
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="tableblock halign-left valign-top">Group ID</th>
-      <th class="tableblock halign-left valign-top">Artifact ID</th>
-      <th class="tableblock halign-left valign-top">Latest versions</th>
-      <th class="tableblock halign-left valign-top">Download</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2.1%7Cmaven-plugin">0.1.2.1</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2.1/asciidoctor-maven-plugin-0.1.2.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2.1/asciidoctor-maven-plugin-0.1.2.1.jar">jar</a></p></td>
-    </tr>
-  </tbody>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Plugin artifact information</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group ID</th>
+<th class="tableblock halign-left valign-top">Artifact ID</th>
+<th class="tableblock halign-left valign-top">Latest versions</th>
+<th class="tableblock halign-left valign-top">Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2.1%7Cmaven-plugin">0.1.2.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2.1/asciidoctor-maven-plugin-0.1.2.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2.1/asciidoctor-maven-plugin-0.1.2.1.jar">jar</a></p></td>
+</tr>
+</tbody>
 </table>
-<div class="paragraph">  
-  <p>Upgrading to 0.1.2.1 (recommended) is simple.
+<div class="paragraph">
+<p>Upgrading to 0.1.2.1 (recommended) is simple.
 Just update the version in your Maven POM.
 All necessary dependencies should be pulled in via Maven.</p>
-</div><div class="paragraph">  
-  <p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=5&amp;state=closed">0.1.2.1 milestone</a> in the issue tracker!</p>
 </div>
-  </div>
+<div class="paragraph">
+<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=5&amp;state=closed">0.1.2.1 milestone</a> in the issue tracker!</p>
+</div>
+
+</div>
 </div>
 
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/28/asciidoctor-java-integration-0-1-2-released/">Asciidoctor Java integration 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-28T23:26:10-06:00">Sunday, April 28, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
-</div><div class="paragraph">  
-  <p>In this new release, the following issues has been resolved:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>Upgraded Asciidoctor gem to 0.1.2.
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
+</div>
+<div class="paragraph">
+<p>In this new release, the following issues has been resolved:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>Upgraded Asciidoctor gem to 0.1.2.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/17">#17</a>.</p>
-    </li>
-    <li>
-      <p>Reduced startup time by tuning JRuby.
+</li>
+<li>
+<p>Reduced startup time by tuning JRuby.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/15">#15</a>, documented in <a href="https://github.com/asciidoctor/asciidoctor-java-integration#optimization">optimization</a>.</p>
-    </li>
-    <li>
-      <p>Renamed <code>AsciidocDirectoryWalker</code> class to <code>AsciiDocDirectoryWalker</code> to follow naming conventions.
+</li>
+<li>
+<p>Renamed <code>AsciidocDirectoryWalker</code> class to <code>AsciiDocDirectoryWalker</code> to follow naming conventions.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/12">#12</a>.</p>
 <div class="admonitionblock warning">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/warning.png" alt="Warning">
-      </td>
-      <td class="content">
-        
-        If you&#8217;re currently using <code>AsciidocDirectoryWalker</code>, you&#8217;ll need to refactor your code to reflect this name change.
-      </td>
-    </tr>
-  </table>
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+
+If you&#8217;re currently using <code>AsciidocDirectoryWalker</code>, you&#8217;ll need to refactor your code to reflect this name change.
+</td>
+</tr>
+</table>
 </div>
 
-    </li>
-    <li>
-      <p>Promoted <code>backend</code> and <code>doctype</code> attributes to options in the fluent API.
+</li>
+<li>
+<p>Promoted <code>backend</code> and <code>doctype</code> attributes to options in the fluent API.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/11">#11</a>.</p>
-    </li>
-    <li>
-      <p>Added a render method which takes a <code>Reader</code> and <code>Writer</code> interface as input and output content.
+</li>
+<li>
+<p>Added a render method which takes a <code>Reader</code> and <code>Writer</code> interface as input and output content.
 Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues/9">#9</a>, documented in <a href="https://github.com/asciidoctor/asciidoctor-java-integration#usage">usage</a>.</p>
-    </li>
-    <li>
-      <p>Changed <code>Asciidoctor#renderFile</code> method parameter type from <code>java.lang.String</code> to <code>java.io.File</code>.</p>
+</li>
+<li>
+<p>Changed <code>Asciidoctor#renderFile</code> method parameter type from <code>java.lang.String</code> to <code>java.io.File</code>.</p>
 <div class="admonitionblock warning">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/warning.png" alt="Warning">
-      </td>
-      <td class="content">
-        
-        If you&#8217;re currently using the <code>Asciidoctor#renderFile</code> method, you&#8217;ll need to refactor your code to reflect this type change.
-      </td>
-    </tr>
-  </table>
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+
+If you&#8217;re currently using the <code>Asciidoctor#renderFile</code> method, you&#8217;ll need to refactor your code to reflect this type change.
+</td>
+</tr>
+</table>
 </div>
 
-    </li>
-  </ul>
+</li>
+</ul>
 </div>
-<div class="paragraph">  
-  <p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
+<div class="paragraph">
+<p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
 </div>
-  </div>
+
+</div>
 </div>
 
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/28/asciidoctor-maven-plugin-0-1-2-released/">Asciidoctor Maven plugin 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-04-28T02:15:15-06:00">Sunday, April 28, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Following the tradition of quick updates shortly after the release of <a href="/">Asciidoctor</a>, I&#8217;d like to announce the release of versions 0.1.2 and 0.1.1.1 of the
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following the tradition of quick updates shortly after the release of <a href="/">Asciidoctor</a>, I&#8217;d like to announce the release of versions 0.1.2 and 0.1.1.1 of the
 <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a>!</p>
-</div><div class="paragraph">  
-  <p>These releases are based on Asciidoctor 0.1.2 and 0.1.1, respectively.
+</div>
+<div class="paragraph">
+<p>These releases are based on Asciidoctor 0.1.2 and 0.1.1, respectively.
 Both versions of the plugin have been migrated to the newly released <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a>, and thus supports all the options exposed through that library.</p>
-</div><table class="tableblock frame-all grid-all" style="width:100%; ">
-  <caption class="title">Plugin artifact information</caption>
-  <colgroup>
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="tableblock halign-left valign-top">Group ID</th>
-      <th class="tableblock halign-left valign-top">Artifact ID</th>
-      <th class="tableblock halign-left valign-top">Latest versions</th>
-      <th class="tableblock halign-left valign-top">Download</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2%7Cmaven-plugin">0.1.2</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.jar">jar</a></p></td>
-    </tr>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1.1%7Cmaven-plugin">0.1.1.1</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.jar">jar</a></p></td>
-    </tr>
-  </tbody>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Plugin artifact information</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group ID</th>
+<th class="tableblock halign-left valign-top">Artifact ID</th>
+<th class="tableblock halign-left valign-top">Latest versions</th>
+<th class="tableblock halign-left valign-top">Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2%7Cmaven-plugin">0.1.2</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.jar">jar</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1.1%7Cmaven-plugin">0.1.1.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.jar">jar</a></p></td>
+</tr>
+</tbody>
 </table>
-<div class="paragraph">  
-  <p>Upgrading to 0.1.2 (recommended) or 0.1.1.1 is simple.
+<div class="paragraph">
+<p>Upgrading to 0.1.2 (recommended) or 0.1.1.1 is simple.
 Just update the version in your Maven POM.
 All necessary dependencies should be pulled in via Maven.</p>
-</div><div class="paragraph">  
-  <p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=3&amp;state=closed">0.1.2 milestone</a> in the issue tracker!</p>
 </div>
-  </div>
+<div class="paragraph">
+<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=3&amp;state=closed">0.1.2 milestone</a> in the issue tracker!</p>
+</div>
+
+</div>
 </div>
 
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/25/asciidoctor-0-1-2-released/">Asciidoctor 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-04-25T20:47:32-06:00">Thursday, April 25, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>We&#8217;re proud to announce the release of <a href="http://rubygems.org/gems/asciidoctor">Asciidoctor 0.1.2</a>!</p>
-</div><div class="paragraph">  
-  <p><em>Asciidoctor is an open source text processor and publishing toolchain for converting AsciiDoc markup into HTML 5, DocBook 4.5 and other formats.</em></p>
-</div><div class="paragraph">  
-  <p>The focus of this release cycle was on:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>compliance with the AsciiDoc syntax</p>
-    </li>
-    <li>
-      <p>conformance with the AsciiDoc HTML and DocBook output</p>
-    </li>
-    <li>
-      <p>shipping <a href="http://themes.asciidoctor.org/preview">a default stylesheet</a></p>
-    </li>
-    <li>
-      <p>a new <a href="/">website</a> and <a href="/docs">user documentation</a></p>
-    </li>
-  </ul>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;re proud to announce the release of <a href="http://rubygems.org/gems/asciidoctor">Asciidoctor 0.1.2</a>!</p>
 </div>
-<div class="paragraph">  
-  <p>The valuable feedback we&#8217;ve received has helped bring Asciidoctor to 99% compliance with the AsciiDoc syntax.
+<div class="paragraph">
+<p><em>Asciidoctor is an open source text processor and publishing toolchain for converting AsciiDoc markup into HTML 5, DocBook 4.5 and other formats.</em></p>
+</div>
+<div class="paragraph">
+<p>The focus of this release cycle was on:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>compliance with the AsciiDoc syntax</p>
+</li>
+<li>
+<p>conformance with the AsciiDoc HTML and DocBook output</p>
+</li>
+<li>
+<p>shipping <a href="http://themes.asciidoctor.org/preview">a default stylesheet</a></p>
+</li>
+<li>
+<p>a new <a href="/">website</a> and <a href="/docs">user documentation</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The valuable feedback we&#8217;ve received has helped bring Asciidoctor to 99% compliance with the AsciiDoc syntax.
 The improvements have also given Asciidoctor a <strong>28% boost in speed</strong>, now more than <strong>30x as fast</strong> as AsciiDoc.</p>
 </div>
-  </div>
+
+</div>
 </div>
 <div class="sect1">
-  <h2 id="key-improvements">Key improvements</h2>
-  <div class="sectionbody">
+<h2 id="key-improvements">Key improvements</h2>
+<div class="sectionbody">
 <div class="dlist">
-  
-  <dl>
-    <dt class="hdlist1">
-      default stylesheet
-    </dt>
-    <dd>
-      <p>Asciidoctor now ships a default stylesheet!
+<dl>
+<dt class="hdlist1">default stylesheet</dt>
+<dd>
+<p>Asciidoctor now ships a default stylesheet!
 This stylesheet gives documents a unique, modern and elegant look and feel out of the box.
 To learn how to use it, read the stylesheet section of <a href="/docs/render-documents/#styles-and-attributes">How do I render a document?</a>.
 Visit <a href="http://themes.asciidoctor.org">http://themes.asciidoctor.org</a> to <a href="http://themes.asciidoctor.org/preview">a preview</a> the default stylesheet and other themes created using the <a href="https://github.com/asciidoctor/asciidoctor-stylesheet-factory">Asciidoctor stylesheet factory</a>.
 Resolves issues <a href="https://github.com/asciidoctor/asciidoctor/issues/76">#76</a> and <a href="https://github.com/asciidoctor/asciidoctor/issues/165">#165</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      docinfo files
-    </dt>
-    <dd>
-      <p>Supplemental document header files (i.e., docinfo files) are now included in the rendered output when enabled.
+</dd>
+<dt class="hdlist1">docinfo files</dt>
+<dd>
+<p>Supplemental document header files (i.e., docinfo files) are now included in the rendered output when enabled.
 These files are used to include custom content into the header of the HTML or DocBook output.
 Resolves issues <a href="https://github.com/asciidoctor/asciidoctor/issues/116">#116</a> and <a href="https://github.com/asciidoctor/asciidoctor/issues/193">#193</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      leveloffset
-    </dt>
-    <dd>
-      <p>The <code>leveloffset</code> attribute is now supported.
+</dd>
+<dt class="hdlist1">leveloffset</dt>
+<dd>
+<p>The <code>leveloffset</code> attribute is now supported.
 This attribute allows several standalone documents to be combined as a master document.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/212">#212</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      partial includes
-    </dt>
-    <dd>
-      <p>The include macro can now be used to include select regions of a file by line numbers, line ranges or tagged regions.
+</dd>
+<dt class="hdlist1">partial includes</dt>
+<dd>
+<p>The include macro can now be used to include select regions of a file by line numbers, line ranges or tagged regions.
 <strong>This enhancement to the include macro is unique to Asciidoctor.</strong>
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/226">#226</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      footnotes in embedded mode
-    </dt>
-    <dd>
-      <p>Footnotes are now rendered at the bottom of the output in embedded mode (when the header and footer are disabled), such as on GitHub or in a page generated by Awestruct.
+</dd>
+<dt class="hdlist1">footnotes in embedded mode</dt>
+<dd>
+<p>Footnotes are now rendered at the bottom of the output in embedded mode (when the header and footer are disabled), such as on GitHub or in a page generated by Awestruct.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/206">#206</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      table of contents macro
-    </dt>
-    <dd>
-      <p>Support has been added for the toc macro, which allows you to place the toc anywhere in the document.
+</dd>
+<dt class="hdlist1">table of contents macro</dt>
+<dd>
+<p>Support has been added for the toc macro, which allows you to place the toc anywhere in the document.
 This feature makes it possible to include a toc in the document when in embedded mode, such as on GitHub or in a page generated by Awestruct.
 Resolves issues <a href="https://github.com/asciidoctor/asciidoctor/issues/269">#269</a> and <a href="https://github.com/asciidoctor/asciidoctor/issues/221">#221</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      audio and video macros
-    </dt>
-    <dd>
-      <p>Macros have been added to output HTML 5 audio and video tags.
+</dd>
+<dt class="hdlist1">audio and video macros</dt>
+<dd>
+<p>Macros have been added to output HTML 5 audio and video tags.
 These macros parallel the block image macro.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/155">#155</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      safe mode and embedded attributes
-    </dt>
-    <dd>
-      <p>The attributes <code>safe-mode-level</code>, <code>safe-mode-name</code> and <code>safe-mode-%name%</code> are now assigned to match the active safe mode.
+</dd>
+<dt class="hdlist1">safe mode and embedded attributes</dt>
+<dd>
+<p>The attributes <code>safe-mode-level</code>, <code>safe-mode-name</code> and <code>safe-mode-%name%</code> are now assigned to match the active safe mode.
 The attribute <code>embedded</code> is assigned to indicate the document is rendered using the embedded document template.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/244">#244</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      multiple authors
-    </dt>
-    <dd>
-      <p>You can now specify multiple authors in the header of the document, separated by semi-colons.
+</dd>
+<dt class="hdlist1">multiple authors</dt>
+<dd>
+<p>You can now specify multiple authors in the header of the document, separated by semi-colons.
 In the DocBook backend, the authors are listed in an <code>authorgroup</code> element in the document info section.
 <strong>This feature is unique to Asciidoctor.</strong>
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/223">#223</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      email macro
-    </dt>
-    <dd>
-      <p>The inline email address and the inline mailto macro are now recognized.
+</dd>
+<dt class="hdlist1">email macro</dt>
+<dd>
+<p>The inline email address and the inline mailto macro are now recognized.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/213">#213</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      secure paths
-    </dt>
-    <dd>
-      <p>The path resolution logic was simply too fragile as a result of relying on Ruby core libraries.
+</dd>
+<dt class="hdlist1">secure paths</dt>
+<dd>
+<p>The path resolution logic was simply too fragile as a result of relying on Ruby core libraries.
 The code has been completely rewritten so that paths are properly normalized and secured, with loads of tests to back it up.</p>
-    </dd>
-    <dt class="hdlist1">
-      custom block substitutions
-    </dt>
-    <dd>
-      <p>Substitution groups applied to block content can now be customized using the <code>subs</code> block attribute.
+</dd>
+<dt class="hdlist1">custom block substitutions</dt>
+<dd>
+<p>Substitution groups applied to block content can now be customized using the <code>subs</code> block attribute.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/220">#220</a>.</p>
-    </dd>
-    <dt class="hdlist1">
-      masquerading blocks and paragraphs
-    </dt>
-    <dd>
-      <p>The open block and paragraphs can now masquerade as any style of block.
+</dd>
+<dt class="hdlist1">masquerading blocks and paragraphs</dt>
+<dd>
+<p>The open block and paragraphs can now masquerade as any style of block.
 Masquerading is also available for other blocks, where applicable.
 This was one of the weakest areas of Asciidoctor, now fully compliant (and even a little extra).
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/187">#187</a>.</p>
-    </dd>
-  </dl>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock note">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/note.png" alt="Note">
-      </td>
-      <td class="content">
-        
-        In order to implement full support for masquerading blocks, paragraphs and custom block substitutions, the main block parsing code had to be reworked.
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+
+In order to implement full support for masquerading blocks, paragraphs and custom block substitutions, the main block parsing code had to be reworked.
 The refactoring not only cleaned up the code, but laid the foundation necessary to implement block filters and other extensions.
-      </td>
-    </tr>
-  </table>
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>Some of the improvements to Asciidoctor have resolved issues inherent in AsciiDoc.
+<div class="paragraph">
+<p>Some of the improvements to Asciidoctor have resolved issues inherent in AsciiDoc.
 Fortunately, AsciiDoc is configurable enough that these issues can be "ported" to AsciiDoc without changing the core.
 We now maintain and ship an AsciiDoc configuration file, <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">asciidoc.conf</a>, that makes AsciiDoc conform to Asciidoctor&#8217;s behavior and enhancements.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/257">#257</a>.</p>
-</div><div class="paragraph">  
-  <p>The full list of new features, enhancements and patches implemented in this release can be viewed by filtering on the <a href="https://github.com/asciidoctor/asciidoctor/issues?milestone=3&amp;page=1&amp;state=closed&amp;sort=created&amp;direction=asc">0.1.2 milestone</a> in the issue tracker.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="new-website-and-documentation">New website and documentation</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p><strong>You&#8217;re looking at it!</strong></p>
-</div><div class="paragraph">  
-  <p>During the 0.1.2 release cycle, we created <a href="/">a proper website for Asciidoctor</a> and focused on getting the <a href="/docs">user documentation started</a>.
-Both the website and documentation are, of course, written in AsciiDoc.</p>
-</div><div class="paragraph">  
-  <p>Sarah White has taken on the initiative of untangling information in the AsciiDoc user guide and man pages and converting it to something consumable so users can get started quickly with the AsciiDoc and Asciidoctor toolchains.</p>
-</div><div class="paragraph">  
-  <p>I wrote up <a href="/docs/what-is-asciidoc-why-use-it">an introduction to AsciiDoc</a>, <a href="/docs/asciidoc-writers-guide">an AsciiDoc writer&#8217;s guide</a> and <a href="/docs/asciidoc-quick-reference">an AsciiDoc syntax quick reference</a> to reveal the elegance of the AsciiDoc syntax and get writers the information they need to be productive and proficient with AsciiDoc.
-I summarized this information in an article titled <a href="https://nofluffjuststuff.com/home/magazine_renew?id=42"><em>The Zen of Writing (Ascii)Docs</em></a>, published in the April issue of NFJS, The Magazine (also produced from articles written in AsciiDoc).</p>
-</div><div class="paragraph">  
-  <p>Look for more details about the website and documentation in a future news post.</p>
-</div>
-  </div>
-</div><div class="sect1">
-  <h2 id="thanks">Thanks!</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The amount of participation in the Asciidoctor project, particularly around the integrations, has increased <em>tremendously</em> since the last release.
-Asciidoctor 0.1.1 crossed the <a href="http://rubygems.org/gems/asciidoctor">10,000 downloads mark</a> prior to this release.
-We look forward to 0.1.2 breaking the next 10,000.</p>
-</div><div class="paragraph">  
-  <p>We&#8217;re very grateful to everyone who participates, especially those who contribute and spread the word :)
-We&#8217;d especially like to thank the following people for their contributions and feedback:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="https://github.com/bleathem">Brian Leathem</a> (Clutch code reviewer)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/lightguard">Jason Porter</a> (Maven plugin lead)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/graphitefriction">Sarah White</a> (Documentation and user experience)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/lordofthejars">Alex Soto</a> (Java integration lead)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/aalmiray">Andres Almiray</a> (Gradle plugin lead)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/glaforge">Guillaume Laforge</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/mstanleyjones">Misty Stanley-Jones</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/gAmUssA">Viktor Gamov</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/nawroth">Anders Nawroth</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/erebor">Ryan Waldron</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/paulrayner">Paul Rayner</a> (Guard plugin lead)</p>
-    </li>
-    <li>
-      <p><a href="https://github.com/kurtstam">Kurt Stam</a></p>
-    </li>
-    <li>
-      <p><a href="https://github.com/bmuschko">Benjamin Muschko</a></p>
-    </li>
-  </ul>
-</div>
-<div class="paragraph">  
-  <p>Together, we&#8217;re making documentation easy, fun and rewarding!</p>
-</div>
-  </div>
+<div class="paragraph">
+<p>The full list of new features, enhancements and patches implemented in this release can be viewed by filtering on the <a href="https://github.com/asciidoctor/asciidoctor/issues?milestone=3&amp;page=1&amp;state=closed&amp;sort=created&amp;direction=asc">0.1.2 milestone</a> in the issue tracker.</p>
 </div>
 
-</div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/18/enjoy-the-magic-of-asciidoctor-in-java/">Enjoy the magic of Asciidoctor in Java</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-18T21:43:51-06:00">Thursday, April 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="/">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
 </div>
-  </div>
 </div>
 <div class="sect1">
-  <h2 id="installation">Installation</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Since <code>asciidoctor-java-integration</code> is a standard jar file, the only thing you should do is add library into classpath.</p>
-</div><div class="listingblock">
-  <div class="title">Dependency declaration in Maven</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="xml">&lt;dependencies&gt;
+<h2 id="new-website-and-documentation">New website and documentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>You&#8217;re looking at it!</strong></p>
+</div>
+<div class="paragraph">
+<p>During the 0.1.2 release cycle, we created <a href="/">a proper website for Asciidoctor</a> and focused on getting the <a href="/docs">user documentation started</a>.
+Both the website and documentation are, of course, written in AsciiDoc.</p>
+</div>
+<div class="paragraph">
+<p>Sarah White has taken on the initiative of untangling information in the AsciiDoc user guide and man pages and converting it to something consumable so users can get started quickly with the AsciiDoc and Asciidoctor toolchains.</p>
+</div>
+<div class="paragraph">
+<p>I wrote up <a href="/docs/what-is-asciidoc-why-use-it">an introduction to AsciiDoc</a>, <a href="/docs/asciidoc-writers-guide">an AsciiDoc writer&#8217;s guide</a> and <a href="/docs/asciidoc-quick-reference">an AsciiDoc syntax quick reference</a> to reveal the elegance of the AsciiDoc syntax and get writers the information they need to be productive and proficient with AsciiDoc.
+I summarized this information in an article titled <a href="https://nofluffjuststuff.com/home/magazine_renew?id=42"><em>The Zen of Writing (Ascii)Docs</em></a>, published in the April issue of NFJS, The Magazine (also produced from articles written in AsciiDoc).</p>
+</div>
+<div class="paragraph">
+<p>Look for more details about the website and documentation in a future news post.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="thanks">Thanks!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The amount of participation in the Asciidoctor project, particularly around the integrations, has increased <em>tremendously</em> since the last release.
+Asciidoctor 0.1.1 crossed the <a href="http://rubygems.org/gems/asciidoctor">10,000 downloads mark</a> prior to this release.
+We look forward to 0.1.2 breaking the next 10,000.</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;re very grateful to everyone who participates, especially those who contribute and spread the word :)
+We&#8217;d especially like to thank the following people for their contributions and feedback:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="https://github.com/bleathem">Brian Leathem</a> (Clutch code reviewer)</p>
+</li>
+<li>
+<p><a href="https://github.com/lightguard">Jason Porter</a> (Maven plugin lead)</p>
+</li>
+<li>
+<p><a href="https://github.com/graphitefriction">Sarah White</a> (Documentation and user experience)</p>
+</li>
+<li>
+<p><a href="https://github.com/lordofthejars">Alex Soto</a> (Java integration lead)</p>
+</li>
+<li>
+<p><a href="https://github.com/aalmiray">Andres Almiray</a> (Gradle plugin lead)</p>
+</li>
+<li>
+<p><a href="https://github.com/glaforge">Guillaume Laforge</a></p>
+</li>
+<li>
+<p><a href="https://github.com/mstanleyjones">Misty Stanley-Jones</a></p>
+</li>
+<li>
+<p><a href="https://github.com/gAmUssA">Viktor Gamov</a></p>
+</li>
+<li>
+<p><a href="https://github.com/nawroth">Anders Nawroth</a></p>
+</li>
+<li>
+<p><a href="https://github.com/erebor">Ryan Waldron</a></p>
+</li>
+<li>
+<p><a href="https://github.com/paulrayner">Paul Rayner</a> (Guard plugin lead)</p>
+</li>
+<li>
+<p><a href="https://github.com/kurtstam">Kurt Stam</a></p>
+</li>
+<li>
+<p><a href="https://github.com/bmuschko">Benjamin Muschko</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Together, we&#8217;re making documentation easy, fun and rewarding!</p>
+</div>
+
+</div>
+</div>
+
+
+</div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/release">release </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/18/enjoy-the-magic-of-asciidoctor-in-java/">Enjoy the magic of Asciidoctor in Java</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-18T21:43:51-06:00">Thursday, April 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="/">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since <code>asciidoctor-java-integration</code> is a standard jar file, the only thing you should do is add library into classpath.</p>
+</div>
+<div class="listingblock">
+<div class="title">Dependency declaration in Maven</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="xml language-xml">&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
     &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   <img src="/images/icons/callouts/1.png" alt="1">
   &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
-  </div>
+</div>
 </div>
 <div class="colist arabic">
-  
-  <table>
-    <tr>
-      <td><img src="/images/icons/callouts/1.png" alt="1"></td>
-      <td>As this library tracks the version of Asciidoctor, you can use which every version of Asciidoctor you prefer.</td>
-    </tr>
-  </table>
+
+<table>
+<tr>
+<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td>As this library tracks the version of Asciidoctor, you can use which every version of Asciidoctor you prefer.</td>
+</tr>
+</table>
 </div>
 
-  </div>
-</div><div class="sect1">
-  <h2 id="usage">Usage</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The core interface of <code>asciidoctor-java-integration</code> is <code>Asciidoctor</code> interface. It provides two methods for rendering asciidoc content, <code>render</code> and <code>renderFile</code>. Both of them returns a string with rendered content.</p>
-</div><table class="tableblock frame-all grid-all" style="width:100%; ">
-  <caption class="title">Table 1. Method description</caption>
-  <colgroup>
-    <col style="width:33%;">
-    <col style="width:66%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="tableblock halign-left valign-top">Name</th>
-      <th class="tableblock halign-left valign-top">Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><code>render</code></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">Parse the AsciiDoc content into a Document and render it to the specified backend format.</p></td>
-    </tr>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderFile</code></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">Parse the content of AsciiDoc file into a Document and render it to the specified backend format.</p></td>
-    </tr>
-  </tbody>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The core interface of <code>asciidoctor-java-integration</code> is <code>Asciidoctor</code> interface. It provides two methods for rendering asciidoc content, <code>render</code> and <code>renderFile</code>. Both of them returns a string with rendered content.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Table 1. Method description</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:66%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>render</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parse the AsciiDoc content into a Document and render it to the specified backend format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderFile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parse the content of AsciiDoc file into a Document and render it to the specified backend format.</p></td>
+</tr>
+</tbody>
 </table>
-<div class="paragraph">  
-  <p>Also a factory method is provided to create an instance of <code>Asciidoctor</code> interface.</p>
-</div><div class="listingblock">
-  <div class="title">Creation of Asciidoctor interface</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">import static org.asciidoctor.Asciidoctor.Factory.create;
+<div class="paragraph">
+<p>Also a factory method is provided to create an instance of <code>Asciidoctor</code> interface.</p>
+</div>
+<div class="listingblock">
+<div class="title">Creation of Asciidoctor interface</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 
 Asciidoctor asciidoctor = create();</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>And then we can call <code>render</code> methods depending on our requirements.</p>
-</div><div class="listingblock">
-  <div class="title">Rendering a String</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">String rendered = asciidoctor.render("*This* is it.", Collections.EMPTY_MAP);
-System.out.println(rendered);</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>But also you can render the content of a file.</p>
-</div><div class="listingblock">
-  <div class="title">Rendering a File</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">String rendered = asciidoctor.renderFile("docs/sample.adoc", Collections.EMPTY_MAP);
+<div class="paragraph">
+<p>And then we can call <code>render</code> methods depending on our requirements.</p>
+</div>
+<div class="listingblock">
+<div class="title">Rendering a String</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">String rendered = asciidoctor.render("*This* is it.", Collections.EMPTY_MAP);
 System.out.println(rendered);</code></pre>
-  </div>
+</div>
+</div>
+<div class="paragraph">
+<p>But also you can render the content of a file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Rendering a File</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">String rendered = asciidoctor.renderFile("docs/sample.adoc", Collections.EMPTY_MAP);
+System.out.println(rendered);</code></pre>
+</div>
 </div>
 <div class="sect2">
-  <h3 id="options">Options</h3>
-<div class="paragraph">  
-  <p><a href="/">Asciidoctor</a> supports different kind of options, like <code>in_place</code> which renders the output inside a file, <code>template_dir</code> used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example <code>attributes</code> option where we can set key-value pairs of attributes that will be used within asciidoc document.</p>
-</div><div class="paragraph">  
-  <p>The second parameter of <code>render</code> methods are a <code>java.util.Map</code> where we can set all these options.</p>
-</div><div class="listingblock">
-  <div class="title">Example of using in_place Option and backend Attribute</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
+<h3 id="options">Options</h3>
+<div class="paragraph">
+<p><a href="/">Asciidoctor</a> supports different kind of options, like <code>in_place</code> which renders the output inside a file, <code>template_dir</code> used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example <code>attributes</code> option where we can set key-value pairs of attributes that will be used within asciidoc document.</p>
+</div>
+<div class="paragraph">
+<p>The second parameter of <code>render</code> methods are a <code>java.util.Map</code> where we can set all these options.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example of using in_place Option and backend Attribute</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
 attributes.put("backend", "docbook");
 
 Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
@@ -728,18 +758,21 @@ options.put("in_place", true);
 options.put("attributes", attributes);
 
 String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>See that in previous example we have created a Map, where we have put the options and attributes (creating a Map too) required to render input as docbook and generate an output file.</p>
-</div><div class="paragraph">  
-  <p>But <code>asciidoctor-java-integration</code> also provides two builder classes to create these maps in a more readable form.</p>
-</div><div class="paragraph">  
-  <p><code>AttributesBuilder</code> is provided for creating a map with required attributes set, and <code>OptionsBuilder</code> can be used for options. Previous example but using these classes looks like:</p>
-</div><div class="listingblock">
-  <div class="title">Example setting attributes and options</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">import static org.asciidoctor.AttributesBuilder.attributes;
+</div>
+<div class="paragraph">
+<p>See that in previous example we have created a Map, where we have put the options and attributes (creating a Map too) required to render input as docbook and generate an output file.</p>
+</div>
+<div class="paragraph">
+<p>But <code>asciidoctor-java-integration</code> also provides two builder classes to create these maps in a more readable form.</p>
+</div>
+<div class="paragraph">
+<p><code>AttributesBuilder</code> is provided for creating a map with required attributes set, and <code>OptionsBuilder</code> can be used for options. Previous example but using these classes looks like:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example setting attributes and options</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
 import static org.asciidoctor.OptionsBuilder.options;
 
 ...
@@ -748,85 +781,96 @@ Map&lt;String, Object&gt; attributes = attributes().backend("docbook").asMap();
 Map&lt;String, Object&gt; options = options().inPlace(true).attributes(attributes).asMap();
 
 String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
-  </div>
+</div>
 </div>
 
-</div><div class="sect2">
-  <h3 id="utilities">Utilities</h3>
-<div class="paragraph">  
-  <p>A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with <em>.asc</em>, <em>.asciidoc</em>, <em>.ad</em> or <em>.adoc</em>. This class is <code>AsciidocDirectoryWalker</code>.</p>
-</div><div class="listingblock">
-  <div class="title">Example of finding all asciidoc</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="java">DirectoryWalker directoryWalker = new AsciidocDirectoryWalker("docs");
+</div>
+<div class="sect2">
+<h3 id="utilities">Utilities</h3>
+<div class="paragraph">
+<p>A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with <em>.asc</em>, <em>.asciidoc</em>, <em>.ad</em> or <em>.adoc</em>. This class is <code>AsciidocDirectoryWalker</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example of finding all asciidoc</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">DirectoryWalker directoryWalker = new AsciidocDirectoryWalker("docs");
 List&lt;File&gt; asciidocFiles = directoryWalker.scan();</code></pre>
-  </div>
+</div>
 </div>
 
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="contributing">Contributing</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>You can contribute with patches, better documentation, feature requests, any help you&#8217;re able to provide.</p>
-</div>
-  </div>
-</div>
 
-</div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/16/introducing-the-asciidoctor-maven-plugin/">Introducing the Asciidoctor Maven plugin</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-04-16T16:42:55-06:00">Tuesday, April 16, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>I&#8217;d like to introduce you to the easiest way to use AsciiDoc from Maven, the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a>!</p>
-</div><table class="tableblock frame-all grid-all" style="width:100%; ">
-  <caption class="title">Plugin artifact information</caption>
-  <colgroup>
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-    <col style="width:25%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th class="tableblock halign-left valign-top">Group ID</th>
-      <th class="tableblock halign-left valign-top">Artifact ID</th>
-      <th class="tableblock halign-left valign-top">Latest version</th>
-      <th class="tableblock halign-left valign-top">Download</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1%7Cmaven-plugin">0.1.1</a></p></td>
-      <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.jar">jar</a></p></td>
-    </tr>
-  </tbody>
-</table>
-<div class="paragraph">  
-  <p>This plugin is a great option for projects interested in using AsciiDoc to author documentation, or any part of this project utilizing AsciiDoc.
-Best of all, it&#8217;s already available from Maven Central.</p>
 </div>
-  </div>
 </div>
 <div class="sect1">
-  <h2 id="how-it-works">How it works</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The Maven plugin loads JRuby, scans for AsciiDoc files in the specified directory, then invokes <a href="http://asciidoctor.org">Asciidoctor</a> to render them.
+<h2 id="contributing">Contributing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can contribute with patches, better documentation, feature requests, any help you&#8217;re able to provide.</p>
+</div>
+
+</div>
+</div>
+
+
+</div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/16/introducing-the-asciidoctor-maven-plugin/">Introducing the Asciidoctor Maven plugin</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-04-16T16:42:55-06:00">Tuesday, April 16, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>I&#8217;d like to introduce you to the easiest way to use AsciiDoc from Maven, the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a>!</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Plugin artifact information</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group ID</th>
+<th class="tableblock halign-left valign-top">Artifact ID</th>
+<th class="tableblock halign-left valign-top">Latest version</th>
+<th class="tableblock halign-left valign-top">Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1%7Cmaven-plugin">0.1.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.jar">jar</a></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This plugin is a great option for projects interested in using AsciiDoc to author documentation, or any part of this project utilizing AsciiDoc.
+Best of all, it&#8217;s already available from Maven Central.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-it-works">How it works</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Maven plugin loads JRuby, scans for AsciiDoc files in the specified directory, then invokes <a href="http://asciidoctor.org">Asciidoctor</a> to render them.
 You have the option of rendering the files to HTML 5 and DocBook 4.5.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="setup-and-usage">Setup and usage</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Adding this plugin to your Maven POM is simple.
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="setup-and-usage">Setup and usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding this plugin to your Maven POM is simple.
 Just add this plugin declaration:</p>
-</div><div class="listingblock">
-  <div class="title">pom.xml fragment: Asciidoctor Maven plugin configuration</div>
-  <div class="content monospaced">
-    <pre class="highlight"><code class="xml">&lt;plugin&gt;
+</div>
+<div class="listingblock">
+<div class="title">pom.xml fragment: Asciidoctor Maven plugin configuration</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="xml language-xml">&lt;plugin&gt;
   &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
   &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
   &lt;version&gt;0.1.1&lt;/version&gt;
@@ -845,168 +889,194 @@ Just add this plugin declaration:</p>
       &lt;backend&gt;docbook&lt;/backend&gt;
   &lt;/configuration&gt;
 &lt;/plugin&gt;</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>Execution is handled by Maven when you execute a build.</p>
-</div><div class="paragraph">  
-  <p>You can find more detailed information about setup and usage in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin#readme">README</a> located in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">project&#8217;s repository on GitHub</a>.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="versioning">Versioning</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The version of the Maven plugin will track the version of Asciidoctor.
+<div class="paragraph">
+<p>Execution is handled by Maven when you execute a build.</p>
+</div>
+<div class="paragraph">
+<p>You can find more detailed information about setup and usage in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin#readme">README</a> located in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">project&#8217;s repository on GitHub</a>.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="versioning">Versioning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The version of the Maven plugin will track the version of Asciidoctor.
 In most cases, the version number will match the Asciidoctor version (e.g., 0.1.1).
 If an interim fix needs to be made to the plugin, an additional number will be added to the end of the Asciidoctor version number (e.g., 0.1.1.1).</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="future">Future</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Currently, the plugin uses its own JRuby integration to invoke Asciidoctor (which is written in Ruby).
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="future">Future</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Currently, the plugin uses its own JRuby integration to invoke Asciidoctor (which is written in Ruby).
 The next version (<a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues">roadmap</a>) will use the newly-released Asciidoctor Java integration to streamline the hand off and simplify maintenance of the project.</p>
-</div><div class="paragraph">  
-  <p>In conjunction with the change to use the Asciidoctor Java integration internally, new configuration options will be added.
+</div>
+<div class="paragraph">
+<p>In conjunction with the change to use the Asciidoctor Java integration internally, new configuration options will be added.
 One of those options will allow you to pass AsciiDoc attributes to the renderer.
 AsciiDoc attributes control options such as adding a table of contents, turning on section numbering and configuring the source highlighter.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="contributing">Contributing</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>We&#8217;re always open for patches, better documentation, feature requests, evangelizing or any help you&#8217;re able to provide.</p>
+
 </div>
-  </div>
+</div>
+<div class="sect1">
+<h2 id="contributing">Contributing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;re always open for patches, better documentation, feature requests, evangelizing or any help you&#8217;re able to provide.</p>
 </div>
 
+</div>
+</div>
+
+
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/plugin">plugin </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/08/a-new-resource-for-asciidoc/">A new resource for AsciiDoc</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-04-08T14:39:25-06:00">Monday, April 8, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>AsciiDoc is an excellent tool for writing documentation, but there&#8217;s simply not enough information about it.</p>
-</div><div class="paragraph">  
-  <p>Today, I&#8217;m excited to announce a new resource for AsciiDoc, <a href="http://asciidoctor.org">asciidoctor.org</a>.
+<div class="sectionbody">
+<div class="paragraph">
+<p>AsciiDoc is an excellent tool for writing documentation, but there&#8217;s simply not enough information about it.</p>
+</div>
+<div class="paragraph">
+<p>Today, I&#8217;m excited to announce a new resource for AsciiDoc, <a href="http://asciidoctor.org">asciidoctor.org</a>.
 In addition to serving as the project page for the <a href="http://github.com/asciidoctor">Asciidoctor project</a> and its integrations, this website helps promote AsciiDoc through education and advocacy.</p>
-</div><div class="imageblock feature right">
-  <div class="content">
-    <img src="/images/dawn.jpg" alt="dawn">
-  </div>
-  <div class="title">The dawn of a new era <span class="credit">Photo credit: <a href="http://www.flickr.com/photos/bartvandorp/8593385822">bartvandorp</a></span></div>
 </div>
-<div class="paragraph">  
-  <p>The key highlight of the site is a collection of new AsciiDoc guides:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="/docs/what-is-asciidoc-why-use-it/">What is AsciiDoc? Why do we need it?</a></p>
-    </li>
-    <li>
-      <p><a href="/docs/asciidoc-quick-reference/">AsciiDoc Syntax Quick Reference</a></p>
-    </li>
-    <li>
-      <p><a href="/docs/asciidoc-writers-guide/">AsciiDoc Writer&#8217;s Guide</a></p>
-    </li>
-  </ul>
+<div class="imageblock feature right">
+<div class="content">
+<img src="/images/dawn.jpg" alt="dawn">
 </div>
-<div class="paragraph">  
-  <p>The purpose of these guides is to answer your questions about AsciiDoc and get you familiar with the syntax quickly.
+<div class="title">The dawn of a new era <span class="credit">Photo credit: <a href="http://www.flickr.com/photos/bartvandorp/8593385822">bartvandorp</a></span></div>
+</div>
+<div class="paragraph">
+<p>The key highlight of the site is a collection of new AsciiDoc guides:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="/docs/what-is-asciidoc-why-use-it/">What is AsciiDoc? Why do we need it?</a></p>
+</li>
+<li>
+<p><a href="/docs/asciidoc-quick-reference/">AsciiDoc Syntax Quick Reference</a></p>
+</li>
+<li>
+<p><a href="/docs/asciidoc-writers-guide/">AsciiDoc Writer&#8217;s Guide</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The purpose of these guides is to answer your questions about AsciiDoc and get you familiar with the syntax quickly.
 They present AsciiDoc by following a recommended set of conventions to help you create more consistent documents and maximize your writing productivity.</p>
-</div><div class="paragraph">  
-  <p>If you see a change you want to make, <strong>contributing to the guides is easy!</strong></p>
-</div><div class="paragraph">  
-  <p>The guides are written in AsciiDoc and <a href="https://github.com/asciidoctor/asciidoctor.github.com">hosted on GitHub</a>.
+</div>
+<div class="paragraph">
+<p>If you see a change you want to make, <strong>contributing to the guides is easy!</strong></p>
+</div>
+<div class="paragraph">
+<p>The guides are written in AsciiDoc and <a href="https://github.com/asciidoctor/asciidoctor.github.com">hosted on GitHub</a>.
 If you see a change you want to make in one of the guides, just look for the <strong>Edit</strong> button in the right-hand column and click on it.
 That will take you to an editor on GitHub where you can make the change and submit it as a pull request.</p>
-</div><div class="paragraph">  
-  <p>Alternatively, you can clone the project, make the change locally, commit it, then send a pull request in the usual way.</p>
-</div><div class="paragraph">  
-  <p>Once the change is merged into the <code>develop</code> branch, it gets published automatically.</p>
-</div><div class="paragraph">  
-  <p>I hope you find the guides useful, and I look forward to your feedback.
+</div>
+<div class="paragraph">
+<p>Alternatively, you can clone the project, make the change locally, commit it, then send a pull request in the usual way.</p>
+</div>
+<div class="paragraph">
+<p>Once the change is merged into the <code>develop</code> branch, it gets published automatically.</p>
+</div>
+<div class="paragraph">
+<p>I hope you find the guides useful, and I look forward to your feedback.
 Together, we can take the agony out of writing documentation!</p>
 </div>
-  </div>
+
+</div>
 </div>
 
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/website">website </a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/01/30/asciidoc-returns-to-github/">AsciiDoc, powered by Asciidoctor, returns to GitHub and its 5+ million repositories</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-01-30T09:30:00-07:00">Wednesday, January 30, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Since early December and throughout the holidays, GitHub&#8217;s <a href="https://github.com/erebor">Ryan Waldron</a>, Red Hat&#8217;s <a href="https://github.com/mojavelinux">Dan Allen</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a> have collaborated on <strong>Asciidoctor</strong> (<a href="http://asciidoctor.org">project site</a>, <a href="https://github.com/asciidoctor/asciidoctor">code repository</a>), a new open source implementation of AsciiDoc written purely in Ruby<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.</p>
-</div><div class="paragraph">  
-  <p>The implementation kicked off with two core goals in mind:</p>
-</div><div class="olist arabic">
-  
-  <ol class="arabic">
-    <li>
-      <p>Improve the rendering of AsciiDoc source files in git repositories and gists on GitHub</p>
-    </li>
-    <li>
-      <p>Bring AsciiDoc to the Ruby world by offering the first compliant Ruby port of the markup language</p>
-    </li>
-  </ol>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since early December and throughout the holidays, GitHub&#8217;s <a href="https://github.com/erebor">Ryan Waldron</a>, Red Hat&#8217;s <a href="https://github.com/mojavelinux">Dan Allen</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a> have collaborated on <strong>Asciidoctor</strong> (<a href="http://asciidoctor.org">project site</a>, <a href="https://github.com/asciidoctor/asciidoctor">code repository</a>), a new open source implementation of AsciiDoc written purely in Ruby<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.</p>
 </div>
-<div class="paragraph">  
-  <p>After a lot of hard work and a thorough security audit, we&#8217;re <em>thrilled</em> to announce that&#8230;</p>
-</div><div class="admonitionblock note lead">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/octocat.jpg" alt="Note">
-      </td>
-      <td class="content">
-        
-        <strong>Asciidoctor is now deployed</strong> to render AsciiDoc markup in any of the <strong>5 million+ repositories</strong> on GitHub.
-      </td>
-    </tr>
-  </table>
+<div class="paragraph">
+<p>The implementation kicked off with two core goals in mind:</p>
 </div>
-<div class="paragraph">  
-  <p><em>Asciidoctor 0.1.0 is also available on <a href="https://rubygems.org/gems/asciidoctor">rubygems.org</a> and can be installed locally via RubyGems (<code>gem install asciidoctor</code>).</em></p>
+<div class="olist arabic">
+
+<ol class="arabic">
+<li>
+<p>Improve the rendering of AsciiDoc source files in git repositories and gists on GitHub</p>
+</li>
+<li>
+<p>Bring AsciiDoc to the Ruby world by offering the first compliant Ruby port of the markup language</p>
+</li>
+</ol>
 </div>
-  </div>
+<div class="paragraph">
+<p>After a lot of hard work and a thorough security audit, we&#8217;re <em>thrilled</em> to announce that&#8230;</p>
+</div>
+<div class="admonitionblock note lead">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/octocat.jpg" alt="Note">
+</td>
+<td class="content">
+
+<strong>Asciidoctor is now deployed</strong> to render AsciiDoc markup in any of the <strong>5 million+ repositories</strong> on GitHub.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><em>Asciidoctor 0.1.0 is also available on <a href="https://rubygems.org/gems/asciidoctor">rubygems.org</a> and can be installed locally via RubyGems (<code>gem install asciidoctor</code>).</em></p>
+</div>
+
+</div>
 </div>
 <div class="sect1">
-  <h2 id="about-asciidoc">About AsciiDoc</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p><a href="http://asciidoc.org">AsciiDoc</a> is a lightweight markup language akin to <a href="http://github.github.com/github-flavored-markdown">Markdown</a>. Going beyond Markdown, AsciiDoc supports all the structural elements necessary for drafting articles, technical manuals and books. Several O&#8217;Reilly authors, including <a href="https://github.com/matthewmccullough">Matthew McCullough</a>, <a href="https://github.com/tlberglund">Tim Berglund</a> and <a href="http://www.apeth.net/matt/iosbooktoolchain.html">Matt Neuburg</a>, have used it to write books for that iconic technical library. AsciiDoc is fully capable of serving as a shorthand replacement for <a href="http://www.docbook.org/whatis">DocBook</a>, which it can also output.</p>
-</div><div class="quoteblock">
-  
-  <blockquote>
-<div class="paragraph">  
-  <p>DocBook is nice, but (like XML) it is not meant for editing nor for merging changes (by humans). Using AsciiDoc (which translates to DocBook perfectly) is a much easier way of developing.</p>
+<h2 id="about-asciidoc">About AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://asciidoc.org">AsciiDoc</a> is a lightweight markup language akin to <a href="http://github.github.com/github-flavored-markdown">Markdown</a>. Going beyond Markdown, AsciiDoc supports all the structural elements necessary for drafting articles, technical manuals and books. Several O&#8217;Reilly authors, including <a href="https://github.com/matthewmccullough">Matthew McCullough</a>, <a href="https://github.com/tlberglund">Tim Berglund</a> and <a href="http://www.apeth.net/matt/iosbooktoolchain.html">Matt Neuburg</a>, have used it to write books for that iconic technical library. AsciiDoc is fully capable of serving as a shorthand replacement for <a href="http://www.docbook.org/whatis">DocBook</a>, which it can also output.</p>
 </div>
-  </blockquote>
-  <div class="attribution">
-    &#8212; Dag Wieers
-  </div>
+<div class="quoteblock">
+
+<blockquote>
+<div class="paragraph">
+<p>DocBook is nice, but (like XML) it is not meant for editing nor for merging changes (by humans). Using AsciiDoc (which translates to DocBook perfectly) is a much easier way of developing.</p>
 </div>
-<div class="paragraph">  
-  <p>One way to think of the relationship between AsciiDoc and DocBook is that AsciiDoc is to DocBook as <a href="http://relaxng.org/compact-tutorial-20030326.html#id2814005">RelaxNG Compact</a> is to XML Schema. With AsciiDoc, you drop the angled-brackets (i.e., XML), but not the semantics.</p>
-</div><div class="paragraph">  
-  <p>Here&#8217;s an example of a document written in AsciiDoc, shown above the output it produces:</p>
-</div><div class="paragraph">  
-  <p><em>(You don&#8217;t want to see how the DocBook looks for this example. Let&#8217;s just say, there isn&#8217;t enough room on the screen to show it to you.)</em></p>
-</div><table class="tableblock frame-topbot grid-none" style="width:100%; ">
-  <colgroup>
-    <col style="width:100%;">
-  </colgroup>
-  <tbody>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock header">Source document</p></td>
-    </tr>
-    <tr>
-      <td class="tableblock halign-left valign-top"><div><div id="preamble">
-  <div class="sectionbody">
-<div class="listingblock">
-  
-  <div class="content monospaced">
-    <pre class="highlight"><code class="asciidoc">= Asciidoctor
+
+</blockquote>
+<div class="attribution">
+&#8212; Dag Wieers
+</div>
+</div>
+<div class="paragraph">
+<p>One way to think of the relationship between AsciiDoc and DocBook is that AsciiDoc is to DocBook as <a href="http://relaxng.org/compact-tutorial-20030326.html#id2814005">RelaxNG Compact</a> is to XML Schema. With AsciiDoc, you drop the angled-brackets (i.e., XML), but not the semantics.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a document written in AsciiDoc, shown above the output it produces:</p>
+</div>
+<div class="paragraph">
+<p><em>(You don&#8217;t want to see how the DocBook looks for this example. Let&#8217;s just say, there isn&#8217;t enough room on the screen to show it to you.)</em></p>
+</div>
+<table class="tableblock frame-topbot grid-none" style="width:100%; ">
+<colgroup>
+<col style="width:100%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock header">Source document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="asciidoc language-asciidoc">= Asciidoctor
 Ryan Waldron, Dan Allen
 
 http://asciidoctor.org[Asciidoctor] is a native Ruby processor
@@ -1037,146 +1107,158 @@ Asciidoctor is:
 * stable
 
 'Give it a try!'</code></pre>
-  </div>
 </div>
-
-  </div>
 </div>
 
 
 </div></td>
-    </tr>
-    <tr>
-      <td class="tableblock halign-left valign-top"><p class="tableblock header">Rendered HTML Output</p></td>
-    </tr>
-    <tr>
-      <td class="tableblock halign-left valign-top"><div><div id="preamble">
-  <div class="sectionbody">
-<h1>Asciidoctor</h1>
-<span id="author">Ryan Waldron, Dan Allen</span><div class="paragraph">  
-  <p><a href="http://asciidoctor.org">Asciidoctor</a> is a native Ruby processor
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock header">Rendered HTML Output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div><h1>Asciidoctor</h1>
+<span id="author">Ryan Waldron, Dan Allen</span><div class="paragraph">
+<p><a href="http://asciidoctor.org">Asciidoctor</a> is a native Ruby processor
 for converting AsciiDoc source files and strings into HTML 5,
 DocBook 4.5 and other formats.</p>
 </div>
-  </div>
-</div>
 <div class="sect1">
-  <h2 id="installation">Installation</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>You can install the Asciidoctor RubyGem using the <code>gem</code>
+<h2 id="installation">Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can install the Asciidoctor RubyGem using the <code>gem</code>
 command:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>gem install asciidoctor</pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>On Fedora, you can install via an RPM package
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>gem install asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On Fedora, you can install via an RPM package
 (<a href="https://bugzilla.redhat.com/show_bug.cgi?id=889011">pending</a>)
 using the <code>yum</code> command:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>yum install rubygem-asciidoctor</pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>Now you are ready to start using Asciidoctor!</p>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>yum install rubygem-asciidoctor</pre>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="benefits">Benefits</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Asciidoctor is:</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>compliant</p>
-    </li>
-    <li>
-      <p>fast</p>
-    </li>
-    <li>
-      <p>secure</p>
-    </li>
-    <li>
-      <p>stable</p>
-    </li>
-  </ul>
 </div>
-<div class="paragraph">  
-  <p><em>Give it a try!</em></p>
+<div class="paragraph">
+<p>Now you are ready to start using Asciidoctor!</p>
 </div>
-  </div>
+
 </div>
+</div>
+<div class="sect1">
+<h2 id="benefits">Benefits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor is:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>compliant</p>
+</li>
+<li>
+<p>fast</p>
+</li>
+<li>
+<p>secure</p>
+</li>
+<li>
+<p>stable</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><em>Give it a try!</em></p>
+</div>
+
+</div>
+</div>
+
 
 </div></td>
-    </tr>
-  </tbody>
+</tr>
+</tbody>
 </table>
-<div class="paragraph">  
-  <p>The <a href="http://asciidoc.org">AsciiDoc project</a>, written in Python, was the only implementation of the AsciiDoc syntax&#8230;until the arrival of "the doctor".</p>
-</div>
-  </div>
-</div><div class="sect1">
-  <h2 id="the-asciidoctor-implementation">The Asciidoctor implementation</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>AsciiDoctor is the first project to implement the AsciiDoc syntax in another language, in this case Ruby. It&#8217;s an open source library (MIT licensed) published as a RubyGem to <a href="http://rubygems.org/gems/asciidoctor">rubygems.org</a>. The project recently moved to the <a href="https://github.com/asciidoctor">Asciidoctor organization on GitHub</a> to sustain its rapid growth.</p>
-</div><div class="paragraph">  
-  <p>While Asciidoctor aims to offer full compliance with the AsciiDoc syntax (with some exceptions, noted in the project <a href="https://github.com/asciidoctor/asciidoctor#readme">README</a>), it&#8217;s more than just a clone.</p>
-</div><div class="paragraph">
-  <div class="title">Built-in and custom templates</div>  
-  <p>Asciidoctor uses a set of built-in ERB templates to generate HTML 5 and DocBook 4.5 output that is structurally equivalent to what AsciiDoc produces. Any of these templates can be replaced by a custom template written in any template language available in the Ruby ecosystem. Custom template rendering is handled by the <a href="https://github.com/rtomayko/tilt">Tilt</a> template abstraction library, a project created by another GitHubber, <a href="https://github.com/rtomayko">Ryan Tomayko</a>.</p>
-</div><div class="paragraph">
-  <div class="title">Parser and object model</div>  
-  <p>Leveraging the Ruby stack isn&#8217;t the only benefit of Asciidoctor. Unlike the AsciiDoc Python implementation, Asciidoctor parses and renders the source document in discrete steps. This makes rendering the document optional and gives Ruby programs the opportunity to extract, add or replace information in the document by interacting with the document object model Asciidoctor assembles. Developers can use the full power of the Ruby programming language to play with the content in the document.</p>
-</div><div class="paragraph">
-  <div class="title">Performance and security</div>  
-  <p>No coverage of Asciidoctor would be complete without mention of its <em>speed</em>. Despite not being an original goal of the project, Asciidoctor has proven startlingly fast. It loads, parses and renders documents at least <strong>25 times as fast</strong> as the Python implementation. That&#8217;s good news for developer productivity and good news for GitHub or any server-side application that needs to render AsciiDoc markup. Asciidoctor also offers several levels of security, further justifying its suitability for server-side deployments.</p>
-</div><div class="paragraph">
-  <div class="title">Beyond Ruby</div>  
-  <p>Asciidoctor&#8217;s usage is not limited to the Ruby community. Thanks to <a href="http://jruby.org">JRuby</a>, a port of Ruby to the JVM, Asciidoctor can be used inside Java applications as well (and eventually in Java build tools like Apache Maven). Asciidoctor also ships with a command-line interface (cli), written by Red Hat&#8217;s <a href="http://github.com/LightGuard">Jason Porter</a>. The Asciidoctor cli, <a href="http://asciidoctor.org/man/asciidoctor"><code>asciidoctor</code></a>, is a drop-in replacement for the <code>asciidoc.py</code> script from the AsciiDoc Python distribution.</p>
-</div>
-  </div>
-</div><div class="sect1">
-  <h2 id="the-future-of-asciidoctor-and-asciidoc">The future of Asciidoctor and AsciiDoc</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The future is bright for AsciiDoc. Despite being a seasoned, 10-year-old markup language, adoption of AsciiDoc has never been stronger. The developers have lots of <a href="https://github.com/asciidoctor/asciidoctor/issues?state=open">ideas</a> about how to improve and extend Asciidoctor, some of which push beyond the AsciiDoc syntax.</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p>If you&#8217;re interested in using AsciiDoc, head over to <a href="http://github.com">GitHub</a> and create a new file in one of your repositories or gists using the file extension <code>.asciidoc</code> or <code>.adoc</code>.</p>
-    </li>
-    <li>
-      <p>If you&#8217;re interested in contributing to Asciidoctor, in turn helping to move AsciiDoc forward, your <a href="https://github.com/asciidoctor/asciidoctor/issues">participation and feedback</a> is welcome!</p>
-    </li>
-  </ul>
-</div>
-<div class="paragraph">  
-  <p>Write docs with pleasure!</p>
-</div><div class="admonitionblock note">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/note.png" alt="Note">
-      </td>
-      <td class="content">
-        
-        This article was composed in AsciiDoc and rendered using Asciidoctor.
-      </td>
-    </tr>
-  </table>
+<div class="paragraph">
+<p>The <a href="http://asciidoc.org">AsciiDoc project</a>, written in Python, was the only implementation of the AsciiDoc syntax&#8230;until the arrival of "the doctor".</p>
 </div>
 
-  </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="the-asciidoctor-implementation">The Asciidoctor implementation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AsciiDoctor is the first project to implement the AsciiDoc syntax in another language, in this case Ruby. It&#8217;s an open source library (MIT licensed) published as a RubyGem to <a href="http://rubygems.org/gems/asciidoctor">rubygems.org</a>. The project recently moved to the <a href="https://github.com/asciidoctor">Asciidoctor organization on GitHub</a> to sustain its rapid growth.</p>
+</div>
+<div class="paragraph">
+<p>While Asciidoctor aims to offer full compliance with the AsciiDoc syntax (with some exceptions, noted in the project <a href="https://github.com/asciidoctor/asciidoctor#readme">README</a>), it&#8217;s more than just a clone.</p>
+</div>
+<div class="paragraph">
+<div class="title">Built-in and custom templates</div>
+<p>Asciidoctor uses a set of built-in ERB templates to generate HTML 5 and DocBook 4.5 output that is structurally equivalent to what AsciiDoc produces. Any of these templates can be replaced by a custom template written in any template language available in the Ruby ecosystem. Custom template rendering is handled by the <a href="https://github.com/rtomayko/tilt">Tilt</a> template abstraction library, a project created by another GitHubber, <a href="https://github.com/rtomayko">Ryan Tomayko</a>.</p>
+</div>
+<div class="paragraph">
+<div class="title">Parser and object model</div>
+<p>Leveraging the Ruby stack isn&#8217;t the only benefit of Asciidoctor. Unlike the AsciiDoc Python implementation, Asciidoctor parses and renders the source document in discrete steps. This makes rendering the document optional and gives Ruby programs the opportunity to extract, add or replace information in the document by interacting with the document object model Asciidoctor assembles. Developers can use the full power of the Ruby programming language to play with the content in the document.</p>
+</div>
+<div class="paragraph">
+<div class="title">Performance and security</div>
+<p>No coverage of Asciidoctor would be complete without mention of its <em>speed</em>. Despite not being an original goal of the project, Asciidoctor has proven startlingly fast. It loads, parses and renders documents at least <strong>25 times as fast</strong> as the Python implementation. That&#8217;s good news for developer productivity and good news for GitHub or any server-side application that needs to render AsciiDoc markup. Asciidoctor also offers several levels of security, further justifying its suitability for server-side deployments.</p>
+</div>
+<div class="paragraph">
+<div class="title">Beyond Ruby</div>
+<p>Asciidoctor&#8217;s usage is not limited to the Ruby community. Thanks to <a href="http://jruby.org">JRuby</a>, a port of Ruby to the JVM, Asciidoctor can be used inside Java applications as well (and eventually in Java build tools like Apache Maven). Asciidoctor also ships with a command-line interface (cli), written by Red Hat&#8217;s <a href="http://github.com/LightGuard">Jason Porter</a>. The Asciidoctor cli, <a href="http://asciidoctor.org/man/asciidoctor"><code>asciidoctor</code></a>, is a drop-in replacement for the <code>asciidoc.py</code> script from the AsciiDoc Python distribution.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-future-of-asciidoctor-and-asciidoc">The future of Asciidoctor and AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The future is bright for AsciiDoc. Despite being a seasoned, 10-year-old markup language, adoption of AsciiDoc has never been stronger. The developers have lots of <a href="https://github.com/asciidoctor/asciidoctor/issues?state=open">ideas</a> about how to improve and extend Asciidoctor, some of which push beyond the AsciiDoc syntax.</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>If you&#8217;re interested in using AsciiDoc, head over to <a href="http://github.com">GitHub</a> and create a new file in one of your repositories or gists using the file extension <code>.asciidoc</code> or <code>.adoc</code>.</p>
+</li>
+<li>
+<p>If you&#8217;re interested in contributing to Asciidoctor, in turn helping to move AsciiDoc forward, your <a href="https://github.com/asciidoctor/asciidoctor/issues">participation and feedback</a> is welcome!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Write docs with pleasure!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+
+This article was composed in AsciiDoc and rendered using Asciidoctor.
+</td>
+</tr>
+</table>
+</div>
+
+</div>
+</div>
+
 <div id="footnotes">
   <hr>
   <div class="footnote" id="_footnote_1">

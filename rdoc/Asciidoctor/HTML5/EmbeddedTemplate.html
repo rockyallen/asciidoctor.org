@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::HTML5::EmbeddedTemplate - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::HTML5::EmbeddedTemplate - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -174,6 +174,8 @@
   
     <li><a href="../../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -181,6 +183,10 @@
     <li><a href="../../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -246,6 +252,8 @@
   
     <li><a href="../../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -253,6 +261,10 @@
     <li><a href="../../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -336,12 +348,12 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 151</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 175</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
 &lt;%#encoding:UTF-8%&gt;&lt;% unless notitle || !has_header? %&gt;&lt;h1#{id}&gt;&lt;%= header.title %&gt;&lt;/h1&gt;
 &lt;% end %&gt;&lt;%= content %&gt;
-&lt;% unless !footnotes? || attr?(:nofootnotes) %&gt;&lt;div id=&quot;footnotes&quot;&gt;
+&lt;% unless !footnotes? || (attr? :nofootnotes) %&gt;&lt;div id=&quot;footnotes&quot;&gt;
   &lt;hr&gt;
   &lt;% footnotes.each do |fn| %&gt;
   &lt;div class=&quot;footnote&quot; id=&quot;_footnote_&lt;%= fn.index %&gt;&quot;&gt;

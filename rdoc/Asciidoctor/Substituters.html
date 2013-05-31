@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor::Substituters - API Documentation for Asciidoctor 0.1.2</title>
+<title>module Asciidoctor::Substituters - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -220,6 +220,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -227,6 +229,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -292,6 +298,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -299,6 +307,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -436,7 +448,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="apply_header_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 110</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_header_subs</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">apply_subs</span>(<span class="ruby-identifier">text</span>, [<span class="ruby-value">:specialcharacters</span>, <span class="ruby-value">:attributes</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -476,7 +488,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="apply_literal_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 94</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_literal_subs</span>(<span class="ruby-identifier">lines</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">'subs'</span>
     <span class="ruby-identifier">apply_subs</span>(<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">join</span>, <span class="ruby-identifier">resolve_subs</span>(<span class="ruby-identifier">attr</span> <span class="ruby-string">'subs'</span>))
@@ -523,7 +535,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="apply_normal_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 76</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_normal_subs</span>(<span class="ruby-identifier">lines</span>)
   <span class="ruby-identifier">apply_subs</span>(<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lines</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -563,7 +575,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="apply_para_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_para_subs</span>(<span class="ruby-identifier">lines</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">'subs'</span>
     <span class="ruby-identifier">apply_subs</span>(<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">join</span>, <span class="ruby-identifier">resolve_subs</span>(<span class="ruby-identifier">attr</span> <span class="ruby-string">'subs'</span>))
@@ -607,7 +619,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="apply_passthrough_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 132</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_passthrough_subs</span>(<span class="ruby-identifier">lines</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">'subs'</span>
     <span class="ruby-identifier">subs</span> = <span class="ruby-identifier">resolve_subs</span>(<span class="ruby-identifier">attr</span>(<span class="ruby-string">'subs'</span>))
@@ -676,8 +688,9 @@ first argument</p>
   <span class="ruby-identifier">multiline</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)
   <span class="ruby-identifier">text</span> = <span class="ruby-identifier">multiline</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">lines</span>
 
-  <span class="ruby-identifier">passthroughs</span> = <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value">:macros</span>)
-  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">extract_passthroughs</span>(<span class="ruby-identifier">text</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">passthroughs</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">has_passthroughs</span> = <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value">:macros</span>))
+    <span class="ruby-identifier">text</span> = <span class="ruby-identifier">extract_passthroughs</span>(<span class="ruby-identifier">text</span>)
+  <span class="ruby-keyword">end</span>
   
   <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">type</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
@@ -699,7 +712,7 @@ first argument</p>
       <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: unknown substitution type #{type}&quot;</span>
     <span class="ruby-keyword">end</span>
   }
-  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">restore_passthroughs</span>(<span class="ruby-identifier">text</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">passthroughs</span>
+  <span class="ruby-identifier">text</span> = <span class="ruby-identifier">restore_passthroughs</span>(<span class="ruby-identifier">text</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">has_passthroughs</span>
 
   <span class="ruby-identifier">multiline</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">entries</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">text</span>
 <span class="ruby-keyword">end</span></pre>
@@ -739,7 +752,7 @@ first argument</p>
 
           
           <div class="method-source-code" id="apply_title_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 85</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 86</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_title_subs</span>(<span class="ruby-identifier">title</span>)
   <span class="ruby-identifier">apply_subs</span>(<span class="ruby-identifier">title</span>, [<span class="ruby-value">:specialcharacters</span>, <span class="ruby-value">:quotes</span>, <span class="ruby-value">:replacements</span>, <span class="ruby-value">:macros</span>, <span class="ruby-value">:attributes</span>, <span class="ruby-value">:post_replacements</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -780,7 +793,7 @@ the document, otherwise the unprocessed text</p>
 
           
           <div class="method-source-code" id="highlight_source-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 688</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 802</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">highlight_source</span>(<span class="ruby-identifier">source</span>)
   <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'coderay'</span>
   <span class="ruby-operator">::</span><span class="ruby-constant">CodeRay</span><span class="ruby-operator">::</span><span class="ruby-constant">Duo</span>[<span class="ruby-identifier">attr</span>(<span class="ruby-string">'language'</span>, <span class="ruby-string">'text'</span>).<span class="ruby-identifier">to_sym</span>, <span class="ruby-value">:html</span>, {
@@ -828,45 +841,59 @@ attribute values</p>
 
           
           <div class="method-source-code" id="sub_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 275</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 276</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">data</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">empty?</span>
 
+  <span class="ruby-identifier">string_data</span> = <span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
   <span class="ruby-comment"># normalizes data type to an array (string becomes single-element array)</span>
-  <span class="ruby-identifier">lines</span> = <span class="ruby-constant">Array</span>(<span class="ruby-identifier">data</span>)
+  <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">string_data</span> <span class="ruby-operator">?</span> [<span class="ruby-identifier">data</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">data</span>
 
-  <span class="ruby-identifier">result</span> = <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">result</span> = []
+  <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">reject</span> = <span class="ruby-keyword">false</span>
-    <span class="ruby-identifier">subject</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">dup</span>
-    <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_ref</span>]) {
+    <span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_ref</span>]) {
       <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
       <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
-      <span class="ruby-identifier">key</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">downcase</span>
-      <span class="ruby-comment"># escaped attribute</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-node">$1</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-node">$3</span>.<span class="ruby-identifier">empty?</span>
-        <span class="ruby-node">&quot;{#$2}&quot;</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'counter:'</span>)
-        <span class="ruby-identifier">args</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>)
-        <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">counter</span>(<span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">args</span>[<span class="ruby-value">2</span>])
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'counter2:'</span>)
-        <span class="ruby-identifier">args</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>)
-        <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">counter</span>(<span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>], <span class="ruby-identifier">args</span>[<span class="ruby-value">2</span>])
-        <span class="ruby-string">''</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
+      <span class="ruby-comment"># escaped attribute, return unescaped</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">nil?</span>
+        <span class="ruby-node">&quot;{#{m[2]}}&quot;</span>
+      <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">directive</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>])
+        <span class="ruby-identifier">offset</span> = <span class="ruby-identifier">directive</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
+        <span class="ruby-identifier">expr</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>][<span class="ruby-identifier">offset</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">directive</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'set'</span>
+          <span class="ruby-identifier">args</span> = <span class="ruby-identifier">expr</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>)
+          <span class="ruby-identifier">_</span>, <span class="ruby-identifier">value</span> = <span class="ruby-constant">Lexer</span><span class="ruby-operator">::</span><span class="ruby-identifier">store_attribute</span>(<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>, <span class="ruby-ivar">@document</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+            <span class="ruby-identifier">reject</span> = <span class="ruby-keyword">true</span>
+            <span class="ruby-keyword">break</span> <span class="ruby-string">'{undefined}'</span>
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-string">''</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'counter'</span>, <span class="ruby-string">'counter2'</span>
+          <span class="ruby-identifier">args</span> = <span class="ruby-identifier">expr</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">':'</span>)
+          <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">counter</span>(<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">args</span>[<span class="ruby-value">1</span>])
+          <span class="ruby-identifier">directive</span> <span class="ruby-operator">==</span> <span class="ruby-string">'counter2'</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">val</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-comment"># if we get here, our attr_ref regex is too loose</span>
+          <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: illegal attribute directive: #{m[2]}&quot;</span>
+          <span class="ruby-string">''</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">key</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">downcase</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
         <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">key</span>]
       <span class="ruby-keyword">elsif</span> <span class="ruby-constant">INTRINSICS</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
         <span class="ruby-constant">INTRINSICS</span>[<span class="ruby-identifier">key</span>]
       <span class="ruby-keyword">else</span>
-        <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Missing attribute: #{m[2]}, line marked for removal&quot;</span> }
+        <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Missing attribute: #{key}, line marked for removal&quot;</span> }
         <span class="ruby-identifier">reject</span> = <span class="ruby-keyword">true</span>
         <span class="ruby-keyword">break</span> <span class="ruby-string">'{undefined}'</span>
       <span class="ruby-keyword">end</span>
-    } <span class="ruby-keyword">if</span> <span class="ruby-identifier">subject</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'{'</span>)
+    } <span class="ruby-keyword">if</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">'{'</span> 
 
-    <span class="ruby-operator">!</span><span class="ruby-identifier">reject</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">subject</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-  }.<span class="ruby-identifier">compact</span>
+    <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">reject</span>
+  }
 
-  <span class="ruby-identifier">data</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">String</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
+  <span class="ruby-identifier">string_data</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">join</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- sub_attributes-source -->
           
@@ -904,7 +931,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_callouts-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 591</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 705</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_callouts</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:callout_render</span>]) {
     <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
@@ -954,7 +981,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_macros-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 322</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 337</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_macros</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">empty?</span>
 
@@ -969,7 +996,90 @@ templates</p>
   <span class="ruby-identifier">found</span>[<span class="ruby-value">:macroish</span>] = (<span class="ruby-identifier">found</span>[<span class="ruby-value">:square_bracket</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">found</span>[<span class="ruby-value">:colon</span>])
   <span class="ruby-identifier">found</span>[<span class="ruby-value">:macroish_short_form</span>] = (<span class="ruby-identifier">found</span>[<span class="ruby-value">:square_bracket</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">found</span>[<span class="ruby-value">:colon</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">':['</span>))
   <span class="ruby-identifier">found</span>[<span class="ruby-value">:uri</span>] = (<span class="ruby-identifier">found</span>[<span class="ruby-value">:colon</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'://'</span>))
-  <span class="ruby-identifier">link_attrs</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'linkattrs'</span>)
+  <span class="ruby-identifier">use_link_attrs</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'linkattrs'</span>)
+  <span class="ruby-identifier">experimental</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'experimental'</span>)
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">experimental</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">found</span>[<span class="ruby-value">:macroish_short_form</span>] <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'kbd:'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'btn:'</span>))
+      <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:kbd_btn_macro</span>]) {
+        <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
+        <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
+        <span class="ruby-comment"># honor the escape</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">captured</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+          <span class="ruby-keyword">next</span> <span class="ruby-identifier">captured</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">captured</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'kbd'</span>)
+          <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">unescape_bracketed_text</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>]
+
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">keys</span> <span class="ruby-operator">==</span> <span class="ruby-string">'+'</span>
+            <span class="ruby-identifier">keys</span> = [<span class="ruby-string">'+'</span>]
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-comment"># need to use closure to work around lack of negative lookbehind</span>
+            <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:kbd_delim</span>]).<span class="ruby-identifier">inject</span>([]) {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span>, <span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+              <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'++'</span>)
+                <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-3</span>].<span class="ruby-identifier">strip</span>
+                <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'+'</span>
+              <span class="ruby-keyword">else</span>
+                <span class="ruby-identifier">c</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">strip</span>
+              <span class="ruby-keyword">end</span>
+              <span class="ruby-identifier">c</span>
+            }
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:kbd</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'keys'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">keys</span>}).<span class="ruby-identifier">render</span> 
+        <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">captured</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'btn'</span>)
+          <span class="ruby-identifier">label</span> = <span class="ruby-identifier">unescape_bracketed_text</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>]
+          <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:button</span>, <span class="ruby-identifier">label</span>).<span class="ruby-identifier">render</span>
+        <span class="ruby-keyword">end</span>
+      }
+    <span class="ruby-keyword">end</span>
+    
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">found</span>[<span class="ruby-value">:macroish</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'menu:'</span>)
+      <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:menu_macro</span>]) {
+        <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
+        <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
+        <span class="ruby-comment"># honor the escape</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">captured</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+          <span class="ruby-keyword">next</span> <span class="ruby-identifier">captured</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">menu</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>]
+        <span class="ruby-identifier">items</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>]
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">items</span>.<span class="ruby-identifier">nil?</span>
+          <span class="ruby-identifier">submenus</span> = []
+          <span class="ruby-identifier">menuitem</span> = <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">if</span> (<span class="ruby-identifier">delim</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'&amp;gt;'</span>) <span class="ruby-operator">?</span> <span class="ruby-string">'&amp;gt;'</span> <span class="ruby-operator">:</span> (<span class="ruby-identifier">items</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">','</span>) <span class="ruby-operator">?</span> <span class="ruby-string">','</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>))
+            <span class="ruby-identifier">submenus</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">split</span>(<span class="ruby-identifier">delim</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
+            <span class="ruby-identifier">menuitem</span> = <span class="ruby-identifier">submenus</span>.<span class="ruby-identifier">pop</span>
+          <span class="ruby-keyword">else</span>
+            <span class="ruby-identifier">submenus</span> = []
+            <span class="ruby-identifier">menuitem</span> = <span class="ruby-identifier">items</span>.<span class="ruby-identifier">rstrip</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:menu</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'menu'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">menu</span>, <span class="ruby-string">'submenus'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">submenus</span>, <span class="ruby-string">'menuitem'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">menuitem</span>}).<span class="ruby-identifier">render</span>
+      }
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'&amp;gt;'</span>)
+      <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:menu_inline_macro</span>]) {
+        <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
+        <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
+        <span class="ruby-comment"># honor the escape</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">captured</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]).<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
+          <span class="ruby-keyword">next</span> <span class="ruby-identifier">captured</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-identifier">input</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>]
+
+        <span class="ruby-identifier">menu</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">submenus</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'&amp;gt;'</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
+        <span class="ruby-identifier">menuitem</span> = <span class="ruby-identifier">submenus</span>.<span class="ruby-identifier">pop</span> 
+        <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:menu</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-value">:attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'menu'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">menu</span>, <span class="ruby-string">'submenus'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">submenus</span>, <span class="ruby-string">'menuitem'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">menuitem</span>}).<span class="ruby-identifier">render</span>
+      }
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">found</span>[<span class="ruby-value">:macroish</span>] <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'image:'</span>)
     <span class="ruby-comment"># image:filename.png[Alt Text]</span>
@@ -1001,7 +1111,7 @@ templates</p>
         <span class="ruby-keyword">next</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>][<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
       <span class="ruby-keyword">end</span>
 
-      <span class="ruby-identifier">terms</span> = <span class="ruby-identifier">unescape_bracketed_text</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:csv_delimiter</span>])
+      <span class="ruby-identifier">terms</span> = <span class="ruby-identifier">unescape_bracketed_text</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
       <span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:indexterms</span>, [<span class="ruby-operator">*</span><span class="ruby-identifier">terms</span>])
       <span class="ruby-constant">Inline</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">self</span>, <span class="ruby-value">:indexterm</span>, <span class="ruby-identifier">text</span>, <span class="ruby-value">:attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'terms'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">terms</span>}).<span class="ruby-identifier">render</span>
     }
@@ -1045,17 +1155,26 @@ templates</p>
       <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">prefix</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'('</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">')'</span>)
         <span class="ruby-identifier">target</span> = <span class="ruby-identifier">target</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-2</span>]
         <span class="ruby-identifier">suffix</span> = <span class="ruby-string">')'</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'):'</span>)
+        <span class="ruby-identifier">target</span> = <span class="ruby-identifier">target</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-3</span>]
+        <span class="ruby-identifier">suffix</span> = <span class="ruby-string">'):'</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:links</span>, <span class="ruby-identifier">target</span>)
 
       <span class="ruby-identifier">attrs</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-comment">#text = !m[3].nil? ? sub_attributes(m[3].gsub('\]', ']')) : ''</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">link_attrs</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">','</span>))
-          <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)))
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_link_attrs</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">','</span>))
+          <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)), [])
           <span class="ruby-identifier">text</span> = <span class="ruby-identifier">attrs</span>[<span class="ruby-value">1</span>]
         <span class="ruby-keyword">else</span>
           <span class="ruby-identifier">text</span> = <span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>))
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">'^'</span>
+          <span class="ruby-identifier">text</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">chop</span>
+          <span class="ruby-identifier">attrs</span> <span class="ruby-operator">||=</span> {}
+          <span class="ruby-identifier">attrs</span>[<span class="ruby-string">'window'</span>] = <span class="ruby-string">'_blank'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'window'</span>)
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">text</span> = <span class="ruby-string">''</span>
@@ -1080,8 +1199,8 @@ templates</p>
 
       <span class="ruby-identifier">attrs</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-comment">#text = sub_attributes(m[2].gsub('\]', ']'))</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">link_attrs</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">','</span>))
-        <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)))
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_link_attrs</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">','</span>))
+        <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)), [])
         <span class="ruby-identifier">text</span> = <span class="ruby-identifier">attrs</span>[<span class="ruby-value">1</span>]
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">mailto</span>
           <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">2</span>
@@ -1095,6 +1214,13 @@ templates</p>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">text</span> = <span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>))
       <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">'^'</span>
+        <span class="ruby-identifier">text</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">chop</span>
+        <span class="ruby-identifier">attrs</span> <span class="ruby-operator">||=</span> {}
+        <span class="ruby-identifier">attrs</span>[<span class="ruby-string">'window'</span>] = <span class="ruby-string">'_blank'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'window'</span>)
+      <span class="ruby-keyword">end</span>
+
       <span class="ruby-comment"># QUESTION should a mailto be registered as an e-mail address?</span>
       <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:links</span>, <span class="ruby-identifier">target</span>)
 
@@ -1139,7 +1265,7 @@ templates</p>
         <span class="ruby-identifier">type</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">target</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:csv_delimiter</span>], <span class="ruby-value">2</span>)
+        <span class="ruby-identifier">id</span>, <span class="ruby-identifier">text</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
           <span class="ruby-comment"># hmmmm</span>
           <span class="ruby-identifier">text</span> = <span class="ruby-identifier">restore_passthroughs</span>(<span class="ruby-identifier">text</span>)
@@ -1169,7 +1295,7 @@ templates</p>
         <span class="ruby-keyword">next</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>][<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
       <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
-        <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:csv_delimiter</span>], <span class="ruby-value">2</span>)
+        <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>, <span class="ruby-value">2</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
         <span class="ruby-identifier">id</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:dbl_quoted</span>], <span class="ruby-string">'\2'</span>)
         <span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:m_dbl_quoted</span>], <span class="ruby-string">'\2'</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">else</span>
@@ -1201,7 +1327,7 @@ templates</p>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
         <span class="ruby-keyword">next</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>][<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:csv_delimiter</span>])
+      <span class="ruby-identifier">id</span>, <span class="ruby-identifier">reftext</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">map</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:strip</span>)
       <span class="ruby-identifier">id</span>.<span class="ruby-identifier">sub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:dbl_quoted</span>], <span class="ruby-string">'\2'</span>)
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">reftext</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-identifier">reftext</span> = <span class="ruby-node">&quot;[#{id}]&quot;</span>
@@ -1254,7 +1380,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_post_replacements-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 608</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 722</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_post_replacements</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'hardbreaks'</span>
     <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">entries</span>
@@ -1301,7 +1427,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_quotes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 222</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 223</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_quotes</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>
 
@@ -1346,7 +1472,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_replacements-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 237</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 238</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_replacements</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>
 
@@ -1410,7 +1536,7 @@ constant</p>
 
           
           <div class="method-source-code" id="sub_specialcharacters-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 210</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_specialcharacters</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-comment"># this syntax only available in Ruby 1.9</span>
   <span class="ruby-comment">#text.gsub(SPECIAL_CHARS_PATTERN, SPECIAL_CHARS)</span>
@@ -1504,7 +1630,7 @@ processing.</p>
 
           
           <div class="method-source-code" id="extract_passthroughs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 146</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">extract_passthroughs</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>
 
@@ -1527,7 +1653,7 @@ processing.</p>
     <span class="ruby-comment"># TODO move unescaping closing square bracket to an operation</span>
     <span class="ruby-ivar">@passthroughs</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">4</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>), <span class="ruby-value">:subs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">subs</span>}
     <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
-    <span class="ruby-node">&quot;\x0##{index}\x0&quot;&quot;</span>
+    <span class="ruby-node">&quot;\e#{index}\e&quot;</span>
   } <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'+++'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'$$'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'pass:'</span>))
 
   <span class="ruby-identifier">result</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:pass_lit</span>]) {
@@ -1541,7 +1667,7 @@ processing.</p>
     
     <span class="ruby-ivar">@passthroughs</span> <span class="ruby-operator">&lt;&lt;</span> {<span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>], <span class="ruby-value">:subs</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-value">:specialcharacters</span>], <span class="ruby-value">:literal</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}
     <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
-    <span class="ruby-node">&quot;#{m[1]}\x0##{index}\x0&quot;&quot;</span>
+    <span class="ruby-node">&quot;#{m[1]}\e#{index}\e&quot;</span>
   } <span class="ruby-keyword">unless</span> <span class="ruby-operator">!</span><span class="ruby-identifier">result</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'`'</span>)
 
   <span class="ruby-identifier">result</span>
@@ -1585,7 +1711,7 @@ otherwise a Hash of parsed attributes</p>
 
           
           <div class="method-source-code" id="parse_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 642</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 756</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">attrline</span>, <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">'role'</span>], <span class="ruby-identifier">opts</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrline</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrline</span>.<span class="ruby-identifier">empty?</span>
@@ -1638,7 +1764,7 @@ otherwise a Hash of parsed attributes</p>
 
           
           <div class="method-source-code" id="resolve_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 672</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 786</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resolve_subs</span>(<span class="ruby-identifier">subs</span>)
   <span class="ruby-identifier">candidates</span> = <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">sub</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sub</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">to_sym</span>}
   <span class="ruby-identifier">resolved</span> = <span class="ruby-identifier">candidates</span> <span class="ruby-operator">&amp;</span> <span class="ruby-constant">SUB_OPTIONS</span> 
@@ -1682,9 +1808,9 @@ otherwise a Hash of parsed attributes</p>
 
           
           <div class="method-source-code" id="restore_passthroughs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 193</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 194</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">restore_passthroughs</span>(<span class="ruby-identifier">text</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\x0&quot;&quot;</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@passthroughs</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&quot;\e&quot;</span>)
   
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:pass_placeholder</span>]) {
     <span class="ruby-identifier">pass</span> = <span class="ruby-ivar">@passthroughs</span>[<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>];
@@ -1733,7 +1859,7 @@ otherwise a Hash of parsed attributes</p>
 
           
           <div class="method-source-code" id="transform_quoted_text-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 626</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 740</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">transform_quoted_text</span>(<span class="ruby-identifier">match</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">scope</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
     <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>][<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
@@ -1773,7 +1899,7 @@ brackets from text extracted from brackets</p>
 
           
           <div class="method-source-code" id="unescape_bracketed_text-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 662</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 776</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">unescape_bracketed_text</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">empty?</span>
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-string">&quot;\n&quot;</span>, <span class="ruby-string">' '</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)

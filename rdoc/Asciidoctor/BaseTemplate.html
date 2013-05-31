@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::BaseTemplate - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::BaseTemplate - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -100,6 +100,10 @@
     <li ><a href="#method-i-common_attrs_erb">#common_attrs_erb</a>
     
     <li ><a href="#method-i-compact">#compact</a>
+    
+    <li ><a href="#method-i-content">#content</a>
+    
+    <li ><a href="#method-i-content_erb">#content_erb</a>
     
     <li ><a href="#method-i-id">#id</a>
     
@@ -218,6 +222,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -225,6 +231,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -290,6 +300,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -297,6 +309,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -553,7 +569,7 @@ hasthis same issue.</p>
         
         <div class="method-heading">
           <span class="method-name">attrvalue</span><span
-            class="method-args">(key, sibling = true)</span>
+            class="method-args">(key, sibling = true, inherit = true)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -569,10 +585,15 @@ hasthis same issue.</p>
           
           <div class="method-source-code" id="attrvalue-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 99</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">attrvalue</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">sibling</span> = <span class="ruby-keyword">true</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">attrvalue</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">sibling</span> = <span class="ruby-keyword">true</span>, <span class="ruby-identifier">inherit</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">delimiter</span> = <span class="ruby-identifier">sibling</span> <span class="ruby-operator">?</span> <span class="ruby-string">' '</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
-  <span class="ruby-comment"># example: &lt;% if attr? 'foo' %&gt;&lt;%= attr 'foo' %&gt;&lt;% end %&gt;</span>
-  <span class="ruby-node">%Q(&lt;% if attr? '#{key}' %&gt;#{delimiter}&lt;%= attr '#{key}' %&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">inherit</span>
+    <span class="ruby-comment"># example: &lt;% if attr? 'foo' %&gt;&lt;%= attr 'foo' %&gt;&lt;% end %&gt;</span>
+    <span class="ruby-node">%Q(&lt;% if attr? '#{key}' %&gt;#{delimiter}&lt;%= attr '#{key}' %&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># example: &lt;% if attr? 'foo', nil, false %&gt;&lt;%= attr 'foo', nil, false %&gt;&lt;% end %&gt;</span>
+    <span class="ruby-node">%Q(&lt;% if attr? '#{key}', nil, false %&gt;#{delimiter}&lt;%= attr '#{key}', nil, false %&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- attrvalue-source -->
           
@@ -638,7 +659,7 @@ hasthis same issue.</p>
           <div class="method-source-code" id="common_attrs_erb-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">common_attrs_erb</span>
-  <span class="ruby-string">%q{&lt;%= template.common_attrs(@id, (attr 'role'), (attr 'reftext')) %&gt;}</span>
+  <span class="ruby-string">%q(&lt;%= template.common_attrs(@id, (attr 'role'), (attr 'reftext')) %&gt;)</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- common_attrs_erb-source -->
           
@@ -648,6 +669,72 @@ hasthis same issue.</p>
 
         
       </div><!-- common_attrs_erb-method -->
+
+    
+      <div id="method-i-content" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content</span><span
+            class="method-args">(node)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="content-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 32</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>(<span class="ruby-identifier">node</span>)
+  <span class="ruby-identifier">node</span>.<span class="ruby-identifier">blocks?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">content</span>.<span class="ruby-identifier">chomp</span> <span class="ruby-operator">:</span> <span class="ruby-node">&quot;&lt;simpara&gt;#{node.content.chomp}&lt;/simpara&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- content-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content-method -->
+
+    
+      <div id="method-i-content_erb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">content_erb</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="content_erb-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">content_erb</span>
+  <span class="ruby-string">%q(&lt;%= blocks? ? content.chomp : &quot;&lt;simpara&gt;#{content.chomp}&lt;/simpara&gt;&quot; %&gt;)</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- content_erb-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- content_erb-method -->
 
     
       <div id="method-i-id" class="method-detail ">
@@ -669,7 +756,7 @@ hasthis same issue.</p>
 
           
           <div class="method-source-code" id="id-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">id</span>
   <span class="ruby-identifier">attribute</span>(<span class="ruby-string">'id'</span>, <span class="ruby-string">'@id'</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -703,9 +790,9 @@ specified</p>
 
           
           <div class="method-source-code" id="role_class-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 5</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">role_class</span>
-  <span class="ruby-identifier">attrvalue</span>(<span class="ruby-value">:role</span>)
+  <span class="ruby-identifier">attrvalue</span>(<span class="ruby-string">'role'</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- role_class-source -->
           
@@ -737,9 +824,9 @@ specified</p>
 
           
           <div class="method-source-code" id="style_class-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 10</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">style_class</span>(<span class="ruby-identifier">sibling</span> = <span class="ruby-keyword">true</span>)
-  <span class="ruby-identifier">attrvalue</span>(<span class="ruby-value">:style</span>, <span class="ruby-identifier">sibling</span>)
+  <span class="ruby-identifier">attrvalue</span>(<span class="ruby-string">'style'</span>, <span class="ruby-identifier">sibling</span>, <span class="ruby-keyword">false</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- style_class-source -->
           
@@ -845,9 +932,13 @@ specified</p>
 
           
           <div class="method-source-code" id="title_div-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 14</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_div</span>(<span class="ruby-identifier">opts</span> = {})
-  <span class="ruby-node">%Q(&lt;% if title? %&gt;&lt;div class=&quot;title&quot;&gt;#{opts.has_key?(:caption) ? '&lt;%= @caption %&gt;' : ''}&lt;%= title %&gt;&lt;/div&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:caption</span>
+    <span class="ruby-string">%q(&lt;% if title? %&gt;&lt;div class=&quot;title&quot;&gt;&lt;%= @caption %&gt;&lt;%= title %&gt;&lt;/div&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-string">%q(&lt;% if title? %&gt;&lt;div class=&quot;title&quot;&gt;&lt;%= title %&gt;&lt;/div&gt;&lt;% end %&gt;)</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- title_div-source -->
           
@@ -881,9 +972,9 @@ specified</p>
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_tag</span>(<span class="ruby-identifier">optional</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">optional</span>
-    <span class="ruby-string">%q{&lt;%= title? ? &quot;&lt;title&gt;#{title}&lt;/title&gt;&quot; : '' %&gt;}</span>
+    <span class="ruby-string">%Q(&lt;%= title? ? &quot;\n&lt;title&gt;\#{title}&lt;/title&gt;&quot; : nil %&gt;)</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-string">%q{&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;}</span>
+    <span class="ruby-string">%Q(\n&lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;)</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- title_tag-source -->
@@ -955,7 +1046,7 @@ entitiesconverted to an endline character.</p>
           <div class="method-source-code" id="compact-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/base_template.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">compact</span>(<span class="ruby-identifier">str</span>)
-  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">BLANK_LINES_PATTERN</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">LINE_FEED_ENTITY</span>, <span class="ruby-string">&quot;\n&quot;</span>)
+  <span class="ruby-identifier">str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">BLANK_LINE_PATTERN</span>, <span class="ruby-string">''</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">LINE_FEED_ENTITY</span>, <span class="ruby-string">&quot;\n&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- compact-source -->
           

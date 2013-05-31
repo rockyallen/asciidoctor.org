@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::AbstractBlock - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::AbstractBlock - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -212,6 +212,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -219,6 +221,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -284,6 +290,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -291,6 +299,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -379,12 +391,13 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 12</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-ivar">@blocks</span> = []
   <span class="ruby-ivar">@id</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@title</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@caption</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:document</span>
     <span class="ruby-ivar">@level</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">parent</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
@@ -443,6 +456,19 @@
         <p>Get the Array of <a
 href="AbstractBlock.html">Asciidoctor::AbstractBlock</a> sub-blocks for
 this block</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-caption" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">caption</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Get/Set the caption for this block</p>
         
         </div>
       </div>
@@ -519,7 +545,7 @@ href="Block.html">Block</a> resides</p>
 
           
           <div class="method-source-code" id="3C-3C-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
     <span class="ruby-identifier">assign_index</span>(<span class="ruby-identifier">block</span>)
@@ -567,7 +593,7 @@ href="Block.html">Block</a> resides</p>
 
           
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">i</span>)
   <span class="ruby-ivar">@blocks</span>[<span class="ruby-identifier">i</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -614,7 +640,7 @@ name of the context for this blockis used. (default: nil).</p>
 
           
           <div class="method-source-code" id="assign_caption-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 208</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 212</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assign_caption</span>(<span class="ruby-identifier">caption</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">key</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">title?</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@caption</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
@@ -629,7 +655,7 @@ name of the context for this blockis used. (default: nil).</p>
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">caption_key</span>)
         <span class="ruby-identifier">caption_title</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{key}-caption&quot;</span>]
         <span class="ruby-identifier">caption_num</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">counter_increment</span>(<span class="ruby-node">&quot;#{key}-number&quot;</span>, <span class="ruby-keyword">self</span>)
-        <span class="ruby-ivar">@caption</span> = <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'caption'</span>] = <span class="ruby-node">&quot;#{caption_title} #{caption_num}. &quot;</span>
+        <span class="ruby-ivar">@caption</span> = <span class="ruby-node">&quot;#{caption_title} #{caption_num}. &quot;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-ivar">@caption</span> = <span class="ruby-identifier">caption</span>
@@ -671,9 +697,9 @@ content</p>
 
           
           <div class="method-source-code" id="blocks-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 65</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">blocks?</span>
-  <span class="ruby-operator">!</span><span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">empty?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- blocks-3F-source -->
           
@@ -715,7 +741,7 @@ content</p>
 
           
           <div class="method-source-code" id="clear_blocks-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 150</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_blocks</span>
   <span class="ruby-ivar">@blocks</span> = []
 <span class="ruby-keyword">end</span></pre>
@@ -764,7 +790,7 @@ element or nil if i is out of range.</p>
 
           
           <div class="method-source-code" id="delete_at-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 135</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 139</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">i</span>)
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">delete_at</span>(<span class="ruby-identifier">i</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -810,7 +836,7 @@ section.blocks
 
           
           <div class="method-source-code" id="insert-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 117</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">block</span>)
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-identifier">i</span>, <span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -858,7 +884,7 @@ href="Section.html">Section</a> instances</p>
 
           
           <div class="method-source-code" id="sections-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 185</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 189</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sections</span>
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">inject</span>([]) {<span class="ruby-operator">|</span><span class="ruby-identifier">collector</span>, <span class="ruby-identifier">block</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">collector</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">block</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)
@@ -907,7 +933,7 @@ href="Section.html">Section</a> instances</p>
 
           
           <div class="method-source-code" id="size-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 167</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -955,7 +981,7 @@ substitions applied</p>
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 46</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>
   <span class="ruby-comment"># prevent substitutions from being applied multiple times</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">defined?</span>(<span class="ruby-ivar">@subbed_title</span>)
@@ -996,7 +1022,7 @@ blank (nil or empty)</p>
 
           
           <div class="method-source-code" id="title-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 29</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@title</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1064,7 +1090,7 @@ order)</p>
 
           
           <div class="method-source-code" id="assign_index-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 239</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 243</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">assign_index</span>(<span class="ruby-identifier">section</span>)
   <span class="ruby-identifier">section</span>.<span class="ruby-identifier">index</span> = <span class="ruby-ivar">@next_section_index</span>
   <span class="ruby-ivar">@next_section_index</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
@@ -1104,7 +1130,7 @@ appears in document order.</p>
 
           
           <div class="method-source-code" id="reindex_sections-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 251</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_block.rb, line 255</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reindex_sections</span>
   <span class="ruby-ivar">@next_section_index</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">block</span><span class="ruby-operator">|</span>

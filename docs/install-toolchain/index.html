@@ -1,312 +1,344 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installing the Toolchain | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing the Toolchain</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Asciidoctor, an implementation of the AsciiDoc processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor, an implementation of the AsciiDoc processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
 Asciidoctor provides both a command-line tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBook 4.5 and custom output formats.</p>
-</div><div class="paragraph">  
-  <p>However, if you wish to convert your document to PDF and a few other formats, you&#8217;ll still need to install the AsciiDoc processor.</p>
 </div>
-  </div>
+<div class="paragraph">
+<p>However, if you wish to convert your document to PDF and a few other formats, you&#8217;ll still need to install the AsciiDoc processor.</p>
+</div>
+
+</div>
 </div>
 <div class="sect1">
-  <h2 id="installing-asciidoc">Installing AsciiDoc</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>The original <a href="http://asciidoc.org/README.html">AsciiDoc processor</a> is a Python script and can be run on any system that has Python 2 installed.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
-</div><div class="sect2">
-  <h3 id="package-management-systems">Package management systems</h3>
-<div class="paragraph">  
-  <p>The quickest way to install AsciiDoc is through the package manager on your system.
-Here are the commands for several popular package management systems:</p>
-</div><div class="literalblock">
-  <div class="title">Fedora</div>
-  <div class="content monospaced">
-    <pre>sudo yum -y install asciidoc</pre>
-  </div>
-</div>
-<div class="literalblock">
-  <div class="title">Ubuntu / Debian</div>
-  <div class="content monospaced">
-    <pre>sudo apt-get install asciidoc</pre>
-  </div>
-</div>
-<div class="literalblock">
-  <div class="title">MacOSX</div>
-  <div class="content monospaced">
-    <pre>brew install asciidoc</pre>
-  </div>
-</div>
-<div class="admonitionblock note">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/note.png" alt="Note">
-      </td>
-      <td class="content">
-        
-        If Python isn&#8217;t already installed, it should be installed as a dependency of the package.
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="paragraph">  
-  <p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; asciidoc --version
-asciidoc 8.6.8
-$&gt; a2x --version
-a2x 8.6.8</pre>
-  </div>
-</div>
-
-</div><div class="sect2">
-  <h3 id="manually">Manually</h3>
-<div class="paragraph">  
-  <p>If you can&#8217;t get the AsciiDoc processor using a package manager, you can install it manually following these steps:</p>
-</div><div class="olist arabic">
-  
-  <ol class="arabic">
-    <li>
-      <p>Make sure you have Python 2 installed on your system</p>
-    </li>
-    <li>
-      <p><a href="http://sourceforge.net/projects/asciidoc/files/latest/download">Download the distribution archive</a> from the AsciiDoc website.</p>
-    </li>
-    <li>
-      <p>Extract the archive into a directory where you keep your programs</p>
-    </li>
-    <li>
-      <p>Find the <code>asciidoc.py</code> and <code>a2x.py</code> files in the extracted directory</p>
-    </li>
-    <li>
-      <p>Rename these files to <code>asciidoc</code> and <code>a2x</code>, respectively</p>
-    </li>
-    <li>
-      <p>Add the extracted directory to your PATH environment variable</p>
-    </li>
-  </ol>
-</div>
-<div class="paragraph">  
-  <p>For more details on the manual install, see the <a href="http://asciidoc.org/INSTALL.html">AsciiDoc Installation Guide</a>.</p>
-</div><div class="paragraph">  
-  <p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; asciidoc --version
-asciidoc 8.6.8
-$&gt; a2x --version
-a2x 8.6.8</pre>
-  </div>
-</div>
-
-</div>
-  </div>
-</div><div class="sect1">
-  <h2 id="installing-or-updating-asciidoctor">Installing or Updating Asciidoctor</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Asciidoctor is published as a RubyGem.
-It currently works with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 on Linux, Mac and Windows.</p>
-</div><div class="paragraph">  
-  <p>If you have Ruby on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; gem install asciidoctor</pre>
-  </div>
-</div>
-<div class="paragraph">  
-  <p>If you already have Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; gem update asciidoctor</pre>
-  </div>
-</div>
-<div class="admonitionblock tip">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/tip.png" alt="Tip">
-      </td>
-      <td class="content">
-        
-        <div class="paragraph">  
-  <p>If you accidentally use <code>gem install</code> instead of <code>gem update</code> then you will have both versions installed.
-If you wish to remove the older version use the <code>gem</code> command:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; gem cleanup asciidoctor</pre>
-  </div>
-</div>
-
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="paragraph">  
-  <p>If the <code>asciidoctor</code> gem installed or updated successfully, the <code>asciidoctor</code> command-line interface should be available on your PATH.
-To invoke it, simply execute:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; asciidoctor --version
-Asciidoctor 0.1.2 [http://asciidoctor.org]</pre>
-  </div>
+<h2 id="installing-asciidoc">Installing AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The original <a href="http://asciidoc.org/README.html">AsciiDoc processor</a> is a Python script and can be run on any system that has Python 2 installed.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
 </div>
 <div class="sect2">
-  <h3 id="-code-yum-code-package-manager"><code>yum</code> package manager</h3>
-<div class="paragraph">  
-  <p>If you are running Fedora 17 or higher, you can install it using <code>yum</code>, which will also install Ruby if it&#8217;s not yet installed on your system.</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; sudo yum install rubygem-asciidoctor</pre>
-  </div>
+<h3 id="package-management-systems">Package management systems</h3>
+<div class="paragraph">
+<p>The quickest way to install AsciiDoc is through the package manager on your system.
+Here are the commands for several popular package management systems:</p>
 </div>
-<div class="paragraph">  
-  <p>Or you can update it using:</p>
-</div><div class="literalblock">
-  
-  <div class="content monospaced">
-    <pre>$&gt; sudo yum update rubygem-asciidoctor</pre>
-  </div>
+<div class="literalblock">
+<div class="title">Fedora</div>
+<div class="content monospaced">
+<pre>sudo yum -y install asciidoc</pre>
 </div>
-<div class="admonitionblock tip">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/tip.png" alt="Tip">
-      </td>
-      <td class="content">
-        
-        Your Fedora system may be configured to automatically update packages, in which case no further action is required by you.
-Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are unsure.
-      </td>
-    </tr>
-  </table>
+</div>
+<div class="literalblock">
+<div class="title">Ubuntu / Debian</div>
+<div class="content monospaced">
+<pre>sudo apt-get install asciidoc</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="title">MacOSX</div>
+<div class="content monospaced">
+<pre>brew install asciidoc</pre>
+</div>
 </div>
 <div class="admonitionblock note">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/note.png" alt="Note">
-      </td>
-      <td class="content">
-        
-        The <code>yum</code> package update will not be available at the same time as the <code>gem</code>, it may take several weeks before it becomes available.
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+
+If Python isn&#8217;t already installed, it should be installed as a dependency of the package.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; asciidoc --version
+asciidoc 8.6.8
+$&gt; a2x --version
+a2x 8.6.8</pre>
+</div>
+</div>
+
+</div>
+<div class="sect2">
+<h3 id="manually">Manually</h3>
+<div class="paragraph">
+<p>If you can&#8217;t get the AsciiDoc processor using a package manager, you can install it manually following these steps:</p>
+</div>
+<div class="olist arabic">
+
+<ol class="arabic">
+<li>
+<p>Make sure you have Python 2 installed on your system</p>
+</li>
+<li>
+<p><a href="http://sourceforge.net/projects/asciidoc/files/latest/download">Download the distribution archive</a> from the AsciiDoc website.</p>
+</li>
+<li>
+<p>Extract the archive into a directory where you keep your programs</p>
+</li>
+<li>
+<p>Find the <code>asciidoc.py</code> and <code>a2x.py</code> files in the extracted directory</p>
+</li>
+<li>
+<p>Rename these files to <code>asciidoc</code> and <code>a2x</code>, respectively</p>
+</li>
+<li>
+<p>Add the extracted directory to your PATH environment variable</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For more details on the manual install, see the <a href="http://asciidoc.org/INSTALL.html">AsciiDoc Installation Guide</a>.</p>
+</div>
+<div class="paragraph">
+<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; asciidoc --version
+asciidoc 8.6.8
+$&gt; a2x --version
+a2x 8.6.8</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing-or-updating-asciidoctor">Installing or Updating Asciidoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor is published as a RubyGem.
+It currently works with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 on Linux, Mac and Windows.</p>
+</div>
+<div class="paragraph">
+<p>If you have Ruby on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; gem install asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you already have Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; gem update asciidoctor</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+
+<div class="paragraph">
+<p>If you accidentally use <code>gem install</code> instead of <code>gem update</code> then you will have both versions installed.
+If you wish to remove the older version use the <code>gem</code> command:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; gem cleanup asciidoctor</pre>
+</div>
+</div>
+
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If the <code>asciidoctor</code> gem installed or updated successfully, the <code>asciidoctor</code> command-line interface should be available on your PATH.
+To invoke it, simply execute:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; asciidoctor --version
+Asciidoctor 0.1.2 [http://asciidoctor.org]</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="-code-yum-code-package-manager"><code>yum</code> package manager</h3>
+<div class="paragraph">
+<p>If you are running Fedora 17 or higher, you can install it using <code>yum</code>, which will also install Ruby if it&#8217;s not yet installed on your system.</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; sudo yum install rubygem-asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or you can update it using:</p>
+</div>
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>$&gt; sudo yum update rubygem-asciidoctor</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+
+Your Fedora system may be configured to automatically update packages, in which case no further action is required by you.
+Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are unsure.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/note.png" alt="Note">
+</td>
+<td class="content">
+
+The <code>yum</code> package update will not be available at the same time as the <code>gem</code>, it may take several weeks before it becomes available.
 If you must have the latest version now, then use the <code>gem</code> method instead.
-      </td>
-    </tr>
-  </table>
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>Now you&#8217;re ready to convert your AsciiDoc document to a variety of formats!</p>
+<div class="paragraph">
+<p>Now you&#8217;re ready to convert your AsciiDoc document to a variety of formats!</p>
+</div>
+
+</div>
+
 </div>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="text-editors-and-syntax-highlighting">Text editors and syntax highlighting</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Since AsciiDoc syntax is just <code>plain</code> <code>text</code>, you can write an AsciiDoc document using <em>any</em> text editor.
+<div class="sect1">
+<h2 id="text-editors-and-syntax-highlighting">Text editors and syntax highlighting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since AsciiDoc syntax is just <code>plain</code> <code>text</code>, you can write an AsciiDoc document using <em>any</em> text editor.
 You don&#8217;t need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
 In fact, you shouldn&#8217;t use these programs because they add cruft to your document (that you can&#8217;t see) and makes conversion tedious.</p>
-</div><div class="admonitionblock tip">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/tip.png" alt="Tip">
-      </td>
-      <td class="content">
-        
-        While it&#8217;s true any text editor will do, an editor that supports syntax highlighting for AsciiDoc may be more helpful.
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+
+While it&#8217;s true any text editor will do, an editor that supports syntax highlighting for AsciiDoc may be more helpful.
 The <strong><span class="red">c</span><span class="green">o</span><span class="purple">l</span><span class="fuchsia">o</span><span class="blue">r</span></strong> brings contrast to the text, making it easier to read.
 The highlighting also confirms when you&#8217;ve entered the correct syntax for an inline or block element.
-      </td>
-    </tr>
-  </table>
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>The most popular application for editing plain text on Mac OS X is <strong>TextMate</strong>.
+<div class="paragraph">
+<p>The most popular application for editing plain text on Mac OS X is <strong>TextMate</strong>.
 A similar choice on Linux is <strong>GEdit</strong>.
 On Windows, stay away from Notepad and Wordpad because they produce plain text which is not cross-platform friendly.
 Opt instead for a competent text editor like <strong>Notepad++</strong>.
 If you&#8217;re a programmer (or a writer with an inner geek), you&#8217;ll likely prefer <strong>Vim</strong>, <strong>Emacs</strong>, or <strong>Sublime Text</strong>, all of which are available cross-platform.
 The key feature all these editors share is <a href="http://asciidoc.org/#_editor_support">syntax highlighting for AsciiDoc</a>.</p>
-</div><div class="admonitionblock tip">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/tip.png" alt="Tip">
-      </td>
-      <td class="content">
-        
-        Previewing the output of the document while editing can be helpful.
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/tip.png" alt="Tip">
+</td>
+<td class="content">
+
+Previewing the output of the document while editing can be helpful.
 To learn how to setup instant preview, check out the <a href="/docs/editing-asciidoc-with-live-preview">Editing AsciiDoc with Live Preview</a> tutorial.
-      </td>
-    </tr>
-  </table>
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>Open up your favorite text editor and get ready to write some AsciiDoc!</p>
+<div class="paragraph">
+<p>Open up your favorite text editor and get ready to write some AsciiDoc!</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="next-steps-and-help">Next steps and help</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Now that you have installed the toolchain, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.</p>
-</div><div class="paragraph">  
-  <p>Need an overview of the AsciiDoc syntax?</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="/docs/asciidoc-quick-reference">AsciiDoc Quick Reference</a></p>
-    </li>
-  </ul>
+
 </div>
-<div class="paragraph">  
-  <p>Want to dive deep into the details of the syntax?</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="/docs/asciidoc-writers-guide">AsciiDoc Writer&#8217;s Guide</a></p>
-    </li>
-  </ul>
 </div>
-<div class="paragraph">  
-  <p>Are you ready to convert your AsciiDoc document into HTML, DocBook or PDF?</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="/docs/render-documents">How do I render my document</a>?</p>
-    </li>
-  </ul>
+<div class="sect1">
+<h2 id="next-steps-and-help">Next steps and help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that you have installed the toolchain, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.</p>
 </div>
-<div class="paragraph">  
-  <p>Interested in building a theme from the Asciidoctor Stylesheet Factory or applying a custom stylesheet?</p>
-</div><div class="ulist">
-  
-  <ul>
-    <li>
-      <p><a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/README.adoc">How do I create and build and a theme</a>?</p>
-    </li>
-  </ul>
+<div class="paragraph">
+<p>Need an overview of the AsciiDoc syntax?</p>
 </div>
-<div class="paragraph">  
-  <p>Additional guides are listed on the <a href="/docs">Documentation</a> page.
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="/docs/asciidoc-quick-reference">AsciiDoc Quick Reference</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Want to dive deep into the details of the syntax?</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="/docs/asciidoc-writers-guide">AsciiDoc Writer&#8217;s Guide</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Are you ready to convert your AsciiDoc document into HTML, DocBook or PDF?</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="/docs/render-documents">How do I render my document</a>?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Interested in building a theme from the Asciidoctor Stylesheet Factory or applying a custom stylesheet?</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/README.adoc">How do I create and build and a theme</a>?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional guides are listed on the <a href="/docs">Documentation</a> page.
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
 </div>
-  </div>
+
 </div>
+</div>
+
 <div id="footnotes">
   <hr>
   <div class="footnote" id="_footnote_1">

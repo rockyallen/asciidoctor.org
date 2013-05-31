@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::ListItem - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::ListItem - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -88,8 +88,6 @@
     <li ><a href="#method-i-content">#content</a>
     
     <li ><a href="#method-i-fold_first">#fold_first</a>
-    
-    <li ><a href="#method-i-splain">#splain</a>
     
     <li ><a href="#method-i-text">#text</a>
     
@@ -196,6 +194,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -203,6 +203,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -268,6 +272,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -275,6 +281,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -374,56 +384,6 @@
       </div><!-- content-method -->
 
     
-      <div id="method-i-splain" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">splain</span><span
-            class="method-args">(parent_level = 0)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="splain-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/list_item.rb, line 58</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">splain</span>(<span class="ruby-identifier">parent_level</span> = <span class="ruby-value">0</span>)
-  <span class="ruby-identifier">parent_level</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;List Item anchor: #{@anchor}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@anchor</span>.<span class="ruby-identifier">nil?</span>
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Text: #{@text}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">nil?</span>
-
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Blocks: #{@blocks.count}&quot;</span>)
-
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">any?</span>
-    <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Blocks content (#{@blocks.count}):&quot;</span>)
-    <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">block</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;v&quot;</span> <span class="ruby-operator">*</span> (<span class="ruby-value">60</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">parent_level</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>))
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Block ##{i} is a #{block.class}&quot;</span>)
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-node">&quot;Name is #{block.title rescue 'n/a'}&quot;</span>)
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;=&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">40</span>)
-      <span class="ruby-identifier">block</span>.<span class="ruby-identifier">splain</span>(<span class="ruby-identifier">parent_level</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:splain</span>
-      <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">puts_indented</span>(<span class="ruby-identifier">parent_level</span>, <span class="ruby-string">&quot;^&quot;</span> <span class="ruby-operator">*</span> (<span class="ruby-value">60</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">parent_level</span><span class="ruby-operator">*</span><span class="ruby-value">2</span>))
-    <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- splain-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- splain-method -->
-
-    
       <div id="method-i-text" class="method-detail ">
         
         <div class="method-heading">
@@ -510,7 +470,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/list_item.rb, line 79</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/list_item.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-node">&quot;#{super.to_s} - #@context [text:#@text, blocks:#{(@blocks || []).size}]&quot;</span>
 <span class="ruby-keyword">end</span></pre>

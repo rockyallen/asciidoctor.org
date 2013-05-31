@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Cli::Options - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::Cli::Options - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -178,6 +178,8 @@
   
     <li><a href="../../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -185,6 +187,10 @@
     <li><a href="../../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -250,6 +256,8 @@
   
     <li><a href="../../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -257,6 +265,10 @@
     <li><a href="../../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -445,11 +457,11 @@ Example: asciidoctor -b html5 source.asciidoc
           <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-v'</span>, <span class="ruby-string">'--verbose'</span>, <span class="ruby-string">'enable verbose mode (default: false)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verbose</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:verbose</span>] = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-b'</span>, <span class="ruby-string">'--backend BACKEND'</span>, [<span class="ruby-string">'html5'</span>, <span class="ruby-string">'docbook45'</span>], <span class="ruby-string">'set output format (i.e., backend): [html5, docbook45] (default: html5)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">backend</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-b'</span>, <span class="ruby-string">'--backend BACKEND'</span>, <span class="ruby-string">'set output format backend (default: html5)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">backend</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'backend'</span>] = <span class="ruby-identifier">backend</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-d'</span>, <span class="ruby-string">'--doctype DOCTYPE'</span>, [<span class="ruby-string">'article'</span>, <span class="ruby-string">'book'</span>],
-                  <span class="ruby-string">'document type to use when rendering output: [article, book] (default: article)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc_type</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-d'</span>, <span class="ruby-string">'--doctype DOCTYPE'</span>, [<span class="ruby-string">'article'</span>, <span class="ruby-string">'book'</span>, <span class="ruby-string">'inline'</span>],
+                  <span class="ruby-string">'document type to use when rendering output: [article, book, inline] (default: article)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc_type</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'doctype'</span>] = <span class="ruby-identifier">doc_type</span>
           <span class="ruby-keyword">end</span>
           <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-o'</span>, <span class="ruby-string">'--out-file FILE'</span>, <span class="ruby-string">'output file (default: based on input file path); use - to output to STDOUT'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output_file</span><span class="ruby-operator">|</span>
@@ -479,12 +491,13 @@ Example: asciidoctor -b html5 source.asciidoc
           <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-C'</span>, <span class="ruby-string">'--compact'</span>, <span class="ruby-string">'compact the output by removing blank lines (default: false)'</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:compact</span>] = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-a'</span>, <span class="ruby-string">'--attribute key1=value,key2=value2,...'</span>, <span class="ruby-constant">Array</span>,
-                  <span class="ruby-string">'a list of attributes, in the form key or key=value pair, to set on the document'</span>,
-                  <span class="ruby-string">'these attributes take precedence over attributes defined in the source file'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribs</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-a'</span>, <span class="ruby-string">'--attribute key[=value],key2[=value2],...'</span>, <span class="ruby-constant">Array</span>,
+                  <span class="ruby-string">'a list of document attributes to set in the form of key, key! or key=value pair'</span>,
+                  <span class="ruby-string">'unless @ is appended to the value, these attributes take precedence over attributes'</span>,
+                  <span class="ruby-string">'defined in the source document'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribs</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">attribs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attrib</span><span class="ruby-operator">|</span>
-              <span class="ruby-identifier">tokens</span> = <span class="ruby-identifier">attrib</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'='</span>)
-              <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-identifier">tokens</span>[<span class="ruby-value">0</span>]] = <span class="ruby-identifier">tokens</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+              <span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attrib</span>.<span class="ruby-identifier">split</span> <span class="ruby-string">'='</span>, <span class="ruby-value">2</span>
+              <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span> <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>
           <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-T'</span>, <span class="ruby-string">'--template-dir DIR'</span>, <span class="ruby-string">'directory containing custom render templates the override the built-in set'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template_dir</span><span class="ruby-operator">|</span>

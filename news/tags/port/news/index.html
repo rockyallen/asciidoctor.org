@@ -1,118 +1,130 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
 </div>
-  </div>
+
+</div>
 </div>
 <div class="sect1">
-  <h2 id="introduction">Introduction</h2>
-  <div class="sectionbody">
+<h2 id="introduction">Introduction</h2>
+<div class="sectionbody">
 <div class="imageblock feature right">
-  <div class="content">
-    <img src="/images/opal-logo.png" alt="Opal" width="200" height="200">
-  </div>
-  
+<div class="content">
+<img src="/images/opal-logo.png" alt="Opal" width="200" height="200">
 </div>
-<div class="paragraph">  
-  <p><a href="https://github.com/asciidoctor/asciidoctor.js">asciidoctor.js</a> uses the <a href="http://opalrb.org">Opal</a> Ruby-to-JavaScript cross compiler to generate a direct JavaScript port of <a href="http://asciidoctor.org">Asciidoctor</a>, an implementation of AsciiDoc. The result is AsciiDoc rendering in the browser!</p>
-</div><div class="paragraph">  
-  <p>The project consists primarily of a Rake build script that executes the Opal compiler on the Asciidoctor source code to produce the asciidoctor.js script.</p>
-</div><div class="paragraph">  
-  <p>Opal parses the Ruby code and any required libraries, then rewrites the code into JavaScript under the Opal namespace.
+
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoctor.js">asciidoctor.js</a> uses the <a href="http://opalrb.org">Opal</a> Ruby-to-JavaScript cross compiler to generate a direct JavaScript port of <a href="http://asciidoctor.org">Asciidoctor</a>, an implementation of AsciiDoc. The result is AsciiDoc rendering in the browser!</p>
+</div>
+<div class="paragraph">
+<p>The project consists primarily of a Rake build script that executes the Opal compiler on the Asciidoctor source code to produce the asciidoctor.js script.</p>
+</div>
+<div class="paragraph">
+<p>Opal parses the Ruby code and any required libraries, then rewrites the code into JavaScript under the Opal namespace.
 The resulting JavaScript can be executed in any JavaScript runtime environment, such as a browser or node.js application.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="proving-the-concept">Proving the concept</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>When I first discovered Opal, I thought to myself, "yeah, this could work."
-Little did I know that achieving this proof of concept was more than a small task.</p>
-</div><div class="paragraph">  
-  <p>The effort involved filling gaps in Opal to support all the features of the Ruby standard library that Asciidoctor uses, as well as changes in Asciidoctor to make it compatible with constraints imposed by JavaScript (such as immutable strings).</p>
-</div><div class="paragraph">  
-  <p>While there are still some shortcomings, I&#8217;m proud to say that asciidoctor.js can successfully render the complete AsciiDoc User Guide (a document that has served as a compliance benchmark throughout the development of Asciidoctor).</p>
+
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="the-scripts">The scripts</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>There are two scripts generated by the Rake build that are needed to run Asciidoctor in the browser:</p>
-</div><div class="dlist">
-  
-  <dl>
-    <dt class="hdlist1">
-      opal.js
-    </dt>
-    <dd>
-      <p>The Ruby runtime in JavaScript</p>
-    </dd>
-    <dt class="hdlist1">
-      asciidoctor.js
-    </dt>
-    <dd>
-      <p>The JavaScript port of Asciidoctor</p>
-    </dd>
-  </dl>
+</div>
+<div class="sect1">
+<h2 id="proving-the-concept">Proving the concept</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When I first discovered Opal, I thought to myself, "yeah, this could work."
+Little did I know that achieving this proof of concept was more than a small task.</p>
+</div>
+<div class="paragraph">
+<p>The effort involved filling gaps in Opal to support all the features of the Ruby standard library that Asciidoctor uses, as well as changes in Asciidoctor to make it compatible with constraints imposed by JavaScript (such as immutable strings).</p>
+</div>
+<div class="paragraph">
+<p>While there are still some shortcomings, I&#8217;m proud to say that asciidoctor.js can successfully render the complete AsciiDoc User Guide (a document that has served as a compliance benchmark throughout the development of Asciidoctor).</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-scripts">The scripts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are two scripts generated by the Rake build that are needed to run Asciidoctor in the browser:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">opal.js</dt>
+<dd>
+<p>The Ruby runtime in JavaScript</p>
+</dd>
+<dt class="hdlist1">asciidoctor.js</dt>
+<dd>
+<p>The JavaScript port of Asciidoctor</p>
+</dd>
+</dl>
 </div>
 <div class="admonitionblock warning">
-  <table>
-    <tr>
-      <td class="icon">
-        <img src="/images/icons/warning.png" alt="Warning">
-      </td>
-      <td class="content">
-        
-        <div class="paragraph">  
-  <p>Don&#8217;t fret over the large size of these files.
+<table>
+<tr>
+<td class="icon">
+<img src="/images/icons/warning.png" alt="Warning">
+</td>
+<td class="content">
+
+<div class="paragraph">
+<p>Don&#8217;t fret over the large size of these files.
 We haven&#8217;t even started to optimize, having only just achieved the proof of concept.</p>
-</div><div class="paragraph">  
-  <p>With that said, both files gzip rather nicely, bringing asciidoctor.js down from over 500K to around 90K.
+</div>
+<div class="paragraph">
+<p>With that said, both files gzip rather nicely, bringing asciidoctor.js down from over 500K to around 90K.
 There are options in Opal to generate more efficient code, but they are causing problems at the moment.
 Once we sort out those issues, the size of the generated files should become quite acceptable.</p>
 </div>
-      </td>
-    </tr>
-  </table>
+
+</td>
+</tr>
+</table>
 </div>
-<div class="paragraph">  
-  <p>You need to load both files into your JavaScript environment to use Asciidoctor.
+<div class="paragraph">
+<p>You need to load both files into your JavaScript environment to use Asciidoctor.
 For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (ideally at the bottom of the page):</p>
-</div><div class="listingblock">
-  
-  <div class="content monospaced">
-    <pre class="highlight"><code class="html">&lt;script src="opal.js"&gt;&lt;/script&gt;
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
 &lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
-  </div>
 </div>
-<div class="paragraph">  
-  <p>You can see these scripts in action by running the examples, described in the <a href="https://github.com/asciidoctor/asciidoctor.js#readme">README</a>.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="usage">Usage</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>To interact with the generated code, you either:</p>
-</div><div class="olist arabic">
-  
-  <ol class="arabic">
-    <li>
-      <p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
-    </li>
-    <li>
-      <p>Invoke the JavaScript APIs that Opal generates directly from JavaScript</p>
-    </li>
-  </ol>
+<div class="paragraph">
+<p>You can see these scripts in action by running the examples, described in the <a href="https://github.com/asciidoctor/asciidoctor.js#readme">README</a>.</p>
 </div>
-<div class="paragraph">  
-  <p>Here&#8217;s an example that shows how Ruby can interact with the native JavaScript environment to render a string of AsciiDoc in the browser:</p>
-</div><div class="listingblock">
-  
-  <div class="content monospaced">
-    <pre class="highlight"><code class="ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage">Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To interact with the generated code, you either:</p>
+</div>
+<div class="olist arabic">
+
+<ol class="arabic">
+<li>
+<p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
+</li>
+<li>
+<p>Invoke the JavaScript APIs that Opal generates directly from JavaScript</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example that shows how Ruby can interact with the native JavaScript environment to render a string of AsciiDoc in the browser:</p>
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="ruby language-ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
 Dan Allen
 2013-05-21
 
@@ -124,29 +136,34 @@ $window.addEventListener 'DOMContentLoaded', proc {
     :attributes =&gt; %w(notitle! anchors imagesdir=./images))
   $document.getElementById('content').innerHTML = html_doc
 }, false</code></pre>
-  </div>
+</div>
 </div>
 
-  </div>
-</div><div class="sect1">
-  <h2 id="changes-to-asciidoctor">Changes to Asciidoctor</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>At the moment, some changes are necessary in Asciidoctor to get it to compile with Opal.
+</div>
+</div>
+<div class="sect1">
+<h2 id="changes-to-asciidoctor">Changes to Asciidoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>At the moment, some changes are necessary in Asciidoctor to get it to compile with Opal.
 These changes are maintained in the asciidoctor.js branch of the Asciidoctor git repository, from which asciidoctor.js is compiled.
 The goal is to eventually eliminate all of these differences so that Asciidoctor can be compiled to JavaScript as is.</p>
 </div>
-  </div>
-</div><div class="sect1">
-  <h2 id="go-play">Go play!</h2>
-  <div class="sectionbody">
-<div class="paragraph">  
-  <p>Now it&#8217;s time to go play with asciidoctor.js.
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="go-play">Go play!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now it&#8217;s time to go play with asciidoctor.js.
 Explore what you can do with it and how it can be improved.
 Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the browser the best it can be!</p>
 </div>
-  </div>
+
 </div>
+</div>
+
 
 </div><footer class="entry-footer"><div class="tags"><span class="title">tags: </span><a href="/news/tags/announcement">announcement, </a><a href="/news/tags/javascript">javascript, </a><a href="/news/tags/port">port </a></div></footer><hr></article></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Built on Foundation. Baked by Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];

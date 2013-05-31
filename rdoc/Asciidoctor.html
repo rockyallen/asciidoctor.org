@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor - API Documentation for Asciidoctor 0.1.2</title>
+<title>module Asciidoctor - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -53,6 +53,7 @@
     <li>lib/asciidoctor/abstract_block.rb
     <li>lib/asciidoctor/abstract_node.rb
     <li>lib/asciidoctor/attribute_list.rb
+    <li>lib/asciidoctor/backends/_stylesheets.rb
     <li>lib/asciidoctor/backends/base_template.rb
     <li>lib/asciidoctor/backends/docbook45.rb
     <li>lib/asciidoctor/backends/html5.rb
@@ -207,6 +208,8 @@
   
     <li><a href="./Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="./Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="./Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -214,6 +217,10 @@
     <li><a href="./Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="./Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="./Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="./Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -279,6 +286,8 @@
   
     <li><a href="./Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="./Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="./Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -286,6 +295,10 @@
     <li><a href="./Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="./Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="./Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="./Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -399,7 +412,7 @@ This section has a paragraph block and an olist block.
         <dd class="description"><p>Pointers to the preferred version for a given backend.</p>
         
       
-        <dt id="BLANK_LINES_PATTERN">BLANK_LINES_PATTERN
+        <dt id="BLANK_LINE_PATTERN">BLANK_LINE_PATTERN
         
         <dd class="description"><p>NOTE allows for empty space in line as it could be left by the template
 engine</p>
@@ -445,14 +458,19 @@ engine</p>
         <dd class="description">
         
       
-        <dt id="DEFAULT_STYLESHEET_PATH">DEFAULT_STYLESHEET_PATH
+        <dt id="DELIMITED_BLOCKS">DELIMITED_BLOCKS
         
         <dd class="description">
         
       
-        <dt id="DELIMITED_BLOCKS">DELIMITED_BLOCKS
+        <dt id="FORCE_ENCODING">FORCE_ENCODING
         
-        <dd class="description">
+        <dd class="description"><p>Flag to indicate whether encoding of external strings needs to be forced to
+UTF-8_All_ input data must be force encoded to UTF-8 if
+Encoding.default_external is <strong>not</strong> UTF-8Address failures
+performing string operations that are reported as “invalid byte sequence in
+US-ASCII” Ruby 1.8 doesn’t seem to experience this problem (perhaps because
+it isn’t validating the encodings)</p>
         
       
         <dt id="INTRINSICS">INTRINSICS
@@ -485,6 +503,11 @@ engine</p>
         <dd class="description">
         
       
+        <dt id="ORDERED_LIST_KEYWORDS">ORDERED_LIST_KEYWORDS
+        
+        <dd class="description">
+        
+      
         <dt id="ORDERED_LIST_MARKER_PATTERNS">ORDERED_LIST_MARKER_PATTERNS
         
         <dd class="description">
@@ -497,7 +520,7 @@ engine</p>
       
         <dt id="PARAGRAPH_STYLES">PARAGRAPH_STYLES
         
-        <dd class="description"><p>NOTE: AsciiDoc doesn’t support pass style for paragraph</p>
+        <dd class="description">
         
       
         <dt id="QUOTE_SUBS">QUOTE_SUBS
@@ -621,8 +644,9 @@ theDocument object.</p>
 <p>the AsciiDoc source as a IO, String or Array.</p>
 </dd><dt>options
 <dd>
-<p>a Hash of options to control processing (default: {})see
-Asciidoctor::Document#initialize for details</p>
+<p>a String, Array or Hash of options to control processing (default:
+{})String and Array values are converted into a Hash.See
+Asciidoctor::Document#initialize for details about options.</p>
 </dd><dt>block
 <dd>
 <p>a callback block for handling include::[] directives</p>
@@ -634,16 +658,37 @@ Asciidoctor::Document#initialize for details</p>
 
           
           <div class="method-source-code" id="load-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 672</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 674</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">monitor</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:monitor</span>, <span class="ruby-keyword">false</span>))
     <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
   <span class="ruby-keyword">end</span>
 
+  <span class="ruby-identifier">attrs</span> = (<span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] <span class="ruby-operator">||=</span> {})
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+    <span class="ruby-comment"># all good; placed here as optimization</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
+    <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] = <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">accum</span>, <span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">split</span> <span class="ruby-string">'='</span>, <span class="ruby-value">2</span>
+      <span class="ruby-identifier">accum</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+      <span class="ruby-identifier">accum</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
+    <span class="ruby-comment"># convert non-escaped spaces into null character, so we split on the</span>
+    <span class="ruby-comment"># correct spaces chars, and restore escaped spaces</span>
+    <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:space_delim</span>], <span class="ruby-string">&quot;\\1\00&quot;&quot;</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:escaped_space</span>], <span class="ruby-string">'\1'</span>)
+
+    <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] = <span class="ruby-identifier">attrs</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;\00&quot;&quot;</span>).<span class="ruby-identifier">inject</span>({}) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">accum</span>, <span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span> = <span class="ruby-identifier">entry</span>.<span class="ruby-identifier">split</span> <span class="ruby-string">'='</span>, <span class="ruby-value">2</span>
+      <span class="ruby-identifier">accum</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span> <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+      <span class="ruby-identifier">accum</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">'illegal type for attributes option'</span>
+  <span class="ruby-keyword">end</span>
+
   <span class="ruby-identifier">lines</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">File</span>)
-    <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] <span class="ruby-operator">||=</span> {}
-    <span class="ruby-identifier">attrs</span> = <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>]
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">input</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">File</span>
     <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">readlines</span>
     <span class="ruby-identifier">input_mtime</span> = <span class="ruby-identifier">input</span>.<span class="ruby-identifier">mtime</span>
     <span class="ruby-identifier">input_path</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">input</span>.<span class="ruby-identifier">path</span>)
@@ -713,8 +758,9 @@ href="Asciidoctor/Document.html">Document</a>.</p>
 <p>the String AsciiDoc source filename</p>
 </dd><dt>options
 <dd>
-<p>a Hash of options to control processing (default: {})see
-Asciidoctor::Document#initialize for details</p>
+<p>a String, Array or Hash of options to control processing (default:
+{})String and Array values are converted into a Hash.See
+Asciidoctor::Document#initialize for details about options.</p>
 </dd><dt>block
 <dd>
 <p>a callback block for handling include::[] directives</p>
@@ -726,7 +772,7 @@ Asciidoctor::Document#initialize for details</p>
 
           
           <div class="method-source-code" id="load_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 729</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 753</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -782,8 +828,9 @@ bydefault and the rendered output is returned.</p>
 <p>the String AsciiDoc source filename</p>
 </dd><dt>options
 <dd>
-<p>a Hash of options to control processing (default: {})see
-Asciidoctor::Document#initialize for details</p>
+<p>a String, Array or Hash of options to control processing (default:
+{})String and Array values are converted into a Hash.See
+Asciidoctor::Document#initialize for details about options.</p>
 </dd><dt>block
 <dd>
 <p>a callback block for handling include::[] directives</p>
@@ -797,7 +844,7 @@ String</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 762</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 787</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">in_place</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:in_place</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:to_file</span>)
@@ -824,7 +871,7 @@ String</p>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">write_in_place</span>
     <span class="ruby-identifier">to_file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">input</span>.<span class="ruby-identifier">path</span>), <span class="ruby-node">&quot;#{doc.attributes['docname']}#{doc.attributes['outfilesuffix']}&quot;</span>)
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">write_to_target</span>
-    <span class="ruby-identifier">working_dir</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:base_dir</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">opts</span>[<span class="ruby-value">:base_dir</span>]) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>)
+    <span class="ruby-identifier">working_dir</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value">:base_dir</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">options</span>[<span class="ruby-value">:base_dir</span>]) <span class="ruby-operator">:</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>)
     <span class="ruby-comment"># QUESTION should the jail be the working_dir or doc.base_dir???</span>
     <span class="ruby-identifier">jail</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">working_dir</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">to_dir</span>
@@ -880,14 +927,16 @@ String</p>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-comment"># NOTE document cannot control this behavior if safe &gt;= SafeMode::SERVER</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'copycss'</span>) <span class="ruby-operator">&amp;&amp;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'basebackend-html'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'copycss'</span>) <span class="ruby-operator">&amp;&amp;</span>
         <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'linkcss'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">DEFAULT_STYLESHEET_KEYS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'stylesheet'</span>))
       <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'fileutils'</span>
       <span class="ruby-identifier">outdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'outdir'</span>)
       <span class="ruby-identifier">stylesdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'stylesdir'</span>), <span class="ruby-identifier">outdir</span>,
           <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">outdir</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">stylesdir</span>
-      <span class="ruby-constant">FileUtils</span>.<span class="ruby-identifier">cp</span> <span class="ruby-constant">DEFAULT_STYLESHEET_PATH</span>, <span class="ruby-identifier">stylesdir</span>, <span class="ruby-value">:preserve</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>
+      <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">stylesdir</span>
+      <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">stylesdir</span>, <span class="ruby-constant">DEFAULT_STYLESHEET_NAME</span>), <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML5</span>.<span class="ruby-identifier">default_asciidoctor_stylesheet</span>
+      }
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">doc</span>
   <span class="ruby-keyword">else</span>
@@ -924,8 +973,9 @@ Asciidoctor::Documentand render it to the specified backend format</p>
 <p>the String AsciiDoc source filename</p>
 </dd><dt>options
 <dd>
-<p>a Hash of options to control processing (default: {})see
-Asciidoctor::Document#initialize for details</p>
+<p>a String, Array or Hash of options to control processing (default:
+{})String and Array values are converted into a Hash.See
+Asciidoctor::Document#initialize for details about options.</p>
 </dd><dt>block
 <dd>
 <p>a callback block for handling include::[] directives</p>
@@ -939,7 +989,7 @@ String</p>
 
           
           <div class="method-source-code" id="render_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 869</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 897</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {}, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 <span class="ruby-keyword">end</span></pre>

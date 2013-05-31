@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Document - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::Document - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -153,8 +153,6 @@
     
     <li ><a href="#method-i-source_lines">#source_lines</a>
     
-    <li ><a href="#method-i-splain">#splain</a>
-    
     <li ><a href="#method-i-title">#title</a>
     
     <li ><a href="#method-i-title-3D">#title=</a>
@@ -262,6 +260,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -269,6 +269,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -334,6 +338,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -341,6 +347,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -526,7 +536,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="backend-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 384</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 388</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">backend</span>
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'backend'</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -559,9 +569,10 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="content-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 633</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 629</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
-  <span class="ruby-comment"># per AsciiDoc-spec, remove the title after rendering the header</span>
+  <span class="ruby-comment"># per AsciiDoc-spec, remove the title before rendering the body,</span>
+  <span class="ruby-comment"># regardless of whether the header is rendered)</span>
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'title'</span>)
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">render</span> }.<span class="ruby-identifier">join</span>
 <span class="ruby-keyword">end</span></pre>
@@ -594,7 +605,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="doctitle-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 399</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 403</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">doctitle</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">title</span> = <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'title'</span>, <span class="ruby-string">''</span>)).<span class="ruby-identifier">empty?</span>
     <span class="ruby-identifier">title</span>
@@ -637,7 +648,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="doctype-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 380</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 384</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">doctype</span>
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'doctype'</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -670,7 +681,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="embedded-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 365</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 369</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">embedded?</span>
   <span class="ruby-comment"># QUESTION should this be !@options[:header_footer] ?</span>
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'embedded'</span>
@@ -704,7 +715,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="first_section-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 433</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 437</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">first_section</span>
   <span class="ruby-identifier">has_header?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@header</span> <span class="ruby-operator">:</span> (<span class="ruby-ivar">@blocks</span> <span class="ruby-operator">||</span> []).<span class="ruby-identifier">detect</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Section</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -737,7 +748,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="footnotes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 357</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 361</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">footnotes</span>
   <span class="ruby-ivar">@references</span>[<span class="ruby-value">:footnotes</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -770,7 +781,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="footnotes-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 353</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 357</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">footnotes?</span>
   <span class="ruby-keyword">not</span> <span class="ruby-ivar">@references</span>[<span class="ruby-value">:footnotes</span>].<span class="ruby-identifier">empty?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -803,7 +814,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="has_header-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 437</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 441</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_header?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@header</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -864,7 +875,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="nested-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 361</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 365</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nested?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -897,7 +908,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="noheader-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 428</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 432</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">noheader</span>
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'noheader'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -930,7 +941,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="notitle-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 424</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 428</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">notitle</span>
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'notitle'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -963,7 +974,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="register-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 336</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 340</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">register</span>(<span class="ruby-identifier">type</span>, <span class="ruby-identifier">value</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:ids</span>
@@ -1009,7 +1020,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="renderer-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 602</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 589</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">renderer</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@renderer</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@renderer</span>
   
@@ -1059,7 +1070,7 @@ enforced)!</p>
 
           
           <div class="method-source-code" id="source-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 371</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 375</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">source</span>
   <span class="ruby-ivar">@reader</span>.<span class="ruby-identifier">source</span>.<span class="ruby-identifier">join</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reader</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1093,7 +1104,7 @@ available.</p>
 
           
           <div class="method-source-code" id="source_lines-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 376</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 380</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">source_lines</span>
   <span class="ruby-ivar">@reader</span>.<span class="ruby-identifier">source</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@reader</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1105,56 +1116,6 @@ available.</p>
 
         
       </div><!-- source_lines-method -->
-
-    
-      <div id="method-i-splain" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">splain</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="splain-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 581</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">splain</span>
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> {
-    <span class="ruby-identifier">msg</span> = <span class="ruby-string">''</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@header</span>
-      <span class="ruby-identifier">msg</span> = <span class="ruby-node">&quot;Header is #{@header}&quot;</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">msg</span> = <span class="ruby-string">&quot;No header&quot;</span>
-    <span class="ruby-keyword">end</span>
-
-    <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;I have #{@blocks.count} blocks&quot;</span>
-    <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">block</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;v&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;Block ##{i} is a #{block.class}&quot;</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-node">&quot;Name is #{block.title rescue 'n/a'}&quot;</span>
-      <span class="ruby-identifier">block</span>.<span class="ruby-identifier">splain</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">respond_to?</span> <span class="ruby-value">:splain</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;^&quot;</span> <span class="ruby-operator">*</span> <span class="ruby-value">60</span>
-    <span class="ruby-keyword">end</span>
-  }
-  <span class="ruby-keyword">nil</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- splain-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- splain-method -->
 
     
       <div id="method-i-title" class="method-detail ">
@@ -1176,7 +1137,7 @@ available.</p>
 
           
           <div class="method-source-code" id="title-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 389</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 393</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title</span>
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'title'</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -1209,7 +1170,7 @@ available.</p>
 
           
           <div class="method-source-code" id="title-3D-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 393</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 397</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">title=</span>(<span class="ruby-identifier">title</span>)
   <span class="ruby-ivar">@header</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Section</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword">self</span>
   <span class="ruby-ivar">@header</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">title</span>
@@ -1243,7 +1204,7 @@ available.</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 686</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 676</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-node">%Q[#{super.to_s} - #{doctitle}]</span>  
 <span class="ruby-keyword">end</span></pre>
@@ -1424,13 +1385,14 @@ this document.</p>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:parent</span>]
     <span class="ruby-ivar">@parent_document</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:parent</span>)
-    <span class="ruby-comment"># should we dup here?</span>
+    <span class="ruby-comment"># should we dup attributes here?</span>
     <span class="ruby-identifier">options</span>[<span class="ruby-value">:attributes</span>] = <span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">attributes</span>
-    <span class="ruby-identifier">options</span>[<span class="ruby-value">:safe</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">safe</span>
     <span class="ruby-identifier">options</span>[<span class="ruby-value">:base_dir</span>] <span class="ruby-operator">||=</span> <span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">base_dir</span>
+    <span class="ruby-ivar">@safe</span> = <span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">safe</span>
     <span class="ruby-ivar">@renderer</span> = <span class="ruby-ivar">@parent_document</span>.<span class="ruby-identifier">renderer</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-ivar">@parent_document</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@safe</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-ivar">@header</span> = <span class="ruby-keyword">nil</span>
@@ -1444,7 +1406,19 @@ this document.</p>
   <span class="ruby-ivar">@counters</span> = {}
   <span class="ruby-ivar">@callouts</span> = <span class="ruby-constant">Callouts</span>.<span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@options</span> = <span class="ruby-identifier">options</span>
-  <span class="ruby-ivar">@safe</span> = <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:safe</span>, <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span>).<span class="ruby-identifier">to_i</span>
+  <span class="ruby-comment"># safely resolve the safe mode from const, int or string</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@safe</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">safe_mode</span> = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:safe</span>])
+    <span class="ruby-ivar">@safe</span> = <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">safe_mode</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Fixnum</span>)
+    <span class="ruby-comment"># be permissive in case API user wants to define new levels</span>
+    <span class="ruby-ivar">@safe</span> = <span class="ruby-identifier">safe_mode</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">begin</span>
+      <span class="ruby-ivar">@safe</span> = <span class="ruby-constant">SafeMode</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">safe_mode</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>).<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">rescue</span>
+      <span class="ruby-ivar">@safe</span> = <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span>.<span class="ruby-identifier">to_i</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
   <span class="ruby-ivar">@options</span>[<span class="ruby-value">:header_footer</span>] = <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:header_footer</span>, <span class="ruby-keyword">false</span>)
 
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'encoding'</span>] = <span class="ruby-string">'UTF-8'</span>
@@ -1504,11 +1478,11 @@ this document.</p>
 
   <span class="ruby-comment"># allow common attributes backend and doctype to be set using options hash</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@options</span>[<span class="ruby-value">:backend</span>].<span class="ruby-identifier">nil?</span>
-    <span class="ruby-ivar">@attribute_overrides</span>[<span class="ruby-string">'backend'</span>] = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:backend</span>]
+    <span class="ruby-ivar">@attribute_overrides</span>[<span class="ruby-string">'backend'</span>] = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:backend</span>].<span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@options</span>[<span class="ruby-value">:doctype</span>].<span class="ruby-identifier">nil?</span>
-    <span class="ruby-ivar">@attribute_overrides</span>[<span class="ruby-string">'doctype'</span>] = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:doctype</span>]
+    <span class="ruby-ivar">@attribute_overrides</span>[<span class="ruby-string">'doctype'</span>] = <span class="ruby-ivar">@options</span>[<span class="ruby-value">:doctype</span>].<span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SERVER</span>
@@ -1589,15 +1563,6 @@ this document.</p>
   <span class="ruby-constant">Lexer</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-ivar">@reader</span>, <span class="ruby-keyword">self</span>, <span class="ruby-value">:header_only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:parse_header_only</span>, <span class="ruby-keyword">false</span>)) 
 
   <span class="ruby-ivar">@callouts</span>.<span class="ruby-identifier">rewind</span>
-
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> {
-    <span class="ruby-identifier">msg</span> = []
-    <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;Found #{@blocks.size} blocks in this document:&quot;</span>
-    <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">b</span>
-    }
-    <span class="ruby-identifier">msg</span> <span class="ruby-operator">*</span> <span class="ruby-string">&quot;\n&quot;</span>
-  }
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -1641,7 +1606,7 @@ options</p>
 
           
           <div class="method-source-code" id="attribute_locked-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 524</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 532</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attribute_locked?</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-ivar">@attribute_overrides</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@attribute_overrides</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-node">&quot;#{name}!&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1676,7 +1641,7 @@ options</p>
 
           
           <div class="method-source-code" id="author-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 413</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">author</span>
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'author'</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -1718,7 +1683,7 @@ options</p>
 
           
           <div class="method-source-code" id="counter-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 289</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 293</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">counter</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">seed</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@counters</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">seed</span>.<span class="ruby-identifier">nil?</span>
@@ -1771,7 +1736,7 @@ options</p>
 
           
           <div class="method-source-code" id="counter_increment-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 310</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 314</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">counter_increment</span>(<span class="ruby-identifier">counter_name</span>, <span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">val</span> = <span class="ruby-identifier">counter</span>(<span class="ruby-identifier">counter_name</span>)
   <span class="ruby-constant">AttributeEntry</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">counter_name</span>, <span class="ruby-identifier">val</span>).<span class="ruby-identifier">save_to</span>(<span class="ruby-identifier">block</span>.<span class="ruby-identifier">attributes</span>)
@@ -1816,7 +1781,7 @@ locked</p>
 
           
           <div class="method-source-code" id="delete_attribute-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 510</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 518</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">delete_attribute</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute_locked?</span>(<span class="ruby-identifier">name</span>)
     <span class="ruby-keyword">false</span>
@@ -1865,19 +1830,12 @@ determined based on the basebackend. (default: nil)</p>
 
           
           <div class="method-source-code" id="docinfo-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 650</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 647</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">docinfo</span>(<span class="ruby-identifier">ext</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span>
     <span class="ruby-string">''</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-keyword">case</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'basebackend'</span>]
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'docbook'</span>
-        <span class="ruby-identifier">ext</span> = <span class="ruby-string">'.xml'</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'html'</span>
-        <span class="ruby-identifier">ext</span> = <span class="ruby-string">'.html'</span>
-      <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">ext</span> = <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'outfilesuffix'</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">ext</span>.<span class="ruby-identifier">nil?</span>
 
     <span class="ruby-identifier">content</span> = <span class="ruby-keyword">nil</span>
 
@@ -1933,11 +1891,20 @@ built-in template.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 627</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 614</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">restore_attributes</span>
   <span class="ruby-identifier">r</span> = <span class="ruby-identifier">renderer</span>(<span class="ruby-identifier">opts</span>)
-  <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">opts</span>)[<span class="ruby-value">:header_footer</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'document'</span>, <span class="ruby-keyword">self</span>).<span class="ruby-identifier">strip</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'embedded'</span>, <span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">doctype</span> <span class="ruby-operator">==</span> <span class="ruby-string">'inline'</span>
+    <span class="ruby-comment"># QUESTION should we warn if @blocks.size &gt; 0 and the first block is not a paragraph?</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">block</span> = <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:paragraph</span>
+      <span class="ruby-identifier">block</span>.<span class="ruby-identifier">content</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-string">''</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@options</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">opts</span>)[<span class="ruby-value">:header_footer</span>] <span class="ruby-operator">?</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'document'</span>, <span class="ruby-keyword">self</span>).<span class="ruby-identifier">strip</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'embedded'</span>, <span class="ruby-keyword">self</span>)
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render-source -->
           
@@ -1970,7 +1937,7 @@ built-in template.</p>
 
           
           <div class="method-source-code" id="revdate-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 420</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 424</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">revdate</span>
   <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'revdate'</span>]
 <span class="ruby-keyword">end</span></pre>
@@ -2018,7 +1985,7 @@ locked</p>
 
           
           <div class="method-source-code" id="set_attribute-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 491</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 499</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_attribute</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attribute_locked?</span>(<span class="ruby-identifier">name</span>)
     <span class="ruby-keyword">false</span>
@@ -2059,7 +2026,7 @@ locked</p>
 
           
           <div class="method-source-code" id="update_backend_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 556</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 564</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update_backend_attributes</span>()
   <span class="ruby-identifier">backend</span> = <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'backend'</span>]
   <span class="ruby-keyword">if</span> <span class="ruby-constant">BACKEND_ALIASES</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">backend</span>
@@ -2153,7 +2120,7 @@ macro to the text. Otherwise,apply the verbatim substitutions to the value.</p>
 
           
           <div class="method-source-code" id="apply_attribute_value_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 537</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 545</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_attribute_value_subs</span>(<span class="ruby-identifier">value</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:pass_macro_basic</span>])
     <span class="ruby-comment"># copy match for Ruby 1.8.7 compat</span>
@@ -2200,7 +2167,7 @@ macro to the text. Otherwise,apply the verbatim substitutions to the value.</p>
 
           
           <div class="method-source-code" id="clear_playback_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 463</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 471</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">clear_playback_attributes</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:attribute_entries</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -2242,7 +2209,7 @@ type</p>
 
           
           <div class="method-source-code" id="nextval-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 323</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 327</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">nextval</span>(<span class="ruby-identifier">current</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">current</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Integer</span>)
     <span class="ruby-identifier">current</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
@@ -2284,7 +2251,7 @@ type</p>
 
           
           <div class="method-source-code" id="playback_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 468</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 476</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">playback_attributes</span>(<span class="ruby-identifier">block_attributes</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:attribute_entries</span>
     <span class="ruby-identifier">block_attributes</span>[<span class="ruby-value">:attribute_entries</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">entry</span><span class="ruby-operator">|</span>
@@ -2325,7 +2292,7 @@ type</p>
 
           
           <div class="method-source-code" id="restore_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 458</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 466</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">restore_attributes</span>
   <span class="ruby-ivar">@attributes</span> = <span class="ruby-ivar">@original_attributes</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2359,8 +2326,12 @@ time.</p>
 
           
           <div class="method-source-code" id="save_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 443</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/document.rb, line 447</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">save_attributes</span>
+  <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'doctitle'</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">val</span> = <span class="ruby-identifier">doctitle</span>).<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'doctitle'</span>] = <span class="ruby-identifier">val</span>
+  <span class="ruby-keyword">end</span>
+
   <span class="ruby-comment"># css-signature cannot be updated after header attributes are processed</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@id</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'css-signature'</span>)
     <span class="ruby-ivar">@id</span> = <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'css-signature'</span>]

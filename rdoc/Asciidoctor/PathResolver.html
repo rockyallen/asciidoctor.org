@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::PathResolver - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::PathResolver - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -200,6 +200,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -207,6 +209,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -272,6 +278,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -279,6 +287,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -400,6 +412,12 @@ runs. Thismakes the class both deterministic and easier to test.</p>
 <span class="ruby-identifier">resolver</span>.<span class="ruby-identifier">system_path</span>(<span class="ruby-string">'../../../css'</span>, <span class="ruby-string">'../../..'</span>, <span class="ruby-string">'/path/to/docs'</span>)
 =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'/path/to/docs/css'</span>
 
+<span class="ruby-identifier">resolver</span>.<span class="ruby-identifier">system_path</span>(<span class="ruby-string">'..'</span>, <span class="ruby-string">'C:\data\docs\assets'</span>, <span class="ruby-string">'C:\data\docs'</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'C:/data/docs'</span>
+
+<span class="ruby-identifier">resolver</span>.<span class="ruby-identifier">system_path</span>(<span class="ruby-string">'..\..\css'</span>, <span class="ruby-string">'C:\data\docs\assets'</span>, <span class="ruby-string">'C:\data\docs'</span>)
+=<span class="ruby-operator">&gt;</span> <span class="ruby-string">'C:/data/docs/css'</span>
+
 <span class="ruby-keyword">begin</span>
   <span class="ruby-identifier">resolver</span>.<span class="ruby-identifier">system_path</span>(<span class="ruby-string">'../../../css'</span>, <span class="ruby-string">'../../..'</span>, <span class="ruby-string">'/path/to/docs'</span>, :<span class="ruby-identifier">recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>)
 <span class="ruby-keyword">rescue</span> <span class="ruby-constant">SecurityError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
@@ -445,11 +463,6 @@ runs. Thismakes the class both deterministic and easier to test.</p>
         
       
         <dt id="DOT_DOT">DOT_DOT
-        
-        <dd class="description">
-        
-      
-        <dt id="PARTITION_RE">PARTITION_RE
         
         <dd class="description">
         
@@ -547,7 +560,7 @@ runs. Thismakes the class both deterministic and easier to test.</p>
         <div class="method-description">
           
           <p>Construct a new instance of <a href="PathResolver.html">PathResolver</a>,
-optionally specifying thepath separator (to override the system default)
+optionally specifying thefile separator (to override the system default)
 and the working directory(to override the present working directory). The
 working directory will beexpanded to an absolute path inside the
 constructor.</p>
@@ -564,9 +577,9 @@ File::FILE_SEPARATOR)</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 116</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">file_separator</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">working_dir</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-ivar">@file_separator</span> = <span class="ruby-identifier">file_separator</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">SEPARATOR</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">file_separator</span>
+  <span class="ruby-ivar">@file_separator</span> = <span class="ruby-identifier">file_separator</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> (<span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">ALT_SEPARATOR</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span><span class="ruby-operator">::</span><span class="ruby-constant">SEPARATOR</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">file_separator</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">working_dir</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-ivar">@working_dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">pwd</span>)
   <span class="ruby-keyword">else</span>
@@ -619,10 +632,10 @@ specified when the classwas constructed.</p>
 
           
           <div class="method-source-code" id="expand_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 171</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-identifier">path_segments</span>, <span class="ruby-identifier">path_root</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">partition_path</span>(<span class="ruby-identifier">path</span>)
-  <span class="ruby-identifier">join_path</span>(<span class="ruby-identifier">path_segments</span>, <span class="ruby-identifier">path_root</span>)
+  <span class="ruby-identifier">join_path</span> <span class="ruby-identifier">path_segments</span>, <span class="ruby-identifier">path_root</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- expand_path-source -->
           
@@ -660,7 +673,7 @@ correctly handles both posix and windows paths.</p>
 
           
           <div class="method-source-code" id="is_root-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 136</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">is_root?</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@file_separator</span> <span class="ruby-operator">==</span> <span class="ruby-constant">BACKSLASH</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">WIN_ROOT_RE</span>)
     <span class="ruby-keyword">true</span>
@@ -706,7 +719,7 @@ path</p>
 
           
           <div class="method-source-code" id="is_web_root-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 146</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 151</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">is_web_root?</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-constant">SLASH</span>
 <span class="ruby-keyword">end</span></pre>
@@ -733,9 +746,10 @@ path</p>
 
         <div class="method-description">
           
-          <p>Join the segments using the file separator specified in theconstructor. Use
-the root, if specified, to construct an absolute path.Otherwise join the
-segments as a relative path.</p>
+          <p>Join the segments using the posix file separator (since Ruby knowshow to
+work with paths specified this way, regardless of OS). Use the root,if
+specified, to construct an absolute path. Otherwise join the segments asa
+relative path.</p>
 <dl class="rdoc-list note-list"><dt>segments
 <dd>
 <p>a String Array of path segments</p>
@@ -744,19 +758,19 @@ segments as a relative path.</p>
 <p>a String path root (optional, default: nil)</p>
 </dd></dl>
 
-<p>returns a String path formed by joining the segments and prependingthe
-root, if specified</p>
+<p>returns a String path formed by joining the segments using the posix
+fileseparator and prepending the root, if specified</p>
           
           
 
           
           <div class="method-source-code" id="join_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 208</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 214</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">join_path</span>(<span class="ruby-identifier">segments</span>, <span class="ruby-identifier">root</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">root</span>
-    <span class="ruby-node">&quot;#{root}#{@file_separator}#{segments * @file_separator}&quot;</span>
+    <span class="ruby-node">&quot;#{root}#{SLASH}#{segments * SLASH}&quot;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">segments</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@file_separator</span>
+    <span class="ruby-identifier">segments</span> <span class="ruby-operator">*</span> <span class="ruby-constant">SLASH</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- join_path-source -->
@@ -801,11 +815,11 @@ thepath root, if the path is absolute, and the posix version of the path.</p>
 
           
           <div class="method-source-code" id="partition_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 186</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 191</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">partition_path</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">web_path</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">posix_path</span> = <span class="ruby-identifier">posixfy</span> <span class="ruby-identifier">path</span>
   <span class="ruby-identifier">is_root</span> = <span class="ruby-identifier">web_path</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">is_web_root?</span>(<span class="ruby-identifier">posix_path</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">is_root?</span>(<span class="ruby-identifier">posix_path</span>)
-  <span class="ruby-identifier">path_segments</span> = <span class="ruby-identifier">posix_path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">PARTITION_RE</span>)
+  <span class="ruby-identifier">path_segments</span> = <span class="ruby-identifier">posix_path</span>.<span class="ruby-identifier">tr_s</span>(<span class="ruby-constant">SLASH</span>, <span class="ruby-constant">SLASH</span>).<span class="ruby-identifier">split</span>(<span class="ruby-constant">SLASH</span>)
   <span class="ruby-comment"># capture relative root</span>
   <span class="ruby-identifier">root</span> = <span class="ruby-identifier">path_segments</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-constant">DOT</span> <span class="ruby-operator">?</span> <span class="ruby-constant">DOT</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">path_segments</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-constant">DOT</span>)
@@ -849,7 +863,7 @@ thepath root, if the path is absolute, and the posix version of the path.</p>
 
           
           <div class="method-source-code" id="posixfy-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 155</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 160</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">posixfy</span>(<span class="ruby-identifier">path</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>
   <span class="ruby-identifier">path</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-constant">BACKSLASH</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-constant">BACKSLASH</span>, <span class="ruby-constant">SLASH</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>
@@ -908,7 +922,7 @@ enforcesthat the resolved path be contained within the jail, if provided</p>
 
           
           <div class="method-source-code" id="system_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 234</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 240</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">system_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">start</span>, <span class="ruby-identifier">jail</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">opts</span> = {})
   <span class="ruby-identifier">recover</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:recover</span>, <span class="ruby-keyword">true</span>)
   <span class="ruby-keyword">unless</span> <span class="ruby-identifier">jail</span>.<span class="ruby-identifier">nil?</span>
@@ -1038,7 +1052,7 @@ any parent references resolved and selfreferences removed</p>
 
           
           <div class="method-source-code" id="web_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 333</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/path_resolver.rb, line 339</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">web_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">target</span> = <span class="ruby-identifier">posixfy</span>(<span class="ruby-identifier">target</span>)
   <span class="ruby-identifier">start</span> = <span class="ruby-identifier">posixfy</span>(<span class="ruby-identifier">start</span>)

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::DocBook45::BlockQuoteTemplate - API Documentation for Asciidoctor 0.1.3</title>
+<title>class Asciidoctor::DocBook45::InlineMenuTemplate - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -72,6 +72,10 @@
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
+    
+    <li ><a href="#method-i-menu">#menu</a>
+    
+    <li ><a href="#method-i-result">#result</a>
     
     <li ><a href="#method-i-template">#template</a>
     
@@ -305,7 +309,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Asciidoctor::DocBook45::BlockQuoteTemplate</h1>
+  <h1 class="class">class Asciidoctor::DocBook45::InlineMenuTemplate</h1>
 
   <div id="description" class="description">
     
@@ -329,6 +333,79 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-menu" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">menu</span><span
+            class="method-args">(menu, submenus, menuitem)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="menu-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 680</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">menu</span>(<span class="ruby-identifier">menu</span>, <span class="ruby-identifier">submenus</span>, <span class="ruby-identifier">menuitem</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">submenus</span>.<span class="ruby-identifier">empty?</span>
+    <span class="ruby-identifier">submenu_path</span> = <span class="ruby-identifier">submenus</span>.<span class="ruby-identifier">map</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">submenu</span><span class="ruby-operator">|</span> <span class="ruby-node">%Q(&lt;guisubmenu&gt;#{submenu}&lt;/guisubmenu&gt; )</span> }.<span class="ruby-identifier">join</span>.<span class="ruby-identifier">chop</span>
+    <span class="ruby-node">%Q(&lt;menuchoice&gt;&lt;guimenu&gt;#{menu}&lt;/guimenu&gt; #{submenu_path} &lt;guimenuitem&gt;#{menuitem}&lt;/guimenuitem&gt;&lt;/menuchoice&gt;)</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">menuitem</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-node">%Q(&lt;menuchoice&gt;&lt;guimenu&gt;#{menu}&lt;/guimenu&gt; &lt;guimenuitem&gt;#{menuitem}&lt;/guimenuitem&gt;&lt;/menuchoice&gt;)</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-node">%Q(&lt;guimenu&gt;#{menu}&lt;/guimenu&gt;)</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- menu-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- menu-method -->
+
+    
+      <div id="method-i-result" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">result</span><span
+            class="method-args">(node)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="result-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 691</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
+  <span class="ruby-identifier">menu</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'menu'</span>), <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'submenus'</span>), <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'menuitem'</span>))
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- result-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- result-method -->
+
+    
       <div id="method-i-template" class="method-detail ">
         
         <div class="method-heading">
@@ -348,22 +425,10 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 491</span>
-  <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
-    <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
-&lt;%#encoding:UTF-8%&gt;&lt;blockquote#{common_attrs_erb}&gt;#{title_tag}
-  &lt;% if (attr? :attribution) || (attr? :citetitle) %&gt;
-  &lt;attribution&gt;
-    &lt;% if attr? :attribution %&gt;
-    &lt;%= (attr :attribution) %&gt;
-    &lt;% end %&gt;
-    #{tag 'citetitle', :citetitle}
-  &lt;/attribution&gt;
-  &lt;% end %&gt;
-#{content_erb}
-&lt;/blockquote&gt;
-    EOF</span>
-  <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 695</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
+  <span class="ruby-value">:invoke_result</span>
+<span class="ruby-keyword">end</span></pre>
           </div><!-- template-source -->
           
         </div>

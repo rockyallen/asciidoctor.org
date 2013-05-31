@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Section - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::Section - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -194,6 +194,8 @@
   
     <li><a href="../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -201,6 +203,10 @@
     <li><a href="../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -266,6 +272,8 @@
   
     <li><a href="../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -273,6 +281,10 @@
     <li><a href="../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -382,7 +394,7 @@ to its @blocks Array.</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 164</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 163</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@title</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@level</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@index</span>
@@ -567,7 +579,7 @@ of one</p>
 
           
           <div class="method-source-code" id="content-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 108</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
   <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">b</span><span class="ruby-operator">|</span> <span class="ruby-identifier">b</span>.<span class="ruby-identifier">render</span> }.<span class="ruby-identifier">join</span>
 <span class="ruby-keyword">end</span></pre>
@@ -672,7 +684,6 @@ and all its childBlocks.</p>
           <div class="method-source-code" id="render-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>
-  <span class="ruby-constant">Debug</span>.<span class="ruby-identifier">debug</span> { <span class="ruby-node">&quot;Now rendering section for #{self}&quot;</span> }
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">playback_attributes</span> <span class="ruby-ivar">@attributes</span>
   <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'section'</span>, <span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -749,7 +760,7 @@ the delimiter should not beappended to the final level(default: nil)</p>
 
           
           <div class="method-source-code" id="sectnum-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 155</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/section.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sectnum</span>(<span class="ruby-identifier">delimiter</span> = <span class="ruby-string">'.'</span>, <span class="ruby-identifier">append</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">append</span> <span class="ruby-operator">||=</span> (<span class="ruby-identifier">append</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-string">''</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">delimiter</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@level</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@level</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Section</span>)

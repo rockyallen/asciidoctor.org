@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Table::ParserContext - API Documentation for Asciidoctor 0.1.2</title>
+<title>class Asciidoctor::Table::ParserContext - API Documentation for Asciidoctor 0.1.3</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -222,6 +222,8 @@
   
     <li><a href="../../Asciidoctor/DocBook45/InlineBreakTemplate.html">Asciidoctor::DocBook45::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/DocBook45/InlineButtonTemplate.html">Asciidoctor::DocBook45::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/DocBook45/InlineCalloutTemplate.html">Asciidoctor::DocBook45::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineFootnoteTemplate.html">Asciidoctor::DocBook45::InlineFootnoteTemplate</a>
@@ -229,6 +231,10 @@
     <li><a href="../../Asciidoctor/DocBook45/InlineImageTemplate.html">Asciidoctor::DocBook45::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineIndextermTemplate.html">Asciidoctor::DocBook45::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineKbdTemplate.html">Asciidoctor::DocBook45::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/DocBook45/InlineMenuTemplate.html">Asciidoctor::DocBook45::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/DocBook45/InlineQuotedTemplate.html">Asciidoctor::DocBook45::InlineQuotedTemplate</a>
   
@@ -294,6 +300,8 @@
   
     <li><a href="../../Asciidoctor/HTML5/InlineBreakTemplate.html">Asciidoctor::HTML5::InlineBreakTemplate</a>
   
+    <li><a href="../../Asciidoctor/HTML5/InlineButtonTemplate.html">Asciidoctor::HTML5::InlineButtonTemplate</a>
+  
     <li><a href="../../Asciidoctor/HTML5/InlineCalloutTemplate.html">Asciidoctor::HTML5::InlineCalloutTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineFootnoteTemplate.html">Asciidoctor::HTML5::InlineFootnoteTemplate</a>
@@ -301,6 +309,10 @@
     <li><a href="../../Asciidoctor/HTML5/InlineImageTemplate.html">Asciidoctor::HTML5::InlineImageTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineIndextermTemplate.html">Asciidoctor::HTML5::InlineIndextermTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineKbdTemplate.html">Asciidoctor::HTML5::InlineKbdTemplate</a>
+  
+    <li><a href="../../Asciidoctor/HTML5/InlineMenuTemplate.html">Asciidoctor::HTML5::InlineMenuTemplate</a>
   
     <li><a href="../../Asciidoctor/HTML5/InlineQuotedTemplate.html">Asciidoctor::HTML5::InlineQuotedTemplate</a>
   
@@ -392,7 +404,7 @@ track the next cell.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 269</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 275</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">table</span>, <span class="ruby-identifier">attributes</span> = {})
   <span class="ruby-ivar">@table</span> = <span class="ruby-identifier">table</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'format'</span>
@@ -571,7 +583,7 @@ effective number of cells in the current row.</p>
 
           
           <div class="method-source-code" id="activate_rowspan-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 481</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 487</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">activate_rowspan</span>(<span class="ruby-identifier">rowspan</span>, <span class="ruby-identifier">colspan</span>)
   <span class="ruby-value">1</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">rowspan</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-ivar">@active_rowspans</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">0</span>
@@ -611,7 +623,7 @@ isn’t quoted data</p>
 
           
           <div class="method-source-code" id="buffer_has_unclosed_quotes-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 325</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 331</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer_has_unclosed_quotes?</span>(<span class="ruby-identifier">append</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">record</span> = <span class="ruby-node">&quot;#@buffer#{append}&quot;</span>.<span class="ruby-identifier">strip</span>
   <span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">record</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'&quot;'</span>)
@@ -648,7 +660,7 @@ double quote),false otherwise</p>
 
           
           <div class="method-source-code" id="buffer_quoted-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 334</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 340</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">buffer_quoted?</span>
   <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">lstrip!</span>
   <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'&quot;&quot;'</span>)
@@ -684,7 +696,7 @@ double quote),false otherwise</p>
 
           
           <div class="method-source-code" id="cell_closed-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 386</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 392</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cell_closed?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@cell_open</span>
 <span class="ruby-keyword">end</span></pre>
@@ -719,7 +731,7 @@ double quote),false otherwise</p>
 
           
           <div class="method-source-code" id="cell_open-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 379</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 385</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">cell_open?</span>
   <span class="ruby-ivar">@cell_open</span>
 <span class="ruby-keyword">end</span></pre>
@@ -757,7 +769,7 @@ and begin a new one.</p>
 
           
           <div class="method-source-code" id="close_cell-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 407</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 413</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">close_cell</span>(<span class="ruby-identifier">eol</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">cell_text</span> = <span class="ruby-ivar">@buffer</span>.<span class="ruby-identifier">strip</span>
   <span class="ruby-ivar">@buffer</span> = <span class="ruby-string">''</span>
@@ -843,7 +855,7 @@ captured from the end of this cell onto the stack for useby the next cell.</p>
 
           
           <div class="method-source-code" id="close_open_cell-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 395</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 401</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">close_open_cell</span>(<span class="ruby-identifier">next_cell_spec</span> = {})
   <span class="ruby-identifier">push_cell_spec</span> <span class="ruby-identifier">next_cell_spec</span>
   <span class="ruby-identifier">close_cell</span>(<span class="ruby-keyword">true</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">cell_open?</span>
@@ -882,7 +894,7 @@ resetting the rowArray and counter variables.</p>
 
           
           <div class="method-source-code" id="close_row-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 465</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 471</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">close_row</span>
   <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">rows</span>.<span class="ruby-identifier">body</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@current_row</span>
   <span class="ruby-comment"># don't have to account for active rowspans here</span>
@@ -924,7 +936,7 @@ plus any active rowspans.</p>
 
           
           <div class="method-source-code" id="effective_col_visits-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 496</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 502</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">effective_col_visits</span>
   <span class="ruby-ivar">@col_visits</span> <span class="ruby-operator">+</span> <span class="ruby-ivar">@active_rowspans</span>.<span class="ruby-identifier">first</span>
 <span class="ruby-keyword">end</span></pre>
@@ -958,7 +970,7 @@ row.</p>
 
           
           <div class="method-source-code" id="end_of_row-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 490</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 496</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">end_of_row?</span>
   <span class="ruby-ivar">@col_count</span> <span class="ruby-operator">==</span> <span class="ruby-value">-1</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">effective_col_visits</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@col_count</span>
 <span class="ruby-keyword">end</span></pre>
@@ -994,7 +1006,7 @@ isreached and the cell may contain additional text.</p>
 
           
           <div class="method-source-code" id="keep_cell_open-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 362</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 368</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">keep_cell_open</span>
   <span class="ruby-ivar">@cell_open</span> = <span class="ruby-keyword">true</span>
   <span class="ruby-keyword">nil</span>
@@ -1031,7 +1043,7 @@ cellinstance and add it to the current row.</p>
 
           
           <div class="method-source-code" id="mark_cell_closed-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 371</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 377</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">mark_cell_closed</span>
   <span class="ruby-ivar">@cell_open</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-keyword">nil</span>
@@ -1068,7 +1080,7 @@ table.</p>
 
           
           <div class="method-source-code" id="match_delimiter-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 308</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 314</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">match_delimiter</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span> <span class="ruby-ivar">@delimiter_re</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1104,7 +1116,7 @@ astack is used to carry over the spec to the next cell.</p>
 
           
           <div class="method-source-code" id="push_cell_spec-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 352</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">push_cell_spec</span>(<span class="ruby-identifier">cell_spec</span> = {})
   <span class="ruby-comment"># this shouldn't be nil, but we check anyway</span>
   <span class="ruby-ivar">@cell_specs</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">cell_spec</span> <span class="ruby-operator">||</span> {})
@@ -1142,9 +1154,9 @@ because it was escaped or in a quoted context)</p>
 
           
           <div class="method-source-code" id="skip_matched_delimiter-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 316</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 322</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">skip_matched_delimiter</span>(<span class="ruby-identifier">match</span>, <span class="ruby-identifier">escaped</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-ivar">@buffer</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">escaped</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span>.<span class="ruby-identifier">chop</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">pre_match</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-ivar">@delimiter</span>
+  <span class="ruby-ivar">@buffer</span> = <span class="ruby-node">%Q(#@buffer#{escaped ? match.pre_match.chop : match.pre_match}#@delimiter)</span>
   <span class="ruby-identifier">match</span>.<span class="ruby-identifier">post_match</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- skip_matched_delimiter-source -->
@@ -1179,7 +1191,7 @@ table.</p>
 
           
           <div class="method-source-code" id="starts_with_delimiter-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 300</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 306</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">starts_with_delimiter?</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-identifier">line</span>.<span class="ruby-identifier">start_with?</span> <span class="ruby-ivar">@delimiter</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1216,7 +1228,7 @@ cellwhen the cell is being closed.</p>
 
           
           <div class="method-source-code" id="take_cell_spec-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 344</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 350</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">take_cell_spec</span>()
   <span class="ruby-ivar">@cell_specs</span>.<span class="ruby-identifier">shift</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1280,7 +1292,7 @@ processingthe next line if the last cell had wrapped content).</p>
 
           
           <div class="method-source-code" id="advance-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 502</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/table.rb, line 508</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">advance</span>
   <span class="ruby-ivar">@linenum</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
