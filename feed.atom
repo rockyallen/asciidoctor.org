@@ -13,7 +13,8 @@
 <link href="http://asciidoctor.org/news/2013/05/31/asciidoctor-0-1-3-released/" rel="alternate" type="text/html" />
 <category scheme="http://asciidoctor.org/news/tags" term="release" />
 <summary>
-We&#8217;re thrilled to announce the release of Asciidoctor 0.1.3!
+We&#8217;re thrilled to announce the release of Asciidoctor 0.1.3.
+Read Installing or Updating Asciidoctor to learn how to get it setup.
 
 
 Asciidoctor is an open source text processor and publishing toolchain written in Ruby for converting AsciiDoc markup into HTML 5, DocBook 4.5 and custom formats.
@@ -23,28 +24,14 @@ Asciidoctor is written in Ruby, but available to any JVM language using the Java
 This release marks an important milestone.
 It&#8217;s been exactly 6 months since Dan picked up Asciidoctor and started driving it forward.
 The project sure has come a long way since then.
-With this release, we&#8217;ve moved past just implementing AsciiDoc to advancing it, as this post highlights.
-
-
-
-
-
-Overview
-
-
-The focus of this release cycle was on:
-
-
-
-
-
-AsciiDoc compliance (yes,......
+With this release, we&#8217;ve moved past just implementing AsciiDoc to advancing it, as this......
 </summary>
 <content type="html">
 &lt;div id=&quot;preamble&quot;&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;We’re thrilled to announce the release of &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;Asciidoctor 0.1.3&lt;/a&gt;!&lt;/p&gt;
+&lt;p&gt;We’re thrilled to announce the release of &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;Asciidoctor 0.1.3&lt;/a&gt;.
+Read &lt;a href=&quot;http://asciidoctor.org/docs/install-toolchain/#installing-or-updating-asciidoctor&quot;&gt;Installing or Updating Asciidoctor&lt;/a&gt; to learn how to get it setup.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;em&gt;Asciidoctor is an open source text processor and publishing toolchain written in Ruby for converting AsciiDoc markup into HTML 5, DocBook 4.5 and custom formats.
@@ -70,7 +57,7 @@ With this release, we’ve moved past just implementing AsciiDoc to advancing it
 
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;AsciiDoc compliance (yes, even more)&lt;/p&gt;
+&lt;p&gt;AsciiDoc compliance (yes, still)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;New shorthand syntax and macros&lt;/p&gt;
@@ -113,7 +100,7 @@ Here’s the TL;DR version if you’re in a hurry.&lt;/p&gt;
 &lt;p&gt;Support for Markdown blockquotes and headings (to join fenced code blocks)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Font-based admonition and callout icons powered by &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Font-based admonition icons powered by &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt; and CSS-based callout icons&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Linked section titles as floating anchors or linked title text&lt;/p&gt;
@@ -217,12 +204,12 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This shorthand notation is part of a block’s style and leverages the first attribute position to its fullest extent.
-Let’s say you wanted to create a blockquote from an open block that has an id and role.
-You would put the &lt;code&gt;quote&lt;/code&gt; style before the &lt;code&gt;#&lt;/code&gt; (&lt;code&gt;id&lt;/code&gt;) and &lt;code&gt;.&lt;/code&gt; (&lt;code&gt;role&lt;/code&gt;) in the first attribute position.&lt;/p&gt;
+&lt;p&gt;This shorthand notation is part of a block’s style.
+Thus, it leverages the first attribute position to its fullest extent.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;For example, this markup:&lt;/p&gt;
+&lt;p&gt;Let’s say you want to create a blockquote from an open block and assign it an id and role.
+You prepend the style &lt;code&gt;quote&lt;/code&gt; to the &lt;code&gt;#&lt;/code&gt; (&lt;code&gt;id&lt;/code&gt;) and &lt;code&gt;.&lt;/code&gt; (&lt;code&gt;role&lt;/code&gt;) in the first attribute position, as this example shows:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -234,7 +221,7 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;generates this HTML output:&lt;/p&gt;
+&lt;p&gt;That produces the following HTML:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -258,14 +245,14 @@ ____&lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;The &lt;code&gt;role&lt;/code&gt; value supports multiple entries separated by dots.&lt;/p&gt;
+&lt;p&gt;To specifiy multiple roles using the shorthand syntax, separate them by dots&lt;/p&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For example, &lt;code&gt;[.summary.incremental]&lt;/code&gt; emits the HTML attribute &lt;code&gt;class=&quot;summary incremental&quot;&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;The order of &lt;code&gt;id&lt;/code&gt; and &lt;code&gt;role&lt;/code&gt; does not matter.&lt;/p&gt;
+&lt;p&gt;The order of id and role values in the shorthand syntax does not matter&lt;/p&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For example, &lt;code&gt;[#goals.incremental]&lt;/code&gt; and &lt;code&gt;[.incremental#goals]&lt;/code&gt; produce the same output.&lt;/p&gt;
 &lt;/div&gt;
@@ -282,10 +269,10 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&quot;shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats&quot;&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats&quot;&gt;&lt;/a&gt;Shorthand notation for setting &lt;code&gt;csv&lt;/code&gt; and &lt;code&gt;dsv&lt;/code&gt; table formats&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The first position of the table block delimiter (i.e., &lt;code&gt;|===&lt;/code&gt;) can be replaced by a data delimiter to set the table format accordingly.&lt;/p&gt;
+&lt;p&gt;The first position of the table block delimiter (i.e., &lt;code&gt;|===&lt;/code&gt;) can be replaced by the data delimiter to set the table format.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Instead of specifying the &lt;code&gt;csv&lt;/code&gt; format using an attribute:&lt;/p&gt;
+&lt;p&gt;Instead of specifying the &lt;code&gt;csv&lt;/code&gt; format using a block attribute, as shown here:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -297,7 +284,7 @@ a,b,c
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can simply replace the leading pipe (&lt;code&gt;|&lt;/code&gt;) with a comma (&lt;code&gt;,&lt;/code&gt;).&lt;/p&gt;
+&lt;p&gt;you can simply replace the leading pipe (&lt;code&gt;|&lt;/code&gt;) with a comma (&lt;code&gt;,&lt;/code&gt;):&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -319,7 +306,7 @@ a:b:c
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Now, you only need the block attribute list above the table for any additional options.&lt;/p&gt;
+&lt;p&gt;Now, you only need the block attribute list for setting any additional options.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#a-new-perspective-on-tables&quot;&gt;tables&lt;/a&gt;&lt;/p&gt;
@@ -375,7 +362,7 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;surrounding it with double quotes&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;adding an optional attribution—prefixed with two dashes—below the quoted text.&lt;/p&gt;
+&lt;p&gt;adding an optional attribution (prefixed with two dashes) below the quoted text.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
@@ -441,10 +428,10 @@ This gesture is reminiscinet of the &lt;a href=&quot;http://www.flickr.com/photo
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This markup renders the same as the previous example.&lt;/p&gt;
+&lt;p&gt;This markup renders the same as the example above.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Like Markdown, Asciidoctor supports block content inside the quote block, including nested blockquotes:&lt;/p&gt;
+&lt;p&gt;Like Markdown, Asciidoctor supports block content inside the blockquote, including nested blockquotes:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Markdown-style blockquote containing block content&lt;/div&gt;
@@ -545,7 +532,7 @@ In Asciidoctor, you can now enable parsing of link macro attributes by setting t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can also specify the name of the target window using the &lt;code&gt;window&lt;/code&gt; attribute:&lt;/p&gt;
+&lt;p&gt;You can then specify the name of the target window using the &lt;code&gt;window&lt;/code&gt; attribute:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -570,7 +557,8 @@ Just end the link text with a caret (&lt;code&gt;^&lt;/code&gt;):&lt;/p&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
-If you use the caret syntax more than once in a single paragraph, you may need to escape the first caret with a backslash.
+If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
+If the link text contains a comma, then you need to surround the link text in double quotes.
 &lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -584,7 +572,7 @@ If you use the caret syntax more than once in a single paragraph, you may need t
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You can now have fun styling your links.&lt;/p&gt;
+&lt;p&gt;Have fun styling your links!&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -596,7 +584,7 @@ If you use the caret syntax more than once in a single paragraph, you may need t
 &lt;a class=&quot;anchor&quot; href=&quot;#font-awesome-icons-fancy-section-anchors-and-other-style-options&quot;&gt;&lt;/a&gt;Font awesome icons, fancy section anchors and other style options&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You no longer have to carry the icons around with you whereever you go!
+&lt;p&gt;You no longer have to carry icons around with you where ever you go!
 Asciidoctor 0.1.3 introduces Font-based admonition and CSS-based callout icons.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
@@ -605,7 +593,7 @@ Asciidoctor 0.1.3 introduces Font-based admonition and CSS-based callout icons.&
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Icons can make your document look sharp, but they are a pain to manage.
 That is, until now!
-Asciidoctor can &quot;draw&quot; icons using &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt;.&lt;/p&gt;
+Asciidoctor can &quot;draw&quot; icons using &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt; and CSS.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;To use this feature, just set the value of the &lt;code&gt;icons&lt;/code&gt; document attribute to &lt;code&gt;font&lt;/code&gt;.
@@ -623,7 +611,7 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;the HTML it produces:&lt;/p&gt;
+&lt;p&gt;Here’s the HTML it produces:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -643,7 +631,7 @@ Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;and a preview of how it renders:&lt;/p&gt;
+&lt;p&gt;And here’s a preview of how it renders:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;exampleblock&quot;&gt;
 
@@ -663,7 +651,8 @@ Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Asciidoctor adds a reference to the Font Awesome stylesheet and font files served from a CDN to the document header:&lt;/p&gt;
+&lt;p&gt;Asciidoctor adds a reference to the Font Awesome stylesheet, served from a CDN, to the document header.
+The stylesheet then imports the font from the same server.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -737,7 +726,7 @@ The default Asciidoctor stylesheet renders the anchor as a section entity (&lt;c
 &lt;dt class=&quot;hdlist1&quot;&gt;&lt;code&gt;sectlinks&lt;/code&gt;&lt;/dt&gt;
 &lt;dd&gt;
 &lt;p&gt;When this attribute is enabled on a document, the section titles are turned into links.
-The default Asciidoctor stylesheet displays linked section titles in the same color as unlinked section titles, not underlined and darkened the same amount as links when the cursor hovers over them.&lt;/p&gt;
+The default Asciidoctor stylesheet displays linked section titles in the same color as normal section titles.&lt;/p&gt;
 &lt;/dd&gt;
 &lt;/dl&gt;
 &lt;/div&gt;
@@ -761,7 +750,7 @@ Section title anchors depend on the default Asciidoctor stylesheet to render pro
 &lt;h3 id=&quot;lead-paragraph-style&quot;&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#lead-paragraph-style&quot;&gt;&lt;/a&gt;Lead paragraph style&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Simply apply &lt;code&gt;role=&quot;lead&quot;&lt;/code&gt; to any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).&lt;/p&gt;
+&lt;p&gt;Simply apply &lt;code&gt;role=&quot;lead&quot;&lt;/code&gt; (or &lt;code&gt;.lead&lt;/code&gt;) above any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -845,6 +834,31 @@ You &lt;strong&gt;must&lt;/strong&gt; set the &lt;code&gt;experimental&lt;/code&
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;For example:&lt;/p&gt;
 &lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[options=&quot;header&quot;, caption=&quot;&quot;]
+.Common browser keyboard shortcuts
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+
+|kbd:[Ctrl+Shift+N]
+|New incognito window
+
+|kbd:[Ctrl + +]
+|Increase zoom
+|===&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;renders as:&lt;/p&gt;
+&lt;/div&gt;
 &lt;table class=&quot;tableblock frame-all grid-all&quot; style=&quot;width:100%; &quot;&gt;
 &lt;caption class=&quot;title&quot;&gt;Common browser keyboard shortcuts&lt;/caption&gt;
 &lt;colgroup&gt;
@@ -875,7 +889,7 @@ You &lt;strong&gt;must&lt;/strong&gt; set the &lt;code&gt;experimental&lt;/code&
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;You no longer have to struggle to explain to users what keys they are supposed to press.&lt;/p&gt;
+&lt;p&gt;You no longer have to struggle to explain to users what combination of keys they are supposed to press.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -963,28 +977,28 @@ If you have suggestions, we want to hear from you!&lt;/p&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#a-better-programmer-s-best-friend&quot;&gt;&lt;/a&gt;A better programmer’s best friend&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;AsciiDoc is a programmer’s best friend because it keeps your source code close to the documentation and makes inserting it easy.
+&lt;p&gt;AsciiDoc is a programmer’s best friend because it keeps your source code close to the documentation and makes inserting source code easy.
 Now there are even more options for pulling source code snippets into your document and highlighting them.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
 &lt;h3 id=&quot;normalizing-the-block-indentation-of-included-source-code&quot;&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#normalizing-the-block-indentation-of-included-source-code&quot;&gt;&lt;/a&gt;Normalizing the block indentation of included source code&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Source code snippets from external files are often padded with a leading block indent.
+&lt;p&gt;Source code snippets from external files are often padded with leading block indent.
 This leading block indent is relevant in its original context.
 However, once inside the documentation, this leading block indent is no longer needed.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The attribute &lt;code&gt;indent&lt;/code&gt; allows the leading block indent to be stripped and, optionally, a new block indent to be set for blocks with verbatim content (listing, literal, source, verse, etc.).&lt;/p&gt;
+&lt;p&gt;The attribute &lt;code&gt;indent&lt;/code&gt; allows the leading block indent to be stripped and, optionally, a new block indent to be inserted for blocks with verbatim content (listing, literal, source, verse, etc.).&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;ulist&quot;&gt;
 
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is 0, the leading block indent is stripped (tabs are also replaced with 4 spaces).&lt;/p&gt;
+&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is 0, the leading block indent is stripped (tabs are replaced with 4 spaces).&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is &amp;gt; 0, the leading block indent is first stripped (tabs are also replaced with 4 spaces), then a block is indented by the number of columns equal to this value.&lt;/p&gt;
+&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is &amp;gt; 0, the leading block indent is first stripped (tabs are replaced with 4 spaces), then a block is indented by the number of columns equal to this value.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -1191,7 +1205,7 @@ public class Person {
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Previously, part headings (level 0 sections in a book doctype document) weren’t distinguishable from other &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tags.
 In 0.1.3, these &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tags get the &lt;code&gt;sect0&lt;/code&gt; class name to be consistent with the class names assigned to the other section levels.
-This means applying custom styles to the part headings is much easier.&lt;/p&gt;
+This addition simplifies the effort of adding custom styles to the part headings.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1220,7 +1234,7 @@ To disable the built-in TOC, unassign the &lt;code&gt;toc-placement&lt;/code&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect3&quot;&gt;
 &lt;h4 id=&quot;updated-level-0-section-title-styles&quot;&gt;
-&lt;a class=&quot;anchor&quot; href=&quot;#updated-level-0-section-title-styles&quot;&gt;&lt;/a&gt;Updated Level 0 section title styles&lt;/h4&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#updated-level-0-section-title-styles&quot;&gt;&lt;/a&gt;Updated level 0 section title styles&lt;/h4&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Level 0 section titles (only applicable to book doctype) are now organized in their own level within the table of contents (in the HTML backend).
 A CSS class has been added to each outline level (i.e., &lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; element) that cooresponds to the level of the sections it contains (e.g., &lt;code&gt;sect1level&lt;/code&gt;)
@@ -1324,7 +1338,7 @@ Asciidoctor supports three key elements from the Markdown syntax (where AsciiDoc
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;In addition to the equals marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (&lt;code&gt;#&lt;/code&gt;) from Markdown.
+&lt;p&gt;In addition to the equal marker (&lt;code&gt;=&lt;/code&gt;) used for defining single-line section titles, Asciidoctor recognizes the hash symbol (&lt;code&gt;#&lt;/code&gt;) from Markdown.
 That means the outline of a Markdown document will render just fine as an AsciiDoc document.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
@@ -1341,7 +1355,7 @@ content&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The Markdown-style blockquotes where previously described in &lt;a href=&quot;#alternate-blockquote-syntax&quot;&gt;Alternate blockquote syntax&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Markdown-style headings and blockquotes join support for fenced code blocks (from GitHub-flavored Markdown), added in a previous release.&lt;/p&gt;
+&lt;p&gt;Markdown-style headings and blockquotes join support for fenced code blocks (from GitHub-flavored Markdown), which was added in a previous release.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -1355,7 +1369,7 @@ puts Asciidoctor.render(&quot;http://asciidoc.org[AsciiDoc] is a _lightweight_ m
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;We hope these additions help to ease and encourage migration from Markdown to AsciiDoc.
-To alleviate concerns about fragmentation from AsciiDoc, we maintain an &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf&quot;&gt;AsciiDoc compatibility configuration file&lt;/a&gt; in the project that brings these same enhancements to AsciiDoc when used.&lt;/p&gt;
+To alleviate concerns about fragmentation from AsciiDoc, we maintain an &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf&quot;&gt;AsciiDoc configuration file&lt;/a&gt; in the project that brings these same enhancements to AsciiDoc when used.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;/div&gt;
@@ -1368,7 +1382,7 @@ To alleviate concerns about fragmentation from AsciiDoc, we maintain an &lt;a hr
 &lt;h3 id=&quot;the-windows-path-bug-is-fixed&quot;&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#the-windows-path-bug-is-fixed&quot;&gt;&lt;/a&gt;The Windows path bug is fixed&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Asciidoctor 0.1.3 forces all system paths to resolve to paths that use forward slashes.
+&lt;p&gt;Asciidoctor 0.1.3 properly detects the Windows environment and converts all backslashes to forward slashes.
 This eliminates file path resolution errors in Windows.
 Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/330&quot;&gt;330&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1556,19 +1570,25 @@ definition
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;{set:sourcedir:src/main/java}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;It’s effectively the same as:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;literalblock&quot;&gt;
 
 &lt;div class=&quot;content monospaced&quot;&gt;
-&lt;pre&gt;:attrname: value&lt;/pre&gt;
+&lt;pre&gt;:sourcedir: src/main/java&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;The set directive outputs the value set.&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;This is important for being able to assign document attributes in places where attribute entries are not processed.&lt;/p&gt;
+&lt;p&gt;This is important for being able to assign document attributes in places where attribute entry lines are not normally processed, such as in a table cell.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;An example of where this might be used is documented in the &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/wiki/How-to-set-the-background-color-of-a-table-cell&quot;&gt;how to set the background color of a table cell&lt;/a&gt; tip.&lt;/p&gt;
@@ -1579,7 +1599,7 @@ definition
 &lt;h3 id=&quot;block-title-not-allowed-above-document-title&quot;&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#block-title-not-allowed-above-document-title&quot;&gt;&lt;/a&gt;Block title not allowed above document title&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;Previously, a block title line above a Level 0 heading was being processed and passed on to the first content block.
+&lt;p&gt;Previously, a block title line above a level 0 heading was being processed and passed on to the first content block.
 AsciiDoc sees the block title as the first line of content and does not create a header as a result.
 Asciidoctor’s behavior is now consistent with AsciiDoc.&lt;/p&gt;
 &lt;/div&gt;
@@ -1640,7 +1660,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;can now be written as:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -1663,7 +1683,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;or&lt;/p&gt;
+&lt;p&gt;can now be written as:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 
@@ -1763,8 +1783,8 @@ Previously, that required:&lt;/p&gt;
 &lt;a class=&quot;anchor&quot; href=&quot;#thanks&quot;&gt;&lt;/a&gt;Thanks!&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
-&lt;p&gt;As we hoped, Asciidoctor 0.1.2 broke into the next increment of 10,000 downloads.
-RubyGems.org is reporting over &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;20&lt;/a&gt; of the Asciidoctor gem prior to this release and Maven Central over 100 downloads of the Java integration.
+&lt;p&gt;As we hoped, Asciidoctor 0.1.2 downloads broke into the next increment of 10,000.
+RubyGems.org was reporting over &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;20,000 downloads&lt;/a&gt; of the Asciidoctor gem prior to this release and Maven Central over 100 downloads of the Java integration.
 We look forward reaching new landmarks with 0.1.3.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
