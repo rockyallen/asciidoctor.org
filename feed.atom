@@ -2,9 +2,1849 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>http://asciidoctor.org/</id>
 <title>Asciidoctor</title>
-<updated>2013-05-21T01:29:55-06:00</updated>
+<updated>2013-05-31T22:24:04-06:00</updated>
 <link href="http://asciidoctor.org/feed.atom" rel="self" type="application/atom+xml" />
 <link href="http://asciidoctor.org/" rel="alternate" type="text/html" />
+<entry>
+<id>http://asciidoctor.org/news/2013/05/31/asciidoctor-0-1-3-released/</id>
+<title>Asciidoctor 0.1.3 released!</title>
+<updated>2013-05-31T22:24:04-06:00</updated>
+<published>2013-05-31T22:24:04-06:00</published>
+<link href="http://asciidoctor.org/news/2013/05/31/asciidoctor-0-1-3-released/" rel="alternate" type="text/html" />
+<category scheme="http://asciidoctor.org/news/tags" term="release" />
+<summary>
+We&#8217;re thrilled to announce the release of Asciidoctor 0.1.3!
+
+
+Asciidoctor is an open source text processor and publishing toolchain written in Ruby for converting AsciiDoc markup into HTML 5, DocBook 4.5 and custom formats.
+Asciidoctor is written in Ruby, but available to any JVM language using the Java integration library.
+
+
+This release marks an important milestone.
+It&#8217;s been exactly 6 months since Dan picked up Asciidoctor and started driving it forward.
+The project sure has come a long way since then.
+With this release, we&#8217;ve moved past just implementing AsciiDoc to advancing it, as this post highlights.
+
+
+
+
+
+Overview
+
+
+The focus of this release cycle was on:
+
+
+
+
+
+AsciiDoc compliance (yes,......
+</summary>
+<content type="html">
+&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We’re thrilled to announce the release of &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;Asciidoctor 0.1.3&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;em&gt;Asciidoctor is an open source text processor and publishing toolchain written in Ruby for converting AsciiDoc markup into HTML 5, DocBook 4.5 and custom formats.
+Asciidoctor is written in Ruby, but available to any JVM language using the Java integration library.&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release marks an important milestone.
+It’s been exactly 6 months since Dan picked up Asciidoctor and started driving it forward.
+The project sure has come a long way since then.
+With this release, we’ve moved past just implementing AsciiDoc to advancing it, as this post highlights.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;overview&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#overview&quot;&gt;&lt;/a&gt;Overview&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The focus of this release cycle was on:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;AsciiDoc compliance (yes, even more)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New shorthand syntax and macros&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Improved styles&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Markdown compatibility&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bug fixes&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The valuable feedback we’ve received has helped bring Asciidoctor to 99.5% compliance with the AsciiDoc syntax and key parts of the Markdown syntax.
+The improvements have given Asciidoctor a &lt;strong&gt;10% boost in speed&lt;/strong&gt; over the previous release, nearly &lt;strong&gt;40x as fast&lt;/strong&gt; as the native AsciiDoc processor.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This document covers most of the new and noteworthy fixes and enhancements.
+Here’s the TL;DR version if you’re in a hurry.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;File encoding and Windows path bugs fixed!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Haml/Slim/Jade-inspired syntax for defining the id and role for block content&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shorthand syntax to set the table format using the first position of the block delimiter&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alternate &quot;air quotes&quot; delimiters for defining block quotations&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Support for Markdown blockquotes and headings (to join fenced code blocks)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Font-based admonition and callout icons powered by &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linked section titles as floating anchors or linked title text&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Target window and role (i.e., CSS class) attributes for links&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Option to use &lt;a href=&quot;https://code.google.com/p/google-code-prettify&quot; target=&quot;_blank&quot;&gt;google-code-prettify&lt;/a&gt; to highlight source code blocks&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Attributes resolved in target of include macro&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Control over block indentation of included content&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sidebar placement for table of contents (&lt;code&gt;toc2&lt;/code&gt;)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Macros for keyboard shortcuts, menu selections and UI buttons (experimental)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Table of contents honors numbered setting for section titles&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Inline doctype for rendering simple, unstructured content&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shorthand syntax for passing attributes to the Asciidoctor API&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;General style improvements in default stylesheet&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Updated asciidoc.conf compatibility configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;1,000+ tests in the test suite&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Over &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues?milestone=4&amp;amp;state=closed&quot;&gt;40 issues resolved&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Read on to learn about these great improvements!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;write-faster-with-new-shorthand-syntax&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#write-faster-with-new-shorthand-syntax&quot;&gt;&lt;/a&gt;Write faster with new shorthand syntax!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;shorthand-notation-for-setting-code-id-code-and-code-role-code-block-attributes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#shorthand-notation-for-setting-code-id-code-and-code-role-code-block-attributes&quot;&gt;&lt;/a&gt;Shorthand notation for setting &lt;code&gt;id&lt;/code&gt; and &lt;code&gt;role&lt;/code&gt; block attributes&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the spirit of Haml, Jade, and Slim, Asciidoctor allows you to assign the &lt;code&gt;id&lt;/code&gt; and &lt;code&gt;role&lt;/code&gt; attributes on a block using attribute shortcuts.
+This shorthand syntax is useful for creating presentations with AsciiDoc, where lots of style classes in the markup are needed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Consider the following AsciiDoc markup:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[[goals]]
+[role=&quot;incremental&quot;]
+* Goal 1
+* Goal 2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In Asciidoctor, this can now be written as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[#goals.incremental]
+* Goal 1
+* Goal 2&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;#&lt;/code&gt; prefix is recognized as shorthand for &lt;code&gt;id=&lt;/code&gt;, and the &lt;code&gt;.&lt;/code&gt; prefix is recognized as shorthand for &lt;code&gt;role=&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Both source snippets produce the following HTML:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div id=&quot;goals&quot; class=&quot;ulist incremental&quot;&amp;gt;
+&amp;lt;ul&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Goal 1&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Goal 2&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
+&amp;lt;/ul&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This shorthand notation is part of a block’s style and leverages the first attribute position to its fullest extent.
+Let’s say you wanted to create a blockquote from an open block that has an id and role.
+You would put the &lt;code&gt;quote&lt;/code&gt; style before the &lt;code&gt;#&lt;/code&gt; (&lt;code&gt;id&lt;/code&gt;) and &lt;code&gt;.&lt;/code&gt; (&lt;code&gt;role&lt;/code&gt;) in the first attribute position.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example, this markup:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote#think.big, Donald Trump]
+____
+As long as you're going to be thinking anyway, think big.
+____&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;generates this HTML output:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div id=&quot;think&quot; class=&quot;quoteblock big&quot;&amp;gt;
+&amp;lt;blockquote&amp;gt;
+&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
+&amp;lt;p&amp;gt;As long as your going to be thinking anyway, think big.&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&amp;lt;div class=&quot;attribution&quot;&amp;gt;
+&amp;amp;#8212; Donald Trump
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here are some other things to know about this notation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;code&gt;role&lt;/code&gt; value supports multiple entries separated by dots.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example, &lt;code&gt;[.summary.incremental]&lt;/code&gt; emits the HTML attribute &lt;code&gt;class=&quot;summary incremental&quot;&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The order of &lt;code&gt;id&lt;/code&gt; and &lt;code&gt;role&lt;/code&gt; does not matter.&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example, &lt;code&gt;[#goals.incremental]&lt;/code&gt; and &lt;code&gt;[.incremental#goals]&lt;/code&gt; produce the same output.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#block-metadata&quot;&gt;block attributes&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats&quot;&gt;&lt;/a&gt;Shorthand notation for setting &lt;code&gt;csv&lt;/code&gt; and &lt;code&gt;dsv&lt;/code&gt; table formats&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The first position of the table block delimiter (i.e., &lt;code&gt;|===&lt;/code&gt;) can be replaced by a data delimiter to set the table format accordingly.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Instead of specifying the &lt;code&gt;csv&lt;/code&gt; format using an attribute:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[format=&quot;csv&quot;]
+|===
+a,b,c
+|===&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can simply replace the leading pipe (&lt;code&gt;|&lt;/code&gt;) with a comma (&lt;code&gt;,&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;,===
+a,b,c
+,===&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the same way, the &lt;code&gt;dsv&lt;/code&gt; format can be specified by replacing the leading pipe (&lt;code&gt;|&lt;/code&gt;) with a colon (&lt;code&gt;:&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:===
+a:b:c
+:===&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Now, you only need the block attribute list above the table for any additional options.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#a-new-perspective-on-tables&quot;&gt;tables&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;alternate-blockquote-syntax&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#alternate-blockquote-syntax&quot;&gt;&lt;/a&gt;Alternate blockquote syntax&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor 0.1.3 brings three new syntax variations for marking up blockquotes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist arabic&quot;&gt;
+
+&lt;ol class=&quot;arabic&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;Quoted paragraph&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Air quotes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Markdown-style&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s an example of a traditional AsciiDoc quote block with three parts (quoted text, attribution and source):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
+____
+I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.
+____&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here are the three new alternatives.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;quoted-paragraph-blockquote&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#quoted-paragraph-blockquote&quot;&gt;&lt;/a&gt;Quoted paragraph blockquote&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can turn a single paragraph into a blockquote by:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;surrounding it with double quotes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;adding an optional attribution—prefixed with two dashes—below the quoted text.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&quot;I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.&quot;
+-- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s the result of the abbreviated blockquote syntax:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+
+&lt;blockquote&gt;
+I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.
+&lt;/blockquote&gt;
+&lt;div class=&quot;attribution&quot;&gt;
+&lt;cite&gt;Papers of Thomas Jefferson: Volume 11&lt;/cite&gt;
+&lt;br&gt;
+— Thomas Jefferson
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;nixon-inspired-air-quotes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#nixon-inspired-air-quotes&quot;&gt;&lt;/a&gt;Nixon-inspired “Air quotes”&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As a tip of the hat to Dick, Asciidoctor recognizes text between &quot;air quotes&quot; as a quote block.
+Air quotes are the best thing since fenced code blocks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[, Richard M. Nixon]
+&quot;&quot;
+When the President does it, that means that it's not illegal.
+&quot;&quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/Air_quotes&quot; target=&quot;_blank&quot;&gt;Air quotes&lt;/a&gt; are two double quotes on each line, emulating the gesture of making quote marks with two fingers on each hand.
+This gesture is reminiscinet of the &lt;a href=&quot;http://www.flickr.com/photos/lee20sk/3942032514&quot; target=&quot;_blank&quot;&gt;V for Victory gesture&lt;/a&gt; made famous by Richard Nixon.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;markdown-style-blockquotes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#markdown-style-blockquotes&quot;&gt;&lt;/a&gt;Markdown-style blockquotes&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor even supports Markdown-style blockquotes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&amp;gt; I hold it that a little rebellion now and then is a good thing,
+&amp;gt; and as necessary in the political world as storms in the physical.
+&amp;gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This markup renders the same as the previous example.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Like Markdown, Asciidoctor supports block content inside the quote block, including nested blockquotes:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;Markdown-style blockquote containing block content&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;no-highlight language-no-highlight&quot;&gt;&amp;gt; &amp;gt; What's new?
+&amp;gt;
+&amp;gt; I've got Markdown in my AsciiDoc!
+&amp;gt;
+&amp;gt; &amp;gt; Like what?
+&amp;gt;
+&amp;gt; * Blockquotes
+&amp;gt; * Headings
+&amp;gt; * Fenced code blocks
+&amp;gt;
+&amp;gt; &amp;gt; Is there more?
+&amp;gt;
+&amp;gt; Yep. AsciiDoc and Markdown share a lot of common syntax already.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s how this conversation renders:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+
+&lt;blockquote&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What’s new?&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I’ve got Markdown in my AsciiDoc!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Like what?&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Blockquotes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Headings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fenced code blocks&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+
+&lt;blockquote&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Is there more?&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Yep. AsciiDoc and Markdown share a lot of common syntax already. Just try it.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#building-blocks-in-asciidoc&quot;&gt;blocks&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;target-window-and-role-attributes-for-links&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#target-window-and-role-attributes-for-links&quot;&gt;&lt;/a&gt;Target window and role attributes for links&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You often need to set the target attribute on a link element (&lt;code&gt;&amp;lt;a&amp;gt;&lt;/code&gt;) so the link opens in a new window (e.g., &lt;code&gt;&amp;lt;a href=&quot;…&quot; target=&quot;_blank&quot;&amp;gt;&lt;/code&gt;).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This type of configuration is normally specified using attributes.
+However, AsciiDoc does not parse attributes in the link macro by default.
+In Asciidoctor, you can now enable parsing of link macro attributes by setting the &lt;code&gt;linkattrs&lt;/code&gt; document attribute in the header.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt; :linkattrs:&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can also specify the name of the target window using the &lt;code&gt;window&lt;/code&gt; attribute:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google, window=&quot;_blank&quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since &lt;code&gt;_blank&lt;/code&gt; is the most common window name, we’ve introduced shorthand for it.
+Just end the link text with a caret (&lt;code&gt;^&lt;/code&gt;):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock caution&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-caution&quot; title=&quot;Caution&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+If you use the caret syntax more than once in a single paragraph, you may need to escape the first caret with a backslash.
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^, role=&quot;external&quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can now have fun styling your links.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;font-awesome-icons-fancy-section-anchors-and-other-style-options&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#font-awesome-icons-fancy-section-anchors-and-other-style-options&quot;&gt;&lt;/a&gt;Font awesome icons, fancy section anchors and other style options&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You no longer have to carry the icons around with you whereever you go!
+Asciidoctor 0.1.3 introduces Font-based admonition and CSS-based callout icons.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;admonition-icons-powered-by-font-awesome&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#admonition-icons-powered-by-font-awesome&quot;&gt;&lt;/a&gt;Admonition icons powered by Font Awesome&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Icons can make your document look sharp, but they are a pain to manage.
+That is, until now!
+Asciidoctor can &quot;draw&quot; icons using &lt;a href=&quot;http://fortawesome.github.io/Font-Awesome&quot; target=&quot;_blank&quot;&gt;Font Awesome&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To use this feature, just set the value of the &lt;code&gt;icons&lt;/code&gt; document attribute to &lt;code&gt;font&lt;/code&gt;.
+Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s an example, starting with the AsciiDoc source:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font
+
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome!&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;the HTML it produces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;admonitionblock note&quot;&amp;gt;
+&amp;lt;table&amp;gt;
+&amp;lt;tr&amp;gt;
+&amp;lt;td class=&quot;icon&quot;&amp;gt;
+&amp;lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&amp;gt;&amp;lt;/i&amp;gt;
+&amp;lt;/td&amp;gt;
+&amp;lt;td class=&quot;content&quot;&amp;gt;
+Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
+&amp;lt;/td&amp;gt;
+&amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;and a preview of how it renders:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;exampleblock&quot;&gt;
+
+&lt;div class=&quot;content&quot;&gt;
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor adds a reference to the Font Awesome stylesheet and font files served from a CDN to the document header:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;link rel=&quot;stylesheet&quot;
+  href=&quot;http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css&quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock important&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-important&quot; title=&quot;Important&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+The default stylesheet (or any stylesheet produced by the &lt;a href=&quot;http://asciidoctor.org/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/&quot;&gt;Asciidoctor stylesheet factory&lt;/a&gt;) is required for this feature to work.
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#admonitions&quot;&gt;admonition blocks&lt;/a&gt; | &lt;a href=&quot;http://asciidoctor.org/docs/render-documents/styles-and-attributes&quot;&gt;Asciidoctor stylesheets&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;css-based-callout-icons&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#css-based-callout-icons&quot;&gt;&lt;/a&gt;CSS-based callout icons&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The font icons setting also enables callout icons drawn using CSS.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font &lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;
+
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! &lt;i class=&quot;conum&quot;&gt;2&lt;/i&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Activates font-based icons in the HTML5 backend&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;2&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Admonition block that uses a font-based icon&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Kick that icon directory to the curb.
+You’re untethered!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;section-titles-as-links-and-styled-with-floating-icons&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#section-titles-as-links-and-styled-with-floating-icons&quot;&gt;&lt;/a&gt;Section titles as links and styled with floating icons&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Two document attributes are available to control section linking:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dlist&quot;&gt;
+&lt;dl&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;&lt;code&gt;sectanchors&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;When this attribute is enabled on a document, an anchor (empty link) is added before the section title.
+The default Asciidoctor stylesheet renders the anchor as a section entity (&lt;code&gt;§&lt;/code&gt;) that floats to the left of the section title.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;dt class=&quot;hdlist1&quot;&gt;&lt;code&gt;sectlinks&lt;/code&gt;&lt;/dt&gt;
+&lt;dd&gt;
+&lt;p&gt;When this attribute is enabled on a document, the section titles are turned into links.
+The default Asciidoctor stylesheet displays linked section titles in the same color as unlinked section titles, not underlined and darkened the same amount as links when the cursor hovers over them.&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock note&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+Section title anchors depend on the default Asciidoctor stylesheet to render properly.
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#section-titles&quot;&gt;section titles&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;lead-paragraph-style&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#lead-paragraph-style&quot;&gt;&lt;/a&gt;Lead paragraph style&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Simply apply &lt;code&gt;role=&quot;lead&quot;&lt;/code&gt; to any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;cleaner-quote-blocks-and-verses&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#cleaner-quote-blocks-and-verses&quot;&gt;&lt;/a&gt;Cleaner quote blocks and verses&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If a quote or verse block does not have an attribution, the empty attribution div is no longer displayed in the HTML5 output.
+This corrects any output styling inconsistencies caused by the empty div.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;AsciiDoc quote block syntax without attribution&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote]
+____
+Words of wisdom.
+____&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;HTML output using Asciidoctor 0.1.2 and older versions&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;quoteblock&quot;&amp;gt;
+&amp;lt;blockquote&amp;gt;
+&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
+&amp;lt;p&amp;gt;Words of wisdom.&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+
+&amp;lt;div class=&quot;attribution&quot;&amp;gt;
+&amp;lt;/div&amp;gt;
+
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;HTML output using Asciidoctor 0.1.3&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;quoteblock&quot;&amp;gt;
+&amp;lt;blockquote&amp;gt;
+&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
+&amp;lt;p&amp;gt;Words of wisdom.&amp;lt;/p&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/blockquote&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The default stylesheet has been updated to follow suit.
+Additionally, verse blocks have been given a style makeover, so they should appear consistent with the default look and feel.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The stylesheet has also been updated with some new styles for the experimental user input macros.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;return-of-the-mac-ros-making-it-clear-what-readers-are-supposed-to-press&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#return-of-the-mac-ros-making-it-clear-what-readers-are-supposed-to-press&quot;&gt;&lt;/a&gt;Return of the Mac(ros): Making it clear what readers are supposed to press&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;admonitionblock important&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-important&quot; title=&quot;Important&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+You &lt;strong&gt;must&lt;/strong&gt; set the &lt;code&gt;experimental&lt;/code&gt; attribute to enable these macros.
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;keyboard-shortcuts&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#keyboard-shortcuts&quot;&gt;&lt;/a&gt;Keyboard shortcuts&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor now recognizes a macro for creating keyboard shortcuts following the syntax &lt;code&gt;kbd:[key(+key)*]&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class=&quot;tableblock frame-all grid-all&quot; style=&quot;width:100%; &quot;&gt;
+&lt;caption class=&quot;title&quot;&gt;Common browser keyboard shortcuts&lt;/caption&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width:50%;&quot;&gt;
+&lt;col style=&quot;width:50%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Shortcut&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Purpose&lt;/th&gt;
+&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;kbd&gt;F11&lt;/kbd&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Toggle fullscreen&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;kbd class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;T&lt;/kbd&gt;&lt;/kbd&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Open a new tab&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;kbd class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;Shift&lt;/kbd&gt;+&lt;kbd&gt;N&lt;/kbd&gt;&lt;/kbd&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;New incognito window&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;kbd class=&quot;keyseq&quot;&gt;&lt;kbd&gt;Ctrl&lt;/kbd&gt;+&lt;kbd&gt;+&lt;/kbd&gt;&lt;/kbd&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;Increase zoom&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You no longer have to struggle to explain to users what keys they are supposed to press.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;menu-selections&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#menu-selections&quot;&gt;&lt;/a&gt;Menu selections&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Trying to explain to someone how to select a menu item can be a pain.
+With the new &lt;code&gt;menu&lt;/code&gt; macro, the symbols do the work.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;To save the file, select menu:File[Save].
+
+Select menu:View[Zoom &amp;gt; Reset] to reset the zoom level to the default setting.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The instructions in the example appove appear as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;exampleblock&quot;&gt;
+
+&lt;div class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To save the file, select &lt;span class=&quot;menuseq&quot;&gt;&lt;span class=&quot;menu&quot;&gt;File&lt;/span&gt; ▸ &lt;span class=&quot;menuitem&quot;&gt;Save&lt;/span&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Select &lt;span class=&quot;menuseq&quot;&gt;&lt;span class=&quot;menu&quot;&gt;View&lt;/span&gt; ▸ &lt;span class=&quot;submenu&quot;&gt;Zoom&lt;/span&gt; ▸ &lt;span class=&quot;menuitem&quot;&gt;Reset&lt;/span&gt;&lt;/span&gt; to reset the zoom level to the default setting.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;ui-buttons&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#ui-buttons&quot;&gt;&lt;/a&gt;UI buttons&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It can be equally difficult to communicate to the reader that they need to press a button.
+They can’t tell if you are saying “OK” or they are supposed to look for a button labeled &quot;OK&quot;.
+It’s all about getting the semantics right.
+The new &lt;code&gt;btn&lt;/code&gt; macro to the rescue!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s the result:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;exampleblock&quot;&gt;
+
+&lt;div class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Press the &lt;b class=&quot;button&quot;&gt;OK&lt;/b&gt; button when you are finished.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Select a file in the file navigator and click &lt;b class=&quot;button&quot;&gt;Open&lt;/b&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We are looking for feedback on these macros before setting them in stone.
+If you have suggestions, we want to hear from you!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;a-better-programmer-s-best-friend&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#a-better-programmer-s-best-friend&quot;&gt;&lt;/a&gt;A better programmer’s best friend&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;AsciiDoc is a programmer’s best friend because it keeps your source code close to the documentation and makes inserting it easy.
+Now there are even more options for pulling source code snippets into your document and highlighting them.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;normalizing-the-block-indentation-of-included-source-code&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#normalizing-the-block-indentation-of-included-source-code&quot;&gt;&lt;/a&gt;Normalizing the block indentation of included source code&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Source code snippets from external files are often padded with a leading block indent.
+This leading block indent is relevant in its original context.
+However, once inside the documentation, this leading block indent is no longer needed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The attribute &lt;code&gt;indent&lt;/code&gt; allows the leading block indent to be stripped and, optionally, a new block indent to be set for blocks with verbatim content (listing, literal, source, verse, etc.).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is 0, the leading block indent is stripped (tabs are also replaced with 4 spaces).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When &lt;code&gt;indent&lt;/code&gt; is &amp;gt; 0, the leading block indent is first stripped (tabs are also replaced with 4 spaces), then a block is indented by the number of columns equal to this value.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example, this AsciiDoc source:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
+----
+    def names
+      @name.split ' '
+    end
+----&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Produces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;def names
+  @name.split ' '
+end&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You’ll need this feature when including content:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
+----
+include::lib/document.rb[lines=5..10]
+----&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This AsciiDoc source:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[indent=2]
+----
+    def names
+      @name.split ' '
+    end
+----&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Produces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;  def names
+    @name.split ' '
+  end&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock important&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-important&quot; title=&quot;Important&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+
+The relative indentation between the lines of source code &lt;strong&gt;is not affected&lt;/strong&gt;.
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;including-files-relative-to-a-common-source-directory&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#including-files-relative-to-a-common-source-directory&quot;&gt;&lt;/a&gt;Including files relative to a common source directory&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor now expands attributes in the target of the include macro.
+That means you only have to type the unique part of the path when linking to a source file.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:sourcedir: src/main/java
+
+[source,java]
+----
+include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
+----&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The target of the include macro resolves to:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre&gt;src/main/java/org/asciidoctor/Asciidoctor.java&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-writers-guide/#listing-and-source-code-blocks&quot;&gt;include macro and blocks&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;new-source-highlighter-google-code-prettify&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#new-source-highlighter-google-code-prettify&quot;&gt;&lt;/a&gt;New source highlighter: google-code-prettify&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Source code snippets can now be highlighted with the &lt;a href=&quot;https://code.google.com/p/google-code-prettify&quot;&gt;google-code-prettify library&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;To use prettify, enable it by setting the &lt;code&gt;source-highlighter&lt;/code&gt; attribute in the document header (or pass it as an argument):&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:source-highlighter: prettify&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor will link to the prettify JavaScript library and stylesheet and emit the HTML prettify requires to highlight the source code.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Consider this source code block:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,java]
+----
+public class Person {
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+}
+----&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor produces the following HTML:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;listingblock&quot;&amp;gt;
+&amp;lt;div class=&quot;content monospaced&quot;&amp;gt;
+&amp;lt;pre class=&quot;prettyprint java language-java&quot;&amp;gt;&amp;lt;code&amp;gt;public class Person {
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+}&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The key addition is the &lt;code&gt;prettyprint&lt;/code&gt; class on the &lt;code&gt;&amp;lt;pre&amp;gt;&lt;/code&gt; tag.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/docs/asciidoc-quick-reference/#source-code&quot;&gt;enabling source code highlighters&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;documents-with-more-depth-a-bigger-picture-and-mini-content&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#documents-with-more-depth-a-bigger-picture-and-mini-content&quot;&gt;&lt;/a&gt;Documents with more depth, a bigger picture and mini content&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;level-5-section-title-added&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#level-5-section-title-added&quot;&gt;&lt;/a&gt;Level 5 section title added&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor 0.1.3 includes syntax for the level 5 section title.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;===== Level 5 Section Title&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The level 5 title maps to the &lt;code&gt;&amp;lt;h6&amp;gt;&lt;/code&gt; tag in the &lt;code&gt;html5&lt;/code&gt; backend.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;part-headings-in-html-backend&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#part-headings-in-html-backend&quot;&gt;&lt;/a&gt;Part headings in HTML backend&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Previously, part headings (level 0 sections in a book doctype document) weren’t distinguishable from other &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tags.
+In 0.1.3, these &lt;code&gt;&amp;lt;h1&amp;gt;&lt;/code&gt; tags get the &lt;code&gt;sect0&lt;/code&gt; class name to be consistent with the class names assigned to the other section levels.
+This means applying custom styles to the part headings is much easier.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;table-of-contents-layout-and-style-options&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#table-of-contents-layout-and-style-options&quot;&gt;&lt;/a&gt;Table of contents layout and style options&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor 0.1.3 includes numerous table of contents (TOC) style changes and options.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;more-table-of-contents-position-options&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#more-table-of-contents-position-options&quot;&gt;&lt;/a&gt;More table of contents position options&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The AsciiDoc &lt;code&gt;toc2&lt;/code&gt; layout is now included in the Asciidoctor default stylesheet as the &lt;code&gt;toc2&lt;/code&gt; class.
+To use the alternate TOC, specify the document attribute &lt;code&gt;toc2&lt;/code&gt; in the header.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The table of contents can also be inserted directly beneath a document’s preamble.
+To place the TOC under the preamble, assign the new value, &lt;code&gt;preamble&lt;/code&gt; to the &lt;code&gt;toc-placement&lt;/code&gt; attribute.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The TOC macro requires the &lt;code&gt;toc&lt;/code&gt; attribute to be set.
+To disable the built-in TOC, unassign the &lt;code&gt;toc-placement&lt;/code&gt; attribute (&lt;code&gt;toc-placement!&lt;/code&gt;)&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect3&quot;&gt;
+&lt;h4 id=&quot;updated-level-0-section-title-styles&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#updated-level-0-section-title-styles&quot;&gt;&lt;/a&gt;Updated Level 0 section title styles&lt;/h4&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Level 0 section titles (only applicable to book doctype) are now organized in their own level within the table of contents (in the HTML backend).
+A CSS class has been added to each outline level (i.e., &lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; element) that cooresponds to the level of the sections it contains (e.g., &lt;code&gt;sect1level&lt;/code&gt;)
+The addition of these CSS classes make it easier to style the TOC.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In the default stylesheet, the following style changes have been made to the TOC:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Level 0 and level 1 section titles are aligned vertically&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Extra spacing has been added between level 0 and level 1 section titles to make level 0 section titles stand out&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Level 0 section titles (i.e., parts) appear in italic text&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Also, the &lt;code&gt;type=&quot;none&quot;&lt;/code&gt; attribute has been added to the &lt;code&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; elements to provide a hint to the browser not to add a number in front of each item.
+This change satisfies the requirement that the TOC should &quot;just work&quot; without a stylesheet.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text&quot;&gt;&lt;/a&gt;Introducing the &lt;code&gt;inline&lt;/code&gt; doctype for inline formatting on input text&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;There may be cases when you only want to apply inline AsciiDoc formatting to input text without wrapping it in a block element.
+For example, in the &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet/blob/master/README.asciidoc&quot;&gt;Asciidoclet project&lt;/a&gt; (AsciiDoc in Javadoc), only the inline formatting is needed for the text in Javadoc tags.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The rules for the inline doctype are as follows:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Only a single paragraph is read from the AsciiDoc source&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Inline formatting is applied&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The output is not wrapped in the normal paragraph tags&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Given the following input:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Processing it with the options &lt;code&gt;doctype=inline&lt;/code&gt; and &lt;code&gt;backend=html5&lt;/code&gt; produces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;a href=&quot;http://asciidoc.org&quot;&amp;gt;AsciiDoc&amp;lt;/a&amp;gt; is a &amp;lt;em&amp;gt;lightweight&amp;lt;/em&amp;gt; markup language&amp;amp;#8230;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Asciidoctor processor is now able to cover the full range of output, from unstructured (inline) text to a full, standalone document!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;markdown-in-your-asciidoc&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#markdown-in-your-asciidoc&quot;&gt;&lt;/a&gt;Markdown in your AsciiDoc?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That’s right!
+Asciidoctor supports three key elements from the Markdown syntax (where AsciiDoc and Markdown don’t already overlap).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Headings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Blockquotes&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fenced code blocks&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;In addition to the equals marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (&lt;code&gt;#&lt;/code&gt;) from Markdown.
+That means the outline of a Markdown document will render just fine as an AsciiDoc document.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;# Document Title
+
+## Section One
+
+content&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The Markdown-style blockquotes where previously described in &lt;a href=&quot;#alternate-blockquote-syntax&quot;&gt;Alternate blockquote syntax&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Markdown-style headings and blockquotes join support for fenced code blocks (from GitHub-flavored Markdown), added in a previous release.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;```ruby
+require 'asciidoctor'
+
+puts Asciidoctor.render(&quot;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&quot;)
+```&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We hope these additions help to ease and encourage migration from Markdown to AsciiDoc.
+To alleviate concerns about fragmentation from AsciiDoc, we maintain an &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf&quot;&gt;AsciiDoc compatibility configuration file&lt;/a&gt; in the project that brings these same enhancements to AsciiDoc when used.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;important-bug-fixes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#important-bug-fixes&quot;&gt;&lt;/a&gt;Important bug fixes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;the-windows-path-bug-is-fixed&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#the-windows-path-bug-is-fixed&quot;&gt;&lt;/a&gt;The Windows path bug is fixed&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor 0.1.3 forces all system paths to resolve to paths that use forward slashes.
+This eliminates file path resolution errors in Windows.
+Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/330&quot;&gt;330&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed&quot;&gt;&lt;/a&gt;File encoding errors when using Ruby 1.9 and above is fixed&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoctor was not properly setting the encoding on data read from files when the default system encoding was not UTF-8.
+To correct this issue, any data that comes into Asciidoctor 0.1.3 is force encoded to UTF-8 on Ruby 1.9 and above.
+Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/308&quot;&gt;308&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;additional-bug-fixes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#additional-bug-fixes&quot;&gt;&lt;/a&gt;Additional bug fixes&lt;/h3&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The Asciidoctor CLI no longer splits attribute key/value pairs on the first equal sign.
+Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/291&quot;&gt;291&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Asciidoctor no longer crashes if &lt;code&gt;to_file&lt;/code&gt; and &lt;code&gt;base_dir&lt;/code&gt; are both set.
+Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/335&quot;&gt;335&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;DocBook renderer works if the author is defined using document attributes.
+Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues/301&quot;&gt;301&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;compliance-fixes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#compliance-fixes&quot;&gt;&lt;/a&gt;Compliance fixes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;-code-doctitle-code-attribute&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#-code-doctitle-code-attribute&quot;&gt;&lt;/a&gt;&lt;code&gt;doctitle&lt;/code&gt; attribute&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;doctitle&lt;/code&gt; attribute can be used anywhere in a document.
+It’s value is identical to the value returned by &lt;code&gt;Document#doctitle&lt;/code&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;AsciiDoc &lt;code&gt;doctitle&lt;/code&gt; syntax&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;= Document Title
+
+The document title is {doctitle}.&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;
+&lt;code&gt;doctitle&lt;/code&gt; output result&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre&gt;The document title is Document Title.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend&quot;&gt;&lt;/a&gt;Horizontal layout for labeled lists added to DocBook 4.5 backend&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[horizontal]
+first term:: definition
++
+more detail
+
+second term:: definition&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Renders:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;informaltable tabstyle=&quot;horizontal&quot; frame=&quot;none&quot; colsep=&quot;0&quot; rowsep=&quot;0&quot;&amp;gt;
+&amp;lt;tgroup cols=&quot;2&quot;&amp;gt;
+&amp;lt;colspec colwidth=&quot;15*&quot;/&amp;gt;
+&amp;lt;colspec colwidth=&quot;85*&quot;/&amp;gt;
+&amp;lt;tbody valign=&quot;top&quot;&amp;gt;
+&amp;lt;row&amp;gt;
+&amp;lt;entry&amp;gt;
+&amp;lt;simpara&amp;gt;first term&amp;lt;/simpara&amp;gt;
+&amp;lt;/entry&amp;gt;
+&amp;lt;entry&amp;gt;
+&amp;lt;simpara&amp;gt;definition&amp;lt;/simpara&amp;gt;
+&amp;lt;simpara&amp;gt;more detail&amp;lt;/simpara&amp;gt;
+&amp;lt;/entry&amp;gt;
+&amp;lt;/row&amp;gt;
+&amp;lt;row&amp;gt;
+&amp;lt;entry&amp;gt;
+&amp;lt;simpara&amp;gt;second term&amp;lt;/simpara&amp;gt;
+&amp;lt;/entry&amp;gt;
+&amp;lt;entry&amp;gt;
+&amp;lt;simpara&amp;gt;definition&amp;lt;/simpara&amp;gt;
+&amp;lt;/entry&amp;gt;
+&amp;lt;/row&amp;gt;
+&amp;lt;/tbody&amp;gt;
+&amp;lt;/tgroup&amp;gt;
+&amp;lt;/informaltable&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;consecutive-terms-in-labeled-list-share-same-code-varlistentry-code&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#consecutive-terms-in-labeled-list-share-same-code-varlistentry-code&quot;&gt;&lt;/a&gt;Consecutive terms in labeled list share same &lt;code&gt;varlistentry&lt;/code&gt;
+&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Consecutive terms in a labeled list share the same &lt;code&gt;varlistentry&lt;/code&gt; in the &lt;code&gt;docbook&lt;/code&gt; backend.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;term::
+alt term::
+definition&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Produces:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;variablelist&amp;gt;
+&amp;lt;varlistentry&amp;gt;
+&amp;lt;term&amp;gt;
+term
+&amp;lt;/term&amp;gt;
+&amp;lt;term&amp;gt;
+alt term
+&amp;lt;/term&amp;gt;
+&amp;lt;listitem&amp;gt;
+&amp;lt;simpara&amp;gt;
+definition
+&amp;lt;/simpara&amp;gt;
+&amp;lt;/listitem&amp;gt;
+&amp;lt;/varlistentry&amp;gt;
+&amp;lt;/variablelist&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;special-sections-and-styles&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#special-sections-and-styles&quot;&gt;&lt;/a&gt;Special sections and styles&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The &lt;code&gt;partintro&lt;/code&gt; and &lt;code&gt;abstract&lt;/code&gt; styles can be used on open blocks and are handled correctly by the renderer.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Sections assigned the &lt;code&gt;glossary&lt;/code&gt; and &lt;code&gt;appendix&lt;/code&gt; styles are now handled correctly in Asciidoctor.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;assign-document-variables-inline&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#assign-document-variables-inline&quot;&gt;&lt;/a&gt;Assign document variables inline&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Document variables can be assigned using the following syntax:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre&gt;{set:&amp;lt;attrname&amp;gt;[!][:&amp;lt;value&amp;gt;]}&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It’s effectively the same as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre&gt;:attrname: value&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The set directive outputs the value set.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This is important for being able to assign document attributes in places where attribute entries are not processed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;An example of where this might be used is documented in the &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/wiki/How-to-set-the-background-color-of-a-table-cell&quot;&gt;how to set the background color of a table cell&lt;/a&gt; tip.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;block-title-not-allowed-above-document-title&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#block-title-not-allowed-above-document-title&quot;&gt;&lt;/a&gt;Block title not allowed above document title&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Previously, a block title line above a Level 0 heading was being processed and passed on to the first content block.
+AsciiDoc sees the block title as the first line of content and does not create a header as a result.
+Asciidoctor’s behavior is now consistent with AsciiDoc.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;.Misplaced block title
+= Document Title
+Author Name&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;irc-scheme-rendered-as-link&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#irc-scheme-rendered-as-link&quot;&gt;&lt;/a&gt;irc: scheme rendered as link&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The following input is now rendered as a link.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;irc://irc.freenode.org/#asciidoctor&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;cli-and-api-updates&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#cli-and-api-updates&quot;&gt;&lt;/a&gt;CLI and API updates&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;specify-any-backend-with-the-asciidoctor-cli&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#specify-any-backend-with-the-asciidoctor-cli&quot;&gt;&lt;/a&gt;Specify any backend with the Asciidoctor CLI&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Previously, the Asciidoctor CLI restricted the user from specifying a backend other than &lt;code&gt;html5&lt;/code&gt; or &lt;code&gt;docbook45&lt;/code&gt;.
+Now, any non-empty value can be specified as the backend.
+This is critical when you want to use a &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-backends&quot;&gt;custom backend&lt;/a&gt;, such as deck.js or dzslides.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api&quot;&gt;&lt;/a&gt;Set safe mode with a string, symbol or integer in the Asciidoctor API&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The safe level option now accepts a symbol, string or integer value to lookup the safe level.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :safe =&amp;gt; 'server')&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :safe =&amp;gt; :server)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api&quot;&gt;&lt;/a&gt;Use a string or symbol to set the backend in the Asciidoctor API&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The backend option now accepts a symbol or string value.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :backend =&amp;gt; 'docbook')&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :backend =&amp;gt; :docbook)&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;pass-attributes-as-a-string-or-array-to-the-asciidoctor-api&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#pass-attributes-as-a-string-or-array-to-the-asciidoctor-api&quot;&gt;&lt;/a&gt;Pass attributes as a string or array to the Asciidoctor API&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Previously, attributes were passed as a Hash to the Asciidoctor API methods.
+At times, this made the argument list feel heavy.
+These methods now accept the attributes as a string or array.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For instance, consider a user wants to pass the attribute that enables the table of contents (&lt;code&gt;toc&lt;/code&gt;) and auto-numbering (&lt;code&gt;numbered&lt;/code&gt;).
+Previously, that required:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
+    :attributes =&amp;gt; {'toc' =&amp;gt; '', 'numbered' =&amp;gt; ''})&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since both attributes are simple flags, the invocation can be simplified as:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
+    :attributes =&amp;gt; ['toc', 'numbered'])&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;It can be further simplified using the array-from-string shorthand in Ruby:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
+    :attributes =&amp;gt; %w(toc numbered))&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That leads us into attributes specified as a string:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
+    :attributes =&amp;gt; 'toc numbered')&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That’s quite an improvement over the original call.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If the attribute requires a value, such as &lt;code&gt;source-highlighter&lt;/code&gt;, you just use the key=value form:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
+    :attributes =&amp;gt; 'toc numbered source-highlighter=coderay')&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This API call parallels this commandline invocation:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre&gt;$ asciidoctor -a toc -a numbered -a source-highlighter=coderay master.adoc&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This enhancement is particularly useful in the integrations, such as the &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-gradle-plugin&quot;&gt;Gradle plugin&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Learn more in the Asciidoctor Docs: &lt;a href=&quot;http://asciidoctor.org/rdoc/Asciidoctor.html&quot;&gt;Asciidoctor Ruby API&lt;/a&gt; | &lt;a href=&quot;https://oss.sonatype.org/service/local/repositories/releases/archive/org/asciidoctor/asciidoctor-java-integration/0.1.2.1/asciidoctor-java-integration-0.1.2.1-javadoc.jar/!/org/asciidoctor/package-summary.html&quot;&gt;Asciidoctor Java API&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;And that’s a wrap!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;thanks&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#thanks&quot;&gt;&lt;/a&gt;Thanks!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;As we hoped, Asciidoctor 0.1.2 broke into the next increment of 10,000 downloads.
+RubyGems.org is reporting over &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;20&lt;/a&gt; of the Asciidoctor gem prior to this release and Maven Central over 100 downloads of the Java integration.
+We look forward reaching new landmarks with 0.1.3.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The level of participation in the Asciidoctor project continues to grow at an impressive rate.
+We welcomed several new projects in this development iteration, including &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet/blob/master/README.asciidoc&quot;&gt;Asciidoclet&lt;/a&gt;, a Javadoclet for writing Javadoc in AsciiDoc by &lt;a href=&quot;https://github.com/johncarl81&quot;&gt;John Ericksen&lt;/a&gt;, as well as several AsciiDoc editor initiatives.
+We’re very grateful to everyone who participates, especially those who contribute and spread the word :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We’d especially like to thank the following people for their contributions and feedback on this release:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/bleathem&quot;&gt;Brian Leathem&lt;/a&gt; (Enhancements, patches and QA)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lightguard&quot;&gt;Jason Porter&lt;/a&gt; (CLI improvements)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/graphitefriction&quot;&gt;Sarah White&lt;/a&gt; (Documentation, user experience and QA)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lordofthejars&quot;&gt;Alex Soto&lt;/a&gt; (Java integration improvements)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/johncarl81&quot;&gt;John Ericksen&lt;/a&gt; (Asciidoclet)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/aalmiray&quot;&gt;Andres Almiray&lt;/a&gt; (Doctorpad editor)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/glaforge&quot;&gt;Guillaume Laforge&lt;/a&gt; (Doctorpad editor)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/pilhuhn&quot;&gt;Heiko Rupp&lt;/a&gt; (Bug reports and suggestions)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/eddelplus&quot;&gt;Jochen Eddelbüttel&lt;/a&gt; (Bug reports and Windows testing)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/davidfavor&quot;&gt;David Favor&lt;/a&gt; (Bug reports)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/snowolfe&quot;&gt;Bruce Wolfe&lt;/a&gt; (Bug reports)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/ge0ffrey&quot;&gt;Geoffrey De Smet&lt;/a&gt; (Feature requests)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/dobermai&quot;&gt;Obermaier Dominik&lt;/a&gt; (Feature requests)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/lincolnthree&quot;&gt;Lincoln Baxter III&lt;/a&gt; (Feature requests)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;strong&gt;A special shout out to Brian Leathem for finding a critical regression the night before the release.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Additional thanks goes to everyone who is using the project and has contributed to it.
+Together, we’re making documentation fun, easy, and rewarding!&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;what-s-next&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#what-s-next&quot;&gt;&lt;/a&gt;What’s next?&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;This release is just the beginning of the release train.
+Look for releases of the Java integration, Maven plugin, Gradle plugin and more recent additions such as the editors.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
 <entry>
 <id>http://asciidoctor.org/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/</id>
 <title>asciidoctor.js - Render AsciiDoc in your browser!</title>
@@ -58,7 +1898,8 @@ When I first......
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#introduction&quot;&gt;&lt;/a&gt;Introduction&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;imageblock feature right&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
@@ -80,7 +1921,8 @@ The resulting JavaScript can be executed in any JavaScript runtime environment, 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;proving-the-concept&quot;&gt;Proving the concept&lt;/h2&gt;
+&lt;h2 id=&quot;proving-the-concept&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#proving-the-concept&quot;&gt;&lt;/a&gt;Proving the concept&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;When I first discovered Opal, I thought to myself, &quot;yeah, this could work.&quot;
@@ -96,7 +1938,8 @@ Little did I know that achieving this proof of concept was more than a small tas
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-scripts&quot;&gt;The scripts&lt;/h2&gt;
+&lt;h2 id=&quot;the-scripts&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#the-scripts&quot;&gt;&lt;/a&gt;The scripts&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;There are two scripts generated by the Rake build that are needed to run Asciidoctor in the browser:&lt;/p&gt;
@@ -116,7 +1959,7 @@ Little did I know that achieving this proof of concept was more than a small tas
 &lt;div class=&quot;admonitionblock warning&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/icons/warning.png&quot; alt=&quot;Warning&quot;&gt;
+&lt;i class=&quot;icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
@@ -151,7 +1994,8 @@ For instance, in an HTML page, add these two &lt;code&gt;&amp;lt;script&amp;gt;&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;h2 id=&quot;usage&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;To interact with the generated code, you either:&lt;/p&gt;
@@ -191,7 +2035,8 @@ $window.addEventListener 'DOMContentLoaded', proc {
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;changes-to-asciidoctor&quot;&gt;Changes to Asciidoctor&lt;/h2&gt;
+&lt;h2 id=&quot;changes-to-asciidoctor&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#changes-to-asciidoctor&quot;&gt;&lt;/a&gt;Changes to Asciidoctor&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;At the moment, some changes are necessary in Asciidoctor to get it to compile with Opal.
@@ -202,7 +2047,8 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;go-play&quot;&gt;Go play!&lt;/h2&gt;
+&lt;h2 id=&quot;go-play&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#go-play&quot;&gt;&lt;/a&gt;Go play!&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Now it&amp;#8217;s time to go play with asciidoctor.js.
@@ -500,7 +2346,7 @@ Resolves &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-java-integr
 &lt;div class=&quot;admonitionblock warning&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/icons/warning.png&quot; alt=&quot;Warning&quot;&gt;
+&lt;i class=&quot;icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
@@ -523,7 +2369,7 @@ Resolves &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-java-integr
 &lt;div class=&quot;admonitionblock warning&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/icons/warning.png&quot; alt=&quot;Warning&quot;&gt;
+&lt;i class=&quot;icon-warning&quot; title=&quot;Warning&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
@@ -738,7 +2584,8 @@ The improvements have also given Asciidoctor a &lt;strong&gt;28% boost in speed&
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;key-improvements&quot;&gt;Key improvements&lt;/h2&gt;
+&lt;h2 id=&quot;key-improvements&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#key-improvements&quot;&gt;&lt;/a&gt;Key improvements&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;dlist&quot;&gt;
 &lt;dl&gt;
@@ -825,7 +2672,7 @@ Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issue
 &lt;div class=&quot;admonitionblock note&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/icons/note.png&quot; alt=&quot;Note&quot;&gt;
+&lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
@@ -847,7 +2694,8 @@ Resolves issue &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issue
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;new-website-and-documentation&quot;&gt;New website and documentation&lt;/h2&gt;
+&lt;h2 id=&quot;new-website-and-documentation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#new-website-and-documentation&quot;&gt;&lt;/a&gt;New website and documentation&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;strong&gt;You&amp;#8217;re looking at it!&lt;/strong&gt;&lt;/p&gt;
@@ -870,11 +2718,12 @@ I summarized this information in an article titled &lt;a href=&quot;https://nofl
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;thanks&quot;&gt;Thanks!&lt;/h2&gt;
+&lt;h2 id=&quot;thanks&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#thanks&quot;&gt;&lt;/a&gt;Thanks!&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The amount of participation in the Asciidoctor project, particularly around the integrations, has increased &lt;em&gt;tremendously&lt;/em&gt; since the last release.
-Asciidoctor 0.1.1 crossed the &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;10,000 downloads mark&lt;/a&gt; prior to this release.
+Asciidoctor 0.1.1 crossed the &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;10&lt;/a&gt; prior to this release.
 We look forward to 0.1.2 breaking the next 10,000.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -960,7 +2809,7 @@ Dependency declaration in Maven
   &lt;dependency&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   1
   &lt;/dependency&gt;
 &lt;/dependencies&gt;
 
@@ -969,7 +2818,7 @@ Dependency declaration in Maven
 
 
 
-
+1
 As this library tracks the version of Asciidoctor, you can use which every version of Asciidoctor you prefer.
 
 
@@ -993,7 +2842,8 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;h2 id=&quot;installation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Since &lt;code&gt;asciidoctor-java-integration&lt;/code&gt; is a standard jar file, the only thing you should do is add library into classpath.&lt;/p&gt;
@@ -1005,7 +2855,7 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
   &amp;lt;dependency&amp;gt;
     &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
     &amp;lt;artifactId&amp;gt;asciidoctor-java-integration&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;${asciidoctor.version}&amp;lt;/version&amp;gt;                   &lt;img src=&quot;http://asciidoctor.org/images/icons/callouts/1.png&quot; alt=&quot;1&quot;&gt;
+    &amp;lt;version&amp;gt;${asciidoctor.version}&amp;lt;/version&amp;gt;                   &lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;
   &amp;lt;/dependency&amp;gt;
 &amp;lt;/dependencies&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1013,7 +2863,7 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
 &lt;div class=&quot;colist arabic&quot;&gt;
 
 &lt;table&gt;&lt;tr&gt;
-&lt;td&gt;&lt;img src=&quot;http://asciidoctor.org/images/icons/callouts/1.png&quot; alt=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;&lt;/td&gt;
 &lt;td&gt;As this library tracks the version of Asciidoctor, you can use which every version of Asciidoctor you prefer.&lt;/td&gt;
 &lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
@@ -1021,7 +2871,8 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;usage&quot;&gt;Usage&lt;/h2&gt;
+&lt;h2 id=&quot;usage&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The core interface of &lt;code&gt;asciidoctor-java-integration&lt;/code&gt; is &lt;code&gt;Asciidoctor&lt;/code&gt; interface. It provides two methods for rendering asciidoc content, &lt;code&gt;render&lt;/code&gt; and &lt;code&gt;renderFile&lt;/code&gt;. Both of them returns a string with rendered content.&lt;/p&gt;
@@ -1080,7 +2931,8 @@ System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;options&quot;&gt;Options&lt;/h3&gt;
+&lt;h3 id=&quot;options&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#options&quot;&gt;&lt;/a&gt;Options&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;http://asciidoctor.org/&quot;&gt;Asciidoctor&lt;/a&gt; supports different kind of options, like &lt;code&gt;in_place&lt;/code&gt; which renders the output inside a file, &lt;code&gt;template_dir&lt;/code&gt; used to provide a directory of Tilt-compatible templates to be used instead of the default built-in templates, or for example &lt;code&gt;attributes&lt;/code&gt; option where we can set key-value pairs of attributes that will be used within asciidoc document.&lt;/p&gt;
 &lt;/div&gt;
@@ -1126,7 +2978,8 @@ String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&l
 
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
-&lt;h3 id=&quot;utilities&quot;&gt;Utilities&lt;/h3&gt;
+&lt;h3 id=&quot;utilities&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#utilities&quot;&gt;&lt;/a&gt;Utilities&lt;/h3&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;A utility class for searching all asciidoc files present in a root folder and all its subfolders is given. In fact it finds all files that end up with &lt;em&gt;.asc&lt;/em&gt;, &lt;em&gt;.asciidoc&lt;/em&gt;, &lt;em&gt;.ad&lt;/em&gt; or &lt;em&gt;.adoc&lt;/em&gt;. This class is &lt;code&gt;AsciidocDirectoryWalker&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -1143,7 +2996,8 @@ List&amp;lt;File&amp;gt; asciidocFiles = directoryWalker.scan();&lt;/code&gt;&lt
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;/h2&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#contributing&quot;&gt;&lt;/a&gt;Contributing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;You can contribute with patches, better documentation, feature requests, any help you&amp;#8217;re able to provide.&lt;/p&gt;
@@ -1248,7 +3102,8 @@ Best of all, it&amp;#8217;s already available from Maven Central.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;how-it-works&quot;&gt;How it works&lt;/h2&gt;
+&lt;h2 id=&quot;how-it-works&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#how-it-works&quot;&gt;&lt;/a&gt;How it works&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The Maven plugin loads JRuby, scans for AsciiDoc files in the specified directory, then invokes &lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt; to render them.
@@ -1258,7 +3113,8 @@ You have the option of rendering the files to HTML 5 and DocBook 4.5.&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;setup-and-usage&quot;&gt;Setup and usage&lt;/h2&gt;
+&lt;h2 id=&quot;setup-and-usage&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#setup-and-usage&quot;&gt;&lt;/a&gt;Setup and usage&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Adding this plugin to your Maven POM is simple.
@@ -1298,7 +3154,8 @@ Just add this plugin declaration:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;versioning&quot;&gt;Versioning&lt;/h2&gt;
+&lt;h2 id=&quot;versioning&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#versioning&quot;&gt;&lt;/a&gt;Versioning&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The version of the Maven plugin will track the version of Asciidoctor.
@@ -1309,7 +3166,8 @@ If an interim fix needs to be made to the plugin, an additional number will be a
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;future&quot;&gt;Future&lt;/h2&gt;
+&lt;h2 id=&quot;future&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#future&quot;&gt;&lt;/a&gt;Future&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Currently, the plugin uses its own JRuby integration to invoke Asciidoctor (which is written in Ruby).
@@ -1324,7 +3182,8 @@ AsciiDoc attributes control options such as adding a table of contents, turning 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;contributing&quot;&gt;Contributing&lt;/h2&gt;
+&lt;h2 id=&quot;contributing&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#contributing&quot;&gt;&lt;/a&gt;Contributing&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;We&amp;#8217;re always open for patches, better documentation, feature requests, evangelizing or any help you&amp;#8217;re able to provide.&lt;/p&gt;
@@ -1501,7 +3360,7 @@ Asciidoctor is now deployed to render AsciiDoc markup in any of the......
 &lt;div class=&quot;admonitionblock note lead&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/octocat.jpg&quot; alt=&quot;Note&quot;&gt;
+&lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 
@@ -1516,7 +3375,8 @@ Asciidoctor is now deployed to render AsciiDoc markup in any of the......
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;about-asciidoc&quot;&gt;About AsciiDoc&lt;/h2&gt;
+&lt;h2 id=&quot;about-asciidoc&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#about-asciidoc&quot;&gt;&lt;/a&gt;About AsciiDoc&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;&lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; is a lightweight markup language akin to &lt;a href=&quot;http://github.github.com/github-flavored-markdown&quot;&gt;Markdown&lt;/a&gt;. Going beyond Markdown, AsciiDoc supports all the structural elements necessary for drafting articles, technical manuals and books. Several O&amp;#8217;Reilly authors, including &lt;a href=&quot;https://github.com/matthewmccullough&quot;&gt;Matthew McCullough&lt;/a&gt;, &lt;a href=&quot;https://github.com/tlberglund&quot;&gt;Tim Berglund&lt;/a&gt; and &lt;a href=&quot;http://www.apeth.net/matt/iosbooktoolchain.html&quot;&gt;Matt Neuburg&lt;/a&gt;, have used it to write books for that iconic technical library. AsciiDoc is fully capable of serving as a shorthand replacement for &lt;a href=&quot;http://www.docbook.org/whatis&quot;&gt;DocBook&lt;/a&gt;, which it can also output.&lt;/p&gt;
@@ -1602,7 +3462,8 @@ for converting AsciiDoc source files and strings into HTML 5,
 DocBook 4.5 and other formats.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+&lt;h2 id=&quot;installation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;You can install the Asciidoctor RubyGem using the &lt;code&gt;gem&lt;/code&gt;
@@ -1632,7 +3493,8 @@ using the &lt;code&gt;yum&lt;/code&gt; command:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;benefits&quot;&gt;Benefits&lt;/h2&gt;
+&lt;h2 id=&quot;benefits&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#benefits&quot;&gt;&lt;/a&gt;Benefits&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;Asciidoctor is:&lt;/p&gt;
@@ -1673,7 +3535,8 @@ using the &lt;code&gt;yum&lt;/code&gt; command:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-asciidoctor-implementation&quot;&gt;The Asciidoctor implementation&lt;/h2&gt;
+&lt;h2 id=&quot;the-asciidoctor-implementation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#the-asciidoctor-implementation&quot;&gt;&lt;/a&gt;The Asciidoctor implementation&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;AsciiDoctor is the first project to implement the AsciiDoc syntax in another language, in this case Ruby. It&amp;#8217;s an open source library (MIT licensed) published as a RubyGem to &lt;a href=&quot;http://rubygems.org/gems/asciidoctor&quot;&gt;rubygems.org&lt;/a&gt;. The project recently moved to the &lt;a href=&quot;https://github.com/asciidoctor&quot;&gt;Asciidoctor organization on GitHub&lt;/a&gt; to sustain its rapid growth.&lt;/p&gt;
@@ -1701,7 +3564,8 @@ using the &lt;code&gt;yum&lt;/code&gt; command:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect1&quot;&gt;
-&lt;h2 id=&quot;the-future-of-asciidoctor-and-asciidoc&quot;&gt;The future of Asciidoctor and AsciiDoc&lt;/h2&gt;
+&lt;h2 id=&quot;the-future-of-asciidoctor-and-asciidoc&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#the-future-of-asciidoctor-and-asciidoc&quot;&gt;&lt;/a&gt;The future of Asciidoctor and AsciiDoc&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
 &lt;p&gt;The future is bright for AsciiDoc. Despite being a seasoned, 10-year-old markup language, adoption of AsciiDoc has never been stronger. The developers have lots of &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor/issues?state=open&quot;&gt;ideas&lt;/a&gt; about how to improve and extend Asciidoctor, some of which push beyond the AsciiDoc syntax.&lt;/p&gt;
@@ -1723,7 +3587,7 @@ using the &lt;code&gt;yum&lt;/code&gt; command:&lt;/p&gt;
 &lt;div class=&quot;admonitionblock note&quot;&gt;
 &lt;table&gt;&lt;tr&gt;
 &lt;td class=&quot;icon&quot;&gt;
-&lt;img src=&quot;http://asciidoctor.org/images/icons/note.png&quot; alt=&quot;Note&quot;&gt;
+&lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&gt;&lt;/i&gt;
 &lt;/td&gt;
 &lt;td class=&quot;content&quot;&gt;
 

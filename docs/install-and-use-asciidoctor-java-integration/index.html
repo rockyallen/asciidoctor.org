@@ -17,7 +17,7 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="distribution">Distribution</h2>
+<h2 id="distribution"><a class="anchor" href="#distribution"></a>Distribution</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Asciidoctor Java integration is published to Maven Central.
@@ -55,7 +55,7 @@ The artifact information is summarized in the table below.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="installation">Installation</h2>
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Since the Asciidoctor Java integration is a standard <code>.jar</code> file, the only thing you should do is add the library to the classpath.</p>
@@ -67,7 +67,7 @@ The artifact information is summarized in the table below.</p>
   &lt;dependency&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <img src="/images/icons/callouts/1.png" alt="1">
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum">1</i>
   &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -76,7 +76,7 @@ The artifact information is summarized in the table below.</p>
 <div class="title">Dependency declaration in Gradle&#8217;s build.gradle</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="groovy language-groovy">dependencies {
-  compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <img src="/images/icons/callouts/1.png" alt="1">
+  compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <i class="conum">1</i>
     transitive = false
   }
 }</code></pre>
@@ -86,7 +86,7 @@ The artifact information is summarized in the table below.</p>
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>As this library tracks the version of Asciidoctor, you can use which ever version of Asciidoctor you prefer.</td>
 </tr>
 </table>
@@ -98,7 +98,7 @@ The artifact information is summarized in the table below.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="usage">Usage</h2>
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The main entry point for the Asciidoctor Java integration is the <code>Asciidoctor</code> Java interface.
@@ -139,7 +139,7 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 <table>
 <tr>
 <td class="icon">
-<img src="/images/icons/note.png" alt="Note">
+<i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
 
@@ -241,7 +241,7 @@ System.out.println(rendered.toString());</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="options">Options</h3>
+<h3 id="options"><a class="anchor" href="#options"></a>Options</h3>
 <div class="paragraph">
 <p>Asciidoctor supports numerous options, such as:</p>
 </div>
@@ -269,11 +269,11 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook");  <img src="/images/icons/callouts/1.png" alt="1">
+attributes.put("backend", "docbook");  <i class="conum">1</i>
 
 Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
-options.put("attributes", attributes); <img src="/images/icons/callouts/2.png" alt="2">
-options.put("in_place", true);         <img src="/images/icons/callouts/3.png" alt="3">
+options.put("attributes", attributes); <i class="conum">2</i>
+options.put("in_place", true);         <i class="conum">3</i>
 
 String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 </div>
@@ -282,15 +282,15 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> in the attributes map</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/2.png" alt="2"></td>
+<td><i class="conum">2</i></td>
 <td>Registers the attributes map as the <code>attributes</code> option in the options map</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/3.png" alt="3"></td>
+<td><i class="conum">3</i></td>
 <td>Defines the <code>in_place</code> option in the options map</td>
 </tr>
 </table>
@@ -305,11 +305,11 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Attributes attributes = new Attributes();
-attributes.setBackend("docbook");  <img src="/images/icons/callouts/1.png" alt="1">
+attributes.setBackend("docbook");  <i class="conum">1</i>
 
 Options options = new Options();
-options.setAttributes(attributes); <img src="/images/icons/callouts/2.png" alt="2">
-options.setInPlace(true);          <img src="/images/icons/callouts/3.png" alt="3">
+options.setAttributes(attributes); <i class="conum">2</i>
+options.setInPlace(true);          <i class="conum">3</i>
 
 String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 </div>
@@ -318,15 +318,15 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> in the attributes class</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/2.png" alt="2"></td>
+<td><i class="conum">2</i></td>
 <td>Registers the attributes class as the <code>attributes</code> option in the options class</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/3.png" alt="3"></td>
+<td><i class="conum">3</i></td>
 <td>Defines the <code>in_place</code> option in the options class</td>
 </tr>
 </table>
@@ -356,12 +356,12 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook")  <img src="/images/icons/callouts/1.png" alt="1">
+Map&lt;String, Object&gt; attributes = attributes().backend("docbook")  <i class="conum">1</i>
                                              .asMap();
 
 Map&lt;String, Object&gt; options = options().inPlace(true)
-                                       .attributes(attributes)	  <img src="/images/icons/callouts/2.png" alt="2">
-                                       .asMap();                  <img src="/images/icons/callouts/3.png" alt="3">
+                                       .attributes(attributes)	  <i class="conum">2</i>
+                                       .asMap();                  <i class="conum">3</i>
 
 String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 </div>
@@ -370,15 +370,15 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> using fluent API.</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/2.png" alt="2"></td>
+<td><i class="conum">2</i></td>
 <td>Registers the attributes map as <code>attributes</code>.</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/3.png" alt="3"></td>
+<td><i class="conum">3</i></td>
 <td>Converts options to <code>java.util.Map</code> instance.</td>
 </tr>
 </table>
@@ -390,25 +390,25 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Attributes attributes = attributes().backend("docbook").get();          <img src="/images/icons/callouts/1.png" alt="1">
-Options options = options().inPlace(true).attributes(attributes).get(); <img src="/images/icons/callouts/2.png" alt="2">
+Attributes attributes = attributes().backend("docbook").get();          <i class="conum">1</i>
+Options options = options().inPlace(true).attributes(attributes).get(); <i class="conum">2</i>
 
-String rendered = asciidoctor.renderFile("sample.adoc", options);       <img src="/images/icons/callouts/3.png" alt="3"></code></pre>
+String rendered = asciidoctor.renderFile("sample.adoc", options);       <i class="conum">3</i></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Defines and returns an <code>Attributes</code> class instead of <code>java.util.Map</code> by calling <code>get()</code> method instead of <code>asMap()</code>.</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/2.png" alt="2"></td>
+<td><i class="conum">2</i></td>
 <td>Defines and returns an <code>Options</code> class instead of <code>java.util.Map</code> by calling <code>get()</code> method instead of <code>asMap()</code>.</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/3.png" alt="3"></td>
+<td><i class="conum">3</i></td>
 <td>Renders the document passing <code>Options</code> class.</td>
 </tr>
 </table>
@@ -416,7 +416,7 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);       <img src
 
 </div>
 <div class="sect2">
-<h3 id="utilities">Utilities</h3>
+<h3 id="utilities"><a class="anchor" href="#utilities"></a>Utilities</h3>
 <div class="paragraph">
 <p>A utility class <code>AsciiDocDirectoryWalker</code> is available for searching the AsciiDoc files present in a root folder and its subfolders.
 <code>AsciiDocDirectoryWalker</code> locates all files that end with <code>.asc</code>, <code>.asciidoc</code>, <code>.ad</code> or <code>.adoc</code>.</p>
@@ -424,19 +424,19 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);       <img src
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>AsciiDocDirectoryWalker</code></div>
 <div class="content monospaced">
-<pre class="highlight"><code class="java language-java">DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <img src="/images/icons/callouts/1.png" alt="1">
-List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <img src="/images/icons/callouts/2.png" alt="2"></code></pre>
+<pre class="highlight"><code class="java language-java">DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum">1</i>
+List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <i class="conum">2</i></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Defines which parent directory is used for searching.</td>
 </tr>
 <tr>
-<td><img src="/images/icons/callouts/2.png" alt="2"></td>
+<td><i class="conum">2</i></td>
 <td>Returns a list of all AsciiDoc files found in root folder and its subfolders.</td>
 </tr>
 </table>
@@ -444,7 +444,7 @@ List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <im
 
 </div>
 <div class="sect2">
-<h3 id="gem_path">GEM_PATH</h3>
+<h3 id="gem_path"><a class="anchor" href="#gem_path"></a>GEM_PATH</h3>
 <div class="paragraph">
 <p>By default <code>asciidoctor-java-integration</code> comes with all required gems bundled within the jar. But in some circumstances like <code>OSGi</code> environments you may require to store gems in an external folder and be loaded by <code>asciidoctor-java-integration</code>. To accomplish this scenario, <code>create</code> method provides a parameter to set folder where gems are present. Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</code> environment variable to given path.</p>
 </div>
@@ -454,14 +454,14 @@ List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <im
 <pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 
-Asciidoctor asciidoctor = create("/my/gem/path"); <img src="/images/icons/callouts/1.png" alt="1"></code></pre>
+Asciidoctor asciidoctor = create("/my/gem/path"); <i class="conum">1</i></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Creates <code>Asciidoctor</code> instance with given GEM_PATH location.</td>
 </tr>
 </table>
@@ -472,7 +472,7 @@ Asciidoctor asciidoctor = create("/my/gem/path"); <img src="/images/icons/callou
 </div>
 </div>
 <div class="sect1">
-<h2 id="optimization">Optimization</h2>
+<h2 id="optimization"><a class="anchor" href="#optimization"></a>Optimization</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Sometimes JRuby starts slower than expected versus standard C-based, non-optimizing Ruby.
@@ -547,14 +547,14 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
 <div class="content monospaced">
-<pre class="highlight"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <img src="/images/icons/callouts/1.png" alt="1"></code></pre>
+<pre class="highlight"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum">1</i></code></pre>
 </div>
 </div>
 <div class="colist arabic">
 
 <table>
 <tr>
-<td><img src="/images/icons/callouts/1.png" alt="1"></td>
+<td><i class="conum">1</i></td>
 <td>Note that you should add <code>-J</code> before the flag.</td>
 </tr>
 </table>
@@ -566,7 +566,7 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 </div>
 </div>
 <div class="sect1">
-<h2 id="resources">Resources</h2>
+<h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Asciidoctor Java integration&#8217;s source code, including its latest developments and issues, can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctor-java-integration">repository</a>.
