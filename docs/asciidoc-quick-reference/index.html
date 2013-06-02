@@ -43,7 +43,7 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <li><a href="#attributes-and-substitutions">Attributes and Substitutions</a></li>
 <li><a href="#escaping-text">Escaping Text</a></li>
 <li><a href="#bibliography">Bibliography</a></li>
-<li><a href="#footnotes">Footnotes</a></li>
+<li><a href="#section-footnotes">Footnotes</a></li>
 </ol>
 </div>
 
@@ -3172,16 +3172,51 @@ From Journeyman to Master</em>. Addison-Wesley. 1999.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="footnotes"><a class="anchor" href="#footnotes"></a>Footnotes</h2>
+<h2 id="section-footnotes"><a class="anchor" href="#section-footnotes"></a>Footnotes</h2>
 <div class="sectionbody">
 <div class="listingblock">
-
+<div class="title">Normal and reusable footnotes</div>
 <div class="content monospaced">
-<pre>A statement footnote:[Clarification about this statement.].
+<pre>A statement.footnote:[Clarification about this statement.]
 
-Bold statement footnoteref:[disclaimer,These opinions are my own.].
+A bold statement.footnoteref:[disclaimer,These opinions are my own.]
 
-Another bold statement footenoteref:[disclaimer].</pre>
+Another bold statement.footenoteref:[disclaimer]</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<table class="tableblock frame-all grid-all unstyled" style="width:100%; ">
+<colgroup>
+<col style="width:100%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>A statement.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
+</div>
+<div class="paragraph">
+<p>A bold statement.<span class="footnote" id="_footnote_disclaimer">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
+</div>
+<div class="paragraph">
+<p>Another bold statement.<span class="footnoteref">[<a class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
+</div>
+
+<div id="footnotes">
+  <hr>
+  <div class="footnote" id="_footnote_1">
+    <a href="#_footnoteref_1">1</a>. Clarification about this statement.
+  </div>
+  <div class="footnote" id="_footnote_2">
+    <a href="#_footnoteref_2">2</a>. These opinions are my own.
+  </div>
+</div>
+</div></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 
