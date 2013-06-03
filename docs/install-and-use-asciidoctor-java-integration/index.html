@@ -24,7 +24,7 @@
 The artifact information is summarized in the table below.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Asciidoctor Java integration artifact information</caption>
+<caption class="title">Artifact information for the Asciidoctor Java integration library</caption>
 <colgroup>
 <col style="width:16%;">
 <col style="width:33%;">
@@ -43,13 +43,13 @@ The artifact information is summarized in the table below.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-java-integration%22">asciidoctor-java-integration</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-java-integration%7C0.1.2%7Cjar">0.1.2.1</a>*</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.2/asciidoctor-java-integration-0.1.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.2/asciidoctor-java-integration-0.1.2.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.2/asciidoctor-java-integration-0.1.2-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.2/asciidoctor-java-integration-0.1.2-sources.jar">source (jar)</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-java-integration%7C0.1.3%7Cjar">0.1.3</a>*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar-sources.jar">source (jar)</a></p></td>
 </tr>
 </tbody>
 </table>
 <div class="paragraph">
-<p>* This release is based on the Asciidoctor 0.1.2 release.</p>
+<p>* This release is based on the Asciidoctor 0.1.3 release.</p>
 </div>
 
 </div>
@@ -92,7 +92,18 @@ The artifact information is summarized in the table below.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>You can learn more about the plugins in <a href="/docs/install-and-use-asciidoctor-maven-plugin">How to Install and Use the Asciidoctor Maven Plugin</a> and <a href="/docs/install-and-use-asciidoctor-gradle-plugin">How to Install and Use the Asciidoctor Gradle Plugin</a>.</p>
+<p>You can learn more about these plugins in the following two guides:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="/docs/install-and-use-asciidoctor-maven-plugin">How to Install and Use the Asciidoctor Maven Plugin</a></p>
+</li>
+<li>
+<p><a href="/docs/install-and-use-asciidoctor-gradle-plugin">How to Install and Use the Asciidoctor Gradle Plugin</a></p>
+</li>
+</ul>
 </div>
 
 </div>
@@ -105,7 +116,7 @@ The artifact information is summarized in the table below.</p>
 This interface provides four methods for rendering AsciiDoc content, <code>render</code>, <code>renderFile</code>, <code>renderFiles</code> and <code>renderDirectory</code>.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 1. Method descriptions</caption>
+<caption class="title"><code>Asciidoctor</code> methods</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:66%;"> 
@@ -119,19 +130,23 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>render</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parses the AsciiDoc content into a document and renders it to the specified backend format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parses the AsciiDoc content read from a string or stream and renders it to the specified backend format.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderFile</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parses an AsciiDoc file into a document and renders it to the specified backend format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parses the AsciiDoc content read from a file and renders it to the specified backend format.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderFiles</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parses a list of AsciiDoc files into a document and renders it to the specified backend format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parses a list of AsciiDoc files and renders them to the specified backend format.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderDirectory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parses all AsciiDoc files that are present on a folder (and all subfolders) into a document and renders it to the specified backend format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parses all AsciiDoc files present in the specified directory (and any subdirectories) and renders them to the specified backend format.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>readDocumentHeader</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retrieves information from the header of an AsciiDoc document without parsing or rendering the entire document.</p></td>
 </tr>
 </tbody>
 </table>
@@ -149,10 +164,10 @@ All methods are overloaded to accomodate various ways to supply content and opti
 </table>
 </div>
 <div class="paragraph">
-<p>Additionally, a <code>factory</code> method is provided to create an instance of the <code>Asciidoctor</code> interface.</p>
+<p>Additionally, a factory method is provided to create an instance of the <code>Asciidoctor</code> interface.</p>
 </div>
 <div class="listingblock">
-<div class="title">Creation of Asciidoctor interface</div>
+<div class="title">Creating an <code>Asciidoctor</code> instance</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
@@ -189,12 +204,15 @@ String rendered = asciidoctor.renderFile(
 System.out.println(rendered);</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><code>renderFiles</code> will render a list of AsciiDoc files:</p>
+</div>
 <div class="listingblock">
-<div class="title">Rendering a list of files.</div>
+<div class="title">Rendering a list of files</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">//...
 String[] renderedFiles = asciidoctor.renderFiles(
-	Arrays.asList(new File("target/test-classes/rendersample.asciidoc")), new HashMap&lt;String, Object&gt;());
+    Arrays.asList(new File("target/test-classes/rendersample.asciidoc")), new HashMap&lt;String, Object&gt;());
 
 for(String renderedFile : renderedFiles) {
     System.out.println(renderedFile);
@@ -240,6 +258,99 @@ StringBuffer rendered = writer.getBuffer();
 System.out.println(rendered.toString());</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p><code>readDocumentHeader</code> retrieve information from the header of an AsciiDoc document without parsing or rendering the entire document.
+This method returns an instance of <code>org.asciidoctor.DocumentHeader</code> with all information from the header filled.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example AsciiDoc document with header information</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="asciidoc language-asciidoc">= Sample Document
+Doc Writer &lt;doc.writer@asciidoc.org&gt;; John Smith &lt;john.smith@asciidoc.org&gt;
+v1.0, 2013-05-20: First draft
+:title: Sample Document
+:tags: [document, example]
+
+Preamble...</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Reading header information from the AsciiDoc document</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">//...
+DocumentHeader header = asciidoctor.readDocumentHeader(
+    new File("target/test-classes/documentheaders.asciidoc"));
+
+System.out.println(header.getDocumentTitle()); <i class="conum">1</i>
+
+Author author = header.getAuthor(); <i class="conum">2</i>
+System.out.println(author.getEmail()); <i class="conum">3</i>
+System.out.println(author.getFullName()); <i class="conum">4</i>
+
+RevisionInfo revisionInfo = header.getRevisionInfo();
+
+System.out.println(revisionInfo.getDate()); <i class="conum">5</i>
+System.out.println(revisionInfo.getNumber()); <i class="conum">6</i>
+System.out.println(revisionInfo.getRemark()); <i class="conum">7</i></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+
+<table>
+<tr>
+<td><i class="conum">1</i></td>
+<td>prints <code>Sample Document</code></td>
+</tr>
+<tr>
+<td><i class="conum">2</i></td>
+<td>prints <code>Doc Writer</code></td>
+</tr>
+<tr>
+<td><i class="conum">3</i></td>
+<td>prints <code>doc.writer@asciidoc.org</code></td>
+</tr>
+<tr>
+<td><i class="conum">4</i></td>
+<td>prints <code>Doc Writer</code></td>
+</tr>
+<tr>
+<td><i class="conum">5</i></td>
+<td>prints <code>2013-05-20</code></td>
+</tr>
+<tr>
+<td><i class="conum">6</i></td>
+<td>prints <code>1.0</code></td>
+</tr>
+<tr>
+<td><i class="conum">7</i></td>
+<td>prints <code>First draft</code></td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <code>readDocumentHeader</code> method can be extremely useful for building an index of documents.</p>
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">import java.io.File;
+import java.util.HashSet;
+import java.util.Set;
+import org.asciidoctor.Asciidoctor;
+import org.asciidoctor.AsciiDocDirectoryWalker;
+import org.asciidoctor.DirectoryWalker;
+import org.asciidoctor.DocumentHeader;
+
+//...
+
+Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+Set&lt;DocumentHeader&gt; documentIndex = new HashSet&lt;DocumentHeader&gt;();
+DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs");
+for (File file : directoryWalker.scan()) {
+    documentIndex.add(asciidoctor.readDocumentHeader(file));
+}</code></pre>
+</div>
+</div>
 <div class="sect2">
 <h3 id="options"><a class="anchor" href="#options"></a>Options</h3>
 <div class="paragraph">
@@ -269,13 +380,13 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook");  <i class="conum">1</i>
+attributes.put("backend", "docbook"); <i class="conum">1</i>
 
 Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
 options.put("attributes", attributes); <i class="conum">2</i>
-options.put("in_place", true);         <i class="conum">3</i>
+options.put("in_place", true); <i class="conum">3</i>
 
-String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
+String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -296,7 +407,9 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 </table>
 </div>
 <div class="paragraph">
-<p>Another way for setting options is by using <code>org.asciidoctor.Options</code> class. <code>Options</code> is a simple Java class which contains methods for setting required options. Note that related with <code>org.asciidoctor.Options</code> class, there is <code>org.asciidoctor.Attributes</code> class, which can be used for setting attributes.</p>
+<p>Another way for setting options is by using <code>org.asciidoctor.Options</code> class.
+<code>Options</code> is a simple Java class which contains methods for setting required options.
+Note that related with <code>org.asciidoctor.Options</code> class, there is <code>org.asciidoctor.Attributes</code> class, which can be used for setting attributes.</p>
 </div>
 <div class="paragraph">
 <p><code>render</code> method is overloaded so <code>org.asciidoctor.Options</code> can be passed instead of a <code>java.util.Map</code>.</p>
@@ -305,13 +418,13 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Attributes attributes = new Attributes();
-attributes.setBackend("docbook");  <i class="conum">1</i>
+attributes.setBackend("docbook"); <i class="conum">1</i>
 
 Options options = new Options();
 options.setAttributes(attributes); <i class="conum">2</i>
-options.setInPlace(true);          <i class="conum">3</i>
+options.setInPlace(true); <i class="conum">3</i>
 
-String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
+String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -356,14 +469,14 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook")  <i class="conum">1</i>
+Map&lt;String, Object&gt; attributes = attributes().backend("docbook") <i class="conum">1</i>
                                              .asMap();
 
 Map&lt;String, Object&gt; options = options().inPlace(true)
-                                       .attributes(attributes)	  <i class="conum">2</i>
-                                       .asMap();                  <i class="conum">3</i>
+                                       .attributes(attributes) <i class="conum">2</i>
+                                       .asMap(); <i class="conum">3</i>
 
-String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
+String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -390,10 +503,10 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);</code></pre>
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Attributes attributes = attributes().backend("docbook").get();          <i class="conum">1</i>
+Attributes attributes = attributes().backend("docbook").get(); <i class="conum">1</i>
 Options options = options().inPlace(true).attributes(attributes).get(); <i class="conum">2</i>
 
-String rendered = asciidoctor.renderFile("sample.adoc", options);       <i class="conum">3</i></code></pre>
+String rendered = asciidoctor.renderFile(new File("sample.adoc"), options); <i class="conum">3</i></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -413,6 +526,78 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);       <i class
 </tr>
 </table>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+
+All methods used to render content are overloaded with <code>OptionsBuilder</code> parameter, so it is no longer required to call <code>get</code> nor <code>asMap</code> methods.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+
+<code>icons</code> attribute requires a <code>String</code> to set the value used to "draw" icons.
+At this time, you can use two constants <code>org.asciidoctor.Attributes.ORIGINAL_ADMONITION_ICONS_WITH_IMG</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or org.asciidoctor.Attributes.FONTAWESOME_ADMONITION_ICONS for using icons from <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>From Asciidoctor 0.1.3, attributes can be specified as <code>String</code> or <code>Array</code> instead of pair key/value by using <code>org.asciidoctor.Attributes.setAttributes(String)</code> or <code>org.asciidoctor.Attributes.setAttributes(String...)</code> and <code>AttributesBuilder</code> methods.</p>
+</div>
+<div class="listingblock">
+<div class="title">Passing attributes as a String</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">//...
+Attributes attributes = attributes().attributes("toc numbered").get();
+Options options = options().attributes(attributes).get();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="title">Passing individual attributes</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">//...
+Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).get();
+Options options = options().attributes(attributes).get();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also use an Array:</p>
+</div>
+<div class="listingblock">
+<div class="title">Passing attributes as an Array</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">//...
+String[] attributesArray = new String[]{"toc", "source-highlighter=coderay"};
+Attributes attributes = attributes().attributes(attributesArray).sectionNumbers(true).get();
+Options options = options().attributes(attributes).get();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="title">Passing individual attributes</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">//...
+Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).sourceHighlighter("coderay").get();
+Options options = options().attributes(attributes).get();</code></pre>
+</div>
+</div>
 
 </div>
 <div class="sect2">
@@ -424,7 +609,10 @@ String rendered = asciidoctor.renderFile("sample.adoc", options);       <i class
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>AsciiDocDirectoryWalker</code></div>
 <div class="content monospaced">
-<pre class="highlight"><code class="java language-java">DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum">1</i>
+<pre class="highlight"><code class="java language-java">import java.util.List;
+import org.asciidoctor.AsciiDocDirectoryWalker;
+
+DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum">1</i>
 List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <i class="conum">2</i></code></pre>
 </div>
 </div>
@@ -446,7 +634,10 @@ List&lt;File&gt; asciidocFiles = directoryWalker.scan();                     <i 
 <div class="sect2">
 <h3 id="gem_path"><a class="anchor" href="#gem_path"></a>GEM_PATH</h3>
 <div class="paragraph">
-<p>By default <code>asciidoctor-java-integration</code> comes with all required gems bundled within the jar. But in some circumstances like <code>OSGi</code> environments you may require to store gems in an external folder and be loaded by <code>asciidoctor-java-integration</code>. To accomplish this scenario, <code>create</code> method provides a parameter to set folder where gems are present. Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</code> environment variable to given path.</p>
+<p>By default <code>asciidoctor-java-integration</code> comes with all required gems bundled within the jar.
+But in some circumstances like OSGi environments you may require to store gems in an external folder and be loaded by <code>asciidoctor-java-integration</code>.
+To accomplish this scenario, <code>create</code> method provides a parameter to set folder where gems are present.
+Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</code> environment variable to given path.</p>
 </div>
 <div class="listingblock">
 <div class="title">Example of setting GEM_PATH</div>
@@ -483,7 +674,7 @@ Several Java flags can also be used in conjunction with or apart from the JRuby 
 <p>For small tasks such as converting an AsciiDoc document, two JRuby flags can improve the start time:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 2. JRuby flags</caption>
+<caption class="title">JRuby flags</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:66%;"> 
@@ -514,7 +705,7 @@ These flags are set by using the <code>JRUBY_OPTS</code> environment variable.
 Let&#8217;s see a summary of these flags and in which environments they can be used.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width:75%; ">
-<caption class="title">Table 3. Java flags</caption>
+<caption class="title">Java flags</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:66%;"> 
