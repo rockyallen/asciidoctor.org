@@ -1,0 +1,184 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Installing and Using Asciidoclet | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing and Using Asciidoclet</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoclet">Asciidoclet</a> is a Javadoc Doclet based on Asciidoctor that lets you write Javadoc in the AsciiDoc syntax.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Traditionally, Javadocs have mixed minor markup with HTML which, if you&#8217;re writing for HTML Javadoc output, becomes unreadable and hard to write over time.
+This is where lightweight markup languages like <a href="http://asciidoc.org">AsciiDoc</a> thrive.
+AsciiDoc straddles the line between readable markup and beautifully rendered content.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoclet incorporates an AsciiDoc renderer (Asciidoctor via the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration/">Asciidoctor Java integration</a> library) into a simple Doclet that enables AsciiDoc formatting within Javadoc comments and tags.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="example"><a class="anchor" href="#example"></a>Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here&#8217;s an example of a class with traditional Javadoc.</p>
+</div>
+<div class="listingblock">
+<div class="title">Traditional Javadoc class</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">/**
+ * &lt;h1&gt;Asciidoclet&lt;/h1&gt;
+ *
+ * &lt;p&gt;Sample comments that include {@code source code}.&lt;/p&gt;
+ *
+ * &lt;pre&gt;{@code
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     {@literal @}SuppressWarnings("UnusedDeclaration")
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * }&lt;/pre&gt;
+ *
+ * @author &lt;a href="https://github.com/johncarl81"&gt;John Ericksen&lt;/a&gt;
+ */
+public class Asciidoclet extends Doclet {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the same class with Asciidoclet.</p>
+</div>
+<div class="listingblock">
+<div class="title">Asciidoclet class</div>
+<div class="content monospaced">
+<pre class="highlight"><code class="java language-java">/**
+ * = Asciidoclet
+ *
+ * Sample comments that include +source code+.
+ *
+ * [source,java]
+ * --
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     @SuppressWarnings("UnusedDeclaration")
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * --
+ *
+ * @author https://github.com/johncarl81[John Ericksen]
+ */
+public class Asciidoclet extends Doclet {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is readable source and beautifully rendered Javadocs, the best of both worlds!</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoclet may be used via a <code>maven-javadoc-plugin</code> doclet:</p>
+</div>
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="xml language-xml">&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+    &lt;version&gt;2.9&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;source&gt;1.7&lt;/source&gt;
+        &lt;doclet&gt;org.asciidoctor.Asciidoclet&lt;/doclet&gt;
+        &lt;docletArtifact&gt;
+            &lt;groupId&gt;org.asciidoclet&lt;/groupId&gt;
+            &lt;artifactId&gt;asciidoclet&lt;/artifactId&gt;
+            &lt;version&gt;${asciidoclet.version}&lt;/version&gt;
+        &lt;/docletArtifact&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="rescources-and-help"><a class="anchor" href="#rescources-and-help"></a>Rescources and help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information:</p>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoclet">Asciidoclet Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoclet/issues">Asciidoclet Issue Tracker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java Integration Source Code</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have questions or would like to help develop this project, please join the <a href="http://discuss.asciidoctor.org/">Asciidoctor discussion list</a>.</p>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="license"><a class="anchor" href="#license"></a>License</h2>
+<div class="sectionbody">
+<div class="literalblock">
+
+<div class="content monospaced">
+<pre>Copyright 2013 John Ericksen
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+
+</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/edit/develop/docs/install-and-use-asciidoclet.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/raw/develop/docs/install-and-use-asciidoclet.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.github.com/commits/develop/docs/install-and-use-asciidoclet.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github-sign"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.github.com">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Built on Foundation. Baked by Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
