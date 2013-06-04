@@ -2,9 +2,197 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>http://asciidoctor.org/</id>
 <title>Asciidoctor</title>
-<updated>2013-06-03T16:52:31-06:00</updated>
+<updated>2013-06-03T23:47:37-06:00</updated>
 <link href="http://asciidoctor.org/feed.atom" rel="self" type="application/atom+xml" />
 <link href="http://asciidoctor.org/" rel="alternate" type="text/html" />
+<entry>
+<id>http://asciidoctor.org/news/2013/06/03/asciidoclet-announcement/</id>
+<title>Write Javadocs in AsciiDoc with Asciidoclet</title>
+<updated>2013-06-03T23:47:37-06:00</updated>
+<published>2013-06-03T23:47:37-06:00</published>
+<link href="http://asciidoctor.org/news/2013/06/03/asciidoclet-announcement/" rel="alternate" type="text/html" />
+<category scheme="http://asciidoctor.org/news/tags" term="announcement" />
+<category scheme="http://asciidoctor.org/news/tags" term="plugin" />
+<summary>
+We&#8217;re excited to announce the newest member of the Asciidoctor family, Asciidoclet. Asciidoclet is a Javadoc Doclet based on Asciidoctor that enables developers to write Javadoc comments using the AsciiDoc syntax.
+
+
+
+
+
+Motivation
+
+
+From the very beginning, a concept the designers of Java got right was to include documentation with source code. This allowed documentation to stay closer in sync with ever-changing source and allowed multiple viewing platforms, most notably the HTML generation and IDE integration.
+
+
+The main drawback of Javadoc has been the requirement to use embedded HTML fragments to achieve advanced (or even modest) formatting. This is where the AsciiDoc integration shines.......
+</summary>
+<content type="html">
+&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We&amp;#8217;re excited to announce the newest member of the &lt;a href=&quot;http://asciidoctor.org/&quot;&gt;Asciidoctor&lt;/a&gt; family, &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt;. &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt; is a Javadoc Doclet based on &lt;a href=&quot;http://asciidoctor.org/&quot;&gt;Asciidoctor&lt;/a&gt; that enables developers to write Javadoc comments using the &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; syntax.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;motivation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#motivation&quot;&gt;&lt;/a&gt;Motivation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;From the very beginning, a concept the designers of Java got right was to include documentation with source code. This allowed documentation to stay closer in sync with ever-changing source and allowed multiple viewing platforms, most notably the HTML generation and IDE integration.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The main drawback of Javadoc has been the requirement to use embedded HTML fragments to achieve advanced (or even modest) formatting. This is where the &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; integration shines. Being a lightweight markup language, &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; gives developers access to advanced formatting without having to fiddle with low-level HTML markup. In other words, developers can focus on &lt;em&gt;the content&lt;/em&gt; rather than &lt;em&gt;the markup&lt;/em&gt; and still achieve a beautiful end result.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Pairing AsciiDoc with Javadocs means readable source and beautifully rendered Javadocs, &lt;em&gt;the best of both worlds!&lt;/em&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;usage&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#usage&quot;&gt;&lt;/a&gt;Usage&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Once &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt; is plugged into Javadoc, it&amp;#8217;s just a matter of using &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; mark up in Javadocs. The following example demonstrates a number of features of &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;/**
+ * = Asciidoclet &lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;
+ *
+ * Sample comments that include +source code+. &lt;i class=&quot;conum&quot;&gt;2&lt;/i&gt;
+ *
+ * [source,java] &lt;i class=&quot;conum&quot;&gt;3&lt;/i&gt;
+ * --
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     @SuppressWarnings(&quot;UnusedDeclaration&quot;) &lt;i class=&quot;conum&quot;&gt;4&lt;/i&gt;
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * --
+ *
+ * @author https://github.com/johncarl81[John Ericksen] &lt;i class=&quot;conum&quot;&gt;5&lt;/i&gt;
+ */
+public class Asciidoclet extends Doclet {
+}&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;colist arabic&quot;&gt;
+
+&lt;table&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;1&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Titles are easy to create using the &lt;code&gt;=&lt;/code&gt; markup.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;2&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Paragraphs are the default and do not require the &lt;code&gt;&amp;lt;p&amp;gt;&lt;/code&gt; html tag. Inline source may be marked up by surrounding the text in &lt;code&gt;+&lt;/code&gt; symbols.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;3&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Source is easily marked up using the &lt;code&gt;[source,language]&lt;/code&gt; tag and block delimiters, &lt;code&gt;--&lt;/code&gt;, also called &quot;fences&quot;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;4&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;The notorious &lt;code&gt;@&lt;/code&gt; symbol is automatically handled by &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt;, avoiding the standard &lt;code&gt;{@literal @}&lt;/code&gt; boilerplate.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;i class=&quot;conum&quot;&gt;5&lt;/i&gt;&lt;/td&gt;
+&lt;td&gt;Inline &lt;a href=&quot;http://asciidoc.org&quot;&gt;AsciiDoc&lt;/a&gt; markup is available within Javadoc tags. This example highlights link rendering.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;distribution&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#distribution&quot;&gt;&lt;/a&gt;Distribution&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Asciidoclet is published to Maven Central. The artifact information is summarized in the table below.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class=&quot;tableblock frame-all grid-all&quot; style=&quot;width:100%; &quot;&gt;
+&lt;caption class=&quot;title&quot;&gt;Artifact information for Asciidoclet&lt;/caption&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width:20%;&quot;&gt;
+&lt;col style=&quot;width:20%;&quot;&gt;
+&lt;col style=&quot;width:20%;&quot;&gt;
+&lt;col style=&quot;width:40%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Group Id&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Artifact Id&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-center valign-top&quot;&gt;Version&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Download&lt;/th&gt;
+&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;org.asciidoctor&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;a href=&quot;http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoclet%22&quot;&gt;asciidoclet&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-center valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;a href=&quot;http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoclet%7C0.1.3%7Cjar&quot;&gt;0.1.3&lt;/a&gt;*&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;a href=&quot;http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/0.1.3/asciidoclet-0.1.3.pom&quot;&gt;pom&lt;/a&gt; &lt;a href=&quot;http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/0.1.3/asciidoclet-0.1.3.jar&quot;&gt;jar&lt;/a&gt; &lt;a href=&quot;http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/0.1.3/asciidoclet-0.1.3-javadoc.jar&quot;&gt;javadoc (jar)&lt;/a&gt; &lt;a href=&quot;http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/0.1.3/asciidoclet-0.1.3-sources.jar&quot;&gt;source (jar)&lt;/a&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;* This release is based on the Asciidoctor 0.1.3 release.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;installation&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#installation&quot;&gt;&lt;/a&gt;Installation&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt; is a standard Javadoc Doclet and may be used as such. One of the easiest ways to install &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;Asciidoclet&lt;/a&gt; is by adding it as a Doclet to the &lt;code&gt;maven-javadoc-plugin&lt;/code&gt;:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;title&quot;&gt;Maven Doclet declaration&lt;/div&gt;
+&lt;div class=&quot;content monospaced&quot;&gt;
+&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;plugin&amp;gt;
+    &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;maven-javadoc-plugin&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;2.9&amp;lt;/version&amp;gt;
+    &amp;lt;executions&amp;gt;
+        &amp;lt;execution&amp;gt;
+            &amp;lt;id&amp;gt;attach-javadocs&amp;lt;/id&amp;gt;
+            &amp;lt;goals&amp;gt;
+                &amp;lt;goal&amp;gt;jar&amp;lt;/goal&amp;gt;
+            &amp;lt;/goals&amp;gt;
+        &amp;lt;/execution&amp;gt;
+    &amp;lt;/executions&amp;gt;
+    &amp;lt;configuration&amp;gt;
+        &amp;lt;doclet&amp;gt;org.asciidoctor.Asciidoclet&amp;lt;/doclet&amp;gt;
+        &amp;lt;docletArtifact&amp;gt;
+           &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
+           &amp;lt;artifactId&amp;gt;asciidoclet&amp;lt;/artifactId&amp;gt;
+           &amp;lt;version&amp;gt;${asciidoclet.version}&amp;lt;/version&amp;gt;
+        &amp;lt;/docletArtifact&amp;gt;
+    &amp;lt;/configuration&amp;gt;
+&amp;lt;/plugin&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We hope that this extension helps you push your Javadocs to new heights. As always, collaboration is welcome and you may find (and fork) the source on &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;A big thanks to &lt;a href=&quot;https://github.com/lordofthejars&quot;&gt;Alex Soto&lt;/a&gt; of the &lt;a href=&quot;https://github.com/asciidoctor/asciidoctor-java-integration&quot;&gt;Asciidoctor Java integration project&lt;/a&gt;, &lt;a href=&quot;https://github.com/lightguard&quot;&gt;Jason Porter&lt;/a&gt; and &lt;a href=&quot;https://github.com/mojavelinux&quot;&gt;Dan Allen&lt;/a&gt; for their feedback and support and everyone else who contributes to the &lt;a href=&quot;http://asciidoctor.org/&quot;&gt;Asciidoctor&lt;/a&gt; project. Writing this extension could not have been easier because of the great work and collaboration of the &lt;a href=&quot;http://asciidoctor.org/&quot;&gt;Asciidoctor&lt;/a&gt; community.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
 <entry>
 <id>http://asciidoctor.org/news/2013/06/03/asciidoctor-java-integration-0-1-3-released/</id>
 <title>Asciidoctor Java integration 0.1.3 released!</title>
