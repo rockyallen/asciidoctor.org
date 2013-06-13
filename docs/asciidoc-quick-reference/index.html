@@ -44,6 +44,7 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <li><a href="#escaping-text">Escaping Text</a></li>
 <li><a href="#bibliography">Bibliography</a></li>
 <li><a href="#section-footnotes">Footnotes</a></li>
+<li><a href="#markdown-compatibility-asciidoctor-only">Markdown compatibility (Asciidoctor only)</a></li>
 </ol>
 </div>
 
@@ -260,9 +261,9 @@ You can also create admonition blocks, which are covered later.
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Lead paragraph (Asciidoctor only)</div>
+<div class="title">Lead paragraph (default Asciidoctor stylesheet)</div>
 <div class="content monospaced">
-<pre>[.lead]
+<pre>[role="lead"]
 This text will be styled as a lead paragraph (i.e., larger font).</pre>
 </div>
 </div>
@@ -274,6 +275,19 @@ This text will be styled as a lead paragraph (i.e., larger font).</pre>
 </div>
 
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+
+The first paragraph of the preamble is automatically styled as a lead paragraph when using the default Asciidoctor stylesheet.
+</td>
+</tr>
+</table>
 </div>
 
 </div>
@@ -330,7 +344,9 @@ __i__talic le__tt__ers
 
 +*monospace bold phrase*+ and le++**tt**++ers
 
-+*_monospace bold italic phrase_*+ and le++**__tt__**++ers</pre>
++*_monospace bold italic phrase_*+ and le++**__tt__**++ers
+
+`inline literal passthrough` (monospace text without substitutions)</pre>
 </div>
 </div>
 <div class="exampleblock result">
@@ -347,6 +363,9 @@ __i__talic le__tt__ers
 </div>
 <div class="paragraph">
 <p><code><strong><em>monospace bold italic phrase</em></strong></code> and le<code><strong><em>tt</em></strong></code>ers</p>
+</div>
+<div class="paragraph">
+<p><code>inline literal passthrough</code> (monospace text without substitutions)</p>
 </div>
 
 </div>
@@ -598,34 +617,6 @@ For example, <em>Section Level 1</em> becomes an <code>&lt;h2&gt;</code> heading
 
 </div>
 </div>
-<div class="listingblock">
-<div class="title">Markdown-style headings (Asciidoctor only)</div>
-<div class="content monospaced">
-<pre># Document Title (Level 0)
-
-## Section Level 1
-
-### Section Level 2
-
-#### Section Level 3
-
-##### Section Level 4
-
-###### Section Level 5</pre>
-</div>
-</div>
-<div class="exampleblock result">
-
-<div class="content">
-<h1 id="document-title-level-0-3" class="float">Document Title (Level 0)</h1>
-<h2 id="section-level-1-3" class="float">Section Level 1</h2>
-<h3 id="section-level-2-3" class="float">Section Level 2</h3>
-<h4 id="section-level-3-3" class="float">Section Level 3</h4>
-<h5 id="section-level-4-3" class="float">Section Level 4</h5>
-<h6 id="section-level-5" class="float">Section Level 5</h6>
-
-</div>
-</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -686,6 +677,23 @@ include::author-bio.adoc[]</pre>
 <div class="sect1">
 <h2 id="breaks"><a class="anchor" href="#breaks"></a>Breaks</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="title">Line break</div>
+<div class="content monospaced">
+<pre>Rubies are red. +
+Sapphires are blue.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="paragraph">
+<p>Rubies are red.<br>
+Sapphires are blue.</p>
+</div>
+
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Horizontal rule</div>
 <div class="content monospaced">
@@ -1797,48 +1805,6 @@ include::app.rb[]
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Fenced code block with syntax highlighting</div>
-<div class="content monospaced">
-<pre>```ruby
-require 'sinatra'
-
-get '/hi' do
-  "Hello World!"
-end
-```</pre>
-</div>
-</div>
-<div class="exampleblock result">
-
-<div class="content">
-<div class="listingblock">
-
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">require 'sinatra'
-
-get '/hi' do
-  "Hello World!"
-end</code></pre>
-</div>
-</div>
-
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-
-Fenced code blocks are only available by default in Asciidoctor.
-You can get AsciiDoc to recognize them using a custom configuration file.
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
 <div class="title">Code block without delimiters (no blank lines)</div>
 <div class="content monospaced">
 <pre>[source,xml]
@@ -2126,112 +2092,6 @@ and as necessary in the political world as storms in the physical.
 <br>
 &#8212; Thomas Jefferson
 </div>
-</div>
-
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Markdown-style blockquote (Asciidoctor only)</div>
-<div class="content monospaced">
-<pre>&gt; I hold it that a little rebellion now and then is a good thing,
-&gt; and as necessary in the political world as storms in the physical.
-&gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</pre>
-</div>
-</div>
-<div class="exampleblock result">
-
-<div class="content">
-<div class="quoteblock">
-
-<blockquote>
-<div class="paragraph">
-<p>I hold it that a little rebellion now and then is a good thing,
-and as necessary in the political world as storms in the physical.</p>
-</div>
-
-</blockquote>
-<div class="attribution">
-<cite>Papers of Thomas Jefferson: Volume 11</cite>
-<br>
-&#8212; Thomas Jefferson
-</div>
-</div>
-
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Markdown-style blockquote with block content (Asciidoctor only)</div>
-<div class="content monospaced">
-<pre>&gt; &gt; What's new?
-&gt;
-&gt; I've got Markdown in my AsciiDoc!
-&gt;
-&gt; &gt; Like what?
-&gt;
-&gt; * Blockquotes
-&gt; * Headings
-&gt; * Fenced code blocks
-&gt;
-&gt; &gt; Is there more?
-&gt;
-&gt; Yep. AsciiDoc and Markdown share a lot of common syntax already.</pre>
-</div>
-</div>
-<div class="exampleblock result">
-
-<div class="content">
-<div class="quoteblock">
-
-<blockquote>
-<div class="quoteblock">
-
-<blockquote>
-<div class="paragraph">
-<p>What&#8217;s new?</p>
-</div>
-
-</blockquote>
-</div>
-<div class="paragraph">
-<p>I&#8217;ve got Markdown in my AsciiDoc!</p>
-</div>
-<div class="quoteblock">
-
-<blockquote>
-<div class="paragraph">
-<p>Like what?</p>
-</div>
-
-</blockquote>
-</div>
-<div class="ulist">
-
-<ul>
-<li>
-<p>Blockquotes</p>
-</li>
-<li>
-<p>Headings</p>
-</li>
-<li>
-<p>Fenced code blocks</p>
-</li>
-</ul>
-</div>
-<div class="quoteblock">
-
-<blockquote>
-<div class="paragraph">
-<p>Is there more?</p>
-</div>
-
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Yep. AsciiDoc and Markdown share a lot of common syntax already.</p>
-</div>
-
-</blockquote>
 </div>
 
 </div>
@@ -2979,6 +2839,10 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 <dd>
 <p>Name of document directory</p>
 </dd>
+<dt class="hdlist1">doctitle</dt>
+<dd>
+<p>The title of the document</p>
+</dd>
 </dl>
 </div>
 <div class="listingblock">
@@ -3090,7 +2954,7 @@ The astericks around the word are preserved.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Triple plus and inline passthrough</div>
+<div class="title">Triple plus and inline passthrough macro</div>
 <div class="content monospaced">
 <pre>+++&lt;u&gt;underline me&lt;/u&gt;+++ renders as underlined text.
 
@@ -3216,6 +3080,188 @@ Another bold statement.footenoteref:[disclaimer]</pre>
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="markdown-compatibility-asciidoctor-only"><a class="anchor" href="#markdown-compatibility-asciidoctor-only"></a>Markdown compatibility (Asciidoctor only)</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+
+Markdown compatibility is only available by default in Asciidoctor.
+You can configure AsciiDoc (Python) to recognize this syntax by putting <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">the AsciiDoc compatibility file</a> from Asciidoctor in the same directory as the document being processed.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Markdown-style headings</div>
+<div class="content monospaced">
+<pre># Document Title (Level 0)
+
+## Section Level 1
+
+### Section Level 2
+
+#### Section Level 3
+
+##### Section Level 4
+
+###### Section Level 5</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<h1 id="document-title-level-0-3" class="float">Document Title (Level 0)</h1>
+<h2 id="section-level-1-3" class="float">Section Level 1</h2>
+<h3 id="section-level-2-3" class="float">Section Level 2</h3>
+<h4 id="section-level-3-3" class="float">Section Level 3</h4>
+<h5 id="section-level-4-3" class="float">Section Level 4</h5>
+<h6 id="section-level-5" class="float">Section Level 5</h6>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Fenced code block with syntax highlighting</div>
+<div class="content monospaced">
+<pre>```ruby
+require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end
+```</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="ruby language-ruby">require 'sinatra'
+
+get '/hi' do
+  "Hello World!"
+end</code></pre>
+</div>
+</div>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Markdown-style blockquote</div>
+<div class="content monospaced">
+<pre>&gt; I hold it that a little rebellion now and then is a good thing,
+&gt; and as necessary in the political world as storms in the physical.
+&gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="quoteblock">
+
+<blockquote>
+<div class="paragraph">
+<p>I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.</p>
+</div>
+
+</blockquote>
+<div class="attribution">
+<cite>Papers of Thomas Jefferson: Volume 11</cite>
+<br>
+&#8212; Thomas Jefferson
+</div>
+</div>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Markdown-style blockquote with block content</div>
+<div class="content monospaced">
+<pre>&gt; &gt; What's new?
+&gt;
+&gt; I've got Markdown in my AsciiDoc!
+&gt;
+&gt; &gt; Like what?
+&gt;
+&gt; * Blockquotes
+&gt; * Headings
+&gt; * Fenced code blocks
+&gt;
+&gt; &gt; Is there more?
+&gt;
+&gt; Yep. AsciiDoc and Markdown share a lot of common syntax already.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="quoteblock">
+
+<blockquote>
+<div class="quoteblock">
+
+<blockquote>
+<div class="paragraph">
+<p>What&#8217;s new?</p>
+</div>
+
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve got Markdown in my AsciiDoc!</p>
+</div>
+<div class="quoteblock">
+
+<blockquote>
+<div class="paragraph">
+<p>Like what?</p>
+</div>
+
+</blockquote>
+</div>
+<div class="ulist">
+
+<ul>
+<li>
+<p>Blockquotes</p>
+</li>
+<li>
+<p>Headings</p>
+</li>
+<li>
+<p>Fenced code blocks</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+
+<blockquote>
+<div class="paragraph">
+<p>Is there more?</p>
+</div>
+
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yep. AsciiDoc and Markdown share a lot of common syntax already.</p>
+</div>
+
+</blockquote>
+</div>
 
 </div>
 </div>
