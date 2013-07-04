@@ -725,7 +725,7 @@ Sapphires are blue.</p>
 - Oranges
 - Bananas
 
-//end
+//^
 
 * Apples
 * Oranges
@@ -788,7 +788,7 @@ Blank lines are required before and after a list and are permitted, but not requ
 <td class="content">
 
 You can force two lists apart with a line comment, as the previous example demonstrates.
-The text "end" is optional, but serves as a hint to other authors that it&#8217;s there for a reason.
+The text in the comment, (<code>^</code>), is optional, but serves as a hint to other authors that this line serves as an "end of list" marker.
 </td>
 </tr>
 </table>
@@ -1519,7 +1519,9 @@ Learn how to organize the document into &lt;&lt;section-titles,sections&gt;&gt;.
 image::sunset.jpg[Sunset]
 
 .A sunset feast!
-image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"]</pre>
+image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"]
+
+image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
 </div>
 </div>
 <div class="exampleblock result">
@@ -1543,18 +1545,39 @@ image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448
 </div>
 <div class="title">Figure 1. What a sunset!</div>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="http://asciidoctor.org/images/octocat.jpg" alt="GitHub mascot">
+</div>
+
+</div>
 
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock important">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-note" title="Note"></i>
+<i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
 
-Images resolve relative to the value of the <code>imagesdir</code> attribute, defined in the document header or passed as an argument.
+Images are resolved relative to the value of the <code>imagesdir</code> document attribute, which defaults to an empty value.
+The <code>imagesdir</code> attribute can be an absolute path, relative path or base URL.
+If the image target is a URL or an absolute path, the <code>imagesdir</code> prefix is <em>not</em> added.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+
+You should use the <code>imagesdir</code> attribute to avoid hard coding the shared path to your images in every image macro.
 </td>
 </tr>
 </table>
