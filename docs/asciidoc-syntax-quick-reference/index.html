@@ -2226,6 +2226,38 @@ or it can masquerade as any other block.</p>
 
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Custom substitutions</div>
+<div class="content monospaced">
+<pre>:version: 0.1.3
+
+[source,xml]
+[subs="verbatim,attributes"]
+----
+&lt;dependency&gt;
+  &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+  &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
+  &lt;version&gt;{version}&lt;/version&gt;
+&lt;/dependency&gt;
+----</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="listingblock">
+
+<div class="content monospaced">
+<pre class="highlight"><code class="xml language-xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
+  &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
+  &lt;version&gt;0.1.3&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+
+</div>
+</div>
 
 </div>
 </div>
@@ -2233,7 +2265,7 @@ or it can masquerade as any other block.</p>
 <h2 id="comments"><a class="anchor" href="#comments"></a>Comments</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Single line</div>
+<div class="title">Line</div>
 <div class="content monospaced">
 <pre>// A single-line comment.</pre>
 </div>
@@ -2588,9 +2620,9 @@ The Lumineers:Ho Hey:Folk Rock
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">AsciiDoc</th>
-<th class="tableblock halign-left valign-top">Renders</th>
-<th class="tableblock halign-left valign-top">As Viewed</th>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Resolves&#160;To</th>
+<th class="tableblock halign-left valign-top">As&#160;Rendered</th>
 </tr>
 </thead>
 <tbody>
@@ -2650,8 +2682,8 @@ The Lumineers:Ho Hey:Folk Rock
 <td class="tableblock halign-left valign-top"><p class="tableblock">&euro;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;8364;</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;8364;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&amp;#8364;</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8364;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8364;</p></td>
 </tr>
 <tr>
@@ -2682,62 +2714,61 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Renders<br>
-(e.g., <code>{caret}</code>)</th>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Resolves&#160;To</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lt}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">gt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{gt}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">amp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{amp}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">startsb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{startsb}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">[</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">endsb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{endsb}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">]</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">brvbar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{brvbar}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">|</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">caret</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{caret}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">asterisk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{asterisk}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tilde</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{tilde}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">~</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">apostrophe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apostrophe}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">'</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">backslash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{backslash}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">\</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">two-colons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-colons}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">::</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">two-semicolons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-semicolons}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">;;</p></td>
 </tr>
 </tbody>
@@ -2751,80 +2782,121 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-left valign-top">Renders<br>
-(e.g., <code>{nbsp}</code>)</th>
-<th class="tableblock halign-left valign-top">As Viewed</th>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Resolves&#160;To<br>
+(e.g.,&#160;<code>{empty}</code>)</th>
+<th class="tableblock halign-left valign-top">As&#160;Rendered</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">empty</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>blank</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{empty}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>nothing</em></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">sp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{sp}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>single space</em></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">nbsp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{nbsp}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#160;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">zwsp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{zwsp}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;zwsp;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8203;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">wj</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{wj}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8288;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8288;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">apos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apos}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;apos;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#39;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">quot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{quot}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;quot;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#34;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">lsquo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lsquo}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8216;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8216;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rsquo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rsquo}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8217;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8217;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ldquo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{ldquo}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8220;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8220;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">rdquo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rdquo}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8221;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#8221;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">deg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{deg}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#176;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#176;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{plus}</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#43;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&#43;</p></td>
 </tr>
 </tbody>
 </table>
+<div class="dlist">
+<div class="title">Named substitutions</div>
+<dl>
+<dt class="hdlist1">none</dt>
+<dd>
+<p>Disables substitutions</p>
+</dd>
+<dt class="hdlist1">normal</dt>
+<dd>
+<p>Performs all substitutions except for callouts</p>
+</dd>
+<dt class="hdlist1">verbatim</dt>
+<dd>
+<p>Escapes special characters and processes callouts</p>
+</dd>
+<dt class="hdlist1">specialcharacters</dt>
+<dd>
+<p>Escapes special XML characters (e.g., &lt;, &gt;, &amp;)</p>
+</dd>
+<dt class="hdlist1">quotes</dt>
+<dd>
+<p>Applies text formatting</p>
+</dd>
+<dt class="hdlist1">attributes</dt>
+<dd>
+<p>Replaces attribute references</p>
+</dd>
+<dt class="hdlist1">replacements</dt>
+<dd>
+<p>Substitutes text replacements</p>
+</dd>
+<dt class="hdlist1">macros</dt>
+<dd>
+<p>Process macros</p>
+</dd>
+<dt class="hdlist1">post_replacements</dt>
+<dd>
+<p>Replaces the line break character</p>
+</dd>
+</dl>
+</div>
 <div class="dlist">
 <div class="title">Built-in data attributes</div>
 <dl>
