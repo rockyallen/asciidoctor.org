@@ -38,8 +38,10 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <li><a href="#images">Images</a></li>
 <li><a href="#source-code">Source Code</a></li>
 <li><a href="#more-delimited-blocks">More Delimited Blocks</a></li>
+<li><a href="#id-and-role">Id and Role</a></li>
 <li><a href="#comments">Comments</a></li>
 <li><a href="#tables">Tables</a></li>
+<li><a href="#ui-macros">UI Macros</a></li>
 <li><a href="#attributes-and-substitutions">Attributes and Substitutions</a></li>
 <li><a href="#escaping-text">Escaping Text</a></li>
 <li><a href="#bibliography">Bibliography</a></li>
@@ -641,6 +643,32 @@ The reader never sees the extra markup, so why type it?
 <pre>[[primitives-nulls]]
 == Primitive types and null values</pre>
 </div>
+</div>
+<div class="dlist">
+<div class="title">Section anchors and links (Asciidoctor only)</div>
+<dl>
+<dt class="hdlist1"><code>sectanchors</code></dt>
+<dd>
+<p>When this document attribute is set, a section icon anchor appears in front of the section title.</p>
+</dd>
+<dt class="hdlist1"><code>sectlinks</code></dt>
+<dd>
+<p>When this document attribute is set, the section titles become links.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+
+Section title anchors depend on the default Asciidoctor stylesheet to render properly.
+</td>
+</tr>
+</table>
 </div>
 
 </div>
@@ -1842,6 +1870,50 @@ include::app.rb[]
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Code block sourced from file relative to source directory</div>
+<div class="content monospaced">
+<pre>:sourcedir: src/main/java
+
+[source,java]
+----
+include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
+----</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Strip leading indentation from source</div>
+<div class="content monospaced">
+<pre>[source,ruby,indent=0]
+----
+include::lib/document.rb[lines=5..10]
+----</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+
+<div class="ulist">
+
+<ul>
+<li>
+<p>When <code>indent</code> is 0, the leading block indent is stripped (tabs are replaced with 4 spaces).</p>
+</li>
+<li>
+<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped (tabs are replaced with 4 spaces), then a block is indented by the number of columns equal to this value.</p>
+</li>
+</ul>
+</div>
+
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
 <div class="title">Code block without delimiters (no blank lines)</div>
 <div class="content monospaced">
 <pre>[source,xml]
@@ -1890,7 +1962,7 @@ include::app.rb[]
 </dd>
 <dt class="hdlist1">Asciidoctor</dt>
 <dd>
-<p>coderay, highlightjs, prettify (and growing!)</p>
+<p>coderay, highlightjs, prettify (and more to come!)</p>
 </dd>
 </dl>
 </div>
@@ -2050,6 +2122,26 @@ Another paragraph.
 </div>
 
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Dynamic admonition and callout icons</div>
+<div class="paragraph">
+<p>Asciidoctor can "draw" icons using <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a> and CSS.</p>
+</div>
+<div class="paragraph">
+<p>To use this feature, set the value of the <code>icons</code> document attribute to <code>font</code>.
+Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block.</p>
+</div>
+
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">Blockquote</div>
@@ -2257,6 +2349,64 @@ or it can masquerade as any other block.</p>
 </div>
 
 </div>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="id-and-role"><a class="anchor" href="#id-and-role"></a>Id and Role</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Traditional markup method for assigning <code>id</code> and <code>role</code></div>
+<div class="content monospaced">
+<pre>[[goals]]
+[role="incremental"]
+* Goal 1
+* Goal 2</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Shorthand markup method for assigning <code>id</code> and <code>role</code> (Asciidoctor only)</div>
+<div class="content monospaced">
+<pre>[#goals.incremental]
+* Goal 1
+* Goal 2</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>#</code> prefix is recognized as shorthand for <code>id=</code>, and the <code>.</code> prefix is recognized as shorthand for <code>role=</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+
+<div class="ulist">
+
+<ul>
+<li>
+<p>To specifiy multiple roles using the shorthand syntax, separate them by dots.</p>
+<div class="paragraph">
+<p>For example, <code>[.summary.incremental]</code> emits the HTML attribute <code>class="summary incremental"</code>.</p>
+</div>
+
+</li>
+<li>
+<p>The order of <code>id</code> and <code>role</code> values in the shorthand syntax does not matter.</p>
+<div class="paragraph">
+<p>For example, <code>[#goals.incremental]</code> and <code>[.incremental#goals]</code> produce the same output.</p>
+</div>
+
+</li>
+</ul>
+</div>
+
+</td>
+</tr>
+</table>
 </div>
 
 </div>
@@ -2602,6 +2752,124 @@ The Lumineers:Ho Hey:Folk Rock
 </tr>
 </tbody>
 </table>
+
+</div>
+</div>
+
+</div>
+</div>
+<div class="sect1">
+<h2 id="ui-macros"><a class="anchor" href="#ui-macros"></a>UI Macros</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+
+You <strong>must</strong> set the <code>experimental</code> attribute in the document header to enable these macros.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Keyboard shortcuts (inline <code>kbd</code> macro)</div>
+<div class="content monospaced">
+<pre>[options="header", caption=""]
+.Common browser keyboard shortcuts
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+
+|kbd:[Ctrl+Shift+N]
+|New incognito window
+
+|kbd:[Ctrl + +]
+|Increase zoom
+|===</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Common browser keyboard shortcuts</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>F11</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggle fullscreen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd class="keyseq"><kbd>Ctrl</kbd>+<kbd>T</kbd></kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a new tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New incognito window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd class="keyseq"><kbd>Ctrl</kbd>+<kbd>+</kbd></kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increase zoom</p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Menu selections (inline <code>menu</code> macro)</div>
+<div class="content monospaced">
+<pre>To save the file, select menu:File[Save].
+
+Select menu:View[Zoom &gt; Reset] to reset the zoom level to the default setting.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="paragraph">
+<p>To save the file, select <span class="menuseq"><span class="menu">File</span>&#160;&#9656; <span class="menuitem">Save</span></span>.</p>
+</div>
+<div class="paragraph">
+<p>Select <span class="menuseq"><span class="menu">View</span>&#160;&#9656; <span class="submenu">Zoom</span>&#160;&#9656; <span class="menuitem">Reset</span></span> to reset the zoom level to the default setting.</p>
+</div>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Buttons (inline <code>btn</code> macro)</div>
+<div class="content monospaced">
+<pre>Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].</pre>
+</div>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<div class="paragraph">
+<p>Press the <b class="button">OK</b> button when you are finished.</p>
+</div>
+<div class="paragraph">
+<p>Select a file in the file navigator and click <b class="button">Open</b>.</p>
+</div>
 
 </div>
 </div>
