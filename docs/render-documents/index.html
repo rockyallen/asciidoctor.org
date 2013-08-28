@@ -8,7 +8,6 @@ That&#8217;s where the Asciidoctor or AsciiDoc processor and their backends come
 <p>In this guide, you learn how to convert a short sample document to:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>HTML</p>
@@ -31,14 +30,12 @@ That&#8217;s where the Asciidoctor or AsciiDoc processor and their backends come
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 In order to render your document, you&#8217;ll need to have the Asciidoctor and AsciiDoc processors installed.
-
+For step-by-step installation instructions, read the {toolchainref}[Installing the Toolchain] guide.
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -96,13 +93,11 @@ AsciiDoc&#8217;s default backend.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 A native PDF backend is planned for Asciidoctor.
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -117,7 +112,6 @@ A native PDF backend is planned for Asciidoctor.
 <p>In this section, we&#8217;ll create a sample document, then render and style it with Asciidoctor and the <code>html5</code> backend.</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Create an AsciiDoc file like the one below</p>
@@ -128,7 +122,6 @@ A native PDF backend is planned for Asciidoctor.
 </ol>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
@@ -148,7 +141,6 @@ A native PDF backend is planned for Asciidoctor.
 <p>To convert <code>sample.adoc</code> to HTML from the command-line:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Open a console</p>
@@ -162,7 +154,6 @@ A native PDF backend is planned for Asciidoctor.
 </ol>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor sample.adoc</pre>
 </div>
@@ -175,7 +166,6 @@ A native PDF backend is planned for Asciidoctor.
 If you type <code>ls</code> or view the directory in a file manager, there is a new file named <code>sample.html</code>.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; ls
 sample.adoc  sample.html</pre>
@@ -184,7 +174,6 @@ sample.adoc  sample.html</pre>
 <div class="paragraph">
 <p>Asciidoctor derives the name of the output document from the name of the input document.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="using-the-ruby-api"><a class="anchor" href="#using-the-ruby-api"></a>Using the Ruby API</h3>
@@ -192,7 +181,6 @@ sample.adoc  sample.html</pre>
 <p>Asciidoctor also includes a Ruby API that lets you generate an HTML document directly from a Ruby application.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
 
@@ -203,13 +191,11 @@ Asciidoctor.render_file('sample.adoc', :in_place =&gt; true)</code></pre>
 <p>Alternatively, you can capture the HTML output in a variable instead of writing it to a file.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">html = Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
 puts html</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="styles-and-attributes"><a class="anchor" href="#styles-and-attributes"></a>Styles and attributes</h3>
@@ -220,27 +206,22 @@ When you generate a document with the <code>html5</code> backend, the <code>asci
 However, <code>asciidoctor.css</code> is not automatically available to the generated HTML document; you have two choices:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>If you prefer to copy <code>asciidoctor.css</code> to the output location and link to it from the generated document, set the <code>copycss</code> attribute:</p>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a copycss sample.adoc</pre>
 </div>
 </div>
-
 </li>
 <li>
 <p>If you prefer to embed the stylesheet into the document, unset the <code>linkcss</code> attribute:</p>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a linkcss! sample.adoc</pre>
 </div>
 </div>
-
 </li>
 </ol>
 </div>
@@ -254,7 +235,6 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-
 <code>linkcss!</code> (which implies "embed css") embeds any stylesheet, not just <code>asciidoctor.css</code>.
 </td>
 </tr>
@@ -267,7 +247,6 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 <i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
-
 <code>linkcss</code> is set by default, unlike in AsciiDoc.
 We believe linking to the stylesheet is a better default, certainly a accepted practice on the web.
 </td>
@@ -278,7 +257,6 @@ We believe linking to the stylesheet is a better default, certainly a accepted p
 <p>If you unset the stylesheet attribute, Asciidoctor will generate HTML without any styles:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a stylesheet! sample.adoc</pre>
 </div>
@@ -294,7 +272,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 <p>If you want to apply your own stylesheet to the rendered HTML:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Save it in the same directory as <code>sample.adoc</code></p>
@@ -311,7 +288,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 </ol>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
@@ -320,7 +296,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 <p>To have Asciidoctor embed the contents of the stylesheet in the generate HTML document, use:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
 </div>
@@ -329,7 +304,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 <p>Stylesheets can also be stored in the <code>stylesheets</code> directory, but then you need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a stylesdir=./stylesheets -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
@@ -341,7 +315,6 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-
 The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/README.adoc#create-a-new-theme">Custom Theme guide</a> provides detailed steps for using your custom stylesheet with Asciidoctor.
 </td>
 </tr>
@@ -354,7 +327,6 @@ The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/m
 <p>For example, you can activate syntax highlighting options in the code with this argument:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>-a source-highlighter=highlightjs</pre>
 </div>
@@ -364,7 +336,6 @@ The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/m
 Or, by passing the <code>data-uri</code> attribute to the processor, you can embed the images into the document.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a data-uri sample.adoc</pre>
 </div>
@@ -373,7 +344,6 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 <p>If you want the document to include a table of contents, pass the <code>toc</code> attribute to the processor:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -a data-uri -a toc sample.adoc</pre>
 </div>
@@ -382,7 +352,6 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 <p>Alternatively, if you want to use <code>data-uri</code> and <code>toc</code> by default, you can add them to the header of the document.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
@@ -405,7 +374,6 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 <p>In your command prompt, specify the <code>html5</code> backend with <code>-b</code> and execute the following command:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoc -b html5 sample.adoc</pre>
 </div>
@@ -415,7 +383,6 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 People tend to prefer the flask theme, which you can enable using the <code>theme</code> attribute:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoc -b html5 -a theme=flask sample.adoc</pre>
 </div>
@@ -432,7 +399,6 @@ See the <a href="http://asciidoc.org/userguide.html#X99">Themes</a> chapter in t
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 Currently, Asciidoctor does not support the <code>theme</code> attribute.
 Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 </td>
@@ -443,7 +409,6 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 <p>As in Asciidoctor, you can also override the default stylessheet and supply your own with the <code>stylesheet</code> attribute.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
@@ -458,7 +423,6 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 <p>For example, to embed images into <code>sample.adoc</code> with the AsciiDoc processor, type:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoc -b html5 -a data-uri sample.adoc</pre>
 </div>
@@ -467,7 +431,6 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 <p>Or add <code>data-uri</code> to the header of the document:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
@@ -476,12 +439,9 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
  Content...</pre>
 </div>
 </div>
-
 </div>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -496,7 +456,6 @@ There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc sy
 <p>To convert the <code>sample.adoc</code> document to DocBook format, call the processor with the backend flag set to <code>docbook</code>:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; asciidoctor -b docbook sample.adoc</pre>
 </div>
@@ -505,7 +464,6 @@ There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc sy
 <p>A new XML document, named <code>sample.xml</code>, will now be present in the current directory.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; ls
 sample.adoc  sample.html  sample.xml</pre>
@@ -515,7 +473,6 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>If you&#8217;re on Linux, you can view the DocBook file with <a href="http://live.gnome.org/Yelp">Yelp</a>.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; yelp sample.xml</pre>
 </div>
@@ -524,7 +481,6 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>Using the Asciidoctor Ruby API, you can generate a DocBook document directly from a Ruby application:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">Asciidoctor.render_file('sample.adoc', :in_place =&gt; true,
     :backend =&gt; 'docbook')</code></pre>
@@ -534,7 +490,6 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>DocBook is only an intermediary format in the toolchain.
 You&#8217;ll either feed it into a system that processes DocBook (like <a href="http://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the <code>a2x</code> command from AsciiDoc.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -551,7 +506,6 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 <p>In your console:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Call the <code>a2x</code> program</p>
@@ -565,7 +519,6 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 </ol>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; a2x -f pdf sample.xml</pre>
 </div>
@@ -574,7 +527,6 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 <p>A PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; ls
 sample.adoc  sample.html  sample.pdf  sample.xml</pre>
@@ -587,12 +539,10 @@ sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 <p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$&gt; a2x -f pdf sample.adoc</pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -602,7 +552,6 @@ sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 <p>There&#8217;s really no end to the customization you can apply to the output that the AsciiDoctor and AsciiDoc processors generate.
 We&#8217;ve just scratched the surface here.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -616,12 +565,8 @@ More information and the latest available developments can be found in the proje
 <p>Please consider joining the <a href="http://discuss.asciidoctor.org/">Asciidoctor mailing list</a>, where you can ask questions and leave comments.
 If you identify an issue while using a backend with the Asciidoctor processor, please don&#8217;t hesitate to <a href="http://github.com/asciidoctor/asciidoctor-backends/issues">file a bug report</a>.</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/render-documents.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/render-documents.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/render-documents.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/render-documents.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/render-documents.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/render-documents.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::AbstractNode - API Documentation for Asciidoctor 0.1.3</title>
+<title>class Asciidoctor::AbstractNode - API Documentation for Asciidoctor 0.1.4.rc.1</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -71,7 +71,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link">Object
+  <p class="link"><a href="../Object.html">Object</a>
   
 </nav>
 
@@ -105,9 +105,13 @@
     
     <li ><a href="#method-i-get_binding">#get_binding</a>
     
+    <li ><a href="#method-i-has_role-3F">#has_role?</a>
+    
     <li ><a href="#method-i-icon_uri">#icon_uri</a>
     
     <li ><a href="#method-i-image_uri">#image_uri</a>
+    
+    <li ><a href="#method-i-list_marker_keyword">#list_marker_keyword</a>
     
     <li ><a href="#method-i-media_uri">#media_uri</a>
     
@@ -117,11 +121,29 @@
     
     <li ><a href="#method-i-normalize_web_path">#normalize_web_path</a>
     
+    <li ><a href="#method-i-option-3F">#option?</a>
+    
+    <li ><a href="#method-i-parent-3D">#parent=</a>
+    
     <li ><a href="#method-i-read_asset">#read_asset</a>
+    
+    <li ><a href="#method-i-reftext">#reftext</a>
+    
+    <li ><a href="#method-i-reftext-3F">#reftext?</a>
+    
+    <li ><a href="#method-i-relative_path">#relative_path</a>
     
     <li ><a href="#method-i-renderer">#renderer</a>
     
+    <li ><a href="#method-i-role">#role</a>
+    
+    <li ><a href="#method-i-role-3F">#role?</a>
+    
+    <li ><a href="#method-i-roles">#roles</a>
+    
     <li ><a href="#method-i-set_attr">#set_attr</a>
+    
+    <li ><a href="#method-i-set_option">#set_option</a>
     
     <li ><a href="#method-i-update_attributes">#update_attributes</a>
     
@@ -165,6 +187,8 @@
     <li><a href="../Asciidoctor/Cli/Invoker.html">Asciidoctor::Cli::Invoker</a>
   
     <li><a href="../Asciidoctor/Cli/Options.html">Asciidoctor::Cli::Options</a>
+  
+    <li><a href="../Asciidoctor/Compliance.html">Asciidoctor::Compliance</a>
   
     <li><a href="../Asciidoctor/Debug.html">Asciidoctor::Debug</a>
   
@@ -242,9 +266,107 @@
   
     <li><a href="../Asciidoctor/DocBook45/SectionTemplate.html">Asciidoctor::DocBook45::SectionTemplate</a>
   
+    <li><a href="../Asciidoctor/DocBook5.html">Asciidoctor::DocBook5</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockAdmonitionTemplate.html">Asciidoctor::DocBook5::BlockAdmonitionTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockAudioTemplate.html">Asciidoctor::DocBook5::BlockAudioTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockColistTemplate.html">Asciidoctor::DocBook5::BlockColistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockDlistTemplate.html">Asciidoctor::DocBook5::BlockDlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockExampleTemplate.html">Asciidoctor::DocBook5::BlockExampleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockFloatingTitleTemplate.html">Asciidoctor::DocBook5::BlockFloatingTitleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockImageTemplate.html">Asciidoctor::DocBook5::BlockImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockListingTemplate.html">Asciidoctor::DocBook5::BlockListingTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockLiteralTemplate.html">Asciidoctor::DocBook5::BlockLiteralTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockOlistTemplate.html">Asciidoctor::DocBook5::BlockOlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockOpenTemplate.html">Asciidoctor::DocBook5::BlockOpenTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockPageBreakTemplate.html">Asciidoctor::DocBook5::BlockPageBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockParagraphTemplate.html">Asciidoctor::DocBook5::BlockParagraphTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockPassTemplate.html">Asciidoctor::DocBook5::BlockPassTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockPreambleTemplate.html">Asciidoctor::DocBook5::BlockPreambleTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockQuoteTemplate.html">Asciidoctor::DocBook5::BlockQuoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockRulerTemplate.html">Asciidoctor::DocBook5::BlockRulerTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockSidebarTemplate.html">Asciidoctor::DocBook5::BlockSidebarTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockTableTemplate.html">Asciidoctor::DocBook5::BlockTableTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockTocTemplate.html">Asciidoctor::DocBook5::BlockTocTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockUlistTemplate.html">Asciidoctor::DocBook5::BlockUlistTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockVerseTemplate.html">Asciidoctor::DocBook5::BlockVerseTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/BlockVideoTemplate.html">Asciidoctor::DocBook5::BlockVideoTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/DocumentTemplate.html">Asciidoctor::DocBook5::DocumentTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/EmbeddedTemplate.html">Asciidoctor::DocBook5::EmbeddedTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineAnchorTemplate.html">Asciidoctor::DocBook5::InlineAnchorTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineBreakTemplate.html">Asciidoctor::DocBook5::InlineBreakTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineButtonTemplate.html">Asciidoctor::DocBook5::InlineButtonTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineCalloutTemplate.html">Asciidoctor::DocBook5::InlineCalloutTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineFootnoteTemplate.html">Asciidoctor::DocBook5::InlineFootnoteTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineImageTemplate.html">Asciidoctor::DocBook5::InlineImageTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineIndextermTemplate.html">Asciidoctor::DocBook5::InlineIndextermTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineKbdTemplate.html">Asciidoctor::DocBook5::InlineKbdTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineMenuTemplate.html">Asciidoctor::DocBook5::InlineMenuTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/InlineQuotedTemplate.html">Asciidoctor::DocBook5::InlineQuotedTemplate</a>
+  
+    <li><a href="../Asciidoctor/DocBook5/SectionTemplate.html">Asciidoctor::DocBook5::SectionTemplate</a>
+  
     <li><a href="../Asciidoctor/Document.html">Asciidoctor::Document</a>
   
     <li><a href="../Asciidoctor/EmptyTemplate.html">Asciidoctor::EmptyTemplate</a>
+  
+    <li><a href="../Asciidoctor/Extensions.html">Asciidoctor::Extensions</a>
+  
+    <li><a href="../Asciidoctor/Extensions/BlockMacroProcessor.html">Asciidoctor::Extensions::BlockMacroProcessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/BlockProcessor.html">Asciidoctor::Extensions::BlockProcessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Extension.html">Asciidoctor::Extensions::Extension</a>
+  
+    <li><a href="../Asciidoctor/Extensions/IncludeProcessor.html">Asciidoctor::Extensions::IncludeProcessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/InlineMacroProcessor.html">Asciidoctor::Extensions::InlineMacroProcessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/MacroProcessor.html">Asciidoctor::Extensions::MacroProcessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Postprocessor.html">Asciidoctor::Extensions::Postprocessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Preprocessor.html">Asciidoctor::Extensions::Preprocessor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Processor.html">Asciidoctor::Extensions::Processor</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Registry.html">Asciidoctor::Extensions::Registry</a>
+  
+    <li><a href="../Asciidoctor/Extensions/Treeprocessor.html">Asciidoctor::Extensions::Treeprocessor</a>
   
     <li><a href="../Asciidoctor/HTML5.html">Asciidoctor::HTML5</a>
   
@@ -326,11 +448,17 @@
   
     <li><a href="../Asciidoctor/Lexer.html">Asciidoctor::Lexer</a>
   
+    <li><a href="../Asciidoctor/List.html">Asciidoctor::List</a>
+  
     <li><a href="../Asciidoctor/ListItem.html">Asciidoctor::ListItem</a>
   
     <li><a href="../Asciidoctor/PathResolver.html">Asciidoctor::PathResolver</a>
   
+    <li><a href="../Asciidoctor/PreprocessorReader.html">Asciidoctor::PreprocessorReader</a>
+  
     <li><a href="../Asciidoctor/Reader.html">Asciidoctor::Reader</a>
+  
+    <li><a href="../Asciidoctor/Reader/Cursor.html">Asciidoctor::Reader::Cursor</a>
   
     <li><a href="../Asciidoctor/Renderer.html">Asciidoctor::Renderer</a>
   
@@ -347,6 +475,10 @@
     <li><a href="../Asciidoctor/Table/Column.html">Asciidoctor::Table::Column</a>
   
     <li><a href="../Asciidoctor/Table/ParserContext.html">Asciidoctor::Table::ParserContext</a>
+  
+    <li><a href="../Asciidoctor/TemplateCache.html">Asciidoctor::TemplateCache</a>
+  
+    <li><a href="../Object.html">Object</a>
   
   </ul>
 </nav>
@@ -404,14 +536,14 @@ content segments in an AsciiDoc document.</p>
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>)
-  <span class="ruby-ivar">@parent</span> = (<span class="ruby-identifier">context</span> <span class="ruby-operator">!=</span> <span class="ruby-value">:document</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">parent</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">parent</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Document</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">parent</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>
+  <span class="ruby-comment"># document is a special case, should refer to itself</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:document</span>
+    <span class="ruby-ivar">@parent</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">parent</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-ivar">@document</span> = <span class="ruby-keyword">nil</span>
+    <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
+    <span class="ruby-ivar">@document</span> = (<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>)
   <span class="ruby-keyword">end</span>
-  
   <span class="ruby-ivar">@context</span> = <span class="ruby-identifier">context</span>
   <span class="ruby-ivar">@attributes</span> = {}
   <span class="ruby-ivar">@passthroughs</span> = []
@@ -427,6 +559,46 @@ content segments in an AsciiDoc document.</p>
 
     
     </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-set_option" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_option</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>TODO document me</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_option-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 125</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_option</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'options'</span>] <span class="ruby-operator">||=</span> []
+  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'options'</span>] <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">name</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_option-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_option-method -->
+
+    
+    </section><!-- public-instance-method-details -->
   
   </section><!-- 5Buntitled-5D -->
 
@@ -555,7 +727,8 @@ nil.</p>
 <p>the String or Symbol name of the attribute to lookup</p>
 </dd><dt>default
 <dd>
-<p>the Object value to return if the attribute is not found (default: nil)</p>
+<p>the <a href="../Object.html">Object</a> value to return if the attribute is
+not found (default: nil)</p>
 </dd><dt>inherit
 <dd>
 <p>a Boolean indicating whether to check for the attribute on
@@ -569,15 +742,14 @@ not found in the attributes of this node or the document node</p>
 
           
           <div class="method-source-code" id="attr-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 64</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attr</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">inherit</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
   <span class="ruby-identifier">inherit</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@document</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">inherit</span>
-    <span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">inherit</span>
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">default</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">name</span>)) <span class="ruby-operator">:</span>
-        <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">name</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">default</span>))
+    <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-identifier">default</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- attr-source -->
@@ -617,7 +789,8 @@ match.Otherwise, return whether the attribute was found.</p>
 <p>the String or Symbol name of the attribute to lookup</p>
 </dd><dt>expect
 <dd>
-<p>the expected Object value of the attribute (default: nil)</p>
+<p>the expected <a href="../Object.html">Object</a> value of the attribute
+(default: nil)</p>
 </dd><dt>inherit
 <dd>
 <p>a Boolean indicating whether to check for the attribute on
@@ -632,26 +805,16 @@ matchesthe comparison value</p>
 
           
           <div class="method-source-code" id="attr-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 81</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">attr?</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">expect</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">inherit</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">name</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Symbol</span>)
   <span class="ruby-identifier">inherit</span> = <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@document</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">expect</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span>
-      <span class="ruby-keyword">true</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">inherit</span>
-      <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">false</span>
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">inherit</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>))
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">inherit</span>
+    <span class="ruby-identifier">expect</span> <span class="ruby-operator">==</span> (<span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>])
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">name</span>
-      <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">expect</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">inherit</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>)
-      <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-identifier">name</span>] <span class="ruby-operator">==</span> <span class="ruby-identifier">expect</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">false</span>
-    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">expect</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@attributes</span>[<span class="ruby-identifier">name</span>]
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- attr-3F-source -->
@@ -700,7 +863,7 @@ located (default: nil)</p>
 
           
           <div class="method-source-code" id="generate_data_uri-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 257</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 319</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">generate_data_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'base64'</span>
 
@@ -716,7 +879,7 @@ located (default: nil)</p>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span> <span class="ruby-identifier">image_path</span>
-    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: image to embed not found or not readable: #{image_path}&quot;</span>
+    <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;asciidoctor: WARNING: image to embed not found or not readable: #{image_path}&quot;</span>
     <span class="ruby-keyword">return</span> <span class="ruby-node">&quot;data:#{mimetype}:base64,&quot;</span>
     <span class="ruby-comment">#return 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='</span>
   <span class="ruby-keyword">end</span>
@@ -776,7 +939,7 @@ inthat same environment.</p>
 
           
           <div class="method-source-code" id="get_binding-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 140</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">get_binding</span> <span class="ruby-identifier">template</span>
   <span class="ruby-identifier">binding</span>
 <span class="ruby-keyword">end</span></pre>
@@ -788,6 +951,44 @@ inthat same environment.</p>
 
         
       </div><!-- get_binding-method -->
+
+    
+      <div id="method-i-has_role-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_role?</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that checks if the specified role is presentin the
+list of roles on this node</p>
+          
+          
+
+          
+          <div class="method-source-code" id="has_role-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_role?</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">val</span> = (<span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'role'</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'role'</span>]))
+    <span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">' '</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_role-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_role-3F-method -->
 
     
       <div id="method-i-icon_uri" class="method-detail ">
@@ -829,7 +1030,7 @@ converted to a data URI.</p>
 
           
           <div class="method-source-code" id="icon_uri-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 182</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 244</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">icon_uri</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">attr?</span> <span class="ruby-string">'icon'</span>
     <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">attr</span>(<span class="ruby-string">'icon'</span>), <span class="ruby-keyword">nil</span>)
@@ -888,7 +1089,7 @@ located (default: ‘imagesdir’)</p>
 
           
           <div class="method-source-code" id="image_uri-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 233</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 295</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">image_uri</span>(<span class="ruby-identifier">target_image</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">'imagesdir'</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">':'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target_image</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
     <span class="ruby-identifier">target_image</span>
@@ -908,6 +1109,48 @@ located (default: ‘imagesdir’)</p>
 
         
       </div><!-- image_uri-method -->
+
+    
+      <div id="method-i-list_marker_keyword" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">list_marker_keyword</span><span
+            class="method-args">(list_type = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retrieve the list marker keyword for the specified list type.</p>
+
+<p>For use in the HTML type attribute.</p>
+<dl class="rdoc-list note-list"><dt>list_type
+<dd>
+<p>the type of list; default to the @style if not specified</p>
+</dd></dl>
+
+<p>returns the single-character String keyword that represents the marker for
+the specified list type</p>
+          
+          
+
+          
+          <div class="method-source-code" id="list_marker_keyword-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 435</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">list_marker_keyword</span>(<span class="ruby-identifier">list_type</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-constant">ORDERED_LIST_KEYWORDS</span>[<span class="ruby-identifier">list_type</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@style</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- list_marker_keyword-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- list_marker_keyword-method -->
 
     
       <div id="method-i-media_uri" class="method-detail ">
@@ -946,7 +1189,7 @@ located (default: ‘imagesdir’)</p>
 
           
           <div class="method-source-code" id="media_uri-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 204</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 266</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">media_uri</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">asset_dir_key</span> = <span class="ruby-string">'imagesdir'</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">':'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">target</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:uri_sniff</span>])
     <span class="ruby-identifier">target</span>
@@ -990,7 +1233,7 @@ the <a href="Document.html">Document</a> object.</p>
 
           
           <div class="method-source-code" id="normalize_asset_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 356</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 418</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_asset_path</span>(<span class="ruby-identifier">asset_ref</span>, <span class="ruby-identifier">asset_name</span> = <span class="ruby-string">'path'</span>, <span class="ruby-identifier">autocorrect</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">asset_ref</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">base_dir</span>, <span class="ruby-keyword">nil</span>,
       <span class="ruby-value">:target_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">asset_name</span>, <span class="ruby-value">:recover</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">autocorrect</span>)
@@ -1056,7 +1299,7 @@ provided,this path will be guaranteed to be contained within the jail.</p>
 
           
           <div class="method-source-code" id="normalize_system_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 342</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 404</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">jail</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">opts</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">start</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">start</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">base_dir</span>
@@ -1107,7 +1350,7 @@ href="PathResolver.html">PathResolver</a>.</p>
 
           
           <div class="method-source-code" id="normalize_web_path-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 313</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 375</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">normalize_web_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">start</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-constant">PathResolver</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">web_path</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">start</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -1119,6 +1362,92 @@ href="PathResolver.html">PathResolver</a>.</p>
 
         
       </div><!-- normalize_web_path-method -->
+
+    
+      <div id="method-i-option-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">option?</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method to check if the specified option attribute isenabled
+on the current node.</p>
+
+<p>Check if the option is enabled. This method simply checks to see if
+the{name}-option attribute is defined on the current node.</p>
+<dl class="rdoc-list note-list"><dt>name
+<dd>
+<p>the String or Symbol name of the option</p>
+</dd></dl>
+
+<p>return a Boolean indicating whether the option has been specified</p>
+          
+          
+
+          
+          <div class="method-source-code" id="option-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">option?</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-node">&quot;#{name}-option&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- option-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- option-3F-method -->
+
+    
+      <div id="method-i-parent-3D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parent=</span><span
+            class="method-args">(parent)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Associate this <a href="Block.html">Block</a> with a new parent <a
+href="Block.html">Block</a></p>
+<dl class="rdoc-list note-list"><dt>parent
+<dd>
+<p>The <a href="Block.html">Block</a> to set as the parent of this <a
+href="Block.html">Block</a></p>
+</dd></dl>
+
+<p>Returns nothing</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parent-3D-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 43</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parent=</span>(<span class="ruby-identifier">parent</span>)
+  <span class="ruby-ivar">@parent</span> = <span class="ruby-identifier">parent</span>
+  <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parent-3D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parent-3D-method -->
 
     
       <div id="method-i-read_asset" class="method-detail ">
@@ -1153,12 +1482,12 @@ does not exist.</p>
 
           
           <div class="method-source-code" id="read_asset-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 296</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 358</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_asset</span>(<span class="ruby-identifier">path</span>, <span class="ruby-identifier">warn_on_failure</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span> <span class="ruby-identifier">path</span>
     <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">path</span>).<span class="ruby-identifier">chomp</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: file does not exist or cannot be read: #{path}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">warn_on_failure</span>
+    <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;asciidoctor: WARNING: file does not exist or cannot be read: #{path}&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">warn_on_failure</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1170,6 +1499,106 @@ does not exist.</p>
 
         
       </div><!-- read_asset-method -->
+
+    
+      <div id="method-i-reftext" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reftext</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that returns the value of the reftext attribute</p>
+          
+          
+
+          
+          <div class="method-source-code" id="reftext-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 222</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reftext</span>
+  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'reftext'</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'reftext'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reftext-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reftext-method -->
+
+    
+      <div id="method-i-reftext-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">reftext?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that checks if the reftext attribute is specified</p>
+          
+          
+
+          
+          <div class="method-source-code" id="reftext-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 217</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reftext?</span>
+  <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'reftext'</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'reftext'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- reftext-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- reftext-3F-method -->
+
+    
+      <div id="method-i-relative_path" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">relative_path</span><span
+            class="method-args">(filename)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Calculate the relative path to this absolute filename from the <a
+href="Document.html#attribute-i-base_dir">Asciidoctor::Document#base_dir</a></p>
+          
+          
+
+          
+          <div class="method-source-code" id="relative_path-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 424</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">relative_path</span>(<span class="ruby-identifier">filename</span>)
+  <span class="ruby-constant">PathResolver</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">relative_path</span> <span class="ruby-identifier">filename</span>, <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">base_dir</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- relative_path-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- relative_path-method -->
 
     
       <div id="method-i-renderer" class="method-detail ">
@@ -1192,7 +1621,7 @@ used for theAsciidoctor::Document to which this node belongs</p>
 
           
           <div class="method-source-code" id="renderer-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 160</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">renderer</span>
   <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">renderer</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1204,6 +1633,113 @@ used for theAsciidoctor::Document to which this node belongs</p>
 
         
       </div><!-- renderer-method -->
+
+    
+      <div id="method-i-role" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">role</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that returns the value of the role attribute</p>
+          
+          
+
+          
+          <div class="method-source-code" id="role-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 193</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">role</span>
+  <span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'role'</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'role'</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- role-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- role-method -->
+
+    
+      <div id="method-i-role-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">role?</span><span
+            class="method-args">(expect = nil)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that checks if the role attribute is specified</p>
+          
+          
+
+          
+          <div class="method-source-code" id="role-3F-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">role?</span>(<span class="ruby-identifier">expect</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">expect</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'role'</span>) <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'role'</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">expect</span> <span class="ruby-operator">==</span> (<span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'role'</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'role'</span>])
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- role-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- role-3F-method -->
+
+    
+      <div id="method-i-roles" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">roles</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>A convenience method that returns the role names as an Array</p>
+          
+          
+
+          
+          <div class="method-source-code" id="roles-source">
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">roles</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">val</span> = (<span class="ruby-ivar">@attributes</span>[<span class="ruby-string">'role'</span>] <span class="ruby-operator">||</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'role'</span>]))
+    <span class="ruby-identifier">val</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">' '</span>)
+  <span class="ruby-keyword">else</span>
+    []
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- roles-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- roles-method -->
 
     
       <div id="method-i-set_attr" class="method-detail ">
@@ -1287,7 +1823,7 @@ overridden.</p>
 
           
           <div class="method-source-code" id="update_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 153</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/abstract_node.rb, line 172</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-ivar">@attributes</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">nil</span>

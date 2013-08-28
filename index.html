@@ -41,7 +41,6 @@ contributors.</p>
 <p>The source code can now be found in the <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor source
 repository</a> on GitHub.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -54,7 +53,6 @@ repository</a> on GitHub.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 We&#8217;re working hard to make Asciidoctor a drop-in replacement for
 AsciiDoc. We&#8217;re very close, with over 700 tests that ensure
 compatibility. The march is on towards full compliance and beyond.
@@ -66,7 +64,6 @@ compatibility. The march is on towards full compliance and beyond.
 <p>To install the gem:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>gem install asciidoctor</pre>
 </div>
@@ -75,7 +72,6 @@ compatibility. The march is on towards full compliance and beyond.
 <p>Or if you prefer bundler, add the asciidoctor gem to your Gemfile,</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>source 'https://rubygems.org'
 gem 'asciidoctor'</pre>
@@ -85,7 +81,6 @@ gem 'asciidoctor'</pre>
 <p>then install it using bundler:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>bundle install</pre>
 </div>
@@ -94,7 +89,6 @@ gem 'asciidoctor'</pre>
 <p>If you&#8217;re running Fedora, you can install the gem using yum:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>sudo yum install rubygem-asciidoctor</pre>
 </div>
@@ -103,7 +97,6 @@ gem 'asciidoctor'</pre>
 <p>The benefit of installing the gem via yum is that yum will also install
 Ruby if it&#8217;s not already on your machine.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -123,7 +116,6 @@ Sinatra and GitHub.</p>
 interface should be available on your PATH. To invoke it, simply execute:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>asciidoctor &lt;asciidoc_file&gt;</pre>
 </div>
@@ -137,7 +129,6 @@ the .html extension.</p>
 <p>There are many other options available and full help is provided via:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>asciidoctor --help</pre>
 </div>
@@ -151,7 +142,6 @@ default, preventing access to files outside the parent directory of the
 source file. This mode is very similar to the safe mode of
 <code>asciidoc.py</code>.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="ruby-api"><a class="anchor" href="#ruby-api"></a>Ruby API</h3>
@@ -160,7 +150,6 @@ source file. This mode is very similar to the safe mode of
 gem:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>require 'asciidoctor'</pre>
 </div>
@@ -173,7 +162,6 @@ gem:</p>
 <p>To parse a file into an <code>Asciidoctor::Document</code> object:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>doc = Asciidoctor.load_file('your_file.asciidoc')</pre>
 </div>
@@ -182,7 +170,6 @@ gem:</p>
 <p>You can get information about the document:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>puts doc.doctitle
 puts doc.attributes</pre>
@@ -196,7 +183,6 @@ puts doc.attributes</pre>
 <p>To render a file containing AsciiDoc markup to HTML 5:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>Asciidoctor.render_file('your_file.asciidoc', :in_place =&gt; true)</pre>
 </div>
@@ -207,7 +193,6 @@ directory. You can render the file to DocBook 4.5 by setting the
 <code>backend</code> attribute to <em>docbook</em>:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>Asciidoctor.render_file('your_file.asciidoc', :in_place =&gt; true,
   :attributes =&gt; {'backend' =&gt; 'docbook'})</pre>
@@ -222,7 +207,6 @@ directory. (If you&#8217;re on Linux, you can view the file using yelp).</p>
 <p>To render an AsciiDoc-formatted string:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>puts Asciidoctor.render('*This* is it.')</pre>
 </div>
@@ -234,7 +218,6 @@ like Markdown. If you want the header and footer, just enable it using
 the <code>:header_footer</code> option:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>puts Asciidoctor.render('*This* is it.', :header_footer =&gt; true)</pre>
 </div>
@@ -244,7 +227,6 @@ the <code>:header_footer</code> option:</p>
 DocBook 4.5:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>puts Asciidoctor.render('*This* is it.', :header_footer =&gt; true,
   :attributes =&gt; {'backend' =&gt; 'docbook'})</pre>
@@ -264,7 +246,6 @@ built-in templates for any elements for which it finds a matching
 template. It will fallback to its default templates for everything else.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>puts Asciidoctor.render('*This* is it.', :header_footer =&gt; true,
   :template_dir =&gt; 'templates')</pre>
@@ -288,9 +269,7 @@ template with an ERB template, put a file named
 <div class="paragraph">
 <p>For more usage examples, see the (massive) test suite.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -304,7 +283,6 @@ help improve this project.</p>
 <p>Here are some ways <strong>you</strong> can contribute:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>by using alpha, beta, and prerelease versions</p>
@@ -324,7 +302,6 @@ help improve this project.</p>
 <li>
 <p>by writing code&#8201;&#8212;&#8201;<em>No patch is too small.</em></p>
 <div class="ulist">
-
 <ul>
 <li>
 <p>fix typos</p>
@@ -340,7 +317,6 @@ help improve this project.</p>
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>by refactoring code</p>
@@ -353,7 +329,6 @@ help improve this project.</p>
 </li>
 </ul>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -375,14 +350,12 @@ Asciidoctor exhibits the bad behavior.</p>
 <div class="paragraph">
 <p>An ideal bug report would include a pull request with failing specs.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
 <h2 id="submitting-a-pull-request"><a class="anchor" href="#submitting-a-pull-request"></a>Submitting a Pull Request</h2>
 <div class="sectionbody">
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p><a href="https://help.github.com/articles/fork-a-repo">Fork the repository</a>.</p>
@@ -418,7 +391,6 @@ If your tests fail, return to step 5.</p>
 </li>
 </ol>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -428,7 +400,6 @@ If your tests fail, return to step 5.</p>
 <p>This library aims to support the following Ruby implementations:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Ruby 1.8.7</p>
@@ -460,7 +431,6 @@ in a timely fashion. If critical issues for a particular implementation
 exist at the time of a major release, support for that Ruby version may
 be dropped.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -490,7 +460,6 @@ be dropped.</p>
 </dd>
 </dl>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -506,7 +475,6 @@ Hengeveld</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/con
 <p><strong>AsciiDoc</strong> was written by Stuart Rackham and has received contributions
 from many other individuals.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -519,12 +487,8 @@ software is granted under the terms of the MIT License.</p>
 <div class="paragraph">
 <p>See the <a href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">LICENSE</a> file for details.</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

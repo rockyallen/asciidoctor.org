@@ -14,7 +14,6 @@ It&#8217;s been exactly 6 months since Dan picked up Asciidoctor and started dri
 The project sure has come a long way since then.
 With this release, we&#8217;ve moved past just implementing AsciiDoc to advancing it, as this post highlights.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -24,7 +23,6 @@ With this release, we&#8217;ve moved past just implementing AsciiDoc to advancin
 <p>The focus of this release cycle was on:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>AsciiDoc compliance (yes, still)</p>
@@ -52,7 +50,6 @@ The improvements have given Asciidoctor a <strong>10% boost in speed</strong> ov
 Here&#8217;s the TL;DR version if you&#8217;re in a hurry.</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>File encoding and Windows path bugs fixed!</p>
@@ -119,7 +116,6 @@ Here&#8217;s the TL;DR version if you&#8217;re in a hurry.</p>
 <div class="paragraph">
 <p>Read on to learn about these great improvements!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -135,7 +131,6 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 <p>Consider the following AsciiDoc markup:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[[goals]]
 [role="incremental"]
@@ -147,7 +142,6 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 <p>In Asciidoctor, this can now be written as:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[#goals.incremental]
 * Goal 1
@@ -161,7 +155,6 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 <p>Both source snippets produce the following HTML:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;div id="goals" class="ulist incremental"&gt;
 &lt;ul&gt;
@@ -180,7 +173,6 @@ Thus, it leverages the first attribute position to its fullest extent.</p>
 You prepend the style <code>quote</code> to the <code>#</code> (<code>id</code>) and <code>.</code> (<code>role</code>) in the first attribute position, as this example shows:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[quote#think.big, Donald Trump]
 ____
@@ -192,7 +184,6 @@ ____</code></pre>
 <p>That produces the following HTML:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;div id="think" class="quoteblock big"&gt;
 &lt;blockquote&gt;
@@ -210,28 +201,24 @@ ____</code></pre>
 <p>Here are some other things to know about this notation:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>To specifiy multiple roles using the shorthand syntax, separate them by dots</p>
 <div class="paragraph">
 <p>For example, <code>[.summary.incremental]</code> emits the HTML attribute <code>class="summary incremental"</code>.</p>
 </div>
-
 </li>
 <li>
 <p>The order of id and role values in the shorthand syntax does not matter</p>
 <div class="paragraph">
 <p>For example, <code>[#goals.incremental]</code> and <code>[.incremental#goals]</code> produce the same output.</p>
 </div>
-
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#block-metadata">block attributes</a></p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats"><a class="anchor" href="#shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats"></a>Shorthand notation for setting <code>csv</code> and <code>dsv</code> table formats</h3>
@@ -242,7 +229,6 @@ ____</code></pre>
 <p>Instead of specifying the <code>csv</code> format using a block attribute, as shown here:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[format="csv"]
 |===
@@ -254,7 +240,6 @@ a,b,c
 <p>you can simply replace the leading pipe (<code>|</code>) with a comma (<code>,</code>):</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">,===
 a,b,c
@@ -265,7 +250,6 @@ a,b,c
 <p>In the same way, the <code>dsv</code> format can be specified by replacing the leading pipe (<code>|</code>) with a colon (<code>:</code>).</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:===
 a:b:c
@@ -278,7 +262,6 @@ a:b:c
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#a-new-perspective-on-tables">tables</a></p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="alternate-blockquote-syntax"><a class="anchor" href="#alternate-blockquote-syntax"></a>Alternate blockquote syntax</h3>
@@ -286,7 +269,6 @@ a:b:c
 <p>Asciidoctor 0.1.3 brings three new syntax variations for marking up blockquotes:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Quoted paragraph</p>
@@ -303,7 +285,6 @@ a:b:c
 <p>Here&#8217;s an example of a traditional AsciiDoc quote block with three parts (quoted text, attribution and source):</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
 ____
@@ -321,7 +302,6 @@ ____</code></pre>
 <p>You can turn a single paragraph into a blockquote by:</p>
 </div>
 <div class="olist loweralpha">
-
 <ol class="loweralpha" type="a">
 <li>
 <p>surrounding it with double quotes</p>
@@ -332,7 +312,6 @@ ____</code></pre>
 </ol>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">"I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical."
@@ -343,18 +322,15 @@ and as necessary in the political world as storms in the physical."
 <p>Here&#8217;s the result of the abbreviated blockquote syntax:</p>
 </div>
 <div class="quoteblock">
-
 <blockquote>
 I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical.
 </blockquote>
 <div class="attribution">
-<cite>Papers of Thomas Jefferson: Volume 11</cite>
-<br>
+<cite>Papers of Thomas Jefferson: Volume 11</cite><br>
 &#8212; Thomas Jefferson
 </div>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="nixon-inspired-air-quotes"><a class="anchor" href="#nixon-inspired-air-quotes"></a>Nixon-inspired &#8220;Air quotes&#8221;</h4>
@@ -363,7 +339,6 @@ and as necessary in the political world as storms in the physical.
 Air quotes are the best thing since fenced code blocks.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[, Richard M. Nixon]
 ""
@@ -375,7 +350,6 @@ When the President does it, that means that it's not illegal.
 <p><a href="http://en.wikipedia.org/wiki/Air_quotes" target="_blank">Air quotes</a> are two double quotes on each line, emulating the gesture of making quote marks with two fingers on each hand.
 This gesture is reminiscinet of the <a href="http://www.flickr.com/photos/lee20sk/3942032514" target="_blank">V for Victory gesture</a> made famous by Richard Nixon.</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>Markdown-style blockquotes</h4>
@@ -383,7 +357,6 @@ This gesture is reminiscinet of the <a href="http://www.flickr.com/photos/lee20s
 <p>Asciidoctor even supports Markdown-style blockquotes:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">&gt; I hold it that a little rebellion now and then is a good thing,
 &gt; and as necessary in the political world as storms in the physical.
@@ -418,31 +391,25 @@ This gesture is reminiscinet of the <a href="http://www.flickr.com/photos/lee20s
 <p>Here&#8217;s how this conversation renders:</p>
 </div>
 <div class="quoteblock">
-
 <blockquote>
 <div class="quoteblock">
-
 <blockquote>
 <div class="paragraph">
 <p>What&#8217;s new?</p>
 </div>
-
 </blockquote>
 </div>
 <div class="paragraph">
 <p>I&#8217;ve got Markdown in my AsciiDoc!</p>
 </div>
 <div class="quoteblock">
-
 <blockquote>
 <div class="paragraph">
 <p>Like what?</p>
 </div>
-
 </blockquote>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Blockquotes</p>
@@ -456,26 +423,21 @@ This gesture is reminiscinet of the <a href="http://www.flickr.com/photos/lee20s
 </ul>
 </div>
 <div class="quoteblock">
-
 <blockquote>
 <div class="paragraph">
 <p>Is there more?</p>
 </div>
-
 </blockquote>
 </div>
 <div class="paragraph">
 <p>Yep. AsciiDoc and Markdown share a lot of common syntax already. Just try it.</p>
 </div>
-
 </blockquote>
 </div>
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#building-blocks-in-asciidoc">blocks</a></p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="target-window-and-role-attributes-for-links"><a class="anchor" href="#target-window-and-role-attributes-for-links"></a>Target window and role attributes for links</h3>
@@ -488,7 +450,6 @@ However, AsciiDoc does not parse attributes in the link macro by default.
 In Asciidoctor, you can now enable parsing of link macro attributes by setting the <code>linkattrs</code> document attribute in the header.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc"> :linkattrs:</code></pre>
 </div>
@@ -497,7 +458,6 @@ In Asciidoctor, you can now enable parsing of link macro attributes by setting t
 <p>You can then specify the name of the target window using the <code>window</code> attribute:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google, window="_blank"]</code></pre>
 </div>
@@ -507,7 +467,6 @@ In Asciidoctor, you can now enable parsing of link macro attributes by setting t
 Just end the link text with a caret (<code>^</code>):</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google^]</code></pre>
 </div>
@@ -519,7 +478,6 @@ Just end the link text with a caret (<code>^</code>):</p>
 <i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-
 If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
 If the link text contains a comma, then you need to surround the link text in double quotes.
 </td>
@@ -530,7 +488,6 @@ If the link text contains a comma, then you need to surround the link text in do
 <p>Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://google.com[Google^, role="external"]</code></pre>
 </div>
@@ -538,9 +495,7 @@ If the link text contains a comma, then you need to surround the link text in do
 <div class="paragraph">
 <p>Have fun styling your links!</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -565,7 +520,6 @@ Asciidoctor will then emit HTML markup that selects an appropriate font characte
 <p>Here&#8217;s an example, starting with the AsciiDoc source:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:icons: font
 
@@ -576,7 +530,6 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 <p>Here&#8217;s the HTML it produces:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;div class="admonitionblock note"&gt;
 &lt;table&gt;
@@ -596,7 +549,6 @@ Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 <p>And here&#8217;s a preview of how it renders:</p>
 </div>
 <div class="exampleblock">
-
 <div class="content">
 <div class="admonitionblock note">
 <table>
@@ -605,13 +557,11 @@ Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
@@ -619,7 +569,6 @@ Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
 The stylesheet then imports the font from the same server.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;link rel="stylesheet"
   href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css"&gt;</code></pre>
@@ -632,7 +581,6 @@ The stylesheet then imports the font from the same server.</p>
 <i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
-
 The default stylesheet (or any stylesheet produced by the <a href="/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/">Asciidoctor stylesheet factory</a>) is required for this feature to work.
 </td>
 </tr>
@@ -641,7 +589,6 @@ The default stylesheet (or any stylesheet produced by the <a href="/docs/produce
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#admonitions">admonition blocks</a> | <a href="/docs/render-documents/styles-and-attributes">Asciidoctor stylesheets</a></p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="css-based-callout-icons"><a class="anchor" href="#css-based-callout-icons"></a>CSS-based callout icons</h3>
@@ -649,22 +596,20 @@ The default stylesheet (or any stylesheet produced by the <a href="/docs/produce
 <p>The font icons setting also enables callout icons drawn using CSS.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">:icons: font <i class="conum">1</i>
+<pre class="highlight"><code class="asciidoc language-asciidoc">:icons: font <i class="conum" data-value="1"></i><b>(1)</b>
 
-NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum">2</i></code></pre>
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Activates font-based icons in the HTML5 backend</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Admonition block that uses a font-based icon</td>
 </tr>
 </table>
@@ -673,7 +618,6 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 <p>Kick that icon directory to the curb.
 You&#8217;re untethered!</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="section-titles-as-links-and-styled-with-floating-icons"><a class="anchor" href="#section-titles-as-links-and-styled-with-floating-icons"></a>Section titles as links and styled with floating icons</h3>
@@ -701,7 +645,6 @@ The default Asciidoctor stylesheet displays linked section titles in the same co
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 Section title anchors depend on the default Asciidoctor stylesheet to render properly.
 </td>
 </tr>
@@ -710,14 +653,12 @@ Section title anchors depend on the default Asciidoctor stylesheet to render pro
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#section-titles">section titles</a></p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="lead-paragraph-style"><a class="anchor" href="#lead-paragraph-style"></a>Lead paragraph style</h3>
 <div class="paragraph">
 <p>Simply apply <code>role="lead"</code> (or <code>.lead</code>) above any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="cleaner-quote-blocks-and-verses"><a class="anchor" href="#cleaner-quote-blocks-and-verses"></a>Cleaner quote blocks and verses</h3>
@@ -769,9 +710,7 @@ Additionally, verse blocks have been given a style makeover, so they should appe
 <div class="paragraph">
 <p>The stylesheet has also been updated with some new styles for the experimental user input macros.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -784,7 +723,6 @@ Additionally, verse blocks have been given a style makeover, so they should appe
 <i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
-
 You <strong>must</strong> set the <code>experimental</code> attribute to enable these macros.
 </td>
 </tr>
@@ -799,7 +737,6 @@ You <strong>must</strong> set the <code>experimental</code> attribute to enable 
 <p>For example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[options="header", caption=""]
 .Common browser keyboard shortcuts
@@ -854,10 +791,10 @@ You <strong>must</strong> set the <code>experimental</code> attribute to enable 
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>You no longer have to struggle to explain to users what combination of keys they are supposed to press.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="menu-selections"><a class="anchor" href="#menu-selections"></a>Menu selections</h3>
@@ -869,7 +806,6 @@ With the new <code>menu</code> macro, the symbols do the work.</p>
 <p>For example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">To save the file, select menu:File[Save].
 
@@ -880,7 +816,6 @@ Select menu:View[Zoom &gt; Reset] to reset the zoom level to the default setting
 <p>The instructions in the example appove appear as:</p>
 </div>
 <div class="exampleblock">
-
 <div class="content">
 <div class="paragraph">
 <p>To save the file, select <span class="menuseq"><span class="menu">File</span>&#160;&#9656; <span class="menuitem">Save</span></span>.</p>
@@ -888,10 +823,8 @@ Select menu:View[Zoom &gt; Reset] to reset the zoom level to the default setting
 <div class="paragraph">
 <p>Select <span class="menuseq"><span class="menu">View</span>&#160;&#9656; <span class="submenu">Zoom</span>&#160;&#9656; <span class="menuitem">Reset</span></span> to reset the zoom level to the default setting.</p>
 </div>
-
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="ui-buttons"><a class="anchor" href="#ui-buttons"></a>UI buttons</h3>
@@ -905,7 +838,6 @@ The new <code>btn</code> macro to the rescue!</p>
 <p>For example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">Press the btn:[OK] button when you are finished.
 
@@ -916,7 +848,6 @@ Select a file in the file navigator and click btn:[Open].</code></pre>
 <p>Here&#8217;s the result:</p>
 </div>
 <div class="exampleblock">
-
 <div class="content">
 <div class="paragraph">
 <p>Press the <b class="button">OK</b> button when you are finished.</p>
@@ -924,16 +855,13 @@ Select a file in the file navigator and click btn:[Open].</code></pre>
 <div class="paragraph">
 <p>Select a file in the file navigator and click <b class="button">Open</b>.</p>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
 <p>We are looking for feedback on these macros before setting them in stone.
 If you have suggestions, we want to hear from you!</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -954,7 +882,6 @@ However, once inside the documentation, this leading block indent is no longer n
 <p>The attribute <code>indent</code> allows the leading block indent to be stripped and, optionally, a new block indent to be inserted for blocks with verbatim content (listing, literal, source, verse, etc.).</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>When <code>indent</code> is 0, the leading block indent is stripped (tabs are replaced with 4 spaces).</p>
@@ -968,7 +895,6 @@ However, once inside the documentation, this leading block indent is no longer n
 <p>For example, this AsciiDoc source:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby,indent=0]
 ----
@@ -982,7 +908,6 @@ However, once inside the documentation, this leading block indent is no longer n
 <p>Produces:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">def names
   @name.split ' '
@@ -993,7 +918,6 @@ end</code></pre>
 <p>You&#8217;ll need this feature when including content:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,ruby,indent=0]
 ----
@@ -1005,7 +929,6 @@ include::lib/document.rb[lines=5..10]
 <p>This AsciiDoc source:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[indent=2]
 ----
@@ -1019,7 +942,6 @@ include::lib/document.rb[lines=5..10]
 <p>Produces:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">  def names
     @name.split ' '
@@ -1033,13 +955,11 @@ include::lib/document.rb[lines=5..10]
 <i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
-
 The relative indentation between the lines of source code <strong>is not affected</strong>.
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="including-files-relative-to-a-common-source-directory"><a class="anchor" href="#including-files-relative-to-a-common-source-directory"></a>Including files relative to a common source directory</h3>
@@ -1051,7 +971,6 @@ That means you only have to type the unique part of the path when linking to a s
 <p>Example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:sourcedir: src/main/java
 
@@ -1065,7 +984,6 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <p>The target of the include macro resolves to:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>src/main/java/org/asciidoctor/Asciidoctor.java</pre>
 </div>
@@ -1073,7 +991,6 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#listing-and-source-code-blocks">include macro and blocks</a></p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="new-source-highlighter-google-code-prettify"><a class="anchor" href="#new-source-highlighter-google-code-prettify"></a>New source highlighter: google-code-prettify</h3>
@@ -1084,7 +1001,6 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <p>To use prettify, enable it by setting the <code>source-highlighter</code> attribute in the document header (or pass it as an argument):</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">:source-highlighter: prettify</code></pre>
 </div>
@@ -1096,7 +1012,6 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <p>Consider this source code block:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[source,java]
 ----
@@ -1114,7 +1029,6 @@ public class Person {
 <p>Asciidoctor produces the following HTML:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;div class="listingblock"&gt;
 &lt;div class="content monospaced"&gt;
@@ -1135,9 +1049,7 @@ public class Person {
 <div class="paragraph">
 <p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-quick-reference/#source-code">enabling source code highlighters</a></p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1149,7 +1061,6 @@ public class Person {
 <p>Asciidoctor 0.1.3 includes syntax for the level 5 section title.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">===== Level 5 Section Title</code></pre>
 </div>
@@ -1157,7 +1068,6 @@ public class Person {
 <div class="paragraph">
 <p>The level 5 title maps to the <code>&lt;h6&gt;</code> tag in the <code>html5</code> backend.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="part-headings-in-html-backend"><a class="anchor" href="#part-headings-in-html-backend"></a>Part headings in HTML backend</h3>
@@ -1166,7 +1076,6 @@ public class Person {
 In 0.1.3, these <code>&lt;h1&gt;</code> tags get the <code>sect0</code> class name to be consistent with the class names assigned to the other section levels.
 This addition simplifies the effort of adding custom styles to the part headings.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="table-of-contents-layout-and-style-options"><a class="anchor" href="#table-of-contents-layout-and-style-options"></a>Table of contents layout and style options</h3>
@@ -1187,7 +1096,6 @@ To place the TOC under the preamble, assign the new value, <code>preamble</code>
 <p>The TOC macro requires the <code>toc</code> attribute to be set.
 To disable the built-in TOC, unassign the <code>toc-placement</code> attribute (<code>toc-placement!</code>)</p>
 </div>
-
 </div>
 <div class="sect3">
 <h4 id="updated-level-0-section-title-styles"><a class="anchor" href="#updated-level-0-section-title-styles"></a>Updated level 0 section title styles</h4>
@@ -1200,7 +1108,6 @@ The addition of these CSS classes make it easier to style the TOC.</p>
 <p>In the default stylesheet, the following style changes have been made to the TOC:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Level 0 and level 1 section titles are aligned vertically</p>
@@ -1217,9 +1124,7 @@ The addition of these CSS classes make it easier to style the TOC.</p>
 <p>Also, the <code>type="none"</code> attribute has been added to the <code>&lt;ol&gt;</code> elements to provide a hint to the browser not to add a number in front of each item.
 This change satisfies the requirement that the TOC should "just work" without a stylesheet.</p>
 </div>
-
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text"><a class="anchor" href="#introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text"></a>Introducing the <code>inline</code> doctype for inline formatting on input text</h3>
@@ -1231,7 +1136,6 @@ For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/mas
 <p>The rules for the inline doctype are as follows:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Only a single paragraph is read from the AsciiDoc source</p>
@@ -1248,7 +1152,6 @@ For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/mas
 <p>Given the following input:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
 </div>
@@ -1257,7 +1160,6 @@ For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/mas
 <p>Processing it with the options <code>doctype=inline</code> and <code>backend=html5</code> produces:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;a href="http://asciidoc.org"&gt;AsciiDoc&lt;/a&gt; is a &lt;em&gt;lightweight&lt;/em&gt; markup language&amp;#8230;</code></pre>
 </div>
@@ -1265,9 +1167,7 @@ For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/mas
 <div class="paragraph">
 <p>The Asciidoctor processor is now able to cover the full range of output, from unstructured (inline) text to a full, standalone document!</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1278,7 +1178,6 @@ For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/mas
 Asciidoctor supports three key elements from the Markdown syntax (where AsciiDoc and Markdown don&#8217;t already overlap).</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Headings</p>
@@ -1296,7 +1195,6 @@ Asciidoctor supports three key elements from the Markdown syntax (where AsciiDoc
 That means the outline of a Markdown document will render just fine as an AsciiDoc document.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="markdown language-markdown"># Document Title
 
@@ -1312,7 +1210,6 @@ content</code></pre>
 <p>Markdown-style headings and blockquotes join support for fenced code blocks (from GitHub-flavored Markdown), which was added in a previous release.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="markdown language-markdown">```ruby
 require 'asciidoctor'
@@ -1325,7 +1222,6 @@ puts Asciidoctor.render("http://asciidoc.org[AsciiDoc] is a _lightweight_ markup
 <p>We hope these additions help to ease and encourage migration from Markdown to AsciiDoc.
 To alleviate concerns about fragmentation from AsciiDoc, we maintain an <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">AsciiDoc configuration file</a> in the project that brings these same enhancements to AsciiDoc when used.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1338,7 +1234,6 @@ To alleviate concerns about fragmentation from AsciiDoc, we maintain an <a href=
 This eliminates file path resolution errors in Windows.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/330">330</a>.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed"><a class="anchor" href="#file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed"></a>File encoding errors when using Ruby 1.9 and above is fixed</h3>
@@ -1347,12 +1242,10 @@ Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/330">3
 To correct this issue, any data that comes into Asciidoctor 0.1.3 is force encoded to UTF-8 on Ruby 1.9 and above.
 Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/308">308</a>.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="additional-bug-fixes"><a class="anchor" href="#additional-bug-fixes"></a>Additional bug fixes</h3>
 <div class="ulist">
-
 <ul>
 <li>
 <p>The Asciidoctor CLI no longer splits attribute key/value pairs on the first equal sign.
@@ -1368,16 +1261,14 @@ Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/301">3
 </li>
 </ul>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
 <h2 id="compliance-fixes"><a class="anchor" href="#compliance-fixes"></a>Compliance fixes</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="-code-doctitle-code-attribute"><a class="anchor" href="#-code-doctitle-code-attribute"></a><code>doctitle</code> attribute</h3>
+<h3 id="code-doctitle-code-attribute"><a class="anchor" href="#code-doctitle-code-attribute"></a><code>doctitle</code> attribute</h3>
 <div class="paragraph">
 <p>The <code>doctitle</code> attribute can be used anywhere in a document.
 It&#8217;s value is identical to the value returned by <code>Document#doctitle</code>.</p>
@@ -1396,7 +1287,6 @@ The document title is {doctitle}.</code></pre>
 <pre>The document title is Document Title.</pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend"><a class="anchor" href="#horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend"></a>Horizontal layout for labeled lists added to DocBook 4.5 backend</h3>
@@ -1404,7 +1294,6 @@ The document title is {doctitle}.</code></pre>
 <p>Example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[horizontal]
 first term:: definition
@@ -1418,7 +1307,6 @@ second term:: definition</code></pre>
 <p>Renders:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="xml language-xml">&lt;informaltable tabstyle="horizontal" frame="none" colsep="0" rowsep="0"&gt;
 &lt;tgroup cols="2"&gt;
@@ -1447,7 +1335,6 @@ second term:: definition</code></pre>
 &lt;/informaltable&gt;</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="consecutive-terms-in-labeled-list-share-same-code-varlistentry-code"><a class="anchor" href="#consecutive-terms-in-labeled-list-share-same-code-varlistentry-code"></a>Consecutive terms in labeled list share same <code>varlistentry</code></h3>
@@ -1458,7 +1345,6 @@ second term:: definition</code></pre>
 <p>Example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">term::
 alt term::
@@ -1469,7 +1355,6 @@ definition</code></pre>
 <p>Produces:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="xml language-xml">&lt;variablelist&gt;
 &lt;varlistentry&gt;
@@ -1488,7 +1373,6 @@ definition
 &lt;/variablelist&gt;</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="special-sections-and-styles"><a class="anchor" href="#special-sections-and-styles"></a>Special sections and styles</h3>
@@ -1498,7 +1382,6 @@ definition
 <div class="paragraph">
 <p>Sections assigned the <code>glossary</code> and <code>appendix</code> styles are now handled correctly in Asciidoctor.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="assign-document-variables-inline"><a class="anchor" href="#assign-document-variables-inline"></a>Assign document variables inline</h3>
@@ -1506,7 +1389,6 @@ definition
 <p>Document variables can be assigned using the following syntax:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>{set:&lt;attrname&gt;[!][:&lt;value&gt;]}</pre>
 </div>
@@ -1515,7 +1397,6 @@ definition
 <p>For example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">{set:sourcedir:src/main/java}</code></pre>
 </div>
@@ -1524,7 +1405,6 @@ definition
 <p>It&#8217;s effectively the same as:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:sourcedir: src/main/java</pre>
 </div>
@@ -1535,7 +1415,6 @@ definition
 <div class="paragraph">
 <p>An example of where this might be used is documented in the <a href="https://github.com/asciidoctor/asciidoctor/wiki/How-to-set-the-background-color-of-a-table-cell">how to set the background color of a table cell</a> tip.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="block-title-not-allowed-above-document-title"><a class="anchor" href="#block-title-not-allowed-above-document-title"></a>Block title not allowed above document title</h3>
@@ -1548,14 +1427,12 @@ Asciidoctor&#8217;s behavior is now consistent with AsciiDoc.</p>
 <p>Example:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">.Misplaced block title
 = Document Title
 Author Name</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="irc-scheme-rendered-as-link"><a class="anchor" href="#irc-scheme-rendered-as-link"></a>irc: scheme rendered as link</h3>
@@ -1563,14 +1440,11 @@ Author Name</code></pre>
 <p>The following input is now rendered as a link.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">irc://irc.freenode.org/#asciidoctor</code></pre>
 </div>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1583,7 +1457,6 @@ Author Name</code></pre>
 Now, any non-empty value can be specified as the backend.
 This is critical when you want to use a <a href="https://github.com/asciidoctor/asciidoctor-backends">custom backend</a>, such as deck.js or dzslides.</p>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api"><a class="anchor" href="#set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api"></a>Set safe mode with a string, symbol or integer in the Asciidoctor API</h3>
@@ -1591,7 +1464,6 @@ This is critical when you want to use a <a href="https://github.com/asciidoctor/
 <p>The safe level option now accepts a symbol, string or integer value to lookup the safe level.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad', :safe =&gt; 'server')</code></pre>
 </div>
@@ -1600,12 +1472,10 @@ This is critical when you want to use a <a href="https://github.com/asciidoctor/
 <p>can now be written as:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad', :safe =&gt; :server)</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api"><a class="anchor" href="#use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api"></a>Use a string or symbol to set the backend in the Asciidoctor API</h3>
@@ -1613,7 +1483,6 @@ This is critical when you want to use a <a href="https://github.com/asciidoctor/
 <p>The backend option now accepts a symbol or string value.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad', :backend =&gt; 'docbook')</code></pre>
 </div>
@@ -1622,12 +1491,10 @@ This is critical when you want to use a <a href="https://github.com/asciidoctor/
 <p>can now be written as:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad', :backend =&gt; :docbook)</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="pass-attributes-as-a-string-or-array-to-the-asciidoctor-api"><a class="anchor" href="#pass-attributes-as-a-string-or-array-to-the-asciidoctor-api"></a>Pass attributes as a string or array to the Asciidoctor API</h3>
@@ -1641,7 +1508,6 @@ These methods now accept the attributes as a string or array.</p>
 Previously, that required:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad',
     :attributes =&gt; {'toc' =&gt; '', 'numbered' =&gt; ''})</code></pre>
@@ -1651,7 +1517,6 @@ Previously, that required:</p>
 <p>Since both attributes are simple flags, the invocation can be simplified as:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad',
     :attributes =&gt; ['toc', 'numbered'])</code></pre>
@@ -1661,7 +1526,6 @@ Previously, that required:</p>
 <p>It can be further simplified using the array-from-string shorthand in Ruby:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad',
     :attributes =&gt; %w(toc numbered))</code></pre>
@@ -1671,7 +1535,6 @@ Previously, that required:</p>
 <p>That leads us into attributes specified as a string:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad',
     :attributes =&gt; 'toc numbered')</code></pre>
@@ -1684,7 +1547,6 @@ Previously, that required:</p>
 <p>If the attribute requires a value, such as <code>source-highlighter</code>, you just use the key=value form:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">result = Asciidoctor.render_file('master.ad',
     :attributes =&gt; 'toc numbered source-highlighter=coderay')</code></pre>
@@ -1694,7 +1556,6 @@ Previously, that required:</p>
 <p>This API call parallels this commandline invocation:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$ asciidoctor -a toc -a numbered -a source-highlighter=coderay master.adoc</pre>
 </div>
@@ -1708,9 +1569,7 @@ Previously, that required:</p>
 <div class="paragraph">
 <p>And that&#8217;s a wrap!</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1730,7 +1589,6 @@ We&#8217;re very grateful to everyone who participates, especially those who con
 <p>We&#8217;d especially like to thank the following people for their contributions and feedback on this release:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p><a href="https://github.com/bleathem">Brian Leathem</a> (Enhancements, patches and QA)</p>
@@ -1783,7 +1641,6 @@ We&#8217;re very grateful to everyone who participates, especially those who con
 <p>Additional thanks goes to everyone who is using the project and has contributed to it.
 Together, we&#8217;re making documentation fun, easy, and rewarding!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1793,17 +1650,12 @@ Together, we&#8217;re making documentation fun, easy, and rewarding!</p>
 <p>This release is just the beginning of the release train.
 Look for releases of the Java integration, Maven plugin, Gradle plugin and more recent additions such as the editors.</p>
 </div>
-
 </div>
-</div>
-
-
-</div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1813,7 +1665,6 @@ Look for releases of the Java integration, Maven plugin, Gradle plugin and more 
 <div class="content">
 <img src="/images/opal-logo.png" alt="Opal" width="200" height="200">
 </div>
-
 </div>
 <div class="paragraph">
 <p><a href="https://github.com/asciidoctor/asciidoctor.js">asciidoctor.js</a> uses the <a href="http://opalrb.org">Opal</a> Ruby-to-JavaScript cross compiler to generate a direct JavaScript port of <a href="http://asciidoctor.org">Asciidoctor</a>, an implementation of AsciiDoc. The result is AsciiDoc rendering in the browser!</p>
@@ -1825,7 +1676,6 @@ Look for releases of the Java integration, Maven plugin, Gradle plugin and more 
 <p>Opal parses the Ruby code and any required libraries, then rewrites the code into JavaScript under the Opal namespace.
 The resulting JavaScript can be executed in any JavaScript runtime environment, such as a browser or node.js application.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1841,7 +1691,6 @@ Little did I know that achieving this proof of concept was more than a small tas
 <div class="paragraph">
 <p>While there are still some shortcomings, I&#8217;m proud to say that asciidoctor.js can successfully render the complete AsciiDoc User Guide (a document that has served as a compliance benchmark throughout the development of Asciidoctor).</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1869,7 +1718,6 @@ Little did I know that achieving this proof of concept was more than a small tas
 <i class="icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-
 <div class="paragraph">
 <p>Don&#8217;t fret over the large size of these files.
 We haven&#8217;t even started to optimize, having only just achieved the proof of concept.</p>
@@ -1879,7 +1727,6 @@ We haven&#8217;t even started to optimize, having only just achieved the proof o
 There are options in Opal to generate more efficient code, but they are causing problems at the moment.
 Once we sort out those issues, the size of the generated files should become quite acceptable.</p>
 </div>
-
 </td>
 </tr>
 </table>
@@ -1889,7 +1736,6 @@ Once we sort out those issues, the size of the generated files should become qui
 For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (ideally at the bottom of the page):</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
 &lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
@@ -1898,7 +1744,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <div class="paragraph">
 <p>You can see these scripts in action by running the examples, described in the <a href="https://github.com/asciidoctor/asciidoctor.js#readme">README</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1908,7 +1753,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <p>To interact with the generated code, you either:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
@@ -1922,7 +1766,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <p>Here&#8217;s an example that shows how Ruby can interact with the native JavaScript environment to render a string of AsciiDoc in the browser:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
 Dan Allen
@@ -1938,7 +1781,6 @@ $window.addEventListener 'DOMContentLoaded', proc {
 }, false</code></pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1949,7 +1791,6 @@ $window.addEventListener 'DOMContentLoaded', proc {
 These changes are maintained in the asciidoctor.js branch of the Asciidoctor git repository, from which asciidoctor.js is compiled.
 The goal is to eventually eliminate all of these differences so that Asciidoctor can be compiled to JavaScript as is.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -1960,12 +1801,8 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 Explore what you can do with it and how it can be improved.
 Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the browser the best it can be!</p>
 </div>
-
 </div>
-</div>
-
-
-</div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/javascript/">javascript</a>, <a href="/news/tag/port/">port</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/17/asciidoctor-java-integration-0-1-2-1-released/">Asciidoctor Java integration 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-05-17T20:19:10-02:00">Friday, May 17, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/javascript/">javascript</a>, <a href="/news/tag/port/">port</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/17/asciidoctor-java-integration-0-1-2-1-released/">Asciidoctor Java integration 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-05-17T20:19:10-02:00">Friday, May 17, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
@@ -1974,7 +1811,6 @@ Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the br
 <p>The following issues have been resolved in version 0.1.2.1:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Upgraded JRuby version to 1.7.4.
@@ -2029,12 +1865,8 @@ Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/is
 <div class="paragraph">
 <p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
 </div>
-
 </div>
-</div>
-
-
-</div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/15/asciidoctor-maven-plugin-0-1-2-1-released/">Asciidoctor Maven plugin 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-05-15T19:06:41-06:00">Wednesday, May 15, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/15/asciidoctor-maven-plugin-0-1-2-1-released/">Asciidoctor Maven plugin 0.1.2.1 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-05-15T19:06:41-06:00">Wednesday, May 15, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>Some great things have happened for the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> since the last release, I&#8217;m happy to announce the release of version 0.1.2.1!</p>
@@ -2068,6 +1900,7 @@ This release contains bug fixes and a couple of new features, but is still fully
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>Upgrading to 0.1.2.1 (recommended) is simple.
 Just update the version in your Maven POM.
@@ -2076,12 +1909,8 @@ All necessary dependencies should be pulled in via Maven.</p>
 <div class="paragraph">
 <p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=5&amp;state=closed">0.1.2.1 milestone</a> in the issue tracker!</p>
 </div>
-
 </div>
-</div>
-
-
-</div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/28/asciidoctor-java-integration-0-1-2-released/">Asciidoctor Java integration 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-28T23:26:10-06:00">Sunday, April 28, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/28/asciidoctor-java-integration-0-1-2-released/">Asciidoctor Java integration 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2013-04-28T23:26:10-06:00">Sunday, April 28, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using Java instead of Ruby.</p>
@@ -2090,7 +1919,6 @@ All necessary dependencies should be pulled in via Maven.</p>
 <p>In this new release, the following issues has been resolved:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>Upgraded Asciidoctor gem to 0.1.2.
@@ -2110,13 +1938,11 @@ Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/is
 <i class="icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-
 If you&#8217;re currently using <code>AsciidocDirectoryWalker</code>, you&#8217;ll need to refactor your code to reflect this name change.
 </td>
 </tr>
 </table>
 </div>
-
 </li>
 <li>
 <p>Promoted <code>backend</code> and <code>doctype</code> attributes to options in the fluent API.
@@ -2135,25 +1961,19 @@ Resolves <a href="https://github.com/asciidoctor/asciidoctor-java-integration/is
 <i class="icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-
 If you&#8217;re currently using the <code>Asciidoctor#renderFile</code> method, you&#8217;ll need to refactor your code to reflect this type change.
 </td>
 </tr>
 </table>
 </div>
-
 </li>
 </ul>
 </div>
 <div class="paragraph">
 <p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
 </div>
-
 </div>
-</div>
-
-
-</div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="icon-fast-backward"></i></a></li><li class="arrow"><a href="/news/"><i class="icon-step-backward"></i></a></li><li>2 of 4</li><li class="arrow"><a href="/news/3/"><i class="icon-step-forward"></i></a></li><li class="arrow"><a href="/news/4/"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="icon-fast-backward"></i></a></li><li class="arrow"><a href="/news/"><i class="icon-step-backward"></i></a></li><li>2 of 4</li><li class="arrow"><a href="/news/3/"><i class="icon-step-forward"></i></a></li><li class="arrow"><a href="/news/4/"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

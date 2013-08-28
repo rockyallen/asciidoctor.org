@@ -4,7 +4,6 @@
 <p>Asciidoctor.js is a JavaScript port of Asciidoctor.
 With asciidoctor.js, the <a href="http://asciidoc.org">AsciiDoc</a> syntax can be used in the browser!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -21,7 +20,6 @@ The resulting JavaScript can be executed within any JavaScript runtime environme
 <div class="paragraph">
 <p>To interact with the generated code, you either invoke the JavaScript APIs directly, or you can invoke native JavaScript objects from within the Ruby code prior to compilation.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -31,7 +29,6 @@ The resulting JavaScript can be executed within any JavaScript runtime environme
 <p>Start by cloning the source from GitHub.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$ git clone --recurse-submodules git://github.com/asciidoctor/asciidoctor.js</pre>
 </div>
@@ -40,7 +37,6 @@ The resulting JavaScript can be executed within any JavaScript runtime environme
 <p>Next, switch to the <em>asciidoctor.js</em> directory and run Bundler&#8217;s <code>install</code> command.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$ cd asciidoctor.js
 $ bundle install</pre>
@@ -49,7 +45,6 @@ $ bundle install</pre>
 <div class="paragraph">
 <p>You&#8217;re now ready to build asciidoctor.js.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -59,7 +54,6 @@ $ bundle install</pre>
 <p>To build asciidoctor.js, run the Rake <code>dist</code> task from the root of the project.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$ rake dist</pre>
 </div>
@@ -86,7 +80,6 @@ $ bundle install</pre>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 You may notice that these files are not an ideal size for loading in a browser.
 They gzip rather nicely, bringing the size of asciidoctor.js down from 550K to 90K.
 There are options in Opal to generate more efficient code, but they are causing problems at the moment.
@@ -100,7 +93,6 @@ Once we sort out those issues, the size of the generated files should be quite a
 For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (ideally at the bottom of the page).</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
 &lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
@@ -109,7 +101,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <div class="paragraph">
 <p>You&#8217;ll see these scripts in action when you run the examples, described next.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -119,7 +110,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <p>To build the examples, run the Rake <code>examples</code> task from the root of the project:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>$ rake examples</pre>
 </div>
@@ -129,7 +119,6 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 This script includes:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>A string that contains an AsciiDoc source document</p>
@@ -150,7 +139,6 @@ This script includes:</p>
 You should see the AsciiDoc Syntax Quick Reference document.
 The content on the page was rendered from AsciiDoc by asciidoctor.js when you loaded the page!</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -160,7 +148,6 @@ The content on the page was rendered from AsciiDoc by asciidoctor.js when you lo
 <p>There are two ways to use the JavaScript version of Asciidoctor:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>Write code in Ruby that hooks into the native JavaScript environment, which Opal compiles into JavaScript</p>
@@ -176,7 +163,6 @@ The content on the page was rendered from AsciiDoc by asciidoctor.js when you lo
 <p>First, we&#8217;ll stuff some AsciiDoc data into a variable inside a Ruby script.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">data = &lt;&lt;-EOS
 = asciidoctor.js, AsciiDoc in JavaScript
@@ -199,7 +185,6 @@ EOS</code></pre>
 <p>Next, we invoke Asciidoctor in Ruby just as we normally would.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">html_doc = Asciidoctor.render(data, :safe =&gt; :safe,
   :attributes =&gt; %w(notitle! anchors imagesdir=./images))</code></pre>
@@ -209,7 +194,6 @@ EOS</code></pre>
 <p>We then use the global <code>$window</code> object provided by Opal to register a listener that inserts the rendered HTML document into the page.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">$window.addEventListener 'DOMContentLoaded', proc {
   $document.getElementById('content').innerHTML = html_doc
@@ -220,7 +204,6 @@ EOS</code></pre>
 <p>The final step is to compile this Ruby code into JavaScript using the Opal compiler.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="ruby language-ruby">env = Opal::Environment.new
 env.append_path 'examples'
@@ -234,9 +217,7 @@ File.open('build/asciidoctor_example.js', 'w') { |f| f &lt;&lt; compiled }</code
 <div class="paragraph">
 <p>You can also invoke Asciidoctor directly from JavaScript.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -251,7 +232,6 @@ Ruby variables and methods on a class or object get prefixed with <code>$</code>
 Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execute <code>Opal.Asciidoctor.$render</code> in JavaScript.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="javascript language-javascript">var html_doc =Opal.Asciidoctor.$render(
     "http://asciidoctor.org[*Asciidoctor*] " +
@@ -263,7 +243,6 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 <p>You would insert the rendered document into the page using the normal JavaScript DOM methods.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="javascript language-javascript">document.getElementById('content').innerHTML = Opal.Asciidoctor.$render(
     "http://asciidoctor.org[*Asciidoctor*] " +
@@ -275,12 +254,10 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 <p>Passing the options <code>Hash</code> to the <code>render</code> method requires a little bit of Opal voodoo.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="javascript language-javascript">Opal.hash2(['attributes'], {'attributes': ['notitle!']})</code></pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -295,31 +272,26 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 <p>Here&#8217;s a list of some of the changes that are currently needed:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p>ERB templates, loaded from the <em>asciidoctor/lib/asciidoctor/backends/html5</em> directory, are used in place of the built-in template classes</p>
 <div class="ulist">
-
 <ul>
 <li>
 <p>These templates must be loaded explicitly since Opal doesn&#8217;t support loading libraries at runtime</p>
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>Named posix groups in regular expressions are replaced with their Ascii equivalent</p>
 <div class="ulist">
-
 <ul>
 <li>
 <p>JavaScript doesn&#8217;t support named posix groups, such as <code><a id=":alpha:"></a></code>)</p>
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>A shim library is needed to implement missing classes in Opal, such as <code>Set</code> and <code>File</code></p>
@@ -327,21 +299,18 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 <li>
 <p>All mutable String operations have been replaced with assignments</p>
 <div class="ulist">
-
 <ul>
 <li>
 <p>JavaScript doesn&#8217;t support mutable strings</p>
 </li>
 </ul>
 </div>
-
 </li>
 <li>
 <p>&#8230;</p>
 </li>
 </ul>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -351,7 +320,6 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 <p>For more information:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p><a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js Source Code</a></p>
@@ -367,7 +335,6 @@ The goal is to eventually eliminate all of these differences so that Asciidoctor
 <div class="paragraph">
 <p>If you have questions or would like to help develop this project, please join the <a href="http://discuss.asciidoctor.org/">Asciidoctor discussion list</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -380,12 +347,8 @@ Free use of this software is granted under the terms of the MIT License.</p>
 <div class="paragraph">
 <p>See the <a href="https://github.com/asciidoctor/asciidoctor.js/blob/master/LICENSE">LICENSE</a> file for details.</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctorjs.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctorjs.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctorjs.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctorjs.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctorjs.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctorjs.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

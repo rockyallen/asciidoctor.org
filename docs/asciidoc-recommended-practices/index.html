@@ -9,13 +9,11 @@
 <div class="paragraph">
 <p>This document is only a rough draft. These recommendations are not doctrine and are subject to change.</p>
 </div>
-
 </div>
 </div>
 <div class="paragraph">
 <p>AsciiDoc offers multiple ways to accomplish the same thing, and is often very lenient with the syntax. This guide helps bring consistency to your documents that will maximize efficiency, improve readability and minimize maintainence.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -28,7 +26,6 @@
 <p>I think the <code>.ad</code> extension is a good choice for these reasons:</p>
 </div>
 <div class="olist arabic">
-
 <ol class="arabic">
 <li>
 <p>it parallels the extension of Markdown (<code>.md</code>), arguably the most widely used lightweight markup language&#8230;for now :)</p>
@@ -51,13 +48,11 @@
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 I recommend <em>against</em> using the <code>.asc</code> extension. The connection to AsciiDoc isn&#8217;t obvious (at least to me) and it gets identified as a PGP file on Linux.
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -72,7 +67,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <div class="paragraph">
 <p>AsciiDoc doesn&#8217;t treat a wrapped line break as a hard line break.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -86,7 +80,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>In the Atx-style, the section title is defined on a single line. The section title begins with one or more equal characters (i.e., <code>=</code>) followed by a space and the section title. The number of leading characters representing the depth. The top-level section is reserved for the document title, so the first section in the document will have two leading characters.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>== First Section</pre>
 </div>
@@ -98,7 +91,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>When using the HTML backend, this section title will be transformed into an h2 heading (likely wrapped in a section block for styling):</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>&lt;h2&gt;First Section&lt;/h2&gt;</pre>
 </div>
@@ -107,7 +99,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>The symmetric Atx-style bookends the section title between a matching pair of delimiters.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>== First Section ==</pre>
 </div>
@@ -120,7 +111,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>In the Setext-style, the section title is defined on two lines. The second line is a string of characters that form an underline below the section title. Here&#8217;s an example of a section title from above defined in the Setext-style.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>First Section
 -------------</pre>
@@ -163,6 +153,7 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>I <em>strongly</em> recommend against using the Setext style for section titles. Keeping the length of the underline in sync with the title length is an unnecessary task and time waster. A more substantial reason is that the mapping between character and heading level is <strong>very</strong> difficult to remember and not obvious to new AsciiDoc adopters. All in all, using Setext section titles is a <em>bad practice</em>. <strong>Don&#8217;t use them!</strong></p>
 </div>
@@ -173,7 +164,6 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-
 Use the asymmetric Atx-style to define your section titles.
 </td>
 </tr>
@@ -184,7 +174,6 @@ Use the asymmetric Atx-style to define your section titles.
 <p>Since the document title occurs only once in a document, I consider it acceptable to use the Setext style in this instance.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>Document Title
 ==============
@@ -201,7 +190,6 @@ Author Name &lt;author@example.org&gt;</pre>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 AsciiDoc only supports an e-mail following the author line. It does not support a personal URL. This feature is planned for Asciidoctor.
 </td>
 </tr>
@@ -211,7 +199,6 @@ AsciiDoc only supports an e-mail following the author line. It does not support 
 <p>It&#8217;s a good practice to also include a revision line following the author line.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>Document Title
 ==============
@@ -223,7 +210,6 @@ v1.0, 2012-02-10</pre>
 <p>The version number is optional. The revision line may consist of a date only.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>Document Title
 ==============
@@ -231,7 +217,6 @@ Author Name &lt;author@example.org&gt;
 2012-02-10</pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -241,7 +226,6 @@ Author Name &lt;author@example.org&gt;
 <p>Delimited blocks contain special text such as code listings, quotes, sidebar text, tables and so on. As you may have guessed, they are bounded by a string of delimiters. The delimiters are defined on a line by themselves. The content goes in between the delimiter lines. Here&#8217;s an example of a listing:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>----
 $ asciidoc -b html5 recommended-practices.ad
@@ -255,7 +239,6 @@ $ asciidoc -b html5 recommended-practices.ad
 <p>You may be tempting to extend the line furthur, either to a predetermined length or to match the length of the content.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>--------------------------------------------
 $ asciidoc -b html5 recommended-practices.ad
@@ -275,13 +258,11 @@ $ asciidoc -b html5 recommended-practices.ad
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 AsciiDoc does not enforce that the length of the line that opens the delimited block match the length of the line that closes the delimited block, but I think <em>it should</em>. Asciidoctor enforces this requirement, so make sure they match.
 </td>
 </tr>
 </table>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -303,7 +284,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <pre>{counter:counter-name}</pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -317,7 +297,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can enable numbering of sections using the <code>numbered</code> attribute (off by default).</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:numbered:</pre>
 </div>
@@ -327,7 +306,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can set the description of the document using the <code>description</code> attribute. The description is included in the header of the document.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:description: This document catalogs a set of recommended practices for writing in AsciiDoc.</pre>
 </div>
@@ -336,7 +314,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can break any attribute value across several lines by ending the lines in a <code>&#43;</code> preceded by a space.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:description: This document catalogs a set of recommended practices +
               for composing documents in AsciiDoc.</pre>
@@ -346,7 +323,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can use this text anywhere in the document by referencing it as an attribute.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>{description}</pre>
 </div>
@@ -356,7 +332,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>IDs are generated for each section title by default. The ID is generated from the section title, prefixed with an underscore (i.e., <code>_</code>) by default. You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:idprefix: -</pre>
 </div>
@@ -365,7 +340,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>If you want to remove the prefix, assign it to an empty value:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:idprefix:</pre>
 </div>
@@ -374,7 +348,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>To disable the auto-generation of section IDs, unset the <code>sectids</code> attribute:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:sectids!:</pre>
 </div>
@@ -384,12 +357,10 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>Set the <code>toc</code> attribute to activate an auto-generated table of contents at the top of document:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>:toc:</pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -406,7 +377,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <div class="title">Block vs inline</div>
 <p>&#8230;</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -418,7 +388,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <div class="paragraph">
 <p>how to use, reason for using</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -429,7 +398,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>AsciiDoc supports both <code>*</code> (one or more) and <code>-</code> (only one) as markers for a top-level list item.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>* first
 * second
@@ -440,7 +408,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>or</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>- first
 - second
@@ -451,7 +418,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>However, the dash marker <em>cannot</em> be repeated when defining a list item. This can lead to confusion since AsciiDoc increases the nesting level each time it encounters a <em>different</em> marker. For instance, in the following case, the item that have an asterisk marker is <strong>nested</strong> inside the first item.</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>- first
 * nested item
@@ -463,7 +429,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>This nesting rule is true even when the number of asterisks seems to indicate the level:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>*** first
 * nested item
@@ -478,7 +443,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>If you stick to convention, the number of asterisks <em>can</em> represent the nesting level:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>* first
 ** nested item
@@ -504,7 +468,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>Adjacent lists sometimes like to fuse. To force the start of a new list, offset the two lists by an empty line comment:</p>
 </div>
 <div class="literalblock">
-
 <div class="content monospaced">
 <pre>* apples
 * oranges
@@ -517,7 +480,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 * celery</pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -532,7 +494,6 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <div class="paragraph">
 <p>recommendation for inline code quote char</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -542,12 +503,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <div class="title">Stacked cells</div>
 <p>Leverage them, makes it easy to read</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoc-recommended-practices.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoc-recommended-practices.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoc-recommended-practices.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoc-recommended-practices.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoc-recommended-practices.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoc-recommended-practices.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

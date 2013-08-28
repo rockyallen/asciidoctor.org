@@ -3,24 +3,23 @@
 <div class="paragraph">
 <p>The <a href="http://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> is the official means of using <a href="/">Asciidoctor</a> to render your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://maven.apache.org">Apache Maven</a>.</p>
 </div>
-
 </div>
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
-<ol type="none" class="sectlevel1">
+<ul class="sectlevel1">
 <li><a href="#distribution">Distribution</a></li>
 <li><a href="#install-or-upgrade">Install or upgrade</a></li>
 <li><a href="#usage">Usage</a></li>
 <li>
-<ol type="none" class="sectlevel2">
+<ul class="sectlevel2">
 <li><a href="#configuration-options">Configuration options</a></li>
 <li><a href="#built-in-attributes">Built-in attributes</a></li>
 <li><a href="#multiple-outputs-for-the-same-file">Multiple outputs for the same file</a></li>
-</ol>
+</ul>
 </li>
 <li><a href="#maven-site-integration">Maven site integration</a></li>
 <li><a href="#resources">Resources</a></li>
-</ol>
+</ul>
 </div>
 </div>
 <div class="sect1">
@@ -67,11 +66,11 @@ The artifact information is summarized in the table below.</p>
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>This plugin depends on the <a href="http://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> library.
 If you want to learn more about the library, read the <a href="/docs/install-and-use-asciidoctor-java-integration">How to Install and Use the Asciidoctor Java Integration guide</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -87,16 +86,15 @@ If you want to learn more about the library, read the <a href="/docs/install-and
   &lt;plugin&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum">1</i>
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
   &lt;/plugin&gt;
 &lt;/plugins&gt;</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>This plugin tracks the version of Asciidoctor, so you can use which ever version of Asciidoctor you prefer.</td>
 </tr>
 </table>
@@ -106,7 +104,6 @@ If you want to learn more about the library, read the <a href="/docs/install-and
 Just update the version in your Maven POM.
 All the necessary dependencies are retrieved from Maven Central the next time you run Maven.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -119,10 +116,10 @@ All the necessary dependencies are retrieved from Maven Central the next time yo
   ...
   &lt;executions&gt;
     &lt;execution&gt;
-      &lt;id&gt;output-html&lt;/id&gt;               <i class="conum">1</i>
-      &lt;phase&gt;generate-resources&lt;/phase&gt;  <i class="conum">2</i>
+      &lt;id&gt;output-html&lt;/id&gt;               <i class="conum" data-value="1"></i><b>(1)</b>
+      &lt;phase&gt;generate-resources&lt;/phase&gt;  <i class="conum" data-value="2"></i><b>(2)</b>
       &lt;goals&gt;
-        &lt;goal&gt;process-asciidoc&lt;/goal&gt;    <i class="conum">3</i>
+        &lt;goal&gt;process-asciidoc&lt;/goal&gt;    <i class="conum" data-value="3"></i><b>(3)</b>
       &lt;/goals&gt;
     &lt;/execution&gt;
   &lt;/executions&gt;
@@ -131,18 +128,17 @@ All the necessary dependencies are retrieved from Maven Central the next time yo
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>This is simply an unique id for the execution.</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>The Asciidoctor Maven plugin does not run in a specific phase, so one must be specified.</td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>The Asciidoctor Maven plugin goal.</td>
 </tr>
 </table>
@@ -160,7 +156,7 @@ All the necessary dependencies are retrieved from Maven Central the next time yo
 </dd>
 <dt class="hdlist1">sourceDocumentName</dt>
 <dd>
-<p></p>
+<p>an override to process a single source file; defaults to all files in <em class="path">${sourcedirectory}</em></p>
 </dd>
 <dt class="hdlist1">outputDirectory</dt>
 <dd>
@@ -216,7 +212,6 @@ All the necessary dependencies are retrieved from Maven Central the next time yo
 </dd>
 </dl>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="built-in-attributes"><a class="anchor" href="#built-in-attributes"></a>Built-in attributes</h3>
@@ -239,7 +234,6 @@ Below is a list of them and what they do::</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 This attribute, for backwards compatibility, can still be used in the top level configuration options.
 </td>
 </tr>
@@ -270,7 +264,6 @@ These settings can be changed in the <code>&lt;configuration&gt;</code> section 
 ...</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="multiple-outputs-for-the-same-file"><a class="anchor" href="#multiple-outputs-for-the-same-file"></a>Multiple outputs for the same file</h3>
@@ -317,16 +310,15 @@ An example of this setup is below:</p>
     &lt;configuration&gt;
         &lt;sourceDirectory&gt;src/main/asciidoc&lt;/sourceDirectory&gt;
         &lt;headerFooter&gt;true&lt;/headerFooter&gt;
-        &lt;imagesDir&gt;../resources/images&lt;/imagesDir&gt;                  <i class="conum">1</i>
+        &lt;imagesDir&gt;../resources/images&lt;/imagesDir&gt;                  <i class="conum" data-value="1"></i><b>(1)</b>
     &lt;/configuration&gt;
 &lt;/plugin&gt;</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td><code>imagesDir</code> should be relative to the source directory.
 It defaults to <code>images</code> but in this example the images used in the docs are also used elsewhere in the project.</td>
 </tr>
@@ -336,9 +328,7 @@ It defaults to <code>images</code> but in this example the images used in the do
 <p>Any configuration specified outside the executions section is inherited by each execution.
 This allows an easier way of defining common configuration options.</p>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -378,7 +368,6 @@ This allows an easier way of defining common configuration options.</p>
 <p>As always, make sure you add a <code>menu</code> item for each page:</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="xml language-xml">&lt;body&gt;
 ...
@@ -389,7 +378,6 @@ This allows an easier way of defining common configuration options.</p>
 &lt;/body&gt;</code></pre>
 </div>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -402,12 +390,8 @@ To file an issue regarding this plugin, visit the <a href="http://github.com/asc
 <div class="paragraph">
 <p>Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-maven-plugin.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

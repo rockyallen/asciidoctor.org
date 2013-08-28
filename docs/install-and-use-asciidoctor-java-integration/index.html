@@ -5,13 +5,13 @@
 </div>
 <div id="toc" class="toc">
 <div id="toctitle" class="title">Table of Contents</div>
-<ol type="none" class="sectlevel1">
+<ul class="sectlevel1">
 <li><a href="#distribution">Distribution</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#usage">Usage</a></li>
 <li><a href="#optimization">Optimization</a></li>
 <li><a href="#resources">Resources</a></li>
-</ol>
+</ul>
 </div>
 
 </div>
@@ -48,10 +48,10 @@ The artifact information is summarized in the table below.</p>
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>* This release is based on the Asciidoctor 0.1.3 release.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -67,7 +67,7 @@ The artifact information is summarized in the table below.</p>
   &lt;dependency&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum">1</i>
+    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
   &lt;/dependency&gt;
 &lt;/dependencies&gt;</code></pre>
 </div>
@@ -76,17 +76,16 @@ The artifact information is summarized in the table below.</p>
 <div class="title">Dependency declaration in Gradle&#8217;s build.gradle</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="groovy language-groovy">dependencies {
-  compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <i class="conum">1</i>
+  compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <i class="conum" data-value="1"></i><b>(1)</b>
     transitive = false
   }
 }</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>As this library tracks the version of Asciidoctor, you can use which ever version of Asciidoctor you prefer.</td>
 </tr>
 </table>
@@ -95,7 +94,6 @@ The artifact information is summarized in the table below.</p>
 <p>You can learn more about these plugins in the following two guides:</p>
 </div>
 <div class="ulist">
-
 <ul>
 <li>
 <p><a href="/docs/install-and-use-asciidoctor-maven-plugin">How to Install and Use the Asciidoctor Maven Plugin</a></p>
@@ -105,7 +103,6 @@ The artifact information is summarized in the table below.</p>
 </li>
 </ul>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -150,6 +147,7 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 </tr>
 </tbody>
 </table>
+
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -157,7 +155,6 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-
 All methods are overloaded to accomodate various ways to supply content and options.
 </td>
 </tr>
@@ -281,48 +278,47 @@ Preamble...</code></pre>
 DocumentHeader header = asciidoctor.readDocumentHeader(
     new File("target/test-classes/documentheaders.asciidoc"));
 
-System.out.println(header.getDocumentTitle()); <i class="conum">1</i>
+System.out.println(header.getDocumentTitle()); <i class="conum" data-value="1"></i><b>(1)</b>
 
-Author author = header.getAuthor(); <i class="conum">2</i>
-System.out.println(author.getEmail()); <i class="conum">3</i>
-System.out.println(author.getFullName()); <i class="conum">4</i>
+Author author = header.getAuthor(); <i class="conum" data-value="2"></i><b>(2)</b>
+System.out.println(author.getEmail()); <i class="conum" data-value="3"></i><b>(3)</b>
+System.out.println(author.getFullName()); <i class="conum" data-value="4"></i><b>(4)</b>
 
 RevisionInfo revisionInfo = header.getRevisionInfo();
 
-System.out.println(revisionInfo.getDate()); <i class="conum">5</i>
-System.out.println(revisionInfo.getNumber()); <i class="conum">6</i>
-System.out.println(revisionInfo.getRemark()); <i class="conum">7</i></code></pre>
+System.out.println(revisionInfo.getDate()); <i class="conum" data-value="5"></i><b>(5)</b>
+System.out.println(revisionInfo.getNumber()); <i class="conum" data-value="6"></i><b>(6)</b>
+System.out.println(revisionInfo.getRemark()); <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>prints <code>Sample Document</code></td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>prints <code>Doc Writer</code></td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>prints <code>doc.writer@asciidoc.org</code></td>
 </tr>
 <tr>
-<td><i class="conum">4</i></td>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
 <td>prints <code>Doc Writer</code></td>
 </tr>
 <tr>
-<td><i class="conum">5</i></td>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>prints <code>2013-05-20</code></td>
 </tr>
 <tr>
-<td><i class="conum">6</i></td>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
 <td>prints <code>1.0</code></td>
 </tr>
 <tr>
-<td><i class="conum">7</i></td>
+<td><i class="conum" data-value="7"></i><b>7</b></td>
 <td>prints <code>First draft</code></td>
 </tr>
 </table>
@@ -331,7 +327,6 @@ System.out.println(revisionInfo.getRemark()); <i class="conum">7</i></code></pre
 <p>The <code>readDocumentHeader</code> method can be extremely useful for building an index of documents.</p>
 </div>
 <div class="listingblock">
-
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">import java.io.File;
 import java.util.HashSet;
@@ -380,28 +375,27 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook"); <i class="conum">1</i>
+attributes.put("backend", "docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
-options.put("attributes", attributes); <i class="conum">2</i>
-options.put("in_place", true); <i class="conum">3</i>
+options.put("attributes", attributes); <i class="conum" data-value="2"></i><b>(2)</b>
+options.put("in_place", true); <i class="conum" data-value="3"></i><b>(3)</b>
 
 String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> in the attributes map</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Registers the attributes map as the <code>attributes</code> option in the options map</td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>Defines the <code>in_place</code> option in the options map</td>
 </tr>
 </table>
@@ -418,28 +412,27 @@ Note that related with <code>org.asciidoctor.Options</code> class, there is <cod
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content monospaced">
 <pre class="highlight"><code class="java language-java">Attributes attributes = new Attributes();
-attributes.setBackend("docbook"); <i class="conum">1</i>
+attributes.setBackend("docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Options options = new Options();
-options.setAttributes(attributes); <i class="conum">2</i>
-options.setInPlace(true); <i class="conum">3</i>
+options.setAttributes(attributes); <i class="conum" data-value="2"></i><b>(2)</b>
+options.setInPlace(true); <i class="conum" data-value="3"></i><b>(3)</b>
 
 String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> in the attributes class</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Registers the attributes class as the <code>attributes</code> option in the options class</td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>Defines the <code>in_place</code> option in the options class</td>
 </tr>
 </table>
@@ -469,29 +462,28 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook") <i class="conum">1</i>
+Map&lt;String, Object&gt; attributes = attributes().backend("docbook") <i class="conum" data-value="1"></i><b>(1)</b>
                                              .asMap();
 
 Map&lt;String, Object&gt; options = options().inPlace(true)
-                                       .attributes(attributes) <i class="conum">2</i>
-                                       .asMap(); <i class="conum">3</i>
+                                       .attributes(attributes) <i class="conum" data-value="2"></i><b>(2)</b>
+                                       .asMap(); <i class="conum" data-value="3"></i><b>(3)</b>
 
 String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Defines the <code>backend</code> attribute as <code>docbook</code> using fluent API.</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Registers the attributes map as <code>attributes</code>.</td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>Converts options to <code>java.util.Map</code> instance.</td>
 </tr>
 </table>
@@ -503,25 +495,24 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
-Attributes attributes = attributes().backend("docbook").get(); <i class="conum">1</i>
-Options options = options().inPlace(true).attributes(attributes).get(); <i class="conum">2</i>
+Attributes attributes = attributes().backend("docbook").get(); <i class="conum" data-value="1"></i><b>(1)</b>
+Options options = options().inPlace(true).attributes(attributes).get(); <i class="conum" data-value="2"></i><b>(2)</b>
 
-String rendered = asciidoctor.renderFile(new File("sample.adoc"), options); <i class="conum">3</i></code></pre>
+String rendered = asciidoctor.renderFile(new File("sample.adoc"), options); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Defines and returns an <code>Attributes</code> class instead of <code>java.util.Map</code> by calling <code>get()</code> method instead of <code>asMap()</code>.</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Defines and returns an <code>Options</code> class instead of <code>java.util.Map</code> by calling <code>get()</code> method instead of <code>asMap()</code>.</td>
 </tr>
 <tr>
-<td><i class="conum">3</i></td>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>Renders the document passing <code>Options</code> class.</td>
 </tr>
 </table>
@@ -533,7 +524,6 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options); <i c
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-
 All methods used to render content are overloaded with <code>OptionsBuilder</code> parameter, so it is no longer required to call <code>get</code> nor <code>asMap</code> methods.
 </td>
 </tr>
@@ -546,7 +536,6 @@ All methods used to render content are overloaded with <code>OptionsBuilder</cod
 <i class="icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-
 <code>icons</code> attribute requires a <code>String</code> to set the value used to "draw" icons.
 At this time, you can use two constants <code>org.asciidoctor.Attributes.ORIGINAL_ADMONITION_ICONS_WITH_IMG</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or org.asciidoctor.Attributes.FONTAWESOME_ADMONITION_ICONS for using icons from <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a>.
 </td>
@@ -598,7 +587,6 @@ Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="utilities"><a class="anchor" href="#utilities"></a>Utilities</h3>
@@ -612,24 +600,22 @@ Options options = options().attributes(attributes).get();</code></pre>
 <pre class="highlight"><code class="java language-java">import java.util.List;
 import org.asciidoctor.AsciiDocDirectoryWalker;
 
-DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum">1</i>
-List&lt;File&gt; asciidocFiles = directoryWalker.scan(); <i class="conum">2</i></code></pre>
+DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum" data-value="1"></i><b>(1)</b>
+List&lt;File&gt; asciidocFiles = directoryWalker.scan(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Defines which parent directory is used for searching.</td>
 </tr>
 <tr>
-<td><i class="conum">2</i></td>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
 <td>Returns a list of all AsciiDoc files found in root folder and its subfolders.</td>
 </tr>
 </table>
 </div>
-
 </div>
 <div class="sect2">
 <h3 id="gem_path"><a class="anchor" href="#gem_path"></a>GEM_PATH</h3>
@@ -645,21 +631,18 @@ Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</co
 <pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 
-Asciidoctor asciidoctor = create("/my/gem/path"); <i class="conum">1</i></code></pre>
+Asciidoctor asciidoctor = create("/my/gem/path"); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Creates <code>Asciidoctor</code> instance with given GEM_PATH location.</td>
 </tr>
 </table>
 </div>
-
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -696,6 +679,7 @@ Several Java flags can also be used in conjunction with or apart from the JRuby 
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>Both flags are set by default inside the Asciidoctor Java integration project.</p>
 </div>
@@ -735,17 +719,17 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 </tr>
 </tbody>
 </table>
+
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
 <div class="content monospaced">
-<pre class="highlight"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum">1</i></code></pre>
+<pre class="highlight"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
-
 <table>
 <tr>
-<td><i class="conum">1</i></td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
 <td>Note that you should add <code>-J</code> before the flag.</td>
 </tr>
 </table>
@@ -753,7 +737,6 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 <div class="paragraph">
 <p>You can find a full explanation on how to improve the start time of JRuby applications at <a href="http://github.com/jruby/jruby/wiki/Improving-startup-time">Improving Startup Time</a>.</p>
 </div>
-
 </div>
 </div>
 <div class="sect1">
@@ -764,12 +747,8 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 If you identify an issue while using the Asciidoctor Java integration, please don&#8217;t hesitate to <a href="https://github.com/asciidoctor/asciidoctor-java-integration/issues">file a bug report</a>.
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
-
 </div>
-</div>
-
-
-</div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
