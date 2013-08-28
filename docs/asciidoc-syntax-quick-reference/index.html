@@ -2450,9 +2450,152 @@ Notice it's a delimited block.
 <h2 id="tables"><a class="anchor" href="#tables"></a>Tables</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Table with two rows of content and a header</div>
+<div class="title">Table with four columns, a header, and two rows of content</div>
 <div class="content monospaced">
-<pre>[cols="1,1,2" options="header"]
+<pre>[options="header"]
+.Table of contents attributes and values
+|===
+|Attribute |Value(s) |Example Syntax |Comments <i class="conum">1</i>
+
+|toc
+|auto
+|+:toc:+
+|DocBook backend uses it by default.
+Disable the TOC with +:toc!:+.
+
+|toc2
+|auto
+|+:toc2:+
+|-
+|===</pre>
+</div>
+</div>
+<div class="colist arabic">
+
+<table>
+<tr>
+<td><i class="conum">1</i></td>
+<td>The number of columns in a table is equal to the number of vertical bars on the first non-blank line of content inside the table block delimiters.</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Table 1. Table of contents attributes and values</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Value(s)</th>
+<th class="tableblock halign-left valign-top">Example Syntax</th>
+<th class="tableblock halign-left valign-top">Comments &lt;1&gt;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend uses it by default.
+Disable the TOC with <code>:toc!:</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc2:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Table with four columns, a header, and two rows of content</div>
+<div class="content monospaced">
+<pre>[cols="4*", options="header"] <i class="conum">1</i> <i class="conum">2</i>
+.Table of contents attributes and values
+|===
+|Attribute
+|Value(s)
+|Example Syntax
+|Comments
+
+|toc
+|auto
+|+:toc:+
+|DocBook backend uses it by default.
+Disable the TOC with +:toc!:+.
+
+|toc2
+|auto
+|+:toc2:+
+|-
+|===</pre>
+</div>
+</div>
+<div class="colist arabic">
+
+<table>
+<tr>
+<td><i class="conum">1</i></td>
+<td>When the column titles are not all specified on the first line, you must add the <code>cols</code> attribute to the block attributes.</td>
+</tr>
+<tr>
+<td><i class="conum">2</i></td>
+<td>The <code>*</code> is the repeat operator. It means to repeat the column specification for the remainder of columns. In this case, it means to repeat no special formatting (since none is present) across 4 columns.</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock result">
+
+<div class="content">
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Table 2. Table of contents attributes and values</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Value(s)</th>
+<th class="tableblock halign-left valign-top">Example Syntax</th>
+<th class="tableblock halign-left valign-top">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend uses it by default.
+Disable the TOC with <code>:toc!:</code>.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc2:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Table with three columns, a header, and two rows of content</div>
+<div class="content monospaced">
+<pre>[cols="1,1,2", options="header"] <i class="conum">1</i>
 .Applications
 |===
 |Name
@@ -2472,11 +2615,20 @@ Empowers developers to easily create real, automated tests.
 |===</pre>
 </div>
 </div>
+<div class="colist arabic">
+
+<table>
+<tr>
+<td><i class="conum">1</i></td>
+<td>In this example, the <code>cols</code> attribute has two functions. It specifies that this table has three columns and sets their relative widths.</td>
+</tr>
+</table>
+</div>
 <div class="exampleblock result">
 
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 1. Applications</caption>
+<caption class="title">Table 3. Applications</caption>
 <colgroup>
 <col style="width:25%;">
 <col style="width:25%;">
@@ -2880,7 +3032,7 @@ Select a file in the file navigator and click btn:[Open].</pre>
 <h2 id="attributes-and-substitutions"><a class="anchor" href="#attributes-and-substitutions"></a>Attributes and Substitutions</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 2. Text replacements</caption>
+<caption class="title">Table 4. Text replacements</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -2975,7 +3127,7 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 </table>
 </div>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 3. Built-in literal attributes</caption>
+<caption class="title">Table 5. Built-in literal attributes</caption>
 <colgroup>
 <col style="width:50%;">
 <col style="width:50%;"> 
@@ -3042,7 +3194,7 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 4. Built-in entity attributes</caption>
+<caption class="title">Table 6. Built-in entity attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3276,7 +3428,7 @@ Check out {homepagelink} too!
 <div class="listingblock">
 <div class="title">Counter attributes</div>
 <div class="content monospaced">
-<pre>[cols="2", options="header", caption=""]
+<pre>[cols="2*", options="header", caption=""]
 .Parts{counter2:index:0}
 |===
 |Part Id

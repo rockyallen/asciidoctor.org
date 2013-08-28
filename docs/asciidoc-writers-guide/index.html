@@ -2728,7 +2728,7 @@ Each list represents one row in the table and must share the same number of item
 <div class="listingblock">
 
 <div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols=2]
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2*"]
 |===
 |Firefox
 |Web Browser
@@ -2742,8 +2742,11 @@ Each list represents one row in the table and must share the same number of item
 </div>
 </div>
 <div class="paragraph">
-<p>The first non-blank line determines the number of columns.
-Since we are putting each column on a separate line, we have to be explicit about the number of columns in the <code>cols</code> block attribute.</p>
+<p>The first non-blank line inside the block delimiter (<code>|===</code>) determines the number of columns.
+Since we are putting each column title on a separate line, we have to use the <code>cols</code> block attribute to explicitly state that this table has two columns.
+The <code>*</code> is the repeat operator.
+It means to repeat the column specification for the remainder of columns.
+In this case, it means to repeat no special formatting (since none is present) across 2 columns.</p>
 </div>
 <div class="paragraph">
 <p>We can make the first row of the table the header by setting the <code>header</code> option on the table.</p>
@@ -2751,7 +2754,7 @@ Since we are putting each column on a separate line, we have to be explicit abou
 <div class="listingblock">
 
 <div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">[cols=2, options="header"]
+<pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2*", options="header"]
 |===
 |Name
 |Group
@@ -2767,7 +2770,7 @@ Since we are putting each column on a separate line, we have to be explicit abou
 </div>
 </div>
 <div class="paragraph">
-<p>We could define the header cells on one line so that the <code>cols</code> attribute is not required.</p>
+<p>Alternatively, we could define the header cells on one line so that the <code>cols</code> attribute is not required.</p>
 </div>
 <div class="listingblock">
 
@@ -2811,14 +2814,16 @@ performance, portability.
 </div>
 <div class="paragraph">
 <p>You can set the relative widths of each column using <em>column specifiers</em>&#8212;a comma-separated list of relative values defined in the <code>cols</code> block attribute.
-The number of entries in the list determines the number of columns:</p>
+The number of entries in the list determines the number of columns.</p>
 </div>
 <div class="listingblock">
 
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5", options="header"]
 |===
-|Name |Group |Description
+|Name
+|Group
+|Description
 
 |Firefox
 |Web Browser
@@ -2842,7 +2847,9 @@ performance and portability.
 <div class="content monospaced">
 <pre class="highlight"><code class="asciidoc language-asciidoc">[cols="2,3,5a", options="header"]
 |===
-|Name |Group |Description
+|Name
+|Group
+|Description
 
 |Firefox
 |Web Browser
