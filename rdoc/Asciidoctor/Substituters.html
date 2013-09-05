@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor::Substituters - API Documentation for Asciidoctor ae22aabec062</title>
+<title>module Asciidoctor::Substituters - API Documentation for Asciidoctor b61569a5d58a</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -116,6 +116,8 @@
     <li ><a href="#method-i-sub_replacements">#sub_replacements</a>
     
     <li ><a href="#method-i-sub_specialcharacters">#sub_specialcharacters</a>
+    
+    <li ><a href="#method-i-sub_specialchars">#sub_specialchars</a>
     
     <li ><a href="#method-i-transform_quoted_text">#transform_quoted_text</a>
     
@@ -532,7 +534,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="resolve_block_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 972</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 973</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resolve_block_subs</span> <span class="ruby-identifier">subs</span>, <span class="ruby-identifier">subject</span>
   <span class="ruby-identifier">resolve_subs</span> <span class="ruby-identifier">subs</span>, <span class="ruby-value">:block</span>, <span class="ruby-identifier">subject</span>
 <span class="ruby-keyword">end</span></pre>
@@ -565,7 +567,7 @@ necessary substitutions.</p>
 
           
           <div class="method-source-code" id="resolve_pass_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 976</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 977</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resolve_pass_subs</span> <span class="ruby-identifier">subs</span>
   <span class="ruby-identifier">resolve_subs</span> <span class="ruby-identifier">subs</span>, <span class="ruby-value">:inline</span>, <span class="ruby-string">'passthrough macro'</span>
 <span class="ruby-keyword">end</span></pre>
@@ -577,6 +579,34 @@ necessary substitutions.</p>
 
         
       </div><!-- resolve_pass_subs-method -->
+
+    
+      <div id="method-i-sub_specialchars" class="method-detail method-alias">
+        
+        <div class="method-heading">
+          <span class="method-name">sub_specialchars</span><span
+            class="method-args">(text)</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+        </div>
+
+        
+
+        
+        <div class="aliases">
+          Alias for: <a href="Substituters.html#method-i-sub_specialcharacters">sub_specialcharacters</a>
+        </div>
+        
+      </div><!-- sub_specialchars-method -->
 
     
     </section><!-- public-instance-method-details -->
@@ -992,7 +1022,7 @@ the document, otherwise the unprocessed text</p>
 
           
           <div class="method-source-code" id="highlight_source-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 992</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 993</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">highlight_source</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">sub_callouts</span>, <span class="ruby-identifier">highlighter</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">highlighter</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'source-highlighter'</span>]
   <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-identifier">highlighter</span>, (<span class="ruby-identifier">highlighter</span> <span class="ruby-operator">==</span> <span class="ruby-string">'pygments'</span> <span class="ruby-operator">?</span> <span class="ruby-string">'pygments.rb'</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">highlighter</span>)
@@ -1122,7 +1152,7 @@ attribute values</p>
 
           
           <div class="method-source-code" id="sub_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 311</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 312</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_attributes</span>(<span class="ruby-identifier">data</span>, <span class="ruby-identifier">opts</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">data</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">data</span>.<span class="ruby-identifier">empty?</span>
 
@@ -1221,7 +1251,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_callouts-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 810</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 811</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_callouts</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:callout_render</span>]) {
     <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
@@ -1272,7 +1302,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_macros-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 381</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 382</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_macros</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">text</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">empty?</span>
 
@@ -1732,7 +1762,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_post_replacements-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 828</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 829</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_post_replacements</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'hardbreaks'</span>]
     <span class="ruby-identifier">lines</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">entries</span>
@@ -1779,7 +1809,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_quotes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 258</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 259</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_quotes</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>
 
@@ -1824,7 +1854,7 @@ templates</p>
 
           
           <div class="method-source-code" id="sub_replacements-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 273</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 274</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">sub_replacements</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-identifier">result</span> = <span class="ruby-identifier">text</span>.<span class="ruby-identifier">dup</span>
 
@@ -1899,6 +1929,10 @@ constant</p>
           
         </div>
 
+        
+        <div class="aliases">
+          Also aliased as: <a href="Substituters.html#method-i-sub_specialchars">sub_specialchars</a>
+        </div>
         
 
         
@@ -1984,7 +2018,7 @@ otherwise a Hash of parsed attributes</p>
 
           
           <div class="method-source-code" id="parse_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 920</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 921</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">attrline</span>, <span class="ruby-identifier">posattrs</span> = [<span class="ruby-string">'role'</span>], <span class="ruby-identifier">opts</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrline</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">attrline</span>.<span class="ruby-identifier">empty?</span>
@@ -2039,7 +2073,7 @@ of attributes (role and id only)</p>
 
           
           <div class="method-source-code" id="parse_quoted_text_attributes-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 876</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 877</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse_quoted_text_attributes</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">return</span> {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">empty?</span>
@@ -2112,7 +2146,7 @@ of attributes (role and id only)</p>
 
           
           <div class="method-source-code" id="resolve_subs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 950</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 951</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">resolve_subs</span> <span class="ruby-identifier">subs</span>, <span class="ruby-identifier">type</span> = <span class="ruby-value">:block</span>, <span class="ruby-identifier">subject</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">return</span> [] <span class="ruby-keyword">if</span> <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">empty?</span>
   <span class="ruby-identifier">candidates</span> = []
@@ -2220,7 +2254,7 @@ of attributes (role and id only)</p>
 
           
           <div class="method-source-code" id="transform_quoted_text-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 846</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 847</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">transform_quoted_text</span>(<span class="ruby-identifier">match</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">scope</span>)
   <span class="ruby-identifier">unescaped_attrs</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">start_with?</span> <span class="ruby-string">'\'</span>
@@ -2275,7 +2309,7 @@ brackets from text extracted from brackets</p>
 
           
           <div class="method-source-code" id="unescape_bracketed_text-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 940</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/substituters.rb, line 941</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">unescape_bracketed_text</span>(<span class="ruby-identifier">text</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">empty?</span>
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">tr</span>(<span class="ruby-constant">EOL</span>, <span class="ruby-string">' '</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-string">'\]'</span>, <span class="ruby-string">']'</span>)
