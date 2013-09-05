@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Lexer - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::Lexer - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -597,7 +597,7 @@ parsedNOTE could invoke filter in here, before and after parsing</p>
 
           
           <div class="method-source-code" id="build_block-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 875</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 901</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">build_block</span>(<span class="ruby-identifier">block_context</span>, <span class="ruby-identifier">content_model</span>, <span class="ruby-identifier">terminator</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:skip</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:raw</span>
     <span class="ruby-identifier">skip_processing</span> = <span class="ruby-identifier">content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:skip</span>
@@ -696,7 +696,7 @@ parsedNOTE could invoke filter in here, before and after parsing</p>
 
           
           <div class="method-source-code" id="is_single_line_section_title-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1484</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1518</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_single_line_section_title?</span>(<span class="ruby-identifier">line1</span>)
   <span class="ruby-identifier">first_char</span> = <span class="ruby-identifier">line1</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">line1</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">first_char</span> <span class="ruby-operator">==</span> <span class="ruby-string">'='</span> <span class="ruby-operator">||</span> (<span class="ruby-constant">Compliance</span>.<span class="ruby-identifier">markdown_syntax</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">first_char</span> <span class="ruby-operator">==</span> <span class="ruby-string">'#'</span>)) <span class="ruby-operator">&amp;&amp;</span>
@@ -735,7 +735,7 @@ parsedNOTE could invoke filter in here, before and after parsing</p>
 
           
           <div class="method-source-code" id="is_two_line_section_title-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1494</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1528</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_two_line_section_title?</span>(<span class="ruby-identifier">line1</span>, <span class="ruby-identifier">line2</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">line1</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">line2</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">SECTION_LEVELS</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">line2</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]) <span class="ruby-operator">&amp;&amp;</span>
       <span class="ruby-identifier">line2</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:section_underline</span>]) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line1</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:section_name</span>]) <span class="ruby-operator">&amp;&amp;</span>
@@ -775,7 +775,7 @@ parsedNOTE could invoke filter in here, before and after parsing</p>
 
           
           <div class="method-source-code" id="process_attribute_entries-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1857</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1891</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_attribute_entries</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">skip_comment_lines</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">process_attribute_entry</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
@@ -813,7 +813,7 @@ parsedNOTE could invoke filter in here, before and after parsing</p>
 
           
           <div class="method-source-code" id="process_attribute_entry-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1866</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1900</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_attribute_entry</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">match</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">match</span> <span class="ruby-operator">||=</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:attr_entry</span>]) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">match</span>
@@ -906,7 +906,7 @@ EOS</span>
 
           
           <div class="method-source-code" id="reset_block_indent-21-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2407</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2444</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">reset_block_indent!</span>(<span class="ruby-identifier">lines</span>, <span class="ruby-identifier">indent</span> = <span class="ruby-value">0</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">indent</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">empty?</span>
 
@@ -980,7 +980,7 @@ ASCII line under the section title.</p>
 
           
           <div class="method-source-code" id="section_level-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1434</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1468</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">section_level</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-constant">SECTION_LEVELS</span>[<span class="ruby-identifier">line</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]]
 <span class="ruby-keyword">end</span></pre>
@@ -1013,7 +1013,7 @@ ASCII line under the section title.</p>
 
           
           <div class="method-source-code" id="single_line_section_level-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1440</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1474</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">single_line_section_level</span>(<span class="ruby-identifier">marker</span>)
   <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1079,49 +1079,69 @@ or nil if not</p>
 
           
           <div class="method-source-code" id="is_delimited_block-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 822</span>
-<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_delimited_block?</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">return_match_data</span> = <span class="ruby-keyword">false</span>)
-  <span class="ruby-identifier">line_len</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span>
-  <span class="ruby-comment"># optimized for best performance</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span>
-      <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chop</span>
-      <span class="ruby-identifier">tl</span> = <span class="ruby-value">2</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 828</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_delimited_block?</span> <span class="ruby-identifier">line</span>, <span class="ruby-identifier">return_match_data</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-comment"># highly optimized for best performance</span>
+  <span class="ruby-identifier">line_len</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">DELIMITED_BLOCK_LEADERS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">line</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>])
+  <span class="ruby-identifier">line</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span>
+  <span class="ruby-comment"># counts endline character in line length</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+    <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">line</span>
+    <span class="ruby-identifier">tl</span> = <span class="ruby-value">2</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">3</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">5</span>
+      <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">line</span>
+      <span class="ruby-identifier">tl</span> = <span class="ruby-identifier">line_len</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">line</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>]
       <span class="ruby-identifier">tl</span> = <span class="ruby-value">4</span>
-
-      <span class="ruby-keyword">if</span> <span class="ruby-constant">Compliance</span>.<span class="ruby-identifier">markdown_syntax</span>
-        <span class="ruby-comment"># special case for fenced code blocks</span>
-        <span class="ruby-identifier">tip_alt</span> = <span class="ruby-identifier">tip</span>.<span class="ruby-identifier">chop</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'```'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'~~~'</span>
-          <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">tip_alt</span>
-          <span class="ruby-identifier">tl</span> = <span class="ruby-value">3</span>
-        <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-constant">DELIMITED_BLOCKS</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">tip</span>
-      <span class="ruby-comment"># if tip is the full line</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tl</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">line_len</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>
-        <span class="ruby-comment">#return_match_data ? BlockMatchData.new(DELIMITED_BLOCKS[tip], tip, tip) : true</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_match_data</span>
-          <span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span> = <span class="ruby-operator">*</span><span class="ruby-constant">DELIMITED_BLOCKS</span>[<span class="ruby-identifier">tip</span>]
-          <span class="ruby-constant">BlockMatchData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span>, <span class="ruby-identifier">tip</span>, <span class="ruby-identifier">tip</span>)
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-keyword">true</span>
+    <span class="ruby-comment"># special case for fenced code blocks</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-constant">Compliance</span>.<span class="ruby-identifier">markdown_syntax</span>
+      <span class="ruby-identifier">tip_alt</span> = <span class="ruby-identifier">tip</span>.<span class="ruby-identifier">chop</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">tl</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'```'</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">'`'</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">match</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:any_blk</span>])
-        <span class="ruby-comment">#return_match_data ? BlockMatchData.new(DELIMITED_BLOCKS[tip], tip, match[0]) : true</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_match_data</span>
-          <span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span> = <span class="ruby-operator">*</span><span class="ruby-constant">DELIMITED_BLOCKS</span>[<span class="ruby-identifier">tip</span>]
-          <span class="ruby-constant">BlockMatchData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span>, <span class="ruby-identifier">tip</span>, <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>])
-        <span class="ruby-keyword">else</span>
-          <span class="ruby-keyword">true</span>
+        <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">tip_alt</span>
+        <span class="ruby-identifier">tl</span> = <span class="ruby-value">3</span>
+      <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">tip_alt</span> <span class="ruby-operator">==</span> <span class="ruby-string">'~~~'</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">tip</span>.<span class="ruby-identifier">end_with?</span> <span class="ruby-string">'~'</span>
+          <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-keyword">end</span>
-      <span class="ruby-keyword">else</span>
-        <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">tip</span> = <span class="ruby-identifier">tip_alt</span>
+        <span class="ruby-identifier">tl</span> = <span class="ruby-value">3</span>
       <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">DELIMITED_BLOCKS</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">tip</span>
+    <span class="ruby-comment"># tip is the full line when delimiter is minimum length</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">tl</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">tl</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">line_len</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_match_data</span>
+        <span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span> = <span class="ruby-operator">*</span><span class="ruby-constant">DELIMITED_BLOCKS</span>[<span class="ruby-identifier">tip</span>]
+        <span class="ruby-constant">BlockMatchData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span>, <span class="ruby-identifier">tip</span>, <span class="ruby-identifier">tip</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-node">%Q(#{tip}#{tip[-1..-1] * (line_len - tl)})</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">line</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">return_match_data</span>
+        <span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span> = <span class="ruby-operator">*</span><span class="ruby-constant">DELIMITED_BLOCKS</span>[<span class="ruby-identifier">tip</span>]
+        <span class="ruby-constant">BlockMatchData</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">context</span>, <span class="ruby-identifier">masq</span>, <span class="ruby-identifier">tip</span>, <span class="ruby-identifier">line</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-keyword">true</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-comment">#elsif match = line.match(REGEXP[:any_blk])</span>
+    <span class="ruby-comment">#  if return_match_data</span>
+    <span class="ruby-comment">#    context, masq = *DELIMITED_BLOCKS[tip]</span>
+    <span class="ruby-comment">#    BlockMatchData.new(context, masq, tip, match[0])</span>
+    <span class="ruby-comment">#  else</span>
+    <span class="ruby-comment">#    true</span>
+    <span class="ruby-comment">#  end</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
@@ -1168,7 +1188,7 @@ otherwise</p>
 
           
           <div class="method-source-code" id="is_section_title-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1474</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1508</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_section_title?</span>(<span class="ruby-identifier">line1</span>, <span class="ruby-identifier">line2</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">level</span> = <span class="ruby-identifier">is_single_line_section_title?</span>(<span class="ruby-identifier">line1</span>))
     <span class="ruby-identifier">level</span>
@@ -1214,7 +1234,7 @@ endline</p>
 
           
           <div class="method-source-code" id="line_length-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1589</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1623</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">line_length</span>(<span class="ruby-identifier">line</span>)
   <span class="ruby-constant">FORCE_UNICODE_LINE_LENGTH</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-regexp">/./</span>).<span class="ruby-identifier">length</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">length</span>
 <span class="ruby-keyword">end</span></pre>
@@ -1399,10 +1419,10 @@ processed lines</p>
         <span class="ruby-keyword">end</span>
 
         <span class="ruby-comment"># process lines normally</span>
-        <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">text_only</span>
-          <span class="ruby-identifier">first_char</span> = <span class="ruby-identifier">this_line</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]
+        <span class="ruby-keyword">unless</span> <span class="ruby-identifier">text_only</span>
+          <span class="ruby-identifier">first_char</span> = <span class="ruby-constant">Compliance</span>.<span class="ruby-identifier">markdown_syntax</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">lstrip</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>] <span class="ruby-operator">:</span> <span class="ruby-identifier">this_line</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]
           <span class="ruby-comment"># NOTE we're letting break lines (ruler, page_break, etc) have attributes</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-constant">BREAK_LINES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">first_char</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> <span class="ruby-operator">&amp;&amp;</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-constant">BREAK_LINES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">first_char</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span>
               (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">Compliance</span>.<span class="ruby-identifier">markdown_syntax</span> <span class="ruby-operator">?</span> <span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:break_line_plus</span>] <span class="ruby-operator">:</span> <span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:break_line</span>]))
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-constant">BREAK_LINES</span>[<span class="ruby-identifier">first_char</span>], <span class="ruby-value">:content_model</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:empty</span>)
             <span class="ruby-keyword">break</span>
@@ -1451,7 +1471,7 @@ processed lines</p>
             <span class="ruby-keyword">break</span>
 
           <span class="ruby-comment"># NOTE we're letting the toc macro have attributes</span>
-          <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:toc</span>]))
+          <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">first_char</span> <span class="ruby-operator">==</span> <span class="ruby-string">'t'</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">this_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:toc</span>]))
             <span class="ruby-identifier">block</span> = <span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:toc</span>, <span class="ruby-value">:content_model</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:empty</span>)
             <span class="ruby-identifier">block</span>.<span class="ruby-identifier">parse_attributes</span>(<span class="ruby-identifier">match</span>[<span class="ruby-value">1</span>], [], <span class="ruby-value">:sub_result</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:into</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">attributes</span>)
             <span class="ruby-keyword">break</span>
@@ -1683,7 +1703,7 @@ processed lines</p>
               <span class="ruby-identifier">lines</span>[<span class="ruby-value">0</span>] = <span class="ruby-identifier">first_line_shifted</span>
               <span class="ruby-comment"># QUESTION should we fix the rest of the lines, since in XML output it's insignificant?</span>
               <span class="ruby-identifier">lines</span>.<span class="ruby-identifier">size</span>.<span class="ruby-identifier">times</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-                <span class="ruby-identifier">lines</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">lines</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">lstrip</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+                <span class="ruby-identifier">lines</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">lines</span>[<span class="ruby-identifier">i</span>][<span class="ruby-identifier">indent</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
               <span class="ruby-keyword">end</span>
             <span class="ruby-keyword">end</span>
 
@@ -1718,9 +1738,12 @@ processed lines</p>
       <span class="ruby-keyword">when</span> <span class="ruby-value">:listing</span>, <span class="ruby-value">:fenced_code</span>, <span class="ruby-value">:source</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:fenced_code</span>
           <span class="ruby-identifier">style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-string">'source'</span>
-          <span class="ruby-identifier">lang</span> = <span class="ruby-identifier">this_line</span>[<span class="ruby-value">3</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">strip</span>
-          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'language'</span>] = <span class="ruby-identifier">lang</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">empty?</span>
-          <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">terminator</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">terminator</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>
+          <span class="ruby-identifier">language</span>, <span class="ruby-identifier">linenums</span> = <span class="ruby-identifier">this_line</span>[<span class="ruby-value">3</span><span class="ruby-operator">...</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>, <span class="ruby-value">2</span>)
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">language</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">language</span> = <span class="ruby-identifier">language</span>.<span class="ruby-identifier">strip</span>).<span class="ruby-identifier">empty?</span>
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'language'</span>] = <span class="ruby-identifier">language</span>
+            <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'linenums'</span>] = <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">linenums</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">linenums</span>.<span class="ruby-identifier">strip</span>.<span class="ruby-identifier">empty?</span>
+          <span class="ruby-keyword">end</span>
+          <span class="ruby-identifier">terminator</span> = <span class="ruby-identifier">terminator</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>]
         <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">block_context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:source</span>
           <span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">rekey</span>(<span class="ruby-identifier">attributes</span>, [<span class="ruby-keyword">nil</span>, <span class="ruby-string">'language'</span>, <span class="ruby-string">'linenums'</span>])
         <span class="ruby-keyword">end</span>
@@ -1790,6 +1813,7 @@ processed lines</p>
       <span class="ruby-identifier">document</span>.<span class="ruby-identifier">register</span>(<span class="ruby-value">:ids</span>, [<span class="ruby-identifier">block</span>.<span class="ruby-identifier">id</span>, <span class="ruby-identifier">block</span>.<span class="ruby-identifier">title</span>])
     <span class="ruby-keyword">end</span>
     <span class="ruby-identifier">block</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">attributes</span>)
+    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">lock_in_subs</span>
 
     <span class="ruby-comment">#if document.attributes.has_key? :pending_attribute_entries</span>
     <span class="ruby-comment">#  document.attributes.delete(:pending_attribute_entries).each do |entry|</span>
@@ -1797,9 +1821,11 @@ processed lines</p>
     <span class="ruby-comment">#  end</span>
     <span class="ruby-comment">#end</span>
 
-    <span class="ruby-comment"># FIXME callout capabilities should be a setting on the block</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:listing</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:literal</span>
-      <span class="ruby-identifier">catalog_callouts</span>(<span class="ruby-identifier">block</span>.<span class="ruby-identifier">source</span>, <span class="ruby-identifier">document</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">sub?</span> <span class="ruby-value">:callouts</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">catalog_callouts</span> <span class="ruby-identifier">block</span>.<span class="ruby-identifier">source</span>, <span class="ruby-identifier">document</span>)
+        <span class="ruby-comment"># No need to look for callouts if they aren't there</span>
+        <span class="ruby-identifier">block</span>.<span class="ruby-identifier">remove_sub</span> <span class="ruby-value">:callouts</span>
+      <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 
@@ -2092,7 +2118,7 @@ blocks</p>
 
           
           <div class="method-source-code" id="parse_blocks-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 955</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 981</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_blocks</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>)
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
     <span class="ruby-identifier">block</span> = <span class="ruby-constant">Lexer</span>.<span class="ruby-identifier">next_block</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>)
@@ -2246,7 +2272,7 @@ document</p>
 
           
           <div class="method-source-code" id="parse_header_metadata-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1606</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1640</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_header_metadata</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-comment"># NOTE this will discard away any comment lines, but not skip blank lines</span>
   <span class="ruby-identifier">process_attribute_entries</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
@@ -2459,7 +2485,7 @@ firstpositional attribute.</p>
 
 <span class="ruby-identifier">puts</span> <span class="ruby-identifier">attributes</span>
 =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">1</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;abstract#intro.lead&quot;</span>, <span class="ruby-string">&quot;style&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;abstract&quot;</span>, <span class="ruby-string">&quot;id&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;intro&quot;</span>,
-      <span class="ruby-string">&quot;role&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;lead&quot;</span>, <span class="ruby-string">&quot;options&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;fragment&quot;</span>, <span class="ruby-string">&quot;option-fragment&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">''</span>}
+      <span class="ruby-string">&quot;role&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;lead&quot;</span>, <span class="ruby-string">&quot;options&quot;</span> =<span class="ruby-operator">&gt;</span> [<span class="ruby-string">&quot;fragment&quot;</span>], <span class="ruby-string">&quot;fragment-option&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">''</span>}
 </pre>
 
 <p>Returns a two-element Array of the parsed style from thefirst positional
@@ -2469,11 +2495,11 @@ attribute and the original style that wasreplaced</p>
 
           
           <div class="method-source-code" id="parse_style_attribute-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2287</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2320</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_style_attribute</span>(<span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">reader</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">original_style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>]
   <span class="ruby-identifier">raw_style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>]
-  <span class="ruby-comment"># NOTE the check for empty string is a hack to skip processing alt text on block macro</span>
+  <span class="ruby-comment"># NOTE spaces are not allowed in shorthand, so if we find one, this ain't shorthand</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">raw_style</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">raw_style</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">' '</span>)
     <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] = <span class="ruby-identifier">raw_style</span>
     [<span class="ruby-identifier">raw_style</span>, <span class="ruby-identifier">original_style</span>]
@@ -2544,7 +2570,11 @@ attribute and the original style that wasreplaced</p>
         (<span class="ruby-identifier">options</span> = <span class="ruby-identifier">parsed</span>[<span class="ruby-value">:option</span>]).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">option</span><span class="ruby-operator">|</span>
           <span class="ruby-identifier">attributes</span>[<span class="ruby-node">&quot;#{option}-option&quot;</span>] = <span class="ruby-string">''</span>
         <span class="ruby-keyword">end</span>
-        <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] = <span class="ruby-identifier">options</span> <span class="ruby-operator">*</span> <span class="ruby-string">','</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">existing_opts</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>])
+          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] = (<span class="ruby-identifier">options</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">existing_opts</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>)) <span class="ruby-operator">*</span> <span class="ruby-string">','</span> 
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] = <span class="ruby-identifier">options</span> <span class="ruby-operator">*</span> <span class="ruby-string">','</span>
+        <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
 
@@ -2598,7 +2628,7 @@ attribute and the original style that wasreplaced</p>
 
           
           <div class="method-source-code" id="sanitize_attribute_name-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2463</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2500</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">sanitize_attribute_name</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-identifier">name</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:illegal_attr_name_chars</span>], <span class="ruby-string">''</span>).<span class="ruby-identifier">downcase</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2647,7 +2677,7 @@ accessible</p>
 
           
           <div class="method-source-code" id="store_attribute-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1900</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1934</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">store_attribute</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">value</span>, <span class="ruby-identifier">doc</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">attrs</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">'!'</span>)
     <span class="ruby-comment"># a nil value signals the attribute should be deleted (undefined)</span>
@@ -2733,20 +2763,27 @@ accessible</p>
 <p>The current document on which the callouts are stored</p>
 </dd></dl>
 
-<p>Returns nothing</p>
+<p>Returns A Boolean indicating whether callouts were found</p>
           
           
 
           
           <div class="method-source-code" id="catalog_callouts-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1025</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1051</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">catalog_callouts</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">document</span>)
-  <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:callout_quick_scan</span>]) {
-    <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
-    <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
-    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">==</span> <span class="ruby-string">'\'</span>
-    <span class="ruby-identifier">document</span>.<span class="ruby-identifier">callouts</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">3</span>])
-  }
+  <span class="ruby-identifier">found</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">include?</span> <span class="ruby-string">'&lt;'</span>
+    <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:callout_quick_scan</span>]) {
+      <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
+      <span class="ruby-identifier">m</span> = <span class="ruby-identifier">$~</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>][<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">'\'</span>
+        <span class="ruby-identifier">document</span>.<span class="ruby-identifier">callouts</span>.<span class="ruby-identifier">register</span>(<span class="ruby-identifier">m</span>[<span class="ruby-value">2</span>])
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-comment"># we have to mark as found even if it's escaped so it can be unescaped</span>
+      <span class="ruby-identifier">found</span> = <span class="ruby-keyword">true</span>
+    }
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">found</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- catalog_callouts-source -->
           
@@ -2786,7 +2823,7 @@ accessible</p>
 
           
           <div class="method-source-code" id="catalog_inline_anchors-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1040</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1073</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">catalog_inline_anchors</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">document</span>)
   <span class="ruby-identifier">text</span>.<span class="ruby-identifier">scan</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:anchor_macro</span>]) {
     <span class="ruby-comment"># alias match for Ruby 1.8.7 compat</span>
@@ -2846,7 +2883,7 @@ href="Section.html">Section</a></p>
 
           
           <div class="method-source-code" id="initialize_section-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1383</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1417</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initialize_section</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = {})
   <span class="ruby-identifier">document</span> = <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">document</span>
   <span class="ruby-identifier">sect_id</span>, <span class="ruby-identifier">sect_title</span>, <span class="ruby-identifier">sect_level</span>, <span class="ruby-identifier">_</span> = <span class="ruby-identifier">parse_section_title</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
@@ -2933,7 +2970,7 @@ document title, false otherwise</p>
 
           
           <div class="method-source-code" id="is_next_line_document_title-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1463</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1497</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_next_line_document_title?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>)
   <span class="ruby-identifier">is_next_line_section?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
@@ -2977,7 +3014,7 @@ positioned at a section title,false otherwise</p>
 
           
           <div class="method-source-code" id="is_next_line_section-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1451</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1485</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_next_line_section?</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">val</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> [<span class="ruby-string">'float'</span>, <span class="ruby-string">'discrete'</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">val</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
@@ -3026,7 +3063,7 @@ giventhe criteria provided</p>
 
           
           <div class="method-source-code" id="is_sibling_list_item-3F-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2025</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2059</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">is_sibling_list_item?</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">sibling_trait</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">sibling_trait</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Regexp</span>)
     <span class="ruby-identifier">matcher</span> = <span class="ruby-identifier">sibling_trait</span>
@@ -3092,7 +3129,7 @@ list</p>
 
           
           <div class="method-source-code" id="next_labeled_list-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1062</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1095</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_labeled_list</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">match</span>, <span class="ruby-identifier">parent</span>)
   <span class="ruby-identifier">list_block</span> = <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-value">:dlist</span>)
   <span class="ruby-identifier">previous_pair</span> = <span class="ruby-keyword">nil</span>
@@ -3176,7 +3213,7 @@ parent list <a href="Block.html">Block</a>.</p>
 
           
           <div class="method-source-code" id="next_list_item-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1101</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1134</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_list_item</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">list_block</span>, <span class="ruby-identifier">match</span>, <span class="ruby-identifier">sibling_trait</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">list_type</span> = <span class="ruby-identifier">list_block</span>.<span class="ruby-identifier">context</span>
 
@@ -3202,6 +3239,7 @@ parent list <a href="Block.html">Block</a>.</p>
     <span class="ruby-identifier">list_item</span> = <span class="ruby-constant">ListItem</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">list_block</span>, <span class="ruby-identifier">text</span>)
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">checkbox</span>
+      <span class="ruby-comment"># FIXME checklist never makes it into the options attribute</span>
       <span class="ruby-identifier">list_block</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'checklist-option'</span>] = <span class="ruby-string">''</span>
       <span class="ruby-identifier">list_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'checkbox'</span>] = <span class="ruby-string">''</span>
       <span class="ruby-identifier">list_item</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'checked'</span>] = <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">checked</span>
@@ -3305,7 +3343,7 @@ belongs</p>
 
           
           <div class="method-source-code" id="next_outline_list-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 969</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 995</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_outline_list</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">parent</span>)
   <span class="ruby-identifier">list_block</span> = <span class="ruby-constant">List</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">list_type</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">list_type</span>
@@ -3399,7 +3437,7 @@ from the provided reader</p>
 
           
           <div class="method-source-code" id="next_table-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2052</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2086</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_table</span>(<span class="ruby-identifier">table_reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
   <span class="ruby-identifier">table</span> = <span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>)
   <span class="ruby-identifier">table</span>.<span class="ruby-identifier">title</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'title'</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'title'</span>)
@@ -3423,8 +3461,7 @@ from the provided reader</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">skipped</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">loop_idx</span>.<span class="ruby-identifier">zero?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-string">'options'</span>) <span class="ruby-operator">&amp;&amp;</span>
         <span class="ruby-operator">!</span>(<span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">table_reader</span>.<span class="ruby-identifier">peek_line</span>).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span> <span class="ruby-operator">==</span> <span class="ruby-operator">::</span><span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">EOL</span>
       <span class="ruby-identifier">table</span>.<span class="ruby-identifier">has_header_option</span> = <span class="ruby-keyword">true</span>
-      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'options'</span>] = <span class="ruby-string">'header'</span>
-      <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'header-option'</span>] = <span class="ruby-string">''</span>
+      <span class="ruby-identifier">table</span>.<span class="ruby-identifier">set_option</span> <span class="ruby-string">'header'</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">parser_ctx</span>.<span class="ruby-identifier">format</span> <span class="ruby-operator">==</span> <span class="ruby-string">'psv'</span>
@@ -3558,7 +3595,7 @@ not be captured</p>
 
           
           <div class="method-source-code" id="parse_block_metadata_line-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1824</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1858</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_block_metadata_line</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">reader</span>.<span class="ruby-identifier">has_more_lines?</span>
   <span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">peek_line</span>
@@ -3641,7 +3678,7 @@ not be captured</p>
 
           
           <div class="method-source-code" id="parse_block_metadata_lines-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1795</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1829</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_block_metadata_lines</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span> = {}, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">parse_block_metadata_line</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">parent</span>, <span class="ruby-identifier">attributes</span>, <span class="ruby-identifier">options</span>)
     <span class="ruby-comment"># discard the line just processed</span>
@@ -3685,7 +3722,7 @@ cell in the table.</p>
 
           
           <div class="method-source-code" id="parse_cell_spec-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2221</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2254</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_cell_spec</span>(<span class="ruby-identifier">line</span>, <span class="ruby-identifier">pos</span> = <span class="ruby-value">:start</span>)
   <span class="ruby-comment"># the default for the end pos it {} since we</span>
   <span class="ruby-comment"># know we're at a delimiter; when the pos</span>
@@ -3765,7 +3802,7 @@ in the table.</p>
 
           
           <div class="method-source-code" id="parse_col_specs-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2169</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2202</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_col_specs</span>(<span class="ruby-identifier">records</span>)
   <span class="ruby-identifier">specs</span> = []
 
@@ -3883,7 +3920,7 @@ nil.</p>
 
           
           <div class="method-source-code" id="parse_section_title-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1548</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1582</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parse_section_title</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">document</span>)
   <span class="ruby-identifier">line1</span> = <span class="ruby-identifier">reader</span>.<span class="ruby-identifier">read_line</span>
   <span class="ruby-identifier">sect_id</span> = <span class="ruby-keyword">nil</span>
@@ -3962,7 +3999,7 @@ multiplesemicolon-separated entries in the author line (default: true)</p>
 
           
           <div class="method-source-code" id="process_authors-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1718</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1752</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">process_authors</span>(<span class="ruby-identifier">author_line</span>, <span class="ruby-identifier">names_only</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">multiple</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">author_metadata</span> = {}
   <span class="ruby-identifier">keys</span> = [<span class="ruby-string">'author'</span>, <span class="ruby-string">'authorinitials'</span>, <span class="ruby-string">'firstname'</span>, <span class="ruby-string">'middlename'</span>, <span class="ruby-string">'lastname'</span>, <span class="ruby-string">'email'</span>]
@@ -4077,7 +4114,7 @@ labeled lists)</p>
 
           
           <div class="method-source-code" id="read_lines_for_list_item-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1198</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1232</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">read_lines_for_list_item</span>(<span class="ruby-identifier">reader</span>, <span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">sibling_trait</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">has_text</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">buffer</span> = []
 
@@ -4306,7 +4343,7 @@ markerin its number series.</p>
 
           
           <div class="method-source-code" id="resolve_list_marker-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1940</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1974</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">resolve_list_marker</span>(<span class="ruby-identifier">list_type</span>, <span class="ruby-identifier">marker</span>, <span class="ruby-identifier">ordinal</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">validate</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">reader</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">list_type</span> <span class="ruby-operator">==</span> <span class="ruby-value">:olist</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">marker</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'.'</span>)
     <span class="ruby-identifier">resolve_ordered_list_marker</span>(<span class="ruby-identifier">marker</span>, <span class="ruby-identifier">ordinal</span>, <span class="ruby-identifier">validate</span>, <span class="ruby-identifier">reader</span>)
@@ -4372,7 +4409,7 @@ sequence (default: false)</p>
 
           
           <div class="method-source-code" id="resolve_ordered_list_marker-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 1971</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2005</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">resolve_ordered_list_marker</span>(<span class="ruby-identifier">marker</span>, <span class="ruby-identifier">ordinal</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">validate</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">reader</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">number_style</span> = <span class="ruby-constant">ORDERED_LIST_STYLES</span>.<span class="ruby-identifier">detect</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">marker</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">ORDERED_LIST_MARKER_PATTERNS</span>[<span class="ruby-identifier">s</span>]) }
   <span class="ruby-identifier">expected</span> = <span class="ruby-identifier">actual</span> = <span class="ruby-keyword">nil</span>
@@ -4452,7 +4489,7 @@ sequence (default: false)</p>
 
           
           <div class="method-source-code" id="roman_numeral_to_int-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2472</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/lexer.rb, line 2509</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">roman_numeral_to_int</span>(<span class="ruby-identifier">value</span>)
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">value</span>.<span class="ruby-identifier">downcase</span>
   <span class="ruby-identifier">digits</span> = { <span class="ruby-string">'i'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>, <span class="ruby-string">'v'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span>, <span class="ruby-string">'x'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10</span> }

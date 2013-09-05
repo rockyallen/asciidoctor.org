@@ -80,8 +80,8 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>In the Atx-style, the section title is defined on a single line. The section title begins with one or more equal characters (i.e., <code>=</code>) followed by a space and the section title. The number of leading characters representing the depth. The top-level section is reserved for the document title, so the first section in the document will have two leading characters.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>== First Section</pre>
+<div class="content">
+<pre class="nowrap">== First Section</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -91,16 +91,16 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>When using the HTML backend, this section title will be transformed into an h2 heading (likely wrapped in a section block for styling):</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>&lt;h2&gt;First Section&lt;/h2&gt;</pre>
+<div class="content">
+<pre class="nowrap">&lt;h2&gt;First Section&lt;/h2&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The symmetric Atx-style bookends the section title between a matching pair of delimiters.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>== First Section ==</pre>
+<div class="content">
+<pre class="nowrap">== First Section ==</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -111,8 +111,8 @@ I recommend <em>against</em> using the <code>.asc</code> extension. The connecti
 <p>In the Setext-style, the section title is defined on two lines. The second line is a string of characters that form an underline below the section title. Here&#8217;s an example of a section title from above defined in the Setext-style.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>First Section
+<div class="content">
+<pre class="nowrap">First Section
 -------------</pre>
 </div>
 </div>
@@ -174,8 +174,8 @@ Use the asymmetric Atx-style to define your section titles.
 <p>Since the document title occurs only once in a document, I consider it acceptable to use the Setext style in this instance.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>Document Title
+<div class="content">
+<pre class="nowrap">Document Title
 ==============
 Author Name &lt;author@example.org&gt;</pre>
 </div>
@@ -199,8 +199,8 @@ AsciiDoc only supports an e-mail following the author line. It does not support 
 <p>It&#8217;s a good practice to also include a revision line following the author line.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>Document Title
+<div class="content">
+<pre class="nowrap">Document Title
 ==============
 Author Name &lt;author@example.org&gt;
 v1.0, 2012-02-10</pre>
@@ -210,8 +210,8 @@ v1.0, 2012-02-10</pre>
 <p>The version number is optional. The revision line may consist of a date only.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>Document Title
+<div class="content">
+<pre class="nowrap">Document Title
 ==============
 Author Name &lt;author@example.org&gt;
 2012-02-10</pre>
@@ -226,8 +226,8 @@ Author Name &lt;author@example.org&gt;
 <p>Delimited blocks contain special text such as code listings, quotes, sidebar text, tables and so on. As you may have guessed, they are bounded by a string of delimiters. The delimiters are defined on a line by themselves. The content goes in between the delimiter lines. Here&#8217;s an example of a listing:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>----
+<div class="content">
+<pre class="nowrap">----
 $ asciidoc -b html5 recommended-practices.ad
 ----</pre>
 </div>
@@ -239,8 +239,8 @@ $ asciidoc -b html5 recommended-practices.ad
 <p>You may be tempting to extend the line furthur, either to a predetermined length or to match the length of the content.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>--------------------------------------------
+<div class="content">
+<pre class="nowrap">--------------------------------------------
 $ asciidoc -b html5 recommended-practices.ad
 --------------------------------------------</pre>
 </div>
@@ -280,8 +280,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 </div>
 <div class="literalblock">
 <div class="title">Numbering</div>
-<div class="content monospaced">
-<pre>{counter:counter-name}</pre>
+<div class="content">
+<pre class="nowrap">{counter:counter-name}</pre>
 </div>
 </div>
 </div>
@@ -297,8 +297,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can enable numbering of sections using the <code>numbered</code> attribute (off by default).</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:numbered:</pre>
+<div class="content">
+<pre class="nowrap">:numbered:</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -306,16 +306,16 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can set the description of the document using the <code>description</code> attribute. The description is included in the header of the document.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:description: This document catalogs a set of recommended practices for writing in AsciiDoc.</pre>
+<div class="content">
+<pre class="nowrap">:description: This document catalogs a set of recommended practices for writing in AsciiDoc.</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>You can break any attribute value across several lines by ending the lines in a <code>&#43;</code> preceded by a space.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:description: This document catalogs a set of recommended practices +
+<div class="content">
+<pre class="nowrap">:description: This document catalogs a set of recommended practices +
               for composing documents in AsciiDoc.</pre>
 </div>
 </div>
@@ -323,8 +323,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>You can use this text anywhere in the document by referencing it as an attribute.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>{description}</pre>
+<div class="content">
+<pre class="nowrap">{description}</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -332,24 +332,24 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>IDs are generated for each section title by default. The ID is generated from the section title, prefixed with an underscore (i.e., <code>_</code>) by default. You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:idprefix: -</pre>
+<div class="content">
+<pre class="nowrap">:idprefix: -</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If you want to remove the prefix, assign it to an empty value:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:idprefix:</pre>
+<div class="content">
+<pre class="nowrap">:idprefix:</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>To disable the auto-generation of section IDs, unset the <code>sectids</code> attribute:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:sectids!:</pre>
+<div class="content">
+<pre class="nowrap">:sectids!:</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -357,8 +357,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>Set the <code>toc</code> attribute to activate an auto-generated table of contents at the top of document:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>:toc:</pre>
+<div class="content">
+<pre class="nowrap">:toc:</pre>
 </div>
 </div>
 </div>
@@ -398,8 +398,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>AsciiDoc supports both <code>*</code> (one or more) and <code>-</code> (only one) as markers for a top-level list item.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>* first
+<div class="content">
+<pre class="nowrap">* first
 * second
 * third</pre>
 </div>
@@ -408,8 +408,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>or</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>- first
+<div class="content">
+<pre class="nowrap">- first
 - second
 - third</pre>
 </div>
@@ -418,8 +418,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>However, the dash marker <em>cannot</em> be repeated when defining a list item. This can lead to confusion since AsciiDoc increases the nesting level each time it encounters a <em>different</em> marker. For instance, in the following case, the item that have an asterisk marker is <strong>nested</strong> inside the first item.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>- first
+<div class="content">
+<pre class="nowrap">- first
 * nested item
 - second
 - third</pre>
@@ -429,8 +429,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>This nesting rule is true even when the number of asterisks seems to indicate the level:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>*** first
+<div class="content">
+<pre class="nowrap">*** first
 * nested item
 *** second
 *** third</pre>
@@ -443,8 +443,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>If you stick to convention, the number of asterisks <em>can</em> represent the nesting level:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>* first
+<div class="content">
+<pre class="nowrap">* first
 ** nested item
 * second
 * third</pre>
@@ -468,8 +468,8 @@ AsciiDoc does not enforce that the length of the line that opens the delimited b
 <p>Adjacent lists sometimes like to fuse. To force the start of a new list, offset the two lists by an empty line comment:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>* apples
+<div class="content">
+<pre class="nowrap">* apples
 * oranges
 * bananas
 

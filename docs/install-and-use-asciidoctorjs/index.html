@@ -29,16 +29,16 @@ The resulting JavaScript can be executed within any JavaScript runtime environme
 <p>Start by cloning the source from GitHub.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$ git clone --recurse-submodules git://github.com/asciidoctor/asciidoctor.js</pre>
+<div class="content">
+<pre class="nowrap">$ git clone --recurse-submodules git://github.com/asciidoctor/asciidoctor.js</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Next, switch to the <em>asciidoctor.js</em> directory and run Bundler&#8217;s <code>install</code> command.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$ cd asciidoctor.js
+<div class="content">
+<pre class="nowrap">$ cd asciidoctor.js
 $ bundle install</pre>
 </div>
 </div>
@@ -54,8 +54,8 @@ $ bundle install</pre>
 <p>To build asciidoctor.js, run the Rake <code>dist</code> task from the root of the project.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$ rake dist</pre>
+<div class="content">
+<pre class="nowrap">$ rake dist</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -93,8 +93,8 @@ Once we sort out those issues, the size of the generated files should be quite a
 For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (ideally at the bottom of the page).</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
+<div class="content">
+<pre class="highlight nowrap"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
 &lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
 </div>
 </div>
@@ -110,8 +110,8 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 <p>To build the examples, run the Rake <code>examples</code> task from the root of the project:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$ rake examples</pre>
+<div class="content">
+<pre class="nowrap">$ rake examples</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -163,8 +163,8 @@ The content on the page was rendered from AsciiDoc by asciidoctor.js when you lo
 <p>First, we&#8217;ll stuff some AsciiDoc data into a variable inside a Ruby script.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">data = &lt;&lt;-EOS
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">data = &lt;&lt;-EOS
 = asciidoctor.js, AsciiDoc in JavaScript
 Doc Writer &lt;docwriter@example.com&gt;
 
@@ -185,8 +185,8 @@ EOS</code></pre>
 <p>Next, we invoke Asciidoctor in Ruby just as we normally would.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">html_doc = Asciidoctor.render(data, :safe =&gt; :safe,
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">html_doc = Asciidoctor.render(data, :safe =&gt; :safe,
   :attributes =&gt; %w(notitle! anchors imagesdir=./images))</code></pre>
 </div>
 </div>
@@ -194,8 +194,8 @@ EOS</code></pre>
 <p>We then use the global <code>$window</code> object provided by Opal to register a listener that inserts the rendered HTML document into the page.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">$window.addEventListener 'DOMContentLoaded', proc {
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">$window.addEventListener 'DOMContentLoaded', proc {
   $document.getElementById('content').innerHTML = html_doc
 }, false</code></pre>
 </div>
@@ -204,8 +204,8 @@ EOS</code></pre>
 <p>The final step is to compile this Ruby code into JavaScript using the Opal compiler.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">env = Opal::Environment.new
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">env = Opal::Environment.new
 env.append_path 'examples'
 compiled = env['asciidoctor_example'].to_s
 File.open('build/asciidoctor_example.js', 'w') { |f| f &lt;&lt; compiled }</code></pre>
@@ -232,8 +232,8 @@ Ruby variables and methods on a class or object get prefixed with <code>$</code>
 Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execute <code>Opal.Asciidoctor.$render</code> in JavaScript.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="javascript language-javascript">var html_doc =Opal.Asciidoctor.$render(
+<div class="content">
+<pre class="highlight nowrap"><code class="javascript language-javascript">var html_doc =Opal.Asciidoctor.$render(
     "http://asciidoctor.org[*Asciidoctor*] " +
     "running on http://opalrb.org[_Opal_] " +
     "brings AsciiDoc to the browser!")</code></pre>
@@ -243,8 +243,8 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 <p>You would insert the rendered document into the page using the normal JavaScript DOM methods.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="javascript language-javascript">document.getElementById('content').innerHTML = Opal.Asciidoctor.$render(
+<div class="content">
+<pre class="highlight nowrap"><code class="javascript language-javascript">document.getElementById('content').innerHTML = Opal.Asciidoctor.$render(
     "http://asciidoctor.org[*Asciidoctor*] " +
     "running on http://opalrb.org[_Opal_] " +
     "brings AsciiDoc to the browser!")</code></pre>
@@ -254,8 +254,8 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 <p>Passing the options <code>Hash</code> to the <code>render</code> method requires a little bit of Opal voodoo.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="javascript language-javascript">Opal.hash2(['attributes'], {'attributes': ['notitle!']})</code></pre>
+<div class="content">
+<pre class="highlight nowrap"><code class="javascript language-javascript">Opal.hash2(['attributes'], {'attributes': ['notitle!']})</code></pre>
 </div>
 </div>
 </div>

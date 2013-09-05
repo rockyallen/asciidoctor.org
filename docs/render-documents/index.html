@@ -122,8 +122,8 @@ A native PDF backend is planned for Asciidoctor.
 </ol>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre> = Introduction to AsciiDoc
+<div class="content">
+<pre class="nowrap"> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
 
  A preface about http://asciidoc.org[AsciiDoc].
@@ -154,8 +154,8 @@ A native PDF backend is planned for Asciidoctor.
 </ol>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -166,8 +166,8 @@ A native PDF backend is planned for Asciidoctor.
 If you type <code>ls</code> or view the directory in a file manager, there is a new file named <code>sample.html</code>.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; ls
+<div class="content">
+<pre class="nowrap">$&gt; ls
 sample.adoc  sample.html</pre>
 </div>
 </div>
@@ -181,8 +181,8 @@ sample.adoc  sample.html</pre>
 <p>Asciidoctor also includes a Ruby API that lets you generate an HTML document directly from a Ruby application.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">require 'asciidoctor'
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">require 'asciidoctor'
 
 Asciidoctor.render_file('sample.adoc', :in_place =&gt; true)</code></pre>
 </div>
@@ -191,8 +191,8 @@ Asciidoctor.render_file('sample.adoc', :in_place =&gt; true)</code></pre>
 <p>Alternatively, you can capture the HTML output in a variable instead of writing it to a file.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">html = Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">html = Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
 puts html</code></pre>
 </div>
 </div>
@@ -210,16 +210,16 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 <li>
 <p>If you prefer to copy <code>asciidoctor.css</code> to the output location and link to it from the generated document, set the <code>copycss</code> attribute:</p>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a copycss sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a copycss sample.adoc</pre>
 </div>
 </div>
 </li>
 <li>
 <p>If you prefer to embed the stylesheet into the document, unset the <code>linkcss</code> attribute:</p>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a linkcss! sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a linkcss! sample.adoc</pre>
 </div>
 </div>
 </li>
@@ -257,8 +257,8 @@ We believe linking to the stylesheet is a better default, certainly a accepted p
 <p>If you unset the stylesheet attribute, Asciidoctor will generate HTML without any styles:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a stylesheet! sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet! sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -288,24 +288,24 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 </ol>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>To have Asciidoctor embed the contents of the stylesheet in the generate HTML document, use:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Stylesheets can also be stored in the <code>stylesheets</code> directory, but then you need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a stylesdir=./stylesheets -a stylesheet=mystyles.css sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a stylesdir=./stylesheets -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -327,8 +327,8 @@ The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/m
 <p>For example, you can activate syntax highlighting options in the code with this argument:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>-a source-highlighter=highlightjs</pre>
+<div class="content">
+<pre class="nowrap">-a source-highlighter=highlightjs</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -336,24 +336,24 @@ The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/m
 Or, by passing the <code>data-uri</code> attribute to the processor, you can embed the images into the document.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a data-uri sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a data-uri sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>If you want the document to include a table of contents, pass the <code>toc</code> attribute to the processor:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -a data-uri -a toc sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a data-uri -a toc sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Alternatively, if you want to use <code>data-uri</code> and <code>toc</code> by default, you can add them to the header of the document.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre> = Introduction to AsciiDoc
+<div class="content">
+<pre class="nowrap"> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
  :data-uri:
  :toc:
@@ -374,8 +374,8 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 <p>In your command prompt, specify the <code>html5</code> backend with <code>-b</code> and execute the following command:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoc -b html5 sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoc -b html5 sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -383,8 +383,8 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 People tend to prefer the flask theme, which you can enable using the <code>theme</code> attribute:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoc -b html5 -a theme=flask sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoc -b html5 -a theme=flask sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -409,8 +409,8 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 <p>As in Asciidoctor, you can also override the default stylessheet and supply your own with the <code>stylesheet</code> attribute.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -423,16 +423,16 @@ Stylesheets can only be applied via the <code>stylesheet</code> attribute.
 <p>For example, to embed images into <code>sample.adoc</code> with the AsciiDoc processor, type:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoc -b html5 -a data-uri sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoc -b html5 -a data-uri sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Or add <code>data-uri</code> to the header of the document:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre> = Introduction to AsciiDoc
+<div class="content">
+<pre class="nowrap"> = Introduction to AsciiDoc
  Doc Writer &lt;doc@example.com&gt;
  :data-uri:
 
@@ -456,16 +456,16 @@ There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc sy
 <p>To convert the <code>sample.adoc</code> document to DocBook format, call the processor with the backend flag set to <code>docbook</code>:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; asciidoctor -b docbook sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -b docbook sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>A new XML document, named <code>sample.xml</code>, will now be present in the current directory.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; ls
+<div class="content">
+<pre class="nowrap">$&gt; ls
 sample.adoc  sample.html  sample.xml</pre>
 </div>
 </div>
@@ -473,16 +473,16 @@ sample.adoc  sample.html  sample.xml</pre>
 <p>If you&#8217;re on Linux, you can view the DocBook file with <a href="http://live.gnome.org/Yelp">Yelp</a>.</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; yelp sample.xml</pre>
+<div class="content">
+<pre class="nowrap">$&gt; yelp sample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Using the Asciidoctor Ruby API, you can generate a DocBook document directly from a Ruby application:</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="ruby language-ruby">Asciidoctor.render_file('sample.adoc', :in_place =&gt; true,
+<div class="content">
+<pre class="highlight nowrap"><code class="ruby language-ruby">Asciidoctor.render_file('sample.adoc', :in_place =&gt; true,
     :backend =&gt; 'docbook')</code></pre>
 </div>
 </div>
@@ -519,16 +519,16 @@ For legacy reasons, the conversion to PDF is handled by a separate program in th
 </ol>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; a2x -f pdf sample.xml</pre>
+<div class="content">
+<pre class="nowrap">$&gt; a2x -f pdf sample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>A PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; ls
+<div class="content">
+<pre class="nowrap">$&gt; ls
 sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 </div>
 </div>
@@ -539,8 +539,8 @@ sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 <p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
 </div>
 <div class="literalblock">
-<div class="content monospaced">
-<pre>$&gt; a2x -f pdf sample.adoc</pre>
+<div class="content">
+<pre class="nowrap">$&gt; a2x -f pdf sample.adoc</pre>
 </div>
 </div>
 </div>

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::DocBook45::BlockUlistTemplate - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::DocBook45::BlockUlistTemplate - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -458,32 +458,35 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 222</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 220</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
-&lt;%#encoding:UTF-8%&gt;&lt;% if @style == 'bibliography' %&gt;
-&lt;bibliodiv#{common_attrs_erb}&gt;#{title_tag}
-  &lt;% items.each do |li| %&gt;
-    &lt;bibliomixed&gt;
-      &lt;bibliomisc&gt;&lt;%= li.text %&gt;&lt;/bibliomisc&gt;
-      &lt;% if li.blocks? %&gt;
-&lt;%= li.content %&gt;
-      &lt;% end %&gt;
-    &lt;/bibliomixed&gt;
-  &lt;% end %&gt;
-&lt;/bibliodiv&gt;
-&lt;% else %&gt;
-&lt;itemizedlist#{common_attrs_erb}&gt;#{title_tag}
-  &lt;% items.each do |li| %&gt;
-    &lt;listitem&gt;
-      &lt;simpara&gt;&lt;%= li.text %&gt;&lt;/simpara&gt;
-      &lt;% if li.blocks? %&gt;
-&lt;%= li.content %&gt;
-      &lt;% end %&gt;
-    &lt;/listitem&gt;
-  &lt;% end %&gt;
-&lt;/itemizedlist&gt;
-&lt;% end %&gt;
+&lt;%#encoding:UTF-8%&gt;&lt;%
+if @style == 'bibliography'
+%&gt;&lt;bibliodiv#{common_attrs_erb}&gt;#{title_tag}&lt;%
+  items.each do |li| %&gt;
+&lt;bibliomixed&gt;
+&lt;bibliomisc&gt;&lt;%= li.text %&gt;&lt;/bibliomisc&gt;&lt;%
+    if li.blocks? %&gt;
+&lt;%= li.content %&gt;&lt;%
+    end %&gt;
+&lt;/bibliomixed&gt;&lt;%
+  end %&gt;
+&lt;/bibliodiv&gt;&lt;%
+else
+checklist = (option? 'checklist')
+mark = checklist ? 'none' : @style
+%&gt;&lt;itemizedlist#{common_attrs_erb}&lt;%= mark ? %( mark=&quot;\#{mark}&quot;) : nil %&gt;&gt;#{title_tag}&lt;%
+  items.each do |li| %&gt;
+&lt;listitem&gt;
+&lt;simpara&gt;&lt;%= checklist &amp;&amp; (li.attr? 'checkbox') ? ((li.attr? 'checked') ? '&amp;#x25A0; ' : '&amp;#x25A1; ') : nil %&gt;&lt;%= li.text %&gt;&lt;/simpara&gt;&lt;%
+    if li.blocks? %&gt;
+&lt;%= li.content %&gt;&lt;%
+    end %&gt;
+&lt;/listitem&gt;&lt;%
+  end %&gt;
+&lt;/itemizedlist&gt;&lt;%
+end %&gt;
     EOF</span>
   <span class="ruby-keyword">end</span></pre>
           </div><!-- template-source -->

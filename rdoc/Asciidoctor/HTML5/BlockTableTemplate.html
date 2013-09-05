@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::HTML5::BlockTableTemplate - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::HTML5::BlockTableTemplate - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -458,7 +458,7 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 792</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 800</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
 &lt;%#encoding:UTF-8%&gt;&lt;table&lt;%= @id ? %( id=&quot;\#{@id}&quot;) : nil %&gt; class=&quot;tableblock frame-&lt;%= attr :frame, 'all' %&gt; grid-&lt;%= attr :grid, 'all'%&gt;&lt;%= role? ? &quot; \#{role}&quot; : nil %&gt;&quot; style=&quot;&lt;%
@@ -495,7 +495,7 @@ if (attr :rowcount) &gt;= 0 %&gt;
           when :verse
             cell_content = %(&lt;div class=&quot;verse&quot;&gt;\#{template.preserve_endlines(cell.text, self)}&lt;/div&gt;)
           when :literal
-            cell_content = %(&lt;div class=&quot;literal monospaced&quot;&gt;&lt;pre&gt;\#{template.preserve_endlines(cell.text, self)}&lt;/pre&gt;&lt;/div&gt;)
+            cell_content = %(&lt;div class=&quot;literal&quot;&gt;&lt;pre&gt;\#{template.preserve_endlines(cell.text, self)}&lt;/pre&gt;&lt;/div&gt;)
           when :header
             cell.content.each do |text|
               cell_content = %(\#{cell_content}&lt;p class=&quot;tableblock header&quot;&gt;\#{text}&lt;/p&gt;)

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>README.adoc - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>README.adoc - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -49,18 +49,22 @@
     <h3 class="section-header">Table of Contents</h3>
     <ul>
       <li><a href="#label-Asciidoctor">Asciidoctor</a>
+      <li><a href="#label-Asciidoctor">Asciidoctor</a>
+      <li><a href="#label-AsciiDoc+Processing">AsciiDoc Processing</a>
+      <li><a href="#label-Operating+Systems">Operating Systems</a>
+      <li><a href="#label-Dependency+and+Configuration+Requirements">Dependency and Configuration Requirements</a>
       <li><a href="#label-Installation">Installation</a>
+      <li><a href="#label-gem+install">gem install</a>
+      <li><a href="#label-bundle+install+%28Bundler%29">bundle install (Bundler)</a>
+      <li><a href="#label-yum+install+%28Fedora%29">yum install (Fedora)</a>
+      <li><a href="#label-apt-get+install+%28Debian%2C+Ubuntu%29">apt-get install (Debian, Ubuntu)</a>
+      <li><a href="#label-Other+installation+options">Other installation options</a>
+      <li><a href="#label-Upgrading">Upgrading</a>
+      <li><a href="#label-"></a>
+      <li><a href="#label-"></a>
       <li><a href="#label-Usage">Usage</a>
       <li><a href="#label-Command+line+interface+%28CLI%29">Command line interface (CLI)</a>
       <li><a href="#label-Ruby+API">Ruby API</a>
-      <li><a href="#label-Differences+from+AsciiDoc">Differences from AsciiDoc</a>
-      <li><a href="#label-Contributing">Contributing</a>
-      <li><a href="#label-Submitting+an+Issue">Submitting an Issue</a>
-      <li><a href="#label-Submitting+a+Pull+Request">Submitting a Pull Request</a>
-      <li><a href="#label-Supported+Ruby+Versions">Supported Ruby Versions</a>
-      <li><a href="#label-Resources">Resources</a>
-      <li><a href="#label-Authors">Authors</a>
-      <li><a href="#label-Copyright">Copyright</a>
     </ul>
   </nav>
 </div>
@@ -404,15 +408,40 @@
   
 <h1 id="label-Asciidoctor"><a href="Asciidoctor.html">Asciidoctor</a><span><a href="#label-Asciidoctor">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<p>:awestruct-layout: base :homepage: <a
+<p>Dan Allen &lt;<a
+href="http://@mojavelinux">href=“https://github.com/mojavelinux[@mojavelinux]”>github.com/mojavelinux</a>&gt;;
+Ryan Waldron &lt;<a
+href="http://@erebor">href=“https://github.com/erebor[@erebor]”>github.com/erebor</a>&gt;;
+Sarah White &lt;<a
+href="http://@graphitefriction">href=“https://github.com/graphitefriction[@graphitefriction]”>github.com/graphitefriction</a>&gt;
+:awestruct-layout: base :homepage: <a
 href="http://asciidoctor.org">asciidoctor.org</a> :asciidoc: <a
-href="http://asciidoc.org">asciidoc.org</a> :sources: <a
+href="http://asciidoc.org">asciidoc.org</a> :gem: <a
+href="http://rubygems.org/gems/asciidoctor">rubygems.org/gems/asciidoctor</a>
+:toolchain: <a
+href="http://asciidoctor.org/docs/install-toolchain">asciidoctor.org/docs/install-toolchain</a>
+:install-mac: <a
+href="http://asciidoctor.org/docs/install-asciidoctor-macosx">asciidoctor.org/docs/install-asciidoctor-macosx</a>
+:render: <a
+href="http://asciidoctor.org/docs/render-documents">asciidoctor.org/docs/render-documents</a>
+:factory: <a
+href="http://asciidoctor.org/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory">asciidoctor.org/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory</a>
+:java: <a
+href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">asciidoctor.org/docs/install-and-use-asciidoctor-java-integration</a>
+:man: <a
+href="http://asciidoctor.org/man/asciidoctor">asciidoctor.org/man/asciidoctor</a>
+:sources: <a
 href="https://github.com/asciidoctor/asciidoctor">github.com/asciidoctor/asciidoctor</a>
+:tests: <a
+href="https://github.com/asciidoctor/asciidoctor/tree/master/test">github.com/asciidoctor/asciidoctor/tree/master/test</a>
 :issues: <a
 href="https://github.com/asciidoctor/asciidoctor/issues">github.com/asciidoctor/asciidoctor/issues</a>
 :forum: <a
-href="http://discuss.asciidoctor.org">discuss.asciidoctor.org</a> :org: <a
-href="https://github.com/asciidoctor">github.com/asciidoctor</a>
+href="http://discuss.asciidoctor.org">discuss.asciidoctor.org</a> :irc: <a
+href="irc://irc.freenode.org/#asciidoctor">irc.freenode.org/#asciidoctor</a>
+:news: <a href="http://asciidoctor.org/news">asciidoctor.org/news</a>
+:docs: <a href="http://asciidoctor.org/docs">asciidoctor.org/docs</a> :org:
+<a href="https://github.com/asciidoctor">github.com/asciidoctor</a>
 :contributors: <a
 href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">github.com/asciidoctor/asciidoctor/graphs/contributors</a>
 :templates: <a
@@ -431,102 +460,236 @@ href="https://help.github.com/articles/fork-a-repo">help.github.com/articles/for
 href="http://learn.github.com/p/branching.html">learn.github.com/p/branching.html</a>
 :pr: <a
 href="https://help.github.com/articles/using-pull-requests">help.github.com/articles/using-pull-requests</a>
+:changelog: <a
+href="https://github.com/asciidoctor/asciidoctor/blob/master/CHANGELOG.adoc">github.com/asciidoctor/asciidoctor/blob/master/CHANGELOG.adoc</a>
 :license: <a
 href="https://github.com/asciidoctor/asciidoctor/blob/master/LICENSE">github.com/asciidoctor/asciidoctor/blob/master/LICENSE</a>
-:idprefix:  :idseparator: -</p>
+:idprefix:  :idseparator: - ifndef::safe-mode-name[]</p>
+<dl class="rdoc-list label-list"><dt>float
+<dd>
+<h1 id="label-Asciidoctor"><a href="Asciidoctor.html">Asciidoctor</a><span><a href="#label-Asciidoctor">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<p><a href="http://Asciidoctor">homepage</a> is a pure Ruby processor for
-converting <a href="http://AsciiDoc">asciidoc</a> source files and strings
-into HTML 5, DocBook 4.5 and other formats. It's <a
-href="http://rubygems.org/gems/asciidoctor[published">rubygems.org/gems/asciidoctor[published</a>
-as a RubyGem] and is available under the MIT open source license.</p>
+<p>endif::[]</p>
 
-<p>ifndef::awestruct[] image::<a
+<p><a href="http://Asciidoctor">homepage</a> is an open source text processor
+and publishing toolchain for transforming <a
+href="http://AsciiDoc">asciidoc</a> markup into HTML 5, DocBook 4.5 and 5.0
+and other custom formats. <a href="Asciidoctor.html">Asciidoctor</a> is
+written entirely in Ruby, packaged as a RubyGem and published to <a
+href="http://RubyGems.org">gem</a>. There are also Fedora, Debian and
+Ubuntu packages available for installing <a
+href="Asciidoctor.html">Asciidoctor</a>. <a
+href="Asciidoctor.html">Asciidoctor</a> is released under the MIT license.</p>
+
+<p>ifndef::awestruct[] *Project health:* image:<a
 href="https://travis-ci.org/asciidoctor/asciidoctor.png?branch=master[Build">travis-ci.org/asciidoctor/asciidoctor.png?branch=master[Build</a>
 Status, link=“<a
 href="https://travis-ci.org/asciidoctor/asciidoctor">travis-ci.org/asciidoctor/asciidoctor</a>”]
 endif::awestruct[]</p>
 
-<p><a href="Asciidoctor.html">Asciidoctor</a> uses a set of built-in ERB
-templates to render the document to HTML 5 or DocBook 4.5. We've matched
-the rendered output as close as possible to the default output of the
-native Python processor. You can override this behavior by providing <a
-href="http://Tilt">tilt</a>-compatible templates. See the
-&lt;&lt;usage&gt;&gt; section for more details.</p>
+<h2 id="label-AsciiDoc+Processing">AsciiDoc Processing<span><a href="#label-AsciiDoc+Processing">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p><a href="Asciidoctor.html">Asciidoctor</a> currently works (read as
-'tested') with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.4 and Rubinius
-nightly (on Linux, Mac and Windows). We expect it will work with other
-versions of Ruby as well and would welcome help in testing it out.</p>
+<p><a href="Asciidoctor.html">Asciidoctor</a> reads and parses AsciiDoc markup
+(from a file or string) and feeds the parsed result to a set of built-in
+templates to render the document as HTML 5, DocBook 4.5 or DocBook 5.0. <a
+href="Asciidoctor.html">Asciidoctor</a> is a drop-in replacement for the
+original AsciiDoc processor. We've matched the output to that produced by
+the AsciiDoc Python processor as faithfully as possible. You can override
+the built-in templates, or produce a custom format, by pointing the
+processor at a set of template files written in a language supported by <a
+href="http://Tilt">tilt</a>. See the &lt;&lt;usage&gt;&gt; section for more
+details.</p>
 
-<p>The initial code from which <a href="Asciidoctor.html">Asciidoctor</a>
-emerged was written by <a
-href="http://github.com/nickh[Nick">github.com/nickh[Nick</a> Hengeveld] to
-process the git man pages for the <a href="http://Git project
-site">gitscm-next</a> to view the initial contributions and contributors.</p>
+<p>NOTE: With few exceptions, <a href="Asciidoctor.html">Asciidoctor</a> is
+compliant with the original AsciiDoc processor. <a
+href="Asciidoctor.html">Asciidoctor</a> has well over 1,000 tests to ensure
+compatibility with the AsciiDoc syntax. We continue to work hard to ensure
+<a href="Asciidoctor.html">Asciidoctor</a> continues to serve as a drop-in
+replacement for AsciiDoc.</p>
 
-<p>The source code can now be found in the {sources}[Asciidoctor source
+<h2 id="label-Operating+Systems">Operating Systems<span><a href="#label-Operating+Systems">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p><a href="Asciidoctor.html">Asciidoctor</a> works on Linux, Mac and Windows.</p>
+
+<h2 id="label-Dependency+and+Configuration+Requirements">Dependency and Configuration Requirements<span><a href="#label-Dependency+and+Configuration+Requirements">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p><a href="Asciidoctor.html">Asciidoctor</a> requires one of the following
+implementations of Ruby:</p>
+<ul><li>
+<p>Ruby 1.8.7</p>
+</li><li>
+<p>Ruby 1.9.3</p>
+</li><li>
+<p>Ruby 2.0.0</p>
+</li><li>
+<p>JRuby 1.7.4</p>
+</li><li>
+<p>Rubinius 2.0 - _testing suspended until a release is available_</p>
+</li></ul>
+
+<p>We expect <a href="Asciidoctor.html">Asciidoctor</a> to work with other
+versions of Ruby as well. We welcome your help testing those versions if
+you are interested in seeing them supported.</p>
+
+<p>// QUESTION What is considered configuration information?</p>
+
+<p>// QUESTION What about other sub-projects of <a
+href="Asciidoctor.html">Asciidoctor</a> that require Tilt?</p>
+
+<p>// TODO fill in this section and enable //== List of files/directory
+structure // //Optional depending on the complexity of the project</p>
+
+<p>The latest source code is located in the {sources}[Asciidoctor git
 repository] on GitHub.</p>
 
 <h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p>NOTE: We’re working hard to make <a href="Asciidoctor.html">Asciidoctor</a>
-a drop-in replacement for AsciiDoc. We’re very close, with over 700 tests
-that ensure compatibility. The march is on towards full compliance and
-beyond.</p>
+<p><a href="Asciidoctor.html">Asciidoctor</a> can be installed via the
+<code>gem</code> command, bundler, or popular Linux package managers.</p>
 
-<p>To install the gem:</p>
+<h3 id="label-gem+install">gem install<span><a href="#label-gem+install">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre>gem install asciidoctor</pre>
+<p>To install <a href="Asciidoctor.html">Asciidoctor</a> using the
+<code>gem</code> command:</p>
 
-<p>Or if you prefer bundler, add the asciidoctor gem to your Gemfile,</p>
+<p>. Open a terminal . Type the <code>gem</code> command</p>
+
+<pre>$&gt; gem install asciidoctor</pre>
+
+<h3 id="label-bundle+install+%28Bundler%29">bundle install (Bundler)<span><a href="#label-bundle+install+%28Bundler%29">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>To install <a href="Asciidoctor.html">Asciidoctor</a> using bundler:</p>
+
+<p>. Open your system Gemfile . Add the <code>asciidoctor</code> gem to your
+Gemfile using the following text</p>
 
 <pre>source 'https://rubygems.org'
 gem 'asciidoctor'</pre>
 
-<p>then install it using bundler:</p>
+<p>. Save the Gemfile . Open a terminal . Install the gem with bundler</p>
 
-<pre>bundle install</pre>
+<pre>$&gt; bundle install</pre>
 
-<p>If you’re running Fedora, you can install the gem using yum:</p>
+<h3 id="label-yum+install+%28Fedora%29">yum install (Fedora)<span><a href="#label-yum+install+%28Fedora%29">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre>sudo yum install rubygem-asciidoctor</pre>
+<p>To install <a href="Asciidoctor.html">Asciidoctor</a> on Fedora 17 or
+greater:</p>
 
-<p>The benefit of installing the gem via yum is that yum will also install
-Ruby if it’s not already on your machine.</p>
+<p>. Open a terminal . Type the <code>yum</code> command</p>
+
+<pre>$&gt; sudo yum install rubygem-asciidoctor</pre>
+
+<p>The benefit of installing the gem via <code>yum</code> is that the package
+manager will also install Ruby and RubyGems if not already on your machine.</p>
+
+<h3 id="label-apt-get+install+%28Debian%2C+Ubuntu%29">apt-get install (Debian, Ubuntu)<span><a href="#label-apt-get+install+%28Debian%2C+Ubuntu%29">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+
+<p>To install <a href="Asciidoctor.html">Asciidoctor</a> on Debian Sid or
+Ubuntu Saucy or greater:</p>
+
+<p>. Open a terminal . Type the <code>apt-get</code> command</p>
+
+<pre>$&gt; sudo apt-get install asciidoctor</pre>
+
+<p>The benefit of installing the gem via <code>apt-get</code> is that the
+package manager will also install Ruby and RubyGems if not already on your
+machine.</p>
+
+<h3 id="label-Other+installation+options">Other installation options<span><a href="#label-Other+installation+options">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
+<ul><li>
+<p>{toolchain}[Installing the <a href="Asciidoctor.html">Asciidoctor</a>
+toolchain]</p>
+</li><li>
+<p>{install-mac}[Installing <a href="Asciidoctor.html">Asciidoctor</a> on Mac
+OS X]</p>
+</li></ul>
+
+<h2 id="label-Upgrading">Upgrading<span><a href="#label-Upgrading">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
+
+<p>If you have an earlier version of <a
+href="Asciidoctor.html">Asciidoctor</a> installed, you can update it using
+the <code>gem</code> command:</p>
+
+<pre>$&gt; gem update asciidoctor</pre>
+<dl class="rdoc-list label-list"><dt>TIP
+<dd>
+<h4 id="label-"><span><a href="#label-">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<p>If you accidentally use +gem install+ instead of +gem update+ then you will
+have both versions installed. If you wish to remove the older version use
+the <code>gem</code> command:</p>
+
+<pre>$&gt; gem cleanup asciidoctor</pre>
+
+<h4 id="label-"><span><a href="#label-">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+
+<p>On Fedora, you can update it using:</p>
+
+<pre>$&gt; sudo yum update rubygem-asciidoctor</pre>
+
+<p>TIP: Your Fedora system may be configured to automatically update packages,
+in which case no further action is required by you. Refer to the <a
+href="http://docs.fedoraproject.org[Fedora">docs.fedoraproject.org[Fedora</a>
+docs] if you are unsure.</p>
+
+<p>On Debian or Ubuntu, you can update it using:</p>
+
+<pre>$&gt; sudo apt-get upgrade asciidoctor</pre>
+
+<p>NOTE: The Fedora, Debian and Ubuntu packages will not be available right
+away after a release of the RubyGem. It may take several weeks before the
+packages become available for a new release. If you need the latest version
+immediately, use the +gem install+ option.</p>
 
 <h2 id="label-Usage">Usage<span><a href="#label-Usage">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<p><a href="Asciidoctor.html">Asciidoctor</a> has both a command line
-interface (CLI) and an API. The CLI is a drop-in replacement for the
-<code>asciidoc.py</code> command from the Python implementation. The API is
-intended for integration with other software projects and is suitable for
-server-side applications, such as Rails, Sinatra and GitHub.</p>
+<p>If the <a href="Asciidoctor.html">Asciidoctor</a> gem installed
+successfully, the <code>asciidoctor</code> command line interface (CLI)
+will be available on your PATH. To invoke it, execute:</p>
+
+<pre>$&gt; asciidoctor --version
+Asciidoctor 0.1.4 [http://asciidoctor.org]</pre>
+
+<p>In addition to the CLI, <a href="Asciidoctor.html">Asciidoctor</a> provides
+a Ruby API The API is intended for integration with other software projects
+and is suitable for server-side applications, such as Rails, Sinatra and
+GitHub.</p>
+
+<p>TIP: <a href="Asciidoctor.html">Asciidoctor</a> also has a Java API that
+mirrors the Ruby API. The Java API calls through to the Ruby API using an
+embedded JRuby runtime. See the {java}[Asciidoctor Java integration
+project] for more information.</p>
 
 <h3 id="label-Command+line+interface+%28CLI%29">Command line interface (CLI)<span><a href="#label-Command+line+interface+%28CLI%29">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<p>After installing the <code>asciidoctor</code> gem, the
-<code>asciidoctor</code> commandline interface should be available on your
-PATH. To invoke it, simply execute:</p>
+<p>Asciidoctor’s CLI is a drop-in replacement for the <code>asciidoc.py</code>
+command from the Python implementation.  To invoke <a
+href="Asciidoctor.html">Asciidoctor</a> from the CLI, execute:</p>
 
 <pre>asciidoctor &lt;asciidoc_file&gt;</pre>
 
 <p>This will use the built-in defaults for options and create a new file in
 the same directory as the input file, with the same base name, but with the
-.html extension.</p>
+<code>.html</code> extension.</p>
 
 <p>There are many other options available and full help is provided via:</p>
 
 <pre>asciidoctor --help</pre>
 
-<p>or in the <a
-href="http://asciidoctor.org/man/asciidoctor[man">asciidoctor.org/man/asciidoctor[man</a>
-page].</p>
+<p>or in the {man}[man page].</p>
 
 <p>There is also an <code>asciidoctor-safe</code> command, which turns on safe
 mode by default, preventing access to files outside the parent directory of
-the source file. This mode is very similar to the safe mode of
+the source file.  This mode is very similar to the safe mode of
 <code>asciidoc.py</code>.</p>
+
+<p>Additional documentation:</p>
+<ul><li>
+<p>{render}[How do I render a document?]</p>
+</li><li>
+<p>{factory}[How do I use the <a href="Asciidoctor.html">Asciidoctor</a>
+stylesheet factory to produce custom themes?]</p>
+</li></ul>
 
 <h3 id="label-Ruby+API">Ruby API<span><a href="#label-Ruby+API">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
@@ -540,466 +703,18 @@ first need to require the gem:</p>
 
 <p>.Loading a document To parse a file into an +Asciidoctor::Document+ object:</p>
 
-<pre>doc = Asciidoctor.load_file('your_file.asciidoc')</pre>
+<pre>doc = Asciidoctor.load_file 'sample.adoc'</pre>
 
 <p>You can get information about the document:</p>
 
 <pre>puts doc.doctitle
 puts doc.attributes</pre>
 
-<p>More than likely, you want to just render the document.</p>
+<p>More than likely, you will want to render the document.</p>
 
-<p>.Rendering files To render a file containing AsciiDoc markup to HTML 5:</p>
-
-<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">'your_file.asciidoc'</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
-</pre>
-
-<p>The command will output to the file <code>your_file.html</code> in the same
-directory. You can render the file to DocBook 4.5 by setting the
-<code>backend</code> attribute to ‘docbook’:</p>
-
-<pre class="ruby"><span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-string">'your_file.asciidoc'</span>, :<span class="ruby-identifier">in_place</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'backend'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'docbook'</span>})
-</pre>
-
-<p>The command will output to the file <code>your_file.xml</code> in the same
-directory. (If you’re on Linux, you can view the file using yelp).</p>
-
-<p>.Rendering strings To render an AsciiDoc-formatted string:</p>
-
-<pre>puts Asciidoctor.render('*This* is it.')</pre>
-
-<p>When rendering a string, the header and footer are excluded by default to
-make <a href="Asciidoctor.html">Asciidoctor</a> consistent with other
-lightweight markup engines like Markdown. If you want the header and
-footer, just enable it using the <code>:header_footer</code> option:</p>
-
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)
-</pre>
-
-<p>Now you’ll get a full HTML 5 file. As before, you can also produce DocBook
-4.5:</p>
-
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">attributes</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'backend'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'docbook'</span>})
-</pre>
-
-<p>If you don’t like the output you see, you can change it. Any of it!</p>
-
-<p>.Custom templates <a href="Asciidoctor.html">Asciidoctor</a> allows you to
-override the <a href="http://built-in templates">templates</a>-compatible
-templates, named in such a way that <a
-href="Asciidoctor.html">Asciidoctor</a> can figure out which template goes
-with which element, <a href="Asciidoctor.html">Asciidoctor</a> will use the
-templates in this directory instead of its built-in templates for any
-elements for which it finds a matching template. It will fallback to its
-default templates for everything else.</p>
-
-<pre class="ruby"><span class="ruby-identifier">puts</span> <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-string">'*This* is it.'</span>, :<span class="ruby-identifier">header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
-  :<span class="ruby-identifier">template_dir</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'templates'</span>)
-</pre>
-
-<p>The Document and Section templates should begin with <code>document.</code>
-and <code>section.</code>, respectively. The file extension is used by Tilt
-to determine which view framework it will use to use to render the
-template. For instance, if you want to write the template in ERB, you’d
-name these two templates <code>document.html.erb</code> and
-<code>section.html.erb</code>. To use Haml, you’d name them
-<code>document.html.haml</code> and <code>section.html.haml</code>.</p>
-
-<p>Templates for block elements, like a Paragraph or Sidebar, would begin with
-+block_&lt;style&gt;.+. For instance, to override the default Paragraph
-template with an ERB template, put a file named
-<code>block_paragraph.html.erb</code> in the template directory you pass to
-the <code>Document</code> constructor using the <code>:template_dir</code>
-option.</p>
-
-<p>For more usage examples, see the (massive) test suite.</p>
-
-<h2 id="label-Differences+from+AsciiDoc">Differences from AsciiDoc<span><a href="#label-Differences+from+AsciiDoc">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>While <a href="Asciidoctor.html">Asciidoctor</a> aims to be compliant with
-the AsciiDoc syntax, there are some differences which are important to keep
-in mind. In some cases, it’s to enforce a rule we believe is too lax or
-ambiguous in AsciiDoc. In other cases, it’s a tradeoff for speed, smarter
-processing or a feature we just haven’t yet implemented. (You’ll also
-notice that <a href="Asciidoctor.html">Asciidoctor</a> executes about 25x
-as fast as AsciiDoc).</p>
-
-<p>Here are the known cases where <a href="Asciidoctor.html">Asciidoctor</a>
-differs from AsciiDoc:</p>
-<ul><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> enables safe mode by default
-when using the API (+SafeMode::SECURE+)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> safe mode is even more safe than
-AsciiDoc's safe mode</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> enforces symmetric block
-delimiters (the length of start and end delimiters for a block must match!)</p>
-</li><li>
-<p>Section title underlines must be within 1 character of the length of the
-title (AsciiDoc allows an offset of 3)</p>
-</li><li>
-<p>Asciidoctor’s default HTML backend matches AsciiDoc’s HTML 5 backend
-(whereas XHTML 1.1 is the default HTML backend in AsciiDoc)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> adds viewport meta tag to
-+&lt;head&gt;+ to optimize mobile viewing</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> handles inline anchors more
-cleanly</p>
-</li></ul>
-
-<p>** AsciiDoc adds an +&lt;a&gt;+ tag in the line and that markup gets caught
-in</p>
-
-<pre>the generated id</pre>
-
-<p>** <a href="Asciidoctor.html">Asciidoctor</a> promotes the id of the anchor
-as the section id</p>
-<ul><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> strips XML entities from the
-section title before generating the id (makes for cleaner section ids)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> uses +&lt;code&gt;+ instead of
-+&lt;span class="monospace"&gt;+ around inline literal text in the HTML
-backend</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not wrap email next to
-author name in header in angle brackets</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> allows email field to be a URL
-and renders it as such</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> is much more lenient about
-attribute list parsing (double quotes are rarely needed, though you may
-want to keep them for compatibility)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> adds the type attribute on
-ordered lists to provide hint for numbering style when stylesheet is absent
-(such as in embedded mode)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> recognizes <code>opts</code> as
-an alias for the <code>options</code> attribute.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> creates xref labels using the
-text from the linked section title when rendering HTML to match how DocBook
-works</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> allows commas to be used in xref
-labels, whereas AsciiDoc cuts off the label at the location of the first
-comma</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> removes indentation for
-non-literal paragraphs in a list item</p>
-</li></ul>
-
-<p>+ NOTE: In general, <a href="Asciidoctor.html">Asciidoctor</a> handles
-whitespace much more intelligently +</p>
-<ul><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not output an empty
-+&lt;dd&gt;+ for labeled list items that don't have a definition</p>
-</li><li>
-<p>In <a href="Asciidoctor.html">Asciidoctor</a>, a horizontal ruler can have
-attributes</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> wraps +&lt;col&gt;+ elements in
-+&lt;colgroup&gt;+ in tables</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> uses +&lt;code&gt;+ around
-content in monospaced table cells</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> skips over line comments in
-tables, whereas AsciiDoc doesn't</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> uses its own API rather than a
-command line invocation to handle table cells that have AsciiDoc content</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports resolving variables
-from parent document in table cells with AsciiDoc content</p>
-</li><li>
-<p>AsciiDoc doesn’t carry over the doctype attribute passed from the
-commandline when rendering AsciiDoc table cells, whereas <a
-href="Asciidoctor.html">Asciidoctor</a> does</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not require commas between
-attributes with quoted values in a block attribute list</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> strips the file extension from
-the target image when generating alt text if no alt text is provided</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> reifies the toc in the header of
-the document instead of relying on JavaScript to create it</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> sets CSS class on toc element,
-read from the <code>toc-class</code> attribute; defaults to toc attribute
-name (<code>toc</code> or <code>toc2</code>).</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> honors the id, title, role and
-levels attributes set on the toc macro.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not output two TOCs with
-the same id.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> is nice about using a section
-title syntax inside a delimited block by simply ignoring it (AsciiDoc
-issues warnings)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> honors the alternate style name
-"discrete" for a floating title (i.e., +[discrete]+)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports the <code>pass</code>
-style on open blocks and paragraphs</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports syntax highlighting of
-listing, literal or open blocks that have the "source" style out of the box</p>
-</li></ul>
-
-<p>** <a href="Asciidoctor.html">Asciidoctor</a> honors the source-highlighter
-values <code>coderay</code> and</p>
-
-<pre>+highlightjs+, using CodeRay or highlight.js, respectively</pre>
-
-<p>** <a href="Asciidoctor.html">Asciidoctor</a> does not currently support
-Pygments for source</p>
-
-<pre>highlighting</pre>
-
-<p>** <a href="Asciidoctor.html">Asciidoctor</a> gracefully falls back to
-listing block if no source language</p>
-
-<pre>is specified</pre>
-<ul><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> sets these additional intrinsic
-attributes</p>
-<dl class="rdoc-list note-list"><dt><code>asciidoctor</code>
-<dd>
-<p>indicates <a href="Asciidoctor.html">Asciidoctor</a> is being used; useful
-for conditional processing</p>
-</dd><dt><code>asciidoctor-version</code>
-<dd>
-<p>indicates which version of <a href="Asciidoctor.html">Asciidoctor</a> is in
-use</p>
+<p>.Rendering files</p>
 </dd></dl>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not support deprecated
-tables (you don't want them anyway)</p>
-</li><li>
-<p>Use can set the extension for icons using the <code>icontype</code>
-attribute (AsciiDoc defaults to .png)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> uses the +&lt;blockquote&gt;+
-for the content and +&lt;cite&gt;+ tag for attribution title in the HTML
-output for quote blocks, requiring some additional styling to match
-AsciiDoc</p>
-</li></ul>
-
-<p>+</p>
-
-<pre>blockquote.content { padding: 0; margin; 0 }
-cite { color: navy; }</pre>
-
-<p>+</p>
-<ul><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports markdown-style
-blockquotes as well as a shorthand for a blockquote paragraph.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports markdown-style headings
-(section titles)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not support the deprecated
-index term syntax (`++` and `+++`)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> includes a modern default
-stylesheet based on Foundation.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> links to, rather than embeds,
-the default stylesheet into the document by default (e.g.,
-<code>linkcss</code>). To include the default stylesheet, you can either
-use the <code>copycss</code> attribute to tell <a
-href="Asciidoctor.html">Asciidoctor</a> to copy it to the output directory,
-or you can embed it into the document using the <code>linkcss!</code>
-attribute. You can also provide your own stylesheet using the
-<code>stylesheet</code> attribute.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> introduces the
-<code>hardbreaks</code> attribute, which inserts a line break character
-after each line of wrapped text</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> introduces the
-<code>idseparator</code> attribute to customize the separator used in
-generated section ids (AsciiDoc hardcodes <code>_</code>)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not support system
-evaluation macros</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> does not support displaying
-comments</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> properly calculates author
-initials if attribute reference is used in name</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> allows the author and revision
-attributes to be referenced in subsequent attribute entries in header
-(unlike AsciiDoc)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> allows multiple authors to be
-defined, separated by semicolon. In DocBook backend, the authors are listed
-in an +&lt;authorgroup&gt;+ element.</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> allows the document id to be set
-using [[id]] above the document header (adds id attribute to +&lt;body&gt;+
-tag)</p>
-</li><li>
-<p>Assigning value to the <code>listing-caption</code> attribute will enable
-automatic captions for listings (like examples, tables and figures)</p>
-</li><li>
-<p>The +ifeval::[]+ macro is constrained for the strict purpose of comparing
-values of attributes</p>
-</li><li>
-<p>The +include::[]+ macro is converted to a link to the target document when
-SafeMode is SECURE or greater (this makes for a friendly experience on
-GitHub)</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> supports up to 6 section levels
-(to cover all heading levels in HTML) whereas AsciiDoc stops at 5; note the
-6 section level is only available using the single-line section title
-syntax</p>
-</li><li>
-<p>Admonition block style is added to class of outer div in html5 backend in
-<a href="Asciidoctor.html">Asciidoctor</a></p>
-</li><li>
-<p>Admonition block caption can be overridden in <a
-href="Asciidoctor.html">Asciidoctor</a> using the <code>caption</code>
-block attribute</p>
-</li><li>
-<p><a href="Asciidoctor.html">Asciidoctor</a> will parse attributes in link
-macros if the <code>linkattrs</code> attribute is set on the document.</p>
-</li></ul>
-
-<p>If there’s a difference you don’t see in this list, check the
-{issues}[issue tracker] to see if it’s an outstanding feature, or file an
-issue to report the difference.</p>
-
-<h2 id="label-Contributing">Contributing<span><a href="#label-Contributing">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>In the spirit of {freesoftware}[free software], ‘everyone’ is encouraged to
-help improve this project.</p>
-
-<p>Here are some ways <strong>you</strong> can contribute:</p>
-<ul><li>
-<p>by using alpha, beta, and prerelease versions</p>
-</li><li>
-<p>by reporting bugs</p>
-</li><li>
-<p>by suggesting new features</p>
-</li><li>
-<p>by writing or editing documentation</p>
-</li><li>
-<p>by writing specifications</p>
-</li><li>
-<p>by writing code – ‘No patch is too small.’</p>
-</li></ul>
-
-<p>** fix typos ** add comments ** clean up inconsistent whitespace ** write
-tests!</p>
-<ul><li>
-<p>by refactoring code</p>
-</li><li>
-<p>by fixing <a href="http://issues">issues</a></p>
-</li><li>
-<p>by reviewing patches</p>
-</li></ul>
-
-<h2 id="label-Submitting+an+Issue">Submitting an Issue<span><a href="#label-Submitting+an+Issue">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>We use the <a href="http://GitHub issue tracker">issues</a> that includes
-any details that may help reproduce the bug, including your gem version,
-Ruby version, and operating system.</p>
-
-<p>Most importantly, since <a href="Asciidoctor.html">Asciidoctor</a> is a
-text processor, reproducing most bugs requires that we have some snippet of
-text on which <a href="Asciidoctor.html">Asciidoctor</a> exhibits the bad
-behavior.</p>
-
-<p>An ideal bug report would include a pull request with failing specs.</p>
-
-<h2 id="label-Submitting+a+Pull+Request">Submitting a Pull Request<span><a href="#label-Submitting+a+Pull+Request">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>. {fork}[Fork the repository]. . {branch}[Create a topic branch]. . Add
-tests for your unimplemented feature or bug fix. . Run +bundle exec rake+.
-If your tests pass, return to step 3. . Implement your feature or bug fix.
-. Run +bundle exec rake+. If your tests fail, return to step 5. . Add
-documentation for your feature or bug fix. . If your changes are not 100%
-documented, go back to step 7. . Add, commit, and push your changes. .
-{pr}[Submit a pull request].</p>
-
-<h2 id="label-Supported+Ruby+Versions">Supported Ruby Versions<span><a href="#label-Supported+Ruby+Versions">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>This library aims to support the following Ruby implementations:</p>
-<ul><li>
-<p>Ruby 1.8.7</p>
-</li><li>
-<p>Ruby 1.9.3</p>
-</li><li>
-<p>Ruby 2.0.0</p>
-</li><li>
-<p>JRuby 1.7.4</p>
-</li><li>
-<p>Rubinius nightly</p>
-</li></ul>
-
-<p>If something doesn’t work on one of these interpreters, it should be
-considered a bug.</p>
-
-<p>If you would like this library to support another Ruby version, you may
-volunteer to be a maintainer. Being a maintainer entails making sure all
-tests run and pass on that implementation. When something breaks on your
-implementation, you will be personally responsible for providing patches in
-a timely fashion. If critical issues for a particular implementation exist
-at the time of a major release, support for that Ruby version may be
-dropped.</p>
-
-<h2 id="label-Resources">Resources<span><a href="#label-Resources">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-<dl class="rdoc-list note-list"><dt>Project home page
-<dd>
-<p>{homepage}</p>
-</dd><dt>Source repository
-<dd>
-<p>{sources}</p>
-</dd><dt>Issue tracker
-<dd>
-<p>{issues}</p>
-</dd><dt>Mailinglist / forum
-<dd>
-<p>{forum}</p>
-</dd><dt>GitHub organization
-<dd>
-<p>{org}</p>
 </dd></dl>
-
-<h2 id="label-Authors">Authors<span><a href="#label-Authors">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p><strong>Asciidoctor</strong> was written by <a
-href="https://github.com/mojavelinux[Dan">github.com/mojavelinux[Dan</a>
-Allen], <a href="https://github.com/erebor[Ryan">github.com/erebor[Ryan</a>
-Waldron], <a
-href="https://github.com/lightguard[Jason">github.com/lightguard[Jason</a>
-Porter], <a href="https://github.com/nickh[Nick">github.com/nickh[Nick</a>
-Hengeveld] and {contributors}[other contributors].</p>
-
-<p><strong>AsciiDoc</strong> was written by Stuart Rackham and has received
-contributions from many other individuals.</p>
-
-<h2 id="label-Copyright">Copyright<span><a href="#label-Copyright">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
-
-<p>Copyright (C) 2012-2013 Dan Allen and Ryan Waldron. Free use of this
-software is granted under the terms of the MIT License.</p>
-
-<p>See the <a href="http://LICENSE">license</a> file for details.</p>
-
-<p>// vim: tw=72</p>
 
 </div>
 

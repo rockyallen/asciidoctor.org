@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::HTML5::InlineAnchorTemplate - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::HTML5::InlineAnchorTemplate - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -462,12 +462,13 @@
 
           
           <div class="method-source-code" id="anchor-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1093</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1101</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">document</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:xref</span>
     <span class="ruby-identifier">refid</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'refid'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">target</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-comment"># FIXME this seems like it should be prepared already</span>
       <span class="ruby-identifier">text</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">references</span>[<span class="ruby-value">:ids</span>].<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">refid</span>, <span class="ruby-node">&quot;[#{refid}]&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-node">%Q(&lt;a href=&quot;#{target}&quot;&gt;#{text}&lt;/a&gt;)</span>
@@ -508,7 +509,7 @@
 
           
           <div class="method-source-code" id="result-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1110</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">target</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">text</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">type</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>, <span class="ruby-identifier">node</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -541,7 +542,7 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1114</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
   <span class="ruby-value">:invoke_result</span>
 <span class="ruby-keyword">end</span></pre>

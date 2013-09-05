@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::DocBook45::InlineAnchorTemplate - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::DocBook45::InlineAnchorTemplate - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -462,7 +462,7 @@
 
           
           <div class="method-source-code" id="anchor-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 689</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 690</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:ref</span>
@@ -472,7 +472,8 @@
       <span class="ruby-identifier">linkend</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'fragment'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">target</span>
       <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(&lt;xref linkend=&quot;#{linkend}&quot;/&gt;)</span> <span class="ruby-operator">:</span> <span class="ruby-node">%Q(&lt;link linkend=&quot;#{linkend}&quot;&gt;#{text}&lt;/link&gt;)</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-node">%Q(&lt;ulink url=&quot;#{target}&quot;&gt;#{text || path}&lt;/ulink&gt;)</span>
+      <span class="ruby-identifier">text</span> = <span class="ruby-identifier">text</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'path'</span>)
+      <span class="ruby-node">%Q(&lt;ulink url=&quot;#{target}&quot;&gt;#{text}&lt;/ulink&gt;)</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:link</span>
     <span class="ruby-node">%Q(&lt;ulink url=&quot;#{target}&quot;&gt;#{text}&lt;/ulink&gt;)</span>
@@ -509,7 +510,7 @@
 
           
           <div class="method-source-code" id="result-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 707</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 709</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">target</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">text</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">type</span>, <span class="ruby-identifier">node</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -542,7 +543,7 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 711</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 713</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
   <span class="ruby-value">:invoke_result</span>
 <span class="ruby-keyword">end</span></pre>

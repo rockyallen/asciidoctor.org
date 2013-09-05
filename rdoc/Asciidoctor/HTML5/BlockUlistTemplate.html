@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::HTML5::BlockUlistTemplate - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::HTML5::BlockUlistTemplate - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -460,7 +460,7 @@
 
           
           <div class="method-source-code" id="result-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 664</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 667</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">result_buffer</span> = []
   <span class="ruby-identifier">id_attribute</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( id=&quot;#{node.id}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
@@ -470,13 +470,18 @@
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">checklist</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">'checklist'</span>))
     <span class="ruby-identifier">div_classes</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">1</span>, <span class="ruby-string">'checklist'</span>)
     <span class="ruby-identifier">ul_class_attribute</span> = <span class="ruby-string">' class=&quot;checklist&quot;'</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>, <span class="ruby-string">'font'</span>
-      <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check&quot;&gt;&lt;/i&gt; '</span>
-      <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check-empty&quot;&gt;&lt;/i&gt; '</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">'interactive'</span>
+      <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;1&quot; checked&gt; )</span>
+      <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;0&quot;&gt; )</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-comment"># could use &amp;#9745 (checked ballot) and &amp;#9744 (ballot) w/o font instead</span>
-      <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">'&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;1&quot; checked disabled&gt; '</span>
-      <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">'&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;0&quot; disabled&gt; '</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>, <span class="ruby-string">'font'</span>
+        <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check&quot;&gt;&lt;/i&gt; '</span>
+        <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check-empty&quot;&gt;&lt;/i&gt; '</span>
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-comment"># could use &amp;#9745 (checked ballot) and &amp;#9744 (ballot) w/o font instead</span>
+        <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;1&quot; checked disabled&gt; )</span>
+        <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;0&quot; disabled&gt; )</span>
+      <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-identifier">ul_class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{node.style}&quot;)</span>
@@ -534,7 +539,7 @@
 
           
           <div class="method-source-code" id="template-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 709</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 717</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
   <span class="ruby-value">:invoke_result</span>
 <span class="ruby-keyword">end</span></pre>

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Block - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::Block - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -483,7 +483,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 84</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">content_summary</span> = <span class="ruby-ivar">@content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:compound</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(# of blocks = #{@blocks.size})</span> <span class="ruby-operator">:</span> <span class="ruby-node">%Q(# of lines = #{@lines.size})</span>
   <span class="ruby-node">%Q(Block[@context: :#@context, @content_model: :#@content_model, #{content_summary}])</span>
@@ -595,6 +595,7 @@ raw source for this <a href="Block.html">Block</a>. (default: nil)</p>
   <span class="ruby-keyword">super</span>(<span class="ruby-identifier">parent</span>, <span class="ruby-identifier">context</span>)
   <span class="ruby-ivar">@content_model</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:content_model</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-operator">||</span> <span class="ruby-value">:simple</span>
   <span class="ruby-ivar">@attributes</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:attributes</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-operator">||</span> {}
+  <span class="ruby-ivar">@subs</span> = <span class="ruby-identifier">opts</span>[<span class="ruby-value">:subs</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:subs</span>
   <span class="ruby-identifier">raw_source</span> = <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:source</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">raw_source</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-ivar">@lines</span> = []
@@ -662,17 +663,13 @@ on the content.</p>
 
           
           <div class="method-source-code" id="content-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">content</span>
   <span class="ruby-keyword">case</span> <span class="ruby-ivar">@content_model</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:simple</span>
-    <span class="ruby-identifier">apply_para_subs</span> <span class="ruby-ivar">@lines</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:compound</span>
     <span class="ruby-keyword">super</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:verbatim</span>
-    <span class="ruby-identifier">apply_literal_subs</span> <span class="ruby-ivar">@lines</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-value">:raw</span>
-    <span class="ruby-identifier">apply_passthrough_subs</span> <span class="ruby-ivar">@lines</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-value">:simple</span>, <span class="ruby-value">:verbatim</span>, <span class="ruby-value">:raw</span>
+    <span class="ruby-identifier">apply_subs</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">join</span>, <span class="ruby-ivar">@subs</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Unknown content model '#@content_model' for block: #{to_s}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:empty</span>
     <span class="ruby-keyword">nil</span>
@@ -710,9 +707,9 @@ thereare no lines</p>
 
           
           <div class="method-source-code" id="source-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 80</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/block.rb, line 77</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">source</span>
-  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">join</span>
+  <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">join</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- source-source -->
           

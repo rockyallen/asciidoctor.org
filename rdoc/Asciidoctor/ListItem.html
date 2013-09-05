@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::ListItem - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::ListItem - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -695,7 +695,7 @@ drop the first block and fold it’s content (buffer) into the list text</p>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">first_block</span> = <span class="ruby-ivar">@blocks</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">first_block</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Block</span>) <span class="ruby-operator">&amp;&amp;</span>
       ((<span class="ruby-identifier">first_block</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:paragraph</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">continuation_connects_first_block</span>) <span class="ruby-operator">||</span>
       ((<span class="ruby-identifier">content_adjacent</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">continuation_connects_first_block</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">first_block</span>.<span class="ruby-identifier">context</span> <span class="ruby-operator">==</span> <span class="ruby-value">:literal</span> <span class="ruby-operator">&amp;&amp;</span>
-          <span class="ruby-identifier">first_block</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'options'</span>, [], <span class="ruby-keyword">false</span>).<span class="ruby-identifier">include?</span>(<span class="ruby-string">'listparagraph'</span>)))
+          <span class="ruby-identifier">first_block</span>.<span class="ruby-identifier">option?</span>(<span class="ruby-string">'listparagraph'</span>)))
 
     <span class="ruby-identifier">block</span> = <span class="ruby-identifier">blocks</span>.<span class="ruby-identifier">shift</span>
     <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">empty?</span>

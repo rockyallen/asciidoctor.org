@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Asciidoctor - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>module Asciidoctor - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -461,20 +461,18 @@ templates.</p>
 <p>Asciidoc documents comprise a header followed by zero or more
 sections.Sections are composed of blocks of content.  For example:</p>
 
-<pre>Doc Title
-=========
+<pre>= Doc Title
 
-SECTION 1
----------
+== Section 1
 
 This is a paragraph block in the first section.
 
-SECTION 2
+== Section 2
 
 This section has a paragraph block and an olist block.
 
-1. Item 1
-2. Item 2</pre>
+. Item 1
+. Item 2</pre>
 
 <p>Examples:</p>
 
@@ -580,6 +578,11 @@ engine</p>
         
       
         <dt id="DELIMITED_BLOCKS">DELIMITED_BLOCKS
+        
+        <dd class="description">
+        
+      
+        <dt id="DELIMITED_BLOCK_LEADERS">DELIMITED_BLOCK_LEADERS
         
         <dd class="description">
         
@@ -789,7 +792,7 @@ Asciidoctor::Document#initialize for details about options.</p>
 
           
           <div class="method-source-code" id="load-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 739</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 742</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-keyword">if</span> (<span class="ruby-identifier">monitor</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-value">:monitor</span>, <span class="ruby-keyword">false</span>))
     <span class="ruby-identifier">start</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
@@ -907,7 +910,7 @@ Asciidoctor::Document#initialize for details about options.</p>
 
           
           <div class="method-source-code" id="load_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 824</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 827</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -976,7 +979,7 @@ String</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 857</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 860</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">input</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-identifier">in_place</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:in_place</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">to_file</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value">:to_file</span>)
@@ -1059,22 +1062,26 @@ String</p>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-comment"># NOTE document cannot control this behavior if safe &gt;= SafeMode::SERVER</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'basebackend-html'</span>) <span class="ruby-operator">&amp;&amp;</span>
-        <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'copycss'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'linkcss'</span>)
-      <span class="ruby-identifier">copy_asciidoctor_stylesheet</span> = <span class="ruby-constant">DEFAULT_STYLESHEET_KEYS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'stylesheet'</span>)
-      <span class="ruby-identifier">copy_coderay_stylesheet</span> = (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'source-highlighter'</span>, <span class="ruby-string">'coderay'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'coderay-css'</span>, <span class="ruby-string">'style'</span>)
-      <span class="ruby-identifier">copy_pygments_stylesheet</span> = (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'source-highlighter'</span>, <span class="ruby-string">'pygments'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'pygments-css'</span>, <span class="ruby-string">'style'</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stream_output</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SECURE</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'basebackend-html'</span>) <span class="ruby-operator">&amp;&amp;</span>
+        (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'linkcss'</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'copycss'</span>)
+      <span class="ruby-identifier">copy_asciidoctor_stylesheet</span> = <span class="ruby-constant">DEFAULT_STYLESHEET_KEYS</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">stylesheet</span> = (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'stylesheet'</span>))
+      <span class="ruby-comment">#copy_user_stylesheet = !copy_asciidoctor_stylesheet &amp;&amp; (doc.attr? 'copycss')</span>
+      <span class="ruby-identifier">copy_coderay_stylesheet</span> = (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'source-highlighter'</span>, <span class="ruby-string">'coderay'</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'coderay-css'</span>, <span class="ruby-string">'class'</span>) <span class="ruby-operator">==</span> <span class="ruby-string">'class'</span>
+      <span class="ruby-identifier">copy_pygments_stylesheet</span> = (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'source-highlighter'</span>, <span class="ruby-string">'pygments'</span>) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'pygments-css'</span>, <span class="ruby-string">'class'</span>) <span class="ruby-operator">==</span> <span class="ruby-string">'class'</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy_asciidoctor_stylesheet</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">copy_coderay_stylesheet</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">copy_pygments_stylesheet</span>
         <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">require_library</span> <span class="ruby-string">'fileutils'</span>
         <span class="ruby-identifier">outdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'outdir'</span>)
         <span class="ruby-identifier">stylesdir</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">normalize_system_path</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span>(<span class="ruby-string">'stylesdir'</span>), <span class="ruby-identifier">outdir</span>,
             <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">safe</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">outdir</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>)
-        <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">stylesdir</span>
+        <span class="ruby-constant">Helpers</span>.<span class="ruby-identifier">mkdir_p</span> <span class="ruby-identifier">stylesdir</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">mkdirs</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy_asciidoctor_stylesheet</span>
           <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">stylesdir</span>, <span class="ruby-constant">DEFAULT_STYLESHEET_NAME</span>), <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML5</span>.<span class="ruby-identifier">default_asciidoctor_stylesheet</span>
           }
         <span class="ruby-keyword">end</span>
+
+        <span class="ruby-comment">#if copy_user_stylesheet</span>
+        <span class="ruby-comment">#end</span>
 
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy_coderay_stylesheet</span>
           <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">stylesdir</span>, <span class="ruby-string">'asciidoctor-coderay.css'</span>), <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
@@ -1084,7 +1091,7 @@ String</p>
 
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">copy_pygments_stylesheet</span>
           <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">stylesdir</span>, <span class="ruby-string">'asciidoctor-pygments.css'</span>), <span class="ruby-string">'w'</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">f</span><span class="ruby-operator">|</span>
-            <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Pygments</span>.<span class="ruby-identifier">css</span> <span class="ruby-string">'.highlight'</span>, <span class="ruby-value">:classprefix</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'tok-'</span>, <span class="ruby-value">:style</span> =<span class="ruby-operator">&gt;</span> (<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'pygments-style'</span>, <span class="ruby-string">'pastie'</span>)
+            <span class="ruby-identifier">f</span>.<span class="ruby-identifier">write</span> <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">HTML5</span>.<span class="ruby-identifier">pygments_stylesheet</span>(<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'pygments-style'</span>)
           }
         <span class="ruby-keyword">end</span>
       <span class="ruby-keyword">end</span>
@@ -1137,7 +1144,7 @@ String</p>
 
           
           <div class="method-source-code" id="render_file-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 985</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor.rb, line 992</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render_file</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">options</span> = {})
   <span class="ruby-constant">Asciidoctor</span>.<span class="ruby-identifier">render</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">filename</span>), <span class="ruby-identifier">options</span>)
 <span class="ruby-keyword">end</span></pre>

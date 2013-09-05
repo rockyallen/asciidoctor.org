@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::PreprocessorReader - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::PreprocessorReader - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -1159,7 +1159,7 @@ object</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">document</span>, <span class="ruby-identifier">data</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">cursor</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@document</span> = <span class="ruby-identifier">document</span>
   <span class="ruby-keyword">super</span> <span class="ruby-identifier">data</span>, <span class="ruby-identifier">cursor</span>
-  <span class="ruby-identifier">include_depth_default</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'include-depth'</span>, <span class="ruby-value">10</span>).<span class="ruby-identifier">to_i</span>
+  <span class="ruby-identifier">include_depth_default</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">fetch</span>(<span class="ruby-string">'max-include-depth'</span>, <span class="ruby-value">64</span>).<span class="ruby-identifier">to_i</span>
   <span class="ruby-identifier">include_depth_default</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_depth_default</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
   <span class="ruby-comment"># track both absolute depth for comparing to size of include stack and relative depth for reporting</span>
   <span class="ruby-ivar">@maxdepth</span> = {<span class="ruby-value">:abs</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">include_depth_default</span>, <span class="ruby-value">:rel</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">include_depth_default</span>}

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Asciidoctor::Cli::Invoker - API Documentation for Asciidoctor 0.1.4.rc.1</title>
+<title>class Asciidoctor::Cli::Invoker - API Documentation for Asciidoctor ae22aabec062</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -574,7 +574,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
           
           <div class="method-source-code" id="document-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 105</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">document</span>
   <span class="ruby-ivar">@documents</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@documents</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
@@ -649,10 +649,12 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
       <span class="ruby-identifier">tofile</span> = (<span class="ruby-ivar">@out</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">$stdout</span>)
     <span class="ruby-keyword">elsif</span> <span class="ruby-operator">!</span><span class="ruby-identifier">outfile</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">tofile</span> = <span class="ruby-identifier">outfile</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-value">:mkdirs</span>] = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">tofile</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-comment"># automatically calculate outfile based on infile</span>
       <span class="ruby-identifier">opts</span>[<span class="ruby-value">:in_place</span>] = <span class="ruby-keyword">true</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-value">:to_dir</span>
+      <span class="ruby-identifier">opts</span>[<span class="ruby-value">:mkdirs</span>] = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-identifier">original_opts</span> = <span class="ruby-identifier">opts</span>
@@ -712,7 +714,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
           
           <div class="method-source-code" id="read_error-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 118</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 120</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_error</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@err</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@err</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
 <span class="ruby-keyword">end</span></pre>
@@ -745,7 +747,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
           
           <div class="method-source-code" id="read_output-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">read_output</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@out</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@out</span>.<span class="ruby-identifier">string</span> <span class="ruby-operator">:</span> <span class="ruby-string">''</span>
 <span class="ruby-keyword">end</span></pre>
@@ -778,7 +780,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
           
           <div class="method-source-code" id="redirect_streams-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 109</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">redirect_streams</span>(<span class="ruby-identifier">out</span>, <span class="ruby-identifier">err</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@out</span> = <span class="ruby-identifier">out</span>
   <span class="ruby-ivar">@err</span> = <span class="ruby-identifier">err</span>
@@ -812,7 +814,7 @@ href="../../Asciidoctor.html">Asciidoctor</a> via CLI</p>
 
           
           <div class="method-source-code" id="reset_streams-source">
-            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 122</span>
+            <pre><span class="ruby-comment"># File lib/asciidoctor/cli/invoker.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">reset_streams</span>
   <span class="ruby-ivar">@out</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@err</span> = <span class="ruby-keyword">nil</span>

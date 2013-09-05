@@ -62,8 +62,8 @@ The artifact information is summarized in the table below.</p>
 </div>
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven&#8217;s pom.xml</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="xml language-xml">&lt;dependencies&gt;
+<div class="content">
+<pre class="highlight nowrap"><code class="xml language-xml">&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
     &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
@@ -74,8 +74,8 @@ The artifact information is summarized in the table below.</p>
 </div>
 <div class="listingblock">
 <div class="title">Dependency declaration in Gradle&#8217;s build.gradle</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="groovy language-groovy">dependencies {
+<div class="content">
+<pre class="highlight nowrap"><code class="groovy language-groovy">dependencies {
   compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <i class="conum" data-value="1"></i><b>(1)</b>
     transitive = false
   }
@@ -165,8 +165,8 @@ All methods are overloaded to accomodate various ways to supply content and opti
 </div>
 <div class="listingblock">
 <div class="title">Creating an <code>Asciidoctor</code> instance</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 
 Asciidoctor asciidoctor = create();</code></pre>
@@ -178,8 +178,8 @@ Use <code>render</code> to render a string.</p>
 </div>
 <div class="listingblock">
 <div class="title">Rendering a string</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 import java.util.Collections;
 //...
 String rendered = asciidoctor.render(
@@ -192,8 +192,8 @@ System.out.println(rendered);</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Rendering a file</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 import java.util.Collections;
 //...
 String rendered = asciidoctor.renderFile(
@@ -206,8 +206,8 @@ System.out.println(rendered);</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Rendering a list of files</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 String[] renderedFiles = asciidoctor.renderFiles(
     Arrays.asList(new File("target/test-classes/rendersample.asciidoc")), new HashMap&lt;String, Object&gt;());
 
@@ -228,8 +228,8 @@ This method renders all of the files with AsciiDoc extensions (<code>.asc</code>
 </div>
 <div class="listingblock">
 <div class="title">Rendering all the files in a directory</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 String[] renderedFiles = asciidoctor.renderDirectory(
     new File("docs"), new HashMap&lt;String, Object&gt;());
 
@@ -244,8 +244,8 @@ The <code>Reader</code> interface is used as the source, and the rendered conten
 </div>
 <div class="listingblock">
 <div class="title">Rendering content read from a <code>java.io.Reader</code> to a <code>java.io.Writer</code></div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 FileReader reader = new FileReader(new File("sample.adoc"));
 StringWriter writer = new StringWriter();
 
@@ -261,8 +261,8 @@ This method returns an instance of <code>org.asciidoctor.DocumentHeader</code> w
 </div>
 <div class="listingblock">
 <div class="title">Example AsciiDoc document with header information</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="asciidoc language-asciidoc">= Sample Document
+<div class="content">
+<pre class="highlight nowrap"><code class="asciidoc language-asciidoc">= Sample Document
 Doc Writer &lt;doc.writer@asciidoc.org&gt;; John Smith &lt;john.smith@asciidoc.org&gt;
 v1.0, 2013-05-20: First draft
 :title: Sample Document
@@ -273,8 +273,8 @@ Preamble...</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Reading header information from the AsciiDoc document</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 DocumentHeader header = asciidoctor.readDocumentHeader(
     new File("target/test-classes/documentheaders.asciidoc"));
 
@@ -327,8 +327,8 @@ System.out.println(revisionInfo.getRemark()); <i class="conum" data-value="7"></
 <p>The <code>readDocumentHeader</code> method can be extremely useful for building an index of documents.</p>
 </div>
 <div class="listingblock">
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import java.io.File;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
 import org.asciidoctor.Asciidoctor;
@@ -373,8 +373,8 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
 attributes.put("backend", "docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
@@ -410,8 +410,8 @@ Note that related with <code>org.asciidoctor.Options</code> class, there is <cod
 </div>
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">Attributes attributes = new Attributes();
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">Attributes attributes = new Attributes();
 attributes.setBackend("docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Options options = new Options();
@@ -457,8 +457,8 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 </div>
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
@@ -490,8 +490,8 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 </div>
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
 import static org.asciidoctor.OptionsBuilder.options;
 
 //...
@@ -547,8 +547,8 @@ At this time, you can use two constants <code>org.asciidoctor.Attributes.ORIGINA
 </div>
 <div class="listingblock">
 <div class="title">Passing attributes as a String</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 Attributes attributes = attributes().attributes("toc numbered").get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -558,8 +558,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -569,8 +569,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Passing attributes as an Array</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 String[] attributesArray = new String[]{"toc", "source-highlighter=coderay"};
 Attributes attributes = attributes().attributes(attributesArray).sectionNumbers(true).get();
 Options options = options().attributes(attributes).get();</code></pre>
@@ -581,8 +581,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">//...
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">//...
 Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).sourceHighlighter("coderay").get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -596,8 +596,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 </div>
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>AsciiDocDirectoryWalker</code></div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import java.util.List;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import java.util.List;
 import org.asciidoctor.AsciiDocDirectoryWalker;
 
 DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -627,8 +627,8 @@ Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</co
 </div>
 <div class="listingblock">
 <div class="title">Example of setting GEM_PATH</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
+<div class="content">
+<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
 import org.asciidoctor.Asciidoctor;
 
 Asciidoctor asciidoctor = create("/my/gem/path"); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
@@ -722,8 +722,8 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
-<div class="content monospaced">
-<pre class="highlight"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<div class="content">
+<pre class="highlight nowrap"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
