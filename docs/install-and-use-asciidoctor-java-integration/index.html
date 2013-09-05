@@ -63,21 +63,21 @@ The artifact information is summarized in the table below.</p>
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven&#8217;s pom.xml</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="xml language-xml">&lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
-    &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt; <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${asciidoctor.version}<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Dependency declaration in Gradle&#8217;s build.gradle</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="groovy language-groovy">dependencies {
-  compile('org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}') { <i class="conum" data-value="1"></i><b>(1)</b>
-    transitive = false
+<pre class="CodeRay nowrap"><code class="groovy language-groovy">dependencies {
+  compile(<span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}</span><span class="delimiter">'</span></span>) { <i class="conum" data-value="1"></i><b>(1)</b>
+    transitive = <span class="predefined-constant">false</span>
   }
 }</code></pre>
 </div>
@@ -166,8 +166,8 @@ All methods are overloaded to accomodate various ways to supply content and opti
 <div class="listingblock">
 <div class="title">Creating an <code>Asciidoctor</code> instance</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
-import org.asciidoctor.Asciidoctor;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
 </div>
@@ -179,12 +179,12 @@ Use <code>render</code> to render a string.</p>
 <div class="listingblock">
 <div class="title">Rendering a string</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-import java.util.Collections;
-//...
-String rendered = asciidoctor.render(
-    "AsciiDoc is *easy*!", Collections.&lt;String,Object&gt;emptyMap());
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="keyword">import</span> <span class="include">java.util.Collections</span>;
+<span class="comment">//...</span>
+<span class="predefined-type">String</span> rendered = asciidoctor.render(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">AsciiDoc is *easy*!</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.&lt;<span class="predefined-type">String</span>,<span class="predefined-type">Object</span>&gt;emptyMap());
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -193,12 +193,12 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a file</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-import java.util.Collections;
-//...
-String rendered = asciidoctor.renderFile(
-    new File("sample.adoc"), Collections.&lt;String,Object&gt;emptyMap());
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="keyword">import</span> <span class="include">java.util.Collections</span>;
+<span class="comment">//...</span>
+<span class="predefined-type">String</span> rendered = asciidoctor.renderFile(
+    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), <span class="predefined-type">Collections</span>.&lt;<span class="predefined-type">String</span>,<span class="predefined-type">Object</span>&gt;emptyMap());
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -207,12 +207,12 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a list of files</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-String[] renderedFiles = asciidoctor.renderFiles(
-    Arrays.asList(new File("target/test-classes/rendersample.asciidoc")), new HashMap&lt;String, Object&gt;());
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderFiles(
+    <span class="predefined-type">Arrays</span>.asList(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/rendersample.asciidoc</span><span class="delimiter">&quot;</span></span>)), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
-for(String renderedFile : renderedFiles) {
-    System.out.println(renderedFile);
+<span class="keyword">for</span>(<span class="predefined-type">String</span> renderedFile : renderedFiles) {
+    <span class="predefined-type">System</span>.out.println(renderedFile);
 }</code></pre>
 </div>
 </div>
@@ -229,12 +229,12 @@ This method renders all of the files with AsciiDoc extensions (<code>.asc</code>
 <div class="listingblock">
 <div class="title">Rendering all the files in a directory</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-String[] renderedFiles = asciidoctor.renderDirectory(
-    new File("docs"), new HashMap&lt;String, Object&gt;());
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderDirectory(
+    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
-for(String renderedFile : renderedFiles) {
-    System.out.println(renderedFile);
+<span class="keyword">for</span>(<span class="predefined-type">String</span> renderedFile : renderedFiles) {
+    <span class="predefined-type">System</span>.out.println(renderedFile);
 }</code></pre>
 </div>
 </div>
@@ -245,14 +245,14 @@ The <code>Reader</code> interface is used as the source, and the rendered conten
 <div class="listingblock">
 <div class="title">Rendering content read from a <code>java.io.Reader</code> to a <code>java.io.Writer</code></div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-FileReader reader = new FileReader(new File("sample.adoc"));
-StringWriter writer = new StringWriter();
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">FileReader</span> reader = <span class="keyword">new</span> <span class="predefined-type">FileReader</span>(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>));
+<span class="predefined-type">StringWriter</span> writer = <span class="keyword">new</span> <span class="predefined-type">StringWriter</span>();
 
 asciidoctor.render(reader, writer, options().asMap());
 
-StringBuffer rendered = writer.getBuffer();
-System.out.println(rendered.toString());</code></pre>
+<span class="predefined-type">StringBuffer</span> rendered = writer.getBuffer();
+<span class="predefined-type">System</span>.out.println(rendered.toString());</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -262,7 +262,7 @@ This method returns an instance of <code>org.asciidoctor.DocumentHeader</code> w
 <div class="listingblock">
 <div class="title">Example AsciiDoc document with header information</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="asciidoc language-asciidoc">= Sample Document
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Sample Document
 Doc Writer &lt;doc.writer@asciidoc.org&gt;; John Smith &lt;john.smith@asciidoc.org&gt;
 v1.0, 2013-05-20: First draft
 :title: Sample Document
@@ -274,21 +274,21 @@ Preamble...</code></pre>
 <div class="listingblock">
 <div class="title">Reading header information from the AsciiDoc document</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
 DocumentHeader header = asciidoctor.readDocumentHeader(
-    new File("target/test-classes/documentheaders.asciidoc"));
+    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/documentheaders.asciidoc</span><span class="delimiter">&quot;</span></span>));
 
-System.out.println(header.getDocumentTitle()); <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="predefined-type">System</span>.out.println(header.getDocumentTitle()); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Author author = header.getAuthor(); <i class="conum" data-value="2"></i><b>(2)</b>
-System.out.println(author.getEmail()); <i class="conum" data-value="3"></i><b>(3)</b>
-System.out.println(author.getFullName()); <i class="conum" data-value="4"></i><b>(4)</b>
+<span class="predefined-type">System</span>.out.println(author.getEmail()); <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="predefined-type">System</span>.out.println(author.getFullName()); <i class="conum" data-value="4"></i><b>(4)</b>
 
 RevisionInfo revisionInfo = header.getRevisionInfo();
 
-System.out.println(revisionInfo.getDate()); <i class="conum" data-value="5"></i><b>(5)</b>
-System.out.println(revisionInfo.getNumber()); <i class="conum" data-value="6"></i><b>(6)</b>
-System.out.println(revisionInfo.getRemark()); <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
+<span class="predefined-type">System</span>.out.println(revisionInfo.getDate()); <i class="conum" data-value="5"></i><b>(5)</b>
+<span class="predefined-type">System</span>.out.println(revisionInfo.getNumber()); <i class="conum" data-value="6"></i><b>(6)</b>
+<span class="predefined-type">System</span>.out.println(revisionInfo.getRemark()); <i class="conum" data-value="7"></i><b>(7)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -328,20 +328,20 @@ System.out.println(revisionInfo.getRemark()); <i class="conum" data-value="7"></
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import java.io.File;
-import java.util.HashSet;
-import java.util.Set;
-import org.asciidoctor.Asciidoctor;
-import org.asciidoctor.AsciiDocDirectoryWalker;
-import org.asciidoctor.DirectoryWalker;
-import org.asciidoctor.DocumentHeader;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.io.File</span>;
+<span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
+<span class="keyword">import</span> <span class="include">java.util.Set</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.AsciiDocDirectoryWalker</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.DirectoryWalker</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.DocumentHeader</span>;
 
-//...
+<span class="comment">//...</span>
 
 Asciidoctor asciidoctor = Asciidoctor.Factory.create();
-Set&lt;DocumentHeader&gt; documentIndex = new HashSet&lt;DocumentHeader&gt;();
-DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs");
-for (File file : directoryWalker.scan()) {
+<span class="predefined-type">Set</span>&lt;DocumentHeader&gt; documentIndex = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;DocumentHeader&gt;();
+DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+<span class="keyword">for</span> (<span class="predefined-type">File</span> file : directoryWalker.scan()) {
     documentIndex.add(asciidoctor.readDocumentHeader(file));
 }</code></pre>
 </div>
@@ -374,14 +374,14 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
 
-Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
-options.put("attributes", attributes); <i class="conum" data-value="2"></i><b>(2)</b>
-options.put("in_place", true); <i class="conum" data-value="3"></i><b>(3)</b>
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>, attributes); <i class="conum" data-value="2"></i><b>(2)</b>
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">in_place</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>); <i class="conum" data-value="3"></i><b>(3)</b>
 
-String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
+<span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -411,14 +411,14 @@ Note that related with <code>org.asciidoctor.Options</code> class, there is <cod
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">Attributes attributes = new Attributes();
-attributes.setBackend("docbook"); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Attributes</span> attributes = <span class="keyword">new</span> <span class="predefined-type">Attributes</span>();
+attributes.setBackend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
 
-Options options = new Options();
+Options options = <span class="keyword">new</span> Options();
 options.setAttributes(attributes); <i class="conum" data-value="2"></i><b>(2)</b>
-options.setInPlace(true); <i class="conum" data-value="3"></i><b>(3)</b>
+options.setInPlace(<span class="predefined-constant">true</span>); <i class="conum" data-value="3"></i><b>(3)</b>
 
-String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
+<span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -458,18 +458,18 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
-import static org.asciidoctor.OptionsBuilder.options;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
-//...
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook") <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="comment">//...</span>
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = attributes().backend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>) <i class="conum" data-value="1"></i><b>(1)</b>
                                              .asMap();
 
-Map&lt;String, Object&gt; options = options().inPlace(true)
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = options().inPlace(<span class="predefined-constant">true</span>)
                                        .attributes(attributes) <i class="conum" data-value="2"></i><b>(2)</b>
                                        .asMap(); <i class="conum" data-value="3"></i><b>(3)</b>
 
-String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</code></pre>
+<span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), options);</code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -491,14 +491,14 @@ String rendered = asciidoctor.renderFile(new File("sample.adoc"), options);</cod
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
-import static org.asciidoctor.OptionsBuilder.options;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
-//...
-Attributes attributes = attributes().backend("docbook").get(); <i class="conum" data-value="1"></i><b>(1)</b>
-Options options = options().inPlace(true).attributes(attributes).get(); <i class="conum" data-value="2"></i><b>(2)</b>
+<span class="comment">//...</span>
+<span class="predefined-type">Attributes</span> attributes = attributes().backend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>).get(); <i class="conum" data-value="1"></i><b>(1)</b>
+Options options = options().inPlace(<span class="predefined-constant">true</span>).attributes(attributes).get(); <i class="conum" data-value="2"></i><b>(2)</b>
 
-String rendered = asciidoctor.renderFile(new File("sample.adoc"), options); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+<span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), options); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -548,8 +548,8 @@ At this time, you can use two constants <code>org.asciidoctor.Attributes.ORIGINA
 <div class="listingblock">
 <div class="title">Passing attributes as a String</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-Attributes attributes = attributes().attributes("toc numbered").get();
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">Attributes</span> attributes = attributes().attributes(<span class="string"><span class="delimiter">&quot;</span><span class="content">toc numbered</span><span class="delimiter">&quot;</span></span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
 </div>
@@ -559,8 +559,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).get();
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">Attributes</span> attributes = attributes().tableOfContents(<span class="predefined-constant">true</span>).sectionNumbers(<span class="predefined-constant">true</span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
 </div>
@@ -570,9 +570,9 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing attributes as an Array</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-String[] attributesArray = new String[]{"toc", "source-highlighter=coderay"};
-Attributes attributes = attributes().attributes(attributesArray).sectionNumbers(true).get();
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">String</span><span class="type">[]</span> attributesArray = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{<span class="string"><span class="delimiter">&quot;</span><span class="content">toc</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">source-highlighter=coderay</span><span class="delimiter">&quot;</span></span>};
+<span class="predefined-type">Attributes</span> attributes = attributes().attributes(attributesArray).sectionNumbers(<span class="predefined-constant">true</span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
 </div>
@@ -582,8 +582,8 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">//...
-Attributes attributes = attributes().tableOfContents(true).sectionNumbers(true).sourceHighlighter("coderay").get();
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<span class="predefined-type">Attributes</span> attributes = attributes().tableOfContents(<span class="predefined-constant">true</span>).sectionNumbers(<span class="predefined-constant">true</span>).sourceHighlighter(<span class="string"><span class="delimiter">&quot;</span><span class="content">coderay</span><span class="delimiter">&quot;</span></span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
 </div>
@@ -597,11 +597,11 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>AsciiDocDirectoryWalker</code></div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import java.util.List;
-import org.asciidoctor.AsciiDocDirectoryWalker;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.AsciiDocDirectoryWalker</span>;
 
-DirectoryWalker directoryWalker = new AsciiDocDirectoryWalker("docs"); <i class="conum" data-value="1"></i><b>(1)</b>
-List&lt;File&gt; asciidocFiles = directoryWalker.scan(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -628,10 +628,10 @@ Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</co
 <div class="listingblock">
 <div class="title">Example of setting GEM_PATH</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
-import org.asciidoctor.Asciidoctor;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
-Asciidoctor asciidoctor = create("/my/gem/path"); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&quot;</span><span class="content">/my/gem/path</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -723,7 +723,7 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="shell language-shell">export JRUBY_OPTS="-J-Xverify:none -J-client" <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay nowrap"><code class="shell language-shell">export JRUBY_OPTS=&quot;-J-Xverify:none -J-client&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -748,7 +748,7 @@ If you identify an issue while using the Asciidoctor Java integration, please do
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
-</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

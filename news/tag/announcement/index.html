@@ -28,7 +28,7 @@ To attend, register for OSCON 2013, then sign up for the workshop!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="asciidoc language-asciidoc">Plain text *embellished* with _subtle_ markup.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Plain text *embellished* with _subtle_ markup.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -423,7 +423,7 @@ These resources should also help you continue to learn about the subject after t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">/**
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">/**
  * = Asciidoclet <i class="conum" data-value="1"></i><b>(1)</b>
  *
  * Sample comments that include +source code+. <i class="conum" data-value="2"></i><b>(2)</b>
@@ -433,7 +433,7 @@ These resources should also help you continue to learn about the subject after t
  * public class Asciidoclet extends Doclet {
  *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
  *
- *     @SuppressWarnings("UnusedDeclaration") <i class="conum" data-value="4"></i><b>(4)</b>
+ *     @SuppressWarnings(&quot;UnusedDeclaration&quot;) <i class="conum" data-value="4"></i><b>(4)</b>
  *     public static boolean start(RootDoc rootDoc) {
  *         new Asciidoclet().render(rootDoc);
  *         return Standard.start(rootDoc);
@@ -442,8 +442,8 @@ These resources should also help you continue to learn about the subject after t
  * --
  *
  * @author https://github.com/johncarl81[John Ericksen] <i class="conum" data-value="5"></i><b>(5)</b>
- */
-public class Asciidoclet extends Doclet {
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Asciidoclet</span> <span class="directive">extends</span> Doclet {
 }</code></pre>
 </div>
 </div>
@@ -519,27 +519,27 @@ public class Asciidoclet extends Doclet {
 <div class="listingblock">
 <div class="title">Maven Doclet declaration</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="xml language-xml">&lt;plugin&gt;
-    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
-    &lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
-    &lt;version&gt;2.9&lt;/version&gt;
-    &lt;executions&gt;
-        &lt;execution&gt;
-            &lt;id&gt;attach-javadocs&lt;/id&gt;
-            &lt;goals&gt;
-                &lt;goal&gt;jar&lt;/goal&gt;
-            &lt;/goals&gt;
-        &lt;/execution&gt;
-    &lt;/executions&gt;
-    &lt;configuration&gt;
-        &lt;doclet&gt;org.asciidoctor.Asciidoclet&lt;/doclet&gt;
-        &lt;docletArtifact&gt;
-           &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
-           &lt;artifactId&gt;asciidoclet&lt;/artifactId&gt;
-           &lt;version&gt;${asciidoclet.version}&lt;/version&gt;
-        &lt;/docletArtifact&gt;
-    &lt;/configuration&gt;
-&lt;/plugin&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>2.9<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;executions&gt;</span>
+        <span class="tag">&lt;execution&gt;</span>
+            <span class="tag">&lt;id&gt;</span>attach-javadocs<span class="tag">&lt;/id&gt;</span>
+            <span class="tag">&lt;goals&gt;</span>
+                <span class="tag">&lt;goal&gt;</span>jar<span class="tag">&lt;/goal&gt;</span>
+            <span class="tag">&lt;/goals&gt;</span>
+        <span class="tag">&lt;/execution&gt;</span>
+    <span class="tag">&lt;/executions&gt;</span>
+    <span class="tag">&lt;configuration&gt;</span>
+        <span class="tag">&lt;doclet&gt;</span>org.asciidoctor.Asciidoclet<span class="tag">&lt;/doclet&gt;</span>
+        <span class="tag">&lt;docletArtifact&gt;</span>
+           <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+           <span class="tag">&lt;artifactId&gt;</span>asciidoclet<span class="tag">&lt;/artifactId&gt;</span>
+           <span class="tag">&lt;version&gt;</span>${asciidoclet.version}<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;/docletArtifact&gt;</span>
+    <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -635,8 +635,8 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
-&lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">opal.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoctor.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -665,18 +665,18 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="ruby language-ruby">data = %(= asciidoctor.js - Render AsciiDoc in your browser!
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">data = <span class="string"><span class="delimiter">%(</span><span class="content">= asciidoctor.js - Render AsciiDoc in your browser!
 Dan Allen
 2013-05-21
 
 We've combined http://asciidoctor.org[Asciidoctor] and
-http://opalrb.org[Opal] to bring AsciiDoc rendering to the browser!)
+http://opalrb.org[Opal] to bring AsciiDoc rendering to the browser!</span><span class="delimiter">)</span></span>
 
-$window.addEventListener 'DOMContentLoaded', proc {
-  html_doc = Asciidoctor.render(data, :safe =&gt; :safe,
-    :attributes =&gt; %w(notitle! anchors imagesdir=./images))
-  $document.getElementById('content').innerHTML = html_doc
-}, false</code></pre>
+<span class="global-variable">$window</span>.addEventListener <span class="string"><span class="delimiter">'</span><span class="content">DOMContentLoaded</span><span class="delimiter">'</span></span>, proc {
+  html_doc = <span class="constant">Asciidoctor</span>.render(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
+    <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">notitle! anchors imagesdir=./images</span><span class="delimiter">)</span></span>)
+  <span class="global-variable">$document</span>.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = html_doc
+}, <span class="predefined-constant">false</span></code></pre>
 </div>
 </div>
 </div>
@@ -716,13 +716,13 @@ Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the br
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="xml language-xml">&lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
-    &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${asciidoctor.version}<span class="tag">&lt;/version&gt;</span>                   <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -771,8 +771,8 @@ Then, get involved in either Asciidoctor or Opal to help make AsciiDoc in the br
 <div class="listingblock">
 <div class="title">Creation of Asciidoctor interface</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
-import org.asciidoctor.Asciidoctor;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
 </div>
@@ -783,8 +783,8 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a String</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">String rendered = asciidoctor.render("*This* is it.", Collections.EMPTY_MAP);
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -793,8 +793,8 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a File</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">String rendered = asciidoctor.renderFile("docs/sample.adoc", Collections.EMPTY_MAP);
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -808,14 +808,14 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Example of using in_place Option and backend Attribute</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook");
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>);
 
-Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
-options.put("in_place", true);
-options.put("attributes", attributes);
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">in_place</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>);
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>, attributes);
 
-String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
+<span class="predefined-type">String</span> render = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -830,15 +830,15 @@ String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre
 <div class="listingblock">
 <div class="title">Example setting attributes and options</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
-import static org.asciidoctor.OptionsBuilder.options;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 ...
 
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook").asMap();
-Map&lt;String, Object&gt; options = options().inPlace(true).attributes(attributes).asMap();
+Map&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = attributes().backend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>).asMap();
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = options().inPlace(<span class="predefined-constant">true</span>).attributes(attributes).asMap();
 
-String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
+<span class="predefined-type">String</span> render = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
 </div>
 </div>
 </div>
@@ -850,8 +850,8 @@ String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre
 <div class="listingblock">
 <div class="title">Example of finding all asciidoc</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">DirectoryWalker directoryWalker = new AsciidocDirectoryWalker("docs");
-List&lt;File&gt; asciidocFiles = directoryWalker.scan();</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan();</code></pre>
 </div>
 </div>
 </div>
@@ -920,25 +920,25 @@ Just add this plugin declaration:</p>
 <div class="listingblock">
 <div class="title">pom.xml fragment: Asciidoctor Maven plugin configuration</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="xml language-xml">&lt;plugin&gt;
-  &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
-  &lt;artifactId&gt;asciidoctor-maven-plugin&lt;/artifactId&gt;
-  &lt;version&gt;0.1.1&lt;/version&gt;
-  &lt;executions&gt;
-    &lt;execution&gt;
-      &lt;id&gt;render-asciidoc&lt;/id&gt;
-      &lt;phase&gt;generate-resources&lt;/phase&gt;
-      &lt;goals&gt;
-        &lt;goal&gt;process-asciidoc&lt;/goal&gt;
-      &lt;/goals&gt;
-    &lt;/execution&gt;
-  &lt;/executions&gt;
-  &lt;configuration&gt;
-      &lt;sourceDirectory&gt;docs&lt;/sourceDirectory&gt;
-      &lt;outputDirectory&gt;target/docbook/en-US&lt;/outputDirectory&gt;
-      &lt;backend&gt;docbook&lt;/backend&gt;
-  &lt;/configuration&gt;
-&lt;/plugin&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>asciidoctor-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>0.1.1<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;executions&gt;</span>
+    <span class="tag">&lt;execution&gt;</span>
+      <span class="tag">&lt;id&gt;</span>render-asciidoc<span class="tag">&lt;/id&gt;</span>
+      <span class="tag">&lt;phase&gt;</span>generate-resources<span class="tag">&lt;/phase&gt;</span>
+      <span class="tag">&lt;goals&gt;</span>
+        <span class="tag">&lt;goal&gt;</span>process-asciidoc<span class="tag">&lt;/goal&gt;</span>
+      <span class="tag">&lt;/goals&gt;</span>
+    <span class="tag">&lt;/execution&gt;</span>
+  <span class="tag">&lt;/executions&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+      <span class="tag">&lt;sourceDirectory&gt;</span>docs<span class="tag">&lt;/sourceDirectory&gt;</span>
+      <span class="tag">&lt;outputDirectory&gt;</span>target/docbook/en-US<span class="tag">&lt;/outputDirectory&gt;</span>
+      <span class="tag">&lt;backend&gt;</span>docbook<span class="tag">&lt;/backend&gt;</span>
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1108,7 +1108,7 @@ Together, we can take the agony out of writing documentation!</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="highlight"><code class="asciidoc language-asciidoc">= Asciidoctor
+<pre class="CodeRay"><code class="asciidoc language-asciidoc">= Asciidoctor
 Ryan Waldron, Dan Allen
 
 http://asciidoctor.org[Asciidoctor] is a native Ruby processor
@@ -1281,7 +1281,7 @@ This article was composed in AsciiDoc and rendered using Asciidoctor.
 <div class="footnote" id="_footnote_1">
 <a href="#_footnoteref_1">1</a> The Asciidoctor code base emerged from a prototype that GitHub developers created last year to produce the <a href="http://git-scm.com/docs/git-init">git man pages</a> shown on the <a href="http://git-scm.com">git website</a>.
 </div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/github/">github</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="icon-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-step-backward"></i></a></li><li>1 of 1</li><li class="arrow unavailable"><a href="#"><i class="icon-step-forward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/github/">github</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="icon-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-step-backward"></i></a></li><li>1 of 1</li><li class="arrow unavailable"><a href="#"><i class="icon-step-forward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

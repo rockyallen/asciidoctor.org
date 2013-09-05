@@ -16,13 +16,13 @@ Since asciidoctor-java-integration is a..."><link rel="stylesheet" href="/styles
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="xml language-xml">&lt;dependencies&gt;
-  &lt;dependency&gt;
-    &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
-    &lt;artifactId&gt;asciidoctor-java-integration&lt;/artifactId&gt;
-    &lt;version&gt;${asciidoctor.version}&lt;/version&gt;                   <i class="conum" data-value="1"></i><b>(1)</b>
-  &lt;/dependency&gt;
-&lt;/dependencies&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>${asciidoctor.version}<span class="tag">&lt;/version&gt;</span>                   <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -71,8 +71,8 @@ Since asciidoctor-java-integration is a..."><link rel="stylesheet" href="/styles
 <div class="listingblock">
 <div class="title">Creation of Asciidoctor interface</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.Asciidoctor.Factory.create;
-import org.asciidoctor.Asciidoctor;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
 </div>
@@ -83,8 +83,8 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a String</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">String rendered = asciidoctor.render("*This* is it.", Collections.EMPTY_MAP);
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -93,8 +93,8 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a File</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">String rendered = asciidoctor.renderFile("docs/sample.adoc", Collections.EMPTY_MAP);
-System.out.println(rendered);</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
 <div class="sect2">
@@ -108,14 +108,14 @@ System.out.println(rendered);</code></pre>
 <div class="listingblock">
 <div class="title">Example of using in_place Option and backend Attribute</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">Map&lt;String, Object&gt; attributes = new HashMap&lt;String, Object&gt;();
-attributes.put("backend", "docbook");
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>);
 
-Map&lt;String, Object&gt; options = new HashMap&lt;String, Object&gt;();
-options.put("in_place", true);
-options.put("attributes", attributes);
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">in_place</span><span class="delimiter">&quot;</span></span>, <span class="predefined-constant">true</span>);
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">attributes</span><span class="delimiter">&quot;</span></span>, attributes);
 
-String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
+<span class="predefined-type">String</span> render = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -130,15 +130,15 @@ String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre
 <div class="listingblock">
 <div class="title">Example setting attributes and options</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">import static org.asciidoctor.AttributesBuilder.attributes;
-import static org.asciidoctor.OptionsBuilder.options;
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 ...
 
-Map&lt;String, Object&gt; attributes = attributes().backend("docbook").asMap();
-Map&lt;String, Object&gt; options = options().inPlace(true).attributes(attributes).asMap();
+Map&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = attributes().backend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>).asMap();
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = options().inPlace(<span class="predefined-constant">true</span>).attributes(attributes).asMap();
 
-String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre>
+<span class="predefined-type">String</span> render = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, options);</code></pre>
 </div>
 </div>
 </div>
@@ -150,8 +150,8 @@ String render = asciidoctor.renderFile("docs/sample.adoc", options);</code></pre
 <div class="listingblock">
 <div class="title">Example of finding all asciidoc</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="java language-java">DirectoryWalker directoryWalker = new AsciidocDirectoryWalker("docs");
-List&lt;File&gt; asciidocFiles = directoryWalker.scan();</code></pre>
+<pre class="CodeRay nowrap"><code class="java language-java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan();</code></pre>
 </div>
 </div>
 </div>
@@ -178,7 +178,7 @@ List&lt;File&gt; asciidocFiles = directoryWalker.scan();</code></pre>
             })();
             </script>
             <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript=asciidoctor">comments powered by Disqus.</a></noscript>
-          </div></article></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+          </div></article></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

@@ -72,7 +72,7 @@ To attend, register for OSCON 2013, then sign up for the workshop!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;Plain text *embellished* with _subtle_ markup.&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;Plain text *embellished* with _subtle_ markup.&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -677,7 +677,7 @@ The main drawback of Javadoc has been the requirement to use embedded HTML fragm
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;/**
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;comment&quot;&gt;/**
  * = Asciidoclet &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
  *
  * Sample comments that include +source code+. &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;
@@ -696,8 +696,8 @@ The main drawback of Javadoc has been the requirement to use embedded HTML fragm
  * --
  *
  * @author https://github.com/johncarl81[John Ericksen] &lt;i class=&quot;conum&quot; data-value=&quot;5&quot;&gt;&lt;/i&gt;&lt;b&gt;(5)&lt;/b&gt;
- */
-public class Asciidoclet extends Doclet {
+ */&lt;/span&gt;
+&lt;span class=&quot;directive&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;type&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;class&quot;&gt;Asciidoclet&lt;/span&gt; &lt;span class=&quot;directive&quot;&gt;extends&lt;/span&gt; Doclet {
 }&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -780,27 +780,27 @@ public class Asciidoclet extends Doclet {
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Maven Doclet declaration&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;plugin&amp;gt;
-    &amp;lt;groupId&amp;gt;org.apache.maven.plugins&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;maven-javadoc-plugin&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;2.9&amp;lt;/version&amp;gt;
-    &amp;lt;executions&amp;gt;
-        &amp;lt;execution&amp;gt;
-            &amp;lt;id&amp;gt;attach-javadocs&amp;lt;/id&amp;gt;
-            &amp;lt;goals&amp;gt;
-                &amp;lt;goal&amp;gt;jar&amp;lt;/goal&amp;gt;
-            &amp;lt;/goals&amp;gt;
-        &amp;lt;/execution&amp;gt;
-    &amp;lt;/executions&amp;gt;
-    &amp;lt;configuration&amp;gt;
-        &amp;lt;doclet&amp;gt;org.asciidoctor.Asciidoclet&amp;lt;/doclet&amp;gt;
-        &amp;lt;docletArtifact&amp;gt;
-           &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
-           &amp;lt;artifactId&amp;gt;asciidoclet&amp;lt;/artifactId&amp;gt;
-           &amp;lt;version&amp;gt;${asciidoclet.version}&amp;lt;/version&amp;gt;
-        &amp;lt;/docletArtifact&amp;gt;
-    &amp;lt;/configuration&amp;gt;
-&amp;lt;/plugin&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.apache.maven.plugins&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;maven-javadoc-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;2.9&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;attach-javadocs&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;tag&quot;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;jar&lt;span class=&quot;tag&quot;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;tag&quot;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;doclet&amp;gt;&lt;/span&gt;org.asciidoctor.Asciidoclet&lt;span class=&quot;tag&quot;&gt;&amp;lt;/doclet&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;docletArtifact&amp;gt;&lt;/span&gt;
+           &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.asciidoctor&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+           &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;asciidoclet&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+           &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${asciidoclet.version}&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;/docletArtifact&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1102,7 +1102,7 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[[goals]]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[[goals]]
 [role=&quot;incremental&quot;]
 * Goal 1
 * Goal 2&lt;/code&gt;&lt;/pre&gt;
@@ -1113,7 +1113,7 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[#goals.incremental]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[#goals.incremental]
 * Goal 1
 * Goal 2&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1126,12 +1126,12 @@ This shorthand syntax is useful for creating presentations with AsciiDoc, where 
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div id=&quot;goals&quot; class=&quot;ulist incremental&quot;&amp;gt;
-&amp;lt;ul&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Goal 1&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;li&amp;gt;&amp;lt;p&amp;gt;Goal 2&amp;lt;/p&amp;gt;&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;goals&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;ulist incremental&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Goal 1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Goal 2&lt;span class=&quot;tag&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1144,7 +1144,7 @@ You prepend the style &lt;code&gt;quote&lt;/code&gt; to the &lt;code&gt;#&lt;/co
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote#think.big, Donald Trump]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote#think.big, Donald Trump]
 ____
 As long as you're going to be thinking anyway, think big.
 ____&lt;/code&gt;&lt;/pre&gt;
@@ -1155,16 +1155,16 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div id=&quot;think&quot; class=&quot;quoteblock big&quot;&amp;gt;
-&amp;lt;blockquote&amp;gt;
-&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
-&amp;lt;p&amp;gt;As long as your going to be thinking anyway, think big.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;/blockquote&amp;gt;
-&amp;lt;div class=&quot;attribution&quot;&amp;gt;
-&amp;amp;#8212; Donald Trump
-&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;id&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;think&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;quoteblock big&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;paragraph&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;As long as your going to be thinking anyway, think big.&lt;span class=&quot;tag&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;attribution&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;entity&quot;&gt;&amp;amp;#8212;&lt;/span&gt; Donald Trump
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1201,7 +1201,7 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[format=&quot;csv&quot;]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[format=&quot;csv&quot;]
 |===
 a,b,c
 |===&lt;/code&gt;&lt;/pre&gt;
@@ -1212,7 +1212,7 @@ a,b,c
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;,===
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;,===
 a,b,c
 ,===&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1222,7 +1222,7 @@ a,b,c
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:===
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:===
 a:b:c
 :===&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1258,7 +1258,7 @@ a:b:c
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
 ____
 I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical.
@@ -1286,7 +1286,7 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&quot;I hold it that a little rebellion now and then is a good thing,
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&quot;I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical.&quot;
 -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1314,7 +1314,7 @@ Air quotes are the best thing since fenced code blocks.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[, Richard M. Nixon]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[, Richard M. Nixon]
 &quot;&quot;
 When the President does it, that means that it's not illegal.
 &quot;&quot;&lt;/code&gt;&lt;/pre&gt;
@@ -1333,7 +1333,7 @@ This gesture is reminiscinet of the &lt;a href=&quot;http://www.flickr.com/photo
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&amp;gt; I hold it that a little rebellion now and then is a good thing,
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;&amp;gt; I hold it that a little rebellion now and then is a good thing,
 &amp;gt; and as necessary in the political world as storms in the physical.
 &amp;gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1347,7 +1347,7 @@ This gesture is reminiscinet of the &lt;a href=&quot;http://www.flickr.com/photo
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Markdown-style blockquote containing block content&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;no-highlight language-no-highlight&quot;&gt;&amp;gt; &amp;gt; What's new?
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;&amp;gt; &amp;gt; What's new?
 &amp;gt;
 &amp;gt; I've got Markdown in my AsciiDoc!
 &amp;gt;
@@ -1427,7 +1427,7 @@ In Asciidoctor, you can now enable parsing of link macro attributes by setting t
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt; :linkattrs:&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt; :linkattrs:&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1435,7 +1435,7 @@ In Asciidoctor, you can now enable parsing of link macro attributes by setting t
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google, window=&quot;_blank&quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google, window=&quot;_blank&quot;]&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1444,7 +1444,7 @@ Just end the link text with a caret (&lt;code&gt;^&lt;/code&gt;):&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^]&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock caution&quot;&gt;
@@ -1463,7 +1463,7 @@ If the link text contains a comma, then you need to surround the link text in do
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^, role=&quot;external&quot;]&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://google.com[Google^, role=&quot;external&quot;]&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1497,7 +1497,7 @@ Asciidoctor will then emit HTML markup that selects an appropriate font characte
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font
 
 NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome!&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1507,18 +1507,18 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;admonitionblock note&quot;&amp;gt;
-&amp;lt;table&amp;gt;
-&amp;lt;tr&amp;gt;
-&amp;lt;td class=&quot;icon&quot;&amp;gt;
-&amp;lt;i class=&quot;icon-note&quot; title=&quot;Note&quot;&amp;gt;&amp;lt;/i&amp;gt;
-&amp;lt;/td&amp;gt;
-&amp;lt;td class=&quot;content&quot;&amp;gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;admonitionblock note&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;table&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;tr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;td&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;icon-note&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;title&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;Note&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;td&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
 Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
-&amp;lt;/td&amp;gt;
-&amp;lt;/tr&amp;gt;
-&amp;lt;/table&amp;gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/td&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/tr&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/table&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1544,8 +1544,8 @@ The stylesheet then imports the font from the same server.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;link rel=&quot;stylesheet&quot;
-  href=&quot;http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css&quot;&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;link&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;rel&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;stylesheet&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;attribute-name&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock important&quot;&gt;
@@ -1570,7 +1570,7 @@ The default stylesheet (or any stylesheet produced by the &lt;a href=&quot;http:
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:icons: font &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
 
 NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! &lt;i class=&quot;conum&quot; data-value=&quot;2&quot;&gt;&lt;/i&gt;&lt;b&gt;(2)&lt;/b&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1647,7 +1647,7 @@ This corrects any output styling inconsistencies caused by the empty div.&lt;/p&
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;AsciiDoc quote block syntax without attribution&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[quote]
 ____
 Words of wisdom.
 ____&lt;/code&gt;&lt;/pre&gt;
@@ -1656,29 +1656,29 @@ ____&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;HTML output using Asciidoctor 0.1.2 and older versions&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;quoteblock&quot;&amp;gt;
-&amp;lt;blockquote&amp;gt;
-&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
-&amp;lt;p&amp;gt;Words of wisdom.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;/blockquote&amp;gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;quoteblock&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;paragraph&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Words of wisdom.&lt;span class=&quot;tag&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
 
-&amp;lt;div class=&quot;attribution&quot;&amp;gt;
-&amp;lt;/div&amp;gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;attribution&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
 
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;HTML output using Asciidoctor 0.1.3&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;quoteblock&quot;&amp;gt;
-&amp;lt;blockquote&amp;gt;
-&amp;lt;div class=&quot;paragraph&quot;&amp;gt;
-&amp;lt;p&amp;gt;Words of wisdom.&amp;lt;/p&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;/blockquote&amp;gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;quoteblock&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;paragraph&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Words of wisdom.&lt;span class=&quot;tag&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1716,7 +1716,7 @@ You &lt;strong&gt;must&lt;/strong&gt; set the &lt;code&gt;experimental&lt;/code&
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[options=&quot;header&quot;, caption=&quot;&quot;]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[options=&quot;header&quot;, caption=&quot;&quot;]
 .Common browser keyboard shortcuts
 |===
 |Shortcut |Purpose
@@ -1783,7 +1783,7 @@ With the new &lt;code&gt;menu&lt;/code&gt; macro, the symbols do the work.&lt;/p
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;To save the file, select menu:File[Save].
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;To save the file, select menu:File[Save].
 
 Select menu:View[Zoom &amp;gt; Reset] to reset the zoom level to the default setting.&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1816,7 +1816,7 @@ The new &lt;code&gt;btn&lt;/code&gt; macro to the rescue!&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;Press the btn:[OK] button when you are finished.
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;Press the btn:[OK] button when you are finished.
 
 Select a file in the file navigator and click btn:[Open].&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -1875,7 +1875,7 @@ However, once inside the documentation, this leading block indent is no longer n
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
 ----
     def names
       @name.split ' '
@@ -1888,9 +1888,9 @@ However, once inside the documentation, this leading block indent is no longer n
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;def names
-  @name.split ' '
-end&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;names&lt;/span&gt;
+  &lt;span class=&quot;instance-variable&quot;&gt;@name&lt;/span&gt;.split &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt; &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1898,7 +1898,7 @@ end&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,ruby,indent=0]
 ----
 include::lib/document.rb[lines=5..10]
 ----&lt;/code&gt;&lt;/pre&gt;
@@ -1909,7 +1909,7 @@ include::lib/document.rb[lines=5..10]
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[indent=2]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[indent=2]
 ----
     def names
       @name.split ' '
@@ -1922,9 +1922,9 @@ include::lib/document.rb[lines=5..10]
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;  def names
-    @name.split ' '
-  end&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;function&quot;&gt;names&lt;/span&gt;
+    &lt;span class=&quot;instance-variable&quot;&gt;@name&lt;/span&gt;.split &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt; &lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;keyword&quot;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;admonitionblock important&quot;&gt;
@@ -1950,7 +1950,7 @@ That means you only have to type the unique part of the path when linking to a s
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:sourcedir: src/main/java
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:sourcedir: src/main/java
 
 [source,java]
 ----
@@ -1981,7 +1981,7 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:source-highlighter: prettify&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;:source-highlighter: prettify&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -1992,7 +1992,7 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,java]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[source,java]
 ----
 public class Person {
   private String name;
@@ -2009,17 +2009,17 @@ public class Person {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;div class=&quot;listingblock&quot;&amp;gt;
-&amp;lt;div class=&quot;content monospaced&quot;&amp;gt;
-&amp;lt;pre class=&quot;prettyprint java language-java&quot;&amp;gt;&amp;lt;code&amp;gt;public class Person {
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;listingblock&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;content monospaced&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;class&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;prettyprint java language-java&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;public class Person {
   private String name;
 
   public String getName() {
     return name;
   }
-}&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;
-&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+}&lt;span class=&quot;tag&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2043,7 +2043,7 @@ public class Person {
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;===== Level 5 Section Title&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;===== Level 5 Section Title&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2139,7 +2139,7 @@ For example, in the &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet/
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2147,7 +2147,7 @@ For example, in the &lt;a href=&quot;https://github.com/asciidoctor/asciidoclet/
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;a href=&quot;http://asciidoc.org&quot;&amp;gt;AsciiDoc&amp;lt;/a&amp;gt; is a &amp;lt;em&amp;gt;lightweight&amp;lt;/em&amp;gt; markup language&amp;amp;#8230;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;href&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;http://asciidoc.org&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;AsciiDoc&lt;span class=&quot;tag&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt; is a &lt;span class=&quot;tag&quot;&gt;&amp;lt;em&amp;gt;&lt;/span&gt;lightweight&lt;span class=&quot;tag&quot;&gt;&amp;lt;/em&amp;gt;&lt;/span&gt; markup language&lt;span class=&quot;entity&quot;&gt;&amp;amp;#8230;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2183,7 +2183,7 @@ That means the outline of a Markdown document will render just fine as an AsciiD
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;# Document Title
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;# Document Title
 
 ## Section One
 
@@ -2198,7 +2198,7 @@ content&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;```ruby
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;markdown language-markdown&quot;&gt;```ruby
 require 'asciidoctor'
 
 puts Asciidoctor.render(&quot;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&quot;)
@@ -2269,7 +2269,7 @@ It’s value is identical to the value returned by &lt;code&gt;Document#doctitle
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;AsciiDoc &lt;code&gt;doctitle&lt;/code&gt; syntax&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;= Document Title
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;= Document Title
 
 The document title is {doctitle}.&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -2290,7 +2290,7 @@ The document title is {doctitle}.&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[horizontal]
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;[horizontal]
 first term:: definition
 +
 more detail
@@ -2303,31 +2303,31 @@ second term:: definition&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;informaltable tabstyle=&quot;horizontal&quot; frame=&quot;none&quot; colsep=&quot;0&quot; rowsep=&quot;0&quot;&amp;gt;
-&amp;lt;tgroup cols=&quot;2&quot;&amp;gt;
-&amp;lt;colspec colwidth=&quot;15*&quot;/&amp;gt;
-&amp;lt;colspec colwidth=&quot;85*&quot;/&amp;gt;
-&amp;lt;tbody valign=&quot;top&quot;&amp;gt;
-&amp;lt;row&amp;gt;
-&amp;lt;entry&amp;gt;
-&amp;lt;simpara&amp;gt;first term&amp;lt;/simpara&amp;gt;
-&amp;lt;/entry&amp;gt;
-&amp;lt;entry&amp;gt;
-&amp;lt;simpara&amp;gt;definition&amp;lt;/simpara&amp;gt;
-&amp;lt;simpara&amp;gt;more detail&amp;lt;/simpara&amp;gt;
-&amp;lt;/entry&amp;gt;
-&amp;lt;/row&amp;gt;
-&amp;lt;row&amp;gt;
-&amp;lt;entry&amp;gt;
-&amp;lt;simpara&amp;gt;second term&amp;lt;/simpara&amp;gt;
-&amp;lt;/entry&amp;gt;
-&amp;lt;entry&amp;gt;
-&amp;lt;simpara&amp;gt;definition&amp;lt;/simpara&amp;gt;
-&amp;lt;/entry&amp;gt;
-&amp;lt;/row&amp;gt;
-&amp;lt;/tbody&amp;gt;
-&amp;lt;/tgroup&amp;gt;
-&amp;lt;/informaltable&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;informaltable&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;tabstyle&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;horizontal&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;frame&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;colsep&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;rowsep&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;tgroup&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;cols&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;colspec&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;colwidth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;15*&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;colspec&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;colwidth&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;85*&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;tbody&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;valign&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;row&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;first term&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;definition&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;more detail&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/row&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;row&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;second term&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;definition&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/entry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/row&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/tbody&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/tgroup&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/informaltable&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2343,7 +2343,7 @@ second term:: definition&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;term::
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;term::
 alt term::
 definition&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -2353,21 +2353,21 @@ definition&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;variablelist&amp;gt;
-&amp;lt;varlistentry&amp;gt;
-&amp;lt;term&amp;gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;variablelist&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;varlistentry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;term&amp;gt;&lt;/span&gt;
 term
-&amp;lt;/term&amp;gt;
-&amp;lt;term&amp;gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/term&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;term&amp;gt;&lt;/span&gt;
 alt term
-&amp;lt;/term&amp;gt;
-&amp;lt;listitem&amp;gt;
-&amp;lt;simpara&amp;gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/term&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;listitem&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;simpara&amp;gt;&lt;/span&gt;
 definition
-&amp;lt;/simpara&amp;gt;
-&amp;lt;/listitem&amp;gt;
-&amp;lt;/varlistentry&amp;gt;
-&amp;lt;/variablelist&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/simpara&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/listitem&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/varlistentry&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/variablelist&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2397,7 +2397,7 @@ definition
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;{set:sourcedir:src/main/java}&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;{set:sourcedir:src/main/java}&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2428,7 +2428,7 @@ Asciidoctor’s behavior is now consistent with AsciiDoc.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;.Misplaced block title
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;.Misplaced block title
 = Document Title
 Author Name&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -2442,7 +2442,7 @@ Author Name&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;irc://irc.freenode.org/#asciidoctor&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;irc://irc.freenode.org/#asciidoctor&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2469,7 +2469,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :safe =&amp;gt; 'server')&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:safe&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;server&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2477,7 +2477,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :safe =&amp;gt; :server)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:safe&lt;/span&gt; =&amp;gt; &lt;span class=&quot;symbol&quot;&gt;:server&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2489,7 +2489,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :backend =&amp;gt; 'docbook')&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:backend&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docbook&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2497,7 +2497,7 @@ This is critical when you want to use a &lt;a href=&quot;https://github.com/asci
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad', :backend =&amp;gt; :docbook)&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;symbol&quot;&gt;:backend&lt;/span&gt; =&amp;gt; &lt;span class=&quot;symbol&quot;&gt;:docbook&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -2515,8 +2515,8 @@ Previously, that required:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
-    :attributes =&amp;gt; {'toc' =&amp;gt; '', 'numbered' =&amp;gt; ''})&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; {&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;toc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;numbered&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;})&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2524,8 +2524,8 @@ Previously, that required:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
-    :attributes =&amp;gt; ['toc', 'numbered'])&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;toc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;numbered&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;])&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2533,8 +2533,8 @@ Previously, that required:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
-    :attributes =&amp;gt; %w(toc numbered))&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;%w(&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;toc numbered&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;)&lt;/span&gt;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2542,8 +2542,8 @@ Previously, that required:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
-    :attributes =&amp;gt; 'toc numbered')&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;toc numbered&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2554,8 +2554,8 @@ Previously, that required:&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = Asciidoctor.render_file('master.ad',
-    :attributes =&amp;gt; 'toc numbered source-highlighter=coderay')&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;result = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render_file(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;master.ad&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;toc numbered source-highlighter=coderay&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2790,8 +2790,8 @@ For instance, in an HTML page, add these two &lt;code&gt;&amp;lt;script&amp;gt;&
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&amp;lt;script src=&quot;opal.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
-&amp;lt;script src=&quot;asciidoctor.js&quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;html language-html&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;opal.js&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;script&lt;/span&gt; &lt;span class=&quot;attribute-name&quot;&gt;src&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;asciidoctor.js&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -2821,18 +2821,18 @@ For instance, in an HTML page, add these two &lt;code&gt;&amp;lt;script&amp;gt;&
 &lt;/div&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;data = %(= asciidoctor.js - Render AsciiDoc in your browser!
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;data = &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;%(&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;= asciidoctor.js - Render AsciiDoc in your browser!
 Dan Allen
 2013-05-21
 
 We've combined http://asciidoctor.org[Asciidoctor] and
-http://opalrb.org[Opal] to bring AsciiDoc rendering to the browser!)
+http://opalrb.org[Opal] to bring AsciiDoc rendering to the browser!&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;)&lt;/span&gt;&lt;/span&gt;
 
-$window.addEventListener 'DOMContentLoaded', proc {
-  html_doc = Asciidoctor.render(data, :safe =&amp;gt; :safe,
-    :attributes =&amp;gt; %w(notitle! anchors imagesdir=./images))
-  $document.getElementById('content').innerHTML = html_doc
-}, false&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;global-variable&quot;&gt;$window&lt;/span&gt;.addEventListener &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;DOMContentLoaded&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, proc {
+  html_doc = &lt;span class=&quot;constant&quot;&gt;Asciidoctor&lt;/span&gt;.render(data, &lt;span class=&quot;symbol&quot;&gt;:safe&lt;/span&gt; =&amp;gt; &lt;span class=&quot;symbol&quot;&gt;:safe&lt;/span&gt;,
+    &lt;span class=&quot;symbol&quot;&gt;:attributes&lt;/span&gt; =&amp;gt; &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;%w(&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;notitle! anchors imagesdir=./images&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;)&lt;/span&gt;&lt;/span&gt;)
+  &lt;span class=&quot;global-variable&quot;&gt;$document&lt;/span&gt;.getElementById(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;).innerHTML = html_doc
+}, &lt;span class=&quot;predefined-constant&quot;&gt;false&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3627,13 +3627,13 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Dependency declaration in Maven&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;dependencies&amp;gt;
-  &amp;lt;dependency&amp;gt;
-    &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
-    &amp;lt;artifactId&amp;gt;asciidoctor-java-integration&amp;lt;/artifactId&amp;gt;
-    &amp;lt;version&amp;gt;${asciidoctor.version}&amp;lt;/version&amp;gt;                   &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
-  &amp;lt;/dependency&amp;gt;
-&amp;lt;/dependencies&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;dependencies&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;dependency&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.asciidoctor&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;asciidoctor-java-integration&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;${asciidoctor.version}&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;                   &lt;i class=&quot;conum&quot; data-value=&quot;1&quot;&gt;&lt;/i&gt;&lt;b&gt;(1)&lt;/b&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependency&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/dependencies&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;colist arabic&quot;&gt;
@@ -3680,8 +3680,8 @@ The core interface of asciidoctor-java-integration is Asciidoctor......
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Creation of Asciidoctor interface&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;import static org.asciidoctor.Asciidoctor.Factory.create;
-import org.asciidoctor.Asciidoctor;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;org.asciidoctor.Asciidoctor.Factory.create&lt;/span&gt;;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;org.asciidoctor.Asciidoctor&lt;/span&gt;;
 
 Asciidoctor asciidoctor = create();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -3692,8 +3692,8 @@ Asciidoctor asciidoctor = create();&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Rendering a String&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;String rendered = asciidoctor.render(&quot;*This* is it.&quot;, Collections.EMPTY_MAP);
-System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; rendered = asciidoctor.render(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;*This* is it.&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.EMPTY_MAP);
+&lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -3702,8 +3702,8 @@ System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Rendering a File&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;String rendered = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, Collections.EMPTY_MAP);
-System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; rendered = asciidoctor.renderFile(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docs/sample.adoc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Collections&lt;/span&gt;.EMPTY_MAP);
+&lt;span class=&quot;predefined-type&quot;&gt;System&lt;/span&gt;.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;sect2&quot;&gt;
@@ -3718,14 +3718,14 @@ System.out.println(rendered);&lt;/code&gt;&lt;/pre&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Example of using in_place Option and backend Attribute&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;Map&amp;lt;String, Object&amp;gt; attributes = new HashMap&amp;lt;String, Object&amp;gt;();
-attributes.put(&quot;backend&quot;, &quot;docbook&quot;);
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;predefined-type&quot;&gt;Map&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt; attributes = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;HashMap&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt;();
+attributes.put(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;backend&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docbook&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;);
 
-Map&amp;lt;String, Object&amp;gt; options = new HashMap&amp;lt;String, Object&amp;gt;();
-options.put(&quot;in_place&quot;, true);
-options.put(&quot;attributes&quot;, attributes);
+&lt;span class=&quot;predefined-type&quot;&gt;Map&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt; options = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;predefined-type&quot;&gt;HashMap&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt;();
+options.put(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;in_place&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;);
+options.put(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, attributes);
 
-String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; render = asciidoctor.renderFile(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docs/sample.adoc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, options);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -3740,15 +3740,15 @@ String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&l
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Example setting attributes and options&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;import static org.asciidoctor.AttributesBuilder.attributes;
-import static org.asciidoctor.OptionsBuilder.options;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;org.asciidoctor.AttributesBuilder.attributes&lt;/span&gt;;
+&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;include&quot;&gt;org.asciidoctor.OptionsBuilder.options&lt;/span&gt;;
 
 ...
 
-Map&amp;lt;String, Object&amp;gt; attributes = attributes().backend(&quot;docbook&quot;).asMap();
-Map&amp;lt;String, Object&amp;gt; options = options().inPlace(true).attributes(attributes).asMap();
+Map&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt; attributes = attributes().backend(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docbook&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;).asMap();
+&lt;span class=&quot;predefined-type&quot;&gt;Map&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt;, &lt;span class=&quot;predefined-type&quot;&gt;Object&lt;/span&gt;&amp;gt; options = options().inPlace(&lt;span class=&quot;predefined-constant&quot;&gt;true&lt;/span&gt;).attributes(attributes).asMap();
 
-String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&lt;/code&gt;&lt;/pre&gt;
+&lt;span class=&quot;predefined-type&quot;&gt;String&lt;/span&gt; render = asciidoctor.renderFile(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docs/sample.adoc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;, options);&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3761,8 +3761,8 @@ String render = asciidoctor.renderFile(&quot;docs/sample.adoc&quot;, options);&l
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;Example of finding all asciidoc&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;DirectoryWalker directoryWalker = new AsciidocDirectoryWalker(&quot;docs&quot;);
-List&amp;lt;File&amp;gt; asciidocFiles = directoryWalker.scan();&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;java language-java&quot;&gt;DirectoryWalker directoryWalker = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; AsciidocDirectoryWalker(&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;);
+&lt;span class=&quot;predefined-type&quot;&gt;List&lt;/span&gt;&amp;lt;&lt;span class=&quot;predefined-type&quot;&gt;File&lt;/span&gt;&amp;gt; asciidocFiles = directoryWalker.scan();&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -3892,25 +3892,25 @@ Just add this plugin declaration:&lt;/p&gt;
 &lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;title&quot;&gt;pom.xml fragment: Asciidoctor Maven plugin configuration&lt;/div&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&amp;lt;plugin&amp;gt;
-  &amp;lt;groupId&amp;gt;org.asciidoctor&amp;lt;/groupId&amp;gt;
-  &amp;lt;artifactId&amp;gt;asciidoctor-maven-plugin&amp;lt;/artifactId&amp;gt;
-  &amp;lt;version&amp;gt;0.1.1&amp;lt;/version&amp;gt;
-  &amp;lt;executions&amp;gt;
-    &amp;lt;execution&amp;gt;
-      &amp;lt;id&amp;gt;render-asciidoc&amp;lt;/id&amp;gt;
-      &amp;lt;phase&amp;gt;generate-resources&amp;lt;/phase&amp;gt;
-      &amp;lt;goals&amp;gt;
-        &amp;lt;goal&amp;gt;process-asciidoc&amp;lt;/goal&amp;gt;
-      &amp;lt;/goals&amp;gt;
-    &amp;lt;/execution&amp;gt;
-  &amp;lt;/executions&amp;gt;
-  &amp;lt;configuration&amp;gt;
-      &amp;lt;sourceDirectory&amp;gt;docs&amp;lt;/sourceDirectory&amp;gt;
-      &amp;lt;outputDirectory&amp;gt;target/docbook/en-US&amp;lt;/outputDirectory&amp;gt;
-      &amp;lt;backend&amp;gt;docbook&amp;lt;/backend&amp;gt;
-  &amp;lt;/configuration&amp;gt;
-&amp;lt;/plugin&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;xml language-xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;plugin&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;groupId&amp;gt;&lt;/span&gt;org.asciidoctor&lt;span class=&quot;tag&quot;&gt;&amp;lt;/groupId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;artifactId&amp;gt;&lt;/span&gt;asciidoctor-maven-plugin&lt;span class=&quot;tag&quot;&gt;&amp;lt;/artifactId&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;version&amp;gt;&lt;/span&gt;0.1.1&lt;span class=&quot;tag&quot;&gt;&amp;lt;/version&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;executions&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;execution&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;id&amp;gt;&lt;/span&gt;render-asciidoc&lt;span class=&quot;tag&quot;&gt;&amp;lt;/id&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;phase&amp;gt;&lt;/span&gt;generate-resources&lt;span class=&quot;tag&quot;&gt;&amp;lt;/phase&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;goals&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;tag&quot;&gt;&amp;lt;goal&amp;gt;&lt;/span&gt;process-asciidoc&lt;span class=&quot;tag&quot;&gt;&amp;lt;/goal&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;/goals&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&amp;lt;/execution&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/executions&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;configuration&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;sourceDirectory&amp;gt;&lt;/span&gt;docs&lt;span class=&quot;tag&quot;&gt;&amp;lt;/sourceDirectory&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;outputDirectory&amp;gt;&lt;/span&gt;target/docbook/en-US&lt;span class=&quot;tag&quot;&gt;&amp;lt;/outputDirectory&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;tag&quot;&gt;&amp;lt;backend&amp;gt;&lt;/span&gt;docbook&lt;span class=&quot;tag&quot;&gt;&amp;lt;/backend&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;tag&quot;&gt;&amp;lt;/configuration&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;tag&quot;&gt;&amp;lt;/plugin&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class=&quot;paragraph&quot;&gt;
@@ -4166,7 +4166,7 @@ Asciidoctor is now deployed to render AsciiDoc markup in any of the......
 &lt;tr&gt;
 &lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;div&gt;&lt;div class=&quot;listingblock&quot;&gt;
 &lt;div class=&quot;content&quot;&gt;
-&lt;pre class=&quot;highlight&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;= Asciidoctor
+&lt;pre class=&quot;CodeRay&quot;&gt;&lt;code class=&quot;asciidoc language-asciidoc&quot;&gt;= Asciidoctor
 Ryan Waldron, Dan Allen
 
 http://asciidoctor.org[Asciidoctor] is a native Ruby processor

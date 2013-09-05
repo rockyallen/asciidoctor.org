@@ -94,8 +94,8 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="html language-html">&lt;script src="opal.js"&gt;&lt;/script&gt;
-&lt;script src="asciidoctor.js"&gt;&lt;/script&gt;</code></pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">opal.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoctor.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -164,7 +164,7 @@ The content on the page was rendered from AsciiDoc by asciidoctor.js when you lo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="ruby language-ruby">data = &lt;&lt;-EOS
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">data = <span class="string"><span class="delimiter">&lt;&lt;-EOS</span></span><span class="string"><span class="content">
 = asciidoctor.js, AsciiDoc in JavaScript
 Doc Writer &lt;docwriter@example.com&gt;
 
@@ -177,8 +177,8 @@ http://asciidoc.org[AsciiDoc] to the browser!.
 * Asciidoctor
 * Opal
 
-NOTE: That's all she wrote!
-EOS</code></pre>
+NOTE: That's all she wrote!</span><span class="delimiter">
+EOS</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -186,8 +186,8 @@ EOS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="ruby language-ruby">html_doc = Asciidoctor.render(data, :safe =&gt; :safe,
-  :attributes =&gt; %w(notitle! anchors imagesdir=./images))</code></pre>
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">html_doc = <span class="constant">Asciidoctor</span>.render(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
+  <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">notitle! anchors imagesdir=./images</span><span class="delimiter">)</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -195,9 +195,9 @@ EOS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="ruby language-ruby">$window.addEventListener 'DOMContentLoaded', proc {
-  $document.getElementById('content').innerHTML = html_doc
-}, false</code></pre>
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="global-variable">$window</span>.addEventListener <span class="string"><span class="delimiter">'</span><span class="content">DOMContentLoaded</span><span class="delimiter">'</span></span>, proc {
+  <span class="global-variable">$document</span>.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = html_doc
+}, <span class="predefined-constant">false</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -205,10 +205,10 @@ EOS</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="ruby language-ruby">env = Opal::Environment.new
-env.append_path 'examples'
-compiled = env['asciidoctor_example'].to_s
-File.open('build/asciidoctor_example.js', 'w') { |f| f &lt;&lt; compiled }</code></pre>
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">env = <span class="constant">Opal</span>::<span class="constant">Environment</span>.new
+env.append_path <span class="string"><span class="delimiter">'</span><span class="content">examples</span><span class="delimiter">'</span></span>
+compiled = env[<span class="string"><span class="delimiter">'</span><span class="content">asciidoctor_example</span><span class="delimiter">'</span></span>].to_s
+<span class="constant">File</span>.open(<span class="string"><span class="delimiter">'</span><span class="content">build/asciidoctor_example.js</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">w</span><span class="delimiter">'</span></span>) { |f| f &lt;&lt; compiled }</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -233,10 +233,10 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="javascript language-javascript">var html_doc =Opal.Asciidoctor.$render(
-    "http://asciidoctor.org[*Asciidoctor*] " +
-    "running on http://opalrb.org[_Opal_] " +
-    "brings AsciiDoc to the browser!")</code></pre>
+<pre class="CodeRay nowrap"><code class="javascript language-javascript"><span class="keyword">var</span> html_doc =Opal.Asciidoctor.<span class="predefined">$render</span>(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -244,10 +244,10 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="javascript language-javascript">document.getElementById('content').innerHTML = Opal.Asciidoctor.$render(
-    "http://asciidoctor.org[*Asciidoctor*] " +
-    "running on http://opalrb.org[_Opal_] " +
-    "brings AsciiDoc to the browser!")</code></pre>
+<pre class="CodeRay nowrap"><code class="javascript language-javascript">document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = Opal.Asciidoctor.<span class="predefined">$render</span>(
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -255,7 +255,7 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight nowrap"><code class="javascript language-javascript">Opal.hash2(['attributes'], {'attributes': ['notitle!']})</code></pre>
+<pre class="CodeRay nowrap"><code class="javascript language-javascript">Opal.hash2([<span class="string"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>], {<span class="key"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>: [<span class="string"><span class="delimiter">'</span><span class="content">notitle!</span><span class="delimiter">'</span></span>]})</code></pre>
 </div>
 </div>
 </div>
@@ -348,7 +348,7 @@ Free use of this software is granted under the terms of the MIT License.</p>
 <p>See the <a href="https://github.com/asciidoctor/asciidoctor.js/blob/master/LICENSE">LICENSE</a> file for details.</p>
 </div>
 </div>
-</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctorjs.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctorjs.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctorjs.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/vendor/highlight.min.js"></script><script>$(hljs.initHighlighting);</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctorjs.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctorjs.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctorjs.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
