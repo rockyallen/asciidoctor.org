@@ -2,7 +2,7 @@
 <h2 id="synopsis"><a class="anchor" href="#synopsis"></a>SYNOPSIS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>asciidoctor</strong> [<em>OPTION</em>]&#8230; <em>FILE</em></p>
+<p><strong>asciidoctor</strong> [<em>OPTION</em>]&#8230; <em>FILE</em>&#8230;</p>
 </div>
 </div>
 </div>
@@ -10,8 +10,8 @@
 <h2 id="description"><a class="anchor" href="#description"></a>DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The asciidoctor(1) command converts the AsciiDoc source file <em>FILE</em> to HTML 5,
-DocBook 4.5 and other output formats.</p>
+<p>The asciidoctor(1) command converts the AsciiDoc source file(s) <em>FILE</em> to HTML 5,
+DocBook 4.5, DocBook 5.0 and other custom output formats.</p>
 </div>
 <div class="paragraph">
 <p>If <em>FILE</em> is <em>-</em> then the AsciiDoc source is read from standard input.</p>
@@ -58,11 +58,11 @@ Asciidoctor is invoked using this script.</p>
 <p>Define, override or delete a document attribute. Command-line attributes
 take precedence over attributes defined in the source file.</p>
 <div class="paragraph">
-<p><em>ATTRIBUTE</em> is formatted as a key-value pair, in the form <em>NAME=VALUE</em>. Values
-containing spaces should be enclosed in double-quote characters.  Alternate
-acceptable forms are <em>NAME</em> (the <em>VALUE</em> defaults to an empty string), <em>NAME!</em>
-(deletes the <em>NAME</em> attribute) and <em>NAME=VALUE@</em> (does not override <em>NAME</em>
-attribute if already defined in the source file).</p>
+<p><em>ATTRIBUTE</em> is normally formatted as a key-value pair, in the form <em>NAME=VALUE</em>.
+Alternate acceptable forms are <em>NAME</em> (where the <em>VALUE</em> defaults to an empty
+string), <em>NAME!</em> (unassigns the <em>NAME</em> attribute) and <em>NAME=VALUE@</em> (where
+<em>VALUE</em> does not override value of <em>NAME</em> attribute if it&#8217;s already defined in
+the source document). Values containing spaces should be enclosed in quotes.</p>
 </div>
 <div class="paragraph">
 <p>This option may be specified more than once.</p>
@@ -70,16 +70,22 @@ attribute if already defined in the source file).</p>
 </dd>
 <dt class="hdlist1"><strong>-b, --backend</strong>=<em>BACKEND</em></dt>
 <dd>
-<p>Backend output file format: <em>docbook45</em> or <em>html5</em>.  You can also use the
-backend alias names <em>html</em> (aliased to <em>html5</em>) or <em>docbook</em> (aliased to
-<em>docbook45</em>). Defaults to <em>html5</em>.</p>
+<p>Backend output file format: <em>html5</em>, <em>docbook45</em> and <em>docbook5</em> supported
+out of the box. You can also use the backend alias names <em>html</em> (aliased to
+<em>html5</em>) or <em>docbook</em> (aliased to <em>docbook45</em>). Defaults to <em>html5</em>. Other
+options can be passed, but if Asciidoctor cannot find the backend, it will
+fail during rendering.</p>
 </dd>
 <dt class="hdlist1"><strong>-d, --doctype</strong>=<em>DOCTYPE</em></dt>
 <dd>
-<p>Document type: <em>article</em> or <em>book</em>. Sets the root element when using the
-<em>docbook</em> backend and the style class on the HTML body element when using
-the <em>html</em> backend. The <em>book</em> document type allows multiple level-0
-section titles in a single document. Defaults to <em>article</em>.</p>
+<p>Document type: <em>article</em>, <em>book</em>, <em>manpage</em> or <em>inline</em>. Sets the root
+element when using the <em>docbook</em> backend and the style class on the HTML
+body element when using the <em>html</em> backend. The <em>book</em> document type allows
+multiple level-0 section titles in a single document. The <em>manpage</em> document
+type enables parsing of metadata necessary to produce a manpage. The
+<em>inline</em> document type allows the content of a single paragraph to be
+formatted and returned without wrapping it in a containing element. Defaults
+to <em>article</em>.</p>
 </dd>
 </dl>
 </div>
@@ -97,6 +103,12 @@ section titles in a single document. Defaults to <em>article</em>.</p>
 <p>Destination output directory. Defaults to the directory containing the
 source file, or the working directory if the source is read from a stream.
 If specified, the directory is resolved relative to the working directory.</p>
+</dd>
+<dt class="hdlist1"><strong>-E, --template-engine</strong>=<em>NAME</em></dt>
+<dd>
+<p>Template engine to use for the custom render templates. The gem with the
+same name as the engine will be loaded automatically. This name is also
+used to build the full path to the custom templates.</p>
 </dd>
 <dt class="hdlist1"><strong>-e, --eruby</strong></dt>
 <dd>
@@ -121,9 +133,18 @@ relative to the working directory.</p>
 </dd>
 <dt class="hdlist1"><strong>-T, --template-dir</strong>=<em>DIR</em></dt>
 <dd>
-<p>Directory containing custom render templates that override one or more
-templates from the built-in set. If there is a folder in the directory
-that matches the backend, the templates from that folder will be used.</p>
+<p>A directory containing custom render templates that override one or more
+templates from the built-in set. (requires <em>tilt</em> gem)</p>
+<div class="paragraph">
+<p>If there is a subfolder that matches the engine name (if specified), that folder
+is appended to the template directory path. Similarly, if there is a subfolder
+in the resulting template directory that matches the name of the backend, that
+folder is appended to the template directory path.</p>
+</div>
+<div class="paragraph">
+<p>This option may be specified more than once. Matching templates found in
+subsequent directories override ones previously discovered.</p>
+</div>
 </dd>
 </dl>
 </div>
