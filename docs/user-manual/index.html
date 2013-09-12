@@ -540,7 +540,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#localdate">localdate</a></li>
 <li><a href="#localdatetime">localdatetime</a></li>
 <li><a href="#localtime">localtime</a></li>
-<li><a href="#docinfo-files">Docinfo files</a></li>
+<li><a href="#docinfo-file">Docinfo file</a></li>
 </ul>
 </li>
 <li><a href="#table-of-contents">Table of Contents</a></li>
@@ -2141,11 +2141,229 @@ Corresponds to the DocBook refentry document type</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="docinfo-files"><a class="anchor" href="#docinfo-files"></a>Docinfo files</h3>
+<h3 id="docinfo-file"><a class="anchor" href="#docinfo-file"></a>Docinfo file</h3>
 <div class="paragraph">
-<p>You can include custom content in the header of the output document (HTML or DocBook) by supplying docinfo files.
-In Asciidoctor 0.1.4, docinfo files can be used to add custom content to the footer as well.</p>
+<p>You can add custom content to the header or footer of a document with document information (<code>docinfo</code>) files.
+The docinfo file&#8217;s content and file extension depends on whether the source document&#8217;s output is HTML or DocBook.</p>
 </div>
+<div class="sect3">
+<h4 id="creating-a-docinfo-file"><a class="anchor" href="#creating-a-docinfo-file"></a>Creating a docinfo file</h4>
+<div class="paragraph">
+<p>When the source document will be rendered to HTML, the docinfo file can contain the elements allowed in an HTML <code>&lt;HEAD&gt;</code> section, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;base&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;link&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;meta&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;noscript&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;script&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;style&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;title&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As seen in the example below, docinfo files are useful for storing metadata, stylesheet, and script information.
+Note that you do not need to include the <code>&lt;head&gt;</code> tag, nor is the <code>&lt;title&gt;</code> tag required.</p>
+</div>
+<div class="listingblock">
+<div class="title">A docinfo file for HTML output</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keywords</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">open source, documentation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">The dangerous and thrilling adventures of an open source documentation team.</span></span><span class="error">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">basejump.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">map.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docinfo files for HTML output must be saved with the <code>.html</code> file extension.</p>
+</div>
+<div class="paragraph">
+<p>When DocBook 5.0 is the rendered output, the docinfo file may include any of the <a href="http://www.docbook.org/tdg5/en/html/info.html"><code>&lt;info&gt;</code> element&#8217;s 48 children</a>, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;address&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;copyright&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;edition&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;keywordset&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;publisher&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;subtitle&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following example shows some of the content a docinfo file for DocBook might contain.</p>
+</div>
+<div class="listingblock">
+<div class="title">A docinfo file for DocBook 5.0 output</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;author&gt;</span>
+  <span class="tag">&lt;personname&gt;</span>
+    <span class="tag">&lt;firstname&gt;</span>Karma<span class="tag">&lt;/firstname&gt;</span>
+    <span class="tag">&lt;surname&gt;</span>Chameleon<span class="tag">&lt;/surname&gt;</span>
+  <span class="tag">&lt;/personname&gt;</span>
+  <span class="tag">&lt;affiliation&gt;</span>
+    <span class="tag">&lt;jobtitle&gt;</span>Word SWAT Team Leader<span class="tag">&lt;/jobtitle&gt;</span>
+  <span class="tag">&lt;/affiliation&gt;</span>
+<span class="tag">&lt;/author&gt;</span>
+
+<span class="tag">&lt;keywordset&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>open source<span class="tag">&lt;/keyword&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>documentation<span class="tag">&lt;/keyword&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>adventure<span class="tag">&lt;/keyword&gt;</span>
+<span class="tag">&lt;/keywordset&gt;</span>
+
+<span class="tag">&lt;printhistory&gt;</span>
+  <span class="tag">&lt;para&gt;</span>April, 2019. Twenty-sixth printing.
+  <span class="tag">&lt;/para&gt;</span>
+<span class="tag">&lt;/printhistory&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docinfo files for DocBook output must be saved with the <code>.xml</code> file extension.
+To see another example of a docinfo file for DocBook, checkout the <a href="https://github.com/richfaces/richfaces-docs/blob/master/Developer_Guide/src/main/docbook/en-US/Developer_Guide-docinfo.xml">RichFaces Developer Guide docinfo file</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="docinfo-attributes-and-file-names"><a class="anchor" href="#docinfo-attributes-and-file-names"></a>Docinfo attributes and file names</h4>
+<div class="paragraph">
+<p>To add content from a docinfo file to the header of a rendered document:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The docinfo file must be named correctly</p>
+</li>
+<li>
+<p>The appropriate docinfo attribute must be set in the source document</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>How you name your docinfo file and the docinfo attribute you set in your source document depends on whether you want to add content to:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a specific document</p>
+</li>
+<li>
+<p>all the documents in a directory</p>
+</li>
+<li>
+<p>a and b</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The attributes and the corresponding file names are listed in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Docinfo attributes and file names</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">docinfo file name for HTML</th>
+<th class="tableblock halign-left valign-top">docinfo file name for DocBook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to a specific document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.xml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to all documents in the same directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content from either docinfo file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code>, <code>&lt;docname&gt;-docinfo.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code>, <code>&lt;docname&gt;-docinfo.xml</code></p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Let&#8217;s apply the information above to an example exercise.</p>
+</div>
+<div class="paragraph">
+<p>You have two AsciiDoc documents, <code>adventure.adoc</code> and <code>insurance.adoc</code>, saved in the same folder.
+You want to add the same content to the headers of both documents when they&#8217;re rendered to HTML.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a docinfo file using <code>&lt;head&gt;</code> elements.</p>
+</li>
+<li>
+<p>Save the docinfo file as <code>docinfo.html</code>.</p>
+</li>
+<li>
+<p>Set the <code>docinfo1</code> attribute in <code>adventure.adoc</code> and <code>insurance.adoc</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You also want to include some additional content to the header of <code>adventure.adoc</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create <strong>another</strong> docinfo file using <code>&lt;head&gt;</code> elements.</p>
+</li>
+<li>
+<p>Save the docinfo file as <code>adventure-docinfo.html</code>.</p>
+</li>
+<li>
+<p>Set the <code>docinfo</code> attribute in <code>adventure.adoc</code>.</p>
+</li>
+<li>
+<p>Alternatively, you could remove the <code>docinfo1</code> attribute and set <code>docinfo2</code> instead.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="footer-docinfo-files"><a class="anchor" href="#footer-docinfo-files"></a>Footer docinfo files</h4>
 <div class="paragraph">
 <p>Footer docinfo files are differentiated from header docinfo files by adding <code>-footer</code> to the file name.
 In the HTML output, the footer content is inserted inside the footer div (i.e., <code>&lt;div id="footer"&gt;</code>).
@@ -2154,29 +2372,95 @@ In the DocBook output, the footer content is inserted immediately before the end
 <div class="paragraph">
 <div class="title">docinfo</div>
 <p>If you want to add content to the footer of a specific document, put the content in the file <code>&lt;docname&gt;-footer.html</code> (for HTML output) or <code>&lt;docname&gt;-footer.xml</code> (for DocBook output), where <code>&lt;docname&gt;</code> is the name of the document without the AsciiDoc extension.
-Then, set the attribute <code>docinfo</code> in the AsciiDoc source document to enable the feature.</p>
+Then, set the attribute <code>docinfo</code> in the source document.</p>
 </div>
 <div class="paragraph">
 <div class="title">docinfo1</div>
-<p>If you want to add content to the footer of all documents in the same directory, put the content in the file <code>docinfo-footer.html</code> (for HTML output) or <code>docinfo-footer.xml</code> (for DocBook output).
-Then, set the attribute <code>docinfo1</code> in the AsciiDoc source document to enable the feature.</p>
+<p>If you want to add content to the footer of all documents in the same directory, put the content in the file <code>docinfo-footer.html</code> or <code>docinfo-footer.xml</code>.
+Then, set the attribute <code>docinfo1</code> in the source document to enable the feature.</p>
 </div>
 <div class="paragraph">
 <div class="title">docinfo2</div>
-<p>If you want the document to look for either docinfo file, set the attribute <code>docinfo2</code> in the AsciiDoc source document.</p>
+<p>If you want the document to look for either docinfo file, set the attribute <code>docinfo2</code> in the source document.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The "Last updated" line in the footer can be disabled by unassigning the attribute <code>last-update-label</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="attribute-substitution"><a class="anchor" href="#attribute-substitution"></a>Attribute substitution</h4>
+<div class="paragraph">
+<p>Docinfo files can include attribute references.</p>
 </div>
 <div class="paragraph">
-<p>Additional enhancements:</p>
+<p>For example, if you created the following docinfo file:</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Attributes are substituted in the content of docinfo files (both header and footer).</p>
-</li>
-<li>
-<p>The "Last updated" line in the footer can be disabled by unassigning the attribute <code>last-update-label</code>.</p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="title">Docinfo file containing a <code>revnumber</code> attribute reference</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;edition&gt;</span>{revnumber}<span class="tag">&lt;/edition&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And this source document:</p>
+</div>
+<div class="listingblock">
+<div class="title">Source document including a revision number</div>
+<div class="content">
+<pre class="nowrap">= Document Title
+Author Name
+v1.0, 2013-06-01
+:doctype: book
+:backend: docbook
+:docinfo:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the rendered DocBook output would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot;
+    &quot;http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd&quot;&gt;</span>
+<span class="tag">&lt;book</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;bookinfo&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Document Title<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
+    <span class="tag">&lt;author&gt;</span>
+      <span class="tag">&lt;firstname&gt;</span>Author<span class="tag">&lt;/firstname&gt;</span>
+      <span class="tag">&lt;surname&gt;</span>Name<span class="tag">&lt;/surname&gt;</span>
+    <span class="tag">&lt;/author&gt;</span>
+    <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
+    <span class="tag">&lt;revhistory&gt;</span>
+      <span class="tag">&lt;revision&gt;</span>
+        <span class="tag">&lt;revnumber&gt;</span>1.0<span class="tag">&lt;/revnumber&gt;</span>
+        <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
+        <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
+      <span class="tag">&lt;/revision&gt;</span>
+    <span class="tag">&lt;/revhistory&gt;</span>
+<span class="tag">&lt;edition&gt;</span>1.0<span class="tag">&lt;/edition&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;/bookinfo&gt;</span>
+<span class="tag">&lt;/book&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>revnumber</code> attribute reference was replaced by the source document&#8217;s revision number in the rendered output.</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -8711,7 +8995,7 @@ The man pages for git are also produced from AsciiDoc documents, so you can use 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-09-12 06:55:56 UTC
+Last updated 2013-09-12 06:57:56 UTC
 </div>
 </div>
 </body>
