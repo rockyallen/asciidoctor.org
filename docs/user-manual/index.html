@@ -724,6 +724,14 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#docbook-5-0-backend">DocBook 5.0 backend</a></li>
 <li><a href="#man-pages-in-asciidoc">Man pages in AsciiDoc</a></li>
 <li><a href="#asciidoctor-vs-asciidoc">Appendix A: Comparison of Asciidoctor and AsciiDoc Features</a></li>
+<li><a href="#part-4-extensions">Part 4: Extensions</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#extension-points">Extension points</a></li>
+<li><a href="#example-extensions">Example extensions</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -8992,10 +9000,532 @@ The man pages for git are also produced from AsciiDoc documents, so you can use 
 
 </div>
 </div>
+<div class="sect1">
+<h2 id="part-4-extensions"><a class="anchor" href="#part-4-extensions"></a>Part 4: Extensions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The extension API is available as a technology preview in Asciidoctor 0.1.4.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="title">Technology Preview</div>
+<div class="paragraph">
+<p>The extension API should be considered <strong>experimental</strong> and <strong>subject to change</strong>.
+This technology preview is intended for developers interested in playing around with it and helping to mature the design.</p>
+</div>
+<div class="paragraph">
+<p>If you need the capabilities that extensions provide now, don&#8217;t be afraid to jump on board.
+Just keep in mind that you may need to rework parts of your extensions when you upgrade Asciidoctor.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h3>
+<div class="paragraph">
+<p>Extensions have proven to be central to the success of AsciiDoc and the Python implementation.
+Despite the success they&#8217;ve enjoyed, there&#8217;s still <em>plenty</em> of room for improvement.</p>
+</div>
+<div class="paragraph">
+<p>Extensions in AsciiDoc (technically called filters) have a number of problems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>they are challenging to write because they work at such a low-level (read as: nasty regular expressions)</p>
+</li>
+<li>
+<p>they are fragile since they rely on system commands to do anything significant</p>
+</li>
+<li>
+<p>they are hard to distribute due to the lack of integration with a formal distribution system</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The goal for Asciidoctor has always been to allow extensions to be written using the full power of a programming language (whether it be Ruby, Java, Groovy or JavaScript), similar to what we&#8217;ve done with the backend (rendering) mechanism.
+That way, you don&#8217;t have to shave yaks to get the functionality you want, and you can distribute the extension using defacto-standard packaging mechanisms (like RubyGems or JARs).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extension-points"><a class="anchor" href="#extension-points"></a>Extension points</h3>
+<div class="paragraph">
+<p>Here are the extension points that are available in Asciidoctor 0.1.4.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Preprocessor</dt>
+<dd>
+<p>Processes the raw source lines before they are passed to the parser.</p>
+</dd>
+<dt class="hdlist1">Treeprocessor</dt>
+<dd>
+<p>Processes the <span class="class">Asciidoctor::Document</span> (AST) once parsing is complete.</p>
+</dd>
+<dt class="hdlist1">Postprocessor</dt>
+<dd>
+<p>Processes the output after the document has been rendered, but before it&#8217;s written to disk.</p>
+</dd>
+<dt class="hdlist1">Block processor</dt>
+<dd>
+<p>Processes a block of content marked with a custom block style (i.e., <code>[custom]</code>). (similar to an AsciiDoc filter)</p>
+</dd>
+<dt class="hdlist1">Block macro processor</dt>
+<dd>
+<p>Registers a custom block macro and processes it (e.g., <code>gist::12345[]</code>).</p>
+</dd>
+<dt class="hdlist1">Inline macro processor</dt>
+<dd>
+<p>Registers a custom inline macro and processes it (e.g., <code>btn:[Save]</code>).</p>
+</dd>
+<dt class="hdlist1">Include processor</dt>
+<dd>
+<p>Processes the <code>include::&lt;filename&gt;[]</code> directive.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>These extensions are registered per document using a callback that feels sort of like a DSL:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  preprocessor <span class="constant">FrontMatterPreprocessor</span>
+  treeprocessor <span class="constant">TerminalCommandTreeprocessor</span>
+  postprocessor <span class="constant">CustomFooterPostprocessor</span>
+  block <span class="symbol">:yell</span>, <span class="constant">YellBlock</span>
+  block_macro <span class="symbol">:gist</span>, <span class="constant">GistMacro</span> <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
+  inline_macro <span class="symbol">:man</span>, <span class="constant">ManpageMacro</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can register more than one processor of each type, though you can only have one processor per custom block or macro.
+Each registered class is instantiated when the <span class="class">Asciidoctor::Document</span> is created.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+There is currently no extension point for processing a built-in block, such as a normal paragraph.
+Look for that feature in a future Asciidoctor release.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For now, you need to use the Asciidoctor API (not the CLI) in order to register the extensions and invoke Asciidoctor.
+Eventually, we&#8217;ll be able to load extensions packaged in a RubyGem (Ruby) or JAR (Java) by scanning
+the LOAD_PATH (Ruby) or classpath (Java), respectively.
+We may also ship some built-in extensions that can be enabled using an attribute named <code>extensions</code>, similar to how Markdown processors work.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For those of you on the JVM, yes, you can write extensions in Java.
+We&#8217;ve prototyped it and it works.
+We&#8217;re still sorting out a few technical challenges and documentation to make it completely smooth, but we&#8217;ll get there.
+For details, follow the discussion in issue <a href="https://github.com/asciidoctor/asciidoctor/issues/97">#97</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-extensions"><a class="anchor" href="#example-extensions"></a>Example extensions</h3>
+<div class="paragraph">
+<p>Below are several examples of extensions and how they are registered.</p>
+</div>
+<div class="sect3">
+<h4 id="preprocessor-example"><a class="anchor" href="#preprocessor-example"></a>Preprocessor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Skim off front matter from the top of the document that gets used by site generators like Jekyll and Awestruct.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-front-matter.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">---
+tags: [announcement, website]
+---
+= Document Title
+
+content
+
+[subs=&quot;attributes,specialcharacters&quot;]
+.Captured front matter
+....
+---
+{front-matter}
+---
+....</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">FrontMatterPreprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">FrontMatterPreprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Preprocessor</span>
+  <span class="keyword">def</span> <span class="function">process</span> reader, lines
+    <span class="keyword">return</span> reader <span class="keyword">if</span> lines.empty?
+    front_matter = []
+    <span class="keyword">if</span> lines.first.chomp == <span class="string"><span class="delimiter">'</span><span class="content">---</span><span class="delimiter">'</span></span>
+      original_lines = lines.dup
+      lines.shift
+      <span class="keyword">while</span> !lines.empty? &amp;&amp; lines.first.chomp != <span class="string"><span class="delimiter">'</span><span class="content">---</span><span class="delimiter">'</span></span>
+        front_matter &lt;&lt; lines.shift
+      <span class="keyword">end</span>
+
+      <span class="keyword">if</span> (first = lines.first).nil? || first.chomp != <span class="string"><span class="delimiter">'</span><span class="content">---</span><span class="delimiter">'</span></span>
+        lines = original_lines
+      <span class="keyword">else</span>
+        lines.shift
+        <span class="instance-variable">@document</span>.attributes[<span class="string"><span class="delimiter">'</span><span class="content">front-matter</span><span class="delimiter">'</span></span>] = front_matter.join.chomp
+        <span class="comment"># advance the reader by the number of lines taken</span>
+        (front_matter.length + <span class="integer">2</span>).times { reader.advance }
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    reader
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  preprocessor <span class="constant">FrontMatterPreprocessor</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-front-matter.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="treeprocessor-example"><a class="anchor" href="#treeprocessor-example"></a>Treeprocessor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Detect literal blocks that contain terminal commands, strip the prompt character and style the command using CSS in such a way that the prompt character cannot be selected (as seen on help.github.com).</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-terminal-command.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc"> $ echo &quot;Hello, World!&quot;
+
+ $ gem install asciidoctor</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">TerminalCommandTreeprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="keyword">class</span> <span class="class">TerminalCommandTreeprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Treeprocessor</span>
+  <span class="keyword">def</span> <span class="function">process</span>
+    process_blocks <span class="instance-variable">@document</span> <span class="keyword">if</span> <span class="instance-variable">@document</span>.blocks?
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">process_blocks</span> node
+    node.blocks.each_with_index <span class="keyword">do</span> |block, i|
+      <span class="keyword">if</span> block.context == <span class="symbol">:literal</span> &amp;&amp; block.lines.first.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">$ </span><span class="delimiter">'</span></span>)
+        node.blocks[i] = convert_to_terminal_listing block
+      <span class="keyword">else</span>
+        process_blocks block <span class="keyword">if</span> block.blocks?
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">convert_to_terminal_listing</span> block
+    attributes = block.attributes
+    attributes[<span class="string"><span class="delimiter">'</span><span class="content">role</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">terminal</span><span class="delimiter">'</span></span>
+    lines = block.lines.map <span class="keyword">do</span> |line|
+      line = block.sub_specialcharacters line.chomp
+      <span class="keyword">if</span> line.start_with? <span class="string"><span class="delimiter">'</span><span class="content">$ </span><span class="delimiter">'</span></span>
+        <span class="string"><span class="delimiter">%(</span><span class="content">&lt;span class=&quot;command&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>line[<span class="integer">2</span>..<span class="integer">-1</span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/span&gt;</span><span class="delimiter">)</span></span>
+      <span class="keyword">else</span>
+        line
+      <span class="keyword">end</span>
+    <span class="keyword">end</span>
+    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new <span class="instance-variable">@document</span>, <span class="symbol">:listing</span>, <span class="symbol">:content_model</span> =&gt; <span class="symbol">:verbatim</span>, <span class="symbol">:subs</span> =&gt; [],
+        <span class="symbol">:source</span> =&gt; lines * <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>, <span class="symbol">:attributes</span> =&gt; attributes
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  treeprocessor <span class="constant">TerminalCommandTreeprocessor</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-terminal-command.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="postprocessor-example"><a class="anchor" href="#postprocessor-example"></a>Postprocessor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Insert custom footer text.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">CustomFooterPostprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="keyword">class</span> <span class="class">CustomFooterPostprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Postprocessor</span>
+  <span class="keyword">def</span> <span class="function">process</span> output
+    content = <span class="string"><span class="delimiter">'</span><span class="content">Copyright Acme, Inc.</span><span class="delimiter">'</span></span>
+    <span class="keyword">if</span> <span class="instance-variable">@document</span>.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
+      replacement = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div id=&quot;footer-text&quot;&gt;</span><span class="char">\\</span><span class="content">1&lt;br&gt;</span><span class="char">\n</span><span class="inline"><span class="inline-delimiter">#{</span>content<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="content">&lt;/div&gt;</span><span class="delimiter">)</span></span>
+      output = output.sub(<span class="regexp"><span class="delimiter">/</span><span class="content">&lt;div id=&quot;footer-text&quot;&gt;(.*?)&lt;</span><span class="char">\/</span><span class="content">div&gt;</span><span class="delimiter">/</span><span class="modifier">m</span></span>, replacement)
+    <span class="keyword">elsif</span> <span class="instance-variable">@document</span>.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>
+      replacement = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;simpara&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>content<span class="inline-delimiter">}</span></span><span class="content">&lt;/simpara&gt;</span><span class="char">\n</span><span class="char">\\</span><span class="content">1</span><span class="delimiter">)</span></span>
+      output = output.sub(<span class="regexp"><span class="delimiter">/</span><span class="content">(&lt;</span><span class="char">\/</span><span class="content">(?:article|book)&gt;)</span><span class="delimiter">/</span></span>, replacement)
+    <span class="keyword">end</span>
+    output
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Asciidoctor::Extensions.register do |document|
+  postprocessor CustomFooterPostprocessor
+end
+
+Asciidoctor.render_file 'sample.ad', :safe =&gt; :safe, :in_place =&gt; true</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="block-processor-example"><a class="anchor" href="#block-processor-example"></a>Block processor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Register a custom block style named <code>yell</code> that uppercases all the words and converts periods to exclamation points.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-yell-block.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[yell]
+The time is now. Get a move on.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">YellBlock</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">YellBlock</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockProcessor</span>
+  option <span class="symbol">:contexts</span>, [<span class="symbol">:paragraph</span>]
+  option <span class="symbol">:content_model</span>, <span class="symbol">:simple</span>
+
+  <span class="keyword">def</span> <span class="function">process</span> parent, reader, attributes
+    lines = reader.lines.map {|line| line.upcase.gsub(<span class="regexp"><span class="delimiter">/</span><span class="char">\.</span><span class="content">( |$)</span><span class="delimiter">/</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">!</span><span class="char">\\</span><span class="content">1</span><span class="delimiter">'</span></span>) }
+    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new parent, <span class="symbol">:paragraph</span>, <span class="symbol">:source</span> =&gt; lines, <span class="symbol">:attributes</span> =&gt; attributes
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  block <span class="symbol">:yell</span>, <span class="constant">YellBlock</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-yell-block.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="block-macro-processor-example"><a class="anchor" href="#block-macro-processor-example"></a>Block macro processor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Create a block macro named <code>gist</code> for embedding a gist.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-gist-macro.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.My Gist
+gist::123456[]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">GistMacro</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">GistMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockMacroProcessor</span>
+  <span class="keyword">def</span> <span class="function">process</span> parent, target, attributes
+    title = (attributes.has_key? <span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>) ?
+        <span class="string"><span class="delimiter">%(</span><span class="char">\n</span><span class="content">&lt;div class=&quot;title&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>attributes[<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/div&gt;</span><span class="delimiter">)</span></span> : <span class="predefined-constant">nil</span>
+    source = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div class=&quot;gistblock&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>title<span class="inline-delimiter">}</span></span><span class="content">
+&lt;div class=&quot;content&quot;&gt;
+&lt;script src=&quot;https://gist.github.com/</span><span class="inline"><span class="inline-delimiter">#{</span>target<span class="inline-delimiter">}</span></span><span class="content">.js&quot;&gt;&lt;/script&gt;
+&lt;/div&gt;
+&lt;/div&gt;</span><span class="delimiter">)</span></span>
+    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new parent, <span class="symbol">:pass</span>, <span class="symbol">:content_model</span> =&gt; <span class="symbol">:raw</span>, <span class="symbol">:source</span> =&gt; source
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
+    block_macro <span class="symbol">:gist</span>, <span class="constant">GistMacro</span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-gist.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="inline-macro-processor-example"><a class="anchor" href="#inline-macro-processor-example"></a>Inline macro processor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Create an inline macro named <code>man</code> that links to a manpage.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-man-link.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">See man:gittutorial[7] to get started.</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">ManpageMacro</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">ManpageMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">InlineMacroProcessor</span>
+  option <span class="symbol">:pos_attrs</span>, [<span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>]
+
+  <span class="keyword">def</span> <span class="function">process</span> parent, target, attributes
+    text = manname = target
+    suffix = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>
+    target = <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>manname<span class="inline-delimiter">}</span></span><span class="content">.html</span><span class="delimiter">&quot;</span></span>
+    <span class="keyword">if</span> (volnum = attributes.fetch(<span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>, <span class="predefined-constant">nil</span>))
+      suffix = <span class="string"><span class="delimiter">&quot;</span><span class="content">(</span><span class="inline"><span class="inline-delimiter">#{</span>volnum<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+    <span class="keyword">end</span>
+    <span class="instance-variable">@document</span>.register(<span class="symbol">:links</span>, target)
+    <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span><span class="constant">Asciidoctor</span>::<span class="constant">Inline</span>.new(parent, <span class="symbol">:anchor</span>, text, <span class="symbol">:type</span> =&gt; <span class="symbol">:link</span>, <span class="symbol">:target</span> =&gt; target).render<span class="inline-delimiter">}</span></span><span class="inline"><span class="inline-delimiter">#{</span>suffix<span class="inline-delimiter">}</span></span><span class="delimiter">)</span></span>
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  inline_macro <span class="symbol">:man</span>, <span class="constant">ManpageMacro</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-man-link.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="include-processor-example"><a class="anchor" href="#include-processor-example"></a>Include processor example</h4>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Purpose</dt>
+<dd>
+<p>Include a file from a URI.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">sample-with-uri-include.ad</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:source-highlighter: coderay
+
+.Gemfile
+[source,ruby]
+----
+include::https://raw.github.com/asciidoctor/asciidoctor/master/Gemfile[]
+----</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">UriIncludeProcessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">uri-open</span><span class="delimiter">'</span></span>
+
+<span class="keyword">class</span> <span class="class">UriIncludeProcessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">IncludeProcessor</span>
+  <span class="keyword">def</span> <span class="function">handles?</span> target
+    target.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">http://</span><span class="delimiter">'</span></span>) <span class="keyword">or</span> target.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">https://</span><span class="delimiter">'</span></span>)
+  <span class="keyword">end</span>
+
+  <span class="keyword">def</span> <span class="function">process</span> reader, target, attributes
+    content = open(target).readlines
+    reader.push_include content, target, target, <span class="integer">1</span>, attributes
+  <span class="keyword">end</span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Usage</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+  include_processor <span class="constant">UriIncludeProcessor</span>
+<span class="keyword">end</span>
+
+<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-uri-include.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-09-12 09:09:21 UTC
+Last updated 2013-09-12 22:45:28 UTC
 </div>
 </div>
 </body>
