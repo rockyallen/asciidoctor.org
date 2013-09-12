@@ -34,17 +34,20 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <li><a href="#lists">Lists</a></li>
 <li><a href="#links">Links</a></li>
 <li><a href="#images">Images</a></li>
+<li><a href="#videos">Videos</a></li>
 <li><a href="#source-code">Source Code</a></li>
 <li><a href="#more-delimited-blocks">More Delimited Blocks</a></li>
-<li><a href="#id-and-role">Id and Role</a></li>
+<li><a href="#id-role-and-options">Id, Role and Options</a></li>
 <li><a href="#comments">Comments</a></li>
 <li><a href="#tables">Tables</a></li>
 <li><a href="#ui-macros">UI Macros</a></li>
 <li><a href="#attributes-and-substitutions">Attributes and Substitutions</a></li>
 <li><a href="#escaping-text">Escaping Text</a></li>
+<li><a href="#table-of-contents-toc">Table of Contents (ToC)</a></li>
 <li><a href="#bibliography">Bibliography</a></li>
 <li><a href="#section-footnotes">Footnotes</a></li>
-<li><a href="#markdown-compatibility-asciidoctor-only">Markdown compatibility (Asciidoctor only)</a></li>
+<li><a href="#markdown-compatibility">Markdown Compatibility</a></li>
+<li><a href="#user-manual-and-help">User Manual and Help</a></li>
 </ul>
 </div>
 
@@ -258,11 +261,11 @@ This text will be styled as a lead paragraph (i.e., larger font).</pre>
 </div>
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
 The first paragraph of the preamble is automatically styled as a lead paragraph when using the default Asciidoctor stylesheet.
@@ -666,6 +669,27 @@ Be sure to add a blank line in the source document to avoid unexpected results, 
 include::author-bio.adoc[]</pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Include content from a URI</div>
+<div class="content">
+<pre class="nowrap">:asciidoctor-source: https://raw.github.com/asciidoctor/asciidoctor/master
+
+include::{asciidoctor-source}/README.adoc[]</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Including content from a URI is a potentially dangerous feature, so it&#8217;s disabled if the safe mode is SECURE or greater.
+Assuming the safe mode is less than SECURE, you must also set the <code>allow-uri-read</code> attribute to permit Asciidoctor to read content from a URI.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -875,6 +899,59 @@ The text in the comment, (<code>^</code>), is optional, but serves as a hint to 
 </div>
 </div>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The unordered list marker can be changed using <a href="http://asciidoctor.org/docs/user-manual/#custom-markers">block styles</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Unordered, checklist</div>
+<div class="content">
+<pre class="nowrap">- [*] checked
+- [x] also checked
+- [ ] not checked
+-     normal list item</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="icon-check"></i> checked</p>
+</li>
+<li>
+<p><i class="icon-check"></i> also checked</p>
+</li>
+<li>
+<p><i class="icon-check-empty"></i> not checked</p>
+</li>
+<li>
+<p>normal list item</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Checklists can use <a href="http://asciidoctor.org/docs/user-manual/#checklists">font-based icons and be interactive</a>.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="title">Ordered, basic</div>
 <div class="content">
@@ -989,6 +1066,18 @@ The text in the comment, (<code>^</code>), is optional, but serves as a hint to 
 </ol>
 </div>
 </div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+For ordered lists, Asciidoctor supports <a href="http://asciidoctor.org/docs/user-manual/#numbering-styles">numeration styles</a> such as lowergreek and decimal-leading-zero.
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
 <div class="title">Labeled, single-line</div>
@@ -1392,7 +1481,7 @@ When they are enabled, you must quote the link text if it contains a comma.
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Cross references</div>
+<div class="title">Internal cross references</div>
 <div class="content">
 <pre class="nowrap">See &lt;&lt;paragraphs&gt;&gt; to learn how to write paragraphs.
 
@@ -1407,6 +1496,14 @@ Learn how to organize the document into &lt;&lt;section-titles,sections&gt;&gt;.
 <div class="paragraph">
 <p>Learn how to organize the document into <a href="#section-titles">sections</a>.</p>
 </div>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Inter-document cross references (Asciidoctor only)</div>
+<div class="content">
+<pre class="nowrap">Refer to &lt;&lt;document-b.adoc#section-b,Section B&gt;&gt; for more information.
+
+See you when you get back from &lt;&lt;document-b#section-b,Section B&gt;&gt;!</pre>
 </div>
 </div>
 </div>
@@ -1459,7 +1556,7 @@ image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
 <i class="icon-important" title="Important"></i>
 </td>
 <td class="content">
-Images are resolved relative to the value of the <code>imagesdir</code> document attribute, which defaults to an empty value.
+Images are resolved relative to the value of the <a href="http://asciidoctor.org/docs/user-manual/#imagesdir"><code>imagesdir</code> document attribute</a>, which defaults to an empty value.
 The <code>imagesdir</code> attribute can be an absolute path, relative path or base URL.
 If the image target is a URL or absolute path, the <code>imagesdir</code> prefix is <em>not</em> added.
 </td>
@@ -1474,6 +1571,33 @@ If the image target is a URL or absolute path, the <code>imagesdir</code> prefix
 </td>
 <td class="content">
 You should use the <code>imagesdir</code> attribute to avoid hard coding the shared path to your images in every image macro.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Image macro using positioning role</div>
+<div class="content">
+<pre class="nowrap">image:sunset.jpg[Sunset,150,150,role="right"]
+What a beautiful sunset!</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="paragraph">
+<p><span class="image right"><img src="/images/sunset.jpg" alt="Sunset" width="150" height="150"></span>
+What a beautiful sunset!</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+There are a variety of attributes available to <a href="http://asciidoctor.org/docs/user-manual/#put-images-in-their-place">position and frame images</a>.
 </td>
 </tr>
 </table>
@@ -1523,6 +1647,43 @@ When the <code>data-uri</code> attribute is set, all images in the document&#821
 </td>
 <td class="content">
 Instead of declaring the <code>data-uri</code> attribute in the document, you can pass it as a command-line argument using <code>-a data-uri</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="videos"><a class="anchor" href="#videos"></a>Videos</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Block</div>
+<div class="content">
+<pre class="nowrap">video::video_file.mp4[]
+
+video::video_file.mp4[width=640, start=60, options=autoplay]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Embedded Youtube video</div>
+<div class="content">
+<pre class="nowrap">video::rPQoq7ThGAU[youtube]</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Embedded Vimeo video</div>
+<div class="content">
+<pre class="nowrap">video::67480300[vimeo]</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can control the video settings using <a href="http://asciidoctor.org/docs/user-manual/#video">additional attributes and options</a> on the macro.
 </td>
 </tr>
 </table>
@@ -1695,6 +1856,77 @@ get <span class="string"><span class="delimiter">'</span><span class="content">/
 </div>
 </div>
 <div class="listingblock">
+<div class="title">Code block with non-selectable callouts</div>
+<div class="content">
+<pre class="nowrap">----
+line of code  // \&lt;1&gt;
+line of code   # \&lt;2&gt;
+line of code  ;; \&lt;3&gt;
+----
+&lt;1&gt; A callout behind a line comment for C-style languages.
+&lt;2&gt; A callout behind a line comment for Ruby, Python, Perl, etc.
+&lt;3&gt; A callout behind a line comment for Clojure.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">line of code  <i class="conum" data-value="1"></i><b>(1)</b>
+line of code   <i class="conum" data-value="2"></i><b>(2)</b>
+line of code  <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A callout behind a line comment for C-style languages.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A callout behind a line comment for Ruby, Python, Perl, etc.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A callout behind a line comment for Clojure.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">XML code block with a non-selectable callout</div>
+<div class="content">
+<pre class="nowrap">[source,xml]
+----
+&lt;section&gt;
+  &lt;title&gt;Section Title&lt;/title&gt;  \&lt;!--1--&gt;
+&lt;/section&gt;
+----
+&lt;1&gt; The section title is required.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;section&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Section Title<span class="tag">&lt;/title&gt;</span>  <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tag">&lt;/section&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The section title is required.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="listingblock">
 <div class="title">Code block sourced from file</div>
 <div class="content">
 <pre class="nowrap">[source,ruby]
@@ -1789,7 +2021,7 @@ include::lib/document.rb[lines=5..10]
 </dd>
 <dt class="hdlist1">Asciidoctor</dt>
 <dd>
-<p>coderay, highlightjs, prettify (and more to come!)</p>
+<p>coderay, highlightjs, prettify, pygments</p>
 </dd>
 </dl>
 </div>
@@ -1950,6 +2182,9 @@ Another paragraph.
 <div class="paragraph">
 <p>To use this feature, set the value of the <code>icons</code> document attribute to <code>font</code>.
 Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block.</p>
+</div>
+<div class="paragraph">
+<p>Icons can also be used <a href="http://asciidoctor.org/docs/user-manual/#inline-icons">inline</a> and <a href="http://asciidoctor.org/docs/user-manual/#size-rotate-and-flip">styled</a>.</p>
 </div>
 </td>
 </tr>
@@ -2140,10 +2375,10 @@ or it can masquerade as any other block.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="id-and-role"><a class="anchor" href="#id-and-role"></a>Id and Role</h2>
+<h2 id="id-role-and-options"><a class="anchor" href="#id-role-and-options"></a>Id, Role and Options</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Traditional markup method for assigning <code>id</code> and <code>role</code></div>
+<div class="title">Traditional markup method for assigning block <code>id</code> and <code>role</code></div>
 <div class="content">
 <pre class="nowrap">[[goals]]
 [role="incremental"]
@@ -2152,15 +2387,12 @@ or it can masquerade as any other block.</p>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Shorthand markup method for assigning <code>id</code> and <code>role</code> (Asciidoctor only)</div>
+<div class="title">Shorthand markup method for assigning block <code>id</code> and <code>role</code> (Asciidoctor only)</div>
 <div class="content">
 <pre class="nowrap">[#goals.incremental]
 * Goal 1
 * Goal 2</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>The <code>#</code> prefix is recognized as shorthand for <code>id=</code>, and the <code>.</code> prefix is recognized as shorthand for <code>role=</code>.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2172,22 +2404,52 @@ or it can masquerade as any other block.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>To specifiy multiple roles using the shorthand syntax, separate them by dots.</p>
-<div class="paragraph">
-<p>For example, <code>[.summary.incremental]</code> emits the HTML attribute <code>class="summary incremental"</code>.</p>
-</div>
+<p>To specify multiple roles using the shorthand syntax, separate them by dots.</p>
 </li>
 <li>
 <p>The order of <code>id</code> and <code>role</code> values in the shorthand syntax does not matter.</p>
-<div class="paragraph">
-<p>For example, <code>[#goals.incremental]</code> and <code>[.incremental#goals]</code> produce the same output.</p>
-</div>
 </li>
 </ul>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="listingblock">
+<div class="title">Traditional markup method for assigning quoted text anchor (<code>id</code>) and <code>role</code></div>
+<div class="content">
+<pre class="nowrap">[[free_the_world]][big goal]_free the world_</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Shorthand markup method for assigning quoted text anchor (<code>id</code>) and <code>role</code> (Asciidoctor only)</div>
+<div class="content">
+<pre class="nowrap">[#free_the_world.big.goal]_free the world_</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Role assigned to text enclosed in backticks</div>
+<div class="content">
+<pre class="nowrap">[rolename]`escaped monospace text`</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Traditional markup method for assigning block <code>options</code></div>
+<div class="content">
+<pre class="nowrap">[options="header,footer,autowidth"]
+|===
+|Cell A |Cell B
+|===</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Shorthand markup method for assigning block <code>options</code> (Asciidoctor only)</div>
+<div class="content">
+<pre class="nowrap">[%header%footer%autowidth]
+|===
+|Cell A |Cell B
+|===</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2233,7 +2495,7 @@ Notice it's a delimited block.
 <pre class="nowrap">.Table of contents attributes and values
 |===
 |Attribute |Value(s) |Example Syntax |Comments <i class="conum" data-value="1"></i><b>(1)</b>
-
+<i class="conum" data-value="2"></i><b>(2)</b>
 |toc
 |auto
 |+:toc:+
@@ -2246,6 +2508,18 @@ Disable the TOC with +:toc!:+.
 |-
 |===</pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Unless the <code>cols</code> attribute is specified, the number of columns is equal to the number of vertical bars on the first non-blank line inside the block delimiters.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>When a blank line follows a single line of column titles, the column titles row will be styled as a header row by default.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock result">
 <div class="content">
@@ -2284,14 +2558,6 @@ Disable the TOC with <code>:toc!:</code>.</p></td>
 
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Unless the <code>cols</code> attribute is specified, the number of columns is equal to the number of vertical bars on the first non-blank line inside the block delimiters</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
 <div class="title">Table with four columns, a header, and two rows of content</div>
 <div class="content">
@@ -2315,6 +2581,14 @@ Disable the TOC with +:toc!:+.
 |-
 |===</pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>*</code> in the <code>cols</code> attribute is the repeat operator. It means repeat the column specification for the remainder of columns. In this case, it means to repeat the default formatting across 4 columns. When the header row is not defined on a single line, you must use the <code>cols</code> attribute to set the number of columns and <code>options</code> attributes to make the first row a header.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock result">
 <div class="content">
@@ -2354,14 +2628,6 @@ Set the value to right to move it to the right side.</p></td>
 
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>*</code> in the <code>cols</code> attribute is the repeat operator. It means repeat the column specification for the remainder of columns. In this case, it means to repeat the default formatting across 4 columns. When the header row is not defined on a single line, you must use the <code>cols</code> attribute to set the number of columns and <code>options</code> attributes to make the first row a header.</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
 <div class="title">Table with three columns, a header, and two rows of content</div>
 <div class="content">
@@ -2384,6 +2650,14 @@ performance, portability.
 Empowers developers to easily create real, automated tests.
 |===</pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In this example, the <code>cols</code> attribute has two functions. It specifies that this table has three columns, and it sets their relative widths.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock result">
 <div class="content">
@@ -2419,14 +2693,6 @@ Empowers developers to easily create real, automated tests.</p></td>
 </table>
 
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>In this example, the <code>cols</code> attribute has two functions. It specifies that this table has three columns and sets their relative widths.</td>
-</tr>
-</table>
 </div>
 <div class="listingblock">
 <div class="title">Table with cell containing AsciiDoc content</div>
@@ -3306,6 +3572,41 @@ The attribute reference is not resolved.</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="table-of-contents-toc"><a class="anchor" href="#table-of-contents-toc"></a>Table of Contents (ToC)</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">Document with ToC</div>
+<div class="content">
+<pre class="nowrap">= AsciiDoc Writer's Guide
+Doc Writer &lt;doc.writer@asciidoc.org&gt;
+v1.0, 2013-01-01
+:toc:</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Document with ToC positioned on the right</div>
+<div class="content">
+<pre class="nowrap">= AsciiDoc Writer's Guide
+Doc Writer &lt;doc.writer@asciidoc.org&gt;
+v1.0, 2013-01-01
+:toc: right</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The ToC <a href="http://asciidoctor.org/docs/user-manual/#table-of-contents">title, levels, and positioning</a> can be customized.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="bibliography"><a class="anchor" href="#bibliography"></a>Bibliography</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -3391,7 +3692,7 @@ Another bold statement.footenoteref:[disclaimer]</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="markdown-compatibility-asciidoctor-only"><a class="anchor" href="#markdown-compatibility-asciidoctor-only"></a>Markdown compatibility (Asciidoctor only)</h2>
+<h2 id="markdown-compatibility"><a class="anchor" href="#markdown-compatibility"></a>Markdown Compatibility</h2>
 <div class="sectionbody">
 <div class="admonitionblock important">
 <table>
@@ -3566,6 +3867,15 @@ and as necessary in the political world as storms in the physical.</p>
 <hr>
 <hr>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-manual-and-help"><a class="anchor" href="#user-manual-and-help"></a>User Manual and Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To learn more about Asciidoctor and its capabilities, check out the other <a href="http://asciidoctor.org/docs">Asciidoctor guides</a> and its <a href="http://asciidoctor.org/docs/user-manual">User Manual</a>.
+Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
 </div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoc-syntax-quick-reference.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoc-syntax-quick-reference.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoc-syntax-quick-reference.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li><li><a href="/docs/asciidoc-syntax-quick-reference.pdf" style="text-decoration: none" title="Download PDF"><i class="icon-file-text-alt icon-2x"></i></a></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script src="/javascripts/view-result.js"></script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
