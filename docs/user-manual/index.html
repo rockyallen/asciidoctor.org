@@ -6734,60 +6734,314 @@ Here&#8217;s an example:</p>
 They are easy to create, easy to read in raw form and also remarkably sophisticated.</p>
 </div>
 <div class="paragraph">
-<p>You can think of a table as a delimited block that contains one or more bulleted lists.
-The list marker is a vertical bar (<code>|</code>).
-Each list represents one row in the table and must share the same number of items (taking into account any column or row spans).</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s a simple example of a table with two columns and three rows:</p>
+<p>Tables are made up of cells which are grouped by rows.
+Each row must share the same number of cells, taking into account any column or row spans.
+Then, each consecutive cell in a row is placed in a separate column.
+The simple table example below consists of two columns and three rows.</p>
 </div>
 <div class="listingblock">
+<div class="title">Simple table</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2*&quot;]
-|===
-|Firefox
-|Web Browser
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|=== <i class="conum" data-value="1"></i><b>(1)</b>
 
-|Ruby
-|Programming Language
+| Cell in column 1, row 1 | Cell in column 2, row 1  <i class="conum" data-value="2"></i><b>(2)</b>
+<i class="conum" data-value="3"></i><b>(3)</b>
+| Cell in column 1, row 2 | Cell in column 2, row 2
 
-|TorqueBox
-|Application Server
+| Cell in column 1, row 3 | Cell in column 2, row 3
+
+|=== <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The table&#8217;s content boundaries are defined by a vertical bar followed by three equal signs (<code>|===</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The new cell is marked by a vertical bar (<code>|</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Rows are separated by blank lines.</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered simple table</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 3</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>The leading and trailing spaces around the content in a cell are stripped; therefore, they don&#8217;t affect the table&#8217;s layout when it is rendered.
+The two examples below show that leading and trailing spaces don&#8217;t change the rendered table&#8217;s layout.</p>
+</div>
+<div class="listingblock">
+<div class="title">Cell content adjacent to the <code>|</code></div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+
+|Cell in column 1, row 1|Cell in column 2, row 1
+
 |===</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when cell content was entered adjacent to the <code>|</code></caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="listingblock">
+<div class="title">Cell content with varying leading and trailing spaces</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+
+| Cell in column 1, row 1        |          Cell in column 2, row 1
+
+|===</code></pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when cell content was bounded by varying leading and trailing spaces</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
-<p>The first non-blank line inside the block delimiter (<code>|===</code>) determines the number of columns.
-Since we are putting each column title on a separate line, we have to use the <code>cols</code> block attribute to explicitly state that this table has two columns.
-The <code>*</code> is the repeat operator.
-It means to repeat the column specification for the remainder of columns.
-In this case, it means to repeat no special formatting (since none is present) across 2 columns.</p>
+<p>There are multiple ways to group the cells in a row.
+The cells in a row can be placed on:</p>
+</div>
+<div class="ulist loweralpha">
+<ul class="loweralpha">
+<li>
+<p>the same line</p>
+</li>
+<li>
+<p>consecutive, individual lines</p>
+</li>
+<li>
+<p>a combination of a and b</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Cells on the same line</div>
+<div class="content">
+<pre class="nowrap">|===
+<i class="conum" data-value="1"></i><b>(1)</b>
+|Cell in column 1, row 1 |Cell in column 2, row 1 |Cell in column 3, row 1
+
+|Cell in column 1, row 2 |Cell in column 2, row 2 |Cell in column 3, row 2
+
+|===</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A blank line separates the table delimiter and the first row so the first row is not styled as the table&#8217;s header.</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when multiple cells where entered on the same line</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>When the cells of a row are individually entered on consecutive lines, the <code>cols</code> attribute is needed to specify the number of columns in the table.
+If the <code>cols</code> attribute is not set, the first non-blank line inside the block delimiter (<code>|===</code>) determines the number of columns.</p>
+</div>
+<div class="listingblock">
+<div class="title">Cells on consecutive, individual lines</div>
+<div class="content">
+<pre class="nowrap">[cols="3*"] <i class="conum" data-value="1"></i><b>(1)</b>
+|===
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>cols</code> attribute states that this table has three columns. The <code>*</code> is a repeat operator.</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when cells where listed on consecutive, individual lines</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Rows can be formed from adjactent lines of individual cells and cells listed on the same line.
+The <code>cols</code> attribute is not necessary if there is a blank line between the the block delimiter (<code>|===</code>) and the first row.</p>
+</div>
+<div class="listingblock">
+<div class="title">Cells on the same line and individual lines</div>
+<div class="content">
+<pre class="nowrap">[cols="3*"]
+|===
+|Cell in column 1, row 1 |Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2 |Cell in column 3, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Cells on the same line and individual lines</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>The next sections describe and demonstrate the variety of ways you can customize table cells, rows and columns.</p>
 </div>
 <div class="sect2">
 <h3 id="header-row"><a class="anchor" href="#header-row"></a>Header row</h3>
 <div class="paragraph">
-<p>We can make the first row of the table the header by setting the <code>header</code> option on the table.</p>
+<p>The first row of a table can be rendered as a header row with the <code>header</code> value.
+The <code>header</code> value is assigned by setting the <code>options</code> attribute or based on the table&#8217;s layout.</p>
+</div>
+<div class="paragraph">
+<p>The <code>options</code> attribute is set in the table&#8217;s attribute list and assigned the value <code>header</code> in the example below.</p>
 </div>
 <div class="listingblock">
+<div class="title">Table with the <code>header</code> value assigned to the <code>options</code> attribute</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2*&quot;, options=&quot;header&quot;]
 |===
-|Name
-|Group
+|Name of Column 1
+|Name of Column 2
 
-|Firefox
-|Web Browser
+|Cell in column 1, row 1
+|Cell in column 2, row 1
 
-|Ruby
-|Programming Language
-
-...
+|Cell in column 1, row 2
+|Cell in column 2, row 2
 |===</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when the <code>header</code> value is assigned to the <code>options</code> attribute</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Alternatively, you can define the header row based on how you layout the table.
-Asciidoctor 0.1.4 introduced the following conventions to determine if the first row should become the header row:</p>
+Asciidoctor 0.1.4 introduced the following conventions to determine when the first row should become the header row:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -6803,72 +7057,49 @@ Asciidoctor 0.1.4 introduced the following conventions to determine if the first
 </ol>
 </div>
 <div class="paragraph">
-<p>If all of these rules hold, then the first row of the table is treated as a header.
-Building on existing conventions, if the <code>cols</code> attribute has not been specified, the number of columns in the table is set to the number of columns in the first row (i.e., the header row).</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example of a table that has an implicit header row:</p>
+<p>As seen in the result of the example below, if all of these rules hold, then the first row of the table is treated as a header.</p>
 </div>
 <div class="listingblock">
+<div class="title">Table that has an implicit header row</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
-|A |B |C <i class="conum" data-value="1"></i><b>(1)</b>
+|Name of Column 1 |Name of Column 2
 
-|A-1
-|B-2
-|C-3
+|Cell in column 1, row 1
+|Cell in column 2, row 1
 
-|A-2| B-2| C-2
-
-|A-3
-|B-3
-|C-3
+|Cell in column 1, row 2
+|Cell in column 2, row 2
 |===</code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Satisfies the convention to be made the header row.</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how it looks when rendered:</p>
-</div>
 <table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table when the header row was assigned implicitly</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;"> 
+<col style="width:50%;">
+<col style="width:50%;"> 
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">A</th>
-<th class="tableblock halign-left valign-top">B</th>
-<th class="tableblock halign-left valign-top">C</th>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A-2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B-2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C-2</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">A-3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">B-3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">C-3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
 </tr>
 </tbody>
 </table>
 
+<div class="paragraph">
+<p>Notice that when the implicit method of assigning the header row is used, it is not necessary to set the <code>cols</code> attribute.</p>
+</div>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -6876,8 +7107,7 @@ Building on existing conventions, if the <code>cols</code> attribute has not bee
 <i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-You can arrange the cells in the remaining rows however you want.
-Note, however, that we&#8217;re considering using a similar convention for enabling the footer in the future.
+We&#8217;re considering using a similar convention for enabling the footer in the future.
 Thus, if you rely on this convention to enable the header row, it&#8217;s advised that you not put all the cells in the last row on the same line unless you intend on making it the footer row.
 </td>
 </tr>
@@ -6887,27 +7117,546 @@ Thus, if you rely on this convention to enable the header row, it&#8217;s advise
 <div class="sect2">
 <h3 id="columns"><a class="anchor" href="#columns"></a>Columns</h3>
 <div class="paragraph">
-<p>You can set the relative widths of each column using <em>column specifiers</em>{mdash}a comma-separated list of relative values defined in the <code>cols</code> block attribute.
-The number of entries in the list determines the number of columns.</p>
+<p>The number of columns in a table is determined by the number of cells found in the first non-blank line after the table delimiter (<code>|===</code>) or by the values assigned to the <code>cols</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>For example, the syntax in the two examples below will both render a table with two columns.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2,3,5&quot;]
+<pre class="nowrap">|===
+
+|Cell in column 1, row 1 |Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with two columns as defined by the number of cells in first row</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="2*"]
 |===
-|Name |Group |Description
 
-|Firefox
-|Web Browser
-|Mozilla Firefox is an open-source web browser.
-It's designed for standards compliance,
-performance and portability.
+|Cell in column 1, row 1
+|Cell in column 2, row 1
 
-|Ruby
-|Programming Language
-|A programmer's best friend.
+|Cell in column 1, row 2
+|Cell in column 2, row 2
 
-...
-|===</code></pre>
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with two columns as defined by the <code>cols</code> attribute</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>When a single number is assigned to the <code>cols</code> attribute, that number&#8217;s value indicates the number of columns.
+Each column will be the same width.
+However, the number of columns can also be assigned as a comma delimited list.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols="1,1,1,1"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Creates a table with four columns of equal width.
+This syntax provides that same result:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols="4*"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, let&#8217;s talk about that asterisk in the syntax above.
+The AsciiDoc syntax provides a variety of ways to control the size, style and layout of content within columns.
+These <strong>specifiers</strong> can be applied to whole columns.</p>
+</div>
+<div class="paragraph">
+<p>To apply a specifier to a column, you must set the <code>cols</code> attibute and assign it a value.
+A column specifier can contain any of the following components:</p>
+</div>
+<div class="ulist compact">
+<ul class="compact">
+<li>
+<p>multiplier</p>
+</li>
+<li>
+<p>align</p>
+</li>
+<li>
+<p>width</p>
+</li>
+<li>
+<p>style</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Each component is optional.</p>
+</div>
+<div class="paragraph">
+<p>The multiplier (<code>*</code>) is used when you want a specifier to apply to more than one consecutive column.
+If used, the multiplier must always be placed at the beginning of the specifier.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="3*"] <i class="conum" data-value="1"></i><b>(1)</b>
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The table will consist of three columns, as indicated by the <strong>3</strong>. The <code>*</code> operator ensures that the default layout and style will be applied to all of the columns.</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with multiplier applied</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>The alignment component allows you to horizontally or vertically align a column&#8217;s content.
+Content can be horizontally aligned left (<code>&lt;</code>), center (<code>^</code>), or right (<code>&gt;</code>).</p>
+</div>
+<div class="paragraph">
+<p>To horizontally center the content in all of the columns, add the <code>^</code> operator after the multiplier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="3*^"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with horizontal, center alignment applied to all columns</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>What if you only want to center the content in the last column?
+Assign the default styles to the preceeding columns, and <code>^</code> to the last column in a comma separated list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="2*,^"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with horizontal, center alignment applied to last column</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Let&#8217;s specify a different horizontal alignment for each column.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="&lt;,^,&gt;"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with a different horizontal alignment for each column</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>You&#8217;ll notice that the content in the examples above is only centered on the horizontal.
+It can also be aligned vertically when the alignment operator is prefixed with a dot (<code>.</code>).
+Content can be vertically aligned to the top (<code>&lt;</code>), middle (<code>^</code>), or bottom (<code>&gt;</code>) of a cell.</p>
+</div>
+<div class="paragraph">
+<p>To vertically align the content to the middle of the cells in all of the columns, add a <code>.</code> and then the <code>^</code> operator after the multiplier.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="3*.^"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with vertical, middle alignment applied to all columns</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>If you only want to align the content to the bottom of each cell in the last column, you&#8217;d assign the default styles to the preceeding columns, and <code>&gt;</code> to the last column in a comma separated list.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols="2*,.&gt;"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with vertical, bottom alignment applied to last column</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Let&#8217;s specify a different vertical alignment for each column.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols=".&lt;,.^,.&gt;"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with a different vertical alignment for each column</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Finally, we&#8217;ll also horizontally center the content in the last column.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[cols=".&lt;,.^,^.&gt;"]
+|===
+|Name of Column 1
+|Name of Column 2
+|Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Result: Rendered table with a different vertical alignment for each column and horizontal, center alignment in the last column</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Name of Column 2</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">Name of Column 3</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-center valign-bottom"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>When both a horizontal and vertical aligment is assigned to a column, the horizontal alignment operator must preceed the vertical operator.</p>
+</div>
+<div class="paragraph">
+<p>The width component can set the width of a column.
+Its value can be a proportional interger (the default is 1) or a precentage.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols="1.&lt;,2*^.^3"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols="1.&lt;,2*3^.^"]</pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The order of the alignment and width components is interchangable within the specifier.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The style component must always located at the end of the specifier.
+When no style name is provided column contents will be processed as regular inline text.</p>
+</div>
+<div class="paragraph">
+<p>Additional styles, listed in the table below, are also available.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Style Name</th>
+<th class="tableblock halign-left valign-top">Value</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AsciiDoc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>a</code> or <code>asciidoc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any document section elements may be contained within the column. The elements will be processed and rendered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Emphasis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>e</code> or <code>emphasis</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text is italicized</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>h</code> or <code>header</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Header styles are applied to the column</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>l</code> or <code>literal</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Column content is treated as if it were inside a literal block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monospaced</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>m</code> or <code>monospaced</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text is rendered in monospaced font</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Strong</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>s</code> or <code>strong</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text is bolded</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>v</code> or <code>verse</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Column content is treated as if it were inside a verse block</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Let&#8217;s apply the monospaced style to the first column.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols="1.&lt;m,2*^.^3"]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14620,7 +15369,7 @@ Section pending
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-09-24 03:59:23 UTC
+Last updated 2013-09-24 17:01:14 UTC
 </div>
 </div>
 </body>
