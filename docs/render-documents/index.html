@@ -1,11 +1,11 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How do I render a document? | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>How do I render a document?</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>While the AsciiDoc syntax is designed to be human-readable, it is doubtful you&#8217;ll want to present your finished document as raw AsciiDoc syntax.
-That&#8217;s where the Asciidoctor or AsciiDoc processor and their backends come into play.</p>
+<p>While the AsciiDoc syntax is designed to be human-readable, it&#8217;s doubtful you&#8217;ll want to present your finished document as raw AsciiDoc syntax.
+That&#8217;s where the AsciiDoc processors and backends come into play.</p>
 </div>
 <div class="paragraph">
-<p>In this guide, you learn how to convert a short sample document to:</p>
+<p>In this guide, you learn how to convert a short sample document to the following formats:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -21,7 +21,7 @@ That&#8217;s where the Asciidoctor or AsciiDoc processor and their backends come
 </ul>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll also discover how to apply a custom stylesheet and JavaScript attributes to the HTML output during processing.</p>
+<p>You&#8217;ll also discover how to apply the default stylesheet or a custom one to the generated HTML document during processing.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -31,7 +31,7 @@ That&#8217;s where the Asciidoctor or AsciiDoc processor and their backends come
 </td>
 <td class="content">
 In order to render your document, you&#8217;ll need to have the Asciidoctor and AsciiDoc processors installed.
-For step-by-step installation instructions, read the {toolchainref}[Installing the Toolchain] guide.
+For step-by-step installation instructions, read the <a href="/docs/install-toolchain">Installing the Toolchain</a> guide.
 </td>
 </tr>
 </table>
@@ -47,18 +47,22 @@ The processor produces the output format by using a backend that you specify wit
 If no backend is indicated, the processor&#8217;s default backend is used.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor has two native backends.</p>
+<p>Asciidoctor has three native backends.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>html5</code></dt>
+<dt class="hdlist1"><code>html5</code> (or <code>html</code>)</dt>
 <dd>
-<p>HTML 5 markup styled with CSS3.
-Asciidoctor&#8217;s default backend.</p>
+<p>HTML 5 markup styled with CSS 3.
+This is the default backend in Asciidoctor.</p>
 </dd>
-<dt class="hdlist1"><code>docbook</code></dt>
+<dt class="hdlist1"><code>docbook45</code> (or <code>docbook</code>)</dt>
 <dd>
 <p>DocBook XML 4.5 markup.</p>
+</dd>
+<dt class="hdlist1"><code>docbook5</code></dt>
+<dd>
+<p>DocBook XML 5.0 markup.</p>
 </dd>
 </dl>
 </div>
@@ -67,16 +71,16 @@ Asciidoctor&#8217;s default backend.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>xhtml11</code></dt>
+<dt class="hdlist1"><code>xhtml11</code> (or <code>html</code>)</dt>
 <dd>
 <p>XHTML 1.1 markup styled with CSS2.
-AsciiDoc&#8217;s default backend.</p>
+This is the default backend in AsciiDoc.</p>
 </dd>
 <dt class="hdlist1"><code>html5</code></dt>
 <dd>
 <p>HTML 5 markup styled with CSS3.</p>
 </dd>
-<dt class="hdlist1"><code>docbook</code></dt>
+<dt class="hdlist1"><code>docbook45</code> (or <code>docbook</code>)</dt>
 <dd>
 <p>DocBook XML 4.5 markup.</p>
 </dd>
@@ -94,6 +98,7 @@ AsciiDoc&#8217;s default backend.</p>
 </td>
 <td class="content">
 A native PDF backend is planned for Asciidoctor.
+You can find a prototype in the <a href="https://github.com/mojavelinux/asciidoctor-fopdf">asciidoctor-fopdf repository</a>.
 </td>
 </tr>
 </table>
@@ -200,30 +205,19 @@ puts html</code></pre>
 <div class="sect2">
 <h3 id="styles-and-attributes"><a class="anchor" href="#styles-and-attributes"></a>Styles and attributes</h3>
 <div class="paragraph">
-<p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
-It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
-When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is applied and linked automatically by default.
-However, <code>asciidoctor.css</code> is not automatically available to the generated HTML document; you have two choices:</p>
+<p>Asciidoctor uses CSS to style the generated HTML document.
+To help your documents look share, Asciidoctor ships with a fresh, modern stylesheet named <code>asciidoctor.css</code>.</p>
 </div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>If you prefer to copy <code>asciidoctor.css</code> to the output location and link to it from the generated document, set the <code>linkcss</code> attribute:</p>
+</div>
+<div class="sect2">
+<h3 id="working-with-the-default-stylesheet"><a class="anchor" href="#working-with-the-default-stylesheet"></a>Working with the default stylesheet</h3>
+<div class="paragraph">
+<p>When you generate an HTML document using the (default) <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is embedded into the document by default.</p>
+</div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a linkcss sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor sample.adoc</pre>
 </div>
-</div>
-</li>
-<li>
-<p>If you prefer to embed the stylesheet into the document, unset the <code>linkcss</code> attribute:</p>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a linkcss! sample.adoc</pre>
-</div>
-</div>
-</li>
-</ol>
 </div>
 <div class="paragraph">
 <p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
@@ -235,20 +229,39 @@ However, <code>asciidoctor.css</code> is not automatically available to the gene
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-<code>linkcss!</code> (which implies "embed css" or <code>copycss</code>) embeds any stylesheet, not just <code>asciidoctor.css</code>.
+If you specify a custom stylesheet using the <code>stylesheet</code> attribute, Asciidoctor will embed the custom stylesheet instead of the default stylesheet.
 </td>
 </tr>
 </table>
 </div>
-<div class="admonitionblock important">
+<div class="paragraph">
+<p>If you prefer to link to the <code>asciidoctor.css</code> stylesheet, set the <code>linkcss</code> attribute:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a linkcss sample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the <code>linkcss</code> attribute is set, Asciidoctor will automatically copy the stylesheet to the output directory.
+If the <code>stylesdir</code> attribute is set, then the stylesheet will be copied to the folder specified by <code>stylesdir</code> relative to the output directory.</p>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t want Asciidoctor to copy the stylesheet to the output directory, unset the <code>copycss</code> attribute:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -a linkcss -a copycss! sample.adoc</pre>
+</div>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-important" title="Important"></i>
+<i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-<code>linkcss</code> is set by default, unlike in AsciiDoc.
-We believe linking to the stylesheet is a better default, certainly a accepted practice on the web.
+As of version 0.1.4, Asciidoctor does not copy the custom stylesheet to the output directory.
 </td>
 </tr>
 </table>
@@ -261,6 +274,9 @@ We believe linking to the stylesheet is a better default, certainly a accepted p
 <pre class="nowrap">$&gt; asciidoctor -a stylesheet! sample.adoc</pre>
 </div>
 </div>
+</div>
+<div class="sect2">
+<h3 id="applying-a-custom-stylesheet"><a class="anchor" href="#applying-a-custom-stylesheet"></a>Applying a custom stylesheet</h3>
 <div class="paragraph">
 <p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for your own custom stylesheet or alternative Asciidoctor themes.</p>
 </div>
@@ -293,15 +309,17 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 </div>
 </div>
 <div class="paragraph">
-<p>To have Asciidoctor embed the contents of the stylesheet in the generate HTML document, use:</p>
+<p>By default, Asciidoctor embeds the custom stylesheet into the generated HTML document.
+If you want Asciidoctor to link to the custom stylesheet instead, set the <code>linkcss</code> attribute:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss! sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Stylesheets can also be stored in the <code>stylesheets</code> directory, but then you need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.</p>
+<p>Stylesheets can be stored in a nested folder.
+In this case, you need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -562,7 +580,7 @@ We&#8217;ve just scratched the surface here.</p>
 More information and the latest available developments can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctor-backends">backend repository</a>.</p>
 </div>
 <div class="paragraph">
-<p>Please consider joining the <a href="http://discuss.asciidoctor.org/">Asciidoctor mailing list</a>, where you can ask questions and leave comments.
+<p>Please consider joining the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.
 If you identify an issue while using a backend with the Asciidoctor processor, please don&#8217;t hesitate to <a href="http://github.com/asciidoctor/asciidoctor-backends/issues">file a bug report</a>.</p>
 </div>
 </div>
