@@ -42,6 +42,7 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <li><a href="#tables">Tables</a></li>
 <li><a href="#ui-macros">UI Macros</a></li>
 <li><a href="#attributes-and-substitutions">Attributes and Substitutions</a></li>
+<li><a href="#text-replacement">Text Replacement</a></li>
 <li><a href="#escaping-text">Escaping Text</a></li>
 <li><a href="#table-of-contents-toc">Table of Contents (ToC)</a></li>
 <li><a href="#bibliography">Bibliography</a></li>
@@ -3048,8 +3049,383 @@ Select a file in the file navigator and click btn:[Open].</pre>
 <div class="sect1">
 <h2 id="attributes-and-substitutions"><a class="anchor" href="#attributes-and-substitutions"></a>Attributes and Substitutions</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="title">Attribute declaration and usage</div>
+<div class="content">
+<pre class="nowrap">:homepage: http://asciidoc.org
+:homepagelink: http://asciidoctor.org[Asciidoctor]
+:desc: AsciiDoc is a mature, plain-text document format for +
+       writing notes, articles, documentation, books, and more. +
+       It's also a text processor &amp; toolchain for translating +
+       documents into various output formats (i.e., backends), +
+       including HTML, DocBook, PDF and ePub.
+:checkedbox: pass:normal[+[&amp;#10004;]+]
+
+Check out {homepage}[AsciiDoc]!
+
+{desc}
+
+Check out {homepagelink} too!
+
+{checkedbox} That's done!</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<table class="tableblock frame-all grid-all unstyled" style="width:100%; ">
+<colgroup>
+<col style="width:100%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Check out <a href="http://asciidoc.org">AsciiDoc</a>!</p>
+</div>
+<div class="paragraph">
+<p>AsciiDoc is a mature, plain-text document format for writing notes, articles, documentation, books, and more. It&#8217;s also a text processor &amp; toolchain for translating documents into various output formats (i.e., backends), including HTML, DocBook, PDF and ePub.</p>
+</div>
+<div class="paragraph">
+<p>Check out <a href="http://asciidoctor.org">Asciidoctor</a> too!</p>
+</div>
+<div class="paragraph">
+<p><code>[&#10004;]</code> That&#8217;s done!</p>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+<div class="ulist">
+<div class="title">Attribute assignment precedence (highest to lowest)</div>
+<ul>
+<li>
+<p>Attribute passed to the API or CLI that does not end in <code>@</code></p>
+</li>
+<li>
+<p>Attribute defined in the document</p>
+</li>
+<li>
+<p>Attribute passed to the API or CLI that ends in <code>@</code></p>
+</li>
+<li>
+<p>Intrinsic attribute value (default values)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+To make an attribute value that is passed to the API or CLI have a lower precedence than an assignment in the document, add an <code>@</code> symbol to the end of the attribute value.
+</td>
+</tr>
+</table>
+</div>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 4. Text replacements</caption>
+<caption class="title">Table 4. Built-in literal attributes</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Resolves&#160;To</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lt}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{gt}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{amp}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{startsb}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">[</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{endsb}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{brvbar}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">|</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{caret}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{asterisk}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{tilde}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">~</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apostrophe}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{backslash}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">\</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-colons}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">::</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-semicolons}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">;;</p></td>
+</tr>
+</tbody>
+</table>
+
+<table class="tableblock frame-all grid-all" style="width:50%; ">
+<caption class="title">Table 5. Built-in entity attributes</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Source</th>
+<th class="tableblock halign-left valign-top">Resolves&#160;To<br>
+(e.g.,&#160;<code>{empty}</code>)</th>
+<th class="tableblock halign-left valign-top">As&#160;Rendered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{empty}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>nothing</em></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{sp}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>single space</em></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{nbsp}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#160;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#160;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{zwsp}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;zwsp;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8203;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{wj}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8288;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8288;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apos}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;apos;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#39;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{quot}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;quot;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#34;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lsquo}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8216;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8216;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rsquo}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8217;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8217;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{ldquo}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8220;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8220;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rdquo}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8221;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#8221;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{deg}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#176;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#176;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{plus}</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#43;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#43;</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="dlist">
+<div class="title">Built-in data attributes</div>
+<dl>
+<dt class="hdlist1">asciidoc (or asciidoctor)</dt>
+<dd>
+<p><em>blank</em></p>
+</dd>
+<dt class="hdlist1">asciidoc-version (or asciidoctor-version)</dt>
+<dd>
+<p>Version of the processor</p>
+</dd>
+<dt class="hdlist1">doctype</dt>
+<dd>
+<p>Document&#8217;s doctype (e.g., article)</p>
+</dd>
+<dt class="hdlist1">backend</dt>
+<dd>
+<p>Backend used to render document</p>
+</dd>
+<dt class="hdlist1">localdate</dt>
+<dd>
+<p>Local date when rendered</p>
+</dd>
+<dt class="hdlist1">localtime</dt>
+<dd>
+<p>Local time when rendered</p>
+</dd>
+<dt class="hdlist1">localdatetime</dt>
+<dd>
+<p>Local date &amp; time when rendered</p>
+</dd>
+<dt class="hdlist1">docdate</dt>
+<dd>
+<p>Last modified date</p>
+</dd>
+<dt class="hdlist1">doctime</dt>
+<dd>
+<p>Last modified time</p>
+</dd>
+<dt class="hdlist1">docdatetime</dt>
+<dd>
+<p>Last modified date &amp; time</p>
+</dd>
+<dt class="hdlist1">docfile</dt>
+<dd>
+<p>Name of document file</p>
+</dd>
+<dt class="hdlist1">docdir</dt>
+<dd>
+<p>Name of document directory</p>
+</dd>
+<dt class="hdlist1">doctitle</dt>
+<dd>
+<p>The title of the document</p>
+</dd>
+</dl>
+</div>
+<div class="dlist">
+<div class="title">Named substitutions</div>
+<dl>
+<dt class="hdlist1">none</dt>
+<dd>
+<p>Disables substitutions</p>
+</dd>
+<dt class="hdlist1">normal</dt>
+<dd>
+<p>Performs all substitutions except for callouts</p>
+</dd>
+<dt class="hdlist1">verbatim</dt>
+<dd>
+<p>Escapes special characters and processes callouts</p>
+</dd>
+<dt class="hdlist1">specialcharacters</dt>
+<dd>
+<p>Escapes special XML characters (e.g., &lt;, &gt;, &amp;)</p>
+</dd>
+<dt class="hdlist1">quotes</dt>
+<dd>
+<p>Applies text formatting</p>
+</dd>
+<dt class="hdlist1">attributes</dt>
+<dd>
+<p>Replaces attribute references</p>
+</dd>
+<dt class="hdlist1">replacements</dt>
+<dd>
+<p>Substitutes text replacements</p>
+</dd>
+<dt class="hdlist1">macros</dt>
+<dd>
+<p>Process macros</p>
+</dd>
+<dt class="hdlist1">post_replacements</dt>
+<dd>
+<p>Replaces the line break character</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="title">Counter attributes</div>
+<div class="content">
+<pre class="nowrap">[caption=""]
+.Parts{counter2:index:0}
+|===
+|Part Id |Description
+
+|PX-{counter:index}
+|Description of PX-{index}
+
+|PX-{counter:index}
+|Description of PX-{index}
+|===</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Parts</caption>
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Part Id</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PX-1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of PX-1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PX-2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Description of PX-2</p></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="text-replacement"><a class="anchor" href="#text-replacement"></a>Text Replacement</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all" style="width:50%; ">
+<caption class="title">Table 6. Text replacements</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3142,347 +3518,6 @@ Any named, numeric or hex <a href="http://en.wikipedia.org/wiki/List_of_XML_and_
 </td>
 </tr>
 </table>
-</div>
-<table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 5. Built-in literal attributes</caption>
-<colgroup>
-<col style="width:50%;">
-<col style="width:50%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Source</th>
-<th class="tableblock halign-left valign-top">Resolves&#160;To</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lt}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{gt}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{amp}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{startsb}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">[</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{endsb}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{brvbar}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">|</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{caret}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{asterisk}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">*</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{tilde}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">~</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apostrophe}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">'</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{backslash}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-colons}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">::</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{two-semicolons}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">;;</p></td>
-</tr>
-</tbody>
-</table>
-
-<table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Table 6. Built-in entity attributes</caption>
-<colgroup>
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Source</th>
-<th class="tableblock halign-left valign-top">Resolves&#160;To<br>
-(e.g.,&#160;<code>{empty}</code>)</th>
-<th class="tableblock halign-left valign-top">As&#160;Rendered</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{empty}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>nothing</em></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{sp}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>single space</em></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{nbsp}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#160;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{zwsp}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;zwsp;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8203;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{wj}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8288;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8288;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{apos}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;apos;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#39;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{quot}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;quot;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#34;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{lsquo}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8216;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8216;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rsquo}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8217;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8217;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{ldquo}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8220;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8220;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{rdquo}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#8221;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8221;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{deg}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#176;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#176;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{plus}</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&amp;#43;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#43;</p></td>
-</tr>
-</tbody>
-</table>
-
-<div class="dlist">
-<div class="title">Named substitutions</div>
-<dl>
-<dt class="hdlist1">none</dt>
-<dd>
-<p>Disables substitutions</p>
-</dd>
-<dt class="hdlist1">normal</dt>
-<dd>
-<p>Performs all substitutions except for callouts</p>
-</dd>
-<dt class="hdlist1">verbatim</dt>
-<dd>
-<p>Escapes special characters and processes callouts</p>
-</dd>
-<dt class="hdlist1">specialcharacters</dt>
-<dd>
-<p>Escapes special XML characters (e.g., &lt;, &gt;, &amp;)</p>
-</dd>
-<dt class="hdlist1">quotes</dt>
-<dd>
-<p>Applies text formatting</p>
-</dd>
-<dt class="hdlist1">attributes</dt>
-<dd>
-<p>Replaces attribute references</p>
-</dd>
-<dt class="hdlist1">replacements</dt>
-<dd>
-<p>Substitutes text replacements</p>
-</dd>
-<dt class="hdlist1">macros</dt>
-<dd>
-<p>Process macros</p>
-</dd>
-<dt class="hdlist1">post_replacements</dt>
-<dd>
-<p>Replaces the line break character</p>
-</dd>
-</dl>
-</div>
-<div class="dlist">
-<div class="title">Built-in data attributes</div>
-<dl>
-<dt class="hdlist1">asciidoc (or asciidoctor)</dt>
-<dd>
-<p><em>blank</em></p>
-</dd>
-<dt class="hdlist1">asciidoc-version (or asciidoctor-version)</dt>
-<dd>
-<p>Version of the processor</p>
-</dd>
-<dt class="hdlist1">doctype</dt>
-<dd>
-<p>Document&#8217;s doctype (e.g., article)</p>
-</dd>
-<dt class="hdlist1">backend</dt>
-<dd>
-<p>Backend used to render document</p>
-</dd>
-<dt class="hdlist1">localdate</dt>
-<dd>
-<p>Local date when rendered</p>
-</dd>
-<dt class="hdlist1">localtime</dt>
-<dd>
-<p>Local time when rendered</p>
-</dd>
-<dt class="hdlist1">localdatetime</dt>
-<dd>
-<p>Local date &amp; time when rendered</p>
-</dd>
-<dt class="hdlist1">docdate</dt>
-<dd>
-<p>Last modified date</p>
-</dd>
-<dt class="hdlist1">doctime</dt>
-<dd>
-<p>Last modified time</p>
-</dd>
-<dt class="hdlist1">docdatetime</dt>
-<dd>
-<p>Last modified date &amp; time</p>
-</dd>
-<dt class="hdlist1">docfile</dt>
-<dd>
-<p>Name of document file</p>
-</dd>
-<dt class="hdlist1">docdir</dt>
-<dd>
-<p>Name of document directory</p>
-</dd>
-<dt class="hdlist1">doctitle</dt>
-<dd>
-<p>The title of the document</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="title">Attribute declaration and usage</div>
-<div class="content">
-<pre class="nowrap">:homepage: http://asciidoc.org
-:homepagelink: http://asciidoctor.org[Asciidoctor]
-:desc: AsciiDoc is a mature, plain-text document format for +
-       writing notes, articles, documentation, books, and more. +
-       It's also a text processor &amp; toolchain for translating +
-       documents into various output formats (i.e., backends), +
-       including HTML, DocBook, PDF and ePub.
-:checkedbox: pass:normal[+[&amp;#10004;]+]
-
-Check out {homepage}[AsciiDoc]!
-
-{desc}
-
-Check out {homepagelink} too!
-
-{checkedbox} That's done!</pre>
-</div>
-</div>
-<div class="exampleblock result">
-<div class="content">
-<table class="tableblock frame-all grid-all unstyled" style="width:100%; ">
-<colgroup>
-<col style="width:100%;"> 
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>Check out <a href="http://asciidoc.org">AsciiDoc</a>!</p>
-</div>
-<div class="paragraph">
-<p>AsciiDoc is a mature, plain-text document format for writing notes, articles, documentation, books, and more. It&#8217;s also a text processor &amp; toolchain for translating documents into various output formats (i.e., backends), including HTML, DocBook, PDF and ePub.</p>
-</div>
-<div class="paragraph">
-<p>Check out <a href="http://asciidoctor.org">Asciidoctor</a> too!</p>
-</div>
-<div class="paragraph">
-<p><code>[&#10004;]</code> That&#8217;s done!</p>
-</div></div></td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Counter attributes</div>
-<div class="content">
-<pre class="nowrap">[caption=""]
-.Parts{counter2:index:0}
-|===
-|Part Id |Description
-
-|PX-{counter:index}
-|Description of PX-{index}
-
-|PX-{counter:index}
-|Description of PX-{index}
-|===</pre>
-</div>
-</div>
-<div class="exampleblock result">
-<div class="content">
-<table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Parts</caption>
-<colgroup>
-<col style="width:50%;">
-<col style="width:50%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Part Id</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PX-1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description of PX-1</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PX-2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Description of PX-2</p></td>
-</tr>
-</tbody>
-</table>
-
-</div>
 </div>
 </div>
 </div>

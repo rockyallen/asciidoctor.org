@@ -526,6 +526,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#attributes">Attributes</a></li>
 <li>
 <ul class="sectlevel2">
+<li><a href="#attribute-assignment-precedence">Attribute assignment precedence</a></li>
 <li><a href="#using-attributes-set-assign-and-reference">Using attributes: set, assign, and reference</a></li>
 </ul>
 </li>
@@ -917,6 +918,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel2">
 <li><a href="#repositories">Repositories</a></li>
 <li><a href="#static-website-generators">Static website generators</a></li>
+<li><a href="#configuring-attributes-for-awestruct">Configuring attributes for Awestruct</a></li>
 </ul>
 </li>
 </ul>
@@ -1903,9 +1905,60 @@ Attributes activate features and store predefined styles, options, and replaceme
 <p>Macros</p>
 </li>
 <li>
-<p>Command Line Attributes</p>
+<p>API and Command Line Attributes</p>
 </li>
 </ul>
+</div>
+<div class="sect2">
+<h3 id="attribute-assignment-precedence"><a class="anchor" href="#attribute-assignment-precedence"></a>Attribute assignment precedence</h3>
+<div class="paragraph">
+<p>By default, the attribute assignment precedence, from highest to lowest, is as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Attribute passed to the API or CLI</p>
+</li>
+<li>
+<p>Attribute defined in the document</p>
+</li>
+<li>
+<p>Intrinsic attribute value (default values)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s use the <code>doctype</code> attribute to show how precedence works.</p>
+</div>
+<div class="paragraph">
+<p>The intrinsic value for the <code>doctype</code> attribute is <code>article</code>.
+Therefore, if <code>doctype</code> is not set and assigned a value in the document, API or CLI it will be assigned the <code>article</code> value (i.e. its default value).
+However, if <code>doctype</code> is set in the document and assigned a new value, such as <code>book</code>, the <code>book</code> value will override the intrisic value.
+Finally, a value assigned to <code>doctype</code> via the API or CLI, will overrule the value in the document.</p>
+</div>
+<div class="paragraph">
+<p>You can adjust the precedence of attribute values passed to the API or CLI.
+By adding an <code>@</code> symbol to the end of an attribute value passed to the API or CLI, it makes that assignment have a lower precedence than an assignment in the document.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s add that to the precedence list defined earlier.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Attribute passed to the API or CLI that does not end in <code>@</code></p>
+</li>
+<li>
+<p>Attribute defined in the document</p>
+</li>
+<li>
+<p>Attribute passed to the API or CLI that ends in <code>@</code></p>
+</li>
+<li>
+<p>Intrinsic attribute value (default values)</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="sect2">
 <h3 id="using-attributes-set-assign-and-reference"><a class="anchor" href="#using-attributes-set-assign-and-reference"></a>Using attributes: set, assign, and reference</h3>
@@ -13306,6 +13359,50 @@ Section pending
 </table>
 </div>
 </div>
+<div class="sect2">
+<h3 id="configuring-attributes-for-awestruct"><a class="anchor" href="#configuring-attributes-for-awestruct"></a>Configuring attributes for Awestruct</h3>
+<div class="paragraph">
+<p>Awestruct defines a set of default attributes that it passes to the API in its <em class="path">/default-site.yml</em> file.
+One of the attributes in that configuration is <code>imagesdir</code>.
+The value there is set to <em class="path">/images</em>.
+That means the value in your document is skipped due to the precedence rules.</p>
+</div>
+<div class="paragraph">
+<p>Fortunately, there is one additional place you can override the attribute.
+This gives you the opportunity to set your own default and to flip the precedence order so that the document wins out.
+If an attribute value that is passed to the API ends with an <code>@</code> symbol, it makes that assignment have a lower precedence than an assignment in the document.</p>
+</div>
+<div class="paragraph">
+<p>You can define attributes you want to pass to the API in the <em class="path">_config/site.yml</em> file.
+Here&#8217;s an example entry for Asciidoctor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="yaml language-yaml"><span class="key">asciidoctor</span>:
+  <span class="symbol">:safe</span>: <span class="error">safe</span>
+  <span class="symbol">:attributes</span>:
+    <span class="key">imagesdir</span>: <span class="string"><span class="content">/assets/images@</span></span>
+    <span class="key">icons</span>: <span class="string"><span class="content">font</span></span>
+    <span class="error">...</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+The second-level keys (safe and attributes, in this case) must have colons on both sides of the key name.
+The rest of the keys only have a colon after the key.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With this configuration added, you should observe that the <code>imagesdir</code> attribute in your document is now respected.</p>
+</div>
+</div>
 </div>
 </div>
 <h1 id="part-10-extensions" class="sect0"><a class="anchor" href="#part-10-extensions"></a>Part 10: Extensions</h1>
@@ -16246,7 +16343,7 @@ Section pending
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-09-28 01:10:16 UTC
+Last updated 2013-10-01 00:52:00 UTC
 </div>
 </div>
 </body>
