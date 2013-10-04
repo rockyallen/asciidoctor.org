@@ -459,18 +459,18 @@ whengiven a posattrs array either during parsing or after the fact.</p>
 
 <h3 id="label-Examples">Examples<span><a href="#label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-identifier">attrlist</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'astyle'</span>)
+<pre class="ruby"><span class="ruby-identifier">attrlist</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;astyle&#39;</span>)
 
 <span class="ruby-identifier">attrlist</span>.<span class="ruby-identifier">parse</span>
-=<span class="ruby-operator">&gt;</span> {<span class="ruby-value">0</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'astyle'</span>} 
+=<span class="ruby-operator">&gt;</span> {<span class="ruby-value">0</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;astyle&#39;</span>} 
 
-<span class="ruby-identifier">attrlist</span>.<span class="ruby-identifier">rekey</span>([<span class="ruby-string">'style'</span>])
-=<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'style'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'astyle'</span>}
+<span class="ruby-identifier">attrlist</span>.<span class="ruby-identifier">rekey</span>([<span class="ruby-string">&#39;style&#39;</span>])
+=<span class="ruby-operator">&gt;</span> {<span class="ruby-string">&#39;style&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;astyle&#39;</span>}
 
-<span class="ruby-identifier">attrlist</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">'quote, Famous Person, Famous Book (2001)'</span>)
+<span class="ruby-identifier">attrlist</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">AttributeList</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&#39;quote, Famous Person, Famous Book (2001)&#39;</span>)
 
-<span class="ruby-identifier">attrlist</span>.<span class="ruby-identifier">parse</span>([<span class="ruby-string">'style'</span>, <span class="ruby-string">'attribution'</span>, <span class="ruby-string">'citetitle'</span>])
-=<span class="ruby-operator">&gt;</span> {<span class="ruby-string">'style'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'quote'</span>, <span class="ruby-string">'attribution'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Famous Person'</span>, <span class="ruby-string">'citetitle'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Famous Book (2001)'</span>}
+<span class="ruby-identifier">attrlist</span>.<span class="ruby-identifier">parse</span>([<span class="ruby-string">&#39;style&#39;</span>, <span class="ruby-string">&#39;attribution&#39;</span>, <span class="ruby-string">&#39;citetitle&#39;</span>])
+=<span class="ruby-operator">&gt;</span> {<span class="ruby-string">&#39;style&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;quote&#39;</span>, <span class="ruby-string">&#39;attribution&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Famous Person&#39;</span>, <span class="ruby-string">&#39;citetitle&#39;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;Famous Book (2001)&#39;</span>}
 </pre>
 
   </div><!-- description -->
@@ -513,7 +513,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/attribute_list.rb, line 48</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">block</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">quotes</span> = [<span class="ruby-string">'\'</span>, <span class="ruby-string">'&quot;'</span>], <span class="ruby-identifier">delimiter</span> = <span class="ruby-string">','</span>, <span class="ruby-identifier">escape_char</span> = <span class="ruby-string">'\'</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">source</span>, <span class="ruby-identifier">block</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">quotes</span> = [<span class="ruby-string">&#39;\&#39;</span>, <span class="ruby-string">&#39;&quot;&#39;</span>], <span class="ruby-identifier">delimiter</span> = <span class="ruby-string">&#39;,&#39;</span>, <span class="ruby-identifier">escape_char</span> = <span class="ruby-string">&#39;\&#39;</span>)
   <span class="ruby-ivar">@scanner</span> = <span class="ruby-operator">::</span><span class="ruby-constant">StringScanner</span>.<span class="ruby-identifier">new</span> <span class="ruby-identifier">source</span>
   <span class="ruby-ivar">@block</span> = <span class="ruby-identifier">block</span>
   <span class="ruby-ivar">@quotes</span> = <span class="ruby-identifier">quotes</span>
@@ -650,11 +650,11 @@ whengiven a posattrs array either during parsing or after the fact.</p>
   <span class="ruby-identifier">single_quoted_value</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-identifier">skip_blank</span>
   <span class="ruby-identifier">first</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">peek</span>(<span class="ruby-value">1</span>)
-  <span class="ruby-comment"># example: &quot;quote&quot; || 'quote'</span>
+  <span class="ruby-comment"># example: &quot;quote&quot; || &#39;quote&#39;</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@quotes</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">first</span>
     <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">name</span> = <span class="ruby-identifier">parse_attribute_value</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">get_byte</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">'\'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;\&#39;</span>
       <span class="ruby-identifier">single_quoted_value</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
@@ -675,10 +675,10 @@ whengiven a posattrs array either during parsing or after the fact.</p>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@delimiter</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-comment"># example: Sherlock Holmes || =foo=</span>
-    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">'='</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;=&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">remainder</span> = <span class="ruby-identifier">scan_to_delimiter</span>
-      <span class="ruby-identifier">name</span> = <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
-      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">' '</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">skipped</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>
+      <span class="ruby-identifier">name</span> = <span class="ruby-string">&#39;&#39;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&#39; &#39;</span> <span class="ruby-operator">*</span> <span class="ruby-identifier">skipped</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">c</span>
       <span class="ruby-identifier">name</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">remainder</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">remainder</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">value</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">else</span>
@@ -689,10 +689,10 @@ whengiven a posattrs array either during parsing or after the fact.</p>
       <span class="ruby-keyword">else</span>
         <span class="ruby-identifier">c</span> = <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">get_byte</span>
 
-        <span class="ruby-comment"># example: foo=&quot;bar&quot; || foo='bar' || foo=&quot;ba\&quot;zaar&quot; || foo='ba\'zaar' || foo='ba&quot;zaar' (all spaces ignored)</span>
+        <span class="ruby-comment"># example: foo=&quot;bar&quot; || foo=&#39;bar&#39; || foo=&quot;ba\&quot;zaar&quot; || foo=&#39;ba\&#39;zaar&#39; || foo=&#39;ba&quot;zaar&#39; (all spaces ignored)</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@quotes</span>.<span class="ruby-identifier">include?</span> <span class="ruby-identifier">c</span>
           <span class="ruby-identifier">value</span> = <span class="ruby-identifier">parse_attribute_value</span> <span class="ruby-identifier">c</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-string">'\'</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;\&#39;</span>
             <span class="ruby-identifier">single_quoted_value</span> = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
         <span class="ruby-comment"># example: foo=bar (all spaces ignored)</span>
@@ -718,10 +718,10 @@ whengiven a posattrs array either during parsing or after the fact.</p>
     <span class="ruby-identifier">resolved_value</span> = <span class="ruby-identifier">value</span>
     <span class="ruby-comment"># example: options=&quot;opt1,opt2,opt3&quot;</span>
     <span class="ruby-comment"># opts is an alias for options</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'options'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">'opts'</span>
-      <span class="ruby-identifier">name</span> = <span class="ruby-string">'options'</span>
-      <span class="ruby-identifier">resolved_value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">','</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
-        <span class="ruby-ivar">@attributes</span>[<span class="ruby-node">&quot;#{o.strip}-option&quot;</span>] = <span class="ruby-string">''</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;options&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;opts&#39;</span>
+      <span class="ruby-identifier">name</span> = <span class="ruby-string">&#39;options&#39;</span>
+      <span class="ruby-identifier">resolved_value</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&#39;,&#39;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">o</span><span class="ruby-operator">|</span>
+        <span class="ruby-ivar">@attributes</span>[<span class="ruby-node">&quot;#{o.strip}-option&quot;</span>] = <span class="ruby-string">&#39;&#39;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">single_quoted_value</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@block</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-identifier">resolved_value</span> = <span class="ruby-ivar">@block</span>.<span class="ruby-identifier">apply_normal_subs</span>(<span class="ruby-identifier">value</span>)
@@ -765,7 +765,7 @@ whengiven a posattrs array either during parsing or after the fact.</p>
   <span class="ruby-comment"># empty quoted value</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">peek</span>(<span class="ruby-value">1</span>) <span class="ruby-operator">==</span> <span class="ruby-identifier">quote</span>
     <span class="ruby-ivar">@scanner</span>.<span class="ruby-identifier">get_byte</span> 
-    <span class="ruby-keyword">return</span> <span class="ruby-string">''</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-string">&#39;&#39;</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">value</span> = <span class="ruby-identifier">scan_to_quote</span> <span class="ruby-identifier">quote</span>

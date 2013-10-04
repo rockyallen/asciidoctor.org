@@ -466,7 +466,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">anchor</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">text</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">document</span>, <span class="ruby-identifier">node</span>)
   <span class="ruby-keyword">case</span> <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:xref</span>
-    <span class="ruby-identifier">refid</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'refid'</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">target</span>
+    <span class="ruby-identifier">refid</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">&#39;refid&#39;</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">target</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-comment"># FIXME this seems like it should be prepared already</span>
       <span class="ruby-identifier">text</span> = <span class="ruby-identifier">document</span>.<span class="ruby-identifier">references</span>[<span class="ruby-value">:ids</span>].<span class="ruby-identifier">fetch</span>(<span class="ruby-identifier">refid</span>, <span class="ruby-node">&quot;[#{refid}]&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">text</span>.<span class="ruby-identifier">nil?</span>
@@ -475,7 +475,7 @@
   <span class="ruby-keyword">when</span> <span class="ruby-value">:ref</span>
     <span class="ruby-node">%Q(&lt;a id=&quot;#{target}&quot;&gt;&lt;/a&gt;)</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:link</span>
-    <span class="ruby-node">%Q(&lt;a href=&quot;#{target}&quot;#{node.role? ? &quot; class=\&quot;#{node.role}\&quot;&quot; : nil}#{(node.attr? 'window') ? &quot; target=\&quot;#{node.attr 'window'}\&quot;&quot; : nil}&gt;#{text}&lt;/a&gt;)</span>
+    <span class="ruby-node">%Q(&lt;a href=&quot;#{target}&quot;#{node.role? ? &quot; class=\&quot;#{node.role}\&quot;&quot; : nil}#{(node.attr? &#39;window&#39;) ? &quot; target=\&quot;#{node.attr &#39;window&#39;}\&quot;&quot; : nil}&gt;#{text}&lt;/a&gt;)</span>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:bibref</span>
     <span class="ruby-node">%Q(&lt;a id=&quot;#{target}&quot;&gt;&lt;/a&gt;[#{target}])</span>
   <span class="ruby-keyword">end</span>

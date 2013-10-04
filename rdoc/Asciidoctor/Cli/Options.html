@@ -475,10 +475,10 @@ command line</p>
   <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:template_dirs</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_engine</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:template_engine</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:doctype</span>]
-    <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'doctype'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:doctype</span>]
+    <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">&#39;doctype&#39;</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:doctype</span>]
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:backend</span>]
-    <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'backend'</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:backend</span>]
+    <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">&#39;backend&#39;</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:backend</span>]
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">self</span>[<span class="ruby-value">:eruby</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:eruby</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">self</span>[<span class="ruby-value">:compact</span>] = <span class="ruby-identifier">options</span>[<span class="ruby-value">:compact</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
@@ -566,58 +566,58 @@ Example: asciidoctor -b html5 source.asciidoc
 
           EOS</span>
 
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-v'</span>, <span class="ruby-string">'--verbose'</span>, <span class="ruby-string">'enable verbose mode (default: false)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verbose</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-v&#39;</span>, <span class="ruby-string">&#39;--verbose&#39;</span>, <span class="ruby-string">&#39;enable verbose mode (default: false)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">verbose</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:verbose</span>] = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-b'</span>, <span class="ruby-string">'--backend BACKEND'</span>, <span class="ruby-string">'set output format backend (default: html5)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">backend</span><span class="ruby-operator">|</span>
-            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'backend'</span>] = <span class="ruby-identifier">backend</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-b&#39;</span>, <span class="ruby-string">&#39;--backend BACKEND&#39;</span>, <span class="ruby-string">&#39;set output format backend (default: html5)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">backend</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">&#39;backend&#39;</span>] = <span class="ruby-identifier">backend</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-d'</span>, <span class="ruby-string">'--doctype DOCTYPE'</span>, [<span class="ruby-string">'article'</span>, <span class="ruby-string">'book'</span>, <span class="ruby-string">'manpage'</span>, <span class="ruby-string">'inline'</span>],
-                  <span class="ruby-string">'document type to use when rendering output: [article, book, manpage, inline] (default: article)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc_type</span><span class="ruby-operator">|</span>
-            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'doctype'</span>] = <span class="ruby-identifier">doc_type</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-d&#39;</span>, <span class="ruby-string">&#39;--doctype DOCTYPE&#39;</span>, [<span class="ruby-string">&#39;article&#39;</span>, <span class="ruby-string">&#39;book&#39;</span>, <span class="ruby-string">&#39;manpage&#39;</span>, <span class="ruby-string">&#39;inline&#39;</span>],
+                  <span class="ruby-string">&#39;document type to use when rendering output: [article, book, manpage, inline] (default: article)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">doc_type</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">&#39;doctype&#39;</span>] = <span class="ruby-identifier">doc_type</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-o'</span>, <span class="ruby-string">'--out-file FILE'</span>, <span class="ruby-string">'output file (default: based on input file path); use - to output to STDOUT'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output_file</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-o&#39;</span>, <span class="ruby-string">&#39;--out-file FILE&#39;</span>, <span class="ruby-string">&#39;output file (default: based on input file path); use - to output to STDOUT&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">output_file</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:output_file</span>] = <span class="ruby-identifier">output_file</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--safe'</span>,
-                  <span class="ruby-string">'set safe mode level to safe (default: unsafe)'</span>,
-                  <span class="ruby-string">'enables include macros, but restricts access to ancestor paths of source file'</span>,
-                  <span class="ruby-string">'provided for compatibility with the asciidoc command'</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;--safe&#39;</span>,
+                  <span class="ruby-string">&#39;set safe mode level to safe (default: unsafe)&#39;</span>,
+                  <span class="ruby-string">&#39;enables include macros, but restricts access to ancestor paths of source file&#39;</span>,
+                  <span class="ruby-string">&#39;provided for compatibility with the asciidoc command&#39;</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:safe</span>] = <span class="ruby-constant">SafeMode</span><span class="ruby-operator">::</span><span class="ruby-constant">SAFE</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-S'</span>, <span class="ruby-string">'--safe-mode SAFE_MODE'</span>, [<span class="ruby-string">'unsafe'</span>, <span class="ruby-string">'safe'</span>, <span class="ruby-string">'server'</span>, <span class="ruby-string">'secure'</span>],
-                  <span class="ruby-string">'set safe mode level explicitly: [unsafe, safe, server, secure] (default: unsafe)'</span>,
-                  <span class="ruby-string">'disables potentially dangerous macros in source files, such as include::[]'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">safe_mode</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-S&#39;</span>, <span class="ruby-string">&#39;--safe-mode SAFE_MODE&#39;</span>, [<span class="ruby-string">&#39;unsafe&#39;</span>, <span class="ruby-string">&#39;safe&#39;</span>, <span class="ruby-string">&#39;server&#39;</span>, <span class="ruby-string">&#39;secure&#39;</span>],
+                  <span class="ruby-string">&#39;set safe mode level explicitly: [unsafe, safe, server, secure] (default: unsafe)&#39;</span>,
+                  <span class="ruby-string">&#39;disables potentially dangerous macros in source files, such as include::[]&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">safe_mode</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:safe</span>] = <span class="ruby-constant">SafeMode</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">safe_mode</span>.<span class="ruby-identifier">upcase</span>)
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-s'</span>, <span class="ruby-string">'--no-header-footer'</span>, <span class="ruby-string">'suppress output of header and footer (default: false)'</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-s&#39;</span>, <span class="ruby-string">&#39;--no-header-footer&#39;</span>, <span class="ruby-string">&#39;suppress output of header and footer (default: false)&#39;</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:header_footer</span>] = <span class="ruby-keyword">false</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-n'</span>, <span class="ruby-string">'--section-numbers'</span>, <span class="ruby-string">'auto-number section titles in the HTML backend; disabled by default'</span>) <span class="ruby-keyword">do</span>
-            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">'numbered'</span>] = <span class="ruby-string">''</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-n&#39;</span>, <span class="ruby-string">&#39;--section-numbers&#39;</span>, <span class="ruby-string">&#39;auto-number section titles in the HTML backend; disabled by default&#39;</span>) <span class="ruby-keyword">do</span>
+            <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-string">&#39;numbered&#39;</span>] = <span class="ruby-string">&#39;&#39;</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-e'</span>, <span class="ruby-string">'--eruby ERUBY'</span>, [<span class="ruby-string">'erb'</span>, <span class="ruby-string">'erubis'</span>],
-                  <span class="ruby-string">'specify eRuby implementation to render built-in templates: [erb, erubis] (default: erb)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">eruby</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-e&#39;</span>, <span class="ruby-string">&#39;--eruby ERUBY&#39;</span>, [<span class="ruby-string">&#39;erb&#39;</span>, <span class="ruby-string">&#39;erubis&#39;</span>],
+                  <span class="ruby-string">&#39;specify eRuby implementation to render built-in templates: [erb, erubis] (default: erb)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">eruby</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:eruby</span>] = <span class="ruby-identifier">eruby</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-C'</span>, <span class="ruby-string">'--compact'</span>, <span class="ruby-string">'compact the output by removing blank lines (default: false)'</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-C&#39;</span>, <span class="ruby-string">&#39;--compact&#39;</span>, <span class="ruby-string">&#39;compact the output by removing blank lines (default: false)&#39;</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:compact</span>] = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-a'</span>, <span class="ruby-string">'--attribute key[=value],key2[=value2],...'</span>, <span class="ruby-constant">Array</span>,
-                  <span class="ruby-string">'a list of document attributes to set in the form of key, key! or key=value pair'</span>,
-                  <span class="ruby-string">'unless @ is appended to the value, these attributes take precedence over attributes'</span>,
-                  <span class="ruby-string">'defined in the source document'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribs</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-a&#39;</span>, <span class="ruby-string">&#39;--attribute key[=value],key2[=value2],...&#39;</span>, <span class="ruby-constant">Array</span>,
+                  <span class="ruby-string">&#39;a list of document attributes to set in the form of key, key! or key=value pair&#39;</span>,
+                  <span class="ruby-string">&#39;unless @ is appended to the value, these attributes take precedence over attributes&#39;</span>,
+                  <span class="ruby-string">&#39;defined in the source document&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attribs</span><span class="ruby-operator">|</span>
             <span class="ruby-identifier">attribs</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">attrib</span><span class="ruby-operator">|</span>
-              <span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attrib</span>.<span class="ruby-identifier">split</span> <span class="ruby-string">'='</span>, <span class="ruby-value">2</span>
+              <span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span> = <span class="ruby-identifier">attrib</span>.<span class="ruby-identifier">split</span> <span class="ruby-string">&#39;=&#39;</span>, <span class="ruby-value">2</span>
               <span class="ruby-comment"># move leading ! to end for internal processing</span>
-              <span class="ruby-comment">#if val.nil? &amp;&amp; key.start_with?('!')</span>
+              <span class="ruby-comment">#if val.nil? &amp;&amp; key.start_with?(&#39;!&#39;)</span>
               <span class="ruby-comment">#  key = &quot;#{key[1..-1]}!&quot;</span>
               <span class="ruby-comment">#end</span>
-              <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span> <span class="ruby-operator">||</span> <span class="ruby-string">''</span>
+              <span class="ruby-keyword">self</span>[<span class="ruby-value">:attributes</span>][<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span> <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&#39;</span>
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-T'</span>, <span class="ruby-string">'--template-dir DIR'</span>, <span class="ruby-string">'a directory containing custom render templates that override the built-in set (requires tilt gem)'</span>,
-                  <span class="ruby-string">'may be specified multiple times'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template_dir</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-T&#39;</span>, <span class="ruby-string">&#39;--template-dir DIR&#39;</span>, <span class="ruby-string">&#39;a directory containing custom render templates that override the built-in set (requires tilt gem)&#39;</span>,
+                  <span class="ruby-string">&#39;may be specified multiple times&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template_dir</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>].<span class="ruby-identifier">nil?</span>
               <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>] = [<span class="ruby-identifier">template_dir</span>]
             <span class="ruby-keyword">elsif</span> <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>].<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
@@ -626,25 +626,25 @@ Example: asciidoctor -b html5 source.asciidoc
               <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>] = [<span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>], <span class="ruby-identifier">template_dir</span>]
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-E'</span>, <span class="ruby-string">'--template-engine NAME'</span>, <span class="ruby-string">'template engine to use for the custom render templates (loads gem on demand)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template_engine</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-E&#39;</span>, <span class="ruby-string">&#39;--template-engine NAME&#39;</span>, <span class="ruby-string">&#39;template engine to use for the custom render templates (loads gem on demand)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">template_engine</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:template_engine</span>] = <span class="ruby-identifier">template_engine</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-B'</span>, <span class="ruby-string">'--base-dir DIR'</span>, <span class="ruby-string">'base directory containing the document and resources (default: directory of source file)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">base_dir</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-B&#39;</span>, <span class="ruby-string">&#39;--base-dir DIR&#39;</span>, <span class="ruby-string">&#39;base directory containing the document and resources (default: directory of source file)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">base_dir</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:base_dir</span>] = <span class="ruby-identifier">base_dir</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'-D'</span>, <span class="ruby-string">'--destination-dir DIR'</span>, <span class="ruby-string">'destination output directory (default: directory of source file)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dest_dir</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;-D&#39;</span>, <span class="ruby-string">&#39;--destination-dir DIR&#39;</span>, <span class="ruby-string">&#39;destination output directory (default: directory of source file)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dest_dir</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:destination_dir</span>] = <span class="ruby-identifier">dest_dir</span>
           <span class="ruby-keyword">end</span>
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">'--trace'</span>, <span class="ruby-string">'include backtrace information on errors (default: false)'</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">trace</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on</span>(<span class="ruby-string">&#39;--trace&#39;</span>, <span class="ruby-string">&#39;include backtrace information on errors (default: false)&#39;</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">trace</span><span class="ruby-operator">|</span>
             <span class="ruby-keyword">self</span>[<span class="ruby-value">:trace</span>] = <span class="ruby-keyword">true</span>
           <span class="ruby-keyword">end</span>
 
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">'-h'</span>, <span class="ruby-string">'--help'</span>, <span class="ruby-string">'show this message'</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">&#39;-h&#39;</span>, <span class="ruby-string">&#39;--help&#39;</span>, <span class="ruby-string">&#39;show this message&#39;</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-identifier">opts</span>
             <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
           <span class="ruby-keyword">end</span>
 
-          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">'-V'</span>, <span class="ruby-string">'--version'</span>, <span class="ruby-string">'display the version'</span>) <span class="ruby-keyword">do</span>
+          <span class="ruby-identifier">opts</span>.<span class="ruby-identifier">on_tail</span>(<span class="ruby-string">&#39;-V&#39;</span>, <span class="ruby-string">&#39;--version&#39;</span>, <span class="ruby-string">&#39;display the version&#39;</span>) <span class="ruby-keyword">do</span>
             <span class="ruby-identifier">$stdout</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Asciidoctor #{Asciidoctor::VERSION} [http://asciidoctor.org]&quot;</span>
             <span class="ruby-keyword">return</span> <span class="ruby-value">0</span>
           <span class="ruby-keyword">end</span>
@@ -661,13 +661,13 @@ Example: asciidoctor -b html5 source.asciidoc
           <span class="ruby-keyword">end</span>
 
           <span class="ruby-comment"># shave off the file to process so that options errors appear correctly</span>
-          <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span>
             <span class="ruby-identifier">infiles</span>.<span class="ruby-identifier">push</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">pop</span>
           <span class="ruby-keyword">elsif</span>
             <span class="ruby-identifier">args</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-              <span class="ruby-keyword">if</span> (<span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'-'</span>))
-                <span class="ruby-comment"># warn, but don't panic; we may have enough to proceed, so we won't force a failure</span>
-                <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: extra arguments detected (unparsed arguments: #{args.map{|a| &quot;'#{a}'&quot;} * ', '}) or incorrect usage of stdin&quot;</span>
+              <span class="ruby-keyword">if</span> (<span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;-&#39;</span>))
+                <span class="ruby-comment"># warn, but don&#39;t panic; we may have enough to proceed, so we won&#39;t force a failure</span>
+                <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: WARNING: extra arguments detected (unparsed arguments: #{args.map{|a| &quot;&#39;#{a}&#39;&quot;} * &#39;, &#39;}) or incorrect usage of stdin&quot;</span>
               <span class="ruby-keyword">else</span>
                 <span class="ruby-comment"># TODO this glob may not be necessary as the shell should have already performed expansion</span>
                 <span class="ruby-identifier">matches</span> = <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span> <span class="ruby-identifier">file</span>
@@ -683,7 +683,7 @@ Example: asciidoctor -b html5 source.asciidoc
           <span class="ruby-keyword">end</span>
 
           <span class="ruby-identifier">infiles</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-            <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">'-'</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
+            <span class="ruby-keyword">unless</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;-&#39;</span> <span class="ruby-operator">||</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file</span>)
               <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;asciidoctor: FAILED: input file #{file} missing or cannot be read&quot;</span>
               <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
             <span class="ruby-keyword">end</span>
@@ -693,9 +693,9 @@ Example: asciidoctor -b html5 source.asciidoc
 
           <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-keyword">self</span>[<span class="ruby-value">:template_dirs</span>].<span class="ruby-identifier">nil?</span>
             <span class="ruby-keyword">begin</span>
-              <span class="ruby-identifier">require</span> <span class="ruby-string">'tilt'</span>
+              <span class="ruby-identifier">require</span> <span class="ruby-string">&#39;tilt&#39;</span>
             <span class="ruby-keyword">rescue</span> <span class="ruby-constant">LoadError</span>
-              <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">'asciidoctor: FAILED: tilt could not be loaded; to use a custom backend, you must have the tilt gem installed (gem install tilt)'</span>
+              <span class="ruby-identifier">$stderr</span>.<span class="ruby-identifier">puts</span> <span class="ruby-string">&#39;asciidoctor: FAILED: tilt could not be loaded; to use a custom backend, you must have the tilt gem installed (gem install tilt)&#39;</span>
               <span class="ruby-keyword">return</span> <span class="ruby-value">1</span>
             <span class="ruby-keyword">end</span>
           <span class="ruby-keyword">end</span>

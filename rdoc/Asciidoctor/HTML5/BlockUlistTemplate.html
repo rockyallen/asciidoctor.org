@@ -464,19 +464,19 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
   <span class="ruby-identifier">result_buffer</span> = []
   <span class="ruby-identifier">id_attribute</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( id=&quot;#{node.id}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">div_classes</span> = [<span class="ruby-string">'ulist'</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
+  <span class="ruby-identifier">div_classes</span> = [<span class="ruby-string">&#39;ulist&#39;</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
   <span class="ruby-identifier">marker_checked</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">checklist</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">'checklist'</span>))
-    <span class="ruby-identifier">div_classes</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">1</span>, <span class="ruby-string">'checklist'</span>)
-    <span class="ruby-identifier">ul_class_attribute</span> = <span class="ruby-string">' class=&quot;checklist&quot;'</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">'interactive'</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-identifier">checklist</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">&#39;checklist&#39;</span>))
+    <span class="ruby-identifier">div_classes</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">1</span>, <span class="ruby-string">&#39;checklist&#39;</span>)
+    <span class="ruby-identifier">ul_class_attribute</span> = <span class="ruby-string">&#39; class=&quot;checklist&quot;&#39;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">&#39;interactive&#39;</span>
       <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;1&quot; checked&gt; )</span>
       <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;0&quot;&gt; )</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>, <span class="ruby-string">'font'</span>
-        <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check&quot;&gt;&lt;/i&gt; '</span>
-        <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">'&lt;i class=&quot;icon-check-empty&quot;&gt;&lt;/i&gt; '</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icons&#39;</span>, <span class="ruby-string">&#39;font&#39;</span>
+        <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">&#39;&lt;i class=&quot;icon-check&quot;&gt;&lt;/i&gt; &#39;</span>
+        <span class="ruby-identifier">marker_unchecked</span> = <span class="ruby-string">&#39;&lt;i class=&quot;icon-check-empty&quot;&gt;&lt;/i&gt; &#39;</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-comment"># could use &amp;#9745 (checked ballot) and &amp;#9744 (ballot) w/o font instead</span>
         <span class="ruby-identifier">marker_checked</span> = <span class="ruby-string">%Q(&lt;input type=&quot;checkbox&quot; data-item-complete=&quot;1&quot; checked disabled&gt; )</span>
@@ -488,25 +488,25 @@
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">ul_class_attribute</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
-  <span class="ruby-identifier">div_class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{div_classes * ' '}&quot;)</span>
+  <span class="ruby-identifier">div_class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{div_classes * &#39; &#39;}&quot;)</span>
   <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;div#{id_attribute}#{div_class_attribute}&gt;)</span>
   <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;div class=&quot;title&quot;&gt;#{node.title}&lt;/div&gt;)</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title?</span>
   <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;ul#{ul_class_attribute}&gt;)</span>
 
   <span class="ruby-identifier">node</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">checklist</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'checkbox'</span>)
-      <span class="ruby-identifier">marker</span> = (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'checked'</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">marker_checked</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">marker_unchecked</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">checklist</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;checkbox&#39;</span>)
+      <span class="ruby-identifier">marker</span> = (<span class="ruby-identifier">item</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;checked&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">marker_checked</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">marker_unchecked</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">marker</span> = <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;li&gt;'</span>
+    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;li&gt;&#39;</span>
     <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;p&gt;#{marker}#{item.text}&lt;/p&gt;)</span>
     <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">content</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>.<span class="ruby-identifier">blocks?</span>
-    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/li&gt;'</span>
+    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/li&gt;&#39;</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/ul&gt;'</span>
-  <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/div&gt;'</span>
+  <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/ul&gt;&#39;</span>
+  <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
 
   <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">*</span> <span class="ruby-constant">EOL</span>
 <span class="ruby-keyword">end</span></pre>

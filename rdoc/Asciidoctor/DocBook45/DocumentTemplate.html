@@ -468,10 +468,10 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">author</span> <span class="ruby-identifier">indexed</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-value">&lt;&lt;-EOF
 &lt;author&gt;
-#{tag 'firstname', indexed ? :&quot;firstname_\#{idx}&quot; : :firstname, indexed}
-#{tag 'othername', indexed ? :&quot;middlename_\#{idx}&quot; : :middlename, indexed}
-#{tag 'surname', indexed ? :&quot;lastname_\#{idx}&quot; : :lastname, indexed}
-#{tag 'email', indexed ? :&quot;email_\#{idx}&quot; : :email, indexed}
+#{tag &#39;firstname&#39;, indexed ? :&quot;firstname_\#{idx}&quot; : :firstname, indexed}
+#{tag &#39;othername&#39;, indexed ? :&quot;middlename_\#{idx}&quot; : :middlename, indexed}
+#{tag &#39;surname&#39;, indexed ? :&quot;lastname_\#{idx}&quot; : :lastname, indexed}
+#{tag &#39;email&#39;, indexed ? :&quot;email_\#{idx}&quot; : :email, indexed}
 &lt;/author&gt;
     EOF</span>
   <span class="ruby-keyword">end</span></pre>
@@ -507,7 +507,7 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 53</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">docinfo</span>
     <span class="ruby-value">&lt;&lt;-EOF
-&lt;% unless notitle %&gt;&lt;%= has_header? ? template.title_tags(@header.title) : %(&lt;title&gt;\#{attr 'untitled-label'}&lt;/title&gt;) %&gt;&lt;% end
+&lt;% unless notitle %&gt;&lt;%= has_header? ? template.title_tags(@header.title) : %(&lt;title&gt;\#{attr &#39;untitled-label&#39;}&lt;/title&gt;) %&gt;&lt;% end
 if attr? :revdate %&gt;
 &lt;date&gt;&lt;%= attr :revdate %&gt;&lt;/date&gt;&lt;%
 else %&gt;
@@ -517,7 +517,7 @@ if has_header?
   if attr? :author
     if (attr :authorcount).to_i &lt; 2 %&gt;
 #{author}
-#{tag 'authorinitials', :authorinitials}&lt;%
+#{tag &#39;authorinitials&#39;, :authorinitials}&lt;%
     else %&gt;
 &lt;authorgroup&gt;&lt;%
       (1..((attr :authorcount).to_i)).each do |idx| %&gt;
@@ -529,15 +529,15 @@ if has_header?
   if (attr? :revnumber) || (attr? :revremark) %&gt;
 &lt;revhistory&gt;
 &lt;revision&gt;
-#{tag 'revnumber', :revnumber}
-#{tag 'date', :revdate}
-#{tag 'authorinitials', :authorinitials}
-#{tag 'revremark', :revremark}
+#{tag &#39;revnumber&#39;, :revnumber}
+#{tag &#39;date&#39;, :revdate}
+#{tag &#39;authorinitials&#39;, :authorinitials}
+#{tag &#39;revremark&#39;, :revremark}
 &lt;/revision&gt;
 &lt;/revhistory&gt;&lt;%
   end %&gt;
 &lt;%= docinfo %&gt;
-#{tag 'orgname', :orgname}&lt;%
+#{tag &#39;orgname&#39;, :orgname}&lt;%
 end %&gt;
     EOF</span>
   <span class="ruby-keyword">end</span></pre>
@@ -581,8 +581,8 @@ end
 if attr? :numbered %&gt;
 &lt;?asciidoc-numbered?&gt;&lt;%
 end
-if doctype == 'book' %&gt;
-&lt;book&lt;% unless attr? :noxmlns %&gt; xmlns=&quot;http://docbook.org/ns/docbook&quot;&lt;% end %&gt;&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&lt;% end %&gt;&gt;
+if doctype == &#39;book&#39; %&gt;
+&lt;book&lt;% unless attr? :noxmlns %&gt; xmlns=&quot;http://docbook.org/ns/docbook&quot;&lt;% end %&gt;&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, &#39;en&#39; %&gt;&quot;&lt;% end %&gt;&gt;
 &lt;bookinfo&gt;
 #{docinfo}
 &lt;/bookinfo&gt;
@@ -590,7 +590,7 @@ if doctype == 'book' %&gt;
 \#{docinfo_content}) %&gt;
 &lt;/book&gt;&lt;%
 else %&gt;
-&lt;article&lt;% unless attr? :noxmlns %&gt; xmlns=&quot;http://docbook.org/ns/docbook&quot;&lt;% end %&gt;&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, 'en' %&gt;&quot;&lt;% end %&gt;&gt;
+&lt;article&lt;% unless attr? :noxmlns %&gt; xmlns=&quot;http://docbook.org/ns/docbook&quot;&lt;% end %&gt;&lt;% unless attr? :nolang %&gt; lang=&quot;&lt;%= attr :lang, &#39;en&#39; %&gt;&quot;&lt;% end %&gt;&gt;
 &lt;articleinfo&gt;
 #{docinfo}
 &lt;/articleinfo&gt;
@@ -631,8 +631,8 @@ end %&gt;
           <div class="method-source-code" id="title_tags-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 43</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">title_tags</span>(<span class="ruby-identifier">str</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">': '</span>)
-      <span class="ruby-identifier">title</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">subtitle</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">rpartition</span>(<span class="ruby-string">': '</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;: &#39;</span>)
+      <span class="ruby-identifier">title</span>, <span class="ruby-identifier">_</span>, <span class="ruby-identifier">subtitle</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">rpartition</span>(<span class="ruby-string">&#39;: &#39;</span>)
       <span class="ruby-node">%Q(&lt;title&gt;#{title}&lt;/title&gt;
 &lt;subtitle&gt;#{subtitle}&lt;/subtitle&gt;)</span>
     <span class="ruby-keyword">else</span>

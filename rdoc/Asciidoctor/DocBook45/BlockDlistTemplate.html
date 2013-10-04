@@ -477,8 +477,8 @@
     <span class="ruby-comment"># that change would drastically simplify this template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
 &lt;%#encoding:UTF-8%&gt;&lt;%
-if @style == 'horizontal'
-%&gt;&lt;&lt;%= (tag = title? ? 'table' : 'informaltable') %&gt;#{common_attrs_erb} tabstyle=&quot;horizontal&quot; frame=&quot;none&quot; colsep=&quot;0&quot; rowsep=&quot;0&quot;&gt;#{title_tag}
+if @style == &#39;horizontal&#39;
+%&gt;&lt;&lt;%= (tag = title? ? &#39;table&#39; : &#39;informaltable&#39;) %&gt;#{common_attrs_erb} tabstyle=&quot;horizontal&quot; frame=&quot;none&quot; colsep=&quot;0&quot; rowsep=&quot;0&quot;&gt;#{title_tag}
 &lt;tgroup cols=&quot;2&quot;&gt;
 &lt;colspec colwidth=&quot;&lt;%= attr :labelwidth, 15 %&gt;*&quot;/&gt;
 &lt;colspec colwidth=&quot;&lt;%= attr :labelwidth, 85 %&gt;*&quot;/&gt;
@@ -506,7 +506,7 @@ if @style == 'horizontal'
 &lt;/tgroup&gt;
 &lt;/&lt;%= tag %&gt;&gt;&lt;%
 else
-  tags = (template.class::LIST_TAGS[@style] || template.class::LIST_TAGS['labeled'])
+  tags = (template.class::LIST_TAGS[@style] || template.class::LIST_TAGS[&#39;labeled&#39;])
   if tags[:list]
 %&gt;&lt;&lt;%= tags[:list] %&gt;#{common_attrs_erb}&gt;#{title_tag}&lt;%
   end

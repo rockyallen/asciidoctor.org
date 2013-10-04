@@ -463,16 +463,16 @@
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
 &lt;%#encoding:UTF-8%&gt;&lt;%
 if !title?
-  if @style == 'source' &amp;&amp; (attr? 'language')
-%&gt;&lt;programlisting#{common_attrs_erb}#{attribute('language', :language)} linenumbering=&quot;&lt;%= (attr? :linenums) ? 'numbered' : 'unnumbered' %&gt;&quot;&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/programlisting&gt;&lt;%
+  if @style == &#39;source&#39; &amp;&amp; (attr? &#39;language&#39;)
+%&gt;&lt;programlisting#{common_attrs_erb}#{attribute(&#39;language&#39;, :language)} linenumbering=&quot;&lt;%= (attr? :linenums) ? &#39;numbered&#39; : &#39;unnumbered&#39; %&gt;&quot;&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/programlisting&gt;&lt;%
   else
 %&gt;&lt;screen#{common_attrs_erb}&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/screen&gt;&lt;%
   end
 else
 %&gt;&lt;formalpara#{common_attrs_erb}&gt;#{title_tag false}
 &lt;para&gt;&lt;%
-  if @style == 'source' &amp;&amp; (attr? 'language') %&gt;
-&lt;programlisting language=&quot;&lt;%= attr 'language' %&gt;&quot; linenumbering=&quot;&lt;%= (attr? :linenums) ? 'numbered' : 'unnumbered' %&gt;&quot;&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/programlisting&gt;&lt;%
+  if @style == &#39;source&#39; &amp;&amp; (attr? &#39;language&#39;) %&gt;
+&lt;programlisting language=&quot;&lt;%= attr &#39;language&#39; %&gt;&quot; linenumbering=&quot;&lt;%= (attr? :linenums) ? &#39;numbered&#39; : &#39;unnumbered&#39; %&gt;&quot;&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/programlisting&gt;&lt;%
   else %&gt;
 &lt;screen&gt;&lt;%= template.preserve_endlines(content, self) %&gt;&lt;/screen&gt;&lt;%
   end %&gt;

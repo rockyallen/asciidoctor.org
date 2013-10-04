@@ -490,27 +490,27 @@
   <span class="ruby-ivar">@rowspan</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-comment"># TODO feels hacky</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">column</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-ivar">@style</span> = <span class="ruby-identifier">column</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>]
+    <span class="ruby-ivar">@style</span> = <span class="ruby-identifier">column</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>]
     <span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">column</span>.<span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">nil?</span>
-    <span class="ruby-ivar">@colspan</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'colspan'</span>)
-    <span class="ruby-ivar">@rowspan</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'rowspan'</span>)
+    <span class="ruby-ivar">@colspan</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;colspan&#39;</span>)
+    <span class="ruby-ivar">@rowspan</span> = <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;rowspan&#39;</span>)
     <span class="ruby-comment"># TODO eventualy remove the style attribute from the attributes hash</span>
-    <span class="ruby-comment">#@style = attributes.delete('style') if attributes.has_key? 'style'</span>
-    <span class="ruby-ivar">@style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">'style'</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">'style'</span>
+    <span class="ruby-comment">#@style = attributes.delete(&#39;style&#39;) if attributes.has_key? &#39;style&#39;</span>
+    <span class="ruby-ivar">@style</span> = <span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;style&#39;</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-string">&#39;style&#39;</span>
     <span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">attributes</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-comment"># only allow AsciiDoc cells in non-header rows</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@style</span> <span class="ruby-operator">==</span> <span class="ruby-value">:asciidoc</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">column</span>.<span class="ruby-identifier">table</span>.<span class="ruby-identifier">header_row?</span>
     <span class="ruby-comment"># FIXME hide doctitle from nested document; temporary workaround to fix</span>
     <span class="ruby-comment"># nested document seeing doctitle and assuming it has its own document title</span>
-    <span class="ruby-identifier">parent_doctitle</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">'doctitle'</span>)
+    <span class="ruby-identifier">parent_doctitle</span> = <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-string">&#39;doctitle&#39;</span>)
     <span class="ruby-comment"># NOTE we need to process the first line of content as it may not have been processed</span>
     <span class="ruby-comment"># the included content cannot expect to match conditional terminators in the remaining</span>
     <span class="ruby-comment"># lines of table cell content, it must be self-contained logic</span>
     <span class="ruby-identifier">inner_document_lines</span> = <span class="ruby-ivar">@text</span>.<span class="ruby-identifier">each_line</span>.<span class="ruby-identifier">to_a</span>
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">inner_document_lines</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">inner_document_lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">'::'</span>)
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">inner_document_lines</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-identifier">inner_document_lines</span>.<span class="ruby-identifier">first</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;::&#39;</span>)
       <span class="ruby-identifier">unprocessed_lines</span> = <span class="ruby-identifier">inner_document_lines</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">0</span>]
       <span class="ruby-identifier">processed_lines</span> = <span class="ruby-constant">PreprocessorReader</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@document</span>, <span class="ruby-identifier">unprocessed_lines</span>).<span class="ruby-identifier">readlines</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">processed_lines</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">unprocessed_lines</span>
@@ -519,7 +519,7 @@
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
     <span class="ruby-ivar">@inner_document</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">inner_document_lines</span>, <span class="ruby-value">:header_footer</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:parent</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@document</span>, <span class="ruby-value">:cursor</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">cursor</span>)
-    <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">'doctitle'</span>] = <span class="ruby-identifier">parent_doctitle</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent_doctitle</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-ivar">@document</span>.<span class="ruby-identifier">attributes</span>[<span class="ruby-string">&#39;doctitle&#39;</span>] = <span class="ruby-identifier">parent_doctitle</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">parent_doctitle</span>.<span class="ruby-identifier">nil?</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->

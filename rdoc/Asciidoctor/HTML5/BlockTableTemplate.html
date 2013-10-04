@@ -461,15 +461,15 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 800</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
-&lt;%#encoding:UTF-8%&gt;&lt;table&lt;%= @id ? %( id=&quot;\#{@id}&quot;) : nil %&gt; class=&quot;tableblock frame-&lt;%= attr :frame, 'all' %&gt; grid-&lt;%= attr :grid, 'all'%&gt;&lt;%= role? ? &quot; \#{role}&quot; : nil %&gt;&quot; style=&quot;&lt;%
-if !(option? 'autowidth') %&gt;width:&lt;%= attr :tablepcwidth %&gt;%; &lt;% end %&gt;&lt;%
+&lt;%#encoding:UTF-8%&gt;&lt;table&lt;%= @id ? %( id=&quot;\#{@id}&quot;) : nil %&gt; class=&quot;tableblock frame-&lt;%= attr :frame, &#39;all&#39; %&gt; grid-&lt;%= attr :grid, &#39;all&#39;%&gt;&lt;%= role? ? &quot; \#{role}&quot; : nil %&gt;&quot; style=&quot;&lt;%
+if !(option? &#39;autowidth&#39;) %&gt;width:&lt;%= attr :tablepcwidth %&gt;%; &lt;% end %&gt;&lt;%
 if attr? :float %&gt;float: &lt;%= attr :float %&gt;; &lt;% end %&gt;&quot;&gt;&lt;%
 if title? %&gt;
 &lt;caption class=&quot;title&quot;&gt;&lt;%= captioned_title %&gt;&lt;/caption&gt;&lt;%
 end
 if (attr :rowcount) &gt;= 0 %&gt;
 &lt;colgroup&gt;&lt;%
-  if option? 'autowidth'
+  if option? &#39;autowidth&#39;
     @columns.each do %&gt;
 &lt;col&gt;&lt;%
     end
@@ -484,8 +484,8 @@ if (attr :rowcount) &gt;= 0 %&gt;
     @rows[tsec].each do |row| %&gt;
 &lt;tr&gt;&lt;%
       row.each do |cell| %&gt;
-&lt;&lt;%= tsec == :head ? 'th' : 'td' %&gt; class=&quot;tableblock halign-&lt;%= cell.attr :halign %&gt; valign-&lt;%= cell.attr :valign %&gt;&quot;#{attribute('colspan', 'cell.colspan')}#{attribute('rowspan', 'cell.rowspan')}&lt;%
-        cell_content = ''
+&lt;&lt;%= tsec == :head ? &#39;th&#39; : &#39;td&#39; %&gt; class=&quot;tableblock halign-&lt;%= cell.attr :halign %&gt; valign-&lt;%= cell.attr :valign %&gt;&quot;#{attribute(&#39;colspan&#39;, &#39;cell.colspan&#39;)}#{attribute(&#39;rowspan&#39;, &#39;cell.rowspan&#39;)}&lt;%
+        cell_content = &#39;&#39;
         if tsec == :head
           cell_content = cell.text
         else
@@ -505,8 +505,8 @@ if (attr :rowcount) &gt;= 0 %&gt;
               cell_content = %(\#{cell_content}&lt;p class=&quot;tableblock&quot;&gt;\#{text}&lt;/p&gt;)
             end
           end
-        end %&gt;&lt;%= (@document.attr? 'cellbgcolor') ? %( style=&quot;background-color:\#{@document.attr 'cellbgcolor'};&quot;) : nil
-        %&gt;&gt;&lt;%= cell_content %&gt;&lt;/&lt;%= tsec == :head ? 'th' : 'td' %&gt;&gt;&lt;%
+        end %&gt;&lt;%= (@document.attr? &#39;cellbgcolor&#39;) ? %( style=&quot;background-color:\#{@document.attr &#39;cellbgcolor&#39;};&quot;) : nil
+        %&gt;&gt;&lt;%= cell_content %&gt;&lt;/&lt;%= tsec == :head ? &#39;th&#39; : &#39;td&#39; %&gt;&gt;&lt;%
       end %&gt;
 &lt;/tr&gt;&lt;%
     end %&gt;

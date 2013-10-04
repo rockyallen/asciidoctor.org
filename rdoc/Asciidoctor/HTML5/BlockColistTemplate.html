@@ -464,16 +464,16 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
     <span class="ruby-identifier">result_buffer</span> = []
     <span class="ruby-identifier">id_attribute</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( id=&quot;#{node.id}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-    <span class="ruby-identifier">classes</span> = [<span class="ruby-string">'colist'</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
-    <span class="ruby-identifier">class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{classes * ' '}&quot;)</span>
+    <span class="ruby-identifier">classes</span> = [<span class="ruby-string">&#39;colist&#39;</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
+    <span class="ruby-identifier">class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{classes * &#39; &#39;}&quot;)</span>
 
     <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;div#{id_attribute}#{class_attribute}&gt;)</span>
     <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;div class=&quot;title&quot;&gt;#{node.title}&lt;/div&gt;)</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title?</span>
 
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>
-      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;table&gt;'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icons&#39;</span>
+      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;table&gt;&#39;</span>
 
-      <span class="ruby-identifier">font_icons</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>, <span class="ruby-string">'font'</span>
+      <span class="ruby-identifier">font_icons</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icons&#39;</span>, <span class="ruby-string">&#39;font&#39;</span>
       <span class="ruby-identifier">node</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">num</span> = <span class="ruby-identifier">i</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>
         <span class="ruby-identifier">num_element</span> = <span class="ruby-identifier">font_icons</span> <span class="ruby-operator">?</span>
@@ -485,18 +485,18 @@
 &lt;/tr&gt;)</span>
       <span class="ruby-keyword">end</span>
 
-      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/table&gt;'</span>
+      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/table&gt;&#39;</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;ol&gt;'</span>
+      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;ol&gt;&#39;</span>
       <span class="ruby-identifier">node</span>.<span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;li&gt;
 &lt;p&gt;#{item.text}&lt;/p&gt;
 &lt;/li&gt;)</span>
       <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/ol&gt;'</span>
+      <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/ol&gt;&#39;</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/div&gt;'</span>
+    <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/div&gt;&#39;</span>
     <span class="ruby-identifier">result_buffer</span> <span class="ruby-operator">*</span> <span class="ruby-constant">EOL</span>
   <span class="ruby-keyword">end</span></pre>
           </div><!-- result-source -->

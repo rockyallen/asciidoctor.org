@@ -462,7 +462,7 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOF
 &lt;%#encoding:UTF-8%&gt;&lt;%
-if @style == 'bibliography'
+if @style == &#39;bibliography&#39;
 %&gt;&lt;bibliodiv#{common_attrs_erb}&gt;#{title_tag}&lt;%
   items.each do |li| %&gt;
 &lt;bibliomixed&gt;
@@ -474,12 +474,12 @@ if @style == 'bibliography'
   end %&gt;
 &lt;/bibliodiv&gt;&lt;%
 else
-checklist = (option? 'checklist')
-mark = checklist ? 'none' : @style
+checklist = (option? &#39;checklist&#39;)
+mark = checklist ? &#39;none&#39; : @style
 %&gt;&lt;itemizedlist#{common_attrs_erb}&lt;%= mark ? %( mark=&quot;\#{mark}&quot;) : nil %&gt;&gt;#{title_tag}&lt;%
   items.each do |li| %&gt;
 &lt;listitem&gt;
-&lt;simpara&gt;&lt;%= checklist &amp;&amp; (li.attr? 'checkbox') ? ((li.attr? 'checked') ? '&amp;#x25A0; ' : '&amp;#x25A1; ') : nil %&gt;&lt;%= li.text %&gt;&lt;/simpara&gt;&lt;%
+&lt;simpara&gt;&lt;%= checklist &amp;&amp; (li.attr? &#39;checkbox&#39;) ? ((li.attr? &#39;checked&#39;) ? &#39;&amp;#x25A0; &#39; : &#39;&amp;#x25A1; &#39;) : nil %&gt;&lt;%= li.text %&gt;&lt;/simpara&gt;&lt;%
     if li.blocks? %&gt;
 &lt;%= li.content %&gt;&lt;%
     end %&gt;

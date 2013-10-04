@@ -464,29 +464,29 @@
           <div class="method-source-code" id="image-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 1129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">image</span>(<span class="ruby-identifier">target</span>, <span class="ruby-identifier">type</span>, <span class="ruby-identifier">node</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'icon'</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>, <span class="ruby-string">'font'</span>) 
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;icon&#39;</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icons&#39;</span>, <span class="ruby-string">&#39;font&#39;</span>) 
     <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;icon-#{target}&quot;</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'size'</span>
-      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-#{node.attr 'size'}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;size&#39;</span>
+      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-#{node.attr &#39;size&#39;}&quot;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'rotate'</span>
-      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-rotate-#{node.attr 'rotate'}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;rotate&#39;</span>
+      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-rotate-#{node.attr &#39;rotate&#39;}&quot;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'flip'</span>
-      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-flip-#{node.attr 'flip'}&quot;</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;flip&#39;</span>
+      <span class="ruby-identifier">style_class</span> = <span class="ruby-node">&quot;#{style_class} icon-flip-#{node.attr &#39;flip&#39;}&quot;</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">title_attribute</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'title'</span>) <span class="ruby-operator">?</span> <span class="ruby-node">%Q( title=&quot;#{node.attr 'title'}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">title_attribute</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;title&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-node">%Q( title=&quot;#{node.attr &#39;title&#39;}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-identifier">img</span> = <span class="ruby-node">%Q(&lt;i class=&quot;#{style_class}&quot;#{title_attribute}&gt;&lt;/i&gt;)</span>
-  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'icon'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'icons'</span>)
-    <span class="ruby-identifier">img</span> = <span class="ruby-node">&quot;[#{node.attr 'alt'}]&quot;</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;icon&#39;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;icons&#39;</span>)
+    <span class="ruby-identifier">img</span> = <span class="ruby-node">&quot;[#{node.attr &#39;alt&#39;}]&quot;</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">'icon'</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">type</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;icon&#39;</span>
       <span class="ruby-identifier">resolved_target</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">icon_uri</span> <span class="ruby-identifier">target</span>
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">resolved_target</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">image_uri</span> <span class="ruby-identifier">target</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-identifier">attrs</span> = [<span class="ruby-string">'alt'</span>, <span class="ruby-string">'width'</span>, <span class="ruby-string">'height'</span>, <span class="ruby-string">'title'</span>].<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">attrs</span> = [<span class="ruby-string">&#39;alt&#39;</span>, <span class="ruby-string">&#39;width&#39;</span>, <span class="ruby-string">&#39;height&#39;</span>, <span class="ruby-string">&#39;title&#39;</span>].<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">name</span><span class="ruby-operator">|</span>
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-identifier">name</span>
         <span class="ruby-node">%Q( #{name}=&quot;#{node.attr name}&quot;)</span>
       <span class="ruby-keyword">else</span>
@@ -497,8 +497,8 @@
     <span class="ruby-identifier">img</span> = <span class="ruby-node">%Q(&lt;img src=&quot;#{resolved_target}&quot;#{attrs}&gt;)</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'link'</span>
-    <span class="ruby-identifier">img</span> = <span class="ruby-node">%Q(&lt;a class=&quot;image&quot; href=&quot;#{node.attr 'link'}&quot;#{(node.attr? 'window') ? &quot; target=\&quot;#{node.attr 'window'}\&quot;&quot; : nil}&gt;#{img}&lt;/a&gt;)</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;link&#39;</span>
+    <span class="ruby-identifier">img</span> = <span class="ruby-node">%Q(&lt;a class=&quot;image&quot; href=&quot;#{node.attr &#39;link&#39;}&quot;#{(node.attr? &#39;window&#39;) ? &quot; target=\&quot;#{node.attr &#39;window&#39;}\&quot;&quot; : nil}&gt;#{img}&lt;/a&gt;)</span>
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role?</span>
@@ -507,7 +507,7 @@
     <span class="ruby-identifier">style_classes</span> = <span class="ruby-identifier">type</span>
   <span class="ruby-keyword">end</span>
 
-  <span class="ruby-identifier">style_attr</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'float'</span>) <span class="ruby-operator">?</span> <span class="ruby-node">%Q( style=&quot;float: #{node.attr 'float'}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">style_attr</span> = (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;float&#39;</span>) <span class="ruby-operator">?</span> <span class="ruby-node">%Q( style=&quot;float: #{node.attr &#39;float&#39;}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
 
   <span class="ruby-node">%Q(&lt;span class=&quot;#{style_classes}&quot;#{style_attr}&gt;#{img}&lt;/span&gt;)</span>
 <span class="ruby-keyword">end</span></pre>

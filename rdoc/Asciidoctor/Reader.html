@@ -872,7 +872,7 @@ href="Reader.html#method-i-process_line">#process_line</a> on first visit
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span> <span class="ruby-identifier">data</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">cursor</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-ivar">@file</span> = <span class="ruby-ivar">@dir</span> = <span class="ruby-keyword">nil</span>
-    <span class="ruby-ivar">@path</span> = <span class="ruby-string">'&lt;stdin&gt;'</span>
+    <span class="ruby-ivar">@path</span> = <span class="ruby-string">&#39;&lt;stdin&gt;&#39;</span>
     <span class="ruby-ivar">@lineno</span> = <span class="ruby-value">1</span> <span class="ruby-comment"># IMPORTANT lineno assignment must proceed prepare_lines call!</span>
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">String</span>
     <span class="ruby-ivar">@file</span> = <span class="ruby-identifier">cursor</span>
@@ -882,12 +882,12 @@ href="Reader.html#method-i-process_line">#process_line</a> on first visit
   <span class="ruby-keyword">else</span>
     <span class="ruby-ivar">@file</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">file</span>
     <span class="ruby-ivar">@dir</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">dir</span>
-    <span class="ruby-ivar">@path</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">||</span> <span class="ruby-string">'&lt;stdin&gt;'</span>
+    <span class="ruby-ivar">@path</span> = <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">path</span> <span class="ruby-operator">||</span> <span class="ruby-string">&#39;&lt;stdin&gt;&#39;</span>
     <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@file</span>.<span class="ruby-identifier">nil?</span>
       <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dir</span>.<span class="ruby-identifier">nil?</span>
         <span class="ruby-comment"># REVIEW might to look at this assignment closer</span>
         <span class="ruby-ivar">@dir</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span> <span class="ruby-ivar">@file</span>
-        <span class="ruby-ivar">@dir</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dir</span> <span class="ruby-operator">==</span> <span class="ruby-string">'.'</span> <span class="ruby-comment"># right?</span>
+        <span class="ruby-ivar">@dir</span> = <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@dir</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;.&#39;</span> <span class="ruby-comment"># right?</span>
       <span class="ruby-keyword">end</span>
 
       <span class="ruby-keyword">if</span> <span class="ruby-identifier">cursor</span>.<span class="ruby-identifier">path</span>.<span class="ruby-identifier">nil?</span>
@@ -1127,7 +1127,7 @@ href="Reader.html">Reader</a></p>
 
         <div class="method-description">
           
-          <p>Peek at the next line and check if it’s empty (i.e., whitespace only)</p>
+          <p>Peek at the next line and check if it&#39;s empty (i.e., whitespace only)</p>
 
 <p>This method Does not consume the line from the stack.</p>
 
@@ -1196,7 +1196,7 @@ remaining.Returns nil if there is no more data.</p>
     <span class="ruby-ivar">@look_ahead</span> = <span class="ruby-value">0</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-comment"># FIXME the problem with this approach is that we aren't</span>
+    <span class="ruby-comment"># FIXME the problem with this approach is that we aren&#39;t</span>
     <span class="ruby-comment"># retaining the modified line (hence the @unescape_next_line tweak)</span>
     <span class="ruby-comment"># perhaps we need a stack of proxy lines</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">line</span> = <span class="ruby-identifier">process_line</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">first</span>).<span class="ruby-identifier">nil?</span>
@@ -1508,7 +1508,7 @@ returned</p>
       <span class="ruby-keyword">break</span>
     <span class="ruby-keyword">end</span>
 
-    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">skip_line_comments</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'//'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
+    <span class="ruby-keyword">unless</span> <span class="ruby-identifier">skip_line_comments</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;//&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])
       <span class="ruby-identifier">result</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">line</span>
       <span class="ruby-identifier">line_read</span> = <span class="ruby-keyword">true</span>
     <span class="ruby-keyword">end</span>
@@ -1681,7 +1681,7 @@ of theline stack.</p>
   <span class="ruby-keyword">while</span> (<span class="ruby-identifier">next_line</span> = <span class="ruby-identifier">peek_line</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_blank_lines</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">chomp</span>.<span class="ruby-identifier">empty?</span>
       <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">read_line</span>
-    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">commentish</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">'//'</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment_blk</span>]))
+    <span class="ruby-keyword">elsif</span> (<span class="ruby-identifier">commentish</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">start_with?</span>(<span class="ruby-string">&#39;//&#39;</span>)) <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">match</span> = <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment_blk</span>]))
       <span class="ruby-identifier">comment_lines</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">read_line</span>
       <span class="ruby-identifier">comment_lines</span>.<span class="ruby-identifier">push</span>(<span class="ruby-operator">*</span>(<span class="ruby-identifier">read_lines_until</span>(<span class="ruby-value">:terminator</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">match</span>[<span class="ruby-value">0</span>], <span class="ruby-value">:read_last_line</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:skip_processing</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>)))
     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">commentish</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_line</span>.<span class="ruby-identifier">match</span>(<span class="ruby-constant">REGEXP</span>[<span class="ruby-value">:comment</span>])

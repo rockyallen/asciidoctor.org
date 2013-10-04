@@ -475,13 +475,13 @@
     <span class="ruby-identifier">sections</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">section</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">section_num</span> = <span class="ruby-identifier">section</span>.<span class="ruby-identifier">numbered</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(#{section.sectnum} )</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
       <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">%Q(&lt;li&gt;&lt;a href=\&quot;##{section.id}\&quot;&gt;#{section_num}#{section.captioned_title}&lt;/a&gt;&lt;/li&gt;)</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">level</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">to_depth</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">child_toc_level</span> = <span class="ruby-identifier">outline</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">to_depth</span>)) <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
-        <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;li&gt;'</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">section</span>.<span class="ruby-identifier">level</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">to_depth</span> <span class="ruby-operator">&amp;&amp;</span> (<span class="ruby-identifier">child_toc_level</span> = <span class="ruby-identifier">outline</span>(<span class="ruby-identifier">section</span>, <span class="ruby-identifier">to_depth</span>)) <span class="ruby-operator">!=</span> <span class="ruby-string">&#39;&#39;</span>
+        <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;li&gt;&#39;</span>
         <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">child_toc_level</span>
-        <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/li&gt;'</span>
+        <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/li&gt;&#39;</span>
       <span class="ruby-keyword">end</span>
     <span class="ruby-keyword">end</span>
-    <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'&lt;/ul&gt;'</span>
+    <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&#39;&lt;/ul&gt;&#39;</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">toc_level_buffer</span> <span class="ruby-operator">*</span> <span class="ruby-constant">EOL</span>
 <span class="ruby-keyword">end</span></pre>
@@ -524,10 +524,10 @@
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
 &lt;%#encoding:UTF-8%&gt;&lt;!DOCTYPE html&gt;
-&lt;html&lt;%= (attr? 'nolang') ? nil : %( lang=&quot;\#{attr 'lang', 'en'}&quot;) %&gt;&gt;
+&lt;html&lt;%= (attr? &#39;nolang&#39;) ? nil : %( lang=&quot;\#{attr &#39;lang&#39;, &#39;en&#39;}&quot;) %&gt;&gt;
 &lt;head&gt;
 &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=&lt;%= attr :encoding %&gt;&quot;&gt;
-&lt;meta name=&quot;generator&quot; content=&quot;Asciidoctor &lt;%= attr 'asciidoctor-version' %&gt;&quot;&gt;
+&lt;meta name=&quot;generator&quot; content=&quot;Asciidoctor &lt;%= attr &#39;asciidoctor-version&#39; %&gt;&quot;&gt;
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;&lt;%
 if attr? :description %&gt;
 &lt;meta name=&quot;description&quot; content=&quot;&lt;%= attr :description %&gt;&quot;&gt;&lt;%
@@ -535,77 +535,77 @@ end
 if attr? :keywords %&gt;
 &lt;meta name=&quot;keywords&quot; content=&quot;&lt;%= attr :keywords %&gt;&quot;&gt;&lt;%
 end %&gt;
-&lt;title&gt;&lt;%= doctitle(:sanitize =&gt; true) || (attr 'untitled-label') %&gt;&lt;/title&gt;&lt;%
-if DEFAULT_STYLESHEET_KEYS.include?(attr 'stylesheet')
-  if @safe &gt;= SafeMode::SECURE || (attr? 'linkcss') %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(DEFAULT_STYLESHEET_NAME, (attr :stylesdir, '')) %&gt;&quot;&gt;&lt;%
+&lt;title&gt;&lt;%= doctitle(:sanitize =&gt; true) || (attr &#39;untitled-label&#39;) %&gt;&lt;/title&gt;&lt;%
+if DEFAULT_STYLESHEET_KEYS.include?(attr &#39;stylesheet&#39;)
+  if @safe &gt;= SafeMode::SECURE || (attr? &#39;linkcss&#39;) %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(DEFAULT_STYLESHEET_NAME, (attr :stylesdir, &#39;&#39;)) %&gt;&quot;&gt;&lt;%
   else %&gt;
 &lt;style&gt;
 &lt;%= HTML5.default_asciidoctor_stylesheet %&gt;
 &lt;/style&gt;&lt;%
   end
 elsif attr? :stylesheet
-  if @safe &gt;= SafeMode::SECURE || (attr? 'linkcss') %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path((attr :stylesheet), (attr :stylesdir, '')) %&gt;&quot;&gt;&lt;%
+  if @safe &gt;= SafeMode::SECURE || (attr? &#39;linkcss&#39;) %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path((attr :stylesheet), (attr :stylesdir, &#39;&#39;)) %&gt;&quot;&gt;&lt;%
   else %&gt;
 &lt;style&gt;
-&lt;%= read_asset normalize_system_path((attr :stylesheet), (attr :stylesdir, '')), true %&gt;
+&lt;%= read_asset normalize_system_path((attr :stylesheet), (attr :stylesdir, &#39;&#39;)), true %&gt;
 &lt;/style&gt;&lt;%
   end
 end
-if attr? 'icons', 'font'
-  if !(attr 'iconfont-remote', '').nil? %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr 'iconfont-cdn', 'http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css' %&gt;&quot;&gt;&lt;%
+if attr? &#39;icons&#39;, &#39;font&#39;
+  if !(attr &#39;iconfont-remote&#39;, &#39;&#39;).nil? %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr &#39;iconfont-cdn&#39;, &#39;http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css&#39; %&gt;&quot;&gt;&lt;%
   else %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(%(\#{attr 'iconfont-name', 'font-awesome'}.css), (attr 'stylesdir', '')) %&gt;&quot;&gt;&lt;%
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(%(\#{attr &#39;iconfont-name&#39;, &#39;font-awesome&#39;}.css), (attr &#39;stylesdir&#39;, &#39;&#39;)) %&gt;&quot;&gt;&lt;%
   end
 end
-case attr 'source-highlighter'
-when 'coderay'
-  if (attr 'coderay-css', 'class') == 'class'
-    if @safe &gt;= SafeMode::SECURE || (attr? 'linkcss') %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path('asciidoctor-coderay.css', (attr :stylesdir, '')) %&gt;&quot;&gt;&lt;%
+case attr &#39;source-highlighter&#39;
+when &#39;coderay&#39;
+  if (attr &#39;coderay-css&#39;, &#39;class&#39;) == &#39;class&#39;
+    if @safe &gt;= SafeMode::SECURE || (attr? &#39;linkcss&#39;) %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(&#39;asciidoctor-coderay.css&#39;, (attr :stylesdir, &#39;&#39;)) %&gt;&quot;&gt;&lt;%
     else %&gt;
 &lt;style&gt;
 &lt;%= HTML5.default_coderay_stylesheet %&gt;
 &lt;/style&gt;&lt;%
     end
   end
-when 'pygments'
-  if (attr 'pygments-css', 'class') == 'class'
-    if @safe &gt;= SafeMode::SECURE || (attr? 'linkcss') %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path('asciidoctor-pygments.css', (attr :stylesdir, '')) %&gt;&quot;&gt;&lt;%
+when &#39;pygments&#39;
+  if (attr &#39;pygments-css&#39;, &#39;class&#39;) == &#39;class&#39;
+    if @safe &gt;= SafeMode::SECURE || (attr? &#39;linkcss&#39;) %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= normalize_web_path(&#39;asciidoctor-pygments.css&#39;, (attr :stylesdir, &#39;&#39;)) %&gt;&quot;&gt;&lt;%
     else %&gt;
 &lt;style&gt;
-&lt;%= HTML5.pygments_stylesheet(attr 'pygments-style') %&gt;
+&lt;%= HTML5.pygments_stylesheet(attr &#39;pygments-style&#39;) %&gt;
 &lt;/style&gt;&lt;%
     end
   end
-when 'highlightjs', 'highlight.js' %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3' %&gt;/styles/&lt;%= attr 'highlightjs-theme', 'default' %&gt;.min.css&quot;&gt;
-&lt;script src=&quot;&lt;%= attr :highlightjsdir, 'http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3' %&gt;/highlight.min.js&quot;&gt;&lt;/script&gt;
+when &#39;highlightjs&#39;, &#39;highlight.js&#39; %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr :highlightjsdir, &#39;http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3&#39; %&gt;/styles/&lt;%= attr &#39;highlightjs-theme&#39;, &#39;default&#39; %&gt;.min.css&quot;&gt;
+&lt;script src=&quot;&lt;%= attr :highlightjsdir, &#39;http://cdnjs.cloudflare.com/ajax/libs/highlight.js/7.3&#39; %&gt;/highlight.min.js&quot;&gt;&lt;/script&gt;
 &lt;script&gt;hljs.initHighlightingOnLoad()&lt;/script&gt;&lt;%
-when 'prettify' %&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr 'prettifydir', 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298' %&gt;/&lt;%= attr 'prettify-theme', 'prettify' %&gt;.min.css&quot;&gt;
-&lt;script src=&quot;&lt;%= attr 'prettifydir', 'http://cdnjs.cloudflare.com/ajax/libs/prettify/r298' %&gt;/prettify.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;document.addEventListener('DOMContentLoaded', prettyPrint)&lt;/script&gt;&lt;%
+when &#39;prettify&#39; %&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%= attr &#39;prettifydir&#39;, &#39;http://cdnjs.cloudflare.com/ajax/libs/prettify/r298&#39; %&gt;/&lt;%= attr &#39;prettify-theme&#39;, &#39;prettify&#39; %&gt;.min.css&quot;&gt;
+&lt;script src=&quot;&lt;%= attr &#39;prettifydir&#39;, &#39;http://cdnjs.cloudflare.com/ajax/libs/prettify/r298&#39; %&gt;/prettify.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;document.addEventListener(&#39;DOMContentLoaded&#39;, prettyPrint)&lt;/script&gt;&lt;%
 end %&gt;&lt;%= (docinfo_content = docinfo).empty? ? nil : %(
 \#{docinfo_content}) %&gt;
 &lt;/head&gt;
-&lt;body&lt;%= @id ? %( id=&quot;\#{@id}&quot;) : nil %&gt; class=&quot;&lt;%= doctype %&gt;&lt;%= (attr? 'toc-class') &amp;&amp; (attr? 'toc') &amp;&amp; (attr? 'toc-placement', 'auto') ? %( \#{attr 'toc-class'} toc-\#{attr 'toc-position', 'left'}) : nil %&gt;&quot;&lt;%= (attr? 'max-width') ? %( style=&quot;max-width: \#{attr 'max-width'};&quot;) : nil %&gt;&gt;&lt;%
+&lt;body&lt;%= @id ? %( id=&quot;\#{@id}&quot;) : nil %&gt; class=&quot;&lt;%= doctype %&gt;&lt;%= (attr? &#39;toc-class&#39;) &amp;&amp; (attr? &#39;toc&#39;) &amp;&amp; (attr? &#39;toc-placement&#39;, &#39;auto&#39;) ? %( \#{attr &#39;toc-class&#39;} toc-\#{attr &#39;toc-position&#39;, &#39;left&#39;}) : nil %&gt;&quot;&lt;%= (attr? &#39;max-width&#39;) ? %( style=&quot;max-width: \#{attr &#39;max-width&#39;};&quot;) : nil %&gt;&gt;&lt;%
 unless noheader %&gt;
 &lt;div id=&quot;header&quot;&gt;&lt;%
-  if doctype == 'manpage' %&gt;
+  if doctype == &#39;manpage&#39; %&gt;
 &lt;h1&gt;&lt;%= doctitle %&gt; Manual Page&lt;/h1&gt;&lt;%
-    if (attr? :toc) &amp;&amp; (attr? 'toc-placement', 'auto') %&gt;
-&lt;div id=&quot;toc&quot; class=&quot;&lt;%= attr 'toc-class', 'toc' %&gt;&quot;&gt;
-&lt;div id=&quot;toctitle&quot;&gt;&lt;%= attr 'toc-title' %&gt;&lt;/div&gt;
+    if (attr? :toc) &amp;&amp; (attr? &#39;toc-placement&#39;, &#39;auto&#39;) %&gt;
+&lt;div id=&quot;toc&quot; class=&quot;&lt;%= attr &#39;toc-class&#39;, &#39;toc&#39; %&gt;&quot;&gt;
+&lt;div id=&quot;toctitle&quot;&gt;&lt;%= attr &#39;toc-title&#39; %&gt;&lt;/div&gt;
 &lt;%= template.class.outline(self, (attr :toclevels, 2).to_i) %&gt;
 &lt;/div&gt;&lt;%
     end %&gt;
-&lt;h2&gt;&lt;%= attr 'manname-title' %&gt;&lt;/h2&gt;
+&lt;h2&gt;&lt;%= attr &#39;manname-title&#39; %&gt;&lt;/h2&gt;
 &lt;div class=&quot;sectionbody&quot;&gt;
-&lt;p&gt;&lt;%= %(\#{attr 'manname'} - \#{attr 'manpurpose'}) %&gt;&lt;/p&gt;
+&lt;p&gt;&lt;%= %(\#{attr &#39;manname&#39;} - \#{attr &#39;manpurpose&#39;}) %&gt;&lt;/p&gt;
 &lt;/div&gt;&lt;%
   else
     if has_header?
@@ -626,7 +626,7 @@ unless noheader %&gt;
         end
       end
       if attr? :revnumber %&gt;
-&lt;span id=&quot;revnumber&quot;&gt;&lt;%= ((attr 'version-label') || '').downcase %&gt; &lt;%= attr :revnumber %&gt;&lt;%= (attr? :revdate) ? ',' : '' %&gt;&lt;/span&gt;&lt;%
+&lt;span id=&quot;revnumber&quot;&gt;&lt;%= ((attr &#39;version-label&#39;) || &#39;&#39;).downcase %&gt; &lt;%= attr :revnumber %&gt;&lt;%= (attr? :revdate) ? &#39;,&#39; : &#39;&#39; %&gt;&lt;/span&gt;&lt;%
       end
       if attr? :revdate %&gt;
 &lt;span id=&quot;revdate&quot;&gt;&lt;%= attr :revdate %&gt;&lt;/span&gt;&lt;%
@@ -635,9 +635,9 @@ unless noheader %&gt;
 &lt;br&gt;&lt;span id=&quot;revremark&quot;&gt;&lt;%= attr :revremark %&gt;&lt;/span&gt;&lt;%
       end
     end
-    if (attr? :toc) &amp;&amp; (attr? 'toc-placement', 'auto') %&gt;
-&lt;div id=&quot;toc&quot; class=&quot;&lt;%= attr 'toc-class', 'toc' %&gt;&quot;&gt;
-&lt;div id=&quot;toctitle&quot;&gt;&lt;%= attr 'toc-title' %&gt;&lt;/div&gt;
+    if (attr? :toc) &amp;&amp; (attr? &#39;toc-placement&#39;, &#39;auto&#39;) %&gt;
+&lt;div id=&quot;toc&quot; class=&quot;&lt;%= attr &#39;toc-class&#39;, &#39;toc&#39; %&gt;&quot;&gt;
+&lt;div id=&quot;toctitle&quot;&gt;&lt;%= attr &#39;toc-title&#39; %&gt;&lt;/div&gt;
 &lt;%= template.class.outline(self, (attr :toclevels, 2).to_i) %&gt;
 &lt;/div&gt;&lt;%
     end
@@ -660,10 +660,10 @@ end %&gt;
 &lt;div id=&quot;footer&quot;&gt;
 &lt;div id=&quot;footer-text&quot;&gt;&lt;%
 if attr? :revnumber %&gt;
-&lt;%= %(\#{attr 'version-label'} \#{attr :revnumber}) %&gt;&lt;br&gt;&lt;%
+&lt;%= %(\#{attr &#39;version-label&#39;} \#{attr :revnumber}) %&gt;&lt;br&gt;&lt;%
 end
-if attr? 'last-update-label' %&gt;
-&lt;%= %(\#{attr 'last-update-label'} \#{attr :docdatetime}) %&gt;&lt;%
+if attr? &#39;last-update-label&#39; %&gt;
+&lt;%= %(\#{attr &#39;last-update-label&#39;} \#{attr :docdatetime}) %&gt;&lt;%
 end %&gt;
 &lt;/div&gt;&lt;%= (docinfo_content = docinfo :footer).empty? ? nil : %(
 \#{docinfo_content}) %&gt;

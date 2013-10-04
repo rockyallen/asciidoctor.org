@@ -439,7 +439,7 @@
 
 <h3 id="label-Examples">Examples<span><a href="#label-Examples">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
-<pre class="ruby"><span class="ruby-identifier">block</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, :<span class="ruby-identifier">paragraph</span>, :<span class="ruby-identifier">source</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'_This_ is a &lt;test&gt;'</span>)
+<pre class="ruby"><span class="ruby-identifier">block</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">parent</span>, :<span class="ruby-identifier">paragraph</span>, :<span class="ruby-identifier">source</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;_This_ is a &lt;test&gt;&#39;</span>)
 <span class="ruby-identifier">block</span>.<span class="ruby-identifier">content</span>
 =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;&lt;em&gt;This&lt;/em&gt; is a &amp;lt;test&amp;gt;&quot;</span>
 </pre>
@@ -600,7 +600,7 @@ raw source for this <a href="Block.html">Block</a>. (default: nil)</p>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">raw_source</span>.<span class="ruby-identifier">nil?</span>
     <span class="ruby-ivar">@lines</span> = []
   <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">raw_source</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">String</span>
-    <span class="ruby-comment"># FIXME make line normalization a utility method since it's used multiple times in code base!!</span>
+    <span class="ruby-comment"># FIXME make line normalization a utility method since it&#39;s used multiple times in code base!!</span>
     <span class="ruby-keyword">if</span> <span class="ruby-operator">::</span><span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">FORCE_ENCODING</span>
       <span class="ruby-ivar">@lines</span> = <span class="ruby-identifier">raw_source</span>.<span class="ruby-identifier">lines</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">line</span><span class="ruby-operator">|</span> <span class="ruby-node">&quot;#{line.rstrip.force_encoding(::Encoding::UTF_8)}\n&quot;</span> }
     <span class="ruby-keyword">else</span>
@@ -649,7 +649,7 @@ on the content.</p>
 
 <pre class="ruby"><span class="ruby-identifier">doc</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-identifier">block</span> = <span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Block</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">doc</span>, :<span class="ruby-identifier">paragraph</span>,
-    :<span class="ruby-identifier">source</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'_This_ is what happens when you &lt;meet&gt; a stranger in the &lt;alps&gt;!'</span>)
+    :<span class="ruby-identifier">source</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&#39;_This_ is what happens when you &lt;meet&gt; a stranger in the &lt;alps&gt;!&#39;</span>)
 <span class="ruby-identifier">block</span>.<span class="ruby-identifier">content</span>
 =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;&lt;em&gt;This&lt;/em&gt; is what happens when you &amp;lt;meet&amp;gt; a stranger in the &amp;lt;alps&amp;gt;!&quot;</span>
 </pre>
@@ -671,7 +671,7 @@ on the content.</p>
   <span class="ruby-keyword">when</span> <span class="ruby-value">:simple</span>, <span class="ruby-value">:verbatim</span>, <span class="ruby-value">:raw</span>
     <span class="ruby-identifier">apply_subs</span> <span class="ruby-ivar">@lines</span>.<span class="ruby-identifier">join</span>, <span class="ruby-ivar">@subs</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Unknown content model '#@content_model' for block: #{to_s}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:empty</span>
+    <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;Unknown content model &#39;#@content_model&#39; for block: #{to_s}&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@content_model</span> <span class="ruby-operator">==</span> <span class="ruby-value">:empty</span>
     <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

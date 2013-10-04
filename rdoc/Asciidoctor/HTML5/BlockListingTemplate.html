@@ -462,34 +462,34 @@
           <div class="method-source-code" id="result-source">
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 426</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
-    <span class="ruby-identifier">nowrap</span> = (<span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">'prewrap'</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">'nowrap'</span>)
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">'source'</span>
-      <span class="ruby-identifier">language</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'language'</span>
+    <span class="ruby-identifier">nowrap</span> = (<span class="ruby-operator">!</span><span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span> <span class="ruby-string">&#39;prewrap&#39;</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">node</span>.<span class="ruby-identifier">option?</span> <span class="ruby-string">&#39;nowrap&#39;</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span> <span class="ruby-operator">==</span> <span class="ruby-string">&#39;source&#39;</span>
+      <span class="ruby-identifier">language</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">&#39;language&#39;</span>
       <span class="ruby-identifier">language_classes</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(#{language} language-#{language})</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">case</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">'source-highlighter'</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'coderay'</span>
-        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">' class=&quot;CodeRay nowrap&quot;'</span> <span class="ruby-operator">:</span> <span class="ruby-string">' class=&quot;CodeRay&quot;'</span>
+      <span class="ruby-keyword">case</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">attr</span> <span class="ruby-string">&#39;source-highlighter&#39;</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;coderay&#39;</span>
+        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; class=&quot;CodeRay nowrap&quot;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39; class=&quot;CodeRay&quot;&#39;</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( class=&quot;#{language_classes}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'pygments'</span>
-        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">' class=&quot;pygments highlight nowrap&quot;'</span> <span class="ruby-operator">:</span> <span class="ruby-string">' class=&quot;pygments highlight&quot;'</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;pygments&#39;</span>
+        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; class=&quot;pygments highlight nowrap&quot;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39; class=&quot;pygments highlight&quot;&#39;</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( class=&quot;#{language_classes}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'highlightjs'</span>, <span class="ruby-string">'highlight.js'</span>
-        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">' class=&quot;highlight nowrap&quot;'</span> <span class="ruby-operator">:</span> <span class="ruby-string">' class=&quot;highlight&quot;'</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;highlightjs&#39;</span>, <span class="ruby-string">&#39;highlight.js&#39;</span>
+        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; class=&quot;highlight nowrap&quot;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39; class=&quot;highlight&quot;&#39;</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( class=&quot;#{language_classes}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'prettify'</span>
-        <span class="ruby-identifier">pre_class</span> = <span class="ruby-node">%Q( class=&quot;prettyprint#{nowrap ? ' nowrap' : nil}#{(node.attr? 'linenums') ? ' linenums' : nil})</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;prettify&#39;</span>
+        <span class="ruby-identifier">pre_class</span> = <span class="ruby-node">%Q( class=&quot;prettyprint#{nowrap ? &#39; nowrap&#39; : nil}#{(node.attr? &#39;linenums&#39;) ? &#39; linenums&#39; : nil})</span>
         <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(#{pre_class} #{language_classes}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-node">%Q(#{pre_class}&quot;)</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-keyword">nil</span>
-      <span class="ruby-keyword">when</span> <span class="ruby-string">'html-pipeline'</span>
+      <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;html-pipeline&#39;</span>
         <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( lang=&quot;#{language}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">else</span>
-        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">' class=&quot;highlight nowrap&quot;'</span> <span class="ruby-operator">:</span> <span class="ruby-string">' class=&quot;highlight&quot;'</span>
+        <span class="ruby-identifier">pre_class</span> = <span class="ruby-identifier">nowrap</span> <span class="ruby-operator">?</span> <span class="ruby-string">&#39; class=&quot;highlight nowrap&quot;&#39;</span> <span class="ruby-operator">:</span> <span class="ruby-string">&#39; class=&quot;highlight&quot;&#39;</span>
         <span class="ruby-identifier">code_class</span> = <span class="ruby-identifier">language</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( class=&quot;#{language_classes}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">end</span>
       <span class="ruby-identifier">pre</span> = <span class="ruby-node">%Q(&lt;pre#{pre_class}&gt;&lt;code#{code_class}&gt;#{preserve_endlines(node.content, node)}&lt;/code&gt;&lt;/pre&gt;)</span>
     <span class="ruby-keyword">else</span>
-      <span class="ruby-identifier">pre</span> = <span class="ruby-node">%Q(&lt;pre#{nowrap ? ' class=&quot;nowrap&quot;' : nil}&gt;#{preserve_endlines(node.content, node)}&lt;/pre&gt;)</span>
+      <span class="ruby-identifier">pre</span> = <span class="ruby-node">%Q(&lt;pre#{nowrap ? &#39; class=&quot;nowrap&quot;&#39; : nil}&gt;#{preserve_endlines(node.content, node)}&lt;/pre&gt;)</span>
     <span class="ruby-keyword">end</span>
 
     <span class="ruby-node">%Q(&lt;div#{node.id &amp;&amp; &quot; id=\&quot;#{node.id}\&quot;&quot;} class=&quot;listingblock#{node.role &amp;&amp; &quot; #{node.role}&quot;}&quot;&gt;#{node.title? ? &quot;

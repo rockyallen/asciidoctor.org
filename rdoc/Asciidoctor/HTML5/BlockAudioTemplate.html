@@ -463,12 +463,12 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/html5.rb, line 899</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">result</span>(<span class="ruby-identifier">node</span>)
     <span class="ruby-identifier">id_attribute</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">id</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q( id=&quot;#{node.id}&quot;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
-    <span class="ruby-identifier">classes</span> = [<span class="ruby-string">'audioblock'</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
-    <span class="ruby-identifier">class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{classes * ' '}&quot;)</span>
+    <span class="ruby-identifier">classes</span> = [<span class="ruby-string">&#39;audioblock&#39;</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">style</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">role</span>].<span class="ruby-identifier">compact</span>
+    <span class="ruby-identifier">class_attribute</span> = <span class="ruby-node">%Q( class=&quot;#{classes * &#39; &#39;}&quot;)</span>
     <span class="ruby-identifier">title_element</span> = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">title?</span> <span class="ruby-operator">?</span> <span class="ruby-node">%Q(\n&lt;div class=&quot;title&quot;&gt;#{node.captioned_title}&lt;/div&gt;)</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-node">%Q(&lt;div#{id_attribute}#{class_attribute}&gt;#{title_element}
 &lt;div class=&quot;content&quot;&gt;
-&lt;audio src=&quot;#{node.media_uri(node.attr 'target')}&quot;#{(node.option? 'autoplay') ? ' autoplay' : nil}#{(node.option? 'nocontrols') ? nil : ' controls'}#{(node.option? 'loop') ? ' loop' : nil}&gt;
+&lt;audio src=&quot;#{node.media_uri(node.attr &#39;target&#39;)}&quot;#{(node.option? &#39;autoplay&#39;) ? &#39; autoplay&#39; : nil}#{(node.option? &#39;nocontrols&#39;) ? nil : &#39; controls&#39;}#{(node.option? &#39;loop&#39;) ? &#39; loop&#39; : nil}&gt;
 Your browser does not support the audio tag.
 &lt;/audio&gt;
 &lt;/div&gt;

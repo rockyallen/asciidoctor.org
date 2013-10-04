@@ -465,19 +465,19 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 383</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">open_block</span>(<span class="ruby-identifier">node</span>, <span class="ruby-identifier">id</span>, <span class="ruby-identifier">style</span>, <span class="ruby-identifier">role</span>, <span class="ruby-identifier">reftext</span>, <span class="ruby-identifier">title</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">style</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">'abstract'</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'doctype'</span>, <span class="ruby-string">'book'</span>)
-        <span class="ruby-identifier">warn</span> <span class="ruby-string">'asciidoctor: WARNING: abstract block cannot be used in a document without a title when doctype is book. Excluding block content.'</span>
-        <span class="ruby-string">''</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;abstract&#39;</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;doctype&#39;</span>, <span class="ruby-string">&#39;book&#39;</span>)
+        <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;asciidoctor: WARNING: abstract block cannot be used in a document without a title when doctype is book. Excluding block content.&#39;</span>
+        <span class="ruby-string">&#39;&#39;</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-node">%Q(&lt;abstract&gt;#{title &amp;&amp; &quot;\n&lt;title&gt;#{title}&lt;/title&gt;&quot;}
 #{content node}
 &lt;/abstract&gt;)</span>
       <span class="ruby-keyword">end</span>
-    <span class="ruby-keyword">when</span> <span class="ruby-string">'partintro'</span>
-      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">'doctype'</span>, <span class="ruby-string">'book'</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Section</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
-        <span class="ruby-identifier">warn</span> <span class="ruby-string">'asciidoctor: ERROR: partintro block can only be used when doctype is book and it\s a child of a part section. Excluding block content.'</span>
-        <span class="ruby-string">''</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">&#39;partintro&#39;</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">document</span>.<span class="ruby-identifier">attr?</span>(<span class="ruby-string">&#39;doctype&#39;</span>, <span class="ruby-string">&#39;book&#39;</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parent</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Asciidoctor</span><span class="ruby-operator">::</span><span class="ruby-constant">Section</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">level</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">warn</span> <span class="ruby-string">&#39;asciidoctor: ERROR: partintro block can only be used when doctype is book and it\s a child of a part section. Excluding block content.&#39;</span>
+        <span class="ruby-string">&#39;&#39;</span>
       <span class="ruby-keyword">else</span>
         <span class="ruby-node">%Q(&lt;partintro#{common_attrs id, role, reftext}&gt;#{title &amp;&amp; &quot;\n&lt;title&gt;#{title}&lt;/title&gt;&quot;}
 #{content node}

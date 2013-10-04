@@ -461,8 +461,8 @@
             <pre><span class="ruby-comment"># File lib/asciidoctor/backends/docbook45.rb, line 517</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier">template</span>
     <span class="ruby-ivar">@template</span> <span class="ruby-operator">||=</span> <span class="ruby-ivar">@eruby</span>.<span class="ruby-identifier">new</span> <span class="ruby-value">&lt;&lt;-EOS
-&lt;%#encoding:UTF-8%&gt;&lt;&lt;%= (tag_name = title? ? 'table' : 'informaltable') %&gt;#{common_attrs_erb} frame=&quot;&lt;%= attr :frame, 'all'%&gt;&quot;
-    rowsep=&quot;&lt;%= ['none', 'cols'].include?(attr :grid) ? 0 : 1 %&gt;&quot; colsep=&quot;&lt;%= ['none', 'rows'].include?(attr :grid) ? 0 : 1 %&gt;&quot;&gt;#{title_tag}
+&lt;%#encoding:UTF-8%&gt;&lt;&lt;%= (tag_name = title? ? &#39;table&#39; : &#39;informaltable&#39;) %&gt;#{common_attrs_erb} frame=&quot;&lt;%= attr :frame, &#39;all&#39;%&gt;&quot;
+    rowsep=&quot;&lt;%= [&#39;none&#39;, &#39;cols&#39;].include?(attr :grid) ? 0 : 1 %&gt;&quot; colsep=&quot;&lt;%= [&#39;none&#39;, &#39;rows&#39;].include?(attr :grid) ? 0 : 1 %&gt;&quot;&gt;#{title_tag}
   &lt;% if attr? :width %&gt;
   &lt;?dbhtml table-width=&quot;&lt;%= attr :width %&gt;&quot;?&gt;
   &lt;?dbfo table-width=&quot;&lt;%= attr :width %&gt;&quot;?&gt;
@@ -477,10 +477,10 @@
       &lt;% @rows[tblsec].each do |row| %&gt;
       &lt;row&gt;
         &lt;% row.each do |cell| %&gt;
-        &lt;entry#{attribute('align', 'cell.attr :halign')}#{attribute('valign', 'cell.attr :valign')}&lt;%
+        &lt;entry#{attribute(&#39;align&#39;, &#39;cell.attr :halign&#39;)}#{attribute(&#39;valign&#39;, &#39;cell.attr :valign&#39;)}&lt;%
         if cell.colspan %&gt; namest=&quot;col_&lt;%= cell.column.attr :colnumber %&gt;&quot; nameend=&quot;col_&lt;%= (cell.column.attr :colnumber) + cell.colspan - 1 %&gt;&quot;&lt;%
         end %&gt;&lt;% if cell.rowspan %&gt; morerows=&quot;&lt;%= cell.rowspan - 1 %&gt;&quot;&lt;% end %&gt;&gt;&lt;%
-        cell_content = ''
+        cell_content = &#39;&#39;
         if tblsec == :head %&gt;&lt;% cell_content = cell.text %&gt;&lt;%
         else %&gt;&lt;%
         case cell.style
@@ -489,7 +489,7 @@
           when :literal %&gt;&lt;% cell_content = %(&lt;literallayout class=&quot;monospaced&quot;&gt;\#{template.preserve_endlines(cell.text, self)}&lt;/literallayout&gt;) %&gt;&lt;%
           when :header %&gt;&lt;% cell.content.each do |text| %&gt;&lt;% cell_content = %(\#{cell_content\}&lt;simpara&gt;&lt;emphasis role=&quot;strong&quot;&gt;\#{text}&lt;/emphasis&gt;&lt;/simpara&gt;) %&gt;&lt;% end %&gt;&lt;%
           else %&gt;&lt;% cell.content.each do |text| %&gt;&lt;% cell_content = %(\#{cell_content}&lt;simpara&gt;\#{text}&lt;/simpara&gt;) %&gt;&lt;% end %&gt;&lt;%
-        %&gt;&lt;% end %&gt;&lt;% end %&gt;&lt;%= (@document.attr? 'cellbgcolor') ? %(&lt;?dbfo bgcolor=&quot;\#{@document.attr 'cellbgcolor'}&quot;?&gt;) : nil %&gt;&lt;%= cell_content %&gt;&lt;/entry&gt;
+        %&gt;&lt;% end %&gt;&lt;% end %&gt;&lt;%= (@document.attr? &#39;cellbgcolor&#39;) ? %(&lt;?dbfo bgcolor=&quot;\#{@document.attr &#39;cellbgcolor&#39;}&quot;?&gt;) : nil %&gt;&lt;%= cell_content %&gt;&lt;/entry&gt;
         &lt;% end %&gt;
       &lt;/row&gt;
       &lt;% end %&gt;
