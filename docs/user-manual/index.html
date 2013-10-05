@@ -516,6 +516,11 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 </ul>
 </li>
 <li><a href="#output-formats">Output Formats</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#doctype">doctype</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#part-4-terms-and-concepts">Part 4: Terms and Concepts</a></li>
@@ -528,6 +533,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel2">
 <li><a href="#attribute-assignment-precedence">Attribute assignment precedence</a></li>
 <li><a href="#using-attributes-set-assign-and-reference">Using attributes: set, assign, and reference</a></li>
+<li><a href="#built-in-data-attributes">Built-in data attributes</a></li>
 </ul>
 </li>
 <li><a href="#setting-attributes-on-a-document">Setting Attributes on a Document</a></li>
@@ -575,32 +581,14 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel1">
 <li><a href="#text-editor">Text Editor</a></li>
 <li><a href="#basic-document-anatomy">Basic Document Anatomy</a></li>
-<li><a href="#document-title">Document Title</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#doctitle-attribute">Doctitle attribute</a></li>
-<li><a href="#displaying-the-title">Displaying the title</a></li>
-<li><a href="#ignore-front-matter-added-for-static-site-generators">Ignore front matter added for static-site generators</a></li>
-</ul>
-</li>
 <li><a href="#doc-header">Header</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#asciidoctor">asciidoctor</a></li>
-<li><a href="#asciidoctor-version">asciidoctor-version</a></li>
-<li><a href="#backend">backend</a></li>
-<li><a href="#description">description</a></li>
-<li><a href="#docdate">docdate</a></li>
-<li><a href="#docdatetime">docdatetime</a></li>
-<li><a href="#docdir">docdir</a></li>
-<li><a href="#docfile">docfile</a></li>
-<li><a href="#doctime">doctime</a></li>
-<li><a href="#doctitle">doctitle</a></li>
-<li><a href="#doctype">doctype</a></li>
-<li><a href="#localdate">localdate</a></li>
-<li><a href="#localdatetime">localdatetime</a></li>
-<li><a href="#localtime">localtime</a></li>
-<li><a href="#docinfo-file">Docinfo file</a></li>
+<li><a href="#document-title">Document title</a></li>
+<li><a href="#author-and-email">Author and email</a></li>
+<li><a href="#revision-number-date-and-remark">Revision number, date, and remark</a></li>
+<li><a href="#metadata">Metadata</a></li>
+<li><a href="#header-summary">Header Summary</a></li>
 </ul>
 </li>
 <li><a href="#table-of-contents">Table of Contents</a></li>
@@ -813,10 +801,11 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#command-line-attributes">Command Line Attributes</a></li>
 </ul>
 </li>
-<li><a href="#metadata">Metadata</a></li>
+<li><a href="#metadata-2">Metadata</a></li>
 <li>
 <ul class="sectlevel2">
 <li><a href="#chunking">Chunking</a></li>
+<li><a href="#docinfo-file">Docinfo file</a></li>
 </ul>
 </li>
 </ul>
@@ -860,7 +849,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 </ul>
 </li>
 <li><a href="#docbook">DocBook</a></li>
-<li><a href="#man-pages-in-asciidoc">Man Pages in AsciiDoc</a></li>
+<li><a href="#manpage">Manpage</a></li>
 <li><a href="#pdf">PDF</a></li>
 <li><a href="#slideshows">Slideshows</a></li>
 <li>
@@ -918,6 +907,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel2">
 <li><a href="#repositories">Repositories</a></li>
 <li><a href="#static-website-generators">Static website generators</a></li>
+<li><a href="#ignore-front-matter-added-for-static-site-generators">Ignore front matter added for static-site generators</a></li>
 <li><a href="#configuring-attributes-for-awestruct">Configuring attributes for Awestruct</a></li>
 </ul>
 </li>
@@ -1716,6 +1706,132 @@ Section Pending
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>The Asciidoctor and AsciiDoc processors parse a document and translate it into a variety of formats, including HTML, DocBook and PDF.
+The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command-line option.
+If no backend is indicated, the processor&#8217;s default backend is used.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor has three native backends.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>html5</code></dt>
+<dd>
+<p>HTML 5 markup styled with CSS3.
+Asciidoctor&#8217;s default backend.</p>
+</dd>
+<dt class="hdlist1"><code>docbook</code></dt>
+<dd>
+<p>DocBook XML 4.5 markup.</p>
+</dd>
+<dt class="hdlist1"><code>docbook5</code></dt>
+<dd>
+<p>DocBook XML 5.0 markup.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The AsciiDoc processor supports numerous backends, including:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>xhtml11</code></dt>
+<dd>
+<p>XHTML 1.1 markup styled with CSS2.
+AsciiDoc&#8217;s default backend.</p>
+</dd>
+<dt class="hdlist1"><code>html5</code></dt>
+<dd>
+<p>HTML 5 markup styled with CSS3.</p>
+</dd>
+<dt class="hdlist1"><code>docbook</code></dt>
+<dd>
+<p>DocBook XML 4.5 markup.</p>
+</dd>
+<dt class="hdlist1"><code>pdf</code></dt>
+<dd>
+<p>Portable Document Format (PDF).</p>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="doctype"><a class="anchor" href="#doctype"></a>doctype</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Article</dt>
+<dd>
+<p>Default doctype
+In DocBook, includes the appendix, abstract, bibliography, glossary, and index sections</p>
+</dd>
+<dt class="hdlist1">Book</dt>
+<dd>
+<p>The same as articles with the additional ability to use a top level title as part titles, includes the appendix, dedication, preface, bibliography, glossary, index, and colophon</p>
+</dd>
+<dt class="hdlist1">Inline</dt>
+<dd>
+<p>There may be cases when you only want to apply inline AsciiDoc formatting to input text without wrapping it in a block element.
+For example, in the [Asciidoclet project] (AsciiDoc in Javadoc), only the inline formatting is needed for the text in Javadoc tags.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>The rules for the inline doctype are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only a single paragraph is read from the AsciiDoc source</p>
+</li>
+<li>
+<p>Inline formatting is applied</p>
+</li>
+<li>
+<p>The output is not wrapped in the normal paragraph tags</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given the following input:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Processing it with the options <code>doctype=inline</code> and <code>backend=html5</code> produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/a&gt;</span> is a <span class="tag">&lt;em&gt;</span>lightweight<span class="tag">&lt;/em&gt;</span> markup language<span class="entity">&amp;#8230;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Asciidoctor processor is now able to cover the full range of output, from unstructured (inline) text to a full, standalone document!</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Asciidoctor only.
+</td>
+</tr>
+</table>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Manpage</dt>
+<dd>
+<p>Special title and section naming conventions used to generate roff format UNIX manual pages.
+Corresponds to the DocBook refentry document type</p>
+</dd>
+</dl>
+</div>
+</div>
 </div>
 </div>
 <h1 id="part-4-terms-and-concepts" class="sect0"><a class="anchor" href="#part-4-terms-and-concepts"></a>Part 4: Terms and Concepts</h1>
@@ -2021,6 +2137,82 @@ To learn about command line attributes and how to use them, proceed to <a href="
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="built-in-data-attributes"><a class="anchor" href="#built-in-data-attributes"></a>Built-in data attributes</h3>
+<div class="paragraph">
+<p>Asciidoctor includes numerous intrinsic attributes that are assigned values when the document is rendered.
+The values of these built-in data attributes are derived from how the document is processed and when and where is it processed.
+These attributes can be referenced anywhere in the document.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Built-in data attributes</caption>
+<colgroup>
+<col style="width:14%;">
+<col style="width:42%;">
+<col style="width:42%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>blank</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the processor</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdatetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date and time</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document directory</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docfile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document file</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified time</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local date when rendered</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdatetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local date and time when rendered</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localtime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local time when rendered</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
@@ -2826,162 +3018,445 @@ Section pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="document-title"><a class="anchor" href="#document-title"></a>Document Title</h2>
+<h2 id="doc-header"><a class="anchor" href="#doc-header"></a>Header</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Just as every e-mail has a subject, every document (typically) has a title.
-The title goes at the top of an AsciiDoc document.</p>
+<p>The document header contains title, author and revision information as well as any document-wide attributes set and defined by the user.
+The header is <em>not required</em> when the <code>doctype</code> is <code>article</code> or <code>book</code>.
+If absent, Asciidoctor will render the content that is present.</p>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<i class="icon-warning" title="Warning"></i>
 </td>
 <td class="content">
-A document title is an <em>optional</em> feature of an AsciiDoc document.
+A header must be present when the document type is <code>manpage</code>.
+The requirements for a manpage are described in the <a href="#manpage">Manpage</a> section.
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To create a document title, begin the first line of the document with one equal sign followed by at least one space (<code>= </code>), then the text of the title.
-This syntax is the simplest (and thus recommended) way to declare a document title.</p>
+<p>When the header is present, it must start with a document title.
+The title can be immediately followed by two optional lines of text defining author and revision information.
+Finally, any document-wide settings are configured using attribute entries.
+The header can not contain any blank lines, but it can contain comments.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a document title followed by an abbreviated paragraph:</p>
+<p>The header is processed when rendering a full document.
+This means that the header of a document called via an <code>include</code> directive will be processed and rendered.
+When you do not want the header of a document to be rendered, set the <code>noheader</code> or <code>no-header-footer</code> attribute in the document&#8217;s header or the CLI.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Front matter</div>
+<div class="paragraph">
+<p>Many static site generators, such as Jekyll and Middleman, rely on front matter added to the top of the document to determine how to render the content.
+Asciidoctor has a number of attributes available to correctly handle front matter.
+See the <a href="#static-website-generators">Static website generators</a> section to learn how Asciidoctor integrates with static website generators.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let&#8217;s look at the document title in detail.</p>
+</div>
+<div class="sect2">
+<h3 id="document-title"><a class="anchor" href="#document-title"></a>Document title</h3>
+<div class="paragraph">
+<p>A document title must be placed on the first line of the document.
+It is preceded by one equal sign followed by at least one space (<code>= </code>), and then the text of the title.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a document title followed by an abbreviated paragraph.</p>
+</div>
+<div class="listingblock">
+<div class="title">Document with a title</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+
+This journey begins on a bleary Monday morning.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered document title</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/sect0-title.png" alt="Title of document">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When the doctype is set to <code>article</code> or <code>manpage</code>, a document can have only one document title.
+The <code>book</code> document type can have multiple section level 0 titles, which are translated into parts.</p>
+</div>
+<div class="paragraph">
+<p>A document&#8217;s title is assigned to the built-in <code>doctitle</code> attribute.
+Its value is identical to the value returned by <code>Document#doctitle</code> and <code>sect0</code>.
+The <code>doctitle</code> attribute can be referenced anywhere in a document and will display the document&#8217;s title when rendered.</p>
+</div>
+<div class="listingblock">
+<div class="title">Referencing the <code>doctitle</code> attribute</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+
+{doctitle} begins on a bleary Monday morning.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Result: <code>doctitle</code> output</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/doctitle.png" alt="Doctitle attribute">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can control whether or not the title is displayed when the document is rendered with the attributes <code>notitle</code> and <code>showtitle</code>.
+If you don&#8217;t want the title to be rendered, set the <code>notitle</code> attribute in the header or CLI.
+On the other hand, the title is not displayed when a document&#8217;s header and footer are disabled.
+In this case, set the <code>showtitle</code> attribute in order to render the title.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see how to add additional information to the header, including an author and her email address.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="author-and-email"><a class="anchor" href="#author-and-email"></a>Author and email</h3>
+<div class="paragraph">
+<p>The author a document is listed on the line beneath the document&#8217;s title.
+An optional email address can follow an author&#8217;s name.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s add an author and her email address to the document below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Lightweight Markup Languages
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;
 
-According to Wikipedia...</code></pre>
+This journey begins...
+
+== About the Author
+
+You can contact {author} at {email}.
+{firstname} loves to hear from other chroniclers.
+
+P.S. And yes, my middle name really is {middlename}.
+What else would you expect from a member of the Rocky Mountain {lastname} Clan?
+
+{authorinitials}</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered author and email information displayed on the byline and referenced in the document&#8217;s body</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/author-email.png" alt="Author and email attributes">
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>The document title is part of the document header.</p>
+<p>As you can see in the example above, Asciidoctor uses the author&#8217;s name and email to assign values to a number of built-in attributes that can be used throughout the document&#8217;s body.
+These attributes include:</p>
 </div>
-<div class="sect2">
-<h3 id="doctitle-attribute"><a class="anchor" href="#doctitle-attribute"></a>Doctitle attribute</h3>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>author</code>
+</td>
+<td class="hdlist2">
+<p>The author&#8217;s full name, which includes all of the characters or words prior to a semicolon (<code>;</code>), angle bracket (<code>&lt;</code>) or the end of the line.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>firstname</code>
+</td>
+<td class="hdlist2">
+<p>The first word in the <code>author</code> attribute.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>lastname</code>
+</td>
+<td class="hdlist2">
+<p>The last word in the <code>author</code> attribute.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>middlename</code>
+</td>
+<td class="hdlist2">
+<p>If a <code>firstname</code> and <code>lastname</code> are present, any remaining words or characters found between these attributes are assigned to the <code>middlename</code> attribute.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>authorinitials</code>
+</td>
+<td class="hdlist2">
+<p>The first character of the <code>firstname</code>, <code>middlename</code>, and <code>lastname</code> attributes.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>email</code>
+</td>
+<td class="hdlist2">
+<p>An email address, delimited by angle brackets (<code>&lt;&gt;</code>).</p>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
-<p>The <code>doctitle</code> attribute can be used anywhere in a document.
-It&#8217;s value is identical to the value returned by <code>Document#doctitle</code>.</p>
+<p>If the author&#8217;s first, middle or last name consists of more than one word, use an underscore (<code>_</code>) between the words.
+The author of the following document has two middle names.</p>
 </div>
 <div class="listingblock">
-<div class="title">AsciiDoc <code>doctitle</code> syntax</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Unbearable Lightness of Nomenclature
+Paul Henry_Bernard Shaw
 
-The document title is {doctitle}.</code></pre>
+My first name is {firstname}.
+
+My middle name is {middlename}.
+
+My last name is {lastname}.
+
+My initials are {authorinitials}.</code></pre>
 </div>
 </div>
-<div class="literalblock">
-<div class="title"><code>doctitle</code> output result</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered author information when author has two middle names</div>
 <div class="content">
-<pre class="nowrap">The document title is Document Title.</pre>
+<div class="imageblock">
+<div class="content">
+<img src="/images/author-two-middle.png" alt="Compound author name attributes">
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="displaying-the-title"><a class="anchor" href="#displaying-the-title"></a>Displaying the title</h3>
-<div class="paragraph">
-<p>When a document&#8217;s header and footer are disabled, the document title will not be rendered by default.
-However, if you do want the title to be render you can set the <code>showtitle</code> attribute.
-You can also achieve the same result by unsetting the <code>notitle</code> attribute (i.e. <code>notitle!</code>).</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ignore-front-matter-added-for-static-site-generators"><a class="anchor" href="#ignore-front-matter-added-for-static-site-generators"></a>Ignore front matter added for static-site generators</h3>
-<div class="paragraph">
-<p>Many static site generators (i.e., Jekyll, Middleman, Awestruct) rely on "front matter" added to the top of the document to determine how to render the content.
-Front matter typically starts on the first line of a file and is bounded by block delimiters (e.g., <code>---</code>).</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a document that contains front matter:</p>
+<p>Alternatively, the <code>author</code> and <code>email</code> attributes can be set explicitly in the header.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">--- <i class="conum" data-value="1"></i><b>(1)</b>
-layout: default <i class="conum" data-value="2"></i><b>(2)</b>
---- <i class="conum" data-value="1"></i><b>(1)</b>
-= Document Title
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+:author: Kismet Rainbow Chameleon
+:email: kismet@asciidoctor.org
 
-content</code></pre>
+This journey begins...
+
+== About the Author
+
+You can contact {author} at {email}.
+{firstname} loves to hear from other chroniclers.
+
+P.S. And yes, my middle name really is {middlename}.
+What else would you expect from a member of the Rocky Mountain {lastname} Clan?
+
+{authorinitials}
+</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered author information when author and email attributes are explicitly set</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/author-email-long.png" alt="Author and email attributes">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>html5</code> and <code>docbook</code> backends can render documents with multiple authors.
+Multiple authors and their emails are separated by semicolons (<code>;</code>) when they&#8217;re listed on the same line.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
+
+This journey begins...
+
+== About the Authors
+
+You can contact {author} at {email}.
+{firstname} loves to hear from other chroniclers.
+
+{author_2} specializes in burning down automation obstacles. <i class="conum" data-value="1"></i><b>(1)</b>
+Email {lastname_2} at {email_2}.
+
+Until our next adventure!
+
+{authorinitials} &amp; {authorinitials_2}</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Front matter delimiters</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Front matter data</td>
+<td>To reference the additional authors in the document body, the author attributes are appended with an underscore (<code>_</code>) followed by the position of the author in the author information list (i.e. Lazarus het Draeke is the second author in the list so his author attributes are appended with a 2).</td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>The static site generator removes these lines before passing the document to the AsciiDoc processor to be rendered.
-Outside of the tool, however, these extra lines can throw off the processor.</p>
+<div class="exampleblock">
+<div class="title">Result: Rendered author information when document has multiple authors</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/multi-author.png" alt="Multiple author and email attributes">
 </div>
-<div class="paragraph">
-<p>If the <code>skip-front-matter</code> attribute is set, Asciidoctor 0.1.4 will recognize the front matter and consume it before parsing the document.
-Asciidoctor stores the content it removes in the <code>front-matter</code> attribute to make it available for integrations.
-Asciidoctor also removes front matter when reading include files.</p>
 </div>
-<div class="admonitionblock tip">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="revision-number-date-and-remark"><a class="anchor" href="#revision-number-date-and-remark"></a>Revision number, date, and remark</h3>
+<div class="paragraph">
+<p>A document&#8217;s revision information contains three optional attributes.</p>
+</div>
+<div class="hdlist">
 <table>
 <tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<td class="hdlist1">
+<code>revnumber</code>
 </td>
-<td class="content">
-Awestruct can read front matter directly from AsciiDoc attributes defined in the document header, thus eliminating the need for this feature.
+<td class="hdlist2">
+<p>The document&#8217;s version number which must contain at least one numeric character.
+Any letters or symbols preceding the numeric character will not be rendered.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>revdate</code>
+</td>
+<td class="hdlist2">
+<p>The date the document version was completed.
+When the <code>revnumber</code> or <code>revremark</code> attributes are set, but <code>revdate</code> is not, then <code>revdate</code> will be assigned the <code>docdate</code> value.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>revremark</code>
+</td>
+<td class="hdlist2">
+<p>Information about this version of the document.</p>
 </td>
 </tr>
 </table>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="doc-header"><a class="anchor" href="#doc-header"></a>Header</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>In all, the document header contains the title, author, revision information and document-wide attributes.
-Let&#8217;s see how to add additional information to the header, including an author.</p>
-</div>
-<div class="paragraph">
-<p>There are two optional lines of text you can add immediately below the document title for defining common document attributes:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Line 1</dt>
-<dd>
-<p>Author name and an optional e-mail address</p>
-</dd>
-<dt class="hdlist1">Line 2</dt>
-<dd>
-<p>An optional revision, a date and an option remark</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s add these lines to our document:</p>
+<p>The revision information is listed on the third line of the header, beneath the author information line.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Lightweight Markup Languages
-Doc Writer &lt;doc.writer@asciidoc.org&gt;
-v1.0, 2012-01-01
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Chameleon &lt;kismet@asciidoctor.org&gt;
+v1.0, October 2, 2013: First incarnation   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 
-According to Wikipedia...</code></pre>
+This journey begins...
+
+== Colophon
+
+Version: {revnumber}
+
+Version Date: {revdate}
+
+Version Notes: {revremark}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>revnumber</code> and <code>revdate</code> must be separated by a comma (<code>,</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>revdate</code> can contain words, letters, numbers, and symbols.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>revremark</code> attribute must be preceded by a colon (<code>:</code>), regardless of whether <code>revnumber</code> or <code>revdate</code> are set.</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered revision information displayed on the byline and referenced in the document&#8217;s body</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/rev.png" alt="Revision attributes">
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>The header now contains a document title, an author, a revision number and a date.
-This information will be formatted when the document is rendered.</p>
+<p>When rendered, the <code>revnumber</code> in the byline is preceded by the word <em>Version</em>; however, when referenced in the body of the document, only the numerical value is displayed.
+The <code>version-label</code> attribute controls the version number label in the byline.
+The revision information attributes can also be explicitly set in the header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Chameleon &lt;kismet@asciidoctor.org&gt;
+:revnumber: v1.0 <i class="conum" data-value="1"></i><b>(1)</b>
+:revdate: 10-02-2013
+:revremark: The first incarnation of {doctitle} <i class="conum" data-value="2"></i><b>(2)</b>
+:version-label!: <i class="conum" data-value="3"></i><b>(3)</b>
+
+This journey begins...
+
+== Colophon
+
+Version: {revnumber}
+
+Version Date: {revdate}
+
+Version Notes: {revremark}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>When explicitly set, any characters preceding the version number are <strong>not</strong> dropped.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>revremark</code> can contain attribute references.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>version-label</code> attribute is unset so that the word <em>Version</em> does not precede the <code>revnumber</code> in the byline.</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Rendered revision information when revision attributes are explicitly set</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/rev-long.png" alt="Explicitly set revision attributes">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the rendered document, notice that the <em>V</em> preceding the <code>revnumber</code> is capitalized in the byline but not when the attribute is referenced in the body of the document.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -2990,570 +3465,262 @@ This information will be formatted when the document is rendered.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-The header, including the document title, is <em>not required</em>.
-If absent, Asciidoctor will happily render whatever content is present.
-The header is only used when rendering a full document.
-It&#8217;s excluded from the output of an embedded document.
+Revision extraction information and an extraction example are pending.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>The document header is also used to define attributes.
-Document settings are configured using attribute entries immediately following the document title, author and revision lines (without any blank lines in between).</p>
 </div>
 <div class="sect2">
-<h3 id="asciidoctor"><a class="anchor" href="#asciidoctor"></a>asciidoctor</h3>
+<h3 id="metadata"><a class="anchor" href="#metadata"></a>Metadata</h3>
 <div class="paragraph">
-<p>blank</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="asciidoctor-version"><a class="anchor" href="#asciidoctor-version"></a>asciidoctor-version</h3>
-<div class="paragraph">
-<p>Version of the processor</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="backend"><a class="anchor" href="#backend"></a>backend</h3>
-<div class="paragraph">
-<p>The Asciidoctor and AsciiDoc processors parse a document and translate it into a variety of formats, including HTML, DocBook and PDF.
-The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command-line option.
-If no backend is indicated, the processor&#8217;s default backend is used.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor has three native backends.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>html5</code></dt>
-<dd>
-<p>HTML 5 markup styled with CSS3.
-Asciidoctor&#8217;s default backend.</p>
-</dd>
-<dt class="hdlist1"><code>docbook</code></dt>
-<dd>
-<p>DocBook XML 4.5 markup.</p>
-</dd>
-<dt class="hdlist1"><code>docbook5</code></dt>
-<dd>
-<p>DocBook XML 5.0 markup.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>The AsciiDoc processor supports numerous backends, including:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>xhtml11</code></dt>
-<dd>
-<p>XHTML 1.1 markup styled with CSS2.
-AsciiDoc&#8217;s default backend.</p>
-</dd>
-<dt class="hdlist1"><code>html5</code></dt>
-<dd>
-<p>HTML 5 markup styled with CSS3.</p>
-</dd>
-<dt class="hdlist1"><code>docbook</code></dt>
-<dd>
-<p>DocBook XML 4.5 markup.</p>
-</dd>
-<dt class="hdlist1"><code>pdf</code></dt>
-<dd>
-<p>Portable Document Format (PDF).</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="description"><a class="anchor" href="#description"></a>description</h3>
-<div class="paragraph">
-<p>You can set the description of the document using the <code>description</code> attribute.
-The description is included in the header of the document.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:description: This document catalogs a set of recommended practices for writing in AsciiDoc.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can break any attribute value across several lines by ending the lines in a <code>&#43;</code> preceded by a space.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:description: This document catalogs a set of recommended practices +
-              for composing documents in AsciiDoc.</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:desc:</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can use this text anywhere in the document by referencing it as an attribute.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">{description}</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="docdate"><a class="anchor" href="#docdate"></a>docdate</h3>
-<div class="paragraph">
-<p>Last modified date</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="docdatetime"><a class="anchor" href="#docdatetime"></a>docdatetime</h3>
-<div class="paragraph">
-<p>Last modified date &amp; time</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="docdir"><a class="anchor" href="#docdir"></a>docdir</h3>
-<div class="paragraph">
-<p>Name of document directory</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="docfile"><a class="anchor" href="#docfile"></a>docfile</h3>
-<div class="paragraph">
-<p>Name of document file</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="doctime"><a class="anchor" href="#doctime"></a>doctime</h3>
-<div class="paragraph">
-<p>Last modified time</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="doctitle"><a class="anchor" href="#doctitle"></a>doctitle</h3>
-<div class="paragraph">
-<p>The <code>doctitle</code> attribute can be used anywhere in a document.
-It&#8217;s value is identical to the value returned by <code>Document#doctitle</code>.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="doctype"><a class="anchor" href="#doctype"></a>doctype</h3>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Article</dt>
-<dd>
-<p>Default doctype
-In DocBook, includes the appendix, abstract, bibliography, glossary, and index sections</p>
-</dd>
-<dt class="hdlist1">Book</dt>
-<dd>
-<p>The same as articles with the additional ability to use a top level title as part titles, includes the appendix, dedication, preface, bibliography, glossary, index, and colophon</p>
-</dd>
-<dt class="hdlist1">Inline</dt>
-<dd>
-<p>There may be cases when you only want to apply inline AsciiDoc formatting to input text without wrapping it in a block element.
-For example, in the [Asciidoclet project] (AsciiDoc in Javadoc), only the inline formatting is needed for the text in Javadoc tags.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>The rules for the inline doctype are as follows:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Only a single paragraph is read from the AsciiDoc source</p>
-</li>
-<li>
-<p>Inline formatting is applied</p>
-</li>
-<li>
-<p>The output is not wrapped in the normal paragraph tags</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Given the following input:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Processing it with the options <code>doctype=inline</code> and <code>backend=html5</code> produces:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/a&gt;</span> is a <span class="tag">&lt;em&gt;</span>lightweight<span class="tag">&lt;/em&gt;</span> markup language<span class="entity">&amp;#8230;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The Asciidoctor processor is now able to cover the full range of output, from unstructured (inline) text to a full, standalone document!</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-Asciidoctor only.
-</td>
-</tr>
-</table>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Manpage</dt>
-<dd>
-<p>Special title and section naming conventions used to generate roff format UNIX manual pages.
-Corresponds to the DocBook refentry document type</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="localdate"><a class="anchor" href="#localdate"></a>localdate</h3>
-<div class="paragraph">
-<p>Local date when rendered</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="localdatetime"><a class="anchor" href="#localdatetime"></a>localdatetime</h3>
-<div class="paragraph">
-<p>Local date and time when rendered</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="localtime"><a class="anchor" href="#localtime"></a>localtime</h3>
-<div class="paragraph">
-<p>Local time when rendered</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="docinfo-file"><a class="anchor" href="#docinfo-file"></a>Docinfo file</h3>
-<div class="paragraph">
-<p>You can add custom content to the header or footer of a document with document information (<code>docinfo</code>) files.
-The docinfo file&#8217;s content and file extension depends on whether the source document&#8217;s output is HTML or DocBook.</p>
+<p>Document metadata, such as a description of the document, keywords, and an alternative title, can be assigned to attributes in the header.
+When rendered to HTML, the values of these attributes will correspond to tags contained in the <code>&lt;head&gt;</code> section of an HTML document.</p>
 </div>
 <div class="sect3">
-<h4 id="creating-a-docinfo-file"><a class="anchor" href="#creating-a-docinfo-file"></a>Creating a docinfo file</h4>
+<h4 id="description"><a class="anchor" href="#description"></a>Description</h4>
 <div class="paragraph">
-<p>When the source document will be rendered to HTML, the docinfo file can contain the elements allowed in an HTML <code>&lt;HEAD&gt;</code> section, including:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>&lt;base&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;link&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;meta&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;noscript&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;script&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;style&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;title&gt;</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>As seen in the example below, docinfo files are useful for storing metadata, stylesheet, and script information.
-Note that you do not need to include the <code>&lt;head&gt;</code> tag, nor is the <code>&lt;title&gt;</code> tag required.</p>
+<p>You can include a description of the document using the <code>description</code> attribute.</p>
 </div>
 <div class="listingblock">
-<div class="title">A docinfo file for HTML output</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keywords</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">open source, documentation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">The dangerous and thrilling adventures of an open source documentation team.</span></span><span class="error">&gt;</span>
-<span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">basejump.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">map.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Docinfo files for HTML output must be saved with the <code>.html</code> file extension.</p>
-</div>
-<div class="paragraph">
-<p>When DocBook 5.0 is the rendered output, the docinfo file may include any of the <a href="http://www.docbook.org/tdg5/en/html/info.html"><code>&lt;info&gt;</code> element&#8217;s 48 children</a>, such as:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>&lt;address&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;copyright&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;edition&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;keywordset&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;publisher&gt;</code></p>
-</li>
-<li>
-<p><code>&lt;subtitle&gt;</code></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>The following example shows some of the content a docinfo file for DocBook might contain.</p>
-</div>
-<div class="listingblock">
-<div class="title">A docinfo file for DocBook 5.0 output</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;author&gt;</span>
-  <span class="tag">&lt;personname&gt;</span>
-    <span class="tag">&lt;firstname&gt;</span>Karma<span class="tag">&lt;/firstname&gt;</span>
-    <span class="tag">&lt;surname&gt;</span>Chameleon<span class="tag">&lt;/surname&gt;</span>
-  <span class="tag">&lt;/personname&gt;</span>
-  <span class="tag">&lt;affiliation&gt;</span>
-    <span class="tag">&lt;jobtitle&gt;</span>Word SWAT Team Leader<span class="tag">&lt;/jobtitle&gt;</span>
-  <span class="tag">&lt;/affiliation&gt;</span>
-<span class="tag">&lt;/author&gt;</span>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
+:description: A story chronicling the inexplicable hazards and vicious beasts a + <i class="conum" data-value="1"></i><b>(1)</b>
+documentation team must surmount and vanquish on their journey to finding an +
+open source project's true power.
 
-<span class="tag">&lt;keywordset&gt;</span>
-  <span class="tag">&lt;keyword&gt;</span>open source<span class="tag">&lt;/keyword&gt;</span>
-  <span class="tag">&lt;keyword&gt;</span>documentation<span class="tag">&lt;/keyword&gt;</span>
-  <span class="tag">&lt;keyword&gt;</span>adventure<span class="tag">&lt;/keyword&gt;</span>
-<span class="tag">&lt;/keywordset&gt;</span>
-
-<span class="tag">&lt;printhistory&gt;</span>
-  <span class="tag">&lt;para&gt;</span>April, 2019. Twenty-sixth printing.
-  <span class="tag">&lt;/para&gt;</span>
-<span class="tag">&lt;/printhistory&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Docinfo files for DocBook output must be saved with the <code>.xml</code> file extension.
-To see another example of a docinfo file for DocBook, checkout the <a href="https://github.com/richfaces/richfaces-docs/blob/master/Developer_Guide/src/main/docbook/en-US/Developer_Guide-docinfo.xml">RichFaces Developer Guide docinfo file</a>.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="docinfo-attributes-and-file-names"><a class="anchor" href="#docinfo-attributes-and-file-names"></a>Docinfo attributes and file names</h4>
-<div class="paragraph">
-<p>To add content from a docinfo file to the header of a rendered document:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>The docinfo file must be named correctly</p>
-</li>
-<li>
-<p>The appropriate docinfo attribute must be set in the source document</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>How you name your docinfo file and the docinfo attribute you set in your source document depends on whether you want to add content to:</p>
-</div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>a specific document</p>
-</li>
-<li>
-<p>all the documents in a directory</p>
-</li>
-<li>
-<p>a and b</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>The attributes and the corresponding file names are listed in the table below.</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Docinfo attributes and file names</caption>
-<colgroup>
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribute</th>
-<th class="tableblock halign-left valign-top">Purpose</th>
-<th class="tableblock halign-left valign-top">docinfo file name for HTML</th>
-<th class="tableblock halign-left valign-top">docinfo file name for DocBook</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to a specific document</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.html</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.xml</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to all documents in the same directory</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Add content from either docinfo file</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code>, <code>&lt;docname&gt;-docinfo.html</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code>, <code>&lt;docname&gt;-docinfo.xml</code></p></td>
-</tr>
-</tbody>
-</table>
-
-<div class="paragraph">
-<p>Let&#8217;s apply the information above to an example exercise.</p>
-</div>
-<div class="paragraph">
-<p>You have two AsciiDoc documents, <code>adventure.adoc</code> and <code>insurance.adoc</code>, saved in the same folder.
-You want to add the same content to the headers of both documents when they&#8217;re rendered to HTML.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create a docinfo file using <code>&lt;head&gt;</code> elements.</p>
-</li>
-<li>
-<p>Save the docinfo file as <code>docinfo.html</code>.</p>
-</li>
-<li>
-<p>Set the <code>docinfo1</code> attribute in <code>adventure.adoc</code> and <code>insurance.adoc</code>.</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>You also want to include some additional content to the header of <code>adventure.adoc</code>.</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Create <strong>another</strong> docinfo file using <code>&lt;head&gt;</code> elements.</p>
-</li>
-<li>
-<p>Save the docinfo file as <code>adventure-docinfo.html</code>.</p>
-</li>
-<li>
-<p>Set the <code>docinfo</code> attribute in <code>adventure.adoc</code>.</p>
-</li>
-<li>
-<p>Alternatively, you could remove the <code>docinfo1</code> attribute and set <code>docinfo2</code> instead.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="footer-docinfo-files"><a class="anchor" href="#footer-docinfo-files"></a>Footer docinfo files</h4>
-<div class="paragraph">
-<p>Footer docinfo files are differentiated from header docinfo files by adding <code>-footer</code> to the file name.
-In the HTML output, the footer content is inserted inside the footer div (i.e., <code>&lt;div id="footer"&gt;</code>).
-In the DocBook output, the footer content is inserted immediately before the ending <code>&lt;/article&gt;</code> or <code>&lt;/book&gt;</code> element.</p>
-</div>
-<div class="paragraph">
-<div class="title">docinfo</div>
-<p>If you want to add content to the footer of a specific document, put the content in the file <code>&lt;docname&gt;-footer.html</code> (for HTML output) or <code>&lt;docname&gt;-footer.xml</code> (for DocBook output), where <code>&lt;docname&gt;</code> is the name of the document without the AsciiDoc extension.
-Then, set the attribute <code>docinfo</code> in the source document.</p>
-</div>
-<div class="paragraph">
-<div class="title">docinfo1</div>
-<p>If you want to add content to the footer of all documents in the same directory, put the content in the file <code>docinfo-footer.html</code> or <code>docinfo-footer.xml</code>.
-Then, set the attribute <code>docinfo1</code> in the source document to enable the feature.</p>
-</div>
-<div class="paragraph">
-<div class="title">docinfo2</div>
-<p>If you want the document to look for either docinfo file, set the attribute <code>docinfo2</code> in the source document.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The "Last updated" line in the footer can be disabled by unassigning the attribute <code>last-update-label</code>.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="attribute-substitution"><a class="anchor" href="#attribute-substitution"></a>Attribute substitution</h4>
-<div class="paragraph">
-<p>Docinfo files can include attribute references.</p>
-</div>
-<div class="paragraph">
-<p>For example, if you created the following docinfo file:</p>
-</div>
-<div class="listingblock">
-<div class="title">Docinfo file containing a <code>revnumber</code> attribute reference</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;edition&gt;</span>{revnumber}<span class="tag">&lt;/edition&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And this source document:</p>
-</div>
-<div class="listingblock">
-<div class="title">Source document including a revision number</div>
-<div class="content">
-<pre class="nowrap">= Document Title
-Author Name
-v1.0, 2013-06-01
-:doctype: book
-:backend: docbook
-:docinfo:</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then the rendered DocBook output would be:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="doctype">&lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot;
-    &quot;http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd&quot;&gt;</span>
-<span class="tag">&lt;book</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;bookinfo&gt;</span>
-    <span class="tag">&lt;title&gt;</span>Document Title<span class="tag">&lt;/title&gt;</span>
-    <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
-    <span class="tag">&lt;author&gt;</span>
-      <span class="tag">&lt;firstname&gt;</span>Author<span class="tag">&lt;/firstname&gt;</span>
-      <span class="tag">&lt;surname&gt;</span>Name<span class="tag">&lt;/surname&gt;</span>
-    <span class="tag">&lt;/author&gt;</span>
-    <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
-    <span class="tag">&lt;revhistory&gt;</span>
-      <span class="tag">&lt;revision&gt;</span>
-        <span class="tag">&lt;revnumber&gt;</span>1.0<span class="tag">&lt;/revnumber&gt;</span>
-        <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
-        <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
-      <span class="tag">&lt;/revision&gt;</span>
-    <span class="tag">&lt;/revhistory&gt;</span>
-<span class="tag">&lt;edition&gt;</span>1.0<span class="tag">&lt;/edition&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="tag">&lt;/bookinfo&gt;</span>
-<span class="tag">&lt;/book&gt;</span></code></pre>
+This journey begins on a bleary Monday morning.</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>revnumber</code> attribute reference was replaced by the source document&#8217;s revision number in the rendered output.</td>
+<td>If the document&#8217;s description is long, you can break the attribute&#8217;s value across several lines by ending the lines in a <code>&#43;</code> that is preceded by a space.</td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>When rendered to HTML, the document description value is assigned to the HTML <code>&lt;meta&gt;</code> tag.</p>
 </div>
+<div class="exampleblock">
+<div class="title">HTML output</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">generator</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Asciidoctor 0.1.4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">A story chronicling the inexplicable hazards and vicious beasts a documentation team must surmount and vanquish on their journey to finding an open source project's true power.</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;title&gt;</span>The Dangerous and Thrilling Documentation Chronicles<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;style&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="keywords"><a class="anchor" href="#keywords"></a>Keywords</h4>
+<div class="paragraph">
+<p>The <code>keywords</code> attribute contains a list of comma separated values that are assigned to the HTML <code>&lt;meta&gt;</code> tag.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
+:keywords: documentation, team, obstacles, journey, victory
+
+This journey begins on a bleary Monday morning.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">HTML output</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">generator</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Asciidoctor 0.1.4</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keywords</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">documentation, team, obstacles, journey, victory</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;title&gt;</span>The Dangerous and Thrilling Documentation Chronicles<span class="tag">&lt;/title&gt;</span>
+<span class="tag">&lt;style&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="alternate-title"><a class="anchor" href="#alternate-title"></a>Alternate title</h4>
+<div class="paragraph">
+<p>By default, the document title is used as the HTML <code>&lt;title&gt;</code> tag value.
+However, you can set the <code>title</code> attribute in the document&#8217;s header to override this behavior.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="custom-metadata-styles-and-functions"><a class="anchor" href="#custom-metadata-styles-and-functions"></a>Custom metadata, styles and functions</h4>
+<div class="paragraph">
+<p>You can add content, such as custom metadata, stylesheet, and script information, to the header of a rendered document with document information (<code>docinfo</code>) files.
+The <a href="#docinfo-file">Docinfo file</a> section details what these files can contain and how to use them.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="header-summary"><a class="anchor" href="#header-summary"></a>Header Summary</h3>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Header attributes and values</caption>
+<colgroup>
+<col style="width:14%;">
+<col style="width:14%;">
+<col style="width:28%;">
+<col style="width:28%;">
+<col style="width:14%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Values</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Notes</th>
+<th class="tableblock halign-left valign-top">Backends</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>author</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Author&#8217;s full name</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>authorinitials</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First character of each word in the <code>author</code> attribute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code>, <code>desc</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text describing the document</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docinfo</code>, <code>docinfo1</code>, <code>docinfo2</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Adds content from a docinfo file to header</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html, docbook</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Text entered by user</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title of document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Identical to the value returned by <code>Document#doctitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>email</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Email address</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>firstname</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First word of <code>author</code> attribute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lastname</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last word of <code>author</code> attribute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>middlename</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Middle word of <code>author</code> attribute</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-header-footer</code>, <code>s</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suppresses the rendering of the header and footer</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>noheader</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suppresses the rendering of the header</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>notitle</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggles the display of a document&#8217;s title</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revdate</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Date of document version</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revnumber</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version number of the document</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>revremark</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version comments</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>showtitle</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggles the display of an embedded document&#8217;s title</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>title</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative title of the document</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>version-label</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Version</code>, User defined</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The label preceding the <code>revnumber</code> in a render document&#8217;s byline</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
@@ -11423,7 +11590,7 @@ However, this is easily solved by quoting (or escaping) the argument value.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="metadata"><a class="anchor" href="#metadata"></a>Metadata</h2>
+<h2 id="metadata-2"><a class="anchor" href="#metadata-2"></a>Metadata</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -11450,6 +11617,329 @@ Section pending
 </td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docinfo-file"><a class="anchor" href="#docinfo-file"></a>Docinfo file</h3>
+<div class="paragraph">
+<p>You can add custom content to the header or footer of a document with document information (<code>docinfo</code>) files.
+The docinfo file&#8217;s content and file extension depends on whether the source document&#8217;s output is HTML or DocBook.</p>
+</div>
+<div class="sect3">
+<h4 id="creating-a-docinfo-file"><a class="anchor" href="#creating-a-docinfo-file"></a>Creating a docinfo file</h4>
+<div class="paragraph">
+<p>When the source document will be rendered to HTML, the docinfo file can contain the elements allowed in an HTML <code>&lt;HEAD&gt;</code> section, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;base&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;link&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;meta&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;noscript&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;script&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;style&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;title&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As seen in the example below, docinfo files are useful for storing metadata, stylesheet, and script information.
+Note that you do not need to include the <code>&lt;head&gt;</code> tag, nor is the <code>&lt;title&gt;</code> tag required.</p>
+</div>
+<div class="listingblock">
+<div class="title">A docinfo file for HTML output</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">keywords</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">open source, documentation</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">description</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">The dangerous and thrilling adventures of an open source documentation team.</span></span><span class="error">&gt;</span>
+<span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">basejump.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">map.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docinfo files for HTML output must be saved with the <code>.html</code> file extension.</p>
+</div>
+<div class="paragraph">
+<p>When DocBook 5.0 is the rendered output, the docinfo file may include any of the <a href="http://www.docbook.org/tdg5/en/html/info.html"><code>&lt;info&gt;</code> element&#8217;s 48 children</a>, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>&lt;address&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;copyright&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;edition&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;keywordset&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;publisher&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;subtitle&gt;</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following example shows some of the content a docinfo file for DocBook might contain.</p>
+</div>
+<div class="listingblock">
+<div class="title">A docinfo file for DocBook 5.0 output</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;author&gt;</span>
+  <span class="tag">&lt;personname&gt;</span>
+    <span class="tag">&lt;firstname&gt;</span>Karma<span class="tag">&lt;/firstname&gt;</span>
+    <span class="tag">&lt;surname&gt;</span>Chameleon<span class="tag">&lt;/surname&gt;</span>
+  <span class="tag">&lt;/personname&gt;</span>
+  <span class="tag">&lt;affiliation&gt;</span>
+    <span class="tag">&lt;jobtitle&gt;</span>Word SWAT Team Leader<span class="tag">&lt;/jobtitle&gt;</span>
+  <span class="tag">&lt;/affiliation&gt;</span>
+<span class="tag">&lt;/author&gt;</span>
+
+<span class="tag">&lt;keywordset&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>open source<span class="tag">&lt;/keyword&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>documentation<span class="tag">&lt;/keyword&gt;</span>
+  <span class="tag">&lt;keyword&gt;</span>adventure<span class="tag">&lt;/keyword&gt;</span>
+<span class="tag">&lt;/keywordset&gt;</span>
+
+<span class="tag">&lt;printhistory&gt;</span>
+  <span class="tag">&lt;para&gt;</span>April, 2019. Twenty-sixth printing.
+  <span class="tag">&lt;/para&gt;</span>
+<span class="tag">&lt;/printhistory&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Docinfo files for DocBook output must be saved with the <code>.xml</code> file extension.
+To see another example of a docinfo file for DocBook, checkout the <a href="https://github.com/richfaces/richfaces-docs/blob/master/Developer_Guide/src/main/docbook/en-US/Developer_Guide-docinfo.xml">RichFaces Developer Guide docinfo file</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="docinfo-attributes-and-file-names"><a class="anchor" href="#docinfo-attributes-and-file-names"></a>Docinfo attributes and file names</h4>
+<div class="paragraph">
+<p>To add content from a docinfo file to the header of a rendered document:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The docinfo file must be named correctly</p>
+</li>
+<li>
+<p>The appropriate docinfo attribute must be set in the source document</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>How you name your docinfo file and the docinfo attribute you set in your source document depends on whether you want to add content to:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>a specific document</p>
+</li>
+<li>
+<p>all the documents in a directory</p>
+</li>
+<li>
+<p>a and b</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The attributes and the corresponding file names are listed in the table below.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title">Docinfo attributes and file names</caption>
+<colgroup>
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;">
+<col style="width:25%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">docinfo file name for HTML</th>
+<th class="tableblock halign-left valign-top">docinfo file name for DocBook</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to a specific document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;-docinfo.xml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content to all documents in the same directory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add content from either docinfo file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.html</code>, <code>&lt;docname&gt;-docinfo.html</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>&lt;docname&gt;.xml</code>, <code>&lt;docname&gt;-docinfo.xml</code></p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>Let&#8217;s apply the information above to an example exercise.</p>
+</div>
+<div class="paragraph">
+<p>You have two AsciiDoc documents, <code>adventure.adoc</code> and <code>insurance.adoc</code>, saved in the same folder.
+You want to add the same content to the headers of both documents when they&#8217;re rendered to HTML.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create a docinfo file using <code>&lt;head&gt;</code> elements.</p>
+</li>
+<li>
+<p>Save the docinfo file as <code>docinfo.html</code>.</p>
+</li>
+<li>
+<p>Set the <code>docinfo1</code> attribute in <code>adventure.adoc</code> and <code>insurance.adoc</code>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>You also want to include some additional content to the header of <code>adventure.adoc</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Create <strong>another</strong> docinfo file using <code>&lt;head&gt;</code> elements.</p>
+</li>
+<li>
+<p>Save the docinfo file as <code>adventure-docinfo.html</code>.</p>
+</li>
+<li>
+<p>Set the <code>docinfo</code> attribute in <code>adventure.adoc</code>.</p>
+</li>
+<li>
+<p>Alternatively, you could remove the <code>docinfo1</code> attribute and set <code>docinfo2</code> instead.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="footer-docinfo-files"><a class="anchor" href="#footer-docinfo-files"></a>Footer docinfo files</h4>
+<div class="paragraph">
+<p>Footer docinfo files are differentiated from header docinfo files by adding <code>-footer</code> to the file name.
+In the HTML output, the footer content is inserted inside the footer div (i.e., <code>&lt;div id="footer"&gt;</code>).
+In the DocBook output, the footer content is inserted immediately before the ending <code>&lt;/article&gt;</code> or <code>&lt;/book&gt;</code> element.</p>
+</div>
+<div class="paragraph">
+<div class="title">docinfo</div>
+<p>If you want to add content to the footer of a specific document, put the content in the file <code>&lt;docname&gt;-footer.html</code> (for HTML output) or <code>&lt;docname&gt;-footer.xml</code> (for DocBook output), where <code>&lt;docname&gt;</code> is the name of the document without the AsciiDoc extension.
+Then, set the attribute <code>docinfo</code> in the source document.</p>
+</div>
+<div class="paragraph">
+<div class="title">docinfo1</div>
+<p>If you want to add content to the footer of all documents in the same directory, put the content in the file <code>docinfo-footer.html</code> or <code>docinfo-footer.xml</code>.
+Then, set the attribute <code>docinfo1</code> in the source document to enable the feature.</p>
+</div>
+<div class="paragraph">
+<div class="title">docinfo2</div>
+<p>If you want the document to look for either docinfo file, set the attribute <code>docinfo2</code> in the source document.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The "Last updated" line in the footer can be disabled by unassigning the attribute <code>last-update-label</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="attribute-substitution"><a class="anchor" href="#attribute-substitution"></a>Attribute substitution</h4>
+<div class="paragraph">
+<p>Docinfo files can include attribute references.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you created the following docinfo file:</p>
+</div>
+<div class="listingblock">
+<div class="title">Docinfo file containing a <code>revnumber</code> attribute reference</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;edition&gt;</span>{revnumber}<span class="tag">&lt;/edition&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And this source document:</p>
+</div>
+<div class="listingblock">
+<div class="title">Source document including a revision number</div>
+<div class="content">
+<pre class="nowrap">= Document Title
+Author Name
+v1.0, 2013-06-01
+:doctype: book
+:backend: docbook
+:docinfo:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then the rendered DocBook output would be:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="doctype">&lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot;
+    &quot;http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd&quot;&gt;</span>
+<span class="tag">&lt;book</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;bookinfo&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Document Title<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
+    <span class="tag">&lt;author&gt;</span>
+      <span class="tag">&lt;firstname&gt;</span>Author<span class="tag">&lt;/firstname&gt;</span>
+      <span class="tag">&lt;surname&gt;</span>Name<span class="tag">&lt;/surname&gt;</span>
+    <span class="tag">&lt;/author&gt;</span>
+    <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
+    <span class="tag">&lt;revhistory&gt;</span>
+      <span class="tag">&lt;revision&gt;</span>
+        <span class="tag">&lt;revnumber&gt;</span>1.0<span class="tag">&lt;/revnumber&gt;</span>
+        <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
+        <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
+      <span class="tag">&lt;/revision&gt;</span>
+    <span class="tag">&lt;/revhistory&gt;</span>
+<span class="tag">&lt;edition&gt;</span>1.0<span class="tag">&lt;/edition&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+  <span class="tag">&lt;/bookinfo&gt;</span>
+<span class="tag">&lt;/book&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>revnumber</code> attribute reference was replaced by the source document&#8217;s revision number in the rendered output.</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -12190,7 +12680,7 @@ You&#8217;ll either feed it into a system that processes DocBook (like <a href="
 </div>
 </div>
 <div class="sect1">
-<h2 id="man-pages-in-asciidoc"><a class="anchor" href="#man-pages-in-asciidoc"></a>Man Pages in AsciiDoc</h2>
+<h2 id="manpage"><a class="anchor" href="#manpage"></a>Manpage</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One of the most interesting uses of AsciiDoc is for creating man pages (short for manual pages) for Unix and Unix-like operating systems.
@@ -13382,6 +13872,59 @@ Section pending
 </td>
 <td class="content">
 Section pending
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ignore-front-matter-added-for-static-site-generators"><a class="anchor" href="#ignore-front-matter-added-for-static-site-generators"></a>Ignore front matter added for static-site generators</h3>
+<div class="paragraph">
+<p>Many static site generators (i.e., Jekyll, Middleman, Awestruct) rely on "front matter" added to the top of the document to determine how to render the content.
+Front matter typically starts on the first line of a file and is bounded by block delimiters (e.g., <code>---</code>).</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a document that contains front matter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">--- <i class="conum" data-value="1"></i><b>(1)</b>
+layout: default <i class="conum" data-value="2"></i><b>(2)</b>
+--- <i class="conum" data-value="1"></i><b>(1)</b>
+= Document Title
+
+content</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Front matter delimiters</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Front matter data</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The static site generator removes these lines before passing the document to the AsciiDoc processor to be rendered.
+Outside of the tool, however, these extra lines can throw off the processor.</p>
+</div>
+<div class="paragraph">
+<p>If the <code>skip-front-matter</code> attribute is set, Asciidoctor 0.1.4 will recognize the front matter and consume it before parsing the document.
+Asciidoctor stores the content it removes in the <code>front-matter</code> attribute to make it available for integrations.
+Asciidoctor also removes front matter when reading include files.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Awestruct can read front matter directly from AsciiDoc attributes defined in the document header, thus eliminating the need for this feature.
 </td>
 </tr>
 </table>
@@ -16371,7 +16914,7 @@ Section pending
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-04 15:26:07 UTC
+Last updated 2013-10-05 18:19:33 UTC
 </div>
 </div>
 </body>
