@@ -42,15 +42,15 @@ The artifact information is summarized in the table below.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-java-integration%22">asciidoctor-java-integration</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-java-integration%7C0.1.3%7Cjar">0.1.3</a>*</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.3/asciidoctor-java-integration-0.1.3.jar-sources.jar">source (jar)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-java-integration%22%20AND%20v%3A%220.1.4%22">asciidoctor-java-integration</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-java-integration%7C0.1.4%7Cjar">0.1.4</a>*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.4/asciidoctor-java-integration-0.1.4.jar.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.4/asciidoctor-java-integration-0.1.4.jar.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.4/asciidoctor-java-integration-0.1.4.jar-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-java-integration/0.1.4/asciidoctor-java-integration-0.1.4.jar-sources.jar">source (jar)</a></p></td>
 </tr>
 </tbody>
 </table>
 
 <div class="paragraph">
-<p>* This release is based on the Asciidoctor 0.1.3 release.</p>
+<p>* This release is based on the Asciidoctor 0.1.4 release.</p>
 </div>
 </div>
 </div>
@@ -139,7 +139,7 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>renderDirectory</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Parses all AsciiDoc files present in the specified directory (and any subdirectories) and renders them to the specified backend format.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parses all AsciiDoc files present in the specified directory following given strategy and renders them to the specified backend format.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>readDocumentHeader</code></p></td>
@@ -209,7 +209,7 @@ Use <code>render</code> to render a string.</p>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderFiles(
-    <span class="predefined-type">Arrays</span>.asList(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/rendersample.asciidoc</span><span class="delimiter">&quot;</span></span>)), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
+    <span class="predefined-type">Arrays</span>.asList(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/rendersample.adoc</span><span class="delimiter">&quot;</span></span>)), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
 <span class="keyword">for</span>(<span class="predefined-type">String</span> renderedFile : renderedFiles) {
     <span class="predefined-type">System</span>.out.println(renderedFile);
@@ -221,8 +221,36 @@ Use <code>render</code> to render a string.</p>
 </div>
 <div class="paragraph">
 <p>Another method provided by the <code>Asciidoctor</code> interface is <code>renderDirectory</code>.
-This method renders all of the files with AsciiDoc extensions (<code>.asc</code>, <code>.asciidoc</code>, <code>.ad</code> or <code>.adoc</code>) that are present within a specified folder and its subfolders.</p>
+This method renders all of the files with AsciiDoc extensions (<code>.asc</code>, <code>.asciidoc</code>, <code>.ad</code> or <code>.adoc</code>) that are present within a specified folder and following given strategy.</p>
 </div>
+<div class="paragraph">
+<p>Strategy is set as first parameter of <code>renderDirectory</code> method and must implement <code>DirectoryWalker</code> interface.
+Currently <code>Asciidoctor</code> provides two implementations:</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title"><code>Asciidoctor</code> methods</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:66%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Class</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>AsciiDocDirectoryWalker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renders all files of given folder and all its subfolders.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>GlobDirectoryWalker</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renders all files of given folder following a <code>Glob</code> expression.</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>If the rendered content is not written into files, <code>renderDirectory</code> will return an array listing all the documents rendered.</p>
 </div>
@@ -231,7 +259,7 @@ This method renders all of the files with AsciiDoc extensions (<code>.asc</code>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderDirectory(
-    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
+    <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/src</span><span class="delimiter">&quot;</span></span>), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
 <span class="keyword">for</span>(<span class="predefined-type">String</span> renderedFile : renderedFiles) {
     <span class="predefined-type">System</span>.out.println(renderedFile);
@@ -276,7 +304,7 @@ Preamble...</code></pre>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
 DocumentHeader header = asciidoctor.readDocumentHeader(
-    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/documentheaders.asciidoc</span><span class="delimiter">&quot;</span></span>));
+    <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/documentheaders.adoc</span><span class="delimiter">&quot;</span></span>));
 
 <span class="predefined-type">System</span>.out.println(header.getDocumentTitle()); <i class="conum" data-value="1"></i><b>(1)</b>
 
@@ -340,11 +368,19 @@ RevisionInfo revisionInfo = header.getRevisionInfo();
 
 Asciidoctor asciidoctor = Asciidoctor.Factory.create();
 <span class="predefined-type">Set</span>&lt;DocumentHeader&gt; documentIndex = <span class="keyword">new</span> <span class="predefined-type">HashSet</span>&lt;DocumentHeader&gt;();
-DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="keyword">for</span> (<span class="predefined-type">File</span> file : directoryWalker.scan()) {
     documentIndex.add(asciidoctor.readDocumentHeader(file));
 }</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>renders all files in <code>docs</code> folder and its subfolders.</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
 <h3 id="options"><a class="anchor" href="#options"></a>Options</h3>
@@ -357,7 +393,7 @@ DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirec
 <dd>
 <p>Renders the output to a file adjacent to the input file.</p>
 </dd>
-<dt class="hdlist1"><code>template_dir</code></dt>
+<dt class="hdlist1"><code>template_dirs</code></dt>
 <dd>
 <p>Specifies a directory of <a href="https://github.com/rtomayko/tilt">Tilt</a>-compatible templates to be used instead of the default built-in templates</p>
 </dd>
@@ -537,7 +573,7 @@ All methods used to render content are overloaded with <code>OptionsBuilder</cod
 </td>
 <td class="content">
 <code>icons</code> attribute requires a <code>String</code> to set the value used to "draw" icons.
-At this time, you can use two constants <code>org.asciidoctor.Attributes.ORIGINAL_ADMONITION_ICONS_WITH_IMG</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or org.asciidoctor.Attributes.FONTAWESOME_ADMONITION_ICONS for using icons from <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a>.
+At this time, you can use two constants <code>org.asciidoctor.Attributes.IMAGE_ICONS</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or org.asciidoctor.Attributes.FONT_ICONS for using icons from <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a>.
 </td>
 </tr>
 </table>
@@ -616,6 +652,32 @@ DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirec
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>A utility class <code>GlobDirectoryWalker</code> is available for searching the AsciiDoc files present in a root folder and scanning using a <code>Glob</code> expression.
+<code>GlobDirectoryWalker</code> locates all files that end with <code>.asc</code>, <code>.asciidoc</code>, <code>.ad</code> or <code>.adoc</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Locating AsciiDoc files with <code>GlobDirectoryWalker</code></div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.GlobDirectoryWalker</span>;
+
+DirectoryWalker directoryWalker = <span class="keyword">new</span> GlobDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">**/*.adoc</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan(); <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Defines which parent directory is used for searching and the glob expression.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Returns a list of all AsciiDoc files matching given <code>glob</code> expression.</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="gem_path"><a class="anchor" href="#gem_path"></a>GEM_PATH</h3>
@@ -641,6 +703,766 @@ Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&q
 <td>Creates <code>Asciidoctor</code> instance with given GEM_PATH location.</td>
 </tr>
 </table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="extension-api"><a class="anchor" href="#extension-api"></a>Extension API</h3>
+<div class="paragraph">
+<p>One of the big improvements of <code>Asciidoctor</code> is the extensions API.
+<a href="http://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> allows us to write extensions in <code>Java</code> language and register them inside <code>Asciidoctor</code>, you don&#8217;t need to write them in <code>Ruby</code>.</p>
+</div>
+<div class="paragraph">
+<p>In <code>Asciidoctor</code> there is 7 kind of extension points, ane each one have an abstract class in <code>Java</code> that represents them.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title"><code>Asciidoctor</code> extensionAPI</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:66%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Preprocessor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.Preprocessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Treeprocessor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.Treeprocessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Postprocessor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.Postprocessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Block processor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.BlockProcessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Block macro processor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.BlockMacroProcessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Inline macro processor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.InlineMacroProcessor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Include processor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.IncludeProcessor</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>To create an extension two things are required, create a class implementing an extension class (this will depend on the kind of interface being developed),
+and second one register it using <code>ExtensionRegistry</code> class.</p>
+</div>
+<div class="sect3">
+<h4 id="preprocessor"><a class="anchor" href="#preprocessor"></a>Preprocessor</h4>
+<div class="paragraph">
+<p>This extension skims off front matter from the top of the document that gets used by site generators like Jekyll and Awestruct.</p>
+</div>
+<div class="listingblock">
+<div class="title">Preprocessor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FrontMatterPreprocessorExtension</span> <span class="directive">extends</span> Preprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> FrontMatterPreprocessorExtension(DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="local-variable">super</span>(documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> PreprocessorReader process(PreprocessorReader reader,
+            <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; lines) { <i class="conum" data-value="3"></i><b>(3)</b>
+
+        <span class="directive">final</span> <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; frontMatter = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;();
+
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; originalLines = <span class="keyword">new</span> <span class="predefined-type">ArrayList</span>&lt;<span class="predefined-type">String</span>&gt;(lines);
+
+        <span class="keyword">if</span> (lines.size() == <span class="integer">0</span>) {
+            <span class="keyword">return</span> reader;
+        } <span class="keyword">else</span> {
+            <span class="keyword">if</span> (<span class="string"><span class="delimiter">&quot;</span><span class="content">---</span><span class="delimiter">&quot;</span></span>.equals(lines.get(<span class="integer">0</span>).trim())) {
+                lines.remove(<span class="integer">0</span>);
+            }
+
+            <span class="predefined-type">Iterator</span>&lt;<span class="predefined-type">String</span>&gt; iterator = lines.iterator();
+
+            <span class="keyword">while</span> (iterator.hasNext()) {
+                <span class="predefined-type">String</span> line = iterator.next().trim();
+
+                <span class="keyword">if</span> (!<span class="string"><span class="delimiter">&quot;</span><span class="content">---</span><span class="delimiter">&quot;</span></span>.equals(line)) {
+                    iterator.remove();
+                    frontMatter.add(line);
+                } <span class="keyword">else</span> {
+                    <span class="keyword">break</span>;
+                }
+            }
+
+            <span class="keyword">if</span> (lines.size() == <span class="integer">0</span> || !<span class="string"><span class="delimiter">&quot;</span><span class="content">---</span><span class="delimiter">&quot;</span></span>.equals(lines.get(<span class="integer">0</span>).trim())) {
+                lines.clear();
+                lines.addAll(originalLines);
+            } <span class="keyword">else</span> {
+                lines.remove(<span class="integer">0</span>);
+                document.getAttributes().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">front-matter</span><span class="delimiter">&quot;</span></span>,
+                        frontMatter.toString());
+            }
+
+            <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; frontMatter.size() + <span class="integer">2</span>; i++) {
+                reader.advance(); <i class="conum" data-value="4"></i><b>(4)</b>
+            }
+
+        }
+
+        <span class="keyword">return</span> reader;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>Preprocessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A constructor with <code>DocumentRuby</code> must be provided. Instantiation of class is managed by <code>Asciidoctor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>process</code> method receives a <code>PreprocessorReader</code> and a list of all lines of current document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>advance the reader by the number of lines taken</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register a Preprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.preprocessor(FrontMatterPreprocessorExtension.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/render-with-front-matter.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>Preprocessor</code> extension is registered.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="treeprocessor"><a class="anchor" href="#treeprocessor"></a>Treeprocessor</h4>
+<div class="paragraph">
+<p>This extension detects literal blocks that contain terminal commands, strip the prompt character and style the command.</p>
+</div>
+<div class="listingblock">
+<div class="title">Treeprocessor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TerminalCommandTreeprocessor</span> <span class="directive">extends</span> Treeprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> TerminalCommandTreeprocessor(DocumentRuby documentRuby) {
+        <span class="local-variable">super</span>(documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> process() {
+
+        <span class="directive">final</span> <span class="predefined-type">List</span>&lt;Block&gt; blocks = <span class="local-variable">this</span>.document.blocks(); <i class="conum" data-value="2"></i><b>(2)</b>
+
+        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="integer">0</span>; i &lt; blocks.size(); i++) {
+            <span class="directive">final</span> Block currentBlock = blocks.get(i);
+            <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; lines = currentBlock.lines(); <i class="conum" data-value="3"></i><b>(3)</b>
+            <span class="keyword">if</span> (lines.size() &gt; <span class="integer">0</span> &amp;&amp; lines.get(<span class="integer">0</span>).startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">$</span><span class="delimiter">&quot;</span></span>)) {
+                blocks.set(
+                        i, convertToTerminalListing(currentBlock));
+
+            }
+
+        }
+    }
+
+    <span class="directive">public</span> Block convertToTerminalListing(Block block) {
+
+        <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = block.attributes();
+        attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">role</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">terminal</span><span class="delimiter">&quot;</span></span>);
+        <span class="predefined-type">StringBuilder</span> resultLines = <span class="keyword">new</span> <span class="predefined-type">StringBuilder</span>();
+
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; lines = block.lines();
+
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> line : lines) {
+            <span class="keyword">if</span> (line.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">$</span><span class="delimiter">&quot;</span></span>)) {
+                resultLines.append(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;span class=</span><span class="char">\&quot;</span><span class="content">command</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>)
+                        .append(line.substring(<span class="integer">2</span>, line.length()))
+                        .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/command</span><span class="delimiter">&quot;</span></span>);
+            } <span class="keyword">else</span> {
+                resultLines.append(line);
+            }
+        }
+
+        <span class="keyword">return</span> <span class="local-variable">this</span>.createBlock(document, <span class="string"><span class="delimiter">&quot;</span><span class="content">listing</span><span class="delimiter">&quot;</span></span>, resultLines.toString(), attributes,
+                <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;()); <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extends from <code>Treeprocessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>document</code> instance can be used to retrieve all blocks of current document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>All lines of selected block are retrieved.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>To create a new block we must use <code>createBlock</code> method. We must set the parent document, the context (<em>listing</em>), the text content, attributes and options.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register a Treeprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.treeprocessor(TerminalCommandTreeprocessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/sample-with-terminal-command.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>Treeprocessor</code> extension is registered.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="postprocessor"><a class="anchor" href="#postprocessor"></a>Postprocessor</h4>
+<div class="paragraph">
+<p>This extension inserts custom footer text.</p>
+</div>
+<div class="listingblock">
+<div class="title">Postprocessor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomFooterPostProcessor</span> <span class="directive">extends</span> Postprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> CustomFooterPostProcessor(DocumentRuby documentRuby) {
+        <span class="local-variable">super</span>(documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> process(<span class="predefined-type">String</span> output) { <i class="conum" data-value="2"></i><b>(2)</b>
+
+        <span class="predefined-type">String</span> copyright  = <span class="string"><span class="delimiter">&quot;</span><span class="content">Copyright Acme, Inc.</span><span class="delimiter">&quot;</span></span>;
+
+        <span class="keyword">if</span>(<span class="local-variable">this</span>.document.basebackend(<span class="string"><span class="delimiter">&quot;</span><span class="content">html</span><span class="delimiter">&quot;</span></span>)) {
+            org.jsoup.nodes.Document doc = Jsoup.parse(output, <span class="string"><span class="delimiter">&quot;</span><span class="content">UTF-8</span><span class="delimiter">&quot;</span></span>);
+
+            <span class="predefined-type">Element</span> contentElement = doc.getElementById(<span class="string"><span class="delimiter">&quot;</span><span class="content">footer-text</span><span class="delimiter">&quot;</span></span>);
+            contentElement.append(copyright);
+
+            output = doc.html();
+
+        }
+
+
+        <span class="keyword">return</span> output; <i class="conum" data-value="3"></i><b>(3)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>Postprocessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>process</code> method receives the document rendered as <code>String</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The content that will be written in document is returned.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register a Postprocessor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.postprocessor(CustomFooterPostProcessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+              <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/rendersample.asciidoc</span><span class="delimiter">&quot;</span></span>),
+              options); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>Postprocessor</code> extension is registered.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="block-processor"><a class="anchor" href="#block-processor"></a>Block processor</h4>
+<div class="paragraph">
+<p>This extension registers a custom block style named yell that uppercases all the words.</p>
+</div>
+<div class="listingblock">
+<div class="title">Block processor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">YellBlock</span> <span class="directive">extends</span> BlockProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">static</span> { <i class="conum" data-value="2"></i><b>(2)</b>
+        config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">contexts</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Arrays</span>.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">:paragraph</span><span class="delimiter">&quot;</span></span>));
+        config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">content_model</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">:simple</span><span class="delimiter">&quot;</span></span>);
+    }
+
+    <span class="directive">public</span> YellBlock(<span class="predefined-type">String</span> context, DocumentRuby documentRuby) { <i class="conum" data-value="3"></i><b>(3)</b>
+        <span class="local-variable">super</span>(context, documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">Object</span> process(Block parent, <span class="predefined-type">Reader</span> reader, <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes) { <i class="conum" data-value="4"></i><b>(4)</b>
+        <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; lines = reader.lines();
+        <span class="predefined-type">String</span> upperLines = <span class="predefined-constant">null</span>;
+        <span class="keyword">for</span> (<span class="predefined-type">String</span> line : lines) {
+            <span class="keyword">if</span> (upperLines == <span class="predefined-constant">null</span>) {
+                upperLines = line.toUpperCase();
+            }
+            <span class="keyword">else</span> {
+                upperLines = upperLines + <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span> + line.toUpperCase();
+            }
+        }
+
+        <span class="keyword">return</span> <span class="local-variable">this</span>.createBlock(document, <span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span>, upperLines, attributes, <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;()); <i class="conum" data-value="5"></i><b>(5)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>BlockProcessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Because of internals of <code>Blocks</code>, the configuration of block must be specified within a static <code>Java</code> block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Constructor of <code>BlockProcessor</code> must receive the context where new block is defined and the parent document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code>process</code> method receives the block definition, a reader, and attributes defined in block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>To create a new block we must use <code>createBlock</code> method. We must set the parent document, the context (listing), the text content, attributes and options.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register a Block processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.block(<span class="string"><span class="delimiter">&quot;</span><span class="content">yell</span><span class="delimiter">&quot;</span></span>, YellBlock.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/sample-with-yell-block.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>BlockProcessor</code> extension is registered with the context of block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of Block processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[yell] <i class="conum" data-value="1"></i><b>(1)</b>
+The time is now. Get a move on.</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Note that <em>yell</em> is the context where block lives and is the same as the first parameter of <code>block</code> method of <code>ExtensionRegistry</code> class.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="block-macro-processor"><a class="anchor" href="#block-macro-processor"></a>Block macro processor</h4>
+<div class="paragraph">
+<p>This extension creates a block macro named gist for embedding a gist.</p>
+</div>
+<div class="listingblock">
+<div class="title">Block macro processor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">GistMacro</span> <span class="directive">extends</span> BlockMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> GistMacro(<span class="predefined-type">String</span> macroName, DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="local-variable">super</span>(macroName, documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> Block process(<span class="predefined-type">Document</span> parent, <span class="predefined-type">String</span> target,
+            <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes) { <i class="conum" data-value="3"></i><b>(3)</b>
+
+       <span class="predefined-type">String</span> content = <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;div class=</span><span class="char">\&quot;</span><span class="content">content</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span> +
+                       <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;script src=</span><span class="char">\&quot;</span><span class="content">https://gist.github.com/</span><span class="delimiter">&quot;</span></span>+target+<span class="string"><span class="delimiter">&quot;</span><span class="content">.js</span><span class="char">\&quot;</span><span class="content">&gt;&lt;/script&gt;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span> +
+                       <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/div&gt;</span><span class="delimiter">&quot;</span></span>;
+
+       <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;() {{
+           put(<span class="string"><span class="delimiter">&quot;</span><span class="content">content_model</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">:raw</span><span class="delimiter">&quot;</span></span>);
+       }
+       };
+
+       <span class="keyword">return</span> <span class="local-variable">this</span>.createBlock(parent, <span class="string"><span class="delimiter">&quot;</span><span class="content">pass</span><span class="delimiter">&quot;</span></span>, content, attributes, options); <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>BlockMacroProcessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Constructor must receive the macro name, and the document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>process</code> method receives the parent document, the content of the macro, and attributes defined in macro.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>To create a new block we must use <code>createBlock</code> method. We must set the parent document, the context (listing), the text content, attributes and options.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register a Block macro processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.blockMacro(<span class="string"><span class="delimiter">&quot;</span><span class="content">gist</span><span class="delimiter">&quot;</span></span>, GistMacro.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/sample-with-gist-macro.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>BlockMacroProcessor</code> extension is registered with the name of the macro.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of Block macro processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.My Gist
+gist::123456[] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Note that <em>gist</em> is the name of the macro and is the same as the first parameter of <code>blockMacro</code> method of <code>ExtensionRegistry</code> class.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="inline-macro-processor"><a class="anchor" href="#inline-macro-processor"></a>Inline macro processor</h4>
+<div class="paragraph">
+<p>This extension creates an inline macro named man that links to a manpage.</p>
+</div>
+<div class="listingblock">
+<div class="title">Inline macro processor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ManpageMacro</span> <span class="directive">extends</span> InlineMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> ManpageMacro(<span class="predefined-type">String</span> macroName, DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="local-variable">super</span>(macroName, documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">protected</span> <span class="predefined-type">String</span> process(<span class="predefined-type">Document</span> parent, <span class="predefined-type">String</span> target,
+            <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes) { <i class="conum" data-value="3"></i><b>(3)</b>
+
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;a href=</span><span class="char">\&quot;</span><span class="delimiter">&quot;</span></span> + target + <span class="string"><span class="delimiter">&quot;</span><span class="content">.html</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span> + target + <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/a&gt;</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="4"></i><b>(4)</b>
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>InlineMacroProcessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Constructor must receive the macro name, and the document.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>process</code> method receives the parent document, the content of the macro, and attributes defined in macro.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Because it is an inline macro, only a replacement string must be returned.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register an Inline macro processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.inlineMacro(<span class="string"><span class="delimiter">&quot;</span><span class="content">man</span><span class="delimiter">&quot;</span></span>, ManpageMacro.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/sample-with-man-link.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>InlineMacroProcessor</code> extension is registered with the name of the macro.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of Inline macro processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">See man:gittutorial[7] to get started. <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Note that <em>man</em> is the name of the macro and is the same as the first parameter of <code>inlineMacro</code> method of <code>ExtensionRegistry</code> class.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="include-processor"><a class="anchor" href="#include-processor"></a>Include processor</h4>
+<div class="paragraph">
+<p>Include a file from a URI.</p>
+</div>
+<div class="listingblock">
+<div class="title">Include processor example</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UriIncludeProcessor</span> <span class="directive">extends</span> IncludeProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> UriIncludeProcessor(DocumentRuby documentRuby) {
+        <span class="local-variable">super</span>(documentRuby);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">boolean</span> handles(<span class="predefined-type">String</span> target) { <i class="conum" data-value="2"></i><b>(2)</b>
+        <span class="keyword">return</span> target.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">http://</span><span class="delimiter">&quot;</span></span>) || target.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">https://</span><span class="delimiter">&quot;</span></span>);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="type">void</span> process(PreprocessorReader reader, <span class="predefined-type">String</span> target,
+            <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes) {
+
+        <span class="predefined-type">StringBuilder</span> content = readContent(target);
+        reader.push_include(content.toString(), target, target, <span class="integer">1</span>, attributes); <i class="conum" data-value="3"></i><b>(3)</b>
+
+    }
+
+    <span class="directive">private</span> <span class="predefined-type">StringBuilder</span> readContent(<span class="predefined-type">String</span> target) {
+        <span class="predefined-type">StringBuilder</span> content = <span class="keyword">new</span> <span class="predefined-type">StringBuilder</span>();
+
+        <span class="keyword">try</span> {
+
+            <span class="predefined-type">URL</span> url = <span class="keyword">new</span> <span class="predefined-type">URL</span>(target);
+            <span class="predefined-type">InputStream</span> openStream = url.openStream();
+
+            <span class="predefined-type">BufferedReader</span> bufferedReader = <span class="keyword">new</span> <span class="predefined-type">BufferedReader</span>(
+                    <span class="keyword">new</span> <span class="predefined-type">InputStreamReader</span>(openStream));
+
+            <span class="predefined-type">String</span> line = <span class="predefined-constant">null</span>;
+            <span class="keyword">while</span> ((line = bufferedReader.readLine()) != <span class="predefined-constant">null</span>) {
+                content.append(line);
+            }
+
+            bufferedReader.close();
+
+        } <span class="keyword">catch</span> (<span class="exception">MalformedURLException</span> e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(e);
+        } <span class="keyword">catch</span> (<span class="exception">IOException</span> e) {
+            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="exception">IllegalArgumentException</span>(e);
+        }
+        <span class="keyword">return</span> content;
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>IncludeProcessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>handles</code> method is used by processor to decide if included element should be rendered by this processor or not. <code>target</code> attribute is the value of <code>include</code> macro.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>push_include</code> method inserts new content (retrieved from the url) in current position of document.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Register an Inline macro processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+extensionRegistry.includeProcessor(UriIncludeProcessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(
+                <span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/sample-with-uri-include.adoc</span><span class="delimiter">&quot;</span></span>),
+                <span class="keyword">new</span> Options()); <i class="conum" data-value="3"></i><b>(3)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>ExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>IncludeProcessor</code> extension is registered.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>We can call any <code>render</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Example of include processor</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Example of URI
+
+.Gemfile
+[source,ruby]
+----
+include::https://raw.github.com/asciidoctor/asciidoctor/master/Gemfile[]
+----</code></pre>
+</div>
+</div>
 </div>
 </div>
 </div>
