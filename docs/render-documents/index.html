@@ -15,9 +15,6 @@ That&#8217;s where the AsciiDoc processors and backends come into play.</p>
 <li>
 <p>DocBook</p>
 </li>
-<li>
-<p>PDF</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -30,7 +27,7 @@ That&#8217;s where the AsciiDoc processors and backends come into play.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-In order to render your document, you&#8217;ll need to have the Asciidoctor and AsciiDoc processors installed.
+In order to render your document, you&#8217;ll need to have Asciidoctor installed.
 For step-by-step installation instructions, read the <a href="/docs/install-toolchain">Installing the Toolchain</a> guide.
 </td>
 </tr>
@@ -39,11 +36,11 @@ For step-by-step installation instructions, read the <a href="/docs/install-tool
 </div>
 </div>
 <div class="sect1">
-<h2 id="processors-and-backends-overview"><a class="anchor" href="#processors-and-backends-overview"></a>Processors and backends overview</h2>
+<h2 id="processor-and-backends-overview"><a class="anchor" href="#processor-and-backends-overview"></a>Processor and backends overview</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Asciidoctor and AsciiDoc processors parse a document and translate it into a variety of formats, including HTML, DocBook and PDF.
-The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command-line option.
+<p>The Asciidoctor processor parses a document and translates it into a variety of formats, including HTML, DocBook and PDF.
+The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
 If no backend is indicated, the processor&#8217;s default backend is used.</p>
 </div>
 <div class="paragraph">
@@ -66,30 +63,6 @@ This is the default backend in Asciidoctor.</p>
 </dd>
 </dl>
 </div>
-<div class="paragraph">
-<p>The AsciiDoc processor supports numerous backends, including:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>xhtml11</code> (or <code>html</code>)</dt>
-<dd>
-<p>XHTML 1.1 markup styled with CSS2.
-This is the default backend in AsciiDoc.</p>
-</dd>
-<dt class="hdlist1"><code>html5</code></dt>
-<dd>
-<p>HTML 5 markup styled with CSS3.</p>
-</dd>
-<dt class="hdlist1"><code>docbook45</code> (or <code>docbook</code>)</dt>
-<dd>
-<p>DocBook XML 4.5 markup.</p>
-</dd>
-<dt class="hdlist1"><code>pdf</code></dt>
-<dd>
-<p>Portable Document Format (PDF).</p>
-</dd>
-</dl>
-</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -97,8 +70,8 @@ This is the default backend in AsciiDoc.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-A native PDF backend is planned for Asciidoctor.
-You can find a prototype in the <a href="https://github.com/mojavelinux/asciidoctor-fopdf">asciidoctor-fopdf repository</a>.
+To convert your document to PDF, you&#8217;ll need to use the <a href="https://github.com/mojavelinux/asciidoctor-fopd">Asciidoctor fopdf extension</a>.
+Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.A native PDF backend is planned for Asciidoctor.
 </td>
 </tr>
 </table>
@@ -109,10 +82,10 @@ You can find a prototype in the <a href="https://github.com/mojavelinux/asciidoc
 <h2 id="converting-a-document-to-html"><a class="anchor" href="#converting-a-document-to-html"></a>Converting a document to HTML</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor provides both a command-line tool and a Ruby API for converting AsciiDoc documents to HTML.</p>
+<p>Asciidoctor provides both a command line tool and a Ruby API for converting AsciiDoc documents to HTML.</p>
 </div>
 <div class="sect2">
-<h3 id="using-a-command-line-tool"><a class="anchor" href="#using-a-command-line-tool"></a>Using a command-line tool</h3>
+<h3 id="using-the-command-line-tool"><a class="anchor" href="#using-the-command-line-tool"></a>Using the command line tool</h3>
 <div class="paragraph">
 <p>In this section, we&#8217;ll create a sample document, then render and style it with Asciidoctor and the <code>html5</code> backend.</p>
 </div>
@@ -382,83 +355,6 @@ Or, by passing the <code>data-uri</code> attribute to the processor, you can emb
 <div class="paragraph">
 <p>If you include the attributes in the document&#8217;s header, you do not need to pass them through the processor when you render the document.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Converting a document to HTML with AsciiDoc</div>
-<div class="paragraph">
-<p>While AsciiDoc comes with two HTML backends, we&#8217;ll use the <code>html5</code> backend to render <code>sample.adoc</code>.</p>
-</div>
-<div class="paragraph">
-<p>In your command prompt, specify the <code>html5</code> backend with <code>-b</code> and execute the following command:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc -b html5 sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>AsciiDoc ships with a blue default theme, <code>asciidoc.css</code>, and two alternative themes named flask and volnitsky.
-People tend to prefer the flask theme, which you can enable using the <code>theme</code> attribute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc -b html5 -a theme=flask sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The AsciiDoc <code>theme</code> attribute is used to select an alternative CSS stylesheet and include optional JavaScript code.
-AsciiDoc also allows users to create their own themes.
-See the <a href="http://asciidoc.org/userguide.html#X99">Themes</a> chapter in the AsciiDoc User Guide to learn more.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Currently, Asciidoctor does not support the <code>theme</code> attribute.
-Stylesheets can only be applied via the <code>stylesheet</code> attribute.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>As in Asciidoctor, you can also override the default stylessheet and supply your own with the <code>stylesheet</code> attribute.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>AsciiDoc embedds the stylesheet into the document.</p>
-</div>
-<div class="paragraph">
-<p>Optional attributes such as <code>data-uri</code>, <code>toc</code>, and footnotes, are called and processed by AsciiDoc just as they are in Asciidoctor.</p>
-</div>
-<div class="paragraph">
-<p>For example, to embed images into <code>sample.adoc</code> with the AsciiDoc processor, type:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc -b html5 -a data-uri sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or add <code>data-uri</code> to the header of the document:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"> = Introduction to AsciiDoc
- Doc Writer &lt;doc@example.com&gt;
- :data-uri:
-
- Content...</pre>
-</div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -505,69 +401,11 @@ sample.adoc  sample.html  sample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>DocBook is only an intermediary format in the toolchain.
-You&#8217;ll either feed it into a system that processes DocBook (like <a href="http://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the <code>a2x</code> command from AsciiDoc.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="converting-a-document-to-pdf-using-code-a2x-code"><a class="anchor" href="#converting-a-document-to-pdf-using-code-a2x-code"></a>Converting a document to PDF using <code>a2x</code></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>PDF is a nice format for presenting a final version of a document.
-For legacy reasons, the conversion to PDF is handled by a separate program in the AsciiDoc distribution, <a href="http://asciidoc.org/a2x.1.html"><code>a2x</code></a>.</p>
+<p>DocBook is only an intermediary format in the Asciidoctor toolchain.
+You&#8217;ll either feed it into a system that processes DocBook (like <a href="http://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">Asciidoctor fopdf extension</a>.</p>
 </div>
 <div class="paragraph">
-<p><code>a2x</code> accepts a DocBook file, like the <code>sample.xml</code> file created in the section above, as input and converts it to a PDF.</p>
-</div>
-<div class="paragraph">
-<p>In your console:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Call the <code>a2x</code> program</p>
-</li>
-<li>
-<p>Select the output format with <code>-f</code> (<code>--format</code>)</p>
-</li>
-<li>
-<p>Followed by the format type <code>pdf</code></p>
-</li>
-</ol>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; a2x -f pdf sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; ls
-sample.adoc  sample.html  sample.pdf  sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can view the PDF using any PDF viewer.</p>
-</div>
-<div class="paragraph">
-<p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; a2x -f pdf sample.adoc</pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="output-galore"><a class="anchor" href="#output-galore"></a>Output galore</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>There&#8217;s really no end to the customization you can apply to the output that the AsciiDoctor and AsciiDoc processors generate.
+<p>There&#8217;s really no end to the customization you can apply to the output that the AsciiDoctor processor generates.
 We&#8217;ve just scratched the surface here.</p>
 </div>
 </div>

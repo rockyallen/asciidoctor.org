@@ -11,8 +11,8 @@ This introduction is intended for anyone who wants to reduce the effort required
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-If you want to know what AsciiDoc is all about, find the answer in <a href="/docs/what-is-asciidoc-why-use-it">What is AsciiDoc?</a><br>
-If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the <a href="/docs/asciidoc-syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a>.
+If you want to know what AsciiDoc is all about, find the answer in <a href="http://asciidoctor.org/docs/what-is-asciidoc-why-use-it">What is AsciiDoc?</a><br>
+If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/">AsciiDoc Syntax Quick Reference</a>.
 </td>
 </tr>
 </table>
@@ -72,11 +72,8 @@ If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the
 <li><a href="#rendering-your-document">Rendering your document</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#installing-asciidoc">Installing AsciiDoc</a></li>
 <li><a href="#converting-a-document-to-html-5">Converting a document to HTML 5</a></li>
 <li><a href="#converting-a-document-to-docbook">Converting a document to DocBook</a></li>
-<li><a href="#converting-the-document-to-pdf">Converting the document to PDF</a></li>
-<li><a href="#producing-html-based-presentations">Producing HTML-based presentations</a></li>
 <li><a href="#output-galore">Output galore</a></li>
 <li><a href="#where-else-is-asciidoc-rendered">Where else is AsciiDoc rendered?</a></li>
 </ul>
@@ -133,7 +130,7 @@ The key feature all these editors share is <a href="http://asciidoc.org/#_editor
 </td>
 <td class="content">
 Previewing the output of the document while editing can be helpful.
-To learn how to setup instant preview, check out the <a href="/docs/editing-asciidoc-with-live-preview/">Editing AsciiDoc with Live Preview</a> tutorial.
+To learn how to setup instant preview, check out the <a href="http://asciidoctor.org/docs/editing-asciidoc-with-live-preview/">Editing AsciiDoc with Live Preview</a> tutorial.
 </td>
 </tr>
 </table>
@@ -2786,7 +2783,7 @@ AsciiDoc is simple enough for a README, yet can scale to meet the requirements o
 </ul>
 </div>
 <div class="paragraph">
-<p>Consult the <a href="http://asciidoc.org/userguide.html">AsciiDoc User Guide</a> to continue exploring the AsciiDoc syntax and processor.</p>
+<p>Consult the <a href="http://asciidoctor.org/docs/user-manual">Asciidoctor User Manual</a> to continue exploring the syntax and processor capabilities.</p>
 </div>
 <div class="paragraph">
 <p>That&#8217;s enough syntax for now.
@@ -2800,260 +2797,27 @@ This will give you a real appreciation for the power that AsciiDoc puts in your 
 <h2 id="rendering-your-document"><a class="anchor" href="#rendering-your-document"></a>Rendering your document</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>While AsciiDoc is designed to be readable in raw form, the intended audience for that format are writers and editors.
+<p>While AsciiDoc syntax is designed to be readable in raw form, the intended audience for that format are writers and editors.
 Readers aren&#8217;t going to appreciate the raw text nearly as much.
 Aesthetics matter.
 You&#8217;ll want to apply nice typography with font sizes that adhere to the &#8220;golden ratio&#8221;, colors, icons and images to give it the respect it deserves.
-That&#8217;s where the AsciiDoc processor comes in (<strong>after</strong> you have done the writing).</p>
+That&#8217;s where the Asciidoctor processor comes in (<strong>after</strong> you have done the writing).</p>
 </div>
 <div class="paragraph">
-<p>An AsciiDoc processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
-AsciiDoc ships with a set of default templates in the tin, but you can customize the templates or create your own to get exactly the output you want.
-We&#8217;ll cover the most common usages of the processor in this document.</p>
+<p>The Asciidoctor processor parses the document and translates it into a backend format, such as HTML, ePub, DocBook or PDF.
+Asciidoctor ships with a set of default templates in the tin, but you can customize the templates or create your own to get exactly the output you want.</p>
 </div>
 <div class="paragraph">
-<p>Before you can use an AsciiDoc processor, you have to install one.</p>
-</div>
-<div class="sect2">
-<h3 id="installing-asciidoc"><a class="anchor" href="#installing-asciidoc"></a>Installing AsciiDoc</h3>
-<div class="paragraph">
-<p>The original AsciiDoc processor is a Python script and can be run on any system that has Python 2 installed.<span class="footnote">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-There&#8217;s a modern implementation of AsciiDoc, written in Ruby, named Asciidoctor.
-If decide to use Asciidoctor, you&#8217;ll still need to install the Python version for some conversions&#8212;such as generating a PDF&#8212;that Asciidoctor doesn&#8217;t handle at the time of this writing.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect3">
-<h4 id="installing-asciidoc-via-a-package-manager"><a class="anchor" href="#installing-asciidoc-via-a-package-manager"></a>Installing AsciiDoc via a package manager</h4>
-<div class="paragraph">
-<p>The quickest way to install AsciiDoc is through the package manager on your system.
-Here are the commands for several popular package management systems:</p>
-</div>
-<div class="literalblock">
-<div class="title">Ubuntu / Debian</div>
-<div class="content">
-<pre class="nowrap">$ sudo apt-get install asciidoc</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="title">Fedora</div>
-<div class="content">
-<pre class="nowrap">$ sudo yum -y install asciidoc</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="title">MacOSX</div>
-<div class="content">
-<pre class="nowrap">$ brew install asciidoc</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-If Python isn&#8217;t already installed, it should be installed as a dependency of the package.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc --version
-asciidoc 8.6.8
-$ a2x --version
-a2x 8.6.8</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="installing-asciidoc-manually"><a class="anchor" href="#installing-asciidoc-manually"></a>Installing AsciiDoc manually</h4>
-<div class="paragraph">
-<p>If you can&#8217;t get the AsciiDoc processor using a package manager, you can install it manually following these steps:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure you have Python 2 installed on your system</p>
-</li>
-<li>
-<p><a href="http://sourceforge.net/projects/asciidoc/files/latest/download">Download the distribution archive</a> from the AsciiDoc website.</p>
-</li>
-<li>
-<p>Extract the archive into a directory where you keep your programs</p>
-</li>
-<li>
-<p>Find the <code>asciidoc.py</code> and <code>a2x.py</code> files in the extracted directory</p>
-</li>
-<li>
-<p>Rename these files to <code>asciidoc</code> and <code>a2x</code>, respectively</p>
-</li>
-<li>
-<p>Add the extracted directory to your PATH environment variable</p>
-</li>
-</ol>
-</div>
-<div class="paragraph">
-<p>For more details on the manual install, see the <a href="http://asciidoc.org/INSTALL.html">AsciiDoc Installation Guide</a>.</p>
-</div>
-<div class="paragraph">
-<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc --version
-asciidoc 8.6.8
-$ a2x --version
-a2x 8.6.8</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you&#8217;re ready to convert your document!</p>
-</div>
-</div>
+<p>Before you can use the Asciidoctor processor, you have to install the <a href="https://rubygems.org/gems/asciidoctor">Asciidoctor Ruby Gem</a>.
+Review the <a href="http://asciidoctor.org/docs/install-toolchain/">Asciidoctor Installation Guide</a> if you need helping installing the gem.</p>
 </div>
 <div class="sect2">
 <h3 id="converting-a-document-to-html-5"><a class="anchor" href="#converting-a-document-to-html-5"></a>Converting a document to HTML 5</h3>
 <div class="paragraph">
-<p>AsciiDoc comes with two HTML backends:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">xhtml11</dt>
-<dd>
-<p>Creates an HTML document that adheres to the XHTML 1.1 specification and uses CSS2 for styling</p>
-</dd>
-<dt class="hdlist1">html5</dt>
-<dd>
-<p>Create an HTML document that adheres to the HTML 5 specification and uses CSS3 for styling</p>
-</dd>
-</dl>
+<p>Asciidoctor provides both a command line tool and a Ruby API for converting AsciiDoc documents to HTML 5, Docbook 5.0, DocBook 4.5 and custom output formats.</p>
 </div>
 <div class="paragraph">
-<p>The default backend in AsciiDoc is <strong>xhtml11</strong>.
-If you don&#8217;t specify a backend, the AsciiDoc processor will assume you want to use <strong>xhtml11</strong>.
-We want to look forward, so we&#8217;re going to use the <strong>html5</strong> backend.</p>
-</div>
-<div class="paragraph">
-<p>In your command prompt, switch to the directory that contains the document and execute the following command:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b html5 sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You won&#8217;t see any messages printed to the console.
-If you type <code>ls</code> (or view the directory in a file manager), there is a new file named <code>sample.html</code>.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ ls
-sample.adoc  sample.html</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>AsciiDoc derives the name of the output document from the name of the input document by simply changing the file extension.</p>
-</div>
-<div class="paragraph">
-<p>The document uses CSS for styling and JavaScript for generating parts of the document such as the table of contents and footnotes, which it embeds into the document so you don&#8217;t have to worry about managing extra resources.</p>
-</div>
-<div class="paragraph">
-<p>If you have image references in your document, you still have to move those with the output document.
-To have the images embedded into the document as well, pass the <code>data-uri</code> attribute to the processor:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b html5 -a data-uri sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you want the document to include a table of contents, pass the <code>toc</code> attribute to the processor:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b html5 -a data-uri -a toc sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you want to use <code>data-uri</code> and <code>toc</code> by default, you can add them to the header of the document:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
-Doc Writer &lt;doc.writer@asciidoc.org&gt;
-2012-01-01
-:data-uri:
-:toc:
-
-Content...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The default stylesheet that comes with AsciiDoc is quite&#8230;blue.
-AsciiDoc ships with two additional themes, flask and volnitsky.
-People tend to prefer the flask theme, which you can enable using the <code>theme</code> attribute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b html5 -a theme=flask sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>See the <a href="http://asciidoc.org/userguide.html#X99">Themes</a> chapter in the AsciiDoc User Guide to learn how to create your own theme.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;d rather supply your own stylesheet, you can specify the relative path to it using the <code>stylesheet</code> attribute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b html5 -a stylesheet=mystyles.css sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The custom styles will be embedded into the document, as with the default stylesheet.</p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Using Asciidoctor</div>
-<div class="paragraph">
-<p>Asciidoctor, an implementation of the AsciiDoc processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
-Asciidoctor provides both a commandline tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBook 4.5 and custom output formats.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor is published to <a href="https://rubygems.org/gems/asciidoctor">RubyGems.org</a> as a <a href="http://docs.rubygems.org/read/chapter/1">Ruby Gem</a> (a packaging format for Ruby libraries).
-If you have Ruby and RubyGems on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ gem install asciidoctor</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you are running Fedora 17 or higher, you can install it using <code>yum</code>, which will also install Ruby if it&#8217;s not yet installed on your system:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ sudo yum install rubygem-asciidoctor</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To use Asciidoctor, you simply replace <code>asciidoc</code> with <code>asciidoctor</code> in any of the commands in this section.
-For example, to generate an HTML document:</p>
+<p>To use Asciidoctor to generate an HTML document, type <code>asciidoctor</code> followed by your document&#8217;s name on the command line.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -3092,28 +2856,23 @@ puts html</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can learn more about Asciidoctor and how it differs from the AsciiDoc processor on the <a href="/">Asciidoctor project page</a>.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>One of the strengths of AsciiDoc is that it can output to a variety of formats, not just HTML.</p>
+<p>One of the strengths of Asciidoctor is that it can output to a variety of formats, not just HTML.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="converting-a-document-to-docbook"><a class="anchor" href="#converting-a-document-to-docbook"></a>Converting a document to DocBook</h3>
 <div class="paragraph">
 <p>Despite the fact that writing in DocBook is inhumane, it&#8217;s useful as a portable document format.
-Since AsciiDoc was designed with DocBook output in mind, the conversion is very good.
+Since AsciiDoc syntax was designed with DocBook output in mind, the conversion is very good.
 There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc syntax.</p>
 </div>
 <div class="paragraph">
-<p>AsciiDoc provides a DocBook 4.5 backend out of the box.
-To convert the document to this format, call the processor with the backend flag set to <strong>docbook</strong>:</p>
+<p>Asciidoctor provides a Docbook 5.0 and DocBook 4.5 backend out of the box.
+To convert the document to Docbook 5.0, call the processor with the backend flag set to <code>docbook5</code>:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoc -b docbook sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -b docbook5 sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3134,85 +2893,18 @@ sample.adoc  sample.html  sample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>DocBook is only an intermediary format in the AsciiDoc toolchain.
-You&#8217;ll either feed it into a system that processes DocBook (like <a href="https://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the AsciiDoc processor.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="converting-the-document-to-pdf"><a class="anchor" href="#converting-the-document-to-pdf"></a>Converting the document to PDF</h3>
-<div class="paragraph">
-<p>PDF is a nice format for presenting a final version of a document.
-For legacy reasons, the conversion to PDF is handled by a separate program in the AsciiDoc distribution, <code>a2x</code>.</p>
-</div>
-<div class="paragraph">
-<p><code>a2x</code> can accept a DocBook file as input and produce a PDF:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ a2x -f pdf --fop sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A new PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ ls
-sample.adoc  sample.html  sample.pdf  sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can view the PDF using any PDF viewer.
-Go ahead, take a look!</p>
-</div>
-<div class="paragraph">
-<p><strong>Yes, you just created that PDF.
-It was that easy!</strong></p>
-</div>
-<div class="paragraph">
-<p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ a2x -f pdf --fop sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>AsciiDoc can also be used for creating HTML-based presentations.
-This use further demonstrates the reusability of the AsciiDoc syntax.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="producing-html-based-presentations"><a class="anchor" href="#producing-html-based-presentations"></a>Producing HTML-based presentations</h3>
-<div class="paragraph">
-<p>The conversion to HTML-based slides is handled by a custom backend.
-The backends usually requires that you adhere to a set of conventions to define a slide and its content.
-But there&#8217;s nothing in that content that restricts the document from being converted to a regular HTML page or PDF.</p>
-</div>
-<div class="paragraph">
-<p>The first backend created was the one for <a href="http://imakewebthings.com/deck.js">deck.js</a>.
-You have to put the backend files where AsciiDoc can find them.
-Then you simply run the processor on your AsciiDoc document with the deckjs backend enabled:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoc -b deckjs slides.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Asciidoctor has backends for generating deck.js, dzslides and reveal.js presentations as well.
-Backends for other presentation frameworks are in the works.</p>
+<p>DocBook is only an intermediary format in the Asciidoctor toolchain.
+You&#8217;ll either feed it into a system that processes DocBook (like <a href="https://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">Asciidoctor fopdf extension</a>.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="output-galore"><a class="anchor" href="#output-galore"></a>Output galore</h3>
 <div class="paragraph">
-<p>There&#8217;s really no end to the customization you can do to the output that the AsciiDoc processor(s) generate.
-We&#8217;ve just scratched the surface here.
-Keep in mind that this magazine was produced from AsciiDoc, so never underestimate how far you can make the output stretch.</p>
+<p>There&#8217;s really no end to the customization you can do to the output the Asciidoctor processor generates.
+We&#8217;ve just scratched the surface here.</p>
 </div>
 <div class="paragraph">
-<p>If you want to start tweaking the output that is generated, refer to instructions in the <a href="http://asciidoc.org/userguide.html">AsciiDoc User Guide</a>.</p>
+<p>Check out the <a href="http://asciidoctor.org/docs/user-manual">Asciidoctor User Manual</a> and the <a href="http://asciidoctor.org/docs">Asciidoctor Docs Page</a> to learn more.</p>
 </div>
 </div>
 <div class="sect2">
@@ -3253,10 +2945,6 @@ AsciiDoc enables you to focus on communicating rather than distracting you with 
 Copy the text of an e-mail into a document and see how easy it to repurpose it as documentation.
 Almost immediately, you&#8217;ll find your writing zen and enjoy the rewarding experience of producing.</p>
 </div>
-<div class="paragraph">
-<p>If you get stuck working with the syntax, be sure to browse the <a href="http://asciidoc.org/userguide.html#_gotchas">Gotchas</a> section of the AsciiDoc User Guide and the <a href="http://asciidoc.org/faq.html">AsciiDoc FAQ</a> to find answers.
-When all else fails, send your question to the <a href="http://groups.google.com/group/asciidoc">AsciiDoc discussion list</a>.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -3296,9 +2984,6 @@ When all else fails, send your question to the <a href="http://groups.google.com
 <hr>
 <div class="footnote" id="_footnote_1">
 <a href="#_footnoteref_1">1</a> The default doctype is <code>article</code>, which only allows one level 0 section (i.e., the document title).
-</div>
-<div class="footnote" id="_footnote_2">
-<a href="#_footnoteref_2">2</a> At the time of writing, the AsciiDoc processor does not work with Python 3.
 </div>
 </div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoc-writers-guide.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoc-writers-guide.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoc-writers-guide.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li><li><a href="/docs/asciidoc-writers-guide.pdf" style="text-decoration: none" title="Download PDF"><i class="icon-file-text-alt icon-2x"></i></a></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];

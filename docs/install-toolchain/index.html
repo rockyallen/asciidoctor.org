@@ -2,42 +2,7 @@
 <div class="sectionbody">
 <div class="paragraph">
 <p>Asciidoctor, an implementation of the AsciiDoc processor written in Ruby, is a drop-in replacement for AsciiDoc in most cases.
-Asciidoctor provides both a command-line tool and a Ruby API for converting AsciiDoc documents to HTML 5, DocBook 4.5 and custom output formats.</p>
-</div>
-<div class="paragraph">
-<p>However, if you wish to convert your document to PDF and a few other formats, you&#8217;ll still need to install the AsciiDoc processor.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="installing-asciidoc"><a class="anchor" href="#installing-asciidoc"></a>Installing AsciiDoc</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The original <a href="http://asciidoc.org/README.html">AsciiDoc processor</a> is a Python script and can be run on any system that has Python 2 installed.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></p>
-</div>
-<div class="sect2">
-<h3 id="package-management-systems"><a class="anchor" href="#package-management-systems"></a>Package management systems</h3>
-<div class="paragraph">
-<p>The quickest way to install AsciiDoc is through the package manager on your system.
-Here are the commands for several popular package management systems:</p>
-</div>
-<div class="literalblock">
-<div class="title">Fedora</div>
-<div class="content">
-<pre class="nowrap">sudo yum -y install asciidoc</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="title">Ubuntu / Debian</div>
-<div class="content">
-<pre class="nowrap">sudo apt-get install asciidoc</pre>
-</div>
-</div>
-<div class="literalblock">
-<div class="title">MacOSX</div>
-<div class="content">
-<pre class="nowrap">brew install asciidoc</pre>
-</div>
+Asciidoctor provides a command line tool and a Ruby API for converting AsciiDoc documents to HTML 5, Docbook 5.0, DocBook 4.5 and custom output formats.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -46,84 +11,163 @@ Here are the commands for several popular package management systems:</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-If Python isn&#8217;t already installed, it should be installed as a dependency of the package.
+To convert your document to PDF, you&#8217;ll need to use the <a href="https://github.com/mojavelinux/asciidoctor-fopd">Asciidoctor fopdf extension</a>.
+Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.
 </td>
 </tr>
 </table>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="system-requirements"><a class="anchor" href="#system-requirements"></a>System Requirements</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc --version
-asciidoc 8.6.8
-$&gt; a2x --version
-a2x 8.6.8</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="manually"><a class="anchor" href="#manually"></a>Manually</h3>
-<div class="paragraph">
-<p>If you can&#8217;t get the AsciiDoc processor using a package manager, you can install it manually following these steps:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Make sure you have Python 2 installed on your system</p>
-</li>
-<li>
-<p><a href="http://sourceforge.net/projects/asciidoc/files/latest/download">Download the distribution archive</a> from the AsciiDoc website.</p>
-</li>
-<li>
-<p>Extract the archive into a directory where you keep your programs</p>
-</li>
-<li>
-<p>Find the <code>asciidoc.py</code> and <code>a2x.py</code> files in the extracted directory</p>
-</li>
-<li>
-<p>Rename these files to <code>asciidoc</code> and <code>a2x</code>, respectively</p>
-</li>
-<li>
-<p>Add the extracted directory to your PATH environment variable</p>
-</li>
-</ol>
+<p>Asciidoctor works on Linux, Mac and Windows.</p>
 </div>
 <div class="paragraph">
-<p>For more details on the manual install, see the <a href="http://asciidoc.org/INSTALL.html">AsciiDoc Installation Guide</a>.</p>
+<p>Asciidoctor requires one of the following implementations of Ruby:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Ruby 1.8.7</p>
+</li>
+<li>
+<p>Ruby 1.9.3</p>
+</li>
+<li>
+<p>Ruby 2.0.0</p>
+</li>
+<li>
+<p>JRuby 1.7.4</p>
+</li>
+<li>
+<p>Rubinius 2.0 - <em>testing suspended until a release is available</em></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>If the install was successful, you should be able to execute the <code>asciidoc</code> and <code>a2x</code> commands from a command prompt:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoc --version
-asciidoc 8.6.8
-$&gt; a2x --version
-a2x 8.6.8</pre>
-</div>
-</div>
+<p>We expect Asciidoctor to work with other versions of Ruby as well.
+We welcome your help testing those versions if you are interested in seeing them supported.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="installing-or-updating-asciidoctor"><a class="anchor" href="#installing-or-updating-asciidoctor"></a>Installing or Updating Asciidoctor</h2>
+<h2 id="installing-the-asciidoctor-ruby-gem"><a class="anchor" href="#installing-the-asciidoctor-ruby-gem"></a>Installing the Asciidoctor Ruby Gem</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor is published as a RubyGem.
-It currently works with Ruby 1.8.7, Ruby 1.9.3, Ruby 2.0.0, JRuby 1.7.2 and Rubinius 1.2.4 on Linux, Mac and Windows.</p>
+<p>Asciidoctor can be installed via the <code>gem</code> command, bundler, or popular Linux package managers.</p>
 </div>
 <div class="paragraph">
-<p>If you have Ruby on your system, you can install Asciidoctor using the <code>gem</code> command:</p>
+<p>To install Asciidoctor using the <code>gem</code> command:</p>
 </div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a terminal</p>
+</li>
+<li>
+<p>Type the <code>gem</code> command</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$&gt; gem install asciidoctor</pre>
 </div>
 </div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="install-with-bundler"><a class="anchor" href="#install-with-bundler"></a>Install with Bundler</h3>
 <div class="paragraph">
-<p>If you already have Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
+<p>To install Asciidoctor using Bundler:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open your system Gemfile</p>
+</li>
+<li>
+<p>Add the <code>asciidoctor</code> gem to your Gemfile using the following text</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">source 'https://rubygems.org'
+gem 'asciidoctor'</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Save the Gemfile</p>
+</li>
+<li>
+<p>Open a terminal</p>
+</li>
+<li>
+<p>Install the gem with bundler</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; bundle install</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-with-code-yum-code"><a class="anchor" href="#install-with-code-yum-code"></a>Install with <code>yum</code></h3>
+<div class="paragraph">
+<p>To install Asciidoctor on Fedora:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a terminal</p>
+</li>
+<li>
+<p>Type the <code>yum</code> command</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; sudo yum install rubygem-asciidoctor</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The benefit of installing the gem via <code>yum</code> is that the package manager will also install Ruby and RubyGems if not already on your machine.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-with-code-apt-get-code"><a class="anchor" href="#install-with-code-apt-get-code"></a>Install with <code>apt-get</code></h3>
+<div class="paragraph">
+<p>To install Asciidoctor on Debian Sid or Ubuntu Saucy or greater:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a terminal</p>
+</li>
+<li>
+<p>Type the <code>apt-get</code> command</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; sudo apt-get install asciidoctor</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The benefit of installing the gem via <code>apt-get</code> is that the package manager will also install Ruby and RubyGems if not already on your machine.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="upgrading-the-asciidoctor-ruby-gem"><a class="anchor" href="#upgrading-the-asciidoctor-ruby-gem"></a>Upgrading the Asciidoctor Ruby Gem</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you have an earlier version of Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -151,27 +195,7 @@ If you wish to remove the older version use the <code>gem</code> command:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>If the <code>asciidoctor</code> gem installed or updated successfully, the <code>asciidoctor</code> command-line interface should be available on your PATH.
-To invoke it, simply execute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor --version
-Asciidoctor 0.1.2 [http://asciidoctor.org]</pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="code-yum-code-package-manager"><a class="anchor" href="#code-yum-code-package-manager"></a><code>yum</code> package manager</h3>
-<div class="paragraph">
-<p>If you are running Fedora 17 or higher, you can install it using <code>yum</code>, which will also install Ruby if it&#8217;s not yet installed on your system.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; sudo yum install rubygem-asciidoctor</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Or you can update it using:</p>
+<p>On Fedora, you can update it using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -191,6 +215,14 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>On Debian or Ubuntu, you can update it using:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; sudo apt-get upgrade asciidoctor</pre>
+</div>
+</div>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -198,15 +230,12 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-The <code>yum</code> package update will not be available at the same time as the <code>gem</code>, it may take several weeks before it becomes available.
-If you must have the latest version now, then use the <code>gem</code> method instead.
+The Fedora, Debian and Ubuntu packages will not be available right away after a release of the RubyGem.
+It may take several weeks before the packages become available for a new release.
+If you need the latest version immediately, use the <code>gem install</code> option.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Now you&#8217;re ready to convert your AsciiDoc document to a variety of formats!</p>
-</div>
 </div>
 </div>
 </div>
@@ -216,21 +245,12 @@ If you must have the latest version now, then use the <code>gem</code> method in
 <div class="paragraph">
 <p>Since AsciiDoc syntax is just <code>plain</code> <code>text</code>, you can write an AsciiDoc document using <em>any</em> text editor.
 You don&#8217;t need complex word processing programs like Microsoft Word, OpenOffice Writer or Google Docs.
-In fact, you shouldn&#8217;t use these programs because they add cruft to your document (that you can&#8217;t see) and makes conversion tedious.</p>
+In fact, you shouldn&#8217;t use these programs because they add cruft to your document that you can&#8217;t see that makes conversion tedious.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-While it&#8217;s true any text editor will do, an editor that supports syntax highlighting for AsciiDoc may be more helpful.
+<div class="paragraph">
+<p>While it&#8217;s true any text editor will do, an editor that supports syntax highlighting for AsciiDoc may be more helpful.
 The <strong><span class="red">c</span><span class="green">o</span><span class="purple">l</span><span class="fuchsia">o</span><span class="blue">r</span></strong> brings contrast to the text, making it easier to read.
-The highlighting also confirms when you&#8217;ve entered the correct syntax for an inline or block element.
-</td>
-</tr>
-</table>
+The highlighting also confirms when you&#8217;ve entered the correct syntax for an inline or block element.</p>
 </div>
 <div class="paragraph">
 <p>The most popular application for editing plain text on Mac OS X is <strong>TextMate</strong>.
@@ -262,7 +282,7 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <h2 id="next-steps-and-help"><a class="anchor" href="#next-steps-and-help"></a>Next steps and help</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have installed the toolchain, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.</p>
+<p>Now that you have installed Asciidoctor, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.</p>
 </div>
 <div class="paragraph">
 <p>Need an overview of the AsciiDoc syntax?</p>
@@ -280,7 +300,7 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <div class="ulist">
 <ul>
 <li>
-<p><a href="/docs/asciidoc-writers-guide">AsciiDoc Writer&#8217;s Guide</a></p>
+<p><a href="/docs/user-manual">Asciidoctor User&#8217;s Manual</a></p>
 </li>
 </ul>
 </div>
@@ -308,12 +328,6 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <p>Additional guides are listed on the <a href="/docs">Documentation</a> page.
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
 </div>
-</div>
-</div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a> At the time of writing, the AsciiDoc processor does not work with Python 3.
 </div>
 </div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-toolchain.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-toolchain.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-toolchain.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
