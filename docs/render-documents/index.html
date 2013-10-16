@@ -41,7 +41,7 @@ For step-by-step installation instructions, read the <a href="/docs/install-tool
 <div class="paragraph">
 <p>The Asciidoctor processor parses a document and translates it into a variety of formats, including HTML, DocBook and PDF.
 The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
-If no backend is indicated, the processor&#8217;s default backend is used.</p>
+If no backend is indicated, the processor&#8217;s default backend (<code>html5</code>) is used.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor has three native backends.</p>
@@ -71,7 +71,7 @@ This is the default backend in Asciidoctor.</p>
 </td>
 <td class="content">
 To convert your document to PDF, you&#8217;ll need to use the <a href="https://github.com/mojavelinux/asciidoctor-fopd">Asciidoctor fopdf extension</a>.
-Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.A native PDF backend is planned for Asciidoctor.
+Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.
 </td>
 </tr>
 </table>
@@ -82,12 +82,13 @@ Directions for using the extension are documented in its <a href="https://github
 <h2 id="converting-a-document-to-html"><a class="anchor" href="#converting-a-document-to-html"></a>Converting a document to HTML</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor provides both a command line tool and a Ruby API for converting AsciiDoc documents to HTML.</p>
+<p>Asciidoctor&#8217;s default output is HTML.
+It provides both a command line tool and a Ruby API for converting AsciiDoc documents to HTML.</p>
 </div>
 <div class="sect2">
 <h3 id="using-the-command-line-tool"><a class="anchor" href="#using-the-command-line-tool"></a>Using the command line tool</h3>
 <div class="paragraph">
-<p>In this section, we&#8217;ll create a sample document, then render and style it with Asciidoctor and the <code>html5</code> backend.</p>
+<p>In this section, we&#8217;ll create a sample document, then process and render it with Asciidoctor&#8217;s <code>html5</code> backend.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -95,28 +96,26 @@ Directions for using the extension are documented in its <a href="https://github
 <p>Create an AsciiDoc file like the one below</p>
 </li>
 <li>
-<p>Save the file as <code>sample.adoc</code></p>
+<p>Save the file as <code>mysample.adoc</code></p>
 </li>
 </ol>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"> = Introduction to AsciiDoc
- Doc Writer &lt;doc@example.com&gt;
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
 
- A preface about http://asciidoc.org[AsciiDoc].
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
 
- == First Section
+== Origins
 
- * item 1
- * item 2
-
- [source,ruby]
- puts "Hello, World!"</pre>
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To convert <code>sample.adoc</code> to HTML from the command-line:</p>
+<p>To convert <code>mysample.adoc</code> to HTML from the command line:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -124,7 +123,7 @@ Directions for using the extension are documented in its <a href="https://github
 <p>Open a console</p>
 </li>
 <li>
-<p>Switch to the directory that contains the <code>sample.adoc</code> document</p>
+<p>Switch to the directory that contains the <code>mysample.adoc</code> document</p>
 </li>
 <li>
 <p>Call the Asciidoctor processor with the <code>asciidoctor</code> command, followed by the name of the document you want to render</p>
@@ -133,24 +132,41 @@ Directions for using the extension are documented in its <a href="https://github
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Remember, Asciidoctor&#8217;s default backend is <code>html5</code>, and therefore it isn&#8217;t necessary to specify it with the <code>-b</code> command.</p>
+<p>Remember, Asciidoctor&#8217;s default backend is <code>html5</code>, so it isn&#8217;t necessary to specify it with the <code>-b</code> command.</p>
 </div>
 <div class="paragraph">
 <p>You won&#8217;t see any messages printed to the console.
-If you type <code>ls</code> or view the directory in a file manager, there is a new file named <code>sample.html</code>.</p>
+If you type <code>ls</code> or view the directory in a file manager, there is a new file named <code>mysample.html</code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$&gt; ls
-sample.adoc  sample.html</pre>
+mysample.adoc  mysample.html</pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Asciidoctor derives the name of the output document from the name of the input document.</p>
+</div>
+<div class="paragraph">
+<p>Open <code>mysample.html</code> in your web browser.
+Your document should look like the image below.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample.png" alt="mysample">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The document&#8217;s text, titles, and link is styled by the default Asciidoctor stylesheet, which is embedded in the HTML output.
+As a result, you could save <code>mysample.html</code> to any computer and it will look the same.</p>
 </div>
 </div>
 <div class="sect2">
@@ -162,7 +178,7 @@ sample.adoc  sample.html</pre>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 
-<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -170,100 +186,77 @@ sample.adoc  sample.html</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby">html = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">html = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
 puts html</code></pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="styles-and-attributes"><a class="anchor" href="#styles-and-attributes"></a>Styles and attributes</h3>
+<h3 id="styling-the-html-with-css"><a class="anchor" href="#styling-the-html-with-css"></a>Styling the HTML with CSS</h3>
 <div class="paragraph">
-<p>Asciidoctor uses CSS to style the generated HTML document.
-To help your documents look share, Asciidoctor ships with a fresh, modern stylesheet named <code>asciidoctor.css</code>.</p>
+<p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
+It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
+When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is embedded into the HTML output by default.</p>
+</div>
+<div class="paragraph">
+<p>However, you can link to the stylesheet instead of embedding it.
+To have your document link to the default stylesheet, set the <code>linkcss</code> attribute in the document&#8217;s header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:linkcss:
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="working-with-the-default-stylesheet"><a class="anchor" href="#working-with-the-default-stylesheet"></a>Working with the default stylesheet</h3>
 <div class="paragraph">
-<p>When you generate an HTML document using the (default) <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is embedded into the document by default.</p>
+<p>You can also set <code>linkcss</code> with the CLI.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a linkcss mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Just browse to <code>sample.html</code> in your browser and checkout the result!</p>
+<p>Now, when you view the directory, you should see the file <code>asciidoctor.css</code> in addition to <code>mysample.adoc</code> and <code>mysample.html</code>.
+The <code>linkcss</code> attribute automatically copies <code>asciidoctor.css</code> to the output directory.
+Additionally, you can inspect <code>mysample.html</code> in your browser and see <code>&lt;link rel="stylesheet" href="./asciidoctor.css"&gt;</code> inside the <code>&lt;head&gt;</code> tags.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-If you specify a custom stylesheet using the <code>stylesheet</code> attribute, Asciidoctor will embed the custom stylesheet instead of the default stylesheet.
-</td>
-</tr>
-</table>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-link.png" alt="mysample link">
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p>If you prefer to link to the <code>asciidoctor.css</code> stylesheet, set the <code>linkcss</code> attribute:</p>
+<p>If you don&#8217;t want any styles applied to the HTML output of your document, unset the <code>stylesheet</code> attribute.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a linkcss sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet! mysample.adoc</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>When the <code>linkcss</code> attribute is set, Asciidoctor will automatically copy the stylesheet to the output directory.
-If the <code>stylesdir</code> attribute is set, then the stylesheet will be copied to the folder specified by <code>stylesdir</code> relative to the output directory.</p>
-</div>
-<div class="paragraph">
-<p>If you don&#8217;t want Asciidoctor to copy the stylesheet to the output directory, unset the <code>copycss</code> attribute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a linkcss -a copycss! sample.adoc</pre>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-As of version 0.1.4, Asciidoctor does not copy the custom stylesheet to the output directory.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>If you unset the stylesheet attribute, Asciidoctor will generate HTML without any styles:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a stylesheet! sample.adoc</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="applying-a-custom-stylesheet"><a class="anchor" href="#applying-a-custom-stylesheet"></a>Applying a custom stylesheet</h3>
 <div class="paragraph">
 <p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for your own custom stylesheet or alternative Asciidoctor themes.</p>
 </div>
 <div class="paragraph">
-<p>To view the Asciidoctor themes in action, visit the <a href="http://themes.asciidoctor.org/">theme showcase</a>.
-For information on using the stylesheets in the Asciidoctor Stylesheet Factory, read the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/README.adoc">Building the Asciidoctor Factory Themes guide</a> or explore the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory">Factory&#8217;s repository</a>.</p>
-</div>
-<div class="paragraph">
-<p>If you want to apply your own stylesheet to the rendered HTML:</p>
+<p>If you want to apply your own stylesheet to the rendered HTML, using the CLI:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Save it in the same directory as <code>sample.adoc</code></p>
+<p>Save your custom stylesheet in the same directory as <code>mysample.adoc</code></p>
 </li>
 <li>
 <p>Call the <code>asciidoctor</code> processor</p>
@@ -278,82 +271,191 @@ For information on using the stylesheets in the Asciidoctor Stylesheet Factory, 
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>By default, Asciidoctor embeds the custom stylesheet into the generated HTML document.
-If you want Asciidoctor to link to the custom stylesheet instead, set the <code>linkcss</code> attribute:</p>
+<p>Alternatively, let&#8217;s set the <code>stylesheet</code> attribute in the header of <code>mysample.adoc</code>.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a stylesheet=mystyles.css -a linkcss sample.adoc</pre>
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesheet: mystyles.css
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-stylesheet.png" alt="mysample stylesheet">
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>Stylesheets can be stored in a nested folder.
-In this case, you need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.</p>
+<p>Stylesheets can also be stored in a directory other than the directory where your document is saved; you just need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.
+Let&#8217;s store the <code>mystyles.css</code> stylesheet in <code>mydocuments/mystylesheets/</code>.
+Our AsciiDoc document, <code>mysample.adoc</code>, is saved in the <code>mydocuments/</code> directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesdir: mystylesheets/
+:stylesheet: mystyles.css
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When you process <code>mysample.adoc</code>, the HTML output (<code>mysample.html</code>) is saved in the <code>mydocuments/</code> directory.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-stylesdir-dir.png" alt="mysample stylesdir dir">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also set <code>stylesdir</code> in the CLI.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a stylesdir=./stylesheets -a stylesheet=mystyles.css sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a stylesdir=mystylesheets/ -a stylesheet=mystyles.css mysample.adoc</pre>
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="paragraph">
+<p>If you don&#8217;t want to embed the <code>mystyles.css</code> stylesheet into your HTML output, make sure to set <code>linkcss</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesdir: mystylesheets/
+:stylesheet: mystyles.css
+:linkcss:
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After your document is rendered, notice that a copy of <code>mystyles.css</code> was not created in the <code>mydocuments/</code> directory.
+Unlike when you link to the default Asciidoctor stylesheet, any custom stylesheets you link to are not copied to the directory where your output is saved.</p>
+</div>
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/README.adoc#create-a-new-theme">Custom Theme guide</a> provides detailed steps for using your custom stylesheet with Asciidoctor.
+The <code>copycss</code> attribute, which would copy a custom stylesheet when a document is rendered, is broken.
+Watch <a href="https://github.com/asciidoctor/asciidoctor/issues/300">Issue #300</a> for updates.
 </td>
 </tr>
 </table>
 </div>
+</div>
+<div class="sect2">
+<h3 id="managing-images"><a class="anchor" href="#managing-images"></a>Managing images</h3>
 <div class="paragraph">
-<p>A stable of attributes are also available to add feature and style customizations to the rendered HTML.</p>
-</div>
-<div class="paragraph">
-<p>For example, you can activate syntax highlighting options in the code with this argument:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">-a source-highlighter=highlightjs</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you have image references in your document, you&#8217;ll have to move those with the output document.
+<p>Images are not embedded in the HTML output by default.
+If you have image references in your document, you&#8217;ll have to save the image files in the same directory as your rendered document.
 Or, by passing the <code>data-uri</code> attribute to the processor, you can embed the images into the document.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a data-uri sample.adoc</pre>
-</div>
-</div>
 <div class="paragraph">
-<p>If you want the document to include a table of contents, pass the <code>toc</code> attribute to the processor:</p>
+<p>To embed images into the HTML output, set <code>data-uri</code> on the command line or in the document&#8217;s header.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -a data-uri -a toc sample.adoc</pre>
+<pre class="nowrap">$&gt; asciidoctor -a data-uri mysample.adoc</pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Alternatively, if you want to use <code>data-uri</code> and <code>toc</code> by default, you can add them to the header of the document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap"> = Introduction to AsciiDoc
- Doc Writer &lt;doc@example.com&gt;
- :data-uri:
- :toc:
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:imagesdir: myimages
+:data-uri:
 
- Content...</pre>
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+[.left.text-center]
+image::wolpertinger.jpg[Wolpertinger]
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
 </div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-data-uri.png" alt="mysample data uri">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coderay-and-pygments-stylesheets"><a class="anchor" href="#coderay-and-pygments-stylesheets"></a>CodeRay and Pygments stylesheets</h3>
+<div class="paragraph">
+<p>Asciidoctor will also embed the theme stylesheet for the CodeRay or Pygments syntax highlighter.</p>
 </div>
 <div class="paragraph">
-<p>If you include the attributes in the document&#8217;s header, you do not need to pass them through the processor when you render the document.</p>
+<div class="title">CodeRay</div>
+<p>If the <code>source-highlighter</code> attribute is <code>coderay</code> and the <code>coderay-css</code> attribute is <code>class</code>, the CodeRay stylesheet is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>embedded</em> by default</p>
+</li>
+<li>
+<p><em>copied</em> to the file <em class="file">asciidoctor-coderay.css</em> inside the <code>stylesdir</code> folder within the output directory if <code>linkcss</code> is set</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<div class="title">Pygments</div>
+<p>If the <code>source-highlighter</code> attribute is <code>pygments</code> and the <code>pygments-css</code> attribute is <code>class</code>, the Pygments stylesheet is:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>embedded</em> by default</p>
+</li>
+<li>
+<p><em>copied</em> to the file <em class="file">asciidoctor-pygments.css</em> inside the <code>stylesdir</code> folder within the output directory if <code>linkcss</code> is set</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -367,20 +469,110 @@ And, since the AsciiDoc syntax was designed with DocBook output in mind, the con
 There&#8217;s a corresponding DocBook element for each markup in the AsciiDoc syntax.</p>
 </div>
 <div class="paragraph">
-<p>To convert the <code>sample.adoc</code> document to DocBook format, call the processor with the backend flag set to <code>docbook</code>:</p>
+<p>Asciidoctor 0.1.4 can produce DocBook 5.0 output, which is generated by the <code>docbook5</code> backend.
+The output from the <code>docbook5</code> backend only differs from the <code>docbook45</code> backend so far as to make it compliant to the DocBook 5.0 specification.
+A summary of the differences are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>XSD declarations are used on the document root instead of a DTD</p>
+</li>
+<li>
+<p><code>&lt;info&gt;</code> elements for document info instead of <code>&lt;articleinfo&gt;</code> and <code>&lt;bookinfo&gt;</code></p>
+</li>
+<li>
+<p>elements that hold the author&#8217;s name are wrapped in a <code>&lt;personname&gt;</code> element</p>
+</li>
+<li>
+<p>the id for an element is defined using an <code>xml:id</code> attribute</p>
+</li>
+<li>
+<p><code>&lt;link&gt;</code> is used for links instead of <code>&lt;ulink&gt;</code></p>
+</li>
+<li>
+<p>the URL for a link is defined using the <code>xlink:href</code> attribute</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Refer to <a href="http://www.docbook.org/tdg5/en/html/ch01.html#introduction-whats-new">What&#8217;s new in DocBook v5.0?</a> for more details about how DocBook 5.0 differs from DocBook 4.5.</p>
+</div>
+<div class="paragraph">
+<p>To use the DocBook 5.0 backend, set the backend to <code>docbook5</code>, as shown in this example:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; asciidoctor -b docbook sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -b docbook5 sample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A new XML document, named <code>sample.xml</code>, will now be present in the current directory.</p>
+<p>Here&#8217;s a sample DocBook 5.0 document generated by this backend:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="tag">&lt;article</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://docbook.org/ns/docbook</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xmlns:xlink</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/1999/xlink</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xml:lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;info&gt;</span>
+    <span class="tag">&lt;title&gt;</span>Hello, AsciiDoc!<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;date&gt;</span>2013-09-03<span class="tag">&lt;/date&gt;</span>
+    <span class="tag">&lt;author&gt;</span>
+      <span class="tag">&lt;personname&gt;</span>
+        <span class="tag">&lt;firstname&gt;</span>Doc<span class="tag">&lt;/firstname&gt;</span>
+        <span class="tag">&lt;surname&gt;</span>Writer<span class="tag">&lt;/surname&gt;</span>
+      <span class="tag">&lt;/personname&gt;</span>
+      <span class="tag">&lt;email&gt;</span>doc@example.com<span class="tag">&lt;/email&gt;</span>
+    <span class="tag">&lt;/author&gt;</span>
+    <span class="tag">&lt;authorinitials&gt;</span>DW<span class="tag">&lt;/authorinitials&gt;</span>
+  <span class="tag">&lt;/info&gt;</span>
+  <span class="tag">&lt;simpara&gt;</span>
+    An introduction to <span class="tag">&lt;link</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/link&gt;</span>.
+  <span class="tag">&lt;/simpara&gt;</span>
+  <span class="tag">&lt;section</span> <span class="attribute-name">xml:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_first_section</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;title&gt;</span>First Section<span class="tag">&lt;/title&gt;</span>
+    <span class="tag">&lt;itemizedlist&gt;</span>
+      <span class="tag">&lt;listitem&gt;</span>
+        <span class="tag">&lt;simpara&gt;</span>item 1<span class="tag">&lt;/simpara&gt;</span>
+      <span class="tag">&lt;/listitem&gt;</span>
+      <span class="tag">&lt;listitem&gt;</span>
+        <span class="tag">&lt;simpara&gt;</span>item 2<span class="tag">&lt;/simpara&gt;</span>
+      <span class="tag">&lt;/listitem&gt;</span>
+    <span class="tag">&lt;/itemizedlist&gt;</span>
+  <span class="tag">&lt;/section&gt;</span>
+<span class="tag">&lt;/article&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>The <code>xmlns</code> attribute is now added to the root DocBook element by default.
+Set the attribute <code>noxmlns</code> to disable this feature.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To convert the <code>mysample.adoc</code> document to DocBook format, call the processor with the backend flag set to <code>docbook5</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor -b docbook5 mysample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A new XML document, named <code>mysample.xml</code>, will now be present in the current directory.</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$&gt; ls
-sample.adoc  sample.html  sample.xml</pre>
+mysample.adoc  mysample.html  mysample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -388,7 +580,7 @@ sample.adoc  sample.html  sample.xml</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$&gt; yelp sample.xml</pre>
+<pre class="nowrap">$&gt; yelp mysample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -396,8 +588,8 @@ sample.adoc  sample.html  sample.xml</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
-    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>)</code></pre>
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"><span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
+    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook5</span><span class="delimiter">'</span></span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -414,12 +606,46 @@ We&#8217;ve just scratched the surface here.</p>
 <h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Resources and help</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are a number of specialized backends available or under development for Asciidoctor.
+<p>Now that you have rendered your first document with Asciidoctor, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.
+Also, there are a number of specialized backends available or under development for Asciidoctor.
 More information and the latest available developments can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctor-backends">backend repository</a>.</p>
 </div>
 <div class="paragraph">
-<p>Please consider joining the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.
-If you identify an issue while using a backend with the Asciidoctor processor, please don&#8217;t hesitate to <a href="http://github.com/asciidoctor/asciidoctor-backends/issues">file a bug report</a>.</p>
+<p>Need an overview of the AsciiDoc syntax?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/asciidoc-syntax-quick-reference">AsciiDoc Quick Reference</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Want to dive deep into all of Asciidoctor&#8217;s features?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="/docs/user-manual">Asciidoctor User&#8217;s Manual</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Interested in using a theme from the Asciidoctor Stylesheet Factory?</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://themes.asciidoctor.org/">A Showcase of the Asciidoctor Stylesheet Factory themes</a></p>
+</li>
+<li>
+<p><a href="/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/">How do I create and build and a theme</a>?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Additional guides are listed on the <a href="/docs">Documentation</a> page.
+Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
 </div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/render-documents.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/render-documents.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/render-documents.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
