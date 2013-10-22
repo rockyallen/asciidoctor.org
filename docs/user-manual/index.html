@@ -480,6 +480,12 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel1">
 <li><a href="#installation-quick-start">1. Installation Quick Start</a></li>
 <li><a href="#usage-quick-start">2. Usage Quick Start</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#using-the-command-line-interface">2.1. Using the Command Line Interface</a></li>
+<li><a href="#using-the-ruby-api">2.2. Using the Ruby API</a></li>
+</ul>
+</li>
 <li><a href="#syntax-quick-start">3. Syntax Quick Start</a></li>
 <li><a href="#custom-output-quick-start">4. Custom Output Quick Start</a></li>
 </ul>
@@ -498,22 +504,10 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 </li>
 <li><a href="#upgrading-the-asciidoctor-ruby-gem">3. Upgrading the Asciidoctor Ruby Gem</a></li>
 <li><a href="#extensions-and-integrations">4. Extensions and Integrations</a></li>
-<li><a href="#using-the-command-line-interface">5. Using the Command Line Interface</a></li>
+<li><a href="#output-formats">5. Output Formats</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#basic-commands">5.1. Basic commands</a></li>
-</ul>
-</li>
-<li><a href="#using-asciidoctor-s-api">6. Using Asciidoctor&#8217;s API</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#basic-commands-2">6.1. Basic commands</a></li>
-</ul>
-</li>
-<li><a href="#output-formats">7. Output Formats</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#document-types">7.1. Document types</a></li>
+<li><a href="#document-types">5.1. Document types</a></li>
 </ul>
 </li>
 </ul>
@@ -833,7 +827,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li>
 <ul class="sectlevel2">
 <li><a href="#using-a-command-line-tool">3.1. Using a command line tool</a></li>
-<li><a href="#using-the-ruby-api">3.2. Using the Ruby API</a></li>
+<li><a href="#using-the-ruby-api-2">3.2. Using the Ruby API</a></li>
 <li><a href="#styling-the-html-with-css">3.3. Styling the HTML with CSS</a></li>
 <li><a href="#managing-images">3.4. Managing images</a></li>
 <li><a href="#coderay-and-pygments-stylesheets">3.5. CodeRay and Pygments stylesheets</a></li>
@@ -890,6 +884,18 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#static-website-generators">2.2. Static website generators</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li><a href="#api">Using Asciidoctor&#8217;s API</a></li>
+<li>
+<ul class="sectlevel1">
+<li><a href="#load-and-render-a-file-using-the-api">1. Load and Render a File Using the API</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#render-strings">1.1. Render strings</a></li>
+</ul>
+</li>
+<li><a href="#provide-custom-templates">2. Provide custom templates</a></li>
 </ul>
 </li>
 <li><a href="#extensions">Extensions</a></li>
@@ -1051,7 +1057,7 @@ Plugins are available for <a href="https://github.com/asciidoctor/asciidoctor-ma
 These plugins are based on the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Java integration library</a> for Asciidoctor.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor also ships with a command-line interface (CLI).
+<p>Asciidoctor also ships with a command line interface (CLI).
 The Asciidoctor CLI, <a href="http://asciidoctor.org/man/asciidoctor"><code>asciidoctor</code></a>, is a drop-in replacement for the <code>asciidoc.py</code> script from the AsciiDoc Python distribution.</p>
 </div>
 </div>
@@ -1150,6 +1156,129 @@ Section Pending
 </td>
 </tr>
 </table>
+</div>
+<div class="sect2">
+<h3 id="using-the-command-line-interface"><a class="anchor" href="#using-the-command-line-interface"></a>2.1. Using the Command Line Interface</h3>
+<div class="paragraph">
+<p>Asciidoctor&#8217;s command line interface (CLI) is a drop-in replacement for the <code>asciidoc.py</code> command from the Python implementation.</p>
+</div>
+<div class="paragraph">
+<p>If the Asciidoctor gem installed successfully, the <code>asciidoctor</code> command line interface (CLI) will be available on your PATH.
+To confirm that Asciidoctor is available, execute:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor --version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following information should be output in your terminal:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Asciidoctor 0.1.4 [http://asciidoctor.org]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To invoke Asciidoctor from the CLI and render an <code>.adoc</code> file, execute:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor &lt;asciidoc_file&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will use the built-in defaults for options and create a new file in the same directory as the input file, with the same base name, but with the <code>.html</code> extension.</p>
+</div>
+<div class="paragraph">
+<p>There are many other options available and full help is provided via:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor --help</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or in the <a href="http://asciidoctor.org/man/asciidoctor">man page</a>.</p>
+</div>
+<div class="paragraph">
+<p>There is also an <code>asciidoctor-safe</code> command, which turns on safe mode by default, preventing access to files outside the parent directory of the source file.
+This mode is very similar to the safe mode of <code>asciidoc.py</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-the-ruby-api"><a class="anchor" href="#using-the-ruby-api"></a>2.2. Using the Ruby API</h3>
+<div class="paragraph">
+<p>In addition to the command line interface, Asciidoctor provides a Ruby API.
+The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Asciidoctor also has a Java API that mirrors the Ruby API.
+The Java API calls through to the Ruby API using an embedded JRuby runtime.
+See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To use Asciidoctor in your application, you first need to require the gem:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">require 'asciidoctor'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With that in place, you can start processing AsciiDoc documents.
+To parse a file into an <code>Asciidoctor::Document</code> object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">doc = Asciidoctor.load_file 'sample.adoc'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can get information about the document:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">puts doc.doctitle
+puts doc.attributes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More than likely, you will want to render the document.
+To render a file containing AsciiDoc markup to HTML 5, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will output to the file <code>sample.html</code> in the same directory.</p>
+</div>
+<div class="paragraph">
+<p>You can render the file to DocBook 4.5 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will output to the file <code>sample.xml</code> in the same directory.
+If you&#8217;re on Linux, you can view the file using <a href="http://live.gnome.org/Yelp">Yelp</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also use the API to <a href="#render-strings">render strings</a> and <a href="#provide-custom-templates">load custom templates</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -1257,6 +1386,37 @@ We welcome your help testing those versions if you are interested in seeing them
 </div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>If the Asciidoctor gem installed successfully, the <code>asciidoctor</code> command line interface (CLI) will be available on your PATH.
+To confirm that Asciidoctor is available, execute:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$&gt; asciidoctor --version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following information should be output in your terminal:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Asciidoctor 0.1.4 [http://asciidoctor.org]</pre>
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Two API Flavors</div>
+<div class="paragraph">
+<p>In addition to the CLI, Asciidoctor provides a <a href="#api">Ruby API</a>.
+The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor also has a Java API that mirrors the Ruby API.
+The Java API calls through to the Ruby API using an embedded JRuby runtime.
+See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="install-with-bundler"><a class="anchor" href="#install-with-bundler"></a>2.1. Install with Bundler</h3>
@@ -1438,207 +1598,7 @@ Section Pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="using-the-command-line-interface"><a class="anchor" href="#using-the-command-line-interface"></a>5. Using the Command Line Interface</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Asciidoctor&#8217;s command line interface (CLI) is a drop-in replacement for the <code>asciidoc.py</code> command from the Python implementation.
-To invoke Asciidoctor from the CLI, execute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">asciidoctor &lt;asciidoc_file&gt;</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This will use the built-in defaults for options and create a new file in the same directory as the input file, with the same base name, but with the <code>.html</code> extension.</p>
-</div>
-<div class="paragraph">
-<p>There are many other options available and full help is provided via:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">asciidoctor --help</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or in the <a href="http://asciidoctor.org/man/asciidoctor">man page</a>.</p>
-</div>
-<div class="paragraph">
-<p>There is also an <code>asciidoctor-safe</code> command, which turns on safe mode by default, preventing access to files outside the parent directory of the source file.
-This mode is very similar to the safe mode of <code>asciidoc.py</code>.</p>
-</div>
-<div class="sect2">
-<h3 id="basic-commands"><a class="anchor" href="#basic-commands"></a>5.1. Basic commands</h3>
-<div class="paragraph">
-<p>If the Asciidoctor gem installed successfully, the <code>asciidoctor</code> command line interface (CLI) will be available on your PATH.
-To invoke it, execute:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; asciidoctor --version
-Asciidoctor 0.1.4 [http://asciidoctor.org]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="using-asciidoctor-s-api"><a class="anchor" href="#using-asciidoctor-s-api"></a>6. Using Asciidoctor&#8217;s API</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>In addition to the CLI, Asciidoctor provides a Ruby API.
-The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Asciidoctor also has a Java API that mirrors the Ruby API.
-The Java API calls through to the Ruby API using an embedded JRuby runtime.
-See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="basic-commands-2"><a class="anchor" href="#basic-commands-2"></a>6.1. Basic commands</h3>
-<div class="paragraph">
-<p>To use Asciidoctor in your application, you first need to require the gem:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">require 'asciidoctor'</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>With that in place, you can start processing AsciiDoc documents.</p>
-</div>
-<div class="sect3">
-<h4 id="load-a-document"><a class="anchor" href="#load-a-document"></a>6.1.1. Load a document</h4>
-<div class="paragraph">
-<p>To parse a file into an <code>Asciidoctor::Document</code> object:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">doc = Asciidoctor.load_file 'sample.adoc'</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can get information about the document:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">puts doc.doctitle
-puts doc.attributes</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>More than likely, you will want to render the document.</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="render-a-file"><a class="anchor" href="#render-a-file"></a>6.1.2. Render a file</h4>
-<div class="paragraph">
-<p>To render a file containing AsciiDoc markup to HTML 5, use:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The command will output to the file <code>sample.html</code> in the same directory.</p>
-</div>
-<div class="paragraph">
-<p>You can render the file to DocBook 4.5 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The command will output to the file <code>sample.xml</code> in the same directory.
-(If you&#8217;re on Linux, you can view the file using yelp).</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="render-strings"><a class="anchor" href="#render-strings"></a>6.1.3. Render strings</h4>
-<div class="paragraph">
-<p>To render an AsciiDoc-formatted string:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When rendering a string, the header and footer are excluded by default to make Asciidoctor consistent with other lightweight markup engines like Markdown.
-If you want the header and footer, just enable it using the <code>:header_footer</code> option:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Now you&#8217;ll get a full HTML 5 file.
-If you only want the inline markup to be processed, set the <code>:doctype</code> option to <code><em>inline</em></code>:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:doctype</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>As before, you can also produce DocBook 4.5:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
-   <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you don&#8217;t like the output you see, you can change it.
-Any of it!</p>
-</div>
-</div>
-<div class="sect3">
-<h4 id="custom-templates"><a class="anchor" href="#custom-templates"></a>6.1.4. Custom templates</h4>
-<div class="paragraph">
-<p>Asciidoctor allows you to override the <a href="https://github.com/asciidoctor/asciidoctor/blob/master/lib/asciidoctor/backends">built-in templates</a> used to render almost any individual AsciiDoc element.
-If you provide a directory of <a href="https://github.com/rtomayko/tilt">Tilt</a>-compatible templates, named in such a way that Asciidoctor can figure out which template goes with which element, Asciidoctor will use the templates in this directory instead of its built-in templates for any elements for which it finds a matching template.
-It will fallback to its default templates for everything else.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
-   <span class="symbol">:template_dir</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">templates</span><span class="delimiter">'</span></span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The Document and Section templates should begin with <code>document.</code> and <code>section.</code>, respectively.
-The file extension is used by Tilt to determine which view framework it will use to use to render the template.
-For instance, if you want to write the template in ERB, you&#8217;d name these two templates <code>document.html.erb</code> and <code>section.html.erb</code>.
-To use Haml, you&#8217;d name them <code>document.html.haml</code> and <code>section.html.haml</code>.</p>
-</div>
-<div class="paragraph">
-<p>Templates for block elements, like a Paragraph or Sidebar, would begin with <code>block_&lt;style&gt;.</code>.
-For instance, to override the default Paragraph template with an ERB template, put a file named <code>block_paragraph.html.erb</code> in the template directory you pass to the <code>Document</code> constructor using the <code>:template_dir</code> option.</p>
-</div>
-<div class="paragraph">
-<p>For more usage examples, see the (massive) <a href="https://github.com/asciidoctor/asciidoctor/tree/master/test">test suite</a>.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="output-formats"><a class="anchor" href="#output-formats"></a>7. Output Formats</h2>
+<h2 id="output-formats"><a class="anchor" href="#output-formats"></a>5. Output Formats</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -1654,7 +1614,7 @@ Section Pending
 </div>
 <div class="paragraph">
 <p>The Asciidoctor and AsciiDoc processors parse a document and translate it into a variety of formats, including HTML, DocBook and PDF.
-The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command-line option.
+The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
 If no backend is indicated, the processor&#8217;s default backend is used.</p>
 </div>
 <div class="paragraph">
@@ -1702,7 +1662,7 @@ AsciiDoc&#8217;s default backend.</p>
 </dl>
 </div>
 <div class="sect2">
-<h3 id="document-types"><a class="anchor" href="#document-types"></a>7.1. Document types</h3>
+<h3 id="document-types"><a class="anchor" href="#document-types"></a>5.1. Document types</h3>
 <div class="dlist">
 <dl>
 <dt class="hdlist1">Article</dt>
@@ -2070,18 +2030,6 @@ The <code>!</code> can be placed before or after the attribute&#8217;s name.</p>
 </div>
 <div class="paragraph">
 <p>The following sections will show you how to use attributes on your whole document, individual blocks, and inline elements.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-To learn about command line attributes and how to use them, proceed to <a href="#part-3-processing-a-document">[part-3-processing-a-document]</a>.
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect2">
@@ -13161,7 +13109,7 @@ As a result, you could save <code>mysample.html</code> to any computer and it wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-the-ruby-api"><a class="anchor" href="#using-the-ruby-api"></a>3.2. Using the Ruby API</h3>
+<h3 id="using-the-ruby-api-2"><a class="anchor" href="#using-the-ruby-api-2"></a>3.2. Using the Ruby API</h3>
 <div class="paragraph">
 <p>Asciidoctor also includes a Ruby API that lets you generate an HTML document directly from a Ruby application.</p>
 </div>
@@ -13798,7 +13746,7 @@ Backends for other presentation frameworks are in the works.</p>
 <p>A list of installed gems will be returned.</p>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re missing the <code>asciidoctor</code>, <code>tilt</code>, or <code>haml</code> gems, install them from the command-line with <code>gem install</code>.</p>
+<p>If you&#8217;re missing the <code>asciidoctor</code>, <code>tilt</code>, or <code>haml</code> gems, install them from the command line with <code>gem install</code>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -14775,6 +14723,151 @@ The rest of the keys only have a colon after the key.
 </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+<h1 id="api" class="sect0"><a class="anchor" href="#api"></a>Using Asciidoctor&#8217;s API</h1>
+<div class="paragraph">
+<p>In addition to the command line interface, Asciidoctor provides a Ruby API.
+The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Asciidoctor also has a Java API that mirrors the Ruby API.
+The Java API calls through to the Ruby API using an embedded JRuby runtime.
+See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect1">
+<h2 id="load-and-render-a-file-using-the-api"><a class="anchor" href="#load-and-render-a-file-using-the-api"></a>1. Load and Render a File Using the API</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use Asciidoctor in your application, you first need to require the gem:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">require 'asciidoctor'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With that in place, you can start processing AsciiDoc documents.
+To parse a file into an <code>Asciidoctor::Document</code> object:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">doc = Asciidoctor.load_file 'sample.adoc'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can get information about the document:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">puts doc.doctitle
+puts doc.attributes</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More than likely, you will want to render the document.
+To render a file containing AsciiDoc markup to HTML 5, use:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will output to the file <code>sample.html</code> in the same directory.</p>
+</div>
+<div class="paragraph">
+<p>You can render the file to DocBook 4.5 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> <span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will output to the file <code>sample.xml</code> in the same directory.
+If you&#8217;re on Linux, you can view the file using <a href="http://live.gnome.org/Yelp">Yelp</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="render-strings"><a class="anchor" href="#render-strings"></a>1.1. Render strings</h3>
+<div class="paragraph">
+<p>To render an AsciiDoc-formatted string:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When rendering a string, the header and footer are excluded by default to make Asciidoctor consistent with other lightweight markup engines like Markdown.
+If you want the header and footer, just enable it using the <code>:header_footer</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you&#8217;ll get a full HTML 5 file.
+If you only want the inline markup to be processed, set the <code>:doctype</code> option to <code><em>inline</em></code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:doctype</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As before, you can also produce DocBook 4.5:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
+   <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t like the output you see, you can change it.
+Any of it!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="provide-custom-templates"><a class="anchor" href="#provide-custom-templates"></a>2. Provide custom templates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor allows you to override the <a href="https://github.com/asciidoctor/asciidoctor/blob/master/lib/asciidoctor/backends">built-in templates</a> used to render almost any individual AsciiDoc element.
+If you provide a directory of <a href="https://github.com/rtomayko/tilt">Tilt</a>-compatible templates, named in such a way that Asciidoctor can figure out which template goes with which element, Asciidoctor will use the templates in this directory instead of its built-in templates for any elements for which it finds a matching template.
+It will fallback to its default templates for everything else.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
+   <span class="symbol">:template_dir</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">templates</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Document and Section templates should begin with <code>document.</code> and <code>section.</code>, respectively.
+The file extension is used by Tilt to determine which view framework it will use to use to render the template.
+For instance, if you want to write the template in ERB, you&#8217;d name these two templates <code>document.html.erb</code> and <code>section.html.erb</code>.
+To use Haml, you&#8217;d name them <code>document.html.haml</code> and <code>section.html.haml</code>.</p>
+</div>
+<div class="paragraph">
+<p>Templates for block elements, like a Paragraph or Sidebar, would begin with <code>block_&lt;style&gt;.</code>.
+For instance, to override the default Paragraph template with an ERB template, put a file named <code>block_paragraph.html.erb</code> in the template directory you pass to the <code>Document</code> constructor using the <code>:template_dir</code> option.</p>
+</div>
+<div class="paragraph">
+<p>For more usage examples, see the (massive) <a href="https://github.com/asciidoctor/asciidoctor/tree/master/test">test suite</a>.</p>
 </div>
 </div>
 </div>
@@ -17661,7 +17754,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-21 19:15:08 UTC
+Last updated 2013-10-22 22:04:56 UTC
 </div>
 </div>
 </body>
