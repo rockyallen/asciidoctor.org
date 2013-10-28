@@ -815,6 +815,14 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#docbook">5. DocBook</a></li>
 <li><a href="#manpages">6. Manpages</a></li>
 <li><a href="#pdfs">7. PDFs</a></li>
+<li><a href="#running-asciidoctor-securely">8. Running Asciidoctor Securely</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#set-the-safe-mode-in-the-cli">8.1. Set the safe mode in the CLI</a></li>
+<li><a href="#set-the-safe-mode-in-the-api">8.2. Set the safe mode in the API</a></li>
+<li><a href="#set-attributes-based-on-the-safe-mode">8.3. Set attributes based on the safe mode</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#creating-custom-output">Creating Custom Output</a></li>
@@ -13633,6 +13641,214 @@ sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="running-asciidoctor-securely"><a class="anchor" href="#running-asciidoctor-securely"></a>8. Running Asciidoctor Securely</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor provides security levels that control the read and write access of attributes, the <code>include</code> directive, macros, and scripts while a document is processing.
+Each level includes the restrictions enabled in the prior security level.</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+<code>UNSAFE</code>
+</td>
+<td class="hdlist2">
+<p>A safe mode level that disables any security features enforced by Asciidoctor.
+Ruby is still subject to its own restrictions.</p>
+<div class="paragraph">
+<p><strong>This is the default safe mode for the CLI.</strong>
+Its integer value is <code>0</code>.</p>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>SAFE</code>
+</td>
+<td class="hdlist2">
+<p>This safe mode level prevents access to files which reside outside of the parent directory of the source file.
+It disables all macros, except the <code>include</code> directive.
+The paths to <code>include</code> files must be within the parent directory.
+It allows assets to be embedded in the document.</p>
+<div class="paragraph">
+<p>Its integer value is <code>1</code>.</p>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>SERVER</code>
+</td>
+<td class="hdlist2">
+<p>A safe mode level that disallows the document from setting attributes that would affect the rendering of the document.
+This level trims <code>docfile</code> to its relative path and prevents the document from:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>setting <code>source-highlighter</code>, <code>doctype</code>, <code>docinfo</code> and <code>backend</code></p>
+</li>
+<li>
+<p>seeing <code>docdir</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>It allows <code>icons</code> and <code>linkcss</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>This is the default safe mode for the API.</strong>
+Its integer value is <code>10</code>.</p>
+</div>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+<code>SECURE</code>
+</td>
+<td class="hdlist2">
+<p>A safe mode level that disallows the document from attempting to read files from the file system and including their contents into the document.
+Additionally, it:</p>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>disables icons</p>
+</li>
+<li>
+<p>disables the <code>include</code> directive</p>
+</li>
+<li>
+<p>data can not be retrieved from URIs</p>
+</li>
+<li>
+<p>prevents access to stylesheets and JavaScripts</p>
+</li>
+<li>
+<p>sets the backend to <code>html5</code></p>
+</li>
+<li>
+<p>disables <code>docinfo</code> files</p>
+</li>
+<li>
+<p>disables <code>data-uri</code></p>
+</li>
+<li>
+<p>disables <code>docdir</code> and <code>docfile</code></p>
+</li>
+<li>
+<p>disables source highlighting</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor and trusted extensions may still be allowed to embed trusted content into the document.
+Its integer value is <code>20</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can set Asciidoctor&#8217;s safe mode level using the CLI or API.</p>
+</div>
+<div class="sect2">
+<h3 id="set-the-safe-mode-in-the-cli"><a class="anchor" href="#set-the-safe-mode-in-the-cli"></a>8.1. Set the safe mode in the CLI</h3>
+<div class="paragraph">
+<p>When Asciidoctor is invoked via the CLI, the safe mode is set to <code>UNSAFE</code> by default.
+You can change the safe level by executing one of the following commands in the CLI.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>-S</code>, <code>--safe-mode=SAFE_MODE</code></dt>
+<dd>
+<p>Sets the safe mode level of the document according to the assigned level (<code>UNSAFE</code>, <code>SAFE</code>, <code>SERVER</code>, <code>SECURE</code>).</p>
+</dd>
+<dt class="hdlist1"><code>--safe</code>, <code>asciidoctor-safe</code></dt>
+<dd>
+<p>Sets the safe mode level to <code>SAFE</code>.
+Provided for compatibility with the python AsciiDoc <code>safe</code> command.</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-the-safe-mode-in-the-api"><a class="anchor" href="#set-the-safe-mode-in-the-api"></a>8.2. Set the safe mode in the API</h3>
+<div class="paragraph">
+<p>The default safe level in the API is <code>SERVER</code>.</p>
+</div>
+<div class="paragraph">
+<p>In the API, you can set the safe mode using a string, symbol or integer value.
+The value must be set in the document constructor using the <code>:safe</code> option.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; 'server')</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; :server)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; 10)</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-attributes-based-on-the-safe-mode"><a class="anchor" href="#set-attributes-based-on-the-safe-mode"></a>8.3. Set attributes based on the safe mode</h3>
+<div class="paragraph">
+<p>You can enable or disable content within your document based on safe modes using the <code>safe-mode</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>The safe mode can be defined by its integer value or name.
+For example, to assign the <code>SAFE</code> level to the attribute, you could append <code>10</code> or <code>safe</code> to the attribute.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">safe-mode-10</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">safe-mode-safe</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The attributes in the next example enable the author to define replacement text for features that are disabled in high security environments.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">ifdef::safe-mode-secure[]
+Links to chapters.
+endif::safe-mode-secure[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <h1 id="creating-custom-output" class="sect0"><a class="anchor" href="#creating-custom-output"></a>Creating Custom Output</h1>
 <div class="admonitionblock note">
 <table>
@@ -15647,6 +15863,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-safe</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">N/A</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
@@ -15720,6 +15942,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-background</code> (quoted text)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--base-dir</code>, <code>-B</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -16073,6 +16301,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>endif</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>example</code>, <code>====</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
@@ -16303,6 +16537,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>idseparator</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ifdef</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -16937,25 +17177,25 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Value for grid</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>--safe</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-level</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SAFE</code>, <code>1</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-name</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>--safe-mode</code>, <code>-S</code></code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-%name%</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-&lt;integer or name&gt;</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -17003,9 +17243,21 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SECURE</code>, <code>20</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>separator</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SERVER</code>, <code>10</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
@@ -17279,6 +17531,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>UNSAFE</code>, <code>0</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">TBD</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>valign</code> (table)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
@@ -17532,7 +17790,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-25 21:15:29 UTC
+Last updated 2013-10-28 20:33:35 UTC
 </div>
 </div>
 </body>
