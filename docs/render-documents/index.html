@@ -1,24 +1,24 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>How do I render a document? | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>How do I render a document?</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>While the AsciiDoc syntax is designed to be human-readable, it&#8217;s doubtful you&#8217;ll want to present your finished document as raw AsciiDoc syntax.
-That&#8217;s where the AsciiDoc processors and backends come into play.</p>
+<p>This guide introduces the Asciidoctor processor and the output formats it produces.
+You will learn how to:</p>
 </div>
-<div class="paragraph">
-<p>In this guide, you learn how to convert a short sample document to the following formats:</p>
-</div>
-<div class="ulist">
-<ul>
+<div class="ulist checklist">
+<ul class="checklist">
 <li>
-<p>HTML</p>
+<p><i class="icon-check"></i> process a document from the CLI and API</p>
 </li>
 <li>
-<p>DocBook</p>
+<p><i class="icon-check"></i> render a document to HTML</p>
+</li>
+<li>
+<p><i class="icon-check"></i> apply the default Asciidoctor CSS theme</p>
+</li>
+<li>
+<p><i class="icon-check"></i> render a document to DocBook 5</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>You&#8217;ll also discover how to apply the default stylesheet or a custom one to the generated HTML document during processing.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -33,27 +33,34 @@ For step-by-step installation instructions, read the <a href="/docs/install-tool
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>While the AsciiDoc syntax is designed to be readable in raw form, the intended audience for that format are writers and editors.
+Readers aren&#8217;t going to appreciate the raw text nearly as much.
+Aesthetics matter.
+You&#8217;ll want to apply nice typography with font sizes that adhere to the &#8220;golden ratio&#8221;, colors, icons and images to give it the respect it deserves.
+That&#8217;s where the Asciidoctor themes and backends come into play.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="processor-and-backends-overview"><a class="anchor" href="#processor-and-backends-overview"></a>Processor and backends overview</h2>
+<h2 id="selecting-an-output-format"><a class="anchor" href="#selecting-an-output-format"></a>Selecting an Output Format</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Asciidoctor processor parses a document and translates it into a variety of formats, including HTML, DocBook and PDF.
+<p>The Asciidoctor processor parses an AsciiDoc document and translates it into a variety of formats, including HTML, DocBook and PDF.
 The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
-If no backend is indicated, the processor&#8217;s default backend (<code>html5</code>) is used.</p>
+If no backend is indicated, the processor uses the default backend (<code>html5</code>).</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor has three native backends.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>html5</code> (or <code>html</code>)</dt>
+<dt class="hdlist1"><code>html5</code></dt>
 <dd>
-<p>HTML 5 markup styled with CSS 3.
-This is the default backend in Asciidoctor.</p>
+<p>HTML 5 markup styled with CSS3.
+Asciidoctor&#8217;s default backend.</p>
 </dd>
-<dt class="hdlist1"><code>docbook45</code> (or <code>docbook</code>)</dt>
+<dt class="hdlist1"><code>docbook</code></dt>
 <dd>
 <p>DocBook XML 4.5 markup.</p>
 </dd>
@@ -63,27 +70,33 @@ This is the default backend in Asciidoctor.</p>
 </dd>
 </dl>
 </div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-To convert your document to PDF, you&#8217;ll need to use the <a href="https://github.com/mojavelinux/asciidoctor-fopdf">Asciidoctor fopdf extension</a>.
-Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>It also has several backends that can be plugged in.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>manpage</code></dt>
+<dd>
+<p>Manual pages for Unix and Unix-like operating systems.</p>
+</dd>
+<dt class="hdlist1"><code>pdf</code></dt>
+<dd>
+<p>Portable Document Format (PDF).</p>
+</dd>
+<dt class="hdlist1"><code>deckjs</code></dt>
+<dd>
+<p>Deck.js slideshow.</p>
+</dd>
+</dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="converting-a-document-to-html"><a class="anchor" href="#converting-a-document-to-html"></a>Converting a document to HTML</h2>
+<h2 id="rendering-a-document-to-html"><a class="anchor" href="#rendering-a-document-to-html"></a>Rendering a document to HTML</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Asciidoctor&#8217;s default output is HTML.
-It provides both a command line tool and a Ruby API for converting AsciiDoc documents to HTML.</p>
+You can render a document to HTML using the CLI or the Ruby API.</p>
 </div>
 <div class="sect2">
 <h3 id="using-the-command-line-tool"><a class="anchor" href="#using-the-command-line-tool"></a>Using the command line tool</h3>
@@ -248,136 +261,7 @@ Additionally, you can inspect <code>mysample.html</code> in your browser and see
 </div>
 </div>
 <div class="paragraph">
-<p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for your own custom stylesheet or alternative Asciidoctor themes.</p>
-</div>
-<div class="paragraph">
-<p>If you want to apply your own stylesheet to the rendered HTML, using the CLI:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Save your custom stylesheet in the same directory as <code>mysample.adoc</code></p>
-</li>
-<li>
-<p>Call the <code>asciidoctor</code> processor</p>
-</li>
-<li>
-<p>Add the <code>stylesheet</code> attribute with <code>-a</code> (<code>--attribute</code>)</p>
-</li>
-<li>
-<p>Include the stylesheet file&#8217;s name</p>
-</li>
-</ol>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesheet=mystyles.css mysample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Alternatively, let&#8217;s set the <code>stylesheet</code> attribute in the header of <code>mysample.adoc</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesheet: mystyles.css
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="/images/mysample-stylesheet.png" alt="mysample stylesheet">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Stylesheets can also be stored in a directory other than the directory where your document is saved; you just need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.
-Let&#8217;s store the <code>mystyles.css</code> stylesheet in <code>mydocuments/mystylesheets/</code>.
-Our AsciiDoc document, <code>mysample.adoc</code>, is saved in the <code>mydocuments/</code> directory.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesdir: mystylesheets/
-:stylesheet: mystyles.css
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When you process <code>mysample.adoc</code>, the HTML output (<code>mysample.html</code>) is saved in the <code>mydocuments/</code> directory.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="/images/mysample-stylesdir-dir.png" alt="mysample stylesdir dir">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also set <code>stylesdir</code> in the CLI.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesdir=mystylesheets/ -a stylesheet=mystyles.css mysample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you don&#8217;t want to embed the <code>mystyles.css</code> stylesheet into your HTML output, make sure to set <code>linkcss</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesdir: mystylesheets/
-:stylesheet: mystyles.css
-:linkcss:
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After your document is rendered, notice that a copy of <code>mystyles.css</code> was not created in the <code>mydocuments/</code> directory.
-Unlike when you link to the default Asciidoctor stylesheet, any custom stylesheets you link to are not copied to the directory where your output is saved.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-The <code>copycss</code> attribute, which would copy a custom stylesheet when a document is rendered, is broken.
-Watch <a href="https://github.com/asciidoctor/asciidoctor/issues/300">Issue #300</a> for updates.
-</td>
-</tr>
-</table>
+<p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for an <a href="user-manual.html#stylesheet-factory">alternative Asciidoctor theme</a> or use your own <a href="user-manual.html#custom-themes">custom stylesheet</a>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -461,7 +345,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="sect1">
-<h2 id="converting-a-document-to-docbook"><a class="anchor" href="#converting-a-document-to-docbook"></a>Converting a document to DocBook</h2>
+<h2 id="rendering-a-document-to-docbook"><a class="anchor" href="#rendering-a-document-to-docbook"></a>Rendering a document to DocBook</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Despite the fact that writing in DocBook is inhumane, it&#8217;s useful as a intermediary format.
@@ -592,23 +476,39 @@ mysample.adoc  mysample.html  mysample.xml</pre>
     <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook5</span><span class="delimiter">'</span></span>)</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>DocBook is only an intermediary format in the Asciidoctor toolchain.
-You&#8217;ll either feed it into a system that processes DocBook (like <a href="http://fedorahosted.org/publican">publican</a>), or you can convert it to PDF using the <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">Asciidoctor fopdf extension</a>.</p>
-</div>
-<div class="paragraph">
-<p>There&#8217;s really no end to the customization you can apply to the output that the AsciiDoctor processor generates.
-We&#8217;ve just scratched the surface here.</p>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Resources and help</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Now that you have rendered your first document with Asciidoctor, you may want to learn more about the AsciiDoc syntax and the growing variety of integrations, backends, and customizations the Asciidoctor project is developing.
-Also, there are a number of specialized backends available or under development for Asciidoctor.
-More information and the latest available developments can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctor-backends">backend repository</a>.</p>
+<p>There&#8217;s really no end to the customization you can apply to the output that the Asciidoctor processor generates.
+We&#8217;ve just scratched the surface in this guide.</p>
+</div>
+<div class="paragraph">
+<p>To learn about the other backends and stylesheets, checkout out the following resources:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://themes.asciidoctor.org/">The Asciidoctor Stylesheet Factory showcase</a></p>
+</li>
+<li>
+<p><a href="/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/">Create and use a custom theme</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#manpages">Create and render a manpage</a></p>
+</li>
+<li>
+<p>Render a document to PDF with the <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">Asciidoctor fopdf extension</a></p>
+</li>
+<li>
+<p><a href="/docs/install-and-use-deckjs-backend">Create a Deck.js presentation</a></p>
+</li>
+<li>
+<p><a href="http://github.com/asciidoctor/asciidoctor-backends">Asciidoctor&#8217;s backend repository</a></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
 <p>Need an overview of the AsciiDoc syntax?</p>
@@ -627,19 +527,6 @@ More information and the latest available developments can be found in the proje
 <ul>
 <li>
 <p><a href="/docs/user-manual">Asciidoctor User&#8217;s Manual</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Interested in using a theme from the Asciidoctor Stylesheet Factory?</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://themes.asciidoctor.org/">A Showcase of the Asciidoctor Stylesheet Factory themes</a></p>
-</li>
-<li>
-<p><a href="/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/">How do I create and build and a theme</a>?</p>
 </li>
 </ul>
 </div>

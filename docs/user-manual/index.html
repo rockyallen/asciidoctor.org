@@ -788,50 +788,46 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#processing-your-content">Processing Your Content</a></li>
 <li>
 <ul class="sectlevel1">
-<li><a href="#selecting-an-output">1. Selecting an Output</a></li>
-<li><a href="#preview-your-content">2. Preview Your Content</a></li>
+<li><a href="#selecting-an-output-format">1. Selecting an Output Format</a></li>
+<li><a href="#html">2. HTML</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#guard-live-viewer">2.1. Guard/Live viewer</a></li>
+<li><a href="#using-the-command-line">2.1. Using the command line</a></li>
+<li><a href="#using-the-ruby-api-2">2.2. Using the Ruby API</a></li>
+<li><a href="#styling-the-html-with-css">2.3. Styling the HTML with CSS</a></li>
+<li><a href="#managing-images">2.4. Managing images</a></li>
+<li><a href="#coderay-and-pygments-stylesheets">2.5. CodeRay and Pygments stylesheets</a></li>
 </ul>
 </li>
-<li><a href="#rendering-a-document">3. Rendering a Document</a></li>
+<li><a href="#docbook">3. DocBook</a></li>
+<li><a href="#manpages">4. Manpages</a></li>
+<li><a href="#pdfs">5. PDFs</a></li>
+<li><a href="#preview-your-content">6. Preview Your Content</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#process-multiple-source-files-from-the-cli">3.1. Process multiple source files from the CLI</a></li>
-<li><a href="#specify-output-file">3.2. Specify output file</a></li>
+<li><a href="#guard-live-viewer">6.1. Guard/Live viewer</a></li>
 </ul>
 </li>
-<li><a href="#html">4. HTML</a></li>
+<li><a href="#process-multiple-source-files-from-the-cli">7. Process multiple source files from the CLI</a></li>
+<li><a href="#specifying-an-output-file">8. Specifying an output file</a></li>
+<li><a href="#running-asciidoctor-securely">9. Running Asciidoctor Securely</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#using-the-command-line">4.1. Using the command line</a></li>
-<li><a href="#using-the-ruby-api-2">4.2. Using the Ruby API</a></li>
-<li><a href="#styling-the-html-with-css">4.3. Styling the HTML with CSS</a></li>
-<li><a href="#managing-images">4.4. Managing images</a></li>
-<li><a href="#coderay-and-pygments-stylesheets">4.5. CodeRay and Pygments stylesheets</a></li>
-</ul>
-</li>
-<li><a href="#docbook">5. DocBook</a></li>
-<li><a href="#manpages">6. Manpages</a></li>
-<li><a href="#pdfs">7. PDFs</a></li>
-<li><a href="#running-asciidoctor-securely">8. Running Asciidoctor Securely</a></li>
-<li>
-<ul class="sectlevel2">
-<li><a href="#set-the-safe-mode-in-the-cli">8.1. Set the safe mode in the CLI</a></li>
-<li><a href="#set-the-safe-mode-in-the-api">8.2. Set the safe mode in the API</a></li>
-<li><a href="#set-attributes-based-on-the-safe-mode">8.3. Set attributes based on the safe mode</a></li>
+<li><a href="#set-the-safe-mode-in-the-cli">9.1. Set the safe mode in the CLI</a></li>
+<li><a href="#set-the-safe-mode-in-the-api">9.2. Set the safe mode in the API</a></li>
+<li><a href="#set-attributes-based-on-the-safe-mode">9.3. Set attributes based on the safe mode</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#creating-custom-output">Creating Custom Output</a></li>
+<li><a href="#customizing-your-output">Customizing Your Output</a></li>
 <li>
 <ul class="sectlevel1">
-<li><a href="#slideshows">1. Slideshows</a></li>
+<li><a href="#custom-themes">1. Custom Themes</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#deck-js">1.1. Deck.js</a></li>
+<li><a href="#creating-a-theme">1.1. Creating a theme</a></li>
+<li><a href="#applying-a-theme">1.2. Applying a theme</a></li>
 </ul>
 </li>
 <li><a href="#stylesheet-factory">2. Stylesheet Factory</a></li>
@@ -843,13 +839,18 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#external-preview">2.4. External preview</a></li>
 </ul>
 </li>
-<li><a href="#custom-stylesheets">3. Custom Stylesheets</a></li>
+<li><a href="#slideshows">3. Slideshows</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#multiple-custom-template-directories">3.1. Multiple custom template directories</a></li>
+<li><a href="#deckjs">3.1. Deck.js</a></li>
 </ul>
 </li>
-<li><a href="#styling-docbook-and-pdf-output">4. Styling DocBook and PDF Output</a></li>
+<li><a href="#custom-backends">4. Custom Backends</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#creating-a-backend">4.1. Creating a backend</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#publishing-your-content">Publishing Your Content</a></li>
@@ -12698,44 +12699,20 @@ From Journeyman to Master</em>. Addison-Wesley. 1999.</p>
 </div>
 </div>
 <h1 id="processing-your-content" class="sect0"><a class="anchor" href="#processing-your-content"></a>Processing Your Content</h1>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>While the AsciiDoc syntax is designed to be readable in raw form, the intended audience for that format are writers and editors.
 Readers aren&#8217;t going to appreciate the raw text nearly as much.
 Aesthetics matter.
 You&#8217;ll want to apply nice typography with font sizes that adhere to the &#8220;golden ratio&#8221;, colors, icons and images to give it the respect it deserves.
-That&#8217;s where the Asciidoctor processor comes in.</p>
+That&#8217;s where the Asciidoctor themes and backends come into play.</p>
 </div>
 <div class="sect1">
-<h2 id="selecting-an-output"><a class="anchor" href="#selecting-an-output"></a>1. Selecting an Output</h2>
+<h2 id="selecting-an-output-format"><a class="anchor" href="#selecting-an-output-format"></a>1. Selecting an Output Format</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section expanision needed, List most options here but only go in depth on the common ones
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
-<p>The Asciidoctor processor parses a document and translates it into a variety of formats, including HTML, DocBook and PDF.
+<p>The Asciidoctor processor parses an AsciiDoc document and translates it into a variety of formats, including HTML, DocBook and PDF.
 The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
-If no backend is indicated, the processor&#8217;s default backend is used.</p>
+If no backend is indicated, the processor uses the default backend (<code>html5</code>).</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor has three native backends.</p>
@@ -12770,146 +12747,19 @@ Asciidoctor&#8217;s default backend.</p>
 <dd>
 <p>Portable Document Format (PDF).</p>
 </dd>
+<dt class="hdlist1"><code>deckjs</code></dt>
+<dd>
+<p>Deck.js slideshow.</p>
+</dd>
 </dl>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="preview-your-content"><a class="anchor" href="#preview-your-content"></a>2. Preview Your Content</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="guard-live-viewer"><a class="anchor" href="#guard-live-viewer"></a>2.1. Guard/Live viewer</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="rendering-a-document"><a class="anchor" href="#rendering-a-document"></a>3. Rendering a Document</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="process-multiple-source-files-from-the-cli"><a class="anchor" href="#process-multiple-source-files-from-the-cli"></a>3.1. Process multiple source files from the CLI</h3>
-<div class="paragraph">
-<p>You can pass multiple source files (or a file name pattern) to the Asciidoctor CLI and it will process all the files in turn.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s assume there are two AsciiDoc files in your directory, <span class="file">a.adoc</span> and <span class="file">b.adoc</span>.
-When you enter the following command in your terminal:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor a.adoc b.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Asciidoctor will process both files, transforming <span class="file">a.adoc</span> to <span class="file">a.html</span> and <span class="file">b.adoc</span> to <span class="file">b.html</span>.</p>
-</div>
-<div class="paragraph">
-<p>To save you some typing, you can use the glob operator (<code>*</code>) to match both files using a single argument:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor *.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The shell will expand the previous command to the one you typed earlier:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor a.adoc b.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also render all the AsciiDoc files in immediate subfolders using the double glob operator (<code>**</code>) in place of the directory name:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor **/*.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>To match all files in the current directory and immediate subfolders, use both glob patterns:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor *.adoc **/*.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If the file name argument is quoted, the shell will not expand it:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor '*.adoc'</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>This time, the text <code>*.adoc</code> gets passed directly to Asciidoctor instead of being expanded to <span class="file">a.adoc</span> and <span class="file">b.adoc</span>.
-In this case, Asciidoctor handles the glob matching internally in the same way the shell does (when the file name is not in quotes)--with one exception.
-Asciidoctor can match files in the current directory and subfolders at any depth using a single glob pattern:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor '**/*.adoc'</pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="specify-output-file"><a class="anchor" href="#specify-output-file"></a>3.2. Specify output file</h3>
-<div class="paragraph">
-<p>The <code>asciidoctor</code> command writes to the specified output file if the input is stdin.</p>
-</div>
-<div class="paragraph">
-<p>For example, the following command writes to <code>output.html</code> instead of to the console:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ echo "content" | asciidoctor -o output.html</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="html"><a class="anchor" href="#html"></a>4. HTML</h2>
+<h2 id="html"><a class="anchor" href="#html"></a>2. HTML</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor&#8217;s default backend and output is HTML.</p>
+<p>Asciidoctor&#8217;s default output format is HTML.</p>
 </div>
 <div class="dlist">
 <dl>
@@ -12920,7 +12770,7 @@ Asciidoctor can match files in the current directory and subfolders at any depth
 </dl>
 </div>
 <div class="sect2">
-<h3 id="using-the-command-line"><a class="anchor" href="#using-the-command-line"></a>4.1. Using the command line</h3>
+<h3 id="using-the-command-line"><a class="anchor" href="#using-the-command-line"></a>2.1. Using the command line</h3>
 <div class="paragraph">
 <p>In this section, we&#8217;ll create a sample document, then process and render it with Asciidoctor&#8217;s <code>html5</code> backend.</p>
 </div>
@@ -13004,7 +12854,7 @@ As a result, you could save <code>mysample.html</code> to any computer and it wi
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-the-ruby-api-2"><a class="anchor" href="#using-the-ruby-api-2"></a>4.2. Using the Ruby API</h3>
+<h3 id="using-the-ruby-api-2"><a class="anchor" href="#using-the-ruby-api-2"></a>2.2. Using the Ruby API</h3>
 <div class="paragraph">
 <p>Asciidoctor also includes a Ruby API that lets you generate an HTML document directly from a Ruby application.</p>
 </div>
@@ -13026,7 +12876,7 @@ puts html</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="styling-the-html-with-css"><a class="anchor" href="#styling-the-html-with-css"></a>4.3. Styling the HTML with CSS</h3>
+<h3 id="styling-the-html-with-css"><a class="anchor" href="#styling-the-html-with-css"></a>2.3. Styling the HTML with CSS</h3>
 <div class="paragraph">
 <p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
 It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
@@ -13082,140 +12932,11 @@ Additionally, you can inspect <code>mysample.html</code> in your browser and see
 </div>
 </div>
 <div class="paragraph">
-<p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for your own custom stylesheet or alternative Asciidoctor themes.</p>
-</div>
-<div class="paragraph">
-<p>If you want to apply your own stylesheet to the rendered HTML, using the CLI:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Save your custom stylesheet in the same directory as <code>mysample.adoc</code></p>
-</li>
-<li>
-<p>Call the <code>asciidoctor</code> processor</p>
-</li>
-<li>
-<p>Add the <code>stylesheet</code> attribute with <code>-a</code> (<code>--attribute</code>)</p>
-</li>
-<li>
-<p>Include the stylesheet file&#8217;s name</p>
-</li>
-</ol>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesheet=mystyles.css mysample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Alternatively, let&#8217;s set the <code>stylesheet</code> attribute in the header of <code>mysample.adoc</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesheet: mystyles.css
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="/images/mysample-stylesheet.png" alt="mysample stylesheet">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Stylesheets can also be stored in a directory other than the directory where your document is saved; you just need to tell Asciidoctor where to look for them using the <code>stylesdir</code> attribute.
-Let&#8217;s store the <code>mystyles.css</code> stylesheet in <code>mydocuments/mystylesheets/</code>.
-Our AsciiDoc document, <code>mysample.adoc</code>, is saved in the <code>mydocuments/</code> directory.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesdir: mystylesheets/
-:stylesheet: mystyles.css
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When you process <code>mysample.adoc</code>, the HTML output (<code>mysample.html</code>) is saved in the <code>mydocuments/</code> directory.</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="imageblock">
-<div class="content">
-<img src="/images/mysample-stylesdir-dir.png" alt="mysample stylesdir dir">
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also set <code>stylesdir</code> in the CLI.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesdir=mystylesheets/ -a stylesheet=mystyles.css mysample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you don&#8217;t want to embed the <code>mystyles.css</code> stylesheet into your HTML output, make sure to set <code>linkcss</code>.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">= My First Experience with the Dangers of Documentation
-:stylesdir: mystylesheets/
-:stylesheet: mystyles.css
-:linkcss:
-
-In my world, we don't have to worry about mutant, script-injecting warlocks.
-No.
-We have something far worse.
-We're plagued by Wolpertingers.
-
-== Origins
-
-You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After your document is rendered, notice that a copy of <code>mystyles.css</code> was not created in the <code>mydocuments/</code> directory.
-Unlike when you link to the default Asciidoctor stylesheet, any custom stylesheets you link to are not copied to the directory where your output is saved.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-The <code>copycss</code> attribute, which would copy a custom stylesheet when a document is rendered, is broken.
-Watch <a href="https://github.com/asciidoctor/asciidoctor/issues/300">Issue #300</a> for updates.
-</td>
-</tr>
-</table>
+<p>One of Asciidoctor&#8217;s strengths is the ease in which you can swap the default stylesheet for an <a href="#stylesheet-factory">alternative Asciidoctor theme</a> or use your own <a href="#custom-themes">custom stylesheet</a>.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="managing-images"><a class="anchor" href="#managing-images"></a>4.4. Managing images</h3>
+<h3 id="managing-images"><a class="anchor" href="#managing-images"></a>2.4. Managing images</h3>
 <div class="paragraph">
 <p>Images are not embedded in the HTML output by default.
 If you have image references in your document, you&#8217;ll have to save the image files in the same directory as your rendered document.
@@ -13259,7 +12980,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="sect2">
-<h3 id="coderay-and-pygments-stylesheets"><a class="anchor" href="#coderay-and-pygments-stylesheets"></a>4.5. CodeRay and Pygments stylesheets</h3>
+<h3 id="coderay-and-pygments-stylesheets"><a class="anchor" href="#coderay-and-pygments-stylesheets"></a>2.5. CodeRay and Pygments stylesheets</h3>
 <div class="paragraph">
 <p>Asciidoctor will also embed the theme stylesheet for the CodeRay or Pygments syntax highlighter.</p>
 </div>
@@ -13295,7 +13016,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="sect1">
-<h2 id="docbook"><a class="anchor" href="#docbook"></a>5. DocBook</h2>
+<h2 id="docbook"><a class="anchor" href="#docbook"></a>3. DocBook</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Asciidoctor 0.1.4 can produce DocBook 5.0 output, which is generated by the <code>docbook5</code> backend.</p>
@@ -13434,7 +13155,7 @@ You&#8217;ll either feed it into a system that processes DocBook (like <a href="
 </div>
 </div>
 <div class="sect1">
-<h2 id="manpages"><a class="anchor" href="#manpages"></a>6. Manpages</h2>
+<h2 id="manpages"><a class="anchor" href="#manpages"></a>4. Manpages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One of the most interesting uses of AsciiDoc is for creating man pages (short for manual pages) for Unix and Unix-like operating systems.
@@ -13529,7 +13250,7 @@ The man pages for git are also produced from AsciiDoc documents, so you can use 
 </div>
 </div>
 <div class="sect1">
-<h2 id="pdfs"><a class="anchor" href="#pdfs"></a>7. PDFs</h2>
+<h2 id="pdfs"><a class="anchor" href="#pdfs"></a>5. PDFs</h2>
 <div class="sectionbody">
 <div class="admonitionblock note">
 <table>
@@ -13607,7 +13328,133 @@ sample.adoc  sample.html  sample.pdf  sample.xml</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="running-asciidoctor-securely"><a class="anchor" href="#running-asciidoctor-securely"></a>8. Running Asciidoctor Securely</h2>
+<h2 id="preview-your-content"><a class="anchor" href="#preview-your-content"></a>6. Preview Your Content</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Section pending
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="guard-live-viewer"><a class="anchor" href="#guard-live-viewer"></a>6.1. Guard/Live viewer</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Section pending
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="process-multiple-source-files-from-the-cli"><a class="anchor" href="#process-multiple-source-files-from-the-cli"></a>7. Process multiple source files from the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can pass multiple source files (or a file name pattern) to the Asciidoctor CLI and it will process all the files in turn.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s assume there are two AsciiDoc files in your directory, <span class="file">a.adoc</span> and <span class="file">b.adoc</span>.
+When you enter the following command in your terminal:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor a.adoc b.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor will process both files, transforming <span class="file">a.adoc</span> to <span class="file">a.html</span> and <span class="file">b.adoc</span> to <span class="file">b.html</span>.</p>
+</div>
+<div class="paragraph">
+<p>To save you some typing, you can use the glob operator (<code>*</code>) to match both files using a single argument:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor *.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The shell will expand the previous command to the one you typed earlier:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor a.adoc b.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also render all the AsciiDoc files in immediate subfolders using the double glob operator (<code>**</code>) in place of the directory name:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor **/*.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To match all files in the current directory and immediate subfolders, use both glob patterns:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor *.adoc **/*.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the file name argument is quoted, the shell will not expand it:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor '*.adoc'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This time, the text <code>*.adoc</code> gets passed directly to Asciidoctor instead of being expanded to <span class="file">a.adoc</span> and <span class="file">b.adoc</span>.
+In this case, Asciidoctor handles the glob matching internally in the same way the shell does (when the file name is not in quotes)--with one exception.
+Asciidoctor can match files in the current directory and subfolders at any depth using a single glob pattern:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor '**/*.adoc'</pre>
+</div>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">TIP</dt>
+<dd>
+<p>If you process multiple nested AsciiDoc files at once and are also applying a custom stylesheet to them, you&#8217;ll need to <a href="#style-nest-doc">manage the stylesheet&#8217;s location</a>.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="specifying-an-output-file"><a class="anchor" href="#specifying-an-output-file"></a>8. Specifying an output file</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>asciidoctor</code> command writes to the specified output file if the input is <code>stdin</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example, the following command writes to <code>output.html</code> instead of to the console:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ echo "content" | asciidoctor -o output.html</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="running-asciidoctor-securely"><a class="anchor" href="#running-asciidoctor-securely"></a>9. Running Asciidoctor Securely</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Asciidoctor provides security levels that control the read and write access of attributes, the <code>include</code> directive, macros, and scripts while a document is processing.
@@ -13726,7 +13573,7 @@ Its integer value is <code>20</code>.</p>
 <p>You can set Asciidoctor&#8217;s safe mode level using the CLI or API.</p>
 </div>
 <div class="sect2">
-<h3 id="set-the-safe-mode-in-the-cli"><a class="anchor" href="#set-the-safe-mode-in-the-cli"></a>8.1. Set the safe mode in the CLI</h3>
+<h3 id="set-the-safe-mode-in-the-cli"><a class="anchor" href="#set-the-safe-mode-in-the-cli"></a>9.1. Set the safe mode in the CLI</h3>
 <div class="paragraph">
 <p>When Asciidoctor is invoked via the CLI, the safe mode is set to <code>UNSAFE</code> by default.
 You can change the safe level by executing one of the following commands in the CLI.</p>
@@ -13746,7 +13593,7 @@ Provided for compatibility with the python AsciiDoc <code>safe</code> command.</
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-the-safe-mode-in-the-api"><a class="anchor" href="#set-the-safe-mode-in-the-api"></a>8.2. Set the safe mode in the API</h3>
+<h3 id="set-the-safe-mode-in-the-api"><a class="anchor" href="#set-the-safe-mode-in-the-api"></a>9.2. Set the safe mode in the API</h3>
 <div class="paragraph">
 <p>The default safe level in the API is <code>SERVER</code>.</p>
 </div>
@@ -13777,7 +13624,7 @@ The value must be set in the document constructor using the <code>:safe</code> o
 </div>
 </div>
 <div class="sect2">
-<h3 id="set-attributes-based-on-the-safe-mode"><a class="anchor" href="#set-attributes-based-on-the-safe-mode"></a>8.3. Set attributes based on the safe mode</h3>
+<h3 id="set-attributes-based-on-the-safe-mode"><a class="anchor" href="#set-attributes-based-on-the-safe-mode"></a>9.3. Set attributes based on the safe mode</h3>
 <div class="paragraph">
 <p>You can enable or disable content within your document based on safe modes using the <code>safe-mode</code> attribute.</p>
 </div>
@@ -13814,7 +13661,15 @@ endif::safe-mode-secure[]</code></pre>
 </div>
 </div>
 </div>
-<h1 id="creating-custom-output" class="sect0"><a class="anchor" href="#creating-custom-output"></a>Creating Custom Output</h1>
+<h1 id="customizing-your-output" class="sect0"><a class="anchor" href="#customizing-your-output"></a>Customizing Your Output</h1>
+<div class="paragraph">
+<p>Asciidoctor provides a default stylesheet and built-in backends so you can quickly process and render your document, but it also lets you use custom stylesheets and backends.
+The Asciidoctor project includes alternative stylesheet themes from <a href="#stylesheet-factory">the stylesheet factory</a> and <a href="#slideshows">specialized backends</a>, such as the <a href="#deckjs">Deck.js backend</a>.
+You can also create your own <a href="#custom-themes">themes</a> and <a href="#custom-backends">backends</a>.</p>
+</div>
+<div class="sect1">
+<h2 id="custom-themes"><a class="anchor" href="#custom-themes"></a>1. Custom Themes</h2>
+<div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -13822,167 +13677,60 @@ endif::safe-mode-secure[]</code></pre>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-Part introduction pending
+Section introduction pending
 </td>
 </tr>
 </table>
 </div>
-<div class="sect1">
-<h2 id="slideshows"><a class="anchor" href="#slideshows"></a>1. Slideshows</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The conversion to HTML-based slides is handled by a custom backend.
-The backends usually requires that you adhere to a set of conventions to define a slide and its content.
-But there&#8217;s nothing in that content that restricts the document from being converted to a regular HTML page or PDF.</p>
-</div>
-<div class="paragraph">
-<p>The first backend created was the one for deck.js.
-Asciidoctor has backends for generating dzslides and reveal.js presentations as well.
-Backends for other presentation frameworks are in the works.</p>
-</div>
 <div class="sect2">
-<h3 id="deck-js"><a class="anchor" href="#deck-js"></a>1.1. Deck.js</h3>
+<h3 id="creating-a-theme"><a class="anchor" href="#creating-a-theme"></a>1.1. Creating a theme</h3>
 <div class="paragraph">
-<p>The <a href="http://github.com/asciidoctor/asciidoctor-backends">deck.js backend</a> for Asciidoctor is a collection of Haml templates that transform an AsciiDoc document to HTML 5-based slides animated by <a href="http://imakewebthings.com/deck.js">deck.js</a>.</p>
+<p>You can create your own themes to apply to your documents.</p>
 </div>
-<div class="sect3">
-<h4 id="gem-requirements"><a class="anchor" href="#gem-requirements"></a>1.1.1. Gem requirements</h4>
 <div class="paragraph">
-<p>The Asciidoctor deck.js backend requires the following gems:</p>
+<p>Themes go in the <em class="path">sass/</em> folder.
+To create a new theme, let&#8217;s call it <code>hipster</code>, start by creating two new files:</p>
 </div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><em class="path">sass/hipster.scss</em></dt>
+<dd>
 <div class="ulist">
 <ul>
 <li>
-<p>asciidoctor</p>
+<p>Imports the theme settings, which includes default variables and resets</p>
 </li>
 <li>
-<p>tilt</p>
+<p>Imports the AsciiDoc components</p>
 </li>
 <li>
-<p>haml</p>
+<p>Defines any explicit customization</p>
 </li>
 </ul>
 </div>
+</dd>
+<dt class="hdlist1"><em class="path">sass/settings/_hipster.scss</em></dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Sets variables that customize Foundation 4 and the AsciiDoc CSS components</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
 <div class="paragraph">
-<p>To determine what gems are installed on your system, open a terminal window and type:</p>
+<p>Here&#8217;s a minimal version of <em class="path">sass/hipster.scss</em>:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">$ gem list --local</pre>
+<pre class="CodeRay nowrap"><code class="scss language-scss">@import &quot;settings/hipster&quot;;
+@import &quot;components/asciidoc&quot;;
+@import &quot;components/awesome-icons&quot;;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A list of installed gems will be returned.</p>
-</div>
-<div class="paragraph">
-<p>If you&#8217;re missing the <code>asciidoctor</code>, <code>tilt</code>, or <code>haml</code> gems, install them from the command line with <code>gem install</code>.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ gem install asciidoctor tilt haml</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="backend-and-deck-js-installation"><a class="anchor" href="#backend-and-deck-js-installation"></a>1.1.2. Backend and deck.js installation</h4>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Download or <code>git clone</code> the <a href="http://github.com/asciidoctor/asciidoctor-backends">Asciidoctor backends</a> repository.</p>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ git clone git://github.com/asciidoctor/asciidoctor-backends.git</pre>
-</div>
-</div>
-</li>
-<li>
-<p>Create a directory named <code>deck.js</code> inside your working directory (i.e. where your AsciiDoc document resides).</p>
-</li>
-<li>
-<p><a href="https://github.com/imakewebthings/deck.js/zipball/stable">Download</a> and extract the deck.js archive or <code>git clone</code> the <a href="https://github.com/imakewebthings/deck.js">deck.js</a> repository into the <code>deck.js</code> directory you created in step 2.</p>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ git clone git://github.com/imakewebthings/deck.js.git</pre>
-</div>
-</div>
-</li>
-<li>
-<p>If you plan to split your slides, <a href="https://github.com/houqp/deck.split.js">download the <code>deck.split.js</code> extension</a> and copy it into the <code>deck.js/extensions</code> directory.</p>
-</li>
-<li>
-<p>If you want to use the fullscreen photo feature, create an <code>images</code> directory in your working directory.</p>
-</li>
-</ol>
-</div>
-</div>
-<div class="sect3">
-<h4 id="deckjs-backend-attributes"><a class="anchor" href="#deckjs-backend-attributes"></a>1.1.3. Deckjs backend attributes</h4>
-<div class="paragraph">
-<p>There are a number of document attributes specific to the <code>deckjs</code> backend.</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title"><code>deckjs</code> backend document attributes</caption>
-<colgroup>
-<col style="width:40%;">
-<col style="width:20%;">
-<col style="width:40%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribute</th>
-<th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:backend: deckjs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Activates the deck.js backend to render the document as a deck.js presentation</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:backend: deckjs</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:deckjs_theme: &lt;theme&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the deck.js theme to neon, swiss or web-2.0</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:deckjs_theme: web-2.0</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:deckjs_transition: &lt;type&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the transition style to horizontal-slide, vertical-slide or fade</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:deckjs_transition: fade</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:customjs: &lt;javascript location&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a custom javascript file; can be used as a deck.js custom configuration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:customjs: &lt;javascript location&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:customcss: &lt;css location&gt;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a custom css file</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:customcss: &lt;css location&gt;</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:menu:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Toggle to and from a grid layout overview of all the slides by pressing the <code>m</code> key</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:menu:</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:navigation:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Renders clickable previous and next navigation icons on the slides</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:navigation:</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:status:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Renders the current slide number and total number of slides</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:status:</code></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">:split:</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Registers the split module for use in the document</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:split:</code></p></td>
-</tr>
-</tbody>
-</table>
-
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -13990,187 +13738,210 @@ Backends for other presentation frameworks are in the works.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-You can also specify a custom stylesheet using the <code>stylesheet</code> attribute, which customizes AsciiDoc elements like section, paragraph, images, etc.
+You don&#8217;t have to include the underscore prefix when importing files.
 </td>
 </tr>
 </table>
 </div>
-<div class="paragraph">
-<p>The attributes described in the table above are set in the header of your document.</p>
-</div>
-<div class="literalblock">
-<div class="title">Header with <code>deckjs</code> backend attributes</div>
-<div class="content">
-<pre class="nowrap">= Presentation Title
-Presenter Name
-:backend: deckjs
-:deckjs_theme: web-2.0
-:deckjs_transition: horizontal-slide
-:navigation:</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="slide-syntax-examples"><a class="anchor" href="#slide-syntax-examples"></a>1.1.4. Slide syntax examples</h4>
-<div class="paragraph">
-<p>Structuring a slideshow and writing the slide content uses the same syntax as a typical AsciiDoc document, with a few added features.</p>
-</div>
-<div class="paragraph">
-<p>Let&#8217;s see some examples of the <code>deckjs</code> backend features:</p>
-</div>
-<div class="listingblock">
-<div class="title">Slide titles and background images</div>
-<div class="content">
-<pre class="nowrap">= Title of Presentation <i class="conum" data-value="1"></i><b>(1)</b>
-Presenter Name
-:backend: deckjs
-:deckjs_transition: fade
-:navigation:
-
-== Title of Slide One <i class="conum" data-value="2"></i><b>(2)</b>
-
-This is the first slide after the title slide.
-
-[canvas-image="images/example.jpg"] <i class="conum" data-value="3"></i><b>(3)</b>
-== Slide Two's Title will not be displayed <i class="conum" data-value="4"></i><b>(4)</b>
-
-[role="canvas-caption", position="center-up"] <i class="conum" data-value="5"></i><b>(5)</b>
-This text is displayed on top of the example.jpg image.</pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The presentation title and author&#8217;s name will be displayed on the title slide.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Each new slide is designated by a level 1 section title (<code>==</code>).</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <code>canvas-image</code> attribute embeds a fullscreen image as a slide background. Position the attribute above the title of the slide you want the image applied to.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>When the <code>canvas-image</code> attribute is applied to a slide, that slide&#8217;s title will not be displayed.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="5"></i><b>5</b></td>
-<td><code>canvas-caption</code> applies a colored box around the caption text. <code>position</code> specifies the location of the caption block (bottom-left, top-left, bottom-right, top-right, center-up, center-down)</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="title">Stepped paragraphs, lists, and blocks</div>
-<div class="content">
-<pre class="nowrap">== Stepped paragraphs
-
-[options="step"]
-This paragraph is displayed first.
-
-[options="step"]
-Then this paragraph is displayed when the _Next_ arrow is clicked.
-
-== Stepped list items
-
-[options="step"]
-* A bullet is displayed each time the _Next_ arrow is clicked.
-* B
-* C
-
-== Stepped blocks
-
-[options="step"]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Block one</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">
-[options="step"]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Block two</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>step</code> option reveals each paragraph, bullet, etc. separately each time you click the <em>Next</em> arrow.</p>
-</div>
-<div class="admonitionblock warning">
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-warning" title="Warning"></i>
+<i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-The original AsciiDoc <code>deckjs</code> backend for the AsciiDoc processor used the option <code>incremental</code> instead of <code>step</code>.
-We&#8217;ve changed it to <code>step</code> in order to save you some typing.
+The <code>awesome-icons</code> component is only applicable to HTML generated by Asciidoctor &gt; 0.1.2 with the <code>icons</code> attribute set to <code>font</code>.
 </td>
 </tr>
 </table>
 </div>
-<div class="listingblock">
-<div class="title">Split</div>
-<div class="content">
-<pre class="nowrap">= Presentation Title
-Presenter Name
-:backend: deckjs
-:split: <i class="conum" data-value="1"></i><b>(1)</b>
-
-== This Slide is Split
-
-This Slide will act like
-
-&lt;&lt;&lt; <i class="conum" data-value="2"></i><b>(2)</b>
-
-three individual slides with the same title
-
-&lt;&lt;&lt;
-
-once the document is rendered.</pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>To create multiple, consecutive slides with the same title, set the <code>split</code> attribute in the document header.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Then, within a slide, insert <code>&lt;&lt;&lt;</code> to specify the slide breaks.</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="rendering"><a class="anchor" href="#rendering"></a>1.1.5. Rendering</h4>
 <div class="paragraph">
-<p>To render your presentation as HTML5, execute the command:</p>
+<p>You can add any explicit customization below the import lines.</p>
+</div>
+<div class="paragraph">
+<p>The variables you can set in <em class="path">sass/settings/_hipster.scss</em> are a combination of the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/sass/settings/_settings.scss.dist">Foundation 4 built-in global settings</a> and <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/sass/settings/_defaults.scss">global settings and imports for the AsciiDoc components</a>.</p>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve created your custom theme, it&#8217;s time to apply it to your document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="applying-a-theme"><a class="anchor" href="#applying-a-theme"></a>1.2. Applying a theme</h3>
+<div class="paragraph">
+<p>A custom stylesheet can be stored in the same directory as your document or in a seperate directory.
+And, like the default stylesheet, you can link your document to your custom stylesheet or embed it.
+If the stylesheet is in the same directory as your document, you can apply it when rendering your document to HTML from the CLI.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -T ../asciidoctor-backends/haml presentation.adoc</pre>
+<pre class="nowrap">$ asciidoctor -a stylesheet=mystyles.css mysample.adoc</pre>
 </div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>The command <code>-T</code> (<code>--template-dir</code>) tells the Asciidoctor processor to override the built-in backends.</p>
+<p>Save your custom stylesheet in the same directory as <code>mysample.adoc</code></p>
 </li>
 <li>
-<p>Directly after <code>-T</code> is the path to where you saved or cloned the Asciidoctor backends repository containing the <code>deckjs</code> backend (step 1 under the <a href="#backend-and-deckjs-installation">installation section</a>).</p>
+<p>Call the <code>asciidoctor</code> processor</p>
+</li>
+<li>
+<p>Set <code>-a</code> (<code>--attribute</code>) and <code>stylesheet</code></p>
+</li>
+<li>
+<p>Assign the stylesheet file&#8217;s name to the <code>stylesheet</code> attribute</p>
+</li>
+<li>
+<p>Enter your document file&#8217;s name.</p>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>Alternatively, let&#8217;s set the <code>stylesheet</code> attribute in the header of <code>mysample.adoc</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesheet: mystyles.css
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-stylesheet.png" alt="mysample stylesheet">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When your document and the stylesheet are stored in different directories, you need to tell Asciidoctor where to look for the stylesheet in relation to your document.
+Asciidoctor uses the relative or absolute path you assign to the <code>stylesdir</code> attribute to find the stylesheet.
+Let&#8217;s move <code>mystyles.css</code> into <code>mydocuments/mystylesheets/</code>.
+Our AsciiDoc document, <code>mysample.adoc</code>, is saved in the <code>mydocuments/</code> directory.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesdir: mystylesheets/
+:stylesheet: mystyles.css
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After processing <code>mysample.adoc</code>, its HTML output (<code>mysample.html</code>), which includes the embedded <code>mystyles.css</code> stylesheet, is created in the <code>mydocuments/</code> directory.</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/mysample-stylesdir-dir.png" alt="mysample stylesdir dir">
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also set <code>stylesdir</code> in the CLI.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -a stylesdir=mystylesheets/ -a stylesheet=mystyles.css mysample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t want to embed the <code>mystyles.css</code> stylesheet into your HTML output, make sure to set <code>linkcss</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My First Experience with the Dangers of Documentation
+:stylesdir: mystylesheets/
+:stylesheet: mystyles.css
+:linkcss:
+
+In my world, we don't have to worry about mutant, script-injecting warlocks.
+No.
+We have something far worse.
+We're plagued by Wolpertingers.
+
+== Origins
+
+You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[ravenous beasts], but, trust me, they'll eat your shorts and suck the loops from your code.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After your document is rendered, notice that a copy of <code>mystyles.css</code> was not created in the <code>mydocuments/</code> directory.
+Unlike when you link to the default Asciidoctor stylesheet, any custom stylesheets you link to are not copied to the directory where your output is saved.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+The <code>copycss</code> attribute, which would copy a custom stylesheet when a document is rendered, is broken.
+Watch <a href="https://github.com/asciidoctor/asciidoctor/issues/300">Issue #300</a> for updates.
+</td>
+</tr>
+</table>
+</div>
+<div id="style-nest-doc" class="sidebarblock">
+<div class="content">
+<div class="title">Stylesheets and processing multiple nested documents</div>
+<div class="paragraph">
+<p>When you are <a href="#process-multiple-source-files-from-the-cli">running Asciidoctor once across a nested set of documents</a>, it&#8217;s currently not possible to specify a single relative path for the <code>stylesdir</code> attribute that would work for all of the documents.
+This is because the relative depth of the stylesheet&#8217;s location differs for the documents in the subdirectories.
+One way to solve this problem is to maintain the path to <code>stylesdir</code> in each document.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you have three AsciiDoc documents saved in the following directory structure:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">/mydocuments
+  a.adoc
+  b.adoc
+  /mynesteddocuments
+    c.adoc
+  /mystylesheets</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For <code>a.adoc</code> and <code>b.adoc</code>, set <code>stylesdir</code> to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">/:stylesdir: mystylesheets</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For <code>c.adoc</code>, set <code>stylesdir</code> to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">/:stylesdir: ./mystylesheets</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re serving your documents from a webserver, you can solve this problem by providing an absolute path to the stylesheet.</p>
+</div>
 </div>
 </div>
 </div>
@@ -14179,18 +13950,6 @@ once the document is rendered.</pre>
 <div class="sect1">
 <h2 id="stylesheet-factory"><a class="anchor" href="#stylesheet-factory"></a>2. Stylesheet Factory</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>The <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory">Asciidoctor stylesheet factory</a> is where themes are developed for styling your documents.
 Specifically, these stylesheets can be used to quickly customize the look and feel of HTML 5 documents generated by Asciidoctor.</p>
@@ -14430,52 +14189,357 @@ You can quickly serve HTML files in the root directory of the project using the 
 </div>
 </div>
 <div class="sect1">
-<h2 id="custom-stylesheets"><a class="anchor" href="#custom-stylesheets"></a>3. Custom Stylesheets</h2>
+<h2 id="slideshows"><a class="anchor" href="#slideshows"></a>3. Slideshows</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Themes go in the <em class="path">sass/</em> folder.
-To create a new theme, let&#8217;s call it <code>hipster</code>, start by creating two new files:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><em class="path">sass/hipster.scss</em></dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Imports the theme settings, which includes default variables and resets</p>
-</li>
-<li>
-<p>Imports the AsciiDoc components</p>
-</li>
-<li>
-<p>Defines any explicit customizations</p>
-</li>
-</ul>
-</div>
-</dd>
-<dt class="hdlist1"><em class="path">sass/settings/_hipster.scss</em></dt>
-<dd>
-<div class="ulist">
-<ul>
-<li>
-<p>Sets variables that customize Foundation 4 and the AsciiDoc CSS components</p>
-</li>
-</ul>
-</div>
-</dd>
-</dl>
+<p>The conversion to HTML-based slides is handled by a custom backend.
+The backends usually requires that you adhere to a set of conventions to define a slide and its content.
+But there&#8217;s nothing in that content that restricts the document from being converted to a regular HTML page or PDF.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s a minimal version of <em class="path">sass/hipster.scss</em>:</p>
+<p>The first backend created was the one for deck.js.
+Asciidoctor has backends for generating dzslides and reveal.js presentations as well.
+Backends for other presentation frameworks are in the works.</p>
+</div>
+<div class="sect2">
+<h3 id="deckjs"><a class="anchor" href="#deckjs"></a>3.1. Deck.js</h3>
+<div class="paragraph">
+<p>The <a href="http://github.com/asciidoctor/asciidoctor-backends">deck.js backend</a> for Asciidoctor is a collection of Haml templates that transform an AsciiDoc document to HTML 5-based slides animated by <a href="http://imakewebthings.com/deck.js">deck.js</a>.</p>
+</div>
+<div class="sect3">
+<h4 id="gem-requirements"><a class="anchor" href="#gem-requirements"></a>3.1.1. Gem requirements</h4>
+<div class="paragraph">
+<p>The Asciidoctor deck.js backend requires the following gems:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>asciidoctor</p>
+</li>
+<li>
+<p>tilt</p>
+</li>
+<li>
+<p>haml</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To determine what gems are installed on your system, open a terminal window and type:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ gem list --local</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A list of installed gems will be returned.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re missing the <code>asciidoctor</code>, <code>tilt</code>, or <code>haml</code> gems, install them from the command line with <code>gem install</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ gem install asciidoctor tilt haml</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="backend-and-deck-js-installation"><a class="anchor" href="#backend-and-deck-js-installation"></a>3.1.2. Backend and deck.js installation</h4>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Download or <code>git clone</code> the <a href="http://github.com/asciidoctor/asciidoctor-backends">Asciidoctor backends</a> repository.</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ git clone git://github.com/asciidoctor/asciidoctor-backends.git</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create a directory named <code>deck.js</code> inside your working directory (i.e. where your AsciiDoc document resides).</p>
+</li>
+<li>
+<p><a href="https://github.com/imakewebthings/deck.js/zipball/stable">Download</a> and extract the deck.js archive or <code>git clone</code> the <a href="https://github.com/imakewebthings/deck.js">deck.js</a> repository into the <code>deck.js</code> directory you created in step 2.</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ git clone git://github.com/imakewebthings/deck.js.git</pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you plan to split your slides, <a href="https://github.com/houqp/deck.split.js">download the <code>deck.split.js</code> extension</a> and copy it into the <code>deck.js/extensions</code> directory.</p>
+</li>
+<li>
+<p>If you want to use the fullscreen photo feature, create an <code>images</code> directory in your working directory.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="deckjs-backend-attributes"><a class="anchor" href="#deckjs-backend-attributes"></a>3.1.3. Deckjs backend attributes</h4>
+<div class="paragraph">
+<p>There are a number of document attributes specific to the <code>deckjs</code> backend.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<caption class="title"><code>deckjs</code> backend document attributes</caption>
+<colgroup>
+<col style="width:40%;">
+<col style="width:20%;">
+<col style="width:40%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:backend: deckjs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activates the deck.js backend to render the document as a deck.js presentation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:backend: deckjs</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:deckjs_theme: &lt;theme&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the deck.js theme to neon, swiss or web-2.0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:deckjs_theme: web-2.0</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:deckjs_transition: &lt;type&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the transition style to horizontal-slide, vertical-slide or fade</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:deckjs_transition: fade</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:customjs: &lt;javascript location&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a custom javascript file; can be used as a deck.js custom configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:customjs: &lt;javascript location&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:customcss: &lt;css location&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets a custom css file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:customcss: &lt;css location&gt;</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:menu:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggle to and from a grid layout overview of all the slides by pressing the <code>m</code> key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:menu:</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:navigation:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renders clickable previous and next navigation icons on the slides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:navigation:</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:status:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Renders the current slide number and total number of slides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:status:</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">:split:</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Registers the split module for use in the document</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:split:</code></p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can also specify a custom stylesheet using the <code>stylesheet</code> attribute, which customizes AsciiDoc elements like section, paragraph, images, etc.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The attributes described in the table above are set in the header of your document.</p>
+</div>
+<div class="literalblock">
+<div class="title">Header with <code>deckjs</code> backend attributes</div>
+<div class="content">
+<pre class="nowrap">= Presentation Title
+Presenter Name
+:backend: deckjs
+:deckjs_theme: web-2.0
+:deckjs_transition: horizontal-slide
+:navigation:</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="slide-syntax-examples"><a class="anchor" href="#slide-syntax-examples"></a>3.1.4. Slide syntax examples</h4>
+<div class="paragraph">
+<p>Structuring a slideshow and writing the slide content uses the same syntax as a typical AsciiDoc document, with a few added features.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s see some examples of the <code>deckjs</code> backend features:</p>
+</div>
+<div class="listingblock">
+<div class="title">Slide titles and background images</div>
+<div class="content">
+<pre class="nowrap">= Title of Presentation <i class="conum" data-value="1"></i><b>(1)</b>
+Presenter Name
+:backend: deckjs
+:deckjs_transition: fade
+:navigation:
+
+== Title of Slide One <i class="conum" data-value="2"></i><b>(2)</b>
+
+This is the first slide after the title slide.
+
+[canvas-image="images/example.jpg"] <i class="conum" data-value="3"></i><b>(3)</b>
+== Slide Two's Title will not be displayed <i class="conum" data-value="4"></i><b>(4)</b>
+
+[role="canvas-caption", position="center-up"] <i class="conum" data-value="5"></i><b>(5)</b>
+This text is displayed on top of the example.jpg image.</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The presentation title and author&#8217;s name will be displayed on the title slide.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Each new slide is designated by a level 1 section title (<code>==</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>canvas-image</code> attribute embeds a fullscreen image as a slide background. Position the attribute above the title of the slide you want the image applied to.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>When the <code>canvas-image</code> attribute is applied to a slide, that slide&#8217;s title will not be displayed.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td><code>canvas-caption</code> applies a colored box around the caption text. <code>position</code> specifies the location of the caption block (bottom-left, top-left, bottom-right, top-right, center-up, center-down)</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Stepped paragraphs, lists, and blocks</div>
+<div class="content">
+<pre class="nowrap">== Stepped paragraphs
+
+[options="step"]
+This paragraph is displayed first.
+
+[options="step"]
+Then this paragraph is displayed when the _Next_ arrow is clicked.
+
+== Stepped list items
+
+[options="step"]
+* A bullet is displayed each time the _Next_ arrow is clicked.
+* B
+* C
+
+== Stepped blocks
+
+[options="step"]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Block one</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="scss language-scss">@import &quot;settings/hipster&quot;;
-@import &quot;components/asciidoc&quot;;
-@import &quot;components/awesome-icons&quot;;</code></pre>
+<pre class="nowrap">
+[options="step"]</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Block two</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap"></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>step</code> option reveals each paragraph, bullet, etc. separately each time you click the <em>Next</em> arrow.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The original AsciiDoc <code>deckjs</code> backend for the AsciiDoc processor used the option <code>incremental</code> instead of <code>step</code>.
+We&#8217;ve changed it to <code>step</code> in order to save you some typing.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Split</div>
+<div class="content">
+<pre class="nowrap">= Presentation Title
+Presenter Name
+:backend: deckjs
+:split: <i class="conum" data-value="1"></i><b>(1)</b>
+
+== This Slide is Split
+
+This Slide will act like
+
+&lt;&lt;&lt; <i class="conum" data-value="2"></i><b>(2)</b>
+
+three individual slides with the same title
+
+&lt;&lt;&lt;
+
+once the document is rendered.</pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>To create multiple, consecutive slides with the same title, set the <code>split</code> attribute in the document header.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Then, within a slide, insert <code>&lt;&lt;&lt;</code> to specify the slide breaks.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="rendering"><a class="anchor" href="#rendering"></a>3.1.5. Rendering</h4>
+<div class="paragraph">
+<p>To render your presentation as HTML5, execute the command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -T ../asciidoctor-backends/haml presentation.adoc</pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>The command <code>-T</code> (<code>--template-dir</code>) tells the Asciidoctor processor to override the built-in backends.</p>
+</li>
+<li>
+<p>Directly after <code>-T</code> is the path to where you saved or cloned the Asciidoctor backends repository containing the <code>deckjs</code> backend (step 1 under the <a href="#backend-and-deckjs-installation">installation section</a>).</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="custom-backends"><a class="anchor" href="#custom-backends"></a>4. Custom Backends</h2>
+<div class="sectionbody">
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -14483,31 +14547,27 @@ To create a new theme, let&#8217;s call it <code>hipster</code>, start by creati
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-You don&#8217;t have to include the underscore prefix when importing files.
+Section pending
 </td>
 </tr>
 </table>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-The <code>awesome-icons</code> component is only applicable to HTML generated by Asciidoctor &gt; 0.1.2 with the <code>icons</code> attribute set to <code>font</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>You can add any explicit customizations below the import lines.</p>
-</div>
-<div class="paragraph">
-<p>The variables you can set in <em class="path">sass/settings/_hipster.scss</em> are a combination of the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/sass/settings/_settings.scss.dist">Foundation 4 built-in global settings</a> and <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory/blob/master/sass/settings/_defaults.scss">global settings and imports for the AsciiDoc components</a>.</p>
 </div>
 <div class="sect2">
-<h3 id="multiple-custom-template-directories"><a class="anchor" href="#multiple-custom-template-directories"></a>3.1. Multiple custom template directories</h3>
+<h3 id="creating-a-backend"><a class="anchor" href="#creating-a-backend"></a>4.1. Creating a backend</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Section pending
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="storing-multiple-templates"><a class="anchor" href="#storing-multiple-templates"></a>4.1.1. Storing multiple templates</h4>
 <div class="paragraph">
 <p>Custom templates can be stored in multiple directories.
 That means you can build on an existing backend by copying only the templates you want to modify.
@@ -14531,22 +14591,6 @@ Then, just pass both the directory holding the original templates and the direct
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="styling-docbook-and-pdf-output"><a class="anchor" href="#styling-docbook-and-pdf-output"></a>4. Styling DocBook and PDF Output</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -17755,7 +17799,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-30 19:21:45 UTC
+Last updated 2013-10-31 00:19:43 UTC
 </div>
 </div>
 </body>
