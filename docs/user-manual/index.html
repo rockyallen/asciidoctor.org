@@ -689,7 +689,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#quotes">1.2. Quotes</a></li>
 <li><a href="#attributes-2">1.3. Attributes</a></li>
 <li><a href="#replacements">1.4. Replacements</a></li>
-<li><a href="#macros-2">1.5. Macros</a></li>
+<li><a href="#sub-macros">1.5. Macros</a></li>
 <li><a href="#post-replacements">1.6. Post replacements</a></li>
 <li><a href="#applying-substitutions">1.7. Applying substitutions</a></li>
 <li><a href="#preventing-substitutions">1.8. Preventing substitutions</a></li>
@@ -920,7 +920,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <ul class="sectlevel1">
 <li><a href="#copyright-and-license">1. Copyright and License</a></li>
 <li><a href="#authors">2. Authors</a></li>
-<li><a href="#faq">3. FAQ</a></li>
+<li><a href="#troubleshoot">3. Troubleshooting</a></li>
 <li><a href="#additional-help">4. Additional Help</a></li>
 <li><a href="#glossary">5. Glossary</a></li>
 <li><a href="#asciidoctor-vs-asciidoc">6. Appendix A: Comparison of Asciidoctor and AsciiDoc Features</a></li>
@@ -7925,6 +7925,55 @@ The trailing period will not get caught up in the link.</td>
 </li>
 </ul>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Troubleshooting URLs</div>
+<div class="paragraph">
+<p>A URL may not render correctly when it contains characters such as underscores (<code>_</code>) or carets (<code>^</code>).
+This problem occurs because the processor misinterprets parts of the link target as valid <a href="#text-formatting">text formatting markup</a>.
+Most lightweight markup languages have this issue because they don&#8217;t use a grammar-based parser.
+Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217;t worry, there are ways to solve this problem now.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Solution A</div>
+<div class="content">
+<div class="paragraph">
+<p>The simplest way to get a link to behave is to assign it to an attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+:link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
+
+This URL has repeating underscores {link-with-underscores}.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor won&#8217;t break links with underscores when they are assigned to an attribute because <a href="#text-substitutions">inline formatting markup is substituted before attributes</a>.
+The URL remains hidden while the rest of the document is being formatted (strong, emphasis, monospace, etc).</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Solution B</div>
+<div class="content">
+<div class="paragraph">
+<p>Another way to solve formatting glitches is to explicitly specify the formatting you want to have applied to a span of text.
+This can be done by using the <a href="#passthrough-macros">inline pass macro</a>.
+If you want to display a URL, and have it preserved, put it inside the <code>pass</code> macro and enable the <a href="#sub-macros">macros substitution</a>, which is what substitutes links.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>pass</code> macro removes the URL from the document, applies the <code>macros</code> substitution to the URL, and then restores the processed URL to its original location once the substitutions are complete on the whole document.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="sect2">
 <h3 id="link-to-relative-files"><a class="anchor" href="#link-to-relative-files"></a>17.1. Link to relative files</h3>
 <div class="paragraph">
@@ -9962,7 +10011,7 @@ These attributes and their corresponding output are listed in <a href="#char-ref
 
 </div>
 <div class="sect2">
-<h3 id="macros-2"><a class="anchor" href="#macros-2"></a>1.5. Macros</h3>
+<h3 id="sub-macros"><a class="anchor" href="#sub-macros"></a>1.5. Macros</h3>
 <div class="paragraph">
 <p>Macros are processed by the <code>macros</code> element.
 The <code>macros</code> substitution replaces a macro&#8217;s content with the appropriate built-in and user-defined configuration.</p>
@@ -15631,19 +15680,73 @@ Refer to the commit history of <a href="https://github.com/github/gitscm-next/co
 </div>
 </div>
 <div class="sect1">
-<h2 id="faq"><a class="anchor" href="#faq"></a>3. FAQ</h2>
+<h2 id="troubleshoot"><a class="anchor" href="#troubleshoot"></a>3. Troubleshooting</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
+<div class="qlist qanda">
+<ol>
+<li>
+<p><em>Part way through the document, the blocks stop rendering correctly. What went wrong?</em></p>
+<p>When content is not rendered as you expect in the later part of a document, it&#8217;s usually due to a delimited block missing its closing delimiter line.
+The most devious culprit is the <a href="#open-blocks">open block</a>.
+An open block doesn&#8217;t have any special styling, but its contents have the same restrictions as other delimited blocks, i.e. it can not contain section titles.</p>
+<div class="paragraph">
+<p>To solve this problem, first look for missing delimiter lines.
+<a href="#text-editor">Syntax highlighting in your text editor</a> can help with this.
+Also look at the rendered output to see if the block styles are extending past where you intended.
+When working with open blocks, you may need to add custom styles (such as a red border) to the class selector <code>.openblock</code> so that you can see its boundaries.</p>
+</div>
+</li>
+<li>
+<p><em>Why don&#8217;t URLs containing underscores (<code>_</code>) or carets (<code>^</code>) work after they&#8217;re rendered?</em></p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This problem occurs because the processor misinterprets parts of the link target as valid <a href="#text-formatting">text formatting markup</a>.
+Most lightweight markup languages have this issue because they don&#8217;t use a grammar-based parser.
+Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217;t worry, there are ways to solve this problem now.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Solution A</div>
+<div class="content">
+<div class="paragraph">
+<p>The simplest way to get a link to behave is to assign it to an attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+:link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
+
+This URL has repeating underscores {link-with-underscores}.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor won&#8217;t break links with underscores when they are assigned to an attribute because <a href="#text-substitutions">inline formatting markup is substituted before attributes</a>.
+The URL remains hidden while the rest of the document is being formatted (strong, emphasis, monospace, etc).</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Solution B</div>
+<div class="content">
+<div class="paragraph">
+<p>Another way to solve formatting glitches is to explicitly specify the formatting you want to have applied to a span of text.
+This can be done by using the <a href="#passthrough-macros">inline pass macro</a>.
+If you want to display a URL, and have it preserved, put it inside the <code>pass</code> macro and enable the <a href="#sub-macros">macros substitution</a>, which is what substitutes links.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>pass</code> macro removes the URL from the document, applies the <code>macros</code> substitution to the URL, and then restores the processed URL to its original location once the substitutions are complete on the whole document.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -17779,7 +17882,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-10-31 03:02:18 UTC
+Last updated 2013-11-01 00:36:49 UTC
 </div>
 </div>
 </body>

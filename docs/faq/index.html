@@ -4,7 +4,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="generator" content="Asciidoctor 0.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Built-in attributes for character and character reference replacements</title>
+<meta name="description" content="Frequently asked questions (FAQ) about the Asciidoctor project, Asciidoctor syntax and processor, and the AsciiDoc syntax. Tips for fixing installation, syntax, processing, and rendering problems when using Asciidoctor.">
+<meta name="keywords" content="Asciidoctor, AsciiDoc, syntax, question, render, process, problem, issue, tips">
+<title>FAQs and Troubleshooting</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary { display: block; }
@@ -450,171 +452,96 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 
 </style>
 </head>
-<body id="char-ref-table" class="article">
+<body class="article">
 <div id="header">
-<h1>Built-in attributes for character and character reference replacements</h1>
+<h1>FAQs and Troubleshooting</h1>
 <span id="author" class="author">Sarah White</span><br>
+<span id="email" class="email"><a href="https://github.com/graphitefriction">@graphitefriction</a></span><br>
 </div>
 <div id="content">
-<div id="preamble">
+<div class="sect1">
+<h2 id="frequently-asked-questions"><a class="anchor" href="#frequently-asked-questions"></a>Frequently Asked Questions</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all" style="width:70%; ">
-<colgroup>
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-center valign-top">Attribute reference</th>
-<th class="tableblock halign-center valign-top">Replacement</th>
-<th class="tableblock halign-center valign-top">Rendered</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{empty}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre><em>nothing</em></pre></div></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{sp}, {space}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre><em>single space</em></pre></div></td>
-<td class="tableblock halign-center valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{nbsp}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#160;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{zwsp}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8203;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8203;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{wj}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8288;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8288;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{apos}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#39;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#39;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{quot}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#34;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#34;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{lsquo}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8216;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8216;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{rsquo}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8217;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8217;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{ldquo}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8220;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8220;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{rdquo}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8221;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#8221;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{deg}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#176;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#176;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{plus}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#43;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&#43;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{brvbar}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#166;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">|</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{lt}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&lt;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&lt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{gt}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&gt;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&gt;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{amp}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">&amp;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{startsb}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>[</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">[</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{endsb}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>]</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">]</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{vbar}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>|</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">|</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{caret}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>^</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">^</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{asterisk}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>*</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">*</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{tilde}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>~</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">~</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{apostrophe}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>'</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">'</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{backslash}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>\</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">\</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{backtick}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>`</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">`</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{two-colons}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>::</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">::</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{two-semicolons}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>;;</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">;;</p></td>
-</tr>
-</tbody>
-</table>
+<div class="qlist qanda">
+<ol>
+<li>
+<p><em>Does Asciidoctor only encode in US-ASCII?</em></p>
+<p>No.
+Asciidoctor encodes in UTF-8 and has full Unicode support.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<div class="qlist qanda">
+<ol>
+<li>
+<p><em>Part way through the document, the blocks stop rendering correctly. What went wrong?</em></p>
+<p>When content is not rendered as you expect in the later part of a document, it&#8217;s usually due to a delimited block missing its closing delimiter line.
+The most devious culprit is the <a href="user-manual.html#open-blocks">open block</a>.
+An open block doesn&#8217;t have any special styling, but its contents have the same restrictions as other delimited blocks, i.e. it can not contain section titles.</p>
+<div class="paragraph">
+<p>To solve this problem, first look for missing delimiter lines.
+<a href="user-manual.html#text-editor">Syntax highlighting in your text editor</a> can help with this.
+Also look at the rendered output to see if the block styles are extending past where you intended.
+When working with open blocks, you may need to add custom styles (such as a red border) to the class selector <code>.openblock</code> so that you can see its boundaries.</p>
+</div>
+</li>
+<li>
+<p><em>Why don&#8217;t URLs containing underscores (<code>_</code>) or carets (<code>^</code>) work after they&#8217;re rendered?</em></p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>This problem occurs because the processor misinterprets parts of the link target as valid <a href="user-manual.html#text-formatting">text formatting markup</a>.
+Most lightweight markup languages have this issue because they don&#8217;t use a grammar-based parser.
+Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217;t worry, there are ways to solve this problem now.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Solution A</div>
+<div class="content">
+<div class="paragraph">
+<p>The simplest way to get a link to behave is to assign it to an attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+:link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
 
+This URL has repeating underscores {link-with-underscores}.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor won&#8217;t break links with underscores when they are assigned to an attribute because <a href="user-manual.html#text-substitutions">inline formatting markup is substituted before attributes</a>.
+The URL remains hidden while the rest of the document is being formatted (strong, emphasis, monospace, etc).</p>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Solution B</div>
+<div class="content">
+<div class="paragraph">
+<p>Another way to solve formatting glitches is to explicitly specify the formatting you want to have applied to a span of text.
+This can be done by using the <a href="user-manual.html#passthrough-macros">inline pass macro</a>.
+If you want to display a URL, and have it preserved, put it inside the <code>pass</code> macro and enable the <a href="user-manual.html#sub-macros">macros substitution</a>, which is what substitutes links.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>pass</code> macro removes the URL from the document, applies the <code>macros</code> substitution to the URL, and then restores the processed URL to its original location once the substitutions are complete on the whole document.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 </div>
 </div>
