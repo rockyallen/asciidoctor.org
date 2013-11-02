@@ -800,7 +800,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 </ul>
 </li>
 <li><a href="#docbook">3. DocBook</a></li>
-<li><a href="#manpages">4. Manpages</a></li>
+<li><a href="#man-pages">4. Man pages</a></li>
 <li><a href="#pdfs">5. PDFs</a></li>
 <li><a href="#preview-your-content">6. Preview Your Content</a></li>
 <li>
@@ -2786,7 +2786,7 @@ If absent, Asciidoctor will render the content that is present.</p>
 </td>
 <td class="content">
 A header must be present when the document type is <code>manpage</code>.
-The requirements for a manpage are described in the <a href="#Manpages">[Manpages]</a> section.
+The requirements for a manual page (man page) are described in the <a href="#manpages">man pages</a> section.
 </td>
 </tr>
 </table>
@@ -2808,7 +2808,7 @@ When you do not want the header of a document to be rendered, set the <code>nohe
 <div class="paragraph">
 <p>Many static site generators, such as Jekyll and Middleman, rely on front matter added to the top of the document to determine how to render the content.
 Asciidoctor has a number of attributes available to correctly handle front matter.
-See the <a href="#static-website-generators">Static website generators</a> section to learn how Asciidoctor integrates with static website generators.</p>
+See the <a href="#static-website-generators">static website generators</a> section to learn how Asciidoctor integrates with static website generators.</p>
 </div>
 </div>
 </div>
@@ -2843,13 +2843,14 @@ This journey begins on a bleary Monday morning.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When the doctype is set to <code>article</code> or <code>manpage</code>, a document can have only one document title.
-The <code>book</code> document type can have multiple section level 0 titles, which are translated into parts.</p>
+<p>When <code>doctype</code> is set to <code>article</code> or <code>manpage</code>, a document can have only one section level 0 title.
+The <code>book</code> document type can have multiple section level 0 titles.
+The first section level 0 title, located in the header, is the document&#8217;s title, and subsequent section level 0 titles are considered the titles of parts.</p>
 </div>
 <div class="paragraph">
 <p>A document&#8217;s title is assigned to the built-in <code>doctitle</code> attribute.
 Its value is identical to the value returned by <code>Document#doctitle</code> and <code>sect0</code>.
-The <code>doctitle</code> attribute can be referenced anywhere in a document and will display the document&#8217;s title when rendered.</p>
+The <code>doctitle</code> attribute can be referenced anywhere in a document and displays the document&#8217;s title when rendered.</p>
 </div>
 <div class="listingblock">
 <div class="title">Referencing the <code>doctitle</code> attribute</div>
@@ -2873,6 +2874,7 @@ The <code>doctitle</code> attribute can be referenced anywhere in a document and
 <p>You can control whether or not the title is displayed when the document is rendered with the attributes <code>notitle</code> and <code>showtitle</code>.
 If you don&#8217;t want the title to be rendered, set the <code>notitle</code> attribute in the header or CLI.
 On the other hand, the title is not displayed when a document&#8217;s header and footer are disabled.
+The header and footer are disabled when a document is embedded.
 In this case, set the <code>showtitle</code> attribute in order to render the title.</p>
 </div>
 <div class="paragraph">
@@ -2882,7 +2884,7 @@ In this case, set the <code>showtitle</code> attribute in order to render the ti
 <div class="sect2">
 <h3 id="author-and-email"><a class="anchor" href="#author-and-email"></a>4.2. Author and email</h3>
 <div class="paragraph">
-<p>The author a document is listed on the line beneath the document&#8217;s title.
+<p>The author of a document is listed on the line beneath the document&#8217;s title.
 An optional email address can follow an author&#8217;s name.</p>
 </div>
 <div class="paragraph">
@@ -3227,7 +3229,7 @@ Revision extraction information and an extraction example are pending.
 <div class="sect2">
 <h3 id="metadata"><a class="anchor" href="#metadata"></a>4.4. Metadata</h3>
 <div class="paragraph">
-<p>Document metadata, such as a description of the document, keywords, and an alternative title, can be assigned to attributes in the header.
+<p>Document metadata, such as a description of the document, keywords, and an alternate title, can be assigned to attributes in the header.
 When rendered to HTML, the values of these attributes will correspond to tags contained in the <code>&lt;head&gt;</code> section of an HTML document.</p>
 </div>
 <div class="sect3">
@@ -3250,7 +3252,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>If the document&#8217;s description is long, you can break the attribute&#8217;s value across several lines by ending the lines in a <code>&#43;</code> that is preceded by a space.</td>
+<td>If the document&#8217;s description is long, you can break the attribute&#8217;s value across several lines by ending each line with a <code>&#43;</code> that is preceded by a space.</td>
 </tr>
 </table>
 </div>
@@ -3320,7 +3322,7 @@ However, you can set the <code>title</code> attribute in the document&#8217;s he
 <h4 id="custom-metadata-styles-and-functions"><a class="anchor" href="#custom-metadata-styles-and-functions"></a>4.4.4. Custom metadata, styles and functions</h4>
 <div class="paragraph">
 <p>You can add content, such as custom metadata, stylesheet, and script information, to the header of a rendered document with document information (<code>docinfo</code>) files.
-The <a href="#docinfo-file">Docinfo file</a> section details what these files can contain and how to use them.</p>
+The <a href="#docinfo-file">docinfo file</a> section details what these files can contain and how to use them.</p>
 </div>
 </div>
 </div>
@@ -3360,7 +3362,7 @@ The <a href="#docinfo-file">Docinfo file</a> section details what these files ca
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code>, <code>desc</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>description</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Text describing the document</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -3409,7 +3411,7 @@ The <a href="#docinfo-file">Docinfo file</a> section details what these files ca
 <td class="tableblock halign-left valign-top"><p class="tableblock">all</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-header-footer</code>, <code>s</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>no-header-footer</code>, <code>-s</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Suppresses the rendering of the header and footer</p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -13184,7 +13186,7 @@ You&#8217;ll either feed it into a system that processes DocBook (like <a href="
 </div>
 </div>
 <div class="sect1">
-<h2 id="manpages"><a class="anchor" href="#manpages"></a>4. Manpages</h2>
+<h2 id="man-pages"><a class="anchor" href="#man-pages"></a>4. Man pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>One of the most interesting uses of AsciiDoc is for creating man pages (short for manual pages) for Unix and Unix-like operating systems.
@@ -17882,7 +17884,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-01 00:36:49 UTC
+Last updated 2013-11-02 03:18:09 UTC
 </div>
 </div>
 </body>
