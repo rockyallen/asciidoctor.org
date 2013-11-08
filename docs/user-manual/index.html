@@ -638,10 +638,9 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li>
 <ul class="sectlevel2">
 <li><a href="#link-to-relative-files">17.1. Link to relative files</a></li>
-<li><a href="#target-window-and-role-attributes">17.2. Target window and role attributes</a></li>
-<li><a href="#cross-references">17.3. Cross references</a></li>
-<li><a href="#inter-document-references">17.4. Inter-document references</a></li>
-<li><a href="#summary-6">17.5. Summary</a></li>
+<li><a href="#cross-references">17.2. Cross references</a></li>
+<li><a href="#inter-document-cross-references">17.3. Inter-document cross references</a></li>
+<li><a href="#summary-6">17.4. Summary</a></li>
 </ul>
 </li>
 <li><a href="#images">18. Images</a></li>
@@ -7937,80 +7936,110 @@ Section pending
 <h2 id="urls"><a class="anchor" href="#urls"></a>17. URLs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There&#8217;s nothing you have to do to make a link to a URL.
-Just include the URL in the document and AsciiDoc will turn it into a link.</p>
+<p>A Uniform Resource Link (URL) represents the location of a resource on the web.
+Typical URLs contain a scheme, domain name, file name, and extension.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/url.png" alt="url">
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor recognizes the following common schemes without the help of any markup.</p>
+</div>
+<div id="schemes" class="ulist">
+<ul>
+<li>
+<p>http</p>
+</li>
+<li>
+<p>https</p>
+</li>
+<li>
+<p>ftp</p>
+</li>
+<li>
+<p>irc</p>
+</li>
+<li>
+<p>mailto</p>
+</li>
+<li>
+<p>email\@email.com</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since the URL in the example below begins with <code>http</code>, Asciidoctor will automatically turn it into a hyperlink when it is processed.</p>
 </div>
 <div class="listingblock">
-<div class="title">External</div>
 <div class="content">
-<pre class="nowrap">http://asciidoc.org! <i class="conum" data-value="1"></i><b>(1)</b>
-
-http://asciidoc.org[AsciiDoc] <i class="conum" data-value="2"></i><b>(2)</b>
-
-https://github.com/asciidoctor[Asciidoctor @ *GitHub*] <i class="conum" data-value="3"></i><b>(3)</b>
-
-devel@discuss.arquillian.org
-
-mailto:devel@discuss.arquillian.org[Discuss Arquillian]</pre>
+<pre class="nowrap">The homepage for the Asciidoctor Project is http://www.asciidoctor.org. <i class="conum" data-value="1"></i><b>(1)</b></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The URL is automatically turned into a link.
-The trailing period will not get caught up in the link.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>To turn text into a link, enclose it in square brackets at the end of the URL.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Quoted text formatting is available inside links.</td>
+<td>The trailing period will not get caught up in the link.</td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>To attach a URL to text, enclose the text in square brackets at the end of the URL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, you can format the linked text.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Ask questions on the http://discuss.asciidoctor.org/[*mailing list*].</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered URLs</div>
+<div class="content">
+<div class="paragraph">
+<p>The homepage for the Asciidoctor Project is <a href="http://asciidoctor.org">http://asciidoctor.org</a>.</p>
+</div>
+<div class="paragraph">
+<p>Chat with other Asciidoctor users in the <a href="irc://irc.freenode.org/#asciidoctor">Asciidoctor IRC channel</a>.</p>
+</div>
+<div class="paragraph">
+<p>Ask questions on the <a href="http://discuss.asciidoctor.org/"><strong>mailing list</strong></a>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When a URL does not start with one of the <a href="#schemes">common schemes</a>, you must use the <code>link</code> macro.
+The URL is preceeded by <code>link:</code> and followed by square brackets.
+The square brackets can include optional link text, target preference, and roles.</p>
+</div>
+<div class="listingblock">
+<div class="title">Anatomy of a <code>link</code> macro</div>
+<div class="content">
+<pre class="nowrap">link:url[optional link text, optional target attribute, optional role attribute]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First, let&#8217;s look at an example of a <code>link</code> macro that contains link text.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage].</pre>
+</div>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><a href="http://asciidoc.org!">http://asciidoc.org!</a></p>
-</div>
-<div class="paragraph">
-<p><a href="http://asciidoc.org">AsciiDoc</a></p>
-</div>
-<div class="paragraph">
-<p><a href="https://github.com/asciidoctor">Asciidoctor @ <strong>GitHub</strong></a></p>
-</div>
-<div class="paragraph">
-<p><a href="mailto:devel@discuss.arquillian.org">devel@discuss.arquillian.org</a></p>
-</div>
-<div class="paragraph">
-<p><a href="mailto:devel@discuss.arquillian.org">Discuss Arquillian</a></p>
+<p>Let&#8217;s view the raw HTML of the <a href="view-source:asciidoctor.org">Asciidoctor homepage</a>.</p>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>In addition to email addresses, Asciidoctor recognizes URLs that begin with:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>http://</code></p>
-</li>
-<li>
-<p><code>https://</code></p>
-</li>
-<li>
-<p><code>ftp://</code></p>
-</li>
-<li>
-<p><code>irc://</code></p>
-</li>
-<li>
-<p><code>mailto:</code></p>
-</li>
-</ul>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -8061,6 +8090,75 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>Next, we&#8217;ll add a target and role to a link <code>macro</code>.
+When you set attributes in the <code>link</code> macro, you must also set the <code>linkattrs</code> attribute in the document&#8217;s header because Asciidoctor does not parse attributes in the link macro by default.
+Once you&#8217;ve set <code>linkattrs</code> in the header, you can then specify the name of the target window using the <code>window</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Asciidoctor Document Title
+:linkattrs:
+
+Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage, window=&quot;_blank&quot;].</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Let&#8217;s view the raw HTML of the <a href="view-source:asciidoctor.org" target="_blank">Asciidoctor homepage</a>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Since <code>_blank</code> is the most common window name, we&#8217;ve introduced shorthand for it.
+Just end the link text with a caret (<code>^</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage^].</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When <code>linkattrs</code> is set, you can add a role (i.e., CSS class) to the link.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel] or on the http://discuss.asciidoctor.org/[*mailing list*^, role=&quot;green&quot;].</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Chat with other Asciidoctor users in the <a href="irc://irc.freenode.org/#asciidoctor">Asciidoctor IRC channel</a> or on the <a href="http://discuss.asciidoctor.org/" class="green" target="_blank"><strong>mailing list</strong></a>.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Links with attributes (including the subject and body segments on mailto links) are a feature unique to Asciidoctor.
+When they are enabled, you must surround the link text in double quotes if it contains a comma.
+</td>
+</tr>
+</table>
+</div>
 <div class="sect2">
 <h3 id="link-to-relative-files"><a class="anchor" href="#link-to-relative-files"></a>17.1. Link to relative files</h3>
 <div class="paragraph">
@@ -8072,160 +8170,67 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 </div>
 <div class="paragraph">
-<p>To link directly to a section in the document (a &#8220;deep&#8221; link), append a hash (<code>#</code>) followed by the id of the section to the end of the file name.</p>
+<p>To link directly to a section in the document, append a hash (<code>#</code>) followed by the section&#8217;s ID to the end of the file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">link:editing-asciidoc-with-live-preview/#livereload[LiveReload]</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>You can also create links that refer to sections within the current document.</p>
-</div>
-<div class="listingblock">
-<div class="title">Relative</div>
-<div class="content">
-<pre class="nowrap">link:index.html[Docs]</pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><a href="index.html">Docs</a></p>
-</div>
-</div>
-</div>
 </div>
 <div class="sect2">
-<h3 id="target-window-and-role-attributes"><a class="anchor" href="#target-window-and-role-attributes"></a>17.2. Target window and role attributes</h3>
-<div class="paragraph">
-<p>You often need to set the target attribute on a link element (<code>&lt;a&gt;</code>) so the link opens in a new window (e.g., <code>&lt;a href="&#8230;" target="_blank"&gt;</code>).</p>
-</div>
-<div class="paragraph">
-<p>This type of configuration is normally specified using attributes.
-However, AsciiDoc does not parse attributes in the link macro by default.
-In Asciidoctor, you can enable parsing of link macro attributes by setting the <code>linkattrs</code> document attribute in the header.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc"> :linkattrs:</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can then specify the name of the target window using the <code>window</code> attribute:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://google.com[Google, window=&quot;_blank&quot;]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Since <code>_blank</code> is the most common window name, we&#8217;ve introduced shorthand for it.
-Just end the link text with a caret (<code>^</code>):</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://google.com[Google^]</code></pre>
-</div>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
-If the link text contains a comma, then you need to surround the link text in double quotes.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://google.com[Google^, role=&quot;external&quot;]</code></pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Link with attributes (Asciidoctor only)</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://discuss.asciidoctor.org[Discuss Asciidoctor, role=&quot;external&quot;, window=&quot;_blank&quot;]
-
-http://discuss.asciidoctor.org[Discuss Asciidoctor^]
-
-http://search.example.com[&quot;Google, Yahoo, Bing^&quot;, role=&quot;teal&quot;]</code></pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><a href="http://discuss.asciidoctor.org" class="big" target="_blank">Discuss Asciidoctor</a></p>
-</div>
-<div class="paragraph">
-<p><a href="http://discuss.asciidoctor.org" target="_blank">Discuss Asciidoctor</a></p>
-</div>
-<div class="paragraph">
-<p><a href="http://search.example.com" class="teal" target="_blank">Google, Yahoo, Bing</a></p>
-</div>
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Links with attributes (including the subject and body segments on mailto links) are a feature unique to Asciidoctor.
-To enable them, you must set the <code>linkattrs</code> attribute on the document.
-When they are enabled, you must quote the link text if it contains a comma.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="cross-references"><a class="anchor" href="#cross-references"></a>17.3. Cross references</h3>
+<h3 id="cross-references"><a class="anchor" href="#cross-references"></a>17.2. Cross references</h3>
 <div class="paragraph">
 <p>A link to another location in the current document is called a <em>cross reference</em>.
-You create a cross reference by enclosing the element&#8217;s id in double angled brackets:</p>
+In Asciidoctor, the xref inline macro is used to create cross references in the content to sections or elements using their assigned ID.
+You create a cross reference by enclosing the element&#8217;s ID in double angled brackets.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The section &lt;&lt;content-is-king&gt;&gt; covers paragraphs in AsciiDoc.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The section <a href="#page-break">Page break</a> describes how to add a page break.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
 <p>In some backends, the text of the link will be automatically generated from the title of the element.
-If you want to customize the linked text, include it after the id, separated by a comma:</p>
+If you want to customize the linked text, include it after the ID, separated by a comma:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Learn how to create &lt;&lt;content-is-king,paragraphs&gt;&gt; in AsciiDoc.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Learn how to &lt;&lt;target-window-and-role-attributes,use attributes within the +link+ macro&gt;&gt;.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Learn how to <a href="#target-window-and-role-attributes">use attributes within the <code>link</code> macro</a>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="inter-document-references"><a class="anchor" href="#inter-document-references"></a>17.4. Inter-document references</h3>
+<h3 id="inter-document-cross-references"><a class="anchor" href="#inter-document-cross-references"></a>17.3. Inter-document cross references</h3>
 <div class="paragraph">
-<p>In AsciiDoc, the xref inline macro is used to create a cross-reference (i.e., link) in the content of one section to the top of another section.
-Asciidoctor 0.1.4 extends this functionality by allowing a link to be established to a section in another AsciiDoc document.
+<p>Asciidoctor 0.1.4 extends the xref inline macro&#8217;s functionality by allowing a link to be established to a section in another AsciiDoc document.
 This eliminates the need to use direct links between documents that are coupled to a particular backend (e.g., HTML links).
 It also captures the intent of the author to establish a reference to a section in another document.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how an xref is normally defined in AsciiDoc:</p>
+<p>Here&#8217;s how an xref is normally defined in Asciidoctor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Refer to &lt;&lt;section-b&gt;&gt; for more information.</code></pre>
+<pre class="nowrap">Refer to &lt;&lt;cross-references&gt;&gt; for more information.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>This xref creates a link to a section with the id <em>section-b</em>.</p>
+<p>This xref creates a link to the section with the ID <em>cross-references</em>.</p>
 </div>
 <div class="paragraph">
 <p>Let&#8217;s assume the xref is defined in the document <em class="file">document-a.adoc</em>.
@@ -8233,7 +8238,7 @@ If the target section is in a separate document, <em class="file">document-b.ado
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Refer to link:document-b.html#section-b[Section B] for more information.</code></pre>
+<pre class="nowrap">Refer to link:document-b.html#section-b[Section B] for more information.</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8245,11 +8250,11 @@ What&#8217;s worse, if <em class="file">document-b.adoc</em> is included in the 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Refer to &lt;&lt;document-b.adoc#section-b,Section B&gt;&gt; for more information.</code></pre>
+<pre class="nowrap">Refer to &lt;&lt;document-b.adoc#section-b,Section B&gt;&gt; for more information.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The id of the target is now placed behind a hash symbol (<code>#</code>).
+<p>The ID of the target is now placed behind a hash symbol (<code>#</code>).
 Preceding the hash is the name of the reference document (the file extension is optional).
 We&#8217;ve also added a label since Asciidoctor cannot (yet) resolve the section title in a separate document.</p>
 </div>
@@ -8259,7 +8264,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&lt;a href=&quot;document-b.html#section-b&quot;&gt;Section B&lt;/a&gt;</code></pre>
+<pre class="nowrap">&lt;a href="document-b.html#section-b"&gt;Section B&lt;/a&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8267,7 +8272,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&lt;a href=&quot;#section-b&quot;&gt;Section B&lt;/a&gt;</code></pre>
+<pre class="nowrap">&lt;a href="#section-b"&gt;Section B&lt;/a&gt;</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8275,7 +8280,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>17.5. Summary</h3>
+<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>17.4. Summary</h3>
 <table class="tableblock frame-all grid-all" style="width:100%; ">
 <caption class="title">Link attributes and values</caption>
 <colgroup>
@@ -8320,7 +8325,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 <tr>
 <td class="tableblock halign-left valign-top"><div class="literal"><pre>id</pre></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">name of element, custom link text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;&lt;section-titles,sections&gt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&lt;&lt;section-title,cross reference text&gt;&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Applies to cross references</p></td>
 </tr>
 </tbody>
@@ -18155,7 +18160,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-06 02:59:30 UTC
+Last updated 2013-11-08 22:34:17 UTC
 </div>
 </div>
 </body>
