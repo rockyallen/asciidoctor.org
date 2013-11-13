@@ -2775,7 +2775,7 @@ Asciidoctor only.
 <dt class="hdlist1">Manpage</dt>
 <dd>
 <p>Special title and section naming conventions used to generate roff format UNIX manual pages.
-Corresponds to the DocBook refentry document type</p>
+Corresponds to the DocBook refentry document type.</p>
 </dd>
 </dl>
 </div>
@@ -8867,7 +8867,7 @@ Text below images.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">video::video_file.mp4[]</code></pre>
+<pre class="nowrap">video::video_file.mp4[]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8876,7 +8876,7 @@ For instance, you can offset the start time of playback using the <code>start</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">video::video_file.mp4[width=640, start=60, options=autoplay]</code></pre>
+<pre class="nowrap">video::video_file.mp4[width=640, start=60, options=autoplay]</pre>
 </div>
 </div>
 <div class="sect2">
@@ -8891,7 +8891,7 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">video::rPQoq7ThGAU[youtube, 640, 360]</code></pre>
+<pre class="nowrap">video::rPQoq7ThGAU[youtube, 640, 360]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8899,7 +8899,7 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">video::67480300[vimeo, 400, 300]</code></pre>
+<pre class="nowrap">video::67480300[vimeo, 400, 300]</pre>
 </div>
 </div>
 </div>
@@ -11016,6 +11016,10 @@ Part introduction pending
 <div class="sect1">
 <h2 id="user-interface-macros"><a class="anchor" href="#user-interface-macros"></a>1. User Interface Macros</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>We are looking for feedback on these macros before setting them in stone.
+If you have suggestions, we want to hear from you!</p>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -11132,10 +11136,6 @@ Select a file in the file navigator and click btn:[Open].</pre>
 <p>Select a file in the file navigator and click <b class="button">Open</b>.</p>
 </div>
 </div>
-</div>
-<div class="paragraph">
-<p>We are looking for feedback on these macros before setting them in stone.
-If you have suggestions, we want to hear from you!</p>
 </div>
 </div>
 </div>
@@ -11330,17 +11330,17 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 <div class="paragraph">
 <p>The first unnamed attribute is assumed to be the size. For instance, to make the icon twice the size as the default, simply add <code>2x</code> inside the square brackets.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">icon:heart[2x]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:heart[2x]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This is equivalent to:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">icon:heart[size=2x]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:heart[size=2x]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11349,17 +11349,17 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 <div class="paragraph">
 <p>The previous example emits the following HTML:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">&lt;i class="icon-heart icon-2x"&gt;&lt;/i&gt;</pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon-heart icon-2x</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>To rotate and flip the icon, specify these options using attributes:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">icon:shield[rotate=90, flip=vertical]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:shield[rotate=90, flip=vertical]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11368,9 +11368,9 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 <div class="paragraph">
 <p>The previous example emits the following HTML:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">&lt;i class="icon-shield icon-rotate-90 icon-flip-vertical"&gt;&lt;/i&gt;</pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon-shield icon-rotate-90 icon-flip-vertical</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span></code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -11407,17 +11407,17 @@ This markup is subject to change. In particular, the <code>&lt;i&gt;</code> elem
 <div class="paragraph">
 <p>Here&#8217;s an example of an icon rendered as a link:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">icon:download[link="http://rubygems.org/downloads/asciidoctor-0.1.3.gem"]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:download[link=&quot;http://rubygems.org/downloads/asciidoctor-0.1.3.gem&quot;]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>The previous example emits the following HTML:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">&lt;a class="image" href="http://rubygems.org/downloads/asciidoctor-0.1.3.gem"&gt;&lt;i class="icon-download"&gt;&lt;/i&gt;&lt;/a&gt;</pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;a</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">image</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://rubygems.org/downloads/asciidoctor-0.1.3.gem</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon-download</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span><span class="tag">&lt;/a&gt;</span></code></pre>
 </div>
 </div>
 </div>
@@ -11612,7 +11612,7 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 <div class="paragraph">
 <p>To enable syntax highlighting in your document, you need to set the <code>source-highlighter</code> attribute in the document header.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre class="nowrap">:source-highlighter: library value</pre>
 </div>
@@ -11770,7 +11770,7 @@ $ gem install pygments.rb</pre>
 <div class="paragraph">
 <p>To activate it in Asciidoctor, assign the value <code>pygments</code> to the <code>source-highlighter</code> attribute in your document&#8217;s header.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
 <pre class="nowrap">:source-highlighter: pygments</pre>
 </div>
@@ -13629,71 +13629,11 @@ The man pages for git are also produced from AsciiDoc documents, so you can use 
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-To convert your document to PDF, you&#8217;ll need to use the new {fopdf-ref}[Asciidoctor fopdf extension].
-Directions for using the extension are documented in its {fopdf-doc-ref}[README].
+To convert your document to PDF, you&#8217;ll need to use the new <a href="https://github.com/mojavelinux/asciidoctor-fopdf">Asciidoctor fopdf extension</a>.
+Directions for using the extension are documented in its <a href="https://github.com/mojavelinux/asciidoctor-fopdf/blob/master/README.adoc">README</a>.
 </td>
 </tr>
 </table>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-The content regarding PDF generation below this warning block is out of date. Asciidoctor 0.1.4 does not require the <code>a2x</code> tool to produce PDFs. New instructions pending.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>PDF is a nice format for presenting a final version of a document.
-For legacy reasons, the conversion to PDF is handled by a separate program in the AsciiDoc distribution, <a href="http://asciidoc.org/a2x.1.html"><code>a2x</code></a>.</p>
-</div>
-<div class="paragraph">
-<p><code>a2x</code> accepts a DocBook file, like the <code>sample.xml</code> file created in the section above, as input and converts it to a PDF.</p>
-</div>
-<div class="paragraph">
-<p>In your console:</p>
-</div>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>Call the <code>a2x</code> program</p>
-</li>
-<li>
-<p>Select the output format with <code>-f</code> (<code>--format</code>)</p>
-</li>
-<li>
-<p>Followed by the format type <code>pdf</code></p>
-</li>
-</ol>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; a2x -f pdf sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>A PDF document, named <code>sample.pdf</code>, will now be present in the current directory:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; ls
-sample.adoc  sample.html  sample.pdf  sample.xml</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can view the PDF using any PDF viewer.</p>
-</div>
-<div class="paragraph">
-<p>Rather than converting from AsciiDoc to DocBook and then from DocBook to PDF in two steps, <code>a2x</code> can go directly from AsciiDoc to PDF in a single call:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$&gt; a2x -f pdf sample.adoc</pre>
-</div>
 </div>
 </div>
 </div>
@@ -14034,9 +13974,11 @@ endif::safe-mode-secure[]</code></pre>
 <h1 id="customizing-your-output" class="sect0"><a class="anchor" href="#customizing-your-output"></a>Customizing Your Output</h1>
 <div class="openblock partintro">
 <div class="content">
-Asciidoctor provides a default stylesheet and built-in backends so you can quickly process and render your document, but it also lets you use custom stylesheets and backends.
+<div class="paragraph">
+<p>Asciidoctor provides a default stylesheet and built-in backends so you can quickly process and render your document, but it also lets you use custom stylesheets and backends.
 The Asciidoctor project includes alternative stylesheet themes from <a href="#stylesheet-factory">the stylesheet factory</a> and <a href="#slideshows">specialized backends</a>, such as the <a href="#deckjs">Deck.js backend</a>.
-You can also create your own <a href="#custom-themes">themes</a> and <a href="#custom-backends">backends</a>.
+You can also create your own <a href="#custom-themes">themes</a> and <a href="#custom-backends">backends</a>.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -18198,7 +18140,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-13 00:20:51 UTC
+Last updated 2013-11-13 17:05:04 UTC
 </div>
 </div>
 </body>
