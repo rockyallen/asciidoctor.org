@@ -4288,17 +4288,17 @@ Never do today what you can put off 'til tomorrow.</code></pre>
 <h2 id="paragraph"><a class="anchor" href="#paragraph"></a>8. Paragraph</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The bulk of the content in an AsciiDoc document is paragraph text.
+<p>The bulk of the content in a document is paragraph text.
+In Asciidoctor, the main structural element is the paragraph.
 Normal paragraphs do not require any special markup or attributes.
 Just start typing.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">In Asciidoctor, the main structural element is the paragraph.
-A paragraph consists of adjacent lines of text.
+<pre class="nowrap">A paragraph consists of adjacent lines of text.
+This is another line in the paragraph.
 
-To start a new paragraph, leave a blank line by hitting
-Enter twice, then just keep on typing.</pre>
+To start a new paragraph, leave a blank line by hitting enter twice, and then just keep on typing.</pre>
 </div>
 </div>
 <div class="sect2">
@@ -4314,13 +4314,13 @@ and the line breaks won't appear in the output.</pre>
 <div class="paragraph">
 <p>Here&#8217;s how the previous lines look when rendered:</p>
 </div>
-<div class="quoteblock">
-<blockquote>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
 <p>Adjacent lines like these are combined as a single paragraph.
 That means you can wrap paragraph text or put each sentence on a separate line and the line breaks won&#8217;t appear in the output.</p>
 </div>
-</blockquote>
+</div>
 </div>
 <div class="paragraph">
 <p>If you want line breaks in a paragraph to be preserved, add a space followed by a plus sign at the end of the sentence:</p>
@@ -4331,12 +4331,20 @@ That means you can wrap paragraph text or put each sentence on a separate line a
 Violets are blue.</pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Roses are red,<br>
+Violets are blue.</p>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>Alternatively, if you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">:hardbreaks:</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:hardbreaks:</code></pre>
 </div>
 </div>
 </div>
@@ -4543,13 +4551,13 @@ For instance, to emphasis the first letter of a word, you need to surround it in
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">^superscript phrase^
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">^superscript phrase^
 
 e = mc^2^
 
 ~subscript phrase~
 
-H~2~O</pre>
+H~2~O</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -5927,13 +5935,13 @@ The cells in a row can be placed on:</p>
 <div class="listingblock">
 <div class="title">Cells on the same line</div>
 <div class="content">
-<pre class="nowrap">|===
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
 
 |Cell in column 1, row 1 |Cell in column 2, row 1 |Cell in column 3, row 1
 
 |Cell in column 1, row 2 |Cell in column 2, row 2 |Cell in column 3, row 2
 
-|===</pre>
+|===</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width:90%; ">
@@ -5964,7 +5972,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 <div class="listingblock">
 <div class="title">Cells on consecutive, individual lines</div>
 <div class="content">
-<pre class="nowrap">[cols="3*"] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;3*&quot;] <i class="conum" data-value="1"></i><b>(1)</b>
 |===
 |Cell in column 1, row 1
 |Cell in column 2, row 1
@@ -5973,14 +5981,14 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 |Cell in column 1, row 2
 |Cell in column 2, row 2
 |Cell in column 3, row 2
-|===</pre>
+|===</code></pre>
 </div>
 </div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The <code>cols</code> attribute states that this table has three columns. The <code>*</code> is a repeat operator which is explained in the <a href="#column-specifiers">Column specifiers</a> section below.</td>
+<td>The <code>cols</code> attribute states that this table has three columns. The <code>*</code> is a repeat operator which is explained in the <a href="#column-specifiers">column specifiers</a> section.</td>
 </tr>
 </table>
 </div>
@@ -6011,14 +6019,14 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 <div class="listingblock">
 <div class="title">Cells on the same line and individual lines</div>
 <div class="content">
-<pre class="nowrap">[cols="3*"]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;3*&quot;]
 |===
 |Cell in column 1, row 1 |Cell in column 2, row 1
 |Cell in column 3, row 1
 
 |Cell in column 1, row 2
 |Cell in column 2, row 2 |Cell in column 3, row 2
-|===</pre>
+|===</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width:90%; ">
@@ -6055,14 +6063,14 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">|===
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
 
 |Cell in column 1, row 1 |Cell in column 2, row 1
 
 |Cell in column 1, row 2
 |Cell in column 2, row 2
 
-|===</pre>
+|===</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width:90%; ">
@@ -6085,7 +6093,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[cols="2*"]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2*&quot;]
 |===
 
 |Cell in column 1, row 1
@@ -6094,7 +6102,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 |Cell in column 1, row 2
 |Cell in column 2, row 2
 
-|===</pre>
+|===</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width:90%; ">
@@ -6124,17 +6132,17 @@ The number of entries in the list determines the number of columns.</p>
 <div class="paragraph">
 <p>The comma delimited list below creates a table with four columns of equal width.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">[cols="1,1,1,1"]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;1,1,1,1&quot;]</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>This syntax provides that same result:</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
 <div class="content">
-<pre class="nowrap">[cols="4*"]</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;4*&quot;]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7202,7 +7210,7 @@ Thus, if you rely on this convention to enable the header row, it&#8217;s advise
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[options="header,footer"]
+<pre class="nowrap">[options="footer"]
 |===
 |Name of Column 1 |Name of Column 2
 
@@ -7223,12 +7231,6 @@ Thus, if you rely on this convention to enable the header row, it&#8217;s advise
 <col style="width:50%;">
 <col style="width:50%;"> 
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Name of Column 1</th>
-<th class="tableblock halign-left valign-top">Name of Column 2</th>
-</tr>
-</thead>
 <tfoot>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Footer in column 1, row 3</p></td>
@@ -7236,6 +7238,10 @@ Thus, if you rely on this convention to enable the header row, it&#8217;s advise
 </tr>
 </tfoot>
 <tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of Column 2</p></td>
+</tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
@@ -7266,7 +7272,7 @@ Remember that when the <code>options</code> attribute is set, and you want the f
 <p>There are several attributes available for customizing the placement, size and lines of a table.</p>
 </div>
 <div class="paragraph">
-<p>By the default a table will stretch to 100 percent of the page width.
+<p>By default, a table will stretch to 100 percent of the page width.
 To reduce the width of the table, set the width attribute in the table&#8217;s attribute list.
 The width value can be any number between 1 and 99.</p>
 </div>
@@ -7638,7 +7644,7 @@ Robyn:Indestructable:Dance
 </table>
 
 <div class="paragraph">
-<p>DSV and CSV datasets can also be inserted into a table using the <a href="#include-directive"><code>include::[]</code> directive</a>.</p>
+<p>DSV and CSV datasets can also be inserted into a table using the <a href="#include-directive"><code>include</code> directive</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -7882,11 +7888,11 @@ Overridden by column and cell specifiers.</p></td>
 <div class="sect2">
 <h3 id="markdown-style-horizontal-rules"><a class="anchor" href="#markdown-style-horizontal-rules"></a>15.1. Markdown-style horizontal rules</h3>
 <div class="paragraph">
-<p>Asciidoctor continues to expand support for (reasonable) Markdown syntax by recognizing Markdown horizontal rules.
-The motivation here is to ease migration (both of the content and the mind).</p>
+<p>Asciidoctor recognizes Markdown horizontal rules.
+The motivation here is to ease migration of Markdown documents to AsciiDoc documents.</p>
 </div>
 <div class="paragraph">
-<p>To avoid conflicts with the syntax of AsciiDoc block delimiters, only 3 repeating characters (<code>-</code> or <code>*</code>) are recognized.
+<p>To avoid conflicts with AsciiDoc&#8217;s block delimiter syntax, only 3 repeating characters (<code>-</code> or <code>*</code>) are recognized.
 As with Markdown, whitespace between the characters is optional.</p>
 </div>
 <div class="listingblock">
@@ -8345,6 +8351,15 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::sunset.jpg[]</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/sunset.jpg" alt="sunset">
+</div>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>If you want to specify alt text, include it inside the square brackets:</p>
 </div>
@@ -8403,7 +8418,14 @@ image::sunset.jpg[Sunset, 300, 200, link=&quot;http://www.flickr.com/photos/javh
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Press the image:save.png[Save, title=&quot;Save&quot;] button.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Press the image:play.png[Play, title=&quot;Play&quot;] button.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Press the <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> button.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -8445,12 +8467,28 @@ You can reference images served from any URL (e.g., your blog, an image hosting 
 image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="http://inkscape.org/doc/examples/tux.svg" alt="Tux" width="250" height="350">
+</div>
+</div>
+</div>
+</div>
 <div class="listingblock">
 <div class="title">Inline image with a URL target</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">imagesdir: ./images
 
 You can find image:http://inkscape.org/doc/examples/tux.svg[Linux,25,35] everywhere these days.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>You can find <span class="image"><img src="http://inkscape.org/doc/examples/tux.svg" alt="Linux" width="25" height="35"></span> everywhere these days.</p>
+</div>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -8640,7 +8678,7 @@ The shorthand syntax for a role (<code>.</code>) can not yet be used with image 
 <h4 id="framing-roles"><a class="anchor" href="#framing-roles"></a>18.2.3. Framing roles</h4>
 <div class="paragraph">
 <p>It&#8217;s common to frame the image in a border to further offset it from the text.
-You can style any block or inline image to appear as a thumbnail using the <code>thumb</code> role (or <code>th</code> for short), also in the default stylesheet.</p>
+You can style any block or inline image to appear as a thumbnail using the <code>thumb</code> role (or <code>th</code> for short).</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -8656,7 +8694,7 @@ For that, you need to assign the image a height and width.
 </table>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s a very common example for adding an image to a blog post.
+<p>Here&#8217;s a common example for adding an image to a blog post.
 The image floats to the right and is framed to make it stand out more from the text.</p>
 </div>
 <div class="listingblock">
@@ -18160,7 +18198,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-11 22:57:28 UTC
+Last updated 2013-11-13 00:20:51 UTC
 </div>
 </div>
 </body>
