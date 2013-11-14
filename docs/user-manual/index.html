@@ -575,8 +575,8 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li>
 <ul class="sectlevel2">
 <li><a href="#bold-and-italic">9.1. Bold and italic</a></li>
-<li><a href="#smart-quotation-marks">9.2. Smart quotation marks</a></li>
-<li><a href="#superscript-and-subscript">9.3. Superscript and subscript</a></li>
+<li><a href="#quotation-marks-and-apostrophes">9.2. Quotation marks and apostrophes</a></li>
+<li><a href="#subscript-and-superscript">9.3. Subscript and superscript</a></li>
 <li><a href="#monospace">9.4. Monospace</a></li>
 <li><a href="#custom-styling-with-attributes">9.5. Custom styling with attributes</a></li>
 </ul>
@@ -703,7 +703,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#summary-10">3.2. Summary</a></li>
 </ul>
 </li>
-<li><a href="#macro-and-block-passthroughs">4. Macro and Block Passthroughs</a></li>
+<li><a href="#passthru">4. Macro and Block Passthroughs</a></li>
 <li>
 <ul class="sectlevel2">
 <li><a href="#passthrough-macros">4.1. Passthrough macros</a></li>
@@ -4373,8 +4373,44 @@ This is the ultimate paragraph.</pre>
 <h2 id="text-formatting"><a class="anchor" href="#text-formatting"></a>9. Text Formatting</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Just as we emphasize certain words and phrases when we speak, we can emphasize them in text by surrounding them with punctuation.
-AsciiDoc refers to this markup as <em>quoted text</em>.</p>
+<p>Just as we emphasize certain words and phrases when we speak, we can emphasize them in text with formatting.
+This formatting, such as bold or monospace, is indicated by surrounding letters, words, or phrases with simple markup.
+When Asciidoctor processes text enclosed by formatting markup, the markup is replaced by the corresponding HTML or XML tags, depending on your backend, during the <a href="#text-substitutions">quotes substitution phase</a>.</p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Text formatting versus quotes</div>
+<div class="paragraph">
+<p>The original AsciiDoc processor calls this markup and its related features <em>quotes</em>, <em>quotes substitutions</em>, and <em>quoted text</em>.
+However, in the Asciidoctor documentation, we refer to the text formatting markup as, you guessed it, text formatting.
+When you need to control when text formatting is applied to certain blocks, the substitution attribute is still named <code>quotes</code>, but we&#8217;re considering changing this to a more semantic name in a future Asciidoctor version.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Continue reading to learn how to format letters, words or phrases with the following styles:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="icon-check"></i> bold</p>
+</li>
+<li>
+<p><i class="icon-check"></i> italic</p>
+</li>
+<li>
+<p><i class="icon-check"></i> smart (curved) quotation marks and apostrophes</p>
+</li>
+<li>
+<p><i class="icon-check"></i> subscript and superscript</p>
+</li>
+<li>
+<p><i class="icon-check"></i> monospace</p>
+</li>
+<li>
+<p><i class="icon-check"></i> custom and built-in CSS styles</p>
+</li>
+</ul>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -4384,7 +4420,7 @@ AsciiDoc refers to this markup as <em>quoted text</em>.</p>
 </td>
 <td class="content">
 You may not always want these symbols to indicate text formatting.
-In those cases, you&#8217;ll need to use markup to <a href="#preventing-substitutions">escape the text</a>.
+In those cases, you&#8217;ll need to use additional markup to <a href="#preventing-substitutions">escape the text formatting markup</a>.
 </td>
 </tr>
 </table>
@@ -4392,17 +4428,165 @@ In those cases, you&#8217;ll need to use markup to <a href="#preventing-substitu
 <div class="sect2">
 <h3 id="bold-and-italic"><a class="anchor" href="#bold-and-italic"></a>9.1. Bold and italic</h3>
 <div class="paragraph">
-<p>For instance, in an e-mail, you might &#8220;speak&#8221; a word louder by enclosing it in asterisks.</p>
+<p>The two most common ways of emphasizing a word is to format it as bold or italic.
+To render a word or phrase with bold styling, place an asterisk (<code>*</code>) at the beginning and end of the text you wish to format.
+To bold a letter or letters in a string of text, place two asterisks (<code>**</code>) before and after the letter or letters.</p>
+</div>
+<div class="paragraph">
+<p>Letters and words are italicized using single (<code>_</code>) or double (<code>_&#8239;_</code>) underscores.
+When you want to bold and italicize a letter or word, the bold markup must be the outermost markup.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">I can't believe it, we *won*!</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">_To tame_ the wild wolpertingers we needed to build a *charm*.
+But **u**ltimate victory could only be won if we divined the *_true name_* of the _&#8239;_war_&#8239;_lock.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered bold and italic text formatting</div>
+<div class="content">
+<div class="paragraph">
+<p><em>To tame</em> the wild wolpertingers we needed to build a <strong>charm</strong>.
+But <strong>u</strong>ltimate victory could only be won if we divined the <strong><em>true name</em></strong> of the <em>war</em>lock.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Single quotes (<code>'</code>) around a word or phrase will italicize it, but this syntax will be deprecated in Asciidoctor 0.1.5.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quotation-marks-and-apostrophes"><a class="anchor" href="#quotation-marks-and-apostrophes"></a>9.2. Quotation marks and apostrophes</h3>
+<div class="paragraph">
+<p>Single and double quotation marks are <strong>not</strong> rendered as curved quotation marks, i.e. smart, curly, typographic or book quotation marks.
+When entered using the <kbd>&#39;</kbd> and <kbd>&#34;</kbd> key, Asciidoctor outputs straight (dumb, vertical, typewriter)
+quotation marks.
+However, by creating a set of one or two backticks (<code>`</code>) and one or two single quotes (<code>&#39;</code>), you can tell Asciidoctor where to output curved quotation marks.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Single curved quotes</dt>
+<dd>
+<p>One leading backtick (<code>`</code>) and one trailing single quote (<code>&#39;</code>) around a word or phrase encloses it in single &#8216;curved quotes&#8217;.</p>
+</dd>
+<dt class="hdlist1">Double curved quotes</dt>
+<dd>
+<p>Two leading backticks (<code>``</code>) and two trailing single quotes (<code>&#39;&#39;</code>) around a word or phrase encloses it in double &#8220;curved quotes&#8221;.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``What kind of charm?'' Lazarus asked. ``An odoriferous one or a mineral one?''
+
+Kizmet shrugged. ``The note from Olaf's desk says `wormwood and licorice,' but these could be normal groceries for werewolves.''</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered curved quotation marks</div>
+<div class="content">
+<div class="paragraph">
+<p>&#8220;What kind of charm?&#8221; Lazarus asked. &#8220;An odoriferous one or a mineral one?&#8221;</p>
+</div>
+<div class="paragraph">
+<p>Kizmet shrugged. &#8220;The note from Olaf&#8217;s desk says &#8216;wormwood and licorice,&#8217; but these could be normal groceries for werewolves.&#8221;</p>
+</div>
+</div>
+</div>
+<div class="openblock"><div class="title">Apostrophes</div>
+<div class="content">
+<div class="paragraph">
+<p>When entered with the <kbd>&#39;</kbd> key, Asciidoctor renders an apostrophe that is directly preceded and followed by a character, such as in contractions and possessive singular forms, as a curved apostrophe.
+This inconsistent handling of apostrophes and quotation marks is a hold over from the original AsciiDoc processor.
+An apostrophe directly bounded by two characters is processed during the <a href="#replacements">replacements substitution phase</a>, not the <a href="#quotes">quotes phase</a>.
+This is why an apostrophe directly followed by white space, such as the possessive plural form, is not curved by default.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Olaf's desk overflowed with heaps of paper, apple cores and squeaky toys.
+We couldn't find his keyboard.
+The state of his desk was replicated, sometimes in triplicate, across all of the werewolves' desks.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>As you would expect, the asterisks make the text <strong>won</strong> bold.
-You can almost sense the emotion.
-This is one example of quoted (i.e., formatted) text.</p>
+<p>In the rendered output of the apostrophe example, note that the plural possessive apostrophe, seen trailing <em>werewolves</em>, is not curved.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered apostrophes</div>
+<div class="content">
+<div class="paragraph">
+<p>Olaf&#8217;s desk overflowed with heaps of paper, apple cores and squeaky toys.
+We couldn&#8217;t find his keyboard.
+The state of his desk was replicated, sometimes in triplicate, across all of the werewolves' desks.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don&#8217;t want an apostrophe to be curved, escape it by preceding it with a backslash (<code>\</code>).
+The <a href="#preventing-substitutions">preventing substitutions</a> and <a href="#passthru">passthrough</a> sections detail additional ways to prevent punctuation substitutions.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Olaf\'s desk ...</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered escaped apostrophe</div>
+<div class="content">
+<div class="paragraph">
+<p>Olaf's desk &#8230;</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In the future, the Asciidoctor Project plans to make the processing and rendering of punctuation marks more consistent.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="subscript-and-superscript"><a class="anchor" href="#subscript-and-superscript"></a>9.3. Subscript and superscript</h3>
+<div class="paragraph">
+<p>Subscript and superscript text is common in mathematical expressions and chemical formulas.
+When rendered, the size of subscripted and superscripted text is reduced.
+Subscripted text is placed at the baseline and superscripted text above the baseline.
+The size and precise placement of the text depends on the font and other stylesheet parameters applied to the rendered document.</p>
+</div>
+<div class="paragraph">
+<p>Text is subscripted when you enclose it in a set of tildes (<code>~</code>) and superscripted with a set of carets (<code>^</code>)</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Subscript</dt>
+<dd>
+<p>One tilde (<code>~</code>) on either side of a word or phrase makes it subscript.</p>
+</dd>
+<dt class="hdlist1">Superscript</dt>
+<dd>
+<p>One caret (<code>^</code>) on either side of a word or phrase makes it superscript.</p>
+</dd>
+</dl>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``Well the H~2~O formula written on their whiteboard could be part of a shopping list, but I don't think the local bodega sells E=mc^2^,'' Lazarus replied.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>&#8220;Well the H<sub>2</sub>O formula written on their whiteboard could be part of a shopping list, but I don&#8217;t think the local bodega sells E=mc<sup>2</sup>,&#8221; Lazarus replied.</p>
+</div>
+</div>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -4411,270 +4595,82 @@ This is one example of quoted (i.e., formatted) text.</p>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-The term &#8220;quote&#8221; is used liberally here to apply to any symbols that surround text in order to apply emphasis or special meaning.
+In the next release of Asciidoctor, you&#8217;ll be able output formulas using MathJax.
 </td>
 </tr>
 </table>
-</div>
-<div class="paragraph">
-<p>Here are the bold and italic quoted text forms that Asciidoctor recognizes:</p>
-</div>
-<div class="dlist unstyled">
-<dl>
-<dt class="hdlist1"><strong>*Bold*</strong></dt>
-<dd>
-<p>One asterisk (<code>*</code>) on either side of a word or phrase makes it bold.</p>
-</dd>
-<dt class="hdlist1"><em>'Italic'</em></dt>
-<dd>
-<p>Single quotes around a word or phrase makes it italic.</p>
-</dd>
-<dt class="hdlist1"><em>_Italic_</em></dt>
-<dd>
-<p>One underscore (<code>_</code>) on either side of a word or phrase also makes it italic.</p>
-</dd>
-<dt class="hdlist1"><strong><em>*_Bold italic_*</em></strong></dt>
-<dd>
-<p>Bold markup around a word or phrase in italic makes it bold italic.
-<em>Reversing the order of the markup won&#8217;t produce the same result</em>.</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">_italic phrase_ (or 'italic phrase')
-
-__i__talic le__tt__ers
-
-*bold phrase*
-
-**b**old le**tt**ers
-
-*_bold italic phrase_*
-
-**__b__**old italic le**__tt__**ers</pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><em>italic phrase</em> (or <em>italic phrase</em>)</p>
-</div>
-<div class="paragraph">
-<p><em>i</em>talic le<em>tt</em>ers</p>
-</div>
-<div class="paragraph">
-<p><strong>bold phrase</strong></p>
-</div>
-<div class="paragraph">
-<p><strong>b</strong>old le<strong>tt</strong>ers</p>
-</div>
-<div class="paragraph">
-<p><strong><em>bold italic phrase</em></strong></p>
-</div>
-<div class="paragraph">
-<p><strong><em>b</em></strong>old italic le<strong><em>tt</em></strong>ers</p>
-</div>
-</div>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-You may not always want these substitutions to take place.
-In those cases, you&#8217;ll need to use markup to <a href="#preventing-substitutions">escape the text</a>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>When you want to quote text (e.g., place emphasis) somewhere other than at the boundaries of a word, you need to double up the punctuation.
-For instance, to emphasis the first letter of a word, you need to surround it in double asterisks:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">**F**our score and seven years ago...</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The double punctuation applies for all types of quoted text except smart quotes, subscript and superscript.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="smart-quotation-marks"><a class="anchor" href="#smart-quotation-marks"></a>9.2. Smart quotation marks</h3>
-<div class="dlist unstyled">
-<dl>
-<dt class="hdlist1">Single `smart quotes'</dt>
-<dd>
-<p>One leading backtick (<code>`</code>) and one trailing single quote (<code>'</code>) around a word or phrase encloses it in single &#8216;smart quotes&#8217;.</p>
-</dd>
-<dt class="hdlist1">Double ``smart quotes''</dt>
-<dd>
-<p>Two leading backticks (<code>``</code>) and two trailing single quotes (<code>''</code>) around a word or phrase encloses it in double &#8220;smart quotes&#8221;.</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">`single smart quotes'
-
-``double smart quotes''</pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>&#8216;single smart quotes&#8217;</p>
-</div>
-<div class="paragraph">
-<p>&#8220;double smart quotes&#8221;</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="superscript-and-subscript"><a class="anchor" href="#superscript-and-subscript"></a>9.3. Superscript and subscript</h3>
-<div class="dlist unstyled">
-<dl>
-<dt class="hdlist1"><sup>^Superscript^</sup></dt>
-<dd>
-<p>One caret (<code>^</code>) on either side of a word or phrase makes it superscript.</p>
-</dd>
-<dt class="hdlist1"><sub>~Subscript~</sub></dt>
-<dd>
-<p>One tilde (<code>~</code>) on either side of a word or phrase makes it subscript.</p>
-</dd>
-</dl>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">^superscript phrase^
-
-e = mc^2^
-
-~subscript phrase~
-
-H~2~O</code></pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p><sup>superscript phrase</sup></p>
-</div>
-<div class="paragraph">
-<p>e = mc<sup>2</sup></p>
-</div>
-<div class="paragraph">
-<p><sub>subscript phrase</sub></p>
-</div>
-<div class="paragraph">
-<p>H<sub>2</sub>O</p>
-</div>
-</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="monospace"><a class="anchor" href="#monospace"></a>9.4. Monospace</h3>
-<div class="dlist unstyled">
-<dl>
-<dt class="hdlist1"><code>+Monospace+</code></dt>
-<dd>
-<p>One plus (<code>+</code>) on either side of a word or phrase makes it monospaced (i.e., constant width).</p>
-</dd>
-<dt class="hdlist1"><code><strong>+*Monospace bold*+</strong></code></dt>
-<dd>
-<p>Monospace markup around a word or phrase in bold makes it monospace bold.</p>
-</dd>
-<dt class="hdlist1"><code><em>+_Monospace italic_+</em></code></dt>
-<dd>
-<p>Monospace markup around a word or phrase in italic makes it monospace italic.
-<em>Reversing the order of the markup won&#8217;t produce the same result</em>.</p>
-</dd>
-</dl>
+<div class="paragraph">
+<p>Monospace text formatting is often used to emulate how source code appears in computer terminals, simple text editors, and integrated development environments (IDEs).
+A word or phrase is rendered using a fixed-width font, i.e. monospaced font, when it is enclosed in a single set of plus signs (<code>&#43;</code>).
+A character contained within a string of characters must be enclosed in a double set of plus signs (<code>&#43;&#43;</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">+monospace phrase+ and le++tt++ers
-
-+_monospace italic phrase_+ and le++__tt__++ers
-
-+*monospace bold phrase*+ and le++**tt**++ers
-
-+*_monospace bold italic phrase_*+ and le++**__tt__**++ers
-
-`inline literal passthrough` (monospace text without substitutions)</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``Wait!'' Indigo plucked a small vial from her desk's top drawer and held it toward us.
+The vial's label read ``++E=mc^2^++; +the scent of science+; +_smell like a genius_+.''</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Monospaced text can be bold and italicized, as long as the markup sets are entered in the right order.
+The monospace markup must be the outermost set, then the bold set, and the italic markup must always be the innermost set.</p>
 </div>
 <div class="exampleblock">
+<div class="title">Rendered monospace formatted text</div>
 <div class="content">
 <div class="paragraph">
-<p><code>monospace phrase</code> and le<code>tt</code>ers</p>
+<p>&#8220;Wait!&#8221; Indigo plucked a small vial from her desk&#8217;s top drawer and held it toward us.
+The vial&#8217;s label read &#8220;<code>E=mc<sup>2</sup></code>; <code>the scent of science</code>; <code><em>smell like a genius</em></code>.&#8221;</p>
+</div>
+</div>
 </div>
 <div class="paragraph">
-<p><code><em>monospace italic phrase</em></code> and le<code><em>tt</em></code>ers</p>
-</div>
-<div class="paragraph">
-<p><code><strong>monospace bold phrase</strong></code> and le<code><strong>tt</strong></code>ers</p>
-</div>
-<div class="paragraph">
-<p><code><strong><em>monospace bold italic phrase</em></strong></code> and le<code><strong><em>tt</em></strong></code>ers</p>
-</div>
-<div class="paragraph">
-<p><code>inline literal passthrough</code> (monospace text without substitutions)</p>
-</div>
-</div>
+<p>The <a href="#back-pass">inline literal passthrough</a> also applies monospace text formatting.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="custom-styling-with-attributes"><a class="anchor" href="#custom-styling-with-attributes"></a>9.5. Custom styling with attributes</h3>
 <div class="paragraph">
-<p>Any quoted text can be prefixed with an attribute list.
-The first positional attribute is treated as a role.
-The role can be used to apply custom styling to the text.
-For instance:</p>
+<p>You can format text with CSS classes built-in to Asciidoctor, such as <code>big</code> and <code>green</code>, or with custom styles that you define.
+When text is enclosed in a set of single or double hash marks (<code>#</code>), you can prefix it with an attribute list.
+The first positional attribute is treated as a role, and you can assign it a custom or built-in style value.</p>
+</div>
+<div class="paragraph">
+<p>For instance:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Type the word [userinput]#asciidoc# into the search bar.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Type the word [userinput]#asciidoctor# into the search bar.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When rendering to HTML, the word &#8220;asciidoc&#8221; is wrapped in <code>&lt;span&gt;</code> tags and the role is used as the element&#8217;s CSS class:</p>
+<p>When rendered to HTML, the word <em>asciidoctor</em> is wrapped in <code>&lt;span&gt;</code> tags and the role <code>userinput</code> is used as the element&#8217;s CSS class.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">userinput</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>asciidoc<span class="tag">&lt;/span&gt;</span></code></pre>
+<pre class="CodeRay nowrap"><code class="html language-html"><span class="tag">&lt;span</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">userinput</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>asciidoctor<span class="tag">&lt;/span&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can apply styles to the text using CSS.</p>
-</div>
-<div class="dlist unstyled">
-<dl>
-<dt class="hdlist1">#Open style#</dt>
-<dd>
-<p>One hash (<code>#</code>) on either side of a word or phrase makes it possible to assign it a role (i.e., CSS class).</p>
-</dd>
-</dl>
+<p>You can apply styles to the text using built-in CSS classes.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[small]#phrase styled by CSS class .small#
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Do werewolves believe in [small]#small print#?
 
-[big]##O##nce upon a time...</code></pre>
+[big]##O##nce upon an infinite loop.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p><span class="small">phrase styled by CSS class .small</span></p>
+<p>Do werewolves believe in <span class="small">small print</span>?</p>
 </div>
 <div class="paragraph">
-<p><span class="big">O</span>nce upon a time&#8230;</p>
+<p><span class="big">O</span>nce upon an infinite loop.</p>
 </div>
 </div>
 </div>
@@ -10736,7 +10732,7 @@ Pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="macro-and-block-passthroughs"><a class="anchor" href="#macro-and-block-passthroughs"></a>4. Macro and Block Passthroughs</h2>
+<h2 id="passthru"><a class="anchor" href="#passthru"></a>4. Macro and Block Passthroughs</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Passthroughs are the "anything goes" mechanism in Asciidoctor.
@@ -10878,7 +10874,7 @@ Passthrough content is enclosed by double dollar signs (<code>$$</code>).</p>
 </div>
 </div>
 </div>
-<div class="paragraph">
+<div id="back-pass" class="paragraph">
 <div class="title">Backtick passthrough</div>
 <p>Content enclosed in a backtick passthrough is subject to <a href="#special-characters">special characters</a> substition and displayed as monospace text.</p>
 </div>
@@ -18140,7 +18136,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-13 17:05:04 UTC
+Last updated 2013-11-14 18:35:41 UTC
 </div>
 </div>
 </body>
