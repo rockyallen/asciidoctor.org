@@ -27,10 +27,10 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <ul class="sectlevel1">
 <li><a href="#paragraphs">Paragraphs</a></li>
 <li><a href="#formatted-text">Formatted Text</a></li>
-<li><a href="#document-header-optional">Document Header (Optional)</a></li>
+<li><a href="#document-header">Document Header</a></li>
 <li><a href="#section-titles">Section Titles (Headers)</a></li>
 <li><a href="#include-files">Include Files</a></li>
-<li><a href="#breaks">Breaks</a></li>
+<li><a href="#horizontal-rules-and-page-breaks">Horizontal Rules and Page Breaks</a></li>
 <li><a href="#lists">Lists</a></li>
 <li><a href="#links">Links</a></li>
 <li><a href="#images">Images</a></li>
@@ -63,8 +63,7 @@ AsciiDoc produces complementary output when generating DocBook.</p>
 <pre class="nowrap">Paragraphs don't require any special markup in AsciiDoc.
 A paragraph is just one or more lines of consecutive text.
 
-To begin a new paragraph, separate it by at least one blank line.
-Consecutive lines of text are joined to form a single paragraph.</pre>
+To begin a new paragraph, separate it by at least one blank line.</pre>
 </div>
 </div>
 <div class="exampleblock result">
@@ -74,30 +73,22 @@ Consecutive lines of text are joined to form a single paragraph.</pre>
 A paragraph is just one or more lines of consecutive text.</p>
 </div>
 <div class="paragraph">
-<p>To begin a new paragraph, separate it by at least one blank line.
-Consecutive lines of text are joined to form a single paragraph.</p>
+<p>To begin a new paragraph, separate it by at least one blank line.</p>
 </div>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Line breaks</div>
 <div class="content">
-<pre class="nowrap">To make a line break, end the line in a space followed by a plus. +
-This results in a visible line break (e.g., &lt;br&gt;) between the lines.
-
-Rubies are red. +
-Sapphires are blue.</pre>
+<pre class="nowrap">To preserve a line break, end the line in a space followed by a plus sign. +
+This results in a visible line break (e.g., +&lt;br&gt;+) between the lines.</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p>To make a line break, end the line in a space followed by a plus.<br>
-This results in a visible line break (e.g., &lt;br&gt;) between the lines.</p>
-</div>
-<div class="paragraph">
-<p>Rubies are red.<br>
-Sapphires are blue.</p>
+<p>To preserve a line break, end the line in a space followed by a plus sign.<br>
+This results in a visible line break (e.g., <code>&lt;br&gt;</code>) between the lines.</p>
 </div>
 </div>
 </div>
@@ -107,9 +98,9 @@ Sapphires are blue.</p>
 <pre class="nowrap">A normal paragraph.
 
  A line that begins with one or more spaces is a literal paragraph.
- Literal paragraphs are treated as preformatted text.
- The text is shown in a fixed-width font
- and endlines are preserved.
+Literal paragraphs are treated as preformatted text.
+The text is shown in a fixed-width font
+and endlines are preserved.
 
 Another normal paragraph.</pre>
 </div>
@@ -121,7 +112,7 @@ Another normal paragraph.</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">A line that begins with one or more spaces is a literal paragraph.
+<pre class="nowrap"> A line that begins with one or more spaces is a literal paragraph.
 Literal paragraphs are treated as preformatted text.
 The text is shown in a fixed-width font
 and endlines are preserved.</pre>
@@ -131,19 +122,6 @@ and endlines are preserved.</pre>
 <p>Another normal paragraph.</p>
 </div>
 </div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Use one or two spaces to offset a literal paragraph, but no more.
-<strong>Be frugal!</strong>
-</td>
-</tr>
-</table>
 </div>
 <div class="listingblock">
 <div class="title">Admonition</div>
@@ -249,9 +227,9 @@ You can also create admonition blocks, which are covered later.
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Lead paragraph (default Asciidoctor stylesheet)</div>
+<div class="title">Lead paragraph</div>
 <div class="content">
-<pre class="nowrap">[role="lead"]
+<pre class="nowrap">[.lead]
 This text will be styled as a lead paragraph (i.e., larger font).</pre>
 </div>
 </div>
@@ -269,10 +247,31 @@ This text will be styled as a lead paragraph (i.e., larger font).</pre>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-The first paragraph of the preamble is automatically styled as a lead paragraph when using the default Asciidoctor stylesheet.
+The default Asciidoctor stylesheet automatically styles the first paragraph of the preamble as a lead paragraph.
 </td>
 </tr>
 </table>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">More Paragraph, Admonition and Literal Block Examples</div>
+<div class="paragraph">
+<p>See these sections in the Asciidoctor User Manual for more information and examples.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="user-manual.html#paragraph">Paragraphs</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#literal-text-and-blocks">Literal Text and Blocks</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#admonition">Admonitions</a></p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -280,9 +279,9 @@ The first paragraph of the preamble is automatically styled as a lead paragraph 
 <h2 id="formatted-text"><a class="anchor" href="#formatted-text"></a>Formatted Text</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Emphasis</div>
+<div class="title">Bold, Italic, and Monospace</div>
 <div class="content">
-<pre class="nowrap">_italic phrase_ (or 'italic phrase')
+<pre class="nowrap">_italic phrase_
 
 __i__talic le__tt__ers
 
@@ -292,13 +291,23 @@ __i__talic le__tt__ers
 
 *_bold italic phrase_*
 
-**__b__**old italic le**__tt__**ers</pre>
+**__b__**old italic le**__tt__**ers
+
++monospace phrase+ and le++tt++ers
+
++_monospace italic phrase_+ and le++__tt__++ers
+
++*monospace bold phrase*+ and le++**tt**++ers
+
++*_monospace bold italic phrase_*+ and le++**__tt__**++ers
+
+`inline literal passthrough` (monospace text without substitutions)</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p><em>italic phrase</em> (or <em>italic phrase</em>)</p>
+<p><em>italic phrase</em></p>
 </div>
 <div class="paragraph">
 <p><em>i</em>talic le<em>tt</em>ers</p>
@@ -315,24 +324,6 @@ __i__talic le__tt__ers
 <div class="paragraph">
 <p><strong><em>b</em></strong>old italic le<strong><em>tt</em></strong>ers</p>
 </div>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Monospace</div>
-<div class="content">
-<pre class="nowrap">+monospace phrase+ and le++tt++ers
-
-+_monospace italic phrase_+ and le++__tt__++ers
-
-+*monospace bold phrase*+ and le++**tt**++ers
-
-+*_monospace bold italic phrase_*+ and le++**__tt__**++ers
-
-`inline literal passthrough` (monospace text without substitutions)</pre>
-</div>
-</div>
-<div class="exampleblock result">
-<div class="content">
 <div class="paragraph">
 <p><code>monospace phrase</code> and le<code>tt</code>ers</p>
 </div>
@@ -351,53 +342,43 @@ __i__talic le__tt__ers
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Custom styling</div>
+<div class="title">Custom Styling</div>
 <div class="content">
-<pre class="nowrap">[small]#phrase styled by CSS class .small#
+<pre class="nowrap">Do werewolves believe in [small]#small print#?
 
-[big]##O##nce upon a time...</pre>
+[big]##O##nce upon an infinite loop.</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p><span class="small">phrase styled by CSS class .small</span></p>
+<p>Do werewolves believe in <span class="small">small print</span>?</p>
 </div>
 <div class="paragraph">
-<p><span class="big">O</span>nce upon a time&#8230;</p>
+<p><span class="big">O</span>nce upon an infinite loop.</p>
 </div>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Superiors and inferiors</div>
+<div class="title">Superscript and Subscript</div>
 <div class="content">
-<pre class="nowrap">^superscript phrase^
+<pre class="nowrap">^super^script phrase
 
-e = mc^2^
-
-~subscript phrase~
-
-H~2~O</pre>
+~sub~script phrase</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p><sup>superscript phrase</sup></p>
+<p><sup>super</sup>script phrase</p>
 </div>
 <div class="paragraph">
-<p>e = mc<sup>2</sup></p>
-</div>
-<div class="paragraph">
-<p><sub>subscript phrase</sub></p>
-</div>
-<div class="paragraph">
-<p>H<sub>2</sub>O</p>
+<p><sub>sub</sub>script phrase</p>
 </div>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Quotes</div>
+<div class="title">Curved Quotes</div>
 <div class="content">
 <pre class="nowrap">`single smart quotes'
 
@@ -414,11 +395,66 @@ H~2~O</pre>
 </div>
 </div>
 </div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">More Text Formatting Examples</div>
+<div class="paragraph">
+<p>See these sections in the Asciidoctor User Manual for more information and examples.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="user-manual.html#bold-and-italic">Bold and Italic Formatting</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#quotation-marks-and-apostrophes">Quotation Marks and Apostrophes</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#subscript-and-superscript">Subscript and Superscript</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#monospace">Monospace Formatting</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#custom-styling-with-attributes">Custom Styling with Attributes</a></p>
+</li>
+<li>
+<p><a href="user-manual.html#passthrough-macros">Passthrough Macros</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="document-header-optional"><a class="anchor" href="#document-header-optional"></a>Document Header (Optional)</h2>
+<h2 id="document-header"><a class="anchor" href="#document-header"></a>Document Header</h2>
 <div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+A header is optional.
+When you do add a header to your document, the only required element is a title.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+The header may not contain blank lines and must be offset from the content by at least one blank line.
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
 <div class="title">Title only</div>
 <div class="content">
@@ -426,18 +462,6 @@ H~2~O</pre>
 
 This guide provides...</pre>
 </div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-The title is the only required element in the document header.
-</td>
-</tr>
-</table>
 </div>
 <div class="listingblock">
 <div class="title">Title and author line</div>
@@ -482,18 +506,6 @@ v1.0, 2013-01-01
 
 This guide provides...</pre>
 </div>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-The header may not contain blank lines and must be offset from the content by at least one blank line.
-</td>
-</tr>
-</table>
 </div>
 </div>
 </div>
@@ -580,23 +592,6 @@ For example, <em>Section Level 1</em> becomes an <code>&lt;h2&gt;</code> heading
 <h1 id="section-level-0" class="float">Section Level 0</h1>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-important" title="Important"></i>
-</td>
-<td class="content">
-There are two other ways to define a section title.
-<em>Their omission is intentional</em>.
-They both require more markup and are therefore unnecessary.
-The <a href="http://en.wikipedia.org/wiki/Setext">setext</a> title syntax (underlined text) is especially wasteful, hard to remember, hard to maintain and error prone.
-The reader never sees the extra markup, so why type it?
-<strong>Be frugal!</strong>
-</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
 <div class="title">Explicit id</div>
 <div class="content">
@@ -656,7 +651,7 @@ include::example.adoc[]</pre>
 <i class="icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-AsciiDoc does not insert blank lines between adjacent include statements to keep the content separated.
+Asciidoctor does not insert blank lines between adjacent include statements to keep the content separated.
 Be sure to add a blank line in the source document to avoid unexpected results, such as a section title being swallowed.
 </td>
 </tr>
@@ -685,7 +680,7 @@ include::{asciidoctor-source}/README.adoc[]</pre>
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-Including content from a URI is a potentially dangerous feature, so it&#8217;s disabled if the safe mode is SECURE or greater.
+Including content from a URI is potentially dangerous, so it&#8217;s disabled if the safe mode is SECURE or greater.
 Assuming the safe mode is less than SECURE, you must also set the <code>allow-uri-read</code> attribute to permit Asciidoctor to read content from a URI.
 </td>
 </tr>
@@ -694,23 +689,8 @@ Assuming the safe mode is less than SECURE, you must also set the <code>allow-ur
 </div>
 </div>
 <div class="sect1">
-<h2 id="breaks"><a class="anchor" href="#breaks"></a>Breaks</h2>
+<h2 id="horizontal-rules-and-page-breaks"><a class="anchor" href="#horizontal-rules-and-page-breaks"></a>Horizontal Rules and Page Breaks</h2>
 <div class="sectionbody">
-<div class="listingblock">
-<div class="title">Line break</div>
-<div class="content">
-<pre class="nowrap">Rubies are red. +
-Sapphires are blue.</pre>
-</div>
-</div>
-<div class="exampleblock result">
-<div class="content">
-<div class="paragraph">
-<p>Rubies are red.<br>
-Sapphires are blue.</p>
-</div>
-</div>
-</div>
 <div class="listingblock">
 <div class="title">Horizontal rule</div>
 <div class="content">
@@ -1075,7 +1055,7 @@ Checklists can use <a href="http://asciidoctor.org/docs/user-manual/#checklists"
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-For ordered lists, Asciidoctor supports <a href="http://asciidoctor.org/docs/user-manual/#numbering-styles">numeration styles</a> such as lowergreek and decimal-leading-zero.
+For ordered lists, Asciidoctor supports <a href="http://asciidoctor.org/docs/user-manual/#numbering-styles">numeration styles</a> such as <code>lowergreek</code> and <code>decimal-leading-zero</code>.
 </td>
 </tr>
 </table>
@@ -1274,7 +1254,8 @@ Cloud Providers::
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Lists can be indented. Leading whitespace is not significant.
+Lists can be indented.
+Leading whitespace is not significant.
 </td>
 </tr>
 </table>
@@ -1715,7 +1696,7 @@ You can control the video settings using <a href="http://asciidoctor.org/docs/us
 <div class="listingblock">
 <div class="title">Inline</div>
 <div class="content">
-<pre class="nowrap">Reference code like +types+ or `methods` inline.</pre>
+<pre class="nowrap">Reference code like +types+ or +methods+ inline.</pre>
 </div>
 </div>
 <div class="exampleblock result">
@@ -1728,14 +1709,14 @@ You can control the video settings using <a href="http://asciidoctor.org/docs/us
 <div class="listingblock">
 <div class="title">Literal line</div>
 <div class="content">
-<pre class="nowrap"> Indent one space to insert a one-liner.</pre>
+<pre class="nowrap"> Indent the line one space to insert a code snippet</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">Indent one space to insert a one-liner.</pre>
+<pre class="nowrap">Indent the line one space to insert a code snippet</pre>
 </div>
 </div>
 </div>
@@ -1744,10 +1725,9 @@ You can control the video settings using <a href="http://asciidoctor.org/docs/us
 <div class="title">Literal block</div>
 <div class="content">
 <pre class="nowrap">....
-Copyright (C) 2013 Acme Corporation.
-
-This work is licensed as CC BY-SA, which is the
-Creative Commons Attribution 3.0 Unported License.
+error: The requested operation returned error: 1954 Forbidden search for defensive operations manual
+absolutely fatal: operation initiation lost in the dodecahedron of doom
+would you like to die again? y/n
 ....</pre>
 </div>
 </div>
@@ -1755,10 +1735,9 @@ Creative Commons Attribution 3.0 Unported License.
 <div class="content">
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">Copyright (C) 2013 Acme Corporation.
-
-This work is licensed as CC BY-SA, which is the
-Creative Commons Attribution 3.0 Unported License.</pre>
+<pre class="nowrap">error: The requested operation returned error: 1954 Forbidden search for defensive operations manual
+absolutely fatal: operation initiation lost in the dodecahedron of doom
+would you like to die again? y/n</pre>
 </div>
 </div>
 </div>
@@ -3582,7 +3561,7 @@ $$&amp;amp;$$ renders as an XML entity instead of &amp;.</pre>
 <div class="content">
 <div class="paragraph">
 <p>*Stars* is not rendered as bold text.
-The astericks around the word are preserved.</p>
+The asterisks around the word are preserved.</p>
 </div>
 <div class="paragraph">
 <p>&amp;amp; renders as an XML entity instead of &amp;.</p>

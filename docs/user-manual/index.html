@@ -567,8 +567,8 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#paragraph">8. Paragraph</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#wrapped-text-and-hard-line-breaks">8.1. Wrapped text and hard line breaks</a></li>
-<li><a href="#lead-paragraph">8.2. Lead paragraph</a></li>
+<li><a href="#line-breaks">8.1. Line breaks</a></li>
+<li><a href="#lead-style">8.2. Lead style</a></li>
 </ul>
 </li>
 <li><a href="#text-formatting">9. Text Formatting</a></li>
@@ -4289,71 +4289,86 @@ Never do today what you can put off 'til tomorrow.</code></pre>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The bulk of the content in a document is paragraph text.
-In Asciidoctor, the main structural element is the paragraph.
-Normal paragraphs do not require any special markup or attributes.
-Just start typing.</p>
+This is why Asciidoctor doesn&#8217;t require any special markup or attributes to specify paragraph content.
+You can just start typing.</p>
 </div>
-<div class="literalblock">
+<div class="paragraph">
+<p>In Asciidoctor, adjacent or consecutive lines of text form a paragraph element.
+To start a new paragraph after another element, such as a section title or table, hit the <kbd>RETURN</kbd> key twice to insert a blank line, and then continue typing your content.</p>
+</div>
+<div class="listingblock">
+<div class="title">Two paragraphs in an AsciiDoc document</div>
 <div class="content">
-<pre class="nowrap">A paragraph consists of adjacent lines of text.
-This is another line in the paragraph.
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This journey begins one late Monday afternoon in Antwerp.
+Our team desperately needs coffee, but none of us dare open the office door.
 
-To start a new paragraph, leave a blank line by hitting enter twice, and then just keep on typing.</pre>
-</div>
-</div>
-<div class="sect2">
-<h3 id="wrapped-text-and-hard-line-breaks"><a class="anchor" href="#wrapped-text-and-hard-line-breaks"></a>8.1. Wrapped text and hard line breaks</h3>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">Adjacent lines like these are combined as a single paragraph.
-That means you can wrap paragraph text
-or put each sentence on a separate line
-and the line breaks won't appear in the output.</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how the previous lines look when rendered:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>Adjacent lines like these are combined as a single paragraph.
-That means you can wrap paragraph text or put each sentence on a separate line and the line breaks won&#8217;t appear in the output.</p>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>If you want line breaks in a paragraph to be preserved, add a space followed by a plus sign at the end of the sentence:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">Roses are red, +
-Violets are blue.</pre>
+To leave means code dismemberment and certain death.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">The two paragraphs rendered using the default (<code>html5</code>) backend and stylesheet (<code>asciidoctor.css</code>)</div>
 <div class="content">
 <div class="paragraph">
-<p>Roses are red,<br>
-Violets are blue.</p>
-</div>
-</div>
+<p>This journey begins one late Monday afternoon in Antwerp.
+Our team desperately needs coffee, but none of us dare open the office door.</p>
 </div>
 <div class="paragraph">
-<p>Alternatively, if you want line breaks in a paragraph to be preserved, add the following attribute entry to the header of your document.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:hardbreaks:</code></pre>
+<p>To leave means code dismemberment and certain death.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="lead-paragraph"><a class="anchor" href="#lead-paragraph"></a>8.2. Lead paragraph</h3>
+<h3 id="line-breaks"><a class="anchor" href="#line-breaks"></a>8.1. Line breaks</h3>
 <div class="paragraph">
-<p>Apply <code>role="lead"</code> to any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).</p>
+<p>Since adjacent lines of text are combined into a single paragraph when Asciidoctor renders a document, that means you can wrap paragraph text or put each sentence or phrase on a separate line.
+The line breaks won&#8217;t appear in the output.</p>
+</div>
+<div class="paragraph">
+<p>However, if you do want the line breaks in a paragraph to be preserved, add a space followed by a plus sign (<code>&#43;</code>) at the end of the line.
+This results in a visible line break (e.g., <code>&lt;br&gt;</code>) between the lines.</p>
 </div>
 <div class="listingblock">
+<div class="title">Line breaks preserved using the plus sign (<code>&#43;</code>)</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Rubies are red, +
+Topazes are blue.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Rubies are red,<br>
+Topazes are blue.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, if you want line breaks preserved throughout your whole document, add the <code>hardbreaks</code> attribute to the document&#8217;s header.
+When <code>hardbreaks</code> is set, you do not need to add the single space and plus sign (<code>&#43;</code>) to the line ends.</p>
+</div>
+<div class="listingblock">
+<div class="title">Line breaks preserved using the <code>hardbreaks</code> attribute</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Line Break Doc Title
+:hardbreaks:
+
+Rubies are red,
+Topazes are blue.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also preserve line breaks using <a href="#literal-text-and-blocks">literal blocks</a>, <a href="#listing-and-source-code-blocks">listing blocks</a>, and <a href="#verse">verses</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lead-style"><a class="anchor" href="#lead-style"></a>8.2. Lead style</h3>
+<div class="paragraph">
+<p>Apply the <code>lead</code> style to any paragraph, and it will render using a larger font size.
+The lead style is assigned to the <a href="#role"><code>role</code> attribute</a>.
+You can set <code>role</code> using the long- or shorthand method.</p>
+</div>
+<div class="listingblock">
+<div class="title">Setting <code>role</code> using shorthand (<code>.</code>) and assigning it the <code>lead</code> value</div>
 <div class="content">
 <pre class="nowrap">[.lead]
 This is the ultimate paragraph.</pre>
@@ -4365,6 +4380,9 @@ This is the ultimate paragraph.</pre>
 <p>This is the ultimate paragraph.</p>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>When you render a document using the default backend and stylesheet, the first paragraph of the preamble is automatically styled as a lead paragraph.</p>
 </div>
 </div>
 </div>
@@ -4595,7 +4613,7 @@ The size and precise placement of the text depends on the font and other stylesh
 <i class="icon-note" title="Note"></i>
 </td>
 <td class="content">
-In the next release of Asciidoctor, you&#8217;ll be able output formulas using MathJax.
+In the next release of Asciidoctor, you&#8217;ll be able to output formulas using MathJax.
 </td>
 </tr>
 </table>
@@ -10547,8 +10565,10 @@ When your document is processed, the backslash is removed so it doesn&#8217;t di
 <h2 id="literal-text-and-blocks"><a class="anchor" href="#literal-text-and-blocks"></a>2. Literal Text and Blocks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Literal blocks display text exactly as it is entered.
-Only special characters and callouts are replaced in the text.</p>
+<p>Literal paragraphs and blocks display the text you write exactly as you enter it.
+Literal text is treated as preformatted text.
+The text is shown in a fixed-width font and endlines are preserved.
+Only <a href="#special-characters">special characters</a> and callouts are replaced when the document is rendered.</p>
 </div>
 <div class="paragraph">
 <p>Literal blocks are defined three ways:</p>
@@ -10559,32 +10579,96 @@ Only special characters and callouts are replaced in the text.</p>
 <p>Indenting the first line of a paragraph by one or more spaces</p>
 </li>
 <li>
-<p>Applying the <code>literal</code> attribute</p>
+<p>Applying the <code>literal</code> attribute to a paragraph or block</p>
 </li>
 <li>
-<p>Using the <code>....</code> line delimiter</p>
+<p>Using the literal block delimiter (<code>....</code> )</p>
 </li>
 </ol>
 </div>
+<div class="paragraph">
+<p>When a line begins with one or more spaces it is displayed as a literal paragraph.
+This method is a quick and easy way to insert code snippets.</p>
+</div>
 <div class="listingblock">
-<div class="title">Implicit</div>
+<div class="title">Implicit literal text</div>
 <div class="content">
-<pre class="nowrap"> This text will be displayed exactly as I enter it.</pre>
+<pre class="nowrap"> ~/secure/vault/defops</pre>
 </div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered implicit literal text</div>
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">~/secure/vault/defops</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When you want an entire block of text to be literal and would prefer not to indent it, set the <code>literal</code> attribute on top of the element.</p>
 </div>
 <div class="listingblock">
-<div class="title">Literal paragraph</div>
+<div class="title">Literal style paragraph</div>
 <div class="content">
 <pre class="nowrap">[literal]
-This text will be displayed exactly as I enter it.</pre>
+error: The requested operation returned error: 1954 Forbidden search for defensive operations manual
+absolutely fatal: operation initiation lost in the dodecahedron of doom
+would you like to die again? y/n</pre>
 </div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered literal style paragraph</div>
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">error: The requested operation returned error: 1954 Forbidden search for defensive operations manual
+absolutely fatal: operation initiation lost in the dodecahedron of doom
+would you like to die again? y/n</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, you can surround the content you want rendered as literal by enclosing it in a set of literal block delimiters (<code>....</code>).
+This method is useful when the content consists of several elements that are separated by blank lines.</p>
 </div>
 <div class="listingblock">
 <div class="title">Literal delimited block</div>
 <div class="content">
 <pre class="nowrap">....
-This text will be displayed exactly as I enter it.
+Lazarus: Where is the *defensive operations manual*?
+
+Computer: Calculating ...
+Can not locate object that you are not authorized to know exists.
+Would you like to ask another question?
+
+Lazarus: Did the werewolves tell you to say that?
+
+Computer: Calculating ...
 ....</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice in the output that the bold text formatting is not rendered nor are the three, consecutive periods replaced by the ellipsis Unicode character.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered literal delimited block</div>
+<div class="content">
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Lazarus: Where is the *defensive operations manual*?
+
+Computer: Calculating ...
+Can not locate object that you are not authorized to know exists.
+Would you like to ask another question?
+
+Lazarus: Did the werewolves tell you to say that?
+
+Computer: Calculating ...</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -18136,7 +18220,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-14 18:35:41 UTC
+Last updated 2013-11-16 01:20:52 UTC
 </div>
 </div>
 </body>
