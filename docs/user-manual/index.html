@@ -5024,31 +5024,41 @@ Pending
 <h2 id="unordered-lists"><a class="anchor" href="#unordered-lists"></a>11. Unordered Lists</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you were to create a list of items in an e-mail, how would you do it?
-Chances are, what you&#8217;d type is exactly how you define an outline list in AsciiDoc.</p>
+<p>If you were to create a list in an e-mail, how would you do it?
+Chances are, you&#8217;d mark list items using the same characters that Asciidoctor uses to find list items.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a grocery list written as an unordered list in AsciiDoc:</p>
+<p>In the example below, each list item is marked using an asterisk (<code>*</code>), the AsciiDoc syntax specifying an unordered list item.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Milk
-* Eggs
-* Bread
-* Bananas</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Edgar Allen Poe
+* Sheri S. Tepper
+* Bill Bryson</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Was your instinct to use a hyphen instead of an asterisk?
-Guess what?
-That works too:</p>
+<p>A list item&#8217;s first line of text must be offset from the marker (<code>*</code>) by at least one space.
+If you prefer, you can indent list items.
+Blank lines are required before and after a list.
+Additionally, blank lines are permitted, but not required, between list items.</p>
 </div>
-<div class="listingblock">
+<div class="exampleblock">
+<div class="title">Rendered unordered list</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">- Milk
-- Eggs
-- Bread
-- Bananas</code></pre>
+<div class="ulist">
+<ul>
+<li>
+<p>Edgar Allen Poe</p>
+</li>
+<li>
+<p>Sheri S. Tepper</p>
+</li>
+<li>
+<p>Bill Bryson</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -5058,80 +5068,116 @@ That works too:</p>
 <i class="icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-You are free to indent the list however it suits you.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-important" title="Important"></i>
-</td>
-<td class="content">
-The item&#8217;s first line of text must be offset from the marker by at least one space.
+You can force two lists apart with a line comment (<code>\\</code>).
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>What if you wanted to group the grocery list by aisle?
-Then you might organize it as a nested list.</p>
+<p>You can add a title to a list by prefixing the title with a period (<code>.</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Kizmet's Favorite Authors
+* Edgar Allen Poe
+* Sheri S. Tepper
+* Bill Bryson</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered unordered list with a title</div>
+<div class="content">
+<div class="ulist">
+<div class="title">Kizmet&#8217;s Favorite Authors</div>
+<ul>
+<li>
+<p>Edgar Allen Poe</p>
+</li>
+<li>
+<p>Sheri S. Tepper</p>
+</li>
+<li>
+<p>Bill Bryson</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Was your instinct to use a hyphen (<code>-</code>) instead of an asterisk to mark list items?
+Guess what?
+That works too!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">- Edgar Allen Poe
+- Sheri S. Tepper
+- Bill Bryson</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should reserve the hyphen for lists that only have a single level because the hyphen marker (<code>-</code>) doesn&#8217;t work for nested lists.
+Now that we&#8217;ve mentioned nested lists, let&#8217;s go to the next section and learn how to create lists with multiple levels.</p>
 </div>
 <div class="sect2">
 <h3 id="nested-2"><a class="anchor" href="#nested-2"></a>11.1. Nested</h3>
 <div class="paragraph">
-<p>To get a nested item, just add another asterisk in front of the item:</p>
+<p>To nest an item, just add another asterisk (<code>*</code>) in front of it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Diary
-** Milk
-** Eggs
-* Bakery
-** Bread
-* Produce
-** Bananas</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Possible DefOps manual locations
+* West wood maze
+** Maze heart
+*** Reflection pool
+** Secret exit
+* Untracked file in git repository</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered nested, unordered list</div>
+<div class="content">
+<div class="ulist">
+<div class="title">Possible DefOps manual locations</div>
+<ul>
+<li>
+<p>West wood maze</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maze heart</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reflection pool</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Secret exit</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Untracked file in git repository</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>You can have up to five levels of nesting:</p>
+<p>You can have up to five levels of nesting.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Kingdom
-** Phylum
-*** Class
-**** Order
-***** Family</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The hyphen doesn&#8217;t work for nested lists since repeating hyphens are used for other purposes in AsciiDoc.
-Therefore, you should reserve the hyphen for lists that only have a single level:</p>
-</div>
-<div class="listingblock">
-<div class="title">List without nested items</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">- Fedora
-- Ubuntu
-- Slackware</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>For lists that have more than one level, use asterisks:</p>
-</div>
-<div class="listingblock">
-<div class="title">List with nested items</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Linux
-** Fedora
-** Ubuntu
-** Slackware
-* BSD
-** FreeBSD
-** NetBSD</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* level 1
+** level 2
+*** level 3
+**** level 4
+***** level 5
+* level 1</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9022,11 +9068,9 @@ Pending
 <h2 id="admonition"><a class="anchor" href="#admonition"></a>21. Admonition</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>There are certain statements that you might want to draw attention to by taking them out of the flow and labeling them with a priority.
-These are called admonition blocks.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor provides five admonition labels:</p>
+<p>There are certain statements that you may want to draw attention to by taking them out of the content&#8217;s flow and labeling them with a priority.
+These are called admonitions.
+Asciidoctor provides five built-in admonition style labels:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -9048,43 +9092,119 @@ These are called admonition blocks.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Admonitions are created either by prefixing the label to a paragraph or applying the label as a style attribute to a delimited block.</p>
+<p>When you want to call attention to a single paragraph, simply start the first line of the paragraph with the label you want to use.
+The label must be uppercase and followed by a colon (<code>:</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Admonition paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">NOTE: The label must be UPPERCASE.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.
+Enter at your own risk.</code></pre>
 </div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered admonition paragraph</div>
+<div class="content">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Wolpertingers are known to nest in server racks.
+Enter at your own risk.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When you want to apply an admonition label to complex content, set the label as a style attribute on a block.
+As seen in the next example, admonition labels are commonly set on example blocks.
+This behavior is referred to as <strong>masquerading</strong>.
+The label must be uppercase when set as an attribute on a block.</p>
 </div>
 <div class="listingblock">
 <div class="title">Admonition block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[NOTE]
-==== <i class="conum" data-value="1"></i><b>(1)</b>
-This is an example of an admonition block.
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[IMPORTANT]
+.Feeding the Werewolves
+====
+While werewolves are hardy community members, keep in mind the following dietary concerns:
 
-Unlike an admonition paragraph, it may contain any AsciiDoc content.
-The style can be any one of the admonition labels:
-
-* NOTE
-* TIP
-* WARNING
-* CAUTION
-* IMPORTANT
+. They are allergic to cinnamon.
+. More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.
+. Celery makes them sad.
 ====</code></pre>
 </div>
 </div>
-<div class="colist arabic">
+<div class="exampleblock">
+<div class="title">Rendered admonition block</div>
+<div class="content">
+<div class="admonitionblock important">
 <table>
 <tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>This is an example block acting as an admonition.</td>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="title">Feeding the Werewolves</div>
+<div class="paragraph">
+<p>While werewolves are hardy community members, keep in mind the following dietary concerns:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>They are allergic to cinnamon.</p>
+</li>
+<li>
+<p>More than two glasses of orange juice in 24 hours makes them howl in harmony with alarms and sirens.</p>
+</li>
+<li>
+<p>Celery makes them sad.</p>
+</li>
+</ol>
+</div>
+</td>
 </tr>
 </table>
 </div>
+</div>
+</div>
 <div class="paragraph">
-<p>An admonition is rendered in a callout box with the admonition label&#8212;or its corresponding icon&#8212;in the gutter.
-Icons are enabled by setting the <code>icons</code> attribute on the document.</p>
+<p>In the examples above, the admonition is rendered in a callout box with the style label in the gutter.
+You can replace the rendered labels with icons by setting the <code>icons</code> attribute on the document.
+This is how the <code>WARNING</code> admonition paragraph renders when <code>icons</code> is set and assigned the <code>font</code> value.</p>
+</div>
+<div class="listingblock">
+<div class="title">Admonition paragraph with <code>icons</code> set</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.
+Enter at your own risk.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered admonition paragraph with <code>icons</code> set</div>
+<div class="content">
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Wolpertingers are known to nest in server racks.
+Enter at your own risk.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Learn more about using Font Awesome or custom icons with admonitions in the <a href="#icons">icons</a> section.</p>
 </div>
 </div>
 </div>
@@ -18220,7 +18340,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-16 05:25:28 UTC
+Last updated 2013-11-18 00:37:18 UTC
 </div>
 </div>
 </body>
