@@ -932,7 +932,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#additional-help">4. Additional Help</a></li>
 <li><a href="#glossary">5. Glossary</a></li>
 <li><a href="#asciidoctor-vs-asciidoc">6. Appendix A: Comparison of Asciidoctor and AsciiDoc Features</a></li>
-<li><a href="#char-ref-table">7. Appendix B: Built-in attributes for character and character reference replacements</a></li>
+<li><a href="#char-ref-table">7. Appendix B: Built-in attributes for character replacements</a></li>
 </ul>
 </li>
 </ul>
@@ -1895,70 +1895,70 @@ The <code>!</code> can be placed before or after the attribute&#8217;s name.</p>
 The values of these built-in data attributes are derived from how the document is processed and when and where is it processed.
 These attributes can be referenced anywhere in the document.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all" style="width:70%; ">
 <caption class="title">Built-in data attributes</caption>
 <colgroup>
-<col style="width:14%;">
-<col style="width:42%;">
-<col style="width:42%;"> 
+<col style="width:25%;">
+<col style="width:75%;"> 
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Attribute</th>
 <th class="tableblock halign-left valign-top">Description</th>
-<th class="tableblock halign-left valign-top">Notes</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>blank</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calls the processor</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version of the processor</p></td>
-<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>backend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend used to render document</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdatetime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date and time</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdir</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of document directory</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docfile</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Name of document file</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Last modified time</p></td>
-<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Document&#8217;s doctype (e.g., article)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdate</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Local date when rendered</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdatetime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Local date and time when rendered</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localtime</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Local time when rendered</p></td>
-<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -10675,7 +10675,7 @@ When your document is processed, the backslash is removed so it doesn&#8217;t di
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>*Stars* will not be bold, but rather appear as *Stars*.</p>
+<p>*Stars* will not be bold, but rather appear as <strong>Stars</strong>.</p>
 </div>
 <div class="paragraph">
 <p>&amp;sect; will not be replaced with the &sect; symbol.</p>
@@ -12011,14 +12011,6 @@ include::installation.adoc[]
 include::example.adoc[]</code></pre>
 </div>
 </div>
-<div class="listingblock">
-<div class="title">Common text</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">== About the author
-
-include::author-bio.adoc[]</code></pre>
-</div>
-</div>
 <div class="paragraph">
 <p>Asciidoctor does not insert blank lines between adjacent include statements to keep the content separated.
 Be sure to add a blank line in the source document to avoid unexpected results, such as a section title being swallowed.
@@ -12030,15 +12022,14 @@ Also, the relative indentation between the lines of source code <strong>is not a
 <p>The include directive supports extracting portions of content from within a document.
 The content is specified either by user defined tags or a range of line numbers.</p>
 </div>
+<div class="openblock"><div class="title">Line ranges</div>
+<div class="content">
 <div class="paragraph">
-<div class="title">Line ranges</div>
 <p>The line range is assigned to the <code>lines</code> attribute as shown in the example below.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">----
-include::filename.txt[lines=5..10]
-----</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=5..10]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12046,9 +12037,9 @@ include::filename.txt[lines=5..10]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">----
-include::filename.txt[lines=1..10,15..20]
-----</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=1..10,15..20]</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -18186,9 +18177,10 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 </div>
 <div class="sect1">
-<h2 id="char-ref-table"><a class="anchor" href="#char-ref-table"></a>7. Appendix B: Built-in attributes for character and character reference replacements</h2>
+<h2 id="char-ref-table"><a class="anchor" href="#char-ref-table"></a>7. Appendix B: Built-in attributes for character replacements</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width:70%; ">
+<caption class="title">Built-in entity attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -18272,6 +18264,24 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#166;</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">|</p></td>
 </tr>
+</tbody>
+</table>
+
+<table class="tableblock frame-all grid-all" style="width:70%; ">
+<caption class="title">Built-in literal attributes</caption>
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-center valign-top">Attribute reference</th>
+<th class="tableblock halign-center valign-top">Replacement</th>
+<th class="tableblock halign-center valign-top">Rendered</th>
+</tr>
+</thead>
+<tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{lt}</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&lt;</pre></div></td>
@@ -18350,7 +18360,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-18 19:16:49 UTC
+Last updated 2013-11-18 23:10:16 UTC
 </div>
 </div>
 </body>
