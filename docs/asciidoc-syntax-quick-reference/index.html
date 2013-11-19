@@ -821,7 +821,7 @@ The unordered list marker can be changed using <a href="http://asciidoctor.org/d
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Unordered, checklist</div>
+<div class="title">Checklist</div>
 <div class="content">
 <pre class="nowrap">- [*] checked
 - [x] also checked
@@ -1054,7 +1054,7 @@ What is the answer to the Ultimate Question?:: 42</pre>
 <p>An implementation of the AsciiDoc processor in Ruby.</p>
 </li>
 <li>
-<p><em>What&#8217;s the answer to the Ultimate Question?</em></p>
+<p><em>What is the answer to the Ultimate Question?</em></p>
 <p>42</p>
 </li>
 </ol>
@@ -1247,7 +1247,7 @@ a list continuation on a line adjacent to both blocks.</p>
 </div>
 </li>
 <li>
-<p>AsciiDoc lists may contain any complex content, even tables.</p>
+<p>AsciiDoc lists may contain any complex content.</p>
 <table class="tableblock frame-all grid-all" style="width:100%; ">
 <colgroup>
 <col style="width:50%;">
@@ -2416,22 +2416,19 @@ Notice it's a delimited block.
 <h2 id="tables"><a class="anchor" href="#tables"></a>Tables</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Table with four columns, a header, and two rows of content</div>
+<div class="title">Table with a title, three columns, a header, and two rows of content</div>
 <div class="content">
-<pre class="nowrap">.Table of contents attributes and values
+<pre class="nowrap">.Table Title
 |===
-|Attribute |Value(s) |Example Syntax |Comments <i class="conum" data-value="1"></i><b>(1)</b>
+|Name of Column 1 |Name of Column 2 |Name of Column 3 <i class="conum" data-value="1"></i><b>(1)</b>
 <i class="conum" data-value="2"></i><b>(2)</b>
-|toc
-|auto
-|+:toc:+
-|DocBook backend uses it by default.
-Disable the TOC with +:toc!:+.
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
 
-|toc2
-|auto
-|+:toc2:+
-|-
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
 |===</pre>
 </div>
 </div>
@@ -2450,34 +2447,29 @@ Disable the TOC with +:toc!:+.
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 1. Table of contents attributes and values</caption>
+<caption class="title">Table 1. Table Title</caption>
 <colgroup>
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;"> 
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Attribute</th>
-<th class="tableblock halign-left valign-top">Value(s)</th>
-<th class="tableblock halign-left valign-top">Example Syntax</th>
-<th class="tableblock halign-left valign-top">Comments</th>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+<th class="tableblock halign-left valign-top">Name of Column 3</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend uses it by default.
-Disable the TOC with <code>:toc!:</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toc2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auto</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc2:</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
 </tr>
 </tbody>
 </table>
@@ -2485,26 +2477,18 @@ Disable the TOC with <code>:toc!:</code>.</p></td>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Table with four columns, a header, and two rows of content</div>
+<div class="title">Table with two columns, a header, and two rows of content</div>
 <div class="content">
-<pre class="nowrap">[cols="4*", options="header"] <i class="conum" data-value="1"></i><b>(1)</b>
-.Table of contents attributes and values
+<pre class="nowrap">[cols="2*", options="header"] <i class="conum" data-value="1"></i><b>(1)</b>
 |===
-|Attribute
-|Value(s)
-|Example Syntax
-|Comments
+|Name of Column 1
+|Name of Column 2
 
-|toc
-|auto
-|+:toc:+
-|DocBook backend uses it by default.
-Disable the TOC with +:toc!:+.
+|Cell in column 1, row 1
+|Cell in column 2, row 1
 
-|toc2
-|auto
-|+:toc2:+
-|-
+|Cell in column 1, row 2
+|Cell in column 2, row 2
 |===</pre>
 </div>
 </div>
@@ -2519,35 +2503,24 @@ Disable the TOC with +:toc!:+.
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 2. Table of contents attributes and values</caption>
 <colgroup>
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;"> 
+<col style="width:50%;">
+<col style="width:50%;"> 
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top">Attribute</th>
-<th class="tableblock halign-left valign-top">Value(s)</th>
-<th class="tableblock halign-left valign-top">Example Syntax</th>
-<th class="tableblock halign-left valign-top">Comments</th>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">none</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend uses it by default.
-Disable the TOC with <code>:toc!:</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">toc2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">none, left or right</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc2:</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">By default, <code>:toc2:</code> puts the table of contents on the left side of the page.
-Set the value to right to move it to the right side.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
 </tr>
 </tbody>
 </table>
@@ -2588,7 +2561,7 @@ Empowers developers to easily create real, automated tests.
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 3. Applications</caption>
+<caption class="title">Table 2. Applications</caption>
 <colgroup>
 <col style="width:25%;">
 <col style="width:25%;">
@@ -2621,7 +2594,7 @@ Empowers developers to easily create real, automated tests.</p></td>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Table with cell containing AsciiDoc content</div>
+<div class="title">Table with column containing AsciiDoc content</div>
 <div class="content">
 <pre class="nowrap">[cols="2,2,5a"]
 |===
@@ -2724,11 +2697,10 @@ The Lumineers,Ho Hey,Folk Rock
 <div class="listingblock">
 <div class="title">Table from CSV data using shorthand (Asciidoctor only)</div>
 <div class="content">
-<pre class="nowrap">[options="header"]
-,===
+<pre class="nowrap">,===
 Artist,Track,Genre
+
 Baauer,Harlem Shake,Hip Hop
-The Lumineers,Ho Hey,Folk Rock
 ,===</pre>
 </div>
 </div>
@@ -2753,11 +2725,6 @@ The Lumineers,Ho Hey,Folk Rock
 <td class="tableblock halign-left valign-top"><p class="tableblock">Harlem Shake</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Lumineers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ho Hey</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Folk Rock</p></td>
-</tr>
 </tbody>
 </table>
 
@@ -2774,11 +2741,10 @@ include::customers.csv[]
 <div class="listingblock">
 <div class="title">Table from DSV data using shorthand (Asciidoctor only)</div>
 <div class="content">
-<pre class="nowrap">[options="header"]
-:===
+<pre class="nowrap">:===
 Artist:Track:Genre
-Baauer:Harlem Shake:Hip Hop
-The Lumineers:Ho Hey:Folk Rock
+
+Robyn:Indestructable:Dance
 :===</pre>
 </div>
 </div>
@@ -2799,14 +2765,9 @@ The Lumineers:Ho Hey:Folk Rock
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Baauer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Harlem Shake</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hip Hop</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The Lumineers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ho Hey</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Folk Rock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Robyn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Indestructable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dance</p></td>
 </tr>
 </tbody>
 </table>
@@ -3051,7 +3012,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 </div>
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 4. Built-in literal attributes</caption>
+<caption class="title">Table 3. Built-in literal attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3139,7 +3100,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 5. Built-in entity attributes</caption>
+<caption class="title">Table 4. Built-in entity attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3227,7 +3188,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 6. Built-in data attributes</caption>
+<caption class="title">Table 5. Built-in data attributes</caption>
 <colgroup>
 <col style="width:25%;">
 <col style="width:75%;"> 
@@ -3421,7 +3382,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 <h2 id="text-replacement"><a class="anchor" href="#text-replacement"></a>Text Replacement</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 7. Textual symbol replacements</caption>
+<caption class="title">Table 6. Textual symbol replacements</caption>
 <colgroup>
 <col style="width:28%;">
 <col style="width:14%;">
