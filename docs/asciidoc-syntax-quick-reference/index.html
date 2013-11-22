@@ -1438,7 +1438,8 @@ See you when you get back from &lt;&lt;document-b#section-b,Section B&gt;&gt;!</
 
 image::sunset.jpg[Sunset]
 
-.A sunset feast!
+[[img-sunset]]
+.A mountain sunset
 image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"]
 
 image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
@@ -1456,11 +1457,11 @@ image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
 <img src="/images/sunset.jpg" alt="Sunset">
 </div>
 </div>
-<div class="imageblock">
+<div id="img-sunset" class="imageblock">
 <div class="content">
 <a class="image" href="http://www.flickr.com/photos/javh/5448336655"><img src="/images/sunset.jpg" alt="Sunset" width="300" height="200"></a>
 </div>
-<div class="title">Figure 1. What a sunset!</div>
+<div class="title">A mountain sunset</div>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1498,15 +1499,13 @@ You should use the <code>imagesdir</code> attribute to avoid hard coding the sha
 <div class="listingblock">
 <div class="title">Image macro using positioning role</div>
 <div class="content">
-<pre class="nowrap">image:sunset.jpg[Sunset,150,150,role="right"]
-What a beautiful sunset!</pre>
+<pre class="nowrap">image:sunset.jpg[Sunset,150,150,role="right"] What a beautiful sunset!</pre>
 </div>
 </div>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p><span class="image right"><img src="/images/sunset.jpg" alt="Sunset" width="150" height="150"></span>
-What a beautiful sunset!</p>
+<p><span class="image right"><img src="/images/sunset.jpg" alt="Sunset" width="150" height="150"></span> What a beautiful sunset!</p>
 </div>
 </div>
 </div>
@@ -1525,7 +1524,7 @@ There are a variety of attributes available to <a href="http://asciidoctor.org/d
 <div class="listingblock">
 <div class="title">Inline</div>
 <div class="content">
-<pre class="nowrap">Click image:icons/play.png[] to get the party started.
+<pre class="nowrap">Click image:icons/play.png[Play, title="Play"] to get the party started.
 
 Click image:icons/pause.png[title="Pause"] when you need a break.</pre>
 </div>
@@ -1533,7 +1532,7 @@ Click image:icons/pause.png[title="Pause"] when you need a break.</pre>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p>Click <span class="image"><img src="/images/icons/play.png" alt="play"></span> to get the party started.</p>
+<p>Click <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> to get the party started.</p>
 </div>
 <div class="paragraph">
 <p>Click <span class="image"><img src="/images/icons/pause.png" alt="pause" title="Pause"></span> when you need a break.</p>
@@ -1987,8 +1986,8 @@ Here's a sample AsciiDoc document:
 
 [listing]
 ....
-= AsciiDoc Writer's Guide
-Dan Allen
+= Title of Document
+Doc Writer
 :toc:
 
 This guide provides...
@@ -2001,15 +2000,15 @@ The document header is useful, but not required.
 <div class="exampleblock result">
 <div class="content">
 <div class="exampleblock">
-<div class="title">Example 1. Sample document</div>
+<div class="title">Sample document</div>
 <div class="content">
 <div class="paragraph">
 <p>Here&#8217;s a sample AsciiDoc document:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">= AsciiDoc Writer's Guide
-Dan Allen
+<pre class="nowrap">= Title of Document
+Doc Writer
 :toc:
 
 This guide provides...</pre>
@@ -2098,17 +2097,17 @@ Asciidoctor will then emit HTML markup that selects an appropriate font characte
 <div class="listingblock">
 <div class="title">Blockquote</div>
 <div class="content">
-<pre class="nowrap">____
-A person who never made a mistake never tried anything new.
+<pre class="nowrap">[quote, Abraham Lincoln, Soldiers' National Cemetery Dedication]
+____
+Four score and seven years ago our fathers brought forth
+on this continent a new nation...
 ____
 
 [quote, Albert Einstein]
 A person who never made a mistake never tried anything new.
 
-[quote, Abraham Lincoln, Soldiers' National Cemetery Dedication]
 ____
-Four score and seven years ago our fathers brought forth
-on this continent a new nation...
+A person who never made a mistake never tried anything new.
 ____</pre>
 </div>
 </div>
@@ -2117,9 +2116,14 @@ ____</pre>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>A person who never made a mistake never tried anything new.</p>
+<p>Four score and seven years ago our fathers brought forth
+on this continent a new nation&#8230;</p>
 </div>
 </blockquote>
+<div class="attribution">
+<cite>Soldiers' National Cemetery Dedication</cite><br>
+&#8212; Abraham Lincoln
+</div>
 </div>
 <div class="quoteblock">
 <blockquote>
@@ -2132,14 +2136,9 @@ A person who never made a mistake never tried anything new.
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>Four score and seven years ago our fathers brought forth
-on this continent a new nation&#8230;</p>
+<p>A person who never made a mistake never tried anything new.</p>
 </div>
 </blockquote>
-<div class="attribution">
-<cite>Soldiers' National Cemetery Dedication</cite><br>
-&#8212; Abraham Lincoln
-</div>
 </div>
 </div>
 </div>
@@ -2426,7 +2425,7 @@ Notice it's a delimited block.
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 1. Table Title</caption>
+<caption class="title">Table Title</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -2540,7 +2539,7 @@ Empowers developers to easily create real, automated tests.
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 2. Applications</caption>
+<caption class="title">Applications</caption>
 <colgroup>
 <col style="width:25%;">
 <col style="width:25%;">
@@ -2818,9 +2817,7 @@ You <strong>must</strong> set the <code>experimental</code> attribute in the doc
 <div class="listingblock">
 <div class="title">Keyboard shortcuts (inline <code>kbd</code> macro)</div>
 <div class="content">
-<pre class="nowrap">[caption=""]
-.Common browser keyboard shortcuts
-|===
+<pre class="nowrap">|===
 |Shortcut |Purpose
 
 |kbd:[F11]
@@ -2840,7 +2837,6 @@ You <strong>must</strong> set the <code>experimental</code> attribute in the doc
 <div class="exampleblock result">
 <div class="content">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Common browser keyboard shortcuts</caption>
 <colgroup>
 <col style="width:50%;">
 <col style="width:50%;"> 
@@ -2991,7 +2987,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 </div>
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 3. Built-in literal attributes</caption>
+<caption class="title">Built-in literal attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3079,7 +3075,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 4. Built-in entity attributes</caption>
+<caption class="title">Built-in entity attributes</caption>
 <colgroup>
 <col style="width:33%;">
 <col style="width:33%;">
@@ -3167,7 +3163,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </table>
 
 <table class="tableblock frame-all grid-all" style="width:70%; ">
-<caption class="title">Table 5. Built-in data attributes</caption>
+<caption class="title">Built-in data attributes</caption>
 <colgroup>
 <col style="width:25%;">
 <col style="width:75%;"> 
@@ -3361,7 +3357,7 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 <h2 id="text-replacement"><a class="anchor" href="#text-replacement"></a>Text Replacement</h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Table 6. Textual symbol replacements</caption>
+<caption class="title">Textual symbol replacements</caption>
 <colgroup>
 <col style="width:28%;">
 <col style="width:14%;">
@@ -3652,7 +3648,7 @@ Another bold statement.footenoteref:[disclaimer]</pre>
 <p>A bold statement.<span class="footnote" id="_footnote_disclaimer">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
 </div>
 <div class="paragraph">
-<p>Another bold statement.<span class="footnoteref">[<a class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
+<p>Another bold statement.footenoteref:[disclaimer]</p>
 </div>
 <div id="footnotes">
 <hr>

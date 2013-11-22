@@ -8175,11 +8175,13 @@ Overridden by column and cell specifiers.</p></td>
 <h2 id="horizontal-rules"><a class="anchor" href="#horizontal-rules"></a>14. Horizontal Rules</h2>
 <div class="sectionbody">
 <div class="listingblock">
+<div class="title">Horizontal rule</div>
 <div class="content">
 <pre class="nowrap">'''</pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">Rendered horizontal rule</div>
 <div class="content">
 <hr>
 </div>
@@ -8204,6 +8206,15 @@ As with Markdown, whitespace between the characters is optional.</p>
 ***
 
 * * *</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered horizontal rules</div>
+<div class="content">
+<hr>
+<hr>
+<hr>
+<hr>
 </div>
 </div>
 <div class="paragraph">
@@ -8717,13 +8728,18 @@ image::sunset.jpg[Sunset, 300, 200, link=&quot;http://www.flickr.com/photos/javh
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Press the image:play.png[Play, title=&quot;Play&quot;] button.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Click image:icons/play.png[Play, title=&quot;Play&quot;] to get the party started.
+
+Click image:icons/pause.png[title=&quot;Pause&quot;] when you need a break.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Press the <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> button.</p>
+<p>Click <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> to get the party started.</p>
+</div>
+<div class="paragraph">
+<p>Click <span class="image"><img src="/images/icons/pause.png" alt="pause" title="Pause"></span> when you need a break.</p>
 </div>
 </div>
 </div>
@@ -8761,9 +8777,7 @@ You can reference images served from any URL (e.g., your blog, an image hosting 
 <div class="listingblock">
 <div class="title">Block image with a URL target</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">imagesdir: ./images
-
-image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8778,9 +8792,7 @@ image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
 <div class="listingblock">
 <div class="title">Inline image with a URL target</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">imagesdir: ./images
-
-You can find image:http://inkscape.org/doc/examples/tux.svg[Linux,25,35] everywhere these days.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">You can find image:http://inkscape.org/doc/examples/tux.svg[Linux,25,35] everywhere these days.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8895,13 +8907,16 @@ It&#8217;s far better to use CSS classes for these sorts of things, which map to
 <p>Here are the examples from above, now configured to use roles that map to CSS classes in the default Asciidoctor stylesheet:</p>
 </div>
 <div class="listingblock">
-<div class="title">Image macros using positioning roles</div>
+<div class="title">Block image macro using positioning roles</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.right.text-center]
-image::tiger.png[Tiger,200,200]
-
-image:linux.png[Linux,150,150,role=&quot;right&quot;]
-You can find Linux everywhere these days!</code></pre>
+image::tiger.png[Tiger,200,200]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Inline image macro using positioning role</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image:sunset.jpg[Sunset,150,150,role=&quot;right&quot;] What a beautiful sunset!</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9190,7 +9205,7 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">video::rPQoq7ThGAU[youtube, 640, 360]</pre>
+<pre class="nowrap">video::rPQoq7ThGAU[youtube]</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9198,7 +9213,7 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">video::67480300[vimeo, 400, 300]</pre>
+<pre class="nowrap">video::67480300[vimeo]</pre>
 </div>
 </div>
 </div>
@@ -9489,8 +9504,8 @@ Here's a sample AsciiDoc document:
 
 [listing]
 ....
-= AsciiDoc Writer's Guide
-Dan Allen
+= Title of Document
+Doc Writer
 :toc:
 
 This guide provides...
@@ -9510,8 +9525,8 @@ The document header is useful, but not required.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">= AsciiDoc Writer's Guide
-Dan Allen
+<pre class="nowrap">= Title of Document
+Doc Writer
 :toc:
 
 This guide provides...</pre>
@@ -9533,25 +9548,57 @@ This guide provides...</pre>
 <p>Block quotes have three parts (quoted text, attribution and source):</p>
 </div>
 <div class="listingblock">
+<div class="title">Anatomy of a basic quote</div>
 <div class="content">
-<pre class="nowrap">[quote,  attribution pa, citetitle pa]</pre>
+<pre class="nowrap">[quote, attribution pa, citetitle pa]
+Quote text here</pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Quote paragraph</div>
 <div class="content">
-<pre class="nowrap">[quote, attribution pa, citetitle pa]
-Quote here</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Albert Einstein]
+A person who never made a mistake never tried anything new.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered quote block</div>
+<div class="content">
+<div class="quoteblock">
+<blockquote>
+A person who never made a mistake never tried anything new.
+</blockquote>
+<div class="attribution">
+&#8212; Albert Einstein
+</div>
+</div>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Quote delimited block</div>
+<div class="title">Quote block</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
 ____
 I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical.
 ____</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered quote block</div>
+<div class="content">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.</p>
+</div>
+</blockquote>
+<div class="attribution">
+<cite>Papers of Thomas Jefferson: Volume 11</cite><br>
+&#8212; Thomas Jefferson
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -9582,6 +9629,8 @@ and as necessary in the political world as storms in the physical.&quot;
 <div class="paragraph">
 <p>Here&#8217;s the result of the abbreviated blockquote syntax:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
 <div class="quoteblock">
 <blockquote>
 I hold it that a little rebellion now and then is a good thing,
@@ -9590,6 +9639,8 @@ and as necessary in the political world as storms in the physical.
 <div class="attribution">
 <cite>Papers of Thomas Jefferson: Volume 11</cite><br>
 &#8212; Thomas Jefferson
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -9606,6 +9657,21 @@ When the President does it, that means that it's not illegal.
 &quot;&quot;</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="title">Rendered air quotes</div>
+<div class="content">
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>When the President does it, that means that it&#8217;s not illegal.</p>
+</div>
+</blockquote>
+<div class="attribution">
+&#8212; Richard M. Nixon
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>23.3. Markdown-style blockquotes</h3>
@@ -9619,8 +9685,21 @@ When the President does it, that means that it's not illegal.
 &gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="quoteblock">
+<blockquote>
 <div class="paragraph">
-<p>This markup renders the same as the example above.</p>
+<p>I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.</p>
+</div>
+</blockquote>
+<div class="attribution">
+<cite>Papers of Thomas Jefferson: Volume 11</cite><br>
+&#8212; Thomas Jefferson
+</div>
+</div>
+</div>
 </div>
 <div class="paragraph">
 <p>Like Markdown, Asciidoctor supports block content inside the blockquote, including nested blockquotes:</p>
@@ -9646,6 +9725,8 @@ When the President does it, that means that it's not illegal.
 <div class="paragraph">
 <p>Here&#8217;s how this conversation renders:</p>
 </div>
+<div class="exampleblock">
+<div class="content">
 <div class="quoteblock">
 <blockquote>
 <div class="quoteblock">
@@ -9686,9 +9767,11 @@ When the President does it, that means that it's not illegal.
 </blockquote>
 </div>
 <div class="paragraph">
-<p>Yep. AsciiDoc and Markdown share a lot of common syntax already. Just try it.</p>
+<p>Yep. AsciiDoc and Markdown share a lot of common syntax already.</p>
 </div>
 </blockquote>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -11452,21 +11535,48 @@ More examples pending.
 <h2 id="open-blocks"><a class="anchor" href="#open-blocks"></a>5. Open Blocks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The most versatile block of all is the open block.
-An open block can act as any other block, with the exception of <em>pass</em> and <em>table</em>.
+<p>The most versatile block of all is the open block.</p>
+</div>
+<div class="listingblock">
+<div class="title">Open</div>
+<div class="content">
+<pre class="nowrap">--
+An open block can be an anonymous container,
+or it can masquerade as any other block.
+--</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered open block</div>
+<div class="content">
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>An open block can be an anonymous container,
+or it can masquerade as any other block.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>An open block can act as any other block, with the exception of <em>pass</em> and <em>table</em>.
 Here&#8217;s an example of an open block acting as a sidebar:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[sidebar]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[sidebar]
 .Related information
 --
 This is aside text.
 
 It is used to present information related to the main content.
---</pre>
+--</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="title">Rendered open block masquerading as a sidebar</div>
+<div class="content">
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Related information</div>
@@ -11478,30 +11588,22 @@ It is used to present information related to the main content.
 </div>
 </div>
 </div>
+</div>
+</div>
+<div class="paragraph">
+<p>This is an open block acting as a source block.</p>
+</div>
 <div class="listingblock">
-<div class="title">Open</div>
 <div class="content">
-<pre class="nowrap">--
-An open block can be an anonymous container,
-or it can masquerade as any other block.
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source]
 --
-
-[source]
---
-puts "I'm a source block!"
---</pre>
+puts &quot;I'm a source block!&quot;
+--</code></pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">Rendered open block masquerading as a source block</div>
 <div class="content">
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p>An open block can be an anonymous container,
-or it can masquerade as any other block.</p>
-</div>
-</div>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">puts &quot;I'm a source block!&quot;</code></pre>
@@ -11555,8 +11657,27 @@ You <strong>must</strong> set the <code>experimental</code> attribute to enable 
 <div class="paragraph">
 <p>For example:</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+
+|kbd:[Ctrl+Shift+N]
+|New incognito window
+
+|kbd:[Ctrl + +]
+|Increase zoom
+|===</pre>
+</div>
+</div>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
-<caption class="title">Common browser keyboard shortcuts</caption>
+<caption class="title">Rendered common browser keyboard shortcuts</caption>
 <colgroup>
 <col style="width:50%;">
 <col style="width:50%;"> 
@@ -13574,7 +13695,7 @@ Another bold statement.footenoteref:[disclaimer]</pre>
 <p>A bold statement.<span class="footnote" id="_footnote_disclaimer">[<a id="_footnoteref_2" class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
 </div>
 <div class="paragraph">
-<p>Another bold statement.<span class="footnoteref">[<a class="footnote" href="#_footnote_2" title="View footnote.">2</a>]</span></p>
+<p>Another bold statement.footenoteref:[disclaimer]</p>
 </div>
 <div id="footnotes">
 <hr>
@@ -18688,7 +18809,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2013-11-20 23:27:56 UTC
+Last updated 2013-11-22 01:47:06 UTC
 </div>
 </div>
 </body>
