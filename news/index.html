@@ -1,4 +1,460 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/09/18/introducing-asciidoctor-js-live-preview/">Introducing Asciidoctor.js live preview in your browser</a></h1><h4><em>by</em> <span class="author">Guillaume Grossetie</span> - <time class="pubdate" datetime="2013-09-18T02:19:35-06:00">Wednesday, September 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/02/04/github-asciidoctor-0.1.4-upgrade-5-things-to-know/">5 things to know about the GitHub Asciidoctor upgrade</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2014-02-04T02:21:00-07:00">Tuesday, February 4, 2014</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>After <a href="https://github.com/github/markup/pull/201">much anticipation</a>, GitHub <span class="icon"><i class="icon-github"></i></span> recently upgraded <a href="http://asciidoctor.org">Asciidoctor</a> to the 0.1.4 release, thanks to <a href="https://github.com/bkeepers">@bkeepers</a>!</p>
+</div>
+<div class="paragraph">
+<p>Even bigger news than the upgrade, <strong>syntax highlighting is enabled in source listings!</strong>
+If you need to see it to believe it, I present you proof.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/syntax-highlight-sample-github.png" alt="syntax highlight sample github">
+</div>
+<div class="title">Figure 1. Syntax highlighting in an AsciiDoc source block on GitHub</div>
+</div>
+<div class="paragraph">
+<p>Since much has changed in Asciidoctor since version 0.1.0&#8212;the previous version deployed&#8212;we&#8217;ll look at 5 things to know about this upgrade to make the most of AsciiDoc rendering on GitHub.</p>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#1-source-code-syntax-highlighting">1. Source code syntax highlighting</a></li>
+<li><a href="#2-document-title-and-footnotes">2. Document title and footnotes</a></li>
+<li><a href="#3-swap-an-include-for-a-link">3. Swap an include for a link</a></li>
+<li><a href="#4-compliant-asciidoc-topped-with-syntactic-sugar">4. Compliant AsciiDoc topped with syntactic sugar</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#improved-compliance">Improved compliance</a></li>
+<li><a href="#sugar-on-top">Sugar on top</a></li>
+</ul>
+</li>
+<li><a href="#5-table-of-contents">5. Table of contents</a></li>
+<li><a href="#long-live-asciidoc-on-github">Long live AsciiDoc on GitHub!</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="1-source-code-syntax-highlighting"><a class="anchor" href="#1-source-code-syntax-highlighting"></a>1. Source code syntax highlighting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First and foremost, syntax highlighting of source code is finally enabled!
+The splashes of color in the source listings are added by the <a href="http://pygments.org">Pygments</a> syntax highlighter.</p>
+</div>
+<div class="paragraph">
+<p>You don&#8217;t have to do anything special to start using this feature.
+Just add a source block to your AsciiDoc file using:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>the listing block syntax</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[source,ruby]
+----
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  "I use #{item}!"
+} * "\n"
+----</pre>
+</div>
+</div>
+</li>
+<li>
+<p>the open block syntax</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[source,ruby]
+--
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  "I use #{item}!"
+} * "\n"
+--</pre>
+</div>
+</div>
+</li>
+<li>
+<p>or the fenced code block syntax (ala GitHub-flavored Markdown)</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">```ruby
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  "I use #{item}!"
+} * "\n"
+```</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how it looks when rendered:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="ruby language-ruby">puts [<span class="string"><span class="delimiter">'</span><span class="content">AsciiDoc</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">GitHub</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">AsciiDoc on GitHub</span><span class="delimiter">'</span></span>].map {|item|
+  <span class="string"><span class="delimiter">&quot;</span><span class="content">I use </span><span class="inline"><span class="inline-delimiter">#{</span>item<span class="inline-delimiter">}</span></span><span class="content">!</span><span class="delimiter">&quot;</span></span>
+} * <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can find the list of languages Pygments recognizes on the <a href="http://pygments.org/docs/lexers/#lexers-for-agile-languages">lexers page</a> in the Pygments documentation.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+WHOA!!!!! OMG!!! WOOOOOOOOOOOO AAAAAAAAAAAAA WOW OOOOOO YAAAAAAAAAAA!!!! <strong>DOUBLE RAINBOW!!!</strong>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="2-document-title-and-footnotes"><a class="anchor" href="#2-document-title-and-footnotes"></a>2. Document title and footnotes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You&#8217;ll be glad to know that GitHub now shows the document title (level 0 section title) as a &lt;h1&gt; heading, if your AsciiDoc file has one.
+Previously, the document title was ignored, requiring you to use a workaround if you wanted your rendered document to start with a heading (as most people do).</p>
+</div>
+<div class="paragraph">
+<p>What&#8217;s more, GitHub now renders footnotes where you might expect to find them, at the bottom of the document<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span>.
+Unfortunately, the link from the reference to the footnote does not work because the HTML sanitizer wipes out the id attributes on elements (which serve as the anchors).
+But hey, at least you know to look for the footnote.
+We&#8217;ll get those links fixed in the next upgrade.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="3-swap-an-include-for-a-link"><a class="anchor" href="#3-swap-an-include-for-a-link"></a>3. Swap an include for a link</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I would like to be able to tell you that include files now work, but that news will have to wait for another day once we&#8217;ve alleviated the security concerns.
+Until then, we at least have a solution that improves the reading experience.</p>
+</div>
+<div class="paragraph">
+<p>If you use the <code>include</code> directive in your AsciiDoc, Asciidoctor replaces the directive with a link to the target file, making it easy to navigate between files from the GitHub interface. You can see an example in <a href="https://github.com/opendevise/asciidoc-samples/blob/master/runtime.adoc">this sample AsciiDoc file</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="4-compliant-asciidoc-topped-with-syntactic-sugar"><a class="anchor" href="#4-compliant-asciidoc-topped-with-syntactic-sugar"></a>4. Compliant AsciiDoc topped with syntactic sugar</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The upgrade to Asciidoctor 0.1.4 brings all sorts of improvements to the AsciiDoc syntax.
+AsciiDoc documents are now be parsed as accurately, if not more so, than if AsciiDoc Python were used.
+That means that AsciiDoc on GitHub is the <em>real deal</em> for the first time since AsciiDoc Python was put out to pasture.</p>
+</div>
+<div class="sect2">
+<h3 id="improved-compliance"><a class="anchor" href="#improved-compliance"></a>Improved compliance</h3>
+<div class="paragraph">
+<p>Here are a couple of areas of the syntax that now get parsed correctly:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>attribute entries take affect at the location they are found in the document</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:speaker: John
+:subject: Sarah
+
+``Hi {subject}!'', shouted {speaker}.
+
+:speaker: Sarah
+:subject: John
+
+``Hey there, {subject}!'', replied {speaker}.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>attribute entries inside verbatim content are now properly ignored</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[verbatim]
+:name: not an attribute entry</pre>
+</div>
+</div>
+</li>
+<li>
+<p>explicit substitutions can be applied to any block using the subs attribute</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[source,xml,subs="attributes,verbatim"]
+--
+&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+    &lt;version&gt;{spring-version}&lt;/version&gt;
+    &lt;scope&gt;runtime&lt;/scope&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;
+--</pre>
+</div>
+</div>
+</li>
+<li>
+<p>an alternate context may be assigned to block-level content using the first positional attribute, as permitted by the AsciiDoc syntax</p>
+<div class="paragraph">
+<p>For example, an open block can masquerade as a source block, as shown here:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[source,ruby]
+--
+puts 'Hello, GitHub!'
+--</pre>
+</div>
+</div>
+</li>
+<li>
+<p>accurate parsing of lists, especially those with complex content</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sugar-on-top"><a class="anchor" href="#sugar-on-top"></a>Sugar on top</h3>
+<div class="paragraph">
+<p>On top of this compliant behavior is a sweet layer of Asciidoctor goodness.
+Such enhancements include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>shorthand id, role and options syntax for blocks</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[sidebar#audience.text-justify]
+--
+This content appears in a sidebar with id "audience" and justified text.
+--</pre>
+</div>
+</div>
+</li>
+<li>
+<p>parsing of select Markdown content, including headings and quote blocks</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">## Asciidoctor speaks Markdown
+
+&gt; Did you here that Asciidoctor understands how to parse basic Markdown?
+
+You bet I did!</pre>
+</div>
+</div>
+</li>
+<li>
+<p>implicit table header row and implicit content delimiter</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">,===
+Project, Language
+
+Asciidoctor, Ruby
+AsciidoctorJ, Java
+,===</pre>
+</div>
+</div>
+</li>
+<li>
+<p>no dropped lines for missing attributes</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Although {foobar} cannot be resolved, this line is rendered as is.</pre>
+</div>
+</div>
+</li>
+<li>
+<p>multiple headers in the document header, separated by semi-colons</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">= Document Title
+First Author; Second Author; Third Author</pre>
+</div>
+</div>
+</li>
+<li>
+<p>you can drop the quotes around values in block attributes if the value does not contain a comma or space</p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[cols=3,width=50%]</pre>
+</div>
+</div>
+</li>
+<li>
+<p>custom macros, including <code>menu</code>, <code>btn</code>, <code>kbd</code> and <code>icon</code></p>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:experimental:
+
+Open a new tab by pressing kbd:[Ctrl+T] or selecting menu:File[New].</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We could go on, but I&#8217;ll stop there and let you explore the many additional layers of sweetness that Asciidoctor adds.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Although the AsciiDoc syntax is correctly parsed and rendered, the output doesn&#8217;t always look as you might expect.
+The challenge we face is that the HTML output from Asciidoctor often relies on the stylesheet to complete the UI pattern being represented.
+However, those styles are not present on GitHub.</p>
+</div>
+<div class="paragraph">
+<p>What makes things even more difficult is that the content is passed through an HTML sanitizer that strips away most of the HTML attributes, so even if we could map to existing styles on GitHub, we can&#8217;t.
+In a future upgrade, we&#8217;ll work on finding a way to make these patterns, such as admonition blocks.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="5-table-of-contents"><a class="anchor" href="#5-table-of-contents"></a>5. Table of contents</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Last, but not least, you can now include a table of contents in the output to help navigate those larger documents.</p>
+</div>
+<div class="paragraph">
+<p>The first thing you need to do to enable the table of contents on GitHub is set the <code>toc</code> attribute in the document header.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">= Document Title
+<strong>:toc:</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, you need to set the <code>toc-placement</code> attribute to <code>preamble</code> or unset the attribute.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">= Document Title
+:toc:
+<strong>:toc-placement: preamble</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you choose <code>preamble</code>, the table of contents will be rendered under the preamble but before the first section.
+If you unset the attribute instead, you will need to place the table of contents in the document manually using the <code>toc::[]</code> block macro.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">= Document Title
+:toc:
+<strong>:toc-placement!:</strong>
+
+<strong>toc::[]</strong></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of how it renders:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/toc-sample-github.png" alt="toc sample github">
+</div>
+<div class="title">Figure 2. Table of contents rendered on GitHub</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll notice that superfluous bullets appear in the table of contents.
+This behavior can be explained by the fact that the necessary styles are missing, as described at the end of the last section.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="long-live-asciidoc-on-github"><a class="anchor" href="#long-live-asciidoc-on-github"></a>Long live AsciiDoc on GitHub!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The recent Asciidoctor upgrade on GitHub certainly brought a lot of improvements.
+You can see more examples showcasing what&#8217;s available in the <a href="https://github.com/opendevise/asciidoc-samples">asciidoc-samples</a> repository.</p>
+</div>
+<div class="paragraph">
+<p>If something still doesn&#8217;t rendering to your satisfaction, you have one more “escape route” option.
+There are three implicit attributes you can consult to conditionally include or exclude content shown in the table below.
+The first two are only assigned in the GitHub environment.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width:100%; ">
+<colgroup>
+<col style="width:50%;">
+<col style="width:50%;"> 
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Attribute value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">env</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">github</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">env-github</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty string</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctor-version</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0.1.4</p></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>If you want to render different content when on GitHub, simply use the <code>ifdef</code> and <code>ifndef</code> preprocessor directives:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">ifdef::env-github[]
+I'm on GitHub!
+endif::[]
+ifndef::env-github[]
+I'm clearly somewhere else right now.
+endif::[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you only want to render content when the version of Asciidoctor is upgraded, then use the <code>ifeval</code> preprocessor directive:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">ifeval::["{asciidoctor-version}" &gt; "0.1.4"]
+Asciidoctor has been upgraded again!
+GitHub is now running Asciidoctor {asciidoctor-version}.
+endif::[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That wraps up our brief overview of the new AsciiDoc experience on GitHub.
+AsciiDoc on GitHub is no second class citizen to Markdown anymore.
+It&#8217;s the real deal, syntax highlighting and all.</p>
+</div>
+<div class="paragraph">
+<p>I&#8217;d like to thank everyone who helped make this upgrade happen, including <a href="https://github.com/erebor">Ryan Waldron</a>, <a href="https://github.com/matthewmccullough">Matthew McCullough</a>, <a href="https://github.com/tlberglund">Tim Berglund</a>, <a href="https://github.com/gjtorikian">Garen Torikian</a>, GitHub Security and the man who <span class="icon"><i class="icon-truck"></i></span> it, <a href="https://github.com/bkeepers">Brandon Keepers</a>. Of course, I&#8217;d also like to thank everyone in the Asciidoctor community who advocates for AsciiDoc and helps make Asciidoctor awesome.</p>
+</div>
+<div class="paragraph">
+<p>Happy documenting!</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a> I&#8217;m a little footnote, short and stout.
+</div>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/github/">github</a>, <a href="/news/tag/tips/">tips</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/09/18/introducing-asciidoctor-js-live-preview/">Introducing Asciidoctor.js live preview in your browser</a></h1><h4><em>by</em> <span class="author">Guillaume Grossetie</span> - <time class="pubdate" datetime="2013-09-18T02:19:35-06:00">Wednesday, September 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>I&#8217;d like to introduce you to the easiest way to render any AsciiDoc file, local or remote, as HTML directly in your browser!</p>
@@ -3568,58 +4024,7 @@ All necessary dependencies should be pulled in via Maven.</p>
 <p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=6&amp;state=closed">0.1.3.1 milestone</a> in the issue tracker!</p>
 </div>
 </div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/06/12/asciidoctor-maven-plugin-0-1-3-released/">Asciidoctor Maven plugin 0.1.3 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-06-12T00:58:44-06:00">Wednesday, June 12, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>It has taken me a little while longer to get this release out the door than I would have hoped, but it&#8217;s here at last!
-I&#8217;m proud to release <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> version 0.1.3!
-Like the other versions before it, it is based on the same version of the <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a> project and the <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> projects&#8201;&#8212;&#8201;0.1.3.</p>
-</div>
-<div class="paragraph">
-<p>There&#8217;s very little new things for the end user in this release as the changes were mostly to use some of the new ease of use things from the Java Integration project.</p>
-</div>
-<div class="paragraph">
-<p>I would like to call out the help of <a href="https://github.com/bleathem">Brian Leathem</a> in this release in helping me go through a few things and pushing me to release it. Also, thank you to all the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/contributors">contributors</a> for helping out.</p>
-</div>
-<div class="paragraph">
-<p>Go forth and make great documentation once again!</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
-<caption class="title">Plugin artifact information</caption>
-<colgroup>
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;">
-<col style="width:25%;"> 
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Group ID</th>
-<th class="tableblock halign-left valign-top">Artifact ID</th>
-<th class="tableblock halign-left valign-top">Latest versions</th>
-<th class="tableblock halign-left valign-top">Download</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.3%7Cmaven-plugin">0.1.3</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.3/asciidoctor-maven-plugin-0.1.3.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.3/asciidoctor-maven-plugin-0.1.3.jar">jar</a></p></td>
-</tr>
-</tbody>
-</table>
-
-<div class="paragraph">
-<p>Upgrading to 0.1.3 (recommended) is simple.
-Just update the version in your Maven POM.
-All necessary dependencies should be pulled in via Maven.</p>
-</div>
-<div class="paragraph">
-<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=4&amp;state=closed">0.1.3 milestone</a> in the issue tracker!</p>
-</div>
-</div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="icon-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-step-backward"></i></a></li><li>1 of 4</li><li class="arrow"><a href="/news/2/"><i class="icon-step-forward"></i></a></li><li class="arrow"><a href="/news/4/"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2013.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label icon-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="icon-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="icon-step-backward"></i></a></li><li>1 of 4</li><li class="arrow"><a href="/news/2/"><i class="icon-step-forward"></i></a></li><li class="arrow"><a href="/news/4/"><i class="icon-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);

@@ -2,9 +2,512 @@
 <feed xml:lang="en-US" xmlns="http://www.w3.org/2005/Atom">
 <id>http://asciidoctor.org/</id>
 <title>Asciidoctor</title>
-<updated>2013-09-18T02:19:35-06:00</updated>
+<updated>2014-02-04T02:21:00-07:00</updated>
 <link href="http://asciidoctor.org/feed.atom" rel="self" type="application/atom+xml" />
 <link href="http://asciidoctor.org/" rel="alternate" type="text/html" />
+<entry>
+<id>http://asciidoctor.org/news/2014/02/04/github-asciidoctor-0.1.4-upgrade-5-things-to-know/</id>
+<title>5 things to know about the GitHub Asciidoctor upgrade</title>
+<updated>2014-02-04T02:21:00-07:00</updated>
+<published>2014-02-04T02:21:00-07:00</published>
+<link href="http://asciidoctor.org/news/2014/02/04/github-asciidoctor-0.1.4-upgrade-5-things-to-know/" rel="alternate" type="text/html" />
+<author>
+<name>Dan Allen</name>
+<uri>https://github.com/mojavelinux</uri>
+</author>
+<category scheme="http://asciidoctor.org/news/tags" term="github" />
+<category scheme="http://asciidoctor.org/news/tags" term="tips" />
+<summary>
+After much anticipation, GitHub  recently upgraded Asciidoctor to the 0.1.4 release, thanks to @bkeepers!
+
+
+Even bigger news than the upgrade, syntax highlighting is enabled in source listings!
+If you need to see it to believe it, I present you proof.
+
+
+
+
+
+Figure 1. Syntax highlighting in an AsciiDoc source block on GitHub
+
+
+Since much has changed in Asciidoctor since version 0.1.0&#8212;the previous version deployed&#8212;we&#8217;ll look at 5 things to know about this upgrade to make the most of AsciiDoc rendering on GitHub.
+
+
+
+Table of Contents
+
+1. Source code syntax highlighting
+2. Document title and footnotes
+3. Swap an include for a link
+4. Compliant AsciiDoc topped with syntactic sugar
+
+
+Improved......
+</summary>
+<content type="html">
+&lt;div id=&quot;preamble&quot;&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;After &lt;a href=&quot;https://github.com/github/markup/pull/201&quot;&gt;much anticipation&lt;/a&gt;, GitHub &lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;icon-github&quot;&gt;&lt;/i&gt;&lt;/span&gt; recently upgraded &lt;a href=&quot;http://asciidoctor.org&quot;&gt;Asciidoctor&lt;/a&gt; to the 0.1.4 release, thanks to &lt;a href=&quot;https://github.com/bkeepers&quot;&gt;@bkeepers&lt;/a&gt;!&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Even bigger news than the upgrade, &lt;strong&gt;syntax highlighting is enabled in source listings!&lt;/strong&gt;
+If you need to see it to believe it, I present you proof.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;http://asciidoctor.org/images/syntax-highlight-sample-github.png&quot; alt=&quot;syntax highlight sample github&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;title&quot;&gt;Figure 1. Syntax highlighting in an AsciiDoc source block on GitHub&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Since much has changed in Asciidoctor since version 0.1.0—the previous version deployed—we’ll look at 5 things to know about this upgrade to make the most of AsciiDoc rendering on GitHub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;toc&quot; class=&quot;toc&quot;&gt;
+&lt;div id=&quot;toctitle&quot;&gt;Table of Contents&lt;/div&gt;
+&lt;ul class=&quot;sectlevel1&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;#1-source-code-syntax-highlighting&quot;&gt;1. Source code syntax highlighting&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#2-document-title-and-footnotes&quot;&gt;2. Document title and footnotes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#3-swap-an-include-for-a-link&quot;&gt;3. Swap an include for a link&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#4-compliant-asciidoc-topped-with-syntactic-sugar&quot;&gt;4. Compliant AsciiDoc topped with syntactic sugar&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;ul class=&quot;sectlevel2&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;#improved-compliance&quot;&gt;Improved compliance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#sugar-on-top&quot;&gt;Sugar on top&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#5-table-of-contents&quot;&gt;5. Table of contents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;#long-live-asciidoc-on-github&quot;&gt;Long live AsciiDoc on GitHub!&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;1-source-code-syntax-highlighting&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#1-source-code-syntax-highlighting&quot;&gt;&lt;/a&gt;1. Source code syntax highlighting&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;First and foremost, syntax highlighting of source code is finally enabled!
+The splashes of color in the source listings are added by the &lt;a href=&quot;http://pygments.org&quot;&gt;Pygments&lt;/a&gt; syntax highlighter.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You don’t have to do anything special to start using this feature.
+Just add a source block to your AsciiDoc file using:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;olist loweralpha&quot;&gt;
+&lt;ol class=&quot;loweralpha&quot; type=&quot;a&quot;&gt;
+&lt;li&gt;
+&lt;p&gt;the listing block syntax&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[source,ruby]
+----
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  &quot;I use #{item}!&quot;
+} * &quot;\n&quot;
+----&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;the open block syntax&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[source,ruby]
+--
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  &quot;I use #{item}!&quot;
+} * &quot;\n&quot;
+--&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;or the fenced code block syntax (ala GitHub-flavored Markdown)&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;```ruby
+puts ['AsciiDoc', 'GitHub', 'AsciiDoc on GitHub'].map {|item|
+  &quot;I use #{item}!&quot;
+} * &quot;\n&quot;
+```&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s how it looks when rendered:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;listingblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;CodeRay nowrap&quot;&gt;&lt;code class=&quot;ruby language-ruby&quot;&gt;puts [&lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;AsciiDoc&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;GitHub&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;, &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;AsciiDoc on GitHub&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;'&lt;/span&gt;&lt;/span&gt;].map {|item|
+  &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;I use &lt;/span&gt;&lt;span class=&quot;inline&quot;&gt;&lt;span class=&quot;inline-delimiter&quot;&gt;#{&lt;/span&gt;item&lt;span class=&quot;inline-delimiter&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;content&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;
+} * &lt;span class=&quot;string&quot;&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;char&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;delimiter&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You can find the list of languages Pygments recognizes on the &lt;a href=&quot;http://pygments.org/docs/lexers/#lexers-for-agile-languages&quot;&gt;lexers page&lt;/a&gt; in the Pygments documentation.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;quoteblock&quot;&gt;
+&lt;blockquote&gt;
+WHOA!!!!! OMG!!! WOOOOOOOOOOOO AAAAAAAAAAAAA WOW OOOOOO YAAAAAAAAAAA!!!! &lt;strong&gt;DOUBLE RAINBOW!!!&lt;/strong&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;2-document-title-and-footnotes&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#2-document-title-and-footnotes&quot;&gt;&lt;/a&gt;2. Document title and footnotes&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You’ll be glad to know that GitHub now shows the document title (level 0 section title) as a &amp;lt;h1&amp;gt; heading, if your AsciiDoc file has one.
+Previously, the document title was ignored, requiring you to use a workaround if you wanted your rendered document to start with a heading (as most people do).&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What’s more, GitHub now renders footnotes where you might expect to find them, at the bottom of the document&lt;span class=&quot;footnote&quot;&gt;[&lt;a id=&quot;_footnoteref_1&quot; class=&quot;footnote&quot; href=&quot;#_footnote_1&quot; title=&quot;View footnote.&quot;&gt;1&lt;/a&gt;]&lt;/span&gt;.
+Unfortunately, the link from the reference to the footnote does not work because the HTML sanitizer wipes out the id attributes on elements (which serve as the anchors).
+But hey, at least you know to look for the footnote.
+We’ll get those links fixed in the next upgrade.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;3-swap-an-include-for-a-link&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#3-swap-an-include-for-a-link&quot;&gt;&lt;/a&gt;3. Swap an include for a link&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I would like to be able to tell you that include files now work, but that news will have to wait for another day once we’ve alleviated the security concerns.
+Until then, we at least have a solution that improves the reading experience.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you use the &lt;code&gt;include&lt;/code&gt; directive in your AsciiDoc, Asciidoctor replaces the directive with a link to the target file, making it easy to navigate between files from the GitHub interface. You can see an example in &lt;a href=&quot;https://github.com/opendevise/asciidoc-samples/blob/master/runtime.adoc&quot;&gt;this sample AsciiDoc file&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;4-compliant-asciidoc-topped-with-syntactic-sugar&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#4-compliant-asciidoc-topped-with-syntactic-sugar&quot;&gt;&lt;/a&gt;4. Compliant AsciiDoc topped with syntactic sugar&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The upgrade to Asciidoctor 0.1.4 brings all sorts of improvements to the AsciiDoc syntax.
+AsciiDoc documents are now be parsed as accurately, if not more so, than if AsciiDoc Python were used.
+That means that AsciiDoc on GitHub is the &lt;em&gt;real deal&lt;/em&gt; for the first time since AsciiDoc Python was put out to pasture.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;improved-compliance&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#improved-compliance&quot;&gt;&lt;/a&gt;Improved compliance&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here are a couple of areas of the syntax that now get parsed correctly:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;attribute entries take affect at the location they are found in the document&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;:speaker: John
+:subject: Sarah
+
+``Hi {subject}!'', shouted {speaker}.
+
+:speaker: Sarah
+:subject: John
+
+``Hey there, {subject}!'', replied {speaker}.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;attribute entries inside verbatim content are now properly ignored&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[verbatim]
+:name: not an attribute entry&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;explicit substitutions can be applied to any block using the subs attribute&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[source,xml,subs=&quot;attributes,verbatim&quot;]
+--
+&amp;lt;dependencies&amp;gt;
+  &amp;lt;dependency&amp;gt;
+    &amp;lt;groupId&amp;gt;org.springframework&amp;lt;/groupId&amp;gt;
+    &amp;lt;artifactId&amp;gt;spring-context&amp;lt;/artifactId&amp;gt;
+    &amp;lt;version&amp;gt;{spring-version}&amp;lt;/version&amp;gt;
+    &amp;lt;scope&amp;gt;runtime&amp;lt;/scope&amp;gt;
+  &amp;lt;/dependency&amp;gt;
+&amp;lt;/dependencies&amp;gt;
+--&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;an alternate context may be assigned to block-level content using the first positional attribute, as permitted by the AsciiDoc syntax&lt;/p&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;For example, an open block can masquerade as a source block, as shown here:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[source,ruby]
+--
+puts 'Hello, GitHub!'
+--&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;accurate parsing of lists, especially those with complex content&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect2&quot;&gt;
+&lt;h3 id=&quot;sugar-on-top&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#sugar-on-top&quot;&gt;&lt;/a&gt;Sugar on top&lt;/h3&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;On top of this compliant behavior is a sweet layer of Asciidoctor goodness.
+Such enhancements include:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;ulist&quot;&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;shorthand id, role and options syntax for blocks&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[sidebar#audience.text-justify]
+--
+This content appears in a sidebar with id &quot;audience&quot; and justified text.
+--&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;parsing of select Markdown content, including headings and quote blocks&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;## Asciidoctor speaks Markdown
+
+&amp;gt; Did you here that Asciidoctor understands how to parse basic Markdown?
+
+You bet I did!&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;implicit table header row and implicit content delimiter&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;,===
+Project, Language
+
+Asciidoctor, Ruby
+AsciidoctorJ, Java
+,===&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;no dropped lines for missing attributes&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;Although {foobar} cannot be resolved, this line is rendered as is.&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;multiple headers in the document header, separated by semi-colons&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;= Document Title
+First Author; Second Author; Third Author&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;you can drop the quotes around values in block attributes if the value does not contain a comma or space&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;[cols=3,width=50%]&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;custom macros, including &lt;code&gt;menu&lt;/code&gt;, &lt;code&gt;btn&lt;/code&gt;, &lt;code&gt;kbd&lt;/code&gt; and &lt;code&gt;icon&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;:experimental:
+
+Open a new tab by pressing kbd:[Ctrl+T] or selecting menu:File[New].&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;We could go on, but I’ll stop there and let you explore the many additional layers of sweetness that Asciidoctor adds.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;admonitionblock important&quot;&gt;
+&lt;table&gt;&lt;tr&gt;
+&lt;td class=&quot;icon&quot;&gt;
+&lt;i class=&quot;icon-important&quot; title=&quot;Important&quot;&gt;&lt;/i&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Although the AsciiDoc syntax is correctly parsed and rendered, the output doesn’t always look as you might expect.
+The challenge we face is that the HTML output from Asciidoctor often relies on the stylesheet to complete the UI pattern being represented.
+However, those styles are not present on GitHub.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;What makes things even more difficult is that the content is passed through an HTML sanitizer that strips away most of the HTML attributes, so even if we could map to existing styles on GitHub, we can’t.
+In a future upgrade, we’ll work on finding a way to make these patterns, such as admonition blocks.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;5-table-of-contents&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#5-table-of-contents&quot;&gt;&lt;/a&gt;5. Table of contents&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Last, but not least, you can now include a table of contents in the output to help navigate those larger documents.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The first thing you need to do to enable the table of contents on GitHub is set the &lt;code&gt;toc&lt;/code&gt; attribute in the document header.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;= Document Title
+&lt;strong&gt;:toc:&lt;/strong&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Next, you need to set the &lt;code&gt;toc-placement&lt;/code&gt; attribute to &lt;code&gt;preamble&lt;/code&gt; or unset the attribute.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;= Document Title
+:toc:
+&lt;strong&gt;:toc-placement: preamble&lt;/strong&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you choose &lt;code&gt;preamble&lt;/code&gt;, the table of contents will be rendered under the preamble but before the first section.
+If you unset the attribute instead, you will need to place the table of contents in the document manually using the &lt;code&gt;toc::[]&lt;/code&gt; block macro.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;= Document Title
+:toc:
+&lt;strong&gt;:toc-placement!:&lt;/strong&gt;
+
+&lt;strong&gt;toc::[]&lt;/strong&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Here’s an example of how it renders:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;imageblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;img src=&quot;http://asciidoctor.org/images/toc-sample-github.png&quot; alt=&quot;toc sample github&quot;&gt;
+&lt;/div&gt;
+&lt;div class=&quot;title&quot;&gt;Figure 2. Table of contents rendered on GitHub&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;You’ll notice that superfluous bullets appear in the table of contents.
+This behavior can be explained by the fact that the necessary styles are missing, as described at the end of the last section.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;sect1&quot;&gt;
+&lt;h2 id=&quot;long-live-asciidoc-on-github&quot;&gt;
+&lt;a class=&quot;anchor&quot; href=&quot;#long-live-asciidoc-on-github&quot;&gt;&lt;/a&gt;Long live AsciiDoc on GitHub!&lt;/h2&gt;
+&lt;div class=&quot;sectionbody&quot;&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;The recent Asciidoctor upgrade on GitHub certainly brought a lot of improvements.
+You can see more examples showcasing what’s available in the &lt;a href=&quot;https://github.com/opendevise/asciidoc-samples&quot;&gt;asciidoc-samples&lt;/a&gt; repository.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If something still doesn’t rendering to your satisfaction, you have one more “escape route” option.
+There are three implicit attributes you can consult to conditionally include or exclude content shown in the table below.
+The first two are only assigned in the GitHub environment.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table class=&quot;tableblock frame-all grid-all&quot; style=&quot;width:100%; &quot;&gt;
+&lt;colgroup&gt;
+&lt;col style=&quot;width:50%;&quot;&gt;
+&lt;col style=&quot;width:50%;&quot;&gt;
+&lt;/colgroup&gt;
+&lt;thead&gt;&lt;tr&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Attribute name&lt;/th&gt;
+&lt;th class=&quot;tableblock halign-left valign-top&quot;&gt;Attribute value&lt;/th&gt;
+&lt;/tr&gt;&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;env&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;github&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;env-github&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;&lt;em&gt;empty string&lt;/em&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;asciidoctor-version&lt;/p&gt;&lt;/td&gt;
+&lt;td class=&quot;tableblock halign-left valign-top&quot;&gt;&lt;p class=&quot;tableblock&quot;&gt;0.1.4&lt;/p&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you want to render different content when on GitHub, simply use the &lt;code&gt;ifdef&lt;/code&gt; and &lt;code&gt;ifndef&lt;/code&gt; preprocessor directives:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;ifdef::env-github[]
+I'm on GitHub!
+endif::[]
+ifndef::env-github[]
+I'm clearly somewhere else right now.
+endif::[]&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;If you only want to render content when the version of Asciidoctor is upgraded, then use the &lt;code&gt;ifeval&lt;/code&gt; preprocessor directive:&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;literalblock&quot;&gt;
+&lt;div class=&quot;content&quot;&gt;
+&lt;pre class=&quot;nowrap&quot;&gt;ifeval::[&quot;{asciidoctor-version}&quot; &amp;gt; &quot;0.1.4&quot;]
+Asciidoctor has been upgraded again!
+GitHub is now running Asciidoctor {asciidoctor-version}.
+endif::[]&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;That wraps up our brief overview of the new AsciiDoc experience on GitHub.
+AsciiDoc on GitHub is no second class citizen to Markdown anymore.
+It’s the real deal, syntax highlighting and all.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;I’d like to thank everyone who helped make this upgrade happen, including &lt;a href=&quot;https://github.com/erebor&quot;&gt;Ryan Waldron&lt;/a&gt;, &lt;a href=&quot;https://github.com/matthewmccullough&quot;&gt;Matthew McCullough&lt;/a&gt;, &lt;a href=&quot;https://github.com/tlberglund&quot;&gt;Tim Berglund&lt;/a&gt;, &lt;a href=&quot;https://github.com/gjtorikian&quot;&gt;Garen Torikian&lt;/a&gt;, GitHub Security and the man who &lt;span class=&quot;icon&quot;&gt;&lt;i class=&quot;icon-truck&quot;&gt;&lt;/i&gt;&lt;/span&gt; it, &lt;a href=&quot;https://github.com/bkeepers&quot;&gt;Brandon Keepers&lt;/a&gt;. Of course, I’d also like to thank everyone in the Asciidoctor community who advocates for AsciiDoc and helps make Asciidoctor awesome.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;paragraph&quot;&gt;
+&lt;p&gt;Happy documenting!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id=&quot;footnotes&quot;&gt;
+&lt;hr&gt;
+&lt;div class=&quot;footnote&quot; id=&quot;_footnote_1&quot;&gt;
+&lt;a href=&quot;#_footnoteref_1&quot;&gt;1&lt;/a&gt; I’m a little footnote, short and stout.
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+</entry>
 <entry>
 <id>http://asciidoctor.org/news/2013/09/18/introducing-asciidoctor-js-live-preview/</id>
 <title>Introducing Asciidoctor.js live preview in your browser</title>
