@@ -469,6 +469,61 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <p>No.
 Asciidoctor encodes in UTF-8 and has full Unicode support.</p>
 </li>
+<li>
+<p><em>How do I enable syntax highlighting in the deck.js backend?</em></p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
+<p>You begin by setting the <code>source-highlighter</code> attribute to one of the accepted values, such as <code>coderay</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:source-highlighter: coderay</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That only gets you half way, though.
+The problem is that Asciidoctor only performs syntax highlighting when the "base" backend attribute (i.e., basebackend attribute) is html.
+The basebackend attribute is determined by removing the trailing numbers from the backend name.
+For instance, html5 becomes html.
+However, deckjs becomes&#8230;deckjs.
+There in lies our problem (see <a href="https://github.com/asciidoctor/asciidoctor/issues/891">issue #891</a>).</p>
+</div>
+<div class="paragraph">
+<p>The workaround is to set the backend to html5 (or just don&#8217;t set it) and point the -T command argument to the <em class="file">haml/deckjs</em> folder under the <a href="https://github.com/asciidoctor/asciidoctor-backends">asciidoctor-backends</a> directory.
+For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -T /path/to/asciidoctor-backends/haml/deckjs deck.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice that the backend attribute <em>is not set</em>.
+The templates will be used in exactly the same way as if you had set the backend to <code>deckjs</code>, except this time syntax highlighting will work!</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you want to have CodeRay embed the styles inline instead of using CSS classes, set the following attribute in your AsciiDoc document:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:coderay-css: style</pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -547,7 +602,7 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-02-04 10:44:19 UTC
+Last updated 2014-02-10 08:05:02 UTC
 </div>
 </div>
 </body>
