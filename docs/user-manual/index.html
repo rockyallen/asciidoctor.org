@@ -1233,7 +1233,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 <p>The command will output to the file <code>sample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
-<p>You can render the file to DocBook 4.5 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12991,26 +12991,26 @@ v1.0, 2013-06-01
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay nowrap"><code class="xml language-xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
-<span class="doctype">&lt;!DOCTYPE book PUBLIC &quot;-//OASIS//DTD DocBook XML V4.5//EN&quot;
-    &quot;http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd&quot;&gt;</span>
-<span class="tag">&lt;book</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;bookinfo&gt;</span>
+<span class="tag">&lt;book</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://docbook.org/ns/docbook</span><span class="delimiter">&quot;</span></span>
+    <span class="attribute-name">xmlns:xlink</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/1999/xlink</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;info&gt;</span>
     <span class="tag">&lt;title&gt;</span>Document Title<span class="tag">&lt;/title&gt;</span>
     <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
     <span class="tag">&lt;author&gt;</span>
-      <span class="tag">&lt;firstname&gt;</span>Author<span class="tag">&lt;/firstname&gt;</span>
-      <span class="tag">&lt;surname&gt;</span>Name<span class="tag">&lt;/surname&gt;</span>
+      <span class="tag">&lt;personname&gt;</span>
+        <span class="tag">&lt;firstname&gt;</span>Author<span class="tag">&lt;/firstname&gt;</span>
+        <span class="tag">&lt;surname&gt;</span>Name<span class="tag">&lt;/surname&gt;</span>
+      <span class="tag">&lt;/personname&gt;</span>
     <span class="tag">&lt;/author&gt;</span>
     <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
     <span class="tag">&lt;revhistory&gt;</span>
       <span class="tag">&lt;revision&gt;</span>
-        <span class="tag">&lt;revnumber&gt;</span>1.0<span class="tag">&lt;/revnumber&gt;</span>
+        <span class="tag">&lt;revnumber&gt;</span>1.0<span class="tag">&lt;/revnumber&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
         <span class="tag">&lt;date&gt;</span>2013-06-01<span class="tag">&lt;/date&gt;</span>
         <span class="tag">&lt;authorinitials&gt;</span>AN<span class="tag">&lt;/authorinitials&gt;</span>
       <span class="tag">&lt;/revision&gt;</span>
     <span class="tag">&lt;/revhistory&gt;</span>
-<span class="tag">&lt;edition&gt;</span>1.0<span class="tag">&lt;/edition&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-  <span class="tag">&lt;/bookinfo&gt;</span>
+  <span class="tag">&lt;/info&gt;</span>
 <span class="tag">&lt;/book&gt;</span></code></pre>
 </div>
 </div>
@@ -13751,11 +13751,11 @@ If no backend is indicated, the processor uses the default backend (<code>html5<
 <p>HTML 5 markup styled with CSS3.
 Asciidoctor&#8217;s default backend.</p>
 </dd>
-<dt class="hdlist1"><code>docbook</code></dt>
+<dt class="hdlist1"><code>docbook45</code></dt>
 <dd>
 <p>DocBook XML 4.5 markup.</p>
 </dd>
-<dt class="hdlist1"><code>docbook5</code></dt>
+<dt class="hdlist1"><code>docbook</code></dt>
 <dd>
 <p>DocBook XML 5.0 markup.</p>
 </dd>
@@ -15780,7 +15780,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 <p>The command will output to the file <code>sample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
-<p>You can render the file to DocBook 4.5 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15820,7 +15820,7 @@ If you only want the inline markup to be processed, set the <code>:doctype</code
 </div>
 </div>
 <div class="paragraph">
-<p>As before, you can also produce DocBook 4.5:</p>
+<p>As before, you can also produce DocBook 5.0:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -18824,7 +18824,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-04-06 22:36:22 UTC
+Last updated 2014-04-06 22:40:17 UTC
 </div>
 </div>
 </body>
