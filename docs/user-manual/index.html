@@ -3547,39 +3547,36 @@ The river rages through the cavern, rattling its content...</pre>
 In Asciidoctor, sections are defined using section titles.</p>
 </div>
 <div class="paragraph">
-<p>A section title uses the same syntax as a document title (<code>=</code>), except the line may begin with two to six equal signs instead of just a single equal sign.
-The number of equal signs represents the nesting level (using a 0-based index).</p>
-</div>
-<div class="paragraph">
-<p>Here are the section levels permitted in a document shown below the document title:</p>
+<p>Section title levels are specified by two to six equal signs.
+The number of equal signs represents the nesting level (using a 0-based index) of the title.</p>
 </div>
 <div class="listingblock">
 <div class="title">Section titles available in an article doctype</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title (Level 0)
 
-== Level 1 Section
+== Level 1 Section Title
 
-=== Level 2 Section
+=== Level 2 Section Title
 
-==== Level 3 Section
+==== Level 3 Section Title
 
-===== Level 4 Section
+===== Level 4 Section Title
 
-====== Level 5 Section
+====== Level 5 Section Title
 
-== Another Level 1 Section</code></pre>
+== Another Level 1 Section Title</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="title">Render section titles</div>
 <div class="content">
 <h1 id="document-title-level-0" class="float">Document Title (Level 0)</h1>
-<h2 id="section-level-1" class="float">Section Level 1</h2>
-<h3 id="section-level-2" class="float">Section Level 2</h3>
-<h4 id="section-level-3" class="float">Section Level 3</h4>
-<h5 id="section-level-4" class="float">Section Level 4</h5>
-<h6 id="section-level-5" class="float">Section Level 5</h6>
+<h2 id="level-1-section-title" class="float">Level 1 Section Title</h2>
+<h3 id="level-2-section-title" class="float">Level 2 Section Title</h3>
+<h4 id="level-3-section-title" class="float">Level 3 Section Title</h4>
+<h5 id="level-4-section-title" class="float">Level 4 Section Title</h5>
+<h6 id="level-5-section-title" class="float">Level 5 Section Title</h6>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -3596,7 +3593,7 @@ That means the outline of a Markdown document will render just fine as an AsciiD
 </table>
 </div>
 <div class="paragraph">
-<p>Section levels cannot be chosen arbitrarily.
+<p>Section levels must be nested logically.
 There are two rules you must follow:</p>
 </div>
 <div class="olist arabic">
@@ -3605,7 +3602,7 @@ There are two rules you must follow:</p>
 <p>A document can only have multiple level 0 sections if the <code>doctype</code> is set to <code>book</code>.</p>
 </li>
 <li>
-<p>Section levels cannot be skipped when nesting sections</p>
+<p>Section levels cannot be skipped when nesting sections (i.e., you can&#8217;t nest a level 5 section directly in a level 3 section)</p>
 </li>
 </ol>
 </div>
@@ -3624,8 +3621,8 @@ There are two rules you must follow:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Content above the first section (after the document title) is part of the preamble.
-Once the first section is reached, content is associated with the section that proceeds it:</p>
+<p>Content above the first section title is designated as the document&#8217;s preamble.
+Once the first section title is reached, content is associated with the section it is nested in.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -18873,7 +18870,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-01 22:37:24 UTC
+Last updated 2014-07-01 23:01:38 UTC
 </div>
 </div>
 </body>
