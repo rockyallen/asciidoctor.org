@@ -660,16 +660,14 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#admonition">20. Admonition</a></li>
 <li><a href="#sidebar">21. Sidebar</a></li>
 <li><a href="#example">22. Example</a></li>
-<li><a href="#quote">23. Quote</a></li>
+<li><a href="#prose-excerpts-quotes-and-verses">23. Prose Excerpts, Quotes and Verses</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#quoted-paragraph">23.1. Quoted paragraph</a></li>
-<li><a href="#air-quotes">23.2. Air quotes</a></li>
-<li><a href="#markdown-style-blockquotes">23.3. Markdown-style blockquotes</a></li>
+<li><a href="#quote">23.1. Quote</a></li>
+<li><a href="#verse">23.2. Verse</a></li>
 </ul>
 </li>
-<li><a href="#verse">24. Verse</a></li>
-<li><a href="#comments">25. Comments</a></li>
+<li><a href="#comments">24. Comments</a></li>
 </ul>
 </li>
 <li><a href="#controlling-your-content">Controlling Your Content</a></li>
@@ -9323,37 +9321,50 @@ Pending
 <div class="paragraph">
 <p>There are certain statements that you may want to draw attention to by taking them out of the content&#8217;s flow and labeling them with a priority.
 These are called admonitions.
-Asciidoctor provides five built-in admonition style labels:</p>
+It&#8217;s rendered style is determined by the assigned label (i.e., value).
+Asciidoctor provides five admonition style labels:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Tip</p>
+<p><code>NOTE</code></p>
 </li>
 <li>
-<p>Note</p>
+<p><code>TIP</code></p>
 </li>
 <li>
-<p>Important</p>
+<p><code>IMPORTANT</code></p>
 </li>
 <li>
-<p>Warning</p>
+<p><code>CAUTION</code></p>
 </li>
 <li>
-<p>Caution</p>
+<p><code>WARNING</code></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>When you want to call attention to a single paragraph, simply start the first line of the paragraph with the label you want to use.
+<p>When you want to call attention to a single paragraph, start the first line of the paragraph with the label you want to use.
 The label must be uppercase and followed by a colon (<code>:</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Admonition paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
 Enter at your own risk.</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The label must be uppercase and immediately followed by a colon (<code>:</code>).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Separate the first line of the paragraph from the label by a single space.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
 <div class="title">Rendered admonition paragraph</div>
@@ -9374,7 +9385,7 @@ Enter at your own risk.
 </div>
 </div>
 <div class="paragraph">
-<p>When you want to apply an admonition label to complex content, set the label as a style attribute on a block.
+<p>When you want to apply an admonition to complex content, set the label as a style attribute on a block.
 As seen in the next example, admonition labels are commonly set on example blocks.
 This behavior is referred to as <strong>masquerading</strong>.
 The label must be uppercase when set as an attribute on a block.</p>
@@ -9382,9 +9393,9 @@ The label must be uppercase when set as an attribute on a block.</p>
 <div class="listingblock">
 <div class="title">Admonition block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[IMPORTANT]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[IMPORTANT] <i class="conum" data-value="1"></i><b>(1)</b>
 .Feeding the Werewolves
-====
+==== <i class="conum" data-value="2"></i><b>(2)</b>
 While werewolves are hardy community members, keep in mind the following dietary concerns:
 
 . They are allergic to cinnamon.
@@ -9392,6 +9403,18 @@ While werewolves are hardy community members, keep in mind the following dietary
 . Celery makes them sad.
 ====</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Set the label in an attribute list on a delimited block. The label must be uppercase.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Admonition styles are commonly set on example blocks. Example blocks are delimited by four equal signs (<code>====</code>).</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
 <div class="title">Rendered admonition block</div>
@@ -9464,16 +9487,32 @@ Enter at your own risk.
 <div class="sect1">
 <h2 id="sidebar"><a class="anchor" href="#sidebar"></a>21. Sidebar</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Use a sidebar for ancillary content that doesn&#8217;t fit into the flow of the document&#8217;s narrative.
+A sidebar can be titled and contain any type of content such as source code and images.</p>
+</div>
 <div class="listingblock">
 <div class="title">Sidebar</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.AsciiDoc history
-****
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.AsciiDoc history <i class="conum" data-value="1"></i><b>(1)</b>
+**** <i class="conum" data-value="2"></i><b>(2)</b>
 AsciiDoc was first released in Nov 2002 by Stuart Rackham.
 It was designed from the start to be a shorthand syntax
 for producing professional documents like DocBook and LaTeX.
 ****</code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A title is optional.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A sidebar is delimited by four asterisks (<code>****</code>).</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -9541,45 +9580,104 @@ This guide provides...</pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="quote"><a class="anchor" href="#quote"></a>23. Quote</h2>
+<h2 id="prose-excerpts-quotes-and-verses"><a class="anchor" href="#prose-excerpts-quotes-and-verses"></a>23. Prose Excerpts, Quotes and Verses</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Block quotes have three parts (quoted text, attribution and source):</p>
+<p>Prose excerpts, quotes and verses share the same syntax structure, including:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>style attribute, either <code>quote</code> or <code>verse</code></p>
+</li>
+<li>
+<p>name of who the content is attributed to</p>
+</li>
+<li>
+<p>biblographical information of the book, speech, play, poem, etc., where the content was drawn from</p>
+</li>
+<li>
+<p>excerpt text</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="quote"><a class="anchor" href="#quote"></a>23.1. Quote</h3>
+<div class="paragraph">
+<p>For content that doesn&#8217;t require the preservation of line breaks, set the <code>quote</code> attribute in the first position of the attribute list.
+Next, set the attribution and relevant citation information.
+However, these positional attributes are optional.</p>
 </div>
 <div class="listingblock">
 <div class="title">Anatomy of a basic quote</div>
 <div class="content">
-<pre class="nowrap">[quote, attribution pa, citetitle pa]
-Quote text here</pre>
+<pre class="nowrap">[quote, attribution, citation title and information]
+Quote or excerpt text</pre>
 </div>
+</div>
+<div class="paragraph">
+<p>If the quote is a single line or paragraph, you can place the attribute list directly on top of the text.</p>
 </div>
 <div class="listingblock">
 <div class="title">Quote paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Albert Einstein]
-A person who never made a mistake never tried anything new.</code></pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.After landing the cloaked Klingon bird of prey in Golden Gate park: <i class="conum" data-value="1"></i><b>(1)</b>
+[quote, Captain James T. Kirk, Star Trek IV: The Voyage Home]   <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
+Everybody remember where we parked. <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Mark lead-in text explaining the context or setting of the quote using a period (<code>.</code>). (optional)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>For content that doesn&#8217;t require the preservation of line breaks, set <code>quote</code> in the first position of the attribute list.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The second position contains who the excerpt is attributed to. (optional)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Enter additional citation information in the third position. (optional)</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Enter the excerpt or quote text on the line immediately following the attribute list.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered quote block</div>
+<div class="title">Rendered quote paragraph</div>
 <div class="content">
 <div class="quoteblock">
+<div class="title">After landing the cloaked Klingon bird of prey in Golden Gate park:</div>
 <blockquote>
-A person who never made a mistake never tried anything new.
+Everybody remember where we parked.
 </blockquote>
 <div class="attribution">
-&#8212; Albert Einstein
+<cite>Star Trek IV: The Voyage Home</cite><br>
+&#8212; Captain James T. Kirk
 </div>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>If the quote or excerpt is more than one paragraph, place the text between delimiter lines consisting of four underscores (<code>____</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Quote block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Monty Python and the Holy Grail]
 ____
-I hold it that a little rebellion now and then is a good thing,
-and as necessary in the political world as storms in the physical.
+Dennis: Come and see the violence inherent in the system. Help! Help! I'm being repressed!
+
+King Arthur: Bloody peasant!
+
+Dennis: Oh, what a giveaway! Did you hear that? Did you hear that, eh? That's what I'm on about! Did you see him repressing me? You saw him, Didn't you?
 ____</code></pre>
 </div>
 </div>
@@ -9589,22 +9687,26 @@ ____</code></pre>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>I hold it that a little rebellion now and then is a good thing,
-and as necessary in the political world as storms in the physical.</p>
+<p>Dennis: Come and see the violence inherent in the system. Help! Help! I&#8217;m being repressed!</p>
+</div>
+<div class="paragraph">
+<p>King Arthur: Bloody peasant!</p>
+</div>
+<div class="paragraph">
+<p>Dennis: Oh, what a giveaway! Did you hear that? Did you hear that, eh? That&#8217;s what I&#8217;m on about! Did you see him repressing me? You saw him, Didn&#8217;t you?</p>
 </div>
 </blockquote>
 <div class="attribution">
-<cite>Papers of Thomas Jefferson: Volume 11</cite><br>
-&#8212; Thomas Jefferson
+&#8212; Monty Python and the Holy Grail
 </div>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Asciidoctor also provides three alternative ways to markup quotes.</p>
+<p>Asciidoctor also provides three alternative ways to markup quotes and prose excerpts.</p>
 </div>
-<div class="sect2">
-<h3 id="quoted-paragraph"><a class="anchor" href="#quoted-paragraph"></a>23.1. Quoted paragraph</h3>
+<div class="sect3">
+<h4 id="quoted-paragraph"><a class="anchor" href="#quoted-paragraph"></a>23.1.1. Quoted paragraph</h4>
 <div class="paragraph">
 <p>You can turn a single paragraph into a blockquote by:</p>
 </div>
@@ -9643,8 +9745,8 @@ and as necessary in the political world as storms in the physical.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="air-quotes"><a class="anchor" href="#air-quotes"></a>23.2. Air quotes</h3>
+<div class="sect3">
+<h4 id="air-quotes"><a class="anchor" href="#air-quotes"></a>23.1.2. Air quotes</h4>
 <div class="paragraph">
 <p><a href="http://en.wikipedia.org/wiki/Air_quotes" target="_blank">Air quotes</a> are two double quotes on each line, emulating the gesture of making quote marks with two fingers on each hand.</p>
 </div>
@@ -9672,8 +9774,8 @@ When the President does it, that means that it's not illegal.
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>23.3. Markdown-style blockquotes</h3>
+<div class="sect3">
+<h4 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>23.1.3. Markdown-style blockquotes</h4>
 <div class="paragraph">
 <p>Asciidoctor supports Markdown-style blockquotes:</p>
 </div>
@@ -9774,35 +9876,74 @@ and as necessary in the political world as storms in the physical.</p>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="verse"><a class="anchor" href="#verse"></a>24. Verse</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="verse"><a class="anchor" href="#verse"></a>23.2. Verse</h3>
 <div class="paragraph">
-<p>A verse block preserves line breaks and styles any added author and title text.</p>
-</div>
-<div class="paragraph">
-<p>Verses are defined by the <code>verse</code> attribute or the <code><em>__</em></code> line delimiter.</p>
+<p>When you need to preserve indents and line breaks, use the <code>verse</code> style.
+Verses are defined by setting the <code>verse</code> attribute on a paragraph or an excerpt block delimited by four underscores (<code>____</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Verse paragraph</div>
 <div class="content">
-<pre class="nowrap">[verse, attribution pa, citetitle pa]
-Poetry here</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[verse, Carl Sandburg, two lines from the poem Fog]
+The fog comes
+on little cat feet.</code></pre>
 </div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered verse paragraph</div>
+<div class="content">
+<div class="verseblock">
+<pre class="content">The fog comes
+on little cat feet.</pre>
+<div class="attribution">
+<cite>two lines from the poem Fog</cite><br>
+&#8212; Carl Sandburg
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When the verse content includes blank or indented lines, enclose it in an excerpt block.</p>
 </div>
 <div class="listingblock">
 <div class="title">Verse delimited block</div>
 <div class="content">
-<pre class="nowrap">____
-Poetry here
+<pre class="nowrap">[verse, Carl Sandburg, Fog]
+____
+The fog comes
+on little cat feet.
+
+It sits looking
+over harbor and city
+on silent haunches
+and then moves on.
 ____</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered verse block</div>
+<div class="content">
+<div class="verseblock">
+<pre class="content">The fog comes
+on little cat feet.
+
+It sits looking
+over harbor and city
+on silent haunches
+and then moves on.</pre>
+<div class="attribution">
+<cite>Fog</cite><br>
+&#8212; Carl Sandburg
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="comments"><a class="anchor" href="#comments"></a>25. Comments</h2>
+<h2 id="comments"><a class="anchor" href="#comments"></a>24. Comments</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="title">Line</div>
@@ -18870,7 +19011,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-02 00:14:22 UTC
+Last updated 2014-07-03 00:06:00 UTC
 </div>
 </div>
 </body>
