@@ -9179,28 +9179,24 @@ For instance, you can offset the start time of playback using the <code>start</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">video::video_file.mp4[width=640, start=60, options=autoplay]</pre>
+<pre class="nowrap">video::video_file.mp4[width=640, start=60, end=140, options=autoplay]</pre>
 </div>
 </div>
 <div class="sect2">
 <h3 id="youtube-and-vimeo-videos"><a class="anchor" href="#youtube-and-vimeo-videos"></a>18.1. YouTube and Vimeo videos</h3>
 <div class="paragraph">
-<p>The <code>video::[]</code> macro supports videos from external video hosting services like YouTube and Vimeo.
+<p>The video macro supports videos from external video hosting services like YouTube and Vimeo.
 To use this feature, put the video ID in the macro target and the name of the hosting service in the first positional attribute.
-Asciidoctor will put the two together and generate the correct embed code to insert the video in the HTML output.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example that shows how to embed a YouTube video:</p>
+Asciidoctor will generate the correct embed code and insert the video in the HTML output.</p>
 </div>
 <div class="listingblock">
+<div class="title">Embedding a YouTube video</div>
 <div class="content">
 <pre class="nowrap">video::rPQoq7ThGAU[youtube]</pre>
 </div>
 </div>
-<div class="paragraph">
-<p>and one that shows how to embed a Vimeo video:</p>
-</div>
 <div class="listingblock">
+<div class="title">Embedding a Vimeo video</div>
 <div class="content">
 <pre class="nowrap">video::67480300[vimeo]</pre>
 </div>
@@ -9233,7 +9229,7 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>poster</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined URL or file of an image</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User defined URL or file of a video</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[poster="sunset.jpg"]</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -9254,6 +9250,18 @@ Asciidoctor will put the two together and generate the correct embed code to ins
 <td class="tableblock halign-left valign-top"><p class="tableblock">autoplay, loop, controls, nocontrols</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[options="loop"]</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The controls value is enabled by default</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>start</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User defined playback start time in seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[start=30]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>end</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User defined playback end time in seconds</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[end=90]</code></p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -12554,14 +12562,14 @@ $ gem install pygments.rb</pre>
 <h2 id="include-directive"><a class="anchor" href="#include-directive"></a>5. Include Directive</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>include</code> directive allows you to insert the content of a file directly into another file.
-The include directive resolves files relative to the current document instead of the root document.
+<p>The include directive allows you to insert the content of a file directly into another file.
+Files are resolved relative to the current document instead of the root document.
 This applies to include directives used inside a file which itself has been included.</p>
 </div>
 <div class="paragraph">
-<p>Note that only AsciiDoc files are preprocessed when included.
-Therefore, <code>include</code> or other preprocessor directives in non-AsciiDoc files will be treated simply as part of the text.
-Asciidoctor recognizes those files with the <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code> extensions as AsciiDoc files.</p>
+<p>Only AsciiDoc files are preprocessed when included.
+Asciidoctor recognizes those files with the <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code> extensions as AsciiDoc files.
+Therefore, include and other preprocessor directives in non-AsciiDoc file formats will be treated simply as part of the text.</p>
 </div>
 <div class="listingblock">
 <div class="title">Document parts</div>
@@ -12579,9 +12587,9 @@ include::example.adoc[]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Asciidoctor does not insert blank lines between adjacent include statements to keep the content separated.
-Be sure to add a blank line in the source document to avoid unexpected results, such as a section title being swallowed.
-Also, the relative indentation between the lines of source code <strong>is not affected</strong> unless you set the <a href="#normalizing-the-block-indentation"><code>indent</code> attribute</a>.</p>
+<p>Asciidoctor does not insert blank lines between adjacent include statements.
+Be sure to insert a blank line between include directives to avoid unexpected results, such as a section title getting appended to the end of a previous paragraph.
+Also, the relative indentation between the lines of source code <strong>is not affected</strong> unless you set the <a href="#normalizing-the-block-indentation">indent attribute</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="selecting-parts-of-a-document-to-include"><a class="anchor" href="#selecting-parts-of-a-document-to-include"></a>5.1. Selecting parts of a document to include</h3>
@@ -12589,10 +12597,8 @@ Also, the relative indentation between the lines of source code <strong>is not a
 <p>The include directive supports extracting portions of content from within a document.
 The content is specified either by user defined tags or a range of line numbers.</p>
 </div>
-<div class="openblock"><div class="title">Line ranges</div>
-<div class="content">
 <div class="paragraph">
-<p>The line range is assigned to the <code>lines</code> attribute as shown in the example below.</p>
+<p>The line range is assigned to the <code>lines</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12615,15 +12621,12 @@ The content is specified either by user defined tags or a range of line numbers.
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=12..-1]</code></pre>
 </div>
 </div>
-</div>
+<div class="paragraph">
+<p>Alternately, you can select tagged regions of content.
+This feature is activated using the <code>tags</code> attribute.</p>
 </div>
 <div class="paragraph">
-<div class="title">Tags</div>
-<p>As an alternative to selecting content to include by line ranges, you can grab tagged regions of content.
-This feature is activated using the <code>tags</code> attribute on the <code>include</code> directive.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example of an <code>include</code> that retrieves a tagged region from the target file:</p>
+<p>Here&#8217;s an example of an include that retrieves a tagged region from the target file.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12634,7 +12637,7 @@ include::example.groovy[tags=classdef]
 </div>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how the target file looks with the tagged region:</p>
+<p>Here&#8217;s how the target file looks with the tagged region.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12647,7 +12650,7 @@ class Bar {
 </div>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s the content retrieved by the <code>include</code> expanded within the rendered document:</p>
+<p>Here&#8217;s the content retrieved by the include expanded within the rendered document:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12660,8 +12663,9 @@ class Bar {
 </div>
 </div>
 <div class="paragraph">
-<p>The directive <code>tag::&lt;name&gt;[]</code> anywhere on the line identifies the start of a tagged region and the directive <code>end::&lt;name&gt;[]</code> anywhere on a subsequent line ends it, where <code>&lt;name&gt;</code> can be any word.
-These boundary lines do not get included, only the lines in between them.
+<p>When placed anywhere on a line, the directive <code>tag::&lt;name&gt;[]</code> identifies the start of a tagged region.
+The directive <code>end::&lt;name&gt;[]</code> anywhere on a subsequent line ends it.
+The tag&#8217;s name can be any word.
 In the example above, the tagged region directives are hidden behind a line comment so that they do not break the Groovy script.</p>
 </div>
 </div>
@@ -19026,7 +19030,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-12 00:01:15 UTC
+Last updated 2014-07-13 22:01:44 UTC
 </div>
 </div>
 </body>
