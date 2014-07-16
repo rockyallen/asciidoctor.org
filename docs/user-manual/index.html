@@ -5,7 +5,7 @@
 <meta name="generator" content="Asciidoctor 0.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="This guide describes the Asciidoctor attributes, values, and layout options available for producing a customized and polished document.">
-<meta name="keywords" content="AsciiDoc, Asciidoctor, syntax, reference, learn, how to, AsciiMath, LaTeXMath, MathJax">
+<meta name="keywords" content="AsciiDoc, Asciidoctor, syntax, reference, learn, how to, AsciiMath, LaTeXMath, MathJax, Pygments, CodeRay">
 <title>Asciidoctor User Manual</title>
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -795,7 +795,7 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#using-the-ruby-api-2">2.2. Using the Ruby API</a></li>
 <li><a href="#styling-the-html-with-css">2.3. Styling the HTML with CSS</a></li>
 <li><a href="#managing-images">2.4. Managing images</a></li>
-<li><a href="#coderay-and-pygments-stylesheets">2.5. CodeRay and Pygments stylesheets</a></li>
+<li><a href="#hl-css">2.5. CodeRay and Pygments stylesheets</a></li>
 </ul>
 </li>
 <li><a href="#docbook">3. DocBook</a></li>
@@ -1978,7 +1978,7 @@ For example, to include a table of contents in your document, you can turn on (i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:toc:</code></pre>
+<pre class="CodeRay nowrap"><code>:toc:</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1988,7 +1988,7 @@ If you wanted the table of contents to be placed on the right side of the docume
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:toc: right</code></pre>
+<pre class="CodeRay nowrap"><code>:toc: right</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2001,7 +2001,7 @@ Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:fedpkg: https://apps.fedoraproject.org/packages/asciidoc</code></pre>
+<pre class="CodeRay nowrap"><code>:fedpkg: https://apps.fedoraproject.org/packages/asciidoc</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2020,7 +2020,7 @@ Here&#8217;s the attribute in use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:imagesdir: ./images
+<pre class="CodeRay nowrap"><code>:imagesdir: ./images
 :iconsdir: ./icons
 :stylesdir: ./styles
 :scriptsdir: ./js</code></pre>
@@ -2219,7 +2219,7 @@ That name can only be used once in a document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[#goals]
+<pre class="CodeRay nowrap"><code>[#goals]
 * Goal 1
 * Goal 2</code></pre>
 </div>
@@ -2230,7 +2230,7 @@ You prepend the style <code>quote</code> to the <code>#</code> (<code>id</code>)
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote#think, Donald Trump]
+<pre class="CodeRay nowrap"><code>[quote#think, Donald Trump]
 ____
 As long as you're going to be thinking anyway, think big.
 ____</code></pre>
@@ -2296,14 +2296,14 @@ Section introduction pending
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.summary]
+<pre class="CodeRay nowrap"><code>[.summary]
 * Review 1
 * Review 2</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[role=&quot;summary&quot;]
+<pre class="CodeRay nowrap"><code>[role="summary"]
 * Review 1
 * Review 2</code></pre>
 </div>
@@ -2313,14 +2313,14 @@ Section introduction pending
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.summary.incremental]
+<pre class="CodeRay nowrap"><code>[.summary.incremental]
 * Review 1
 * Review 2</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[role=&quot;summary,incremental&quot;]
+<pre class="CodeRay nowrap"><code>[role="summary,incremental"]
 * Review 1
 * Review 2</code></pre>
 </div>
@@ -2359,7 +2359,7 @@ Section introduction pending
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[rolename]`escaped monospace text`</code></pre>
+<pre class="CodeRay nowrap"><code>[rolename]`escaped monospace text`</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2375,7 +2375,7 @@ Section introduction pending
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[#idname.rolename]`escaped monospace text`</code></pre>
+<pre class="CodeRay nowrap"><code>[#idname.rolename]`escaped monospace text`</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2554,7 +2554,7 @@ By default, missing references are left intact so it&#8217;s clear to the author
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Hello, {name}!</code></pre>
+<pre class="CodeRay nowrap"><code>Hello, {name}!</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2616,7 +2616,7 @@ By default, the line is dropped since the expression is a statement, not content
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">{set:name!}</code></pre>
+<pre class="CodeRay nowrap"><code>{set:name!}</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2734,7 +2734,7 @@ For example, in the <a href="/docs/install-and-use-asciidoclet/">Asciidoclet pro
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
+<pre class="CodeRay nowrap"><code>http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2845,7 +2845,7 @@ It is preceded by one equal sign followed by at least one space (<code>= </code>
 <div class="listingblock">
 <div class="title">Document with a title</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 
 This journey begins on a bleary Monday morning.</code></pre>
 </div>
@@ -2873,7 +2873,7 @@ The <code>doctitle</code> attribute can be referenced anywhere in a document and
 <div class="listingblock">
 <div class="title">Referencing the <code>doctitle</code> attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 
 {doctitle} begins on a bleary Monday morning.</code></pre>
 </div>
@@ -2910,7 +2910,7 @@ An optional email address can follow an author&#8217;s name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;
 
 This journey begins...
@@ -2998,7 +2998,7 @@ The author of the following document has two middle names.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Unbearable Lightness of Nomenclature
+<pre class="CodeRay nowrap"><code>= The Unbearable Lightness of Nomenclature
 Paul Henry_Bernard Shaw
 
 My first name is {firstname}.
@@ -3025,7 +3025,7 @@ My initials are {authorinitials}.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 :author: Kismet Rainbow Chameleon
 :email: kismet@asciidoctor.org
 
@@ -3058,7 +3058,7 @@ Multiple authors and their emails are separated by semicolons (<code>;</code>) w
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
 
 This journey begins...
@@ -3135,9 +3135,9 @@ When the <code>revnumber</code> or <code>revremark</code> attributes are set, bu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon &lt;kismet@asciidoctor.org&gt;
-v1.0, October 2, 2013: First incarnation   <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+v1.0, October 2, 2013: First incarnation <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 
 This journey begins...
 
@@ -3183,7 +3183,7 @@ The revision information attributes can also be explicitly set in the header.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon &lt;kismet@asciidoctor.org&gt;
 :revnumber: v1.0 <i class="conum" data-value="1"></i><b>(1)</b>
 :revdate: 10-02-2013
@@ -3256,7 +3256,7 @@ When rendered to HTML, the values of these attributes will correspond to tags co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
 :description: A story chronicling the inexplicable hazards and vicious beasts a + <i class="conum" data-value="1"></i><b>(1)</b>
 documentation team must surmount and vanquish on their journey to finding an +
@@ -3302,7 +3302,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
 :keywords: documentation, team, obstacles, journey, victory
 
@@ -3551,7 +3551,7 @@ The number of equal signs represents the nesting level (using a 0-based index) o
 <div class="listingblock">
 <div class="title">Section titles available in an article doctype</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title (Level 0)
+<pre class="CodeRay nowrap"><code>= Document Title (Level 0)
 
 == Level 1 Section Title
 
@@ -3609,7 +3609,7 @@ There are two rules you must follow:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 
 = Illegal Level 0 Section (violates rule #1)
 
@@ -3624,7 +3624,7 @@ Once the first section title is reached, content is associated with the section 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">== First Section
+<pre class="CodeRay nowrap"><code>== First Section
 
 Content of first section
 
@@ -3652,7 +3652,7 @@ You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:idprefix: -</code></pre>
+<pre class="CodeRay nowrap"><code>:idprefix: -</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3660,7 +3660,7 @@ You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:idprefix:</code></pre>
+<pre class="CodeRay nowrap"><code>:idprefix:</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3668,7 +3668,7 @@ You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:sectids!:</code></pre>
+<pre class="CodeRay nowrap"><code>:sectids!:</code></pre>
 </div>
 </div>
 </div>
@@ -3694,7 +3694,7 @@ You can enable section numbers using the <code>numbered</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:numbered:</code></pre>
+<pre class="CodeRay nowrap"><code>:numbered:</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3703,7 +3703,7 @@ When you want to turn off the numbering, add an exclamation point to the end of 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:numbered!:
+<pre class="CodeRay nowrap"><code>:numbered!:
 
 == Unnumbered Section</code></pre>
 </div>
@@ -3716,7 +3716,7 @@ When you want to turn off the numbering, add an exclamation point to the end of 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 
 :numbered!:
 
@@ -3740,7 +3740,7 @@ When you want to turn off the numbering, add an exclamation point to the end of 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Colophon Section
+<pre class="CodeRay nowrap"><code>Colophon Section
 
 Another Colophon Section
 
@@ -3772,7 +3772,7 @@ Nor will it be included in the ToC.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[discrete] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>[discrete] <i class="conum" data-value="1"></i><b>(1)</b>
 == Discrete Title for a Sidebar <i class="conum" data-value="2"></i><b>(2)</b>
 
 **** <i class="conum" data-value="3"></i><b>(3)</b>
@@ -3953,7 +3953,7 @@ The line must begin with a dot (<code>.</code>) and be followed immediately by t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.TODO list
+<pre class="CodeRay nowrap"><code>.TODO list
 - Learn the AsciiDoc syntax
 - Install Asciidoctor
 - Write my document</code></pre>
@@ -3983,9 +3983,9 @@ The line must begin with a dot (<code>.</code>) and be followed immediately by t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Gettysburg Address <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>.Gettysburg Address <i class="conum" data-value="1"></i><b>(1)</b>
 [[gettysburg]] <i class="conum" data-value="2"></i><b>(2)</b>
-[quote, Abraham Lincoln, Soldiers' National Cemetery Dedication]   <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b> <i class="conum" data-value="5"></i><b>(5)</b>
+[quote, Abraham Lincoln, Soldiers' National Cemetery Dedication] <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b> <i class="conum" data-value="5"></i><b>(5)</b>
 ____
 Four score and seven years ago our fathers brought forth
 on this continent a new nation...
@@ -4059,7 +4059,7 @@ The delimiters around the block determine the type of block, how the content is 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[listing]
+<pre class="CodeRay nowrap"><code>[listing]
 sudo yum install asciidoc</code></pre>
 </div>
 </div>
@@ -4068,7 +4068,7 @@ sudo yum install asciidoc</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote]
+<pre class="CodeRay nowrap"><code>[quote]
 Never do today what you can put off 'til tomorrow.</code></pre>
 </div>
 </div>
@@ -4292,7 +4292,7 @@ To start a new paragraph after another element, such as a section title or table
 <div class="listingblock">
 <div class="title">Two paragraphs in an AsciiDoc document</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This journey begins one late Monday afternoon in Antwerp.
+<pre class="CodeRay nowrap"><code>This journey begins one late Monday afternoon in Antwerp.
 Our team desperately needs coffee, but none of us dare open the office door.
 
 To leave means code dismemberment and certain death.</code></pre>
@@ -4323,7 +4323,7 @@ This results in a visible line break (e.g., <code>&lt;br&gt;</code>) between the
 <div class="listingblock">
 <div class="title">Line breaks preserved using the plus sign (<code>&#43;</code>)</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Rubies are red, +
+<pre class="CodeRay nowrap"><code>Rubies are red, +
 Topazes are blue.</code></pre>
 </div>
 </div>
@@ -4341,7 +4341,7 @@ Topazes are blue.</p>
 <div class="listingblock">
 <div class="title">Line breaks preserved throughtout the document using the <code>hardbreaks</code> attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Line Break Doc Title
+<pre class="CodeRay nowrap"><code>= Line Break Doc Title
 :hardbreaks:
 
 Rubies are red,
@@ -4448,7 +4448,7 @@ When you want to bold and italicize a letter or word, the bold markup must be th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">_To tame_ the wild wolpertingers we needed to build a *charm*.
+<pre class="CodeRay nowrap"><code>_To tame_ the wild wolpertingers we needed to build a *charm*.
 But **u**ltimate victory could only be won if we divined the *_true name_* of the _&#8239;_war_&#8239;_lock.</code></pre>
 </div>
 </div>
@@ -4496,7 +4496,7 @@ However, by creating a set of one or two backticks (<code>`</code>) and one or t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``What kind of charm?'' Lazarus asked. ``An odoriferous one or a mineral one?''
+<pre class="CodeRay nowrap"><code>``What kind of charm?'' Lazarus asked. ``An odoriferous one or a mineral one?''
 
 Kizmet shrugged. ``The note from Olaf's desk says `wormwood and licorice,' but these could be normal groceries for werewolves.''</code></pre>
 </div>
@@ -4588,7 +4588,7 @@ The size and precise placement of the text depends on the font and other stylesh
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``Well the H~2~O formula written on their whiteboard could be part of a shopping list, but I don't think the local bodega sells E=mc^2^,'' Lazarus replied.</code></pre>
+<pre class="CodeRay nowrap"><code>``Well the H~2~O formula written on their whiteboard could be part of a shopping list, but I don't think the local bodega sells E=mc^2^,'' Lazarus replied.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -4620,7 +4620,7 @@ A character contained within a string of characters must be enclosed in a double
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">``Wait!'' Indigo plucked a small vial from her desk's top drawer and held it toward us.
+<pre class="CodeRay nowrap"><code>``Wait!'' Indigo plucked a small vial from her desk's top drawer and held it toward us.
 The vial's label read ``++E=mc^2^++; +the scent of science+; +_smell like a genius_+.''</code></pre>
 </div>
 </div>
@@ -4653,7 +4653,7 @@ The first positional attribute is treated as a role, and you can assign it a cus
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Type the word [userinput]#asciidoctor# into the search bar.</code></pre>
+<pre class="CodeRay nowrap"><code>Type the word [userinput]#asciidoctor# into the search bar.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -4669,7 +4669,7 @@ The first positional attribute is treated as a role, and you can assign it a cus
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Do werewolves believe in [small]#small print#?
+<pre class="CodeRay nowrap"><code>Do werewolves believe in [small]#small print#?
 
 [big]##O##nce upon an infinite loop.</code></pre>
 </div>
@@ -4699,7 +4699,7 @@ Chances are, you&#8217;d mark list items using the same characters that Asciidoc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Edgar Allen Poe
+<pre class="CodeRay nowrap"><code>* Edgar Allen Poe
 * Sheri S. Tepper
 * Bill Bryson</code></pre>
 </div>
@@ -4745,7 +4745,7 @@ You can force two lists apart with a line comment (<code>\\</code>).
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Kizmet's Favorite Authors
+<pre class="CodeRay nowrap"><code>.Kizmet's Favorite Authors
 * Edgar Allen Poe
 * Sheri S. Tepper
 * Bill Bryson</code></pre>
@@ -4777,7 +4777,7 @@ That works too!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">- Edgar Allen Poe
+<pre class="CodeRay nowrap"><code>- Edgar Allen Poe
 - Sheri S. Tepper
 - Bill Bryson</code></pre>
 </div>
@@ -4796,7 +4796,7 @@ Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* Apples
+<pre class="CodeRay nowrap"><code>* Apples
 * Oranges
 
 //^
@@ -4814,7 +4814,7 @@ Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Possible DefOps manual locations
+<pre class="CodeRay nowrap"><code>.Possible DefOps manual locations
 * West wood maze
 ** Maze heart
 *** Reflection pool
@@ -4860,7 +4860,7 @@ Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* level 1
+<pre class="CodeRay nowrap"><code>* level 1
 ** level 2
 *** level 3
 **** level 4
@@ -4931,7 +4931,7 @@ For example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">* The header in AsciiDoc is optional, but if
+<pre class="CodeRay nowrap"><code>* The header in AsciiDoc is optional, but if
 it is used it must start with a document title.
 
 * Optional Author and Revision information
@@ -5296,7 +5296,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">1. Protons
+<pre class="CodeRay nowrap"><code>1. Protons
 2. Electrons
 3. Neutrons</code></pre>
 </div>
@@ -5306,7 +5306,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">. Protons
+<pre class="CodeRay nowrap"><code>. Protons
 . Electrons
 . Neutrons</code></pre>
 </div>
@@ -5336,7 +5336,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Parts of an atom
+<pre class="CodeRay nowrap"><code>.Parts of an atom
 . Protons
 . Electrons
 . Neutrons</code></pre>
@@ -5367,7 +5367,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">. Step 1
+<pre class="CodeRay nowrap"><code>. Step 1
 . Step 2
 .. Step 2a
 .. Step 2b
@@ -5662,7 +5662,7 @@ You can also set the starting number using the <code>start</code> attribute:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[&quot;lowerroman&quot;, start=5]
+<pre class="CodeRay nowrap"><code>["lowerroman", start=5]
 . Five
 . Six
 [loweralpha]
@@ -5745,7 +5745,7 @@ Each item in a labeled list consists of a term or phrase followed by:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">CPU:: The brain of the computer.
+<pre class="CodeRay nowrap"><code>CPU:: The brain of the computer.
 Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.
 Keyboard:: Used to enter text or control items on the screen.
@@ -5795,7 +5795,7 @@ Here&#8217;s a preview of how this list is rendered:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[horizontal]
+<pre class="CodeRay nowrap"><code>[horizontal]
 CPU:: The brain of the computer.
 Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.</code></pre>
@@ -5839,7 +5839,7 @@ For instance, we could rewrite the grocery list from above so that each aisle is
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Diary::
+<pre class="CodeRay nowrap"><code>Diary::
 * Milk
 * Eggs
 Bakery::
@@ -5894,7 +5894,7 @@ Produce::
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Diary::
+<pre class="CodeRay nowrap"><code>Diary::
 
   * Milk
   * Eggs
@@ -5917,7 +5917,7 @@ Asciidoctor works hard to infer the relationships between the items that are mos
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Operating Systems::
+<pre class="CodeRay nowrap"><code>Operating Systems::
   Linux:::
     . Fedora
       * Desktop
@@ -6098,7 +6098,7 @@ The simple table example below consists of two columns and three rows.</p>
 <div class="listingblock">
 <div class="title">Simple table</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|=== <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>|=== <i class="conum" data-value="1"></i><b>(1)</b>
 <i class="conum" data-value="2"></i><b>(2)</b>
 | Cell in column 1, row 1 | Cell in column 2, row 1  <i class="conum" data-value="3"></i><b>(3)</b>
 <i class="conum" data-value="4"></i><b>(4)</b>
@@ -6158,7 +6158,7 @@ The two examples below illustrate how leading and trailing spaces don&#8217;t ch
 <div class="listingblock">
 <div class="title">Cell content adjacent to the <code>|</code></div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+<pre class="CodeRay nowrap"><code>|===
 
 |Cell in column 1, row 1|Cell in column 2, row 1
 
@@ -6182,7 +6182,7 @@ The two examples below illustrate how leading and trailing spaces don&#8217;t ch
 <div class="listingblock">
 <div class="title">Cell content with varying leading and trailing spaces</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+<pre class="CodeRay nowrap"><code>|===
 
 | Cell in column 1, row 1        |          Cell in column 2, row 1
 
@@ -6223,7 +6223,7 @@ The cells in a row can be placed on:</p>
 <div class="listingblock">
 <div class="title">Cells on the same line</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+<pre class="CodeRay nowrap"><code>|===
 
 |Cell in column 1, row 1 |Cell in column 2, row 1 |Cell in column 3, row 1
 
@@ -6260,7 +6260,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 <div class="listingblock">
 <div class="title">Cells on consecutive, individual lines</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;3*&quot;] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>[cols="3*"] <i class="conum" data-value="1"></i><b>(1)</b>
 |===
 |Cell in column 1, row 1
 |Cell in column 2, row 1
@@ -6307,7 +6307,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 <div class="listingblock">
 <div class="title">Cells on the same line and individual lines</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;3*&quot;]
+<pre class="CodeRay nowrap"><code>[cols="3*"]
 |===
 |Cell in column 1, row 1 |Cell in column 2, row 1
 |Cell in column 3, row 1
@@ -6351,7 +6351,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+<pre class="CodeRay nowrap"><code>|===
 
 |Cell in column 1, row 1 |Cell in column 2, row 1
 
@@ -6381,7 +6381,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2*&quot;]
+<pre class="CodeRay nowrap"><code>[cols="2*"]
 |===
 
 |Cell in column 1, row 1
@@ -6422,7 +6422,7 @@ The number of entries in the list determines the number of columns.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;1,1,1,1&quot;]</code></pre>
+<pre class="CodeRay nowrap"><code>[cols="1,1,1,1"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -6430,7 +6430,7 @@ The number of entries in the list determines the number of columns.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;4*&quot;]</code></pre>
+<pre class="CodeRay nowrap"><code>[cols="4*"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -7379,7 +7379,7 @@ The <code>header</code> value is assigned by setting the <code>options</code> at
 <div class="listingblock">
 <div class="title">Table with the <code>header</code> value assigned to the <code>options</code> attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[cols=&quot;2*&quot;, options=&quot;header&quot;]
+<pre class="CodeRay nowrap"><code>[cols="2*", options="header"]
 |===
 |Name of Column 1
 |Name of Column 2
@@ -7439,7 +7439,7 @@ Asciidoctor 0.1.4 introduced the following conventions to determine when the fir
 <div class="listingblock">
 <div class="title">Table that has an implicit header row</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">|===
+<pre class="CodeRay nowrap"><code>|===
 |Name of Column 1 |Name of Column 2
 
 |Cell in column 1, row 1
@@ -7780,7 +7780,7 @@ Tables using these alternate data formats are structured and formatted exactly l
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[format=&quot;csv&quot;, options=&quot;header&quot;]
+<pre class="CodeRay nowrap"><code>[format="csv", options="header"]
 |===
 Artist,Track,Genre
 Baauer,Harlem Shake,Hip Hop
@@ -7821,7 +7821,7 @@ The Lumineers,Ho Hey,Folk Rock
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[format=&quot;dsv&quot;, options=&quot;header&quot;]
+<pre class="CodeRay nowrap"><code>[format="dsv", options="header"]
 |===
 Artist:Track:Genre
 Robyn:Indestructable:Dance
@@ -7866,7 +7866,7 @@ The first position of the table block delimiter (i.e., <code>|===</code>) can be
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">,===
+<pre class="CodeRay nowrap"><code>,===
 Artist,Track,Genre
 
 Baauer,Harlem Shake,Hip Hop
@@ -7901,7 +7901,7 @@ Baauer,Harlem Shake,Hip Hop
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:===
+<pre class="CodeRay nowrap"><code>:===
 Artist:Track:Genre
 
 Robyn:Indestructable:Dance
@@ -7936,7 +7936,7 @@ Robyn:Indestructable:Dance
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[format=&quot;csv&quot;, options=&quot;header&quot;]
+<pre class="CodeRay nowrap"><code>[format="csv", options="header"]
 |===
 include::tracks.csv[]
 |===</code></pre>
@@ -8363,7 +8363,7 @@ Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 :link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
 
 This URL has repeating underscores {link-with-underscores}.</code></pre>
@@ -8385,7 +8385,7 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
+<pre class="CodeRay nowrap"><code>This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8402,10 +8402,10 @@ Once you&#8217;ve set <code>linkattrs</code> in the header, you can then specify
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Asciidoctor Document Title
+<pre class="CodeRay nowrap"><code>= Asciidoctor Document Title
 :linkattrs:
 
-Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage, window=&quot;_blank&quot;].</code></pre>
+Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage, window="_blank"].</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8421,7 +8421,7 @@ Just end the link text with a caret (<code>^</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage^].</code></pre>
+<pre class="CodeRay nowrap"><code>Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage^].</code></pre>
 </div>
 </div>
 <div class="admonitionblock caution">
@@ -8441,7 +8441,7 @@ If you use the caret syntax more than once in a single paragraph, you may need t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel] or on the http://discuss.asciidoctor.org/[*mailing list*^, role=&quot;green&quot;].</code></pre>
+<pre class="CodeRay nowrap"><code>Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel] or on the http://discuss.asciidoctor.org/[*mailing list*^, role="green"].</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8471,7 +8471,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">link:editing-asciidoc-with-live-preview[Editing with Live Preview]</code></pre>
+<pre class="CodeRay nowrap"><code>link:editing-asciidoc-with-live-preview[Editing with Live Preview]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8479,7 +8479,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">link:editing-asciidoc-with-live-preview/#livereload[LiveReload]</code></pre>
+<pre class="CodeRay nowrap"><code>link:editing-asciidoc-with-live-preview/#livereload[LiveReload]</code></pre>
 </div>
 </div>
 </div>
@@ -8492,7 +8492,7 @@ You create a cross reference by enclosing the element&#8217;s ID in double angle
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</code></pre>
+<pre class="CodeRay nowrap"><code>The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8508,7 +8508,7 @@ If you want to customize the linked text, include it after the ID, separated by 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Learn how to &lt;&lt;target-window-and-role-attributes,use attributes within the +link+ macro&gt;&gt;.</code></pre>
+<pre class="CodeRay nowrap"><code>Learn how to &lt;&lt;target-window-and-role-attributes,use attributes within the +link+ macro&gt;&gt;.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8647,7 +8647,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::sunset.jpg[]</code></pre>
+<pre class="CodeRay nowrap"><code>image::sunset.jpg[]</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8664,7 +8664,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::sunset.jpg[Sunset]</code></pre>
+<pre class="CodeRay nowrap"><code>image::sunset.jpg[Sunset]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8672,9 +8672,9 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[[img-sunset]] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>[[img-sunset]] <i class="conum" data-value="1"></i><b>(1)</b>
 .A mountain sunset <i class="conum" data-value="2"></i><b>(2)</b>
-image::sunset.jpg[Sunset, 300, 200, link=&quot;http://www.flickr.com/photos/javh/5448336655&quot;]   <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+image::sunset.jpg[Sunset, 300, 200, link="http://www.flickr.com/photos/javh/5448336655"] <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b> <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -8717,9 +8717,9 @@ image::sunset.jpg[Sunset, 300, 200, link=&quot;http://www.flickr.com/photos/javh
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Click image:icons/play.png[Play, title=&quot;Play&quot;] to get the party started.
+<pre class="CodeRay nowrap"><code>Click image:icons/play.png[Play, title="Play"] to get the party started.
 
-Click image:icons/pause.png[title=&quot;Pause&quot;] when you need a break.</code></pre>
+Click image:icons/pause.png[title="Pause"] when you need a break.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8766,7 +8766,7 @@ You can reference images served from any URL (e.g., your blog, an image hosting 
 <div class="listingblock">
 <div class="title">Block image with a URL target</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
+<pre class="CodeRay nowrap"><code>image::http://inkscape.org/doc/examples/tux.svg[Tux,250,350]</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8781,7 +8781,7 @@ You can reference images served from any URL (e.g., your blog, an image hosting 
 <div class="listingblock">
 <div class="title">Inline image with a URL target</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">You can find image:http://inkscape.org/doc/examples/tux.svg[Linux,25,35] everywhere these days.</code></pre>
+<pre class="CodeRay nowrap"><code>You can find image:http://inkscape.org/doc/examples/tux.svg[Linux,25,35] everywhere these days.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -8809,7 +8809,7 @@ The value of <code>imagesdir</code> is ignored when the image target is a URI.
 <div class="listingblock">
 <div class="title">Using a URL as the base URL for images</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:imagesdir: http://inkscape.org/doc/examples
+<pre class="CodeRay nowrap"><code>:imagesdir: http://inkscape.org/doc/examples
 
 image::tux.svg[Tux,250,350]</code></pre>
 </div>
@@ -8870,7 +8870,7 @@ The image will also be positioned horizontally in the center of the image block.
 <div class="listingblock">
 <div class="title">A block image pulled to the right and centered within the block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image::tiger.png[Tiger,200,200,float=&quot;right&quot;,align=&quot;center&quot;]</code></pre>
+<pre class="CodeRay nowrap"><code>image::tiger.png[Tiger,200,200,float="right",align="center"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -8880,7 +8880,7 @@ The image will float into the upper-right corner of the paragraph text.</p>
 <div class="listingblock">
 <div class="title">An inline image pulled to the right of the paragraph text</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image:linux.png[Linux,150,150,float=&quot;right&quot;]
+<pre class="CodeRay nowrap"><code>image:linux.png[Linux,150,150,float="right"]
 You can find Linux everywhere these days!</code></pre>
 </div>
 </div>
@@ -8898,14 +8898,14 @@ It&#8217;s far better to use CSS classes for these sorts of things, which map to
 <div class="listingblock">
 <div class="title">Block image macro using positioning roles</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.right.text-center]
+<pre class="CodeRay nowrap"><code>[.right.text-center]
 image::tiger.png[Tiger,200,200]</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Inline image macro using positioning role</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image:sunset.jpg[Sunset,150,150,role=&quot;right&quot;] What a beautiful sunset!</code></pre>
+<pre class="CodeRay nowrap"><code>image:sunset.jpg[Sunset,150,150,role="right"] What a beautiful sunset!</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9002,7 +9002,7 @@ The image floats to the right and is framed to make it stand out more from the t
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">image:logo.png[role=&quot;related thumb right&quot;] Here's text that will wrap around the image to the left.</code></pre>
+<pre class="CodeRay nowrap"><code>image:logo.png[role="related thumb right"] Here's text that will wrap around the image to the left.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -9022,13 +9022,13 @@ That is provided using another role, <code>float-group</code>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.left]
+<pre class="CodeRay nowrap"><code>[.left]
 .Image A
 image::a.png[A,240,180]
 
 [.left]
 .Image B
-image::b.png[B,240,180,title=&quot;Image B&quot;]
+image::b.png[B,240,180,title="Image B"]
 
 Text below images.</code></pre>
 </div>
@@ -9040,7 +9040,7 @@ Here&#8217;s how it&#8217;s done:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[.float-group]
+<pre class="CodeRay nowrap"><code>[.float-group]
 --
 [.left]
 .Image A
@@ -9350,7 +9350,7 @@ The label must be uppercase and followed by a colon (<code>:</code>).</p>
 <div class="listingblock">
 <div class="title">Admonition paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+<pre class="CodeRay nowrap"><code>WARNING: Wolpertingers are known to nest in server racks. <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
 Enter at your own risk.</code></pre>
 </div>
 </div>
@@ -9393,7 +9393,7 @@ The label must be uppercase when set as an attribute on a block.</p>
 <div class="listingblock">
 <div class="title">Admonition block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[IMPORTANT] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>[IMPORTANT] <i class="conum" data-value="1"></i><b>(1)</b>
 .Feeding the Werewolves
 ==== <i class="conum" data-value="2"></i><b>(2)</b>
 While werewolves are hardy community members, keep in mind the following dietary concerns:
@@ -9457,7 +9457,7 @@ This is how the <code>WARNING</code> admonition paragraph renders when <code>ico
 <div class="listingblock">
 <div class="title">Admonition paragraph with <code>icons</code> set</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.
+<pre class="CodeRay nowrap"><code>WARNING: Wolpertingers are known to nest in server racks.
 Enter at your own risk.</code></pre>
 </div>
 </div>
@@ -9494,7 +9494,7 @@ A sidebar can be titled and contain any type of content such as source code and 
 <div class="listingblock">
 <div class="title">Sidebar</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.AsciiDoc history <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>.AsciiDoc history <i class="conum" data-value="1"></i><b>(1)</b>
 **** <i class="conum" data-value="2"></i><b>(2)</b>
 AsciiDoc was first released in Nov 2002 by Stuart Rackham.
 It was designed from the start to be a shorthand syntax
@@ -9621,8 +9621,8 @@ Quote or excerpt text</pre>
 <div class="listingblock">
 <div class="title">Quote paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.After landing the cloaked Klingon bird of prey in Golden Gate park: <i class="conum" data-value="1"></i><b>(1)</b>
-[quote, Captain James T. Kirk, Star Trek IV: The Voyage Home]   <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="CodeRay nowrap"><code>.After landing the cloaked Klingon bird of prey in Golden Gate park: <i class="conum" data-value="1"></i><b>(1)</b>
+[quote, Captain James T. Kirk, Star Trek IV: The Voyage Home] <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
 Everybody remember where we parked. <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
 </div>
@@ -9671,7 +9671,7 @@ Everybody remember where we parked.
 <div class="listingblock">
 <div class="title">Quote block</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Monty Python and the Holy Grail]
+<pre class="CodeRay nowrap"><code>[quote, Monty Python and the Holy Grail]
 ____
 Dennis: Come and see the violence inherent in the system. Help! Help! I'm being repressed!
 
@@ -9722,8 +9722,8 @@ ____</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&quot;I hold it that a little rebellion now and then is a good thing,
-and as necessary in the political world as storms in the physical.&quot;
+<pre class="CodeRay nowrap"><code>"I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical."
 -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
 </div>
 </div>
@@ -9752,10 +9752,10 @@ and as necessary in the political world as storms in the physical.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[, Richard M. Nixon]
-&quot;&quot;
+<pre class="CodeRay nowrap"><code>[, Richard M. Nixon]
+""
 When the President does it, that means that it's not illegal.
-&quot;&quot;</code></pre>
+""</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -9781,7 +9781,7 @@ When the President does it, that means that it's not illegal.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&gt; I hold it that a little rebellion now and then is a good thing,
+<pre class="CodeRay nowrap"><code>&gt; I hold it that a little rebellion now and then is a good thing,
 &gt; and as necessary in the political world as storms in the physical.
 &gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
 </div>
@@ -9885,7 +9885,7 @@ Verses are defined by setting the <code>verse</code> attribute on a paragraph or
 <div class="listingblock">
 <div class="title">Verse paragraph</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[verse, Carl Sandburg, two lines from the poem Fog]
+<pre class="CodeRay nowrap"><code>[verse, Carl Sandburg, two lines from the poem Fog]
 The fog comes
 on little cat feet.</code></pre>
 </div>
@@ -11069,12 +11069,12 @@ System.out.println("Hello *bold* text"). <i class="conum" data-value="2"></i><b>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:markup-in-source: verbatim,quotes
+<pre class="CodeRay nowrap"><code>:markup-in-source: verbatim,quotes
 
 [source,java]
-[subs=&quot;{markup-in-source}&quot;]
+[subs="{markup-in-source}"]
 ----
-System.out.println(&quot;Hello *bold* text&quot;).
+System.out.println("Hello *bold* text").
 ----</code></pre>
 </div>
 </div>
@@ -11099,7 +11099,7 @@ When your document is processed, the backslash is removed so it doesn&#8217;t di
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">\*Stars* will not be bold, but rather appear as *Stars*.
+<pre class="CodeRay nowrap"><code>\*Stars* will not be bold, but rather appear as *Stars*.
 
 \&amp;sect; will not be replaced with the &amp;sect; symbol.
 
@@ -11263,7 +11263,7 @@ The content in listing blocks is only subject to <a href="#special-characters">s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[listing]
+<pre class="CodeRay nowrap"><code>[listing]
 This is an example of a paragraph styled with +listing+.
 Notice that the monospace markup is preserved in the output.</code></pre>
 </div>
@@ -11284,7 +11284,7 @@ Notice that the monospace markup is preserved in the output.</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">----
+<pre class="CodeRay nowrap"><code>----
 This is an example of a _listing block_.
 The content inside is rendered as &lt;pre&gt; text.
 ----</code></pre>
@@ -11326,9 +11326,9 @@ The example below shows a listing block with <code>source</code> and the languag
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source,xml]
-&lt;meta name=&quot;viewport&quot;
-  content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code></pre>
+<pre class="CodeRay nowrap"><code>[source,xml]
+&lt;meta name="viewport"
+  content="width=device-width, initial-scale=1.0"&gt;</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -11402,7 +11402,7 @@ This prevents horizontal scrolling which some users considered a greater readabi
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source, java, options=&quot;nowrap&quot;]
+<pre class="CodeRay nowrap"><code>[source, java, options="nowrap"]
 ----
 public class ApplicationConfigurationProvider extends HttpConfigurationProvider
 {
@@ -11411,9 +11411,9 @@ public class ApplicationConfigurationProvider extends HttpConfigurationProvider
    {
       return ConfigurationBuilder.begin()
                .addRule()
-               .when(Direction.isInbound().and(Path.matches(&quot;/{path}&quot;)))
-               .perform(Log.message(Level.INFO, &quot;Client requested path: {path}&quot;))
-               .where(&quot;path&quot;).matches(&quot;.*&quot;);
+               .when(Direction.isInbound().and(Path.matches("/{path}")))
+               .perform(Log.message(Level.INFO, "Client requested path: {path}"))
+               .where("path").matches(".*");
    }
 }
 ----</code></pre>
@@ -11428,7 +11428,7 @@ This class changes the CSS to <code>white-space: pre</code> and <code>word-wrap:
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:prewrap:</code></pre>
+<pre class="CodeRay nowrap"><code>:prewrap:</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -11503,7 +11503,7 @@ You can include a comma-seperated list of substitutions prior to the passthrough
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The markup pass:[&lt;u&gt;underline me&lt;/u&gt;] renders as underlined text.</code></pre>
+<pre class="CodeRay nowrap"><code>The markup pass:[&lt;u&gt;underline me&lt;/u&gt;] renders as underlined text.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -11565,7 +11565,7 @@ To exclude content from substitutions, enclose it in triple pluses (<code>+++</c
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The markup +++&lt;u&gt;underline me&lt;/u&gt;+++ renders as underlined text.</code></pre>
+<pre class="CodeRay nowrap"><code>The markup +++&lt;u&gt;underline me&lt;/u&gt;+++ renders as underlined text.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -11587,7 +11587,7 @@ Passthrough content is enclosed by double dollar signs (<code>$$</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">$$*Stars*$$ will not be bold.</code></pre>
+<pre class="CodeRay nowrap"><code>$$*Stars*$$ will not be bold.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -11611,7 +11611,7 @@ Passthrough content is enclosed by double dollar signs (<code>$$</code>).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This java code: `System.out.println(&quot;No *bold* here&quot;);` will appear in a monospace font but without any other text formatting.</code></pre>
+<pre class="CodeRay nowrap"><code>This java code: `System.out.println("No *bold* here");` will appear in a monospace font but without any other text formatting.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -11642,9 +11642,9 @@ Starting with Asciidoctor 1.5.0, no substitutions are applied to a passthrough b
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">++++
-&lt;video poster=&quot;images/movie-reel.png&quot;&gt;
-  &lt;source src=&quot;videos/writing-zen.webm&quot; type=&quot;video/webm&quot;&gt;
+<pre class="CodeRay nowrap"><code>++++
+&lt;video poster="images/movie-reel.png"&gt;
+  &lt;source src="videos/writing-zen.webm" type="video/webm"&gt;
 &lt;/video&gt;
 ++++</code></pre>
 </div>
@@ -11686,7 +11686,7 @@ Here&#8217;s an example of an open block acting as a sidebar:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[sidebar]
+<pre class="CodeRay nowrap"><code>[sidebar]
 .Related information
 --
 This is aside text.
@@ -11716,9 +11716,9 @@ It is used to present information related to the main content.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source]
+<pre class="CodeRay nowrap"><code>[source]
 --
-puts &quot;I'm a source block!&quot;
+puts "I'm a source block!"
 --</code></pre>
 </div>
 </div>
@@ -11727,7 +11727,7 @@ puts &quot;I'm a source block!&quot;
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">puts &quot;I'm a source block!&quot;</code></pre>
+<pre class="CodeRay nowrap"><code>puts "I'm a source block!"</code></pre>
 </div>
 </div>
 </div>
@@ -11923,7 +11923,7 @@ Asciidoctor will then emit HTML markup that selects an appropriate font characte
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 :icons: font
 
 NOTE: Asciidoctor supports font-based admonition icons, powered by Font Awesome!</code></pre>
@@ -11995,7 +11995,7 @@ The default stylesheet (or any stylesheet produced by the <a href="http://github
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:tags[] ruby, asciidoctor</code></pre>
+<pre class="CodeRay nowrap"><code>icon:tags[] ruby, asciidoctor</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12019,7 +12019,7 @@ The default stylesheet (or any stylesheet produced by the <a href="http://github
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:tags[role=&quot;blue&quot;] ruby, asciidoctor</code></pre>
+<pre class="CodeRay nowrap"><code>icon:tags[role="blue"] ruby, asciidoctor</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12092,7 +12092,7 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:heart[2x]</code></pre>
+<pre class="CodeRay nowrap"><code>icon:heart[2x]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12100,7 +12100,7 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:heart[size=2x]</code></pre>
+<pre class="CodeRay nowrap"><code>icon:heart[size=2x]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12119,7 +12119,7 @@ Here&#8217;s how it renders in the HTML backend when the <code>icons</code> attr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:shield[rotate=90, flip=vertical]</code></pre>
+<pre class="CodeRay nowrap"><code>icon:shield[rotate=90, flip=vertical]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12169,7 +12169,7 @@ This markup is subject to change. In particular, the <code>&lt;i&gt;</code> elem
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">icon:download[link=&quot;http://rubygems.org/downloads/asciidoctor-0.1.3.gem&quot;]</code></pre>
+<pre class="CodeRay nowrap"><code>icon:download[link="http://rubygems.org/downloads/asciidoctor-0.1.3.gem"]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12246,7 +12246,7 @@ Asciidoctor will recognize the line comments characters in front of a callout nu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">----
+<pre class="CodeRay nowrap"><code>----
 line of code  <i class="conum" data-value="1"></i><b>(1)</b>
 line of code  <i class="conum" data-value="2"></i><b>(2)</b>
 line of code  <i class="conum" data-value="3"></i><b>(3)</b>
@@ -12310,7 +12310,7 @@ To use callouts in XML, you must place the callout&#8217;s angled brackets aroun
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source,xml]
+<pre class="CodeRay nowrap"><code>[source,xml]
 ----
 &lt;section&gt;
   &lt;title&gt;Section Title&lt;/title&gt; &lt;!--1--&gt;
@@ -12353,7 +12353,7 @@ Now both you and the reader can copy and paste XML source code containing callou
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 :icons: font <i class="conum" data-value="1"></i><b>(1)</b>
 
 NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
@@ -12435,7 +12435,7 @@ Pending
 </table>
 
 <div class="paragraph">
-<p>Once you&#8217;ve set the attribute and library value, set the block style to source and specify the source language in the second attribute position.</p>
+<p>Once you&#8217;ve set the attribute and library, assign <code>source</code> to the block and specify the source language in the second attribute position.</p>
 </div>
 <div class="literalblock">
 <div class="title">Example</div>
@@ -12535,27 +12535,230 @@ Syntax highlighting is not disabled if an explicit <code>subs</code> attribute i
 </table>
 </div>
 <div class="sect3">
-<h4 id="pygments-installation"><a class="anchor" href="#pygments-installation"></a>4.1.1. Pygments installation</h4>
+<h4 id="pygments"><a class="anchor" href="#pygments"></a>4.1.1. Pygments</h4>
 <div class="paragraph">
-<p>The most popular source code highlighter in the AsciiDoc world, perhaps even the whole world, is <a href="http://pygments.org">Pygments</a>.</p>
+<p><a href="http://pygments.org">Pygments</a> is a popular syntax highlighter that supports a broad range of <a href="http://pygments.org/languages/">programming</a>.</p>
 </div>
 <div class="paragraph">
-<p>In order to use Pygments with Asciidoctor, you need to install Pygments (and Python, if you don&#8217;t have it yet).
-You then need to install the pygments.rb RubyGem.</p>
+<p>In order to use Pygments with Asciidoctor, you need Python, pygments.py, and the <a href="https://rubygems.org/gems/pygments.rb">pygments.rb RubyGem</a>.</p>
 </div>
-<div class="literalblock">
+<div class="listingblock">
+<div class="title">Installing Pygments and the Pygments RubyGem via the CLI</div>
 <div class="content">
-<pre class="nowrap">$ "`\which apt-get || \which yum || \which brew`" install pygments
-$ gem install pygments.rb</pre>
+<pre class="CodeRay nowrap"><code class="console language-console">$ &quot;`\which apt-get || \which yum || \which brew`&quot; install pygments <i class="conum" data-value="1"></i><b>(1)</b>
+$ gem install pygments.rb <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Install the python implementation of Pygments using your package manager.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Install the Pygments RubyGem.</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>To activate it in Asciidoctor, assign the value <code>pygments</code> to the <code>source-highlighter</code> attribute in your document&#8217;s header.</p>
+<p>Once you&#8217;ve installed the RubyGem, assign <code>pygments</code> to the <code>source-highlighter</code> attribute in your document&#8217;s header.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">:source-highlighter: pygments</pre>
+<pre class="CodeRay nowrap"><code>:source-highlighter: pygments</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>You can further customize the source block output with additional Pygments attributes.</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+pygments-style
+</td>
+<td class="hdlist2">
+<p>Sets the name of the color theme Pygments uses. Default: <code>pastie</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+pygments-css
+</td>
+<td class="hdlist2">
+<p>Controls what method is used for applying CSS to the tokens. Can be <code>class</code> or <code>style</code>. Default: <code>class</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+pygments-linenums-mode
+</td>
+<td class="hdlist2">
+<p>Controls how line numbers are laid out. Can be <code>table</code> or <code>inline</code>. Default: <code>table</code>.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Customizing a source block with Pygments attributes</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code>:source-highlighter: pygments
+:pygments-style: manni
+:pygments-linenums-mode: inline
+
+[source,ruby,linenums]
+----
+ORDERED_LIST_KEYWORDS = {
+  'loweralpha' =&gt; 'a',
+  'lowerroman' =&gt; 'i',
+  'upperalpha' =&gt; 'A',
+  'upperroman' =&gt; 'I'
+   #'lowergreek' =&gt; 'a'
+   #'arabic'     =&gt; '1'
+   #'decimal'    =&gt; '1'
+}
+----</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered source block using inline line numbers and the manni theme</div>
+<div class="content">
+<div class="imageblock">
+<div class="content">
+<img src="/images/custom-pygments.png" alt="Line numbers and a custom Pygments theme for a source block.">
+</div>
+</div>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Type <code>pygmentize -L styles</code> in your CLI to see a list of the Pygments styles you have installed.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="#hl-css">Pygments stylesheet section</a> to learn about the <code>pygments-css</code> attribute.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="coderay"><a class="anchor" href="#coderay"></a>4.1.2. CodeRay</h4>
+<div class="paragraph">
+<p><a href="http://coderay.rubychan.de/">CodeRay</a> is an encoding-aware, syntax highlighter that supports the languages listed below.</p>
+</div>
+<table class="tableblock frame-none grid-none" style="width:100%; ">
+<colgroup>
+<col style="width:33%;">
+<col style="width:33%;">
+<col style="width:33%;"> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C++</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clojure</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delphi</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">diff</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ERB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Go</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Groovy</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HAML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Java</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JavaScript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lua</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PHP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Python</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ruby</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">SQL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Taskpaper</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">YAML</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+
+<div class="paragraph">
+<p>In order to use CodeRay with Asciidoctor, you need the <a href="https://rubygems.org/gems/coderay">coderay RubyGem</a>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Installing the CodeRay RubyGem via the CLI</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code class="console language-console">$ gem install coderay</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve installed the RubyGem, assign <code>coderay</code> to the <code>source-highlighter</code> attribute in your document&#8217;s header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code>:source-highlighter: coderay</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can further customize the source block output with additional CodeRay attributes.</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+coderay-css
+</td>
+<td class="hdlist2">
+<p>Controls what method is used for applying CSS to the tokens. Can be <code>class</code> or <code>style</code>. Default: <code>class</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+coderay-linenums-mode
+</td>
+<td class="hdlist2">
+<p>Controls how line numbers are laid out. Can be <code>table</code> or <code>inline</code>. Default: <code>table</code>.</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Customizing a source block with CodeRay line numbers</div>
+<div class="content">
+<pre class="CodeRay nowrap"><code>:source-highlighter: coderay
+:coderay-linenums-mode: inline
+
+[source,ruby,linenums]
+----
+ORDERED_LIST_KEYWORDS = {
+  'loweralpha' =&gt; 'a',
+  'lowerroman' =&gt; 'i',
+  'upperalpha' =&gt; 'A',
+  'upperroman' =&gt; 'I'
+   #'lowergreek' =&gt; 'a'
+   #'arabic'     =&gt; '1'
+   #'decimal'    =&gt; '1'
+}
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="#hl-css">CodeRay stylesheet section</a> to learn about the <code>coderay-css</code> attribute.</p>
 </div>
 </div>
 </div>
@@ -12577,7 +12780,7 @@ Therefore, include and other preprocessor directives in non-AsciiDoc file format
 <div class="listingblock">
 <div class="title">Document parts</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Reference Documentation
+<pre class="CodeRay nowrap"><code>= Reference Documentation
 Lead Developer
 
 This is documentation for project X.
@@ -12605,7 +12808,7 @@ The content is specified either by user defined tags or a range of line numbers.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=5..10]</code></pre>
+<pre class="CodeRay nowrap"><code>include::filename.txt[lines=5..10]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12613,7 +12816,7 @@ The content is specified either by user defined tags or a range of line numbers.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=1..10,15..20]</code></pre>
+<pre class="CodeRay nowrap"><code>include::filename.txt[lines=1..10,15..20]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12621,7 +12824,7 @@ The content is specified either by user defined tags or a range of line numbers.
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">include::filename.txt[lines=12..-1]</code></pre>
+<pre class="CodeRay nowrap"><code>include::filename.txt[lines=12..-1]</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12697,7 +12900,7 @@ However, once inside the documentation, this leading block indent is no longer n
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source,ruby,indent=0]
+<pre class="CodeRay nowrap"><code>[source,ruby,indent=0]
 ----
     def names
       @name.split ' '
@@ -12750,7 +12953,7 @@ That means you only have to type the unique part of the path when linking to a s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:sourcedir: src/main/java
+<pre class="CodeRay nowrap"><code>:sourcedir: src/main/java
 
 [source,java]
 ----
@@ -12777,7 +12980,7 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:asciidoctor-source: https://raw.github.com/asciidoctor/asciidoctor/master
+<pre class="CodeRay nowrap"><code>:asciidoctor-source: https://raw.github.com/asciidoctor/asciidoctor/master
 
 include::{asciidoctor-source}/README.adoc[]</code></pre>
 </div>
@@ -13810,8 +14013,8 @@ If you plan to reference a footnote more than once, use the ID footnote macro (<
 <div class="listingblock">
 <div class="title">Footnote and footnoteref syntax</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">The hail-and-rainbow protocol can be initiated at five levels: double, tertiary, supernumerary, supermassive, and apocalyptic party.footnote:[The double hail-and-rainbow level makes my toes tingle.]  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
-A bold statement.footnoteref:[disclaimer,Opinions are my own.]  <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="CodeRay nowrap"><code>The hail-and-rainbow protocol can be initiated at five levels: double, tertiary, supernumerary, supermassive, and apocalyptic party.footnote:[The double hail-and-rainbow level makes my toes tingle.] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+A bold statement.footnoteref:[disclaimer,Opinions are my own.] <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
 
 Another outrageous statement.footnoteref:[disclaimer] <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
 </div>
@@ -14162,7 +14365,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="sect2">
-<h3 id="coderay-and-pygments-stylesheets"><a class="anchor" href="#coderay-and-pygments-stylesheets"></a>2.5. CodeRay and Pygments stylesheets</h3>
+<h3 id="hl-css"><a class="anchor" href="#hl-css"></a>2.5. CodeRay and Pygments stylesheets</h3>
 <div class="paragraph">
 <p>Asciidoctor will also embed the theme stylesheet for the CodeRay or Pygments syntax highlighter.</p>
 </div>
@@ -14373,7 +14576,7 @@ The <code>manname</code> and <code>manpurpose</code> are taken from the first se
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= asciidoctor(1)
+<pre class="CodeRay nowrap"><code>= asciidoctor(1)
 :doctype: manpage
 
 == NAME
@@ -14774,7 +14977,7 @@ For example, to assign the <code>SAFE</code> level to the attribute, you could a
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">ifdef::safe-mode-secure[]
+<pre class="CodeRay nowrap"><code>ifdef::safe-mode-secure[]
 Links to chapters.
 endif::safe-mode-secure[]</code></pre>
 </div>
@@ -15205,7 +15408,7 @@ You can reference the stylesheets in <em class="path">stylesheets/</em> from you
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Introduction to AsciiDoc
+<pre class="CodeRay nowrap"><code>= Introduction to AsciiDoc
 Doc Writer &lt;doc@example.com&gt;
 
 A preface about http://asciidoc.org[AsciiDoc].
@@ -15216,7 +15419,7 @@ A preface about http://asciidoc.org[AsciiDoc].
 * item 2
 
 [source,ruby]
-puts &quot;Hello, World!&quot;</code></pre>
+puts "Hello, World!"</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15782,7 +15985,7 @@ Front matter typically starts on the first line of a file and is bounded by bloc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">--- <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay nowrap"><code>--- <i class="conum" data-value="1"></i><b>(1)</b>
 layout: default <i class="conum" data-value="2"></i><b>(2)</b>
 --- <i class="conum" data-value="1"></i><b>(1)</b>
 = Document Title
@@ -16184,14 +16387,14 @@ For details, follow the discussion in issue <a href="https://github.com/asciidoc
 <div class="listingblock">
 <div class="title">sample-with-front-matter.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">---
+<pre class="CodeRay nowrap"><code>---
 tags: [announcement, website]
 ---
 = Document Title
 
 content
 
-[subs=&quot;attributes,specialcharacters&quot;]
+[subs="attributes,specialcharacters"]
 .Captured front matter
 ....
 ---
@@ -16255,7 +16458,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">sample-with-terminal-command.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc"> $ echo &quot;Hello, World!&quot;
+<pre class="CodeRay nowrap"><code> $ echo "Hello, World!"
 
  $ gem install asciidoctor</code></pre>
 </div>
@@ -16353,7 +16556,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">Asciidoctor::Extensions.register do |document|
+<pre class="CodeRay nowrap"><code>Asciidoctor::Extensions.register do |document|
   postprocessor CustomFooterPostprocessor
 end
 
@@ -16374,7 +16577,7 @@ Asciidoctor.render_file 'sample.ad', :safe =&gt; :safe, :in_place =&gt; true</co
 <div class="listingblock">
 <div class="title">sample-with-yell-block.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[yell]
+<pre class="CodeRay nowrap"><code>[yell]
 The time is now. Get a move on.</code></pre>
 </div>
 </div>
@@ -16419,7 +16622,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">sample-with-gist-macro.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.My Gist
+<pre class="CodeRay nowrap"><code>.My Gist
 gist::123456[]</code></pre>
 </div>
 </div>
@@ -16469,7 +16672,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">sample-with-man-link.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">See man:gittutorial[7] to get started.</code></pre>
+<pre class="CodeRay nowrap"><code>See man:gittutorial[7] to get started.</code></pre>
 </div>
 </div>
 <div class="listingblock">
@@ -16518,7 +16721,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">sample-with-uri-include.ad</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:source-highlighter: coderay
+<pre class="CodeRay nowrap"><code>:source-highlighter: coderay
 
 .Gemfile
 [source,ruby]
@@ -16791,7 +16994,7 @@ Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
+<pre class="CodeRay nowrap"><code>= Document Title
 :link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
 
 This URL has repeating underscores {link-with-underscores}.</code></pre>
@@ -16813,7 +17016,7 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
+<pre class="CodeRay nowrap"><code>This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -17268,6 +17471,18 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>coderay</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>coderay-css</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>coderay-linenums-mode</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
@@ -18257,6 +18472,24 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pygments-css</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pygments-linenums-mode</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>pygments-style</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>q</code></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="icon-remove"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="icon-ok"></i></span></p></td>
@@ -19051,7 +19284,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-15 21:58:24 UTC
+Last updated 2014-07-16 04:53:25 UTC
 </div>
 </div>
 </body>
