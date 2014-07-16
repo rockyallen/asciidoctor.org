@@ -11100,29 +11100,19 @@ System.out.println("Hello *bold* text").
 <div class="paragraph">
 <div class="title">Backslash escaping</div>
 <p>To prevent punctuation from being interpreted as formatting markup, proceed it with a backslash (<code>\</code>).
+If the formatting punctuation begins with two characters (e.g., <code>__</code>), you need to proceed it with two backslashes (<code>\\</code>).
 This is also how you can prevent character and attribute references from substitution.
 When your document is processed, the backslash is removed so it doesn&#8217;t display in your output.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code>\*Stars* will not be bold, but rather appear as *Stars*.
+<pre class="CodeRay nowrap"><code>\*Stars* will appear as *Stars*, not as bold text.
 
-\&amp;sect; will not be replaced with the &amp;sect; symbol.
+\&amp;sect; will appear as an entity reference, not the &amp;sect; symbol.
 
-\{two-semicolons} attribute reference will not be replaced with ;;.</code></pre>
-</div>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="paragraph">
-<p>*Stars* will not be bold, but rather appear as <strong>Stars</strong>.</p>
-</div>
-<div class="paragraph">
-<p>&amp;sect; will not be replaced with the &sect; symbol.</p>
-</div>
-<div class="paragraph">
-<p>{two-semicolons} attribute reference will not be replaced with ;;.</p>
-</div>
+\\__func__ will appear as __func__, not as emphasized text.
+
+\{two-semicolons} will appear {two-semicolons}, not resolved as ;;.</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -19297,7 +19287,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-16 22:30:07 UTC
+Last updated 2014-07-16 22:56:05 UTC
 </div>
 </div>
 </body>
