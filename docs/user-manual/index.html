@@ -722,18 +722,18 @@ span.line-numbers { border-right: 1px solid #E5E5E5; color: #999; display: inlin
 <li><a href="#inline-icons">2.2. Inline icons</a></li>
 </ul>
 </li>
-<li><a href="#callouts">3. Callouts</a></li>
+<li><a href="#source-code-blocks">3. Source Code and Syntax Highlighting</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#callouts-don-t-get-caught-in-copy">3.1. Callouts don&#8217;t get caught in copy</a></li>
-<li><a href="#xml-friendly-callouts">3.2. XML-friendly callouts</a></li>
-<li><a href="#callout-icons">3.3. Callout icons</a></li>
+<li><a href="#pygments">3.1. Pygments</a></li>
+<li><a href="#coderay">3.2. CodeRay</a></li>
 </ul>
 </li>
-<li><a href="#source-code-blocks">4. Source Code Blocks</a></li>
+<li><a href="#callouts">4. Callouts</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#syntax-highlighting">4.1. Syntax Highlighting</a></li>
+<li><a href="#copy-and-paste-friendly-callouts">4.1. Copy and paste friendly callouts</a></li>
+<li><a href="#callout-icons">4.2. Callout icons</a></li>
 </ul>
 </li>
 <li><a href="#include-directive">5. Include Directive</a></li>
@@ -3264,8 +3264,8 @@ When rendered to HTML, the values of these attributes will correspond to tags co
 <div class="content">
 <pre class="CodeRay nowrap"><code>= The Dangerous and Thrilling Documentation Chronicles
 Kismet Rainbow Chameleon &lt;kismet@asciidoctor.org&gt;; Lazarus het_Draeke &lt;lazarus@asciidoctor.org&gt;
-:description: A story chronicling the inexplicable hazards and vicious beasts a + <i class="conum" data-value="1"></i><b>(1)</b>
-documentation team must surmount and vanquish on their journey to finding an +
+:description: A story chronicling the inexplicable hazards and vicious beasts a \ <i class="conum" data-value="1"></i><b>(1)</b>
+documentation team must surmount and vanquish on their journey to finding an \
 open source project's true power.
 
 This journey begins on a bleary Monday morning.</code></pre>
@@ -3275,7 +3275,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>If the document&#8217;s description is long, you can break the attribute&#8217;s value across several lines by ending each line with a <code>&#43;</code> that is preceded by a space.</td>
+<td>If the document&#8217;s description is long, you can break the attribute&#8217;s value across several lines by ending each line with a backslash <code>\</code> that is preceded by a space.</td>
 </tr>
 </table>
 </div>
@@ -3287,7 +3287,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="html language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="tag">&lt;head&gt;</span>
 <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -3320,7 +3320,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="html language-html"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="doctype">&lt;!DOCTYPE html&gt;</span>
 <span class="tag">&lt;html</span> <span class="attribute-name">lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
 <span class="tag">&lt;head&gt;</span>
 <span class="tag">&lt;meta</span> <span class="attribute-name">http-equiv</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Content-Type</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">text/html; charset=UTF-8</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
@@ -8281,11 +8281,11 @@ Typical URLs contain a scheme, domain name, file name, and extension.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Since the URL in the example below begins with <code>http</code>, Asciidoctor will automatically turn it into a hyperlink when it is processed.</p>
+<p>Since the URL in the example below begins with <em>http</em>, Asciidoctor will automatically turn it into a hyperlink when it is processed.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">The homepage for the Asciidoctor Project is http://www.asciidoctor.org. <i class="conum" data-value="1"></i><b>(1)</b></pre>
+<pre class="CodeRay nowrap"><code>The homepage for the Asciidoctor Project is http://www.asciidoctor.org. <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -8328,7 +8328,7 @@ Typical URLs contain a scheme, domain name, file name, and extension.</p>
 </div>
 <div class="paragraph">
 <p>When a URL does not start with one of the <a href="#schemes">common schemes</a>, you must use the <code>link</code> macro.
-The URL is preceeded by <code>link:</code> and followed by square brackets.
+The URL is preceded by <code>link:</code> and followed by square brackets.
 The square brackets can include optional link text, target preference, and roles.</p>
 </div>
 <div class="listingblock">
@@ -11331,9 +11331,7 @@ The example below shows a listing block with <code>source</code> and the languag
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code>[source,xml]
-&lt;meta name="viewport"
-  content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+<pre class="CodeRay nowrap"><code></code></pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -12218,186 +12216,14 @@ This markup is subject to change. In particular, the <code>&lt;i&gt;</code> elem
 </div>
 </div>
 <div class="sect1">
-<h2 id="callouts"><a class="anchor" href="#callouts"></a>3. Callouts</h2>
+<h2 id="source-code-blocks"><a class="anchor" href="#source-code-blocks"></a>3. Source Code and Syntax Highlighting</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Pending
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="callouts-don-t-get-caught-in-copy"><a class="anchor" href="#callouts-don-t-get-caught-in-copy"></a>3.1. Callouts don&#8217;t get caught in copy</h3>
 <div class="paragraph">
-<p>In versions prior to Asciidoctor 0.1.4, when a reader visiting an HTML page generated by Asciidoctor selected source code from a listing that contained callouts and copied it, the callout numbers would get caught up in the copy.
-If the reader pasted that code and tried to run it, likely the extra characters from the callouts caused compile or runtime errors.</p>
+<p>Listing blocks and paragraphs are commonly used to display source code.
+For this reason, Asciidoctor has enabled several syntax highlighting libraries, including CodeRay, Highlight.js, Prettify, and Pygments, that you can use to style source code.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor uses CSS to prevent callouts from being selected.</p>
-</div>
-<div class="paragraph">
-<p>On the other side of the coin, you don&#8217;t want the callout annotations or CSS messing up your raw source code either.
-You can tuck your callouts neatly inside line comments.
-Asciidoctor will recognize the line comments characters in front of a callout number, optionally offset by a space, and remove them when rendering the document.</p>
-</div>
-<div class="paragraph">
-<p>Here are the line comments that are supported:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code>----
-line of code  <i class="conum" data-value="1"></i><b>(1)</b>
-line of code  <i class="conum" data-value="2"></i><b>(2)</b>
-line of code  <i class="conum" data-value="3"></i><b>(3)</b>
-----
-&lt;1&gt; A callout behind a line comment for C-style languages.
-&lt;2&gt; A callout behind a line comment for Ruby, Python, Perl, etc.
-&lt;3&gt; A callout behind a line comment for Clojure.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how it looks when rendered:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">line of code  <i class="conum" data-value="1"></i><b>(1)</b>
-line of code  <i class="conum" data-value="2"></i><b>(2)</b>
-line of code  <i class="conum" data-value="3"></i><b>(3)</b></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>A callout behind a line comment for C-style languages.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A callout behind a line comment for Ruby, Python, Perl, etc.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>A callout behind a line comment for Clojure.</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Asciidoctor enforces that callouts be placed at the end of the line.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="xml-friendly-callouts"><a class="anchor" href="#xml-friendly-callouts"></a>3.2. XML-friendly callouts</h3>
-<div class="paragraph">
-<p>XML doesn&#8217;t have line comments, so our &#8220;tuck the callout behind a line comment&#8221; trick doesn&#8217;t work here.
-To use callouts in XML, you must place the callout&#8217;s angled brackets around the the XML comment and callout number.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how it appears in a listing:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code>[source,xml]
-----
-&lt;section&gt;
-  &lt;title&gt;Section Title&lt;/title&gt; &lt;!--1--&gt;
-&lt;/section&gt;
-----
-&lt;1&gt; The section title is required.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s how it looks when rendered:</p>
-</div>
-<div class="exampleblock">
-<div class="content">
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;section&gt;</span>
-  <span class="tag">&lt;title&gt;</span>Section Title<span class="tag">&lt;/title&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
-<span class="tag">&lt;/section&gt;</span></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The section title is required.</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Notice the comment has been replaced with a circled number that cannot be selected.
-Now both you and the reader can copy and paste XML source code containing callouts without worrying about errors.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="callout-icons"><a class="anchor" href="#callout-icons"></a>3.3. Callout icons</h3>
-<div class="paragraph">
-<p>The font icons setting also enables callout icons drawn using CSS.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code>= Document Title
-:icons: font <i class="conum" data-value="1"></i><b>(1)</b>
-
-NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Activates font-based icons in the HTML5 backend</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Admonition block that uses a font-based icon</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="source-code-blocks"><a class="anchor" href="#source-code-blocks"></a>4. Source Code Blocks</h2>
-<div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="icon-note" title="Note"></i>
-</td>
-<td class="content">
-Pending
-</td>
-</tr>
-</table>
-</div>
-<div class="sect2">
-<h3 id="syntax-highlighting"><a class="anchor" href="#syntax-highlighting"></a>4.1. Syntax Highlighting</h3>
-<div class="paragraph">
-<p>To enable syntax highlighting in your document, you need to set the <code>source-highlighter</code> attribute in the document header.</p>
+<p>To enable syntax highlighting in a document, set the <code>source-highlighter</code> attribute in the document header.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -12405,7 +12231,7 @@ Pending
 </div>
 </div>
 <div class="paragraph">
-<p>Asciidoctor supports a number of syntax highlighting libraries.</p>
+<p>Once set, assign one of the following syntax library values to the attribute.</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width:50%; ">
 <caption class="title">Available syntax highlighters</caption>
@@ -12440,33 +12266,14 @@ Pending
 </table>
 
 <div class="paragraph">
-<p>Once you&#8217;ve set the attribute and library, assign <code>source</code> to the block and specify the source language in the second attribute position.</p>
-</div>
-<div class="literalblock">
-<div class="title">Example</div>
-<div class="content">
-<pre class="nowrap">[source,ruby]
-----
-require 'asciidoctor'
-
-puts Asciidoctor.render_file('sample.adoc', :header_footer =&gt; true)
-----</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Example output</div>
-<div class="content">
-<pre class="CodeRay nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
-
-puts <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
-</div>
+<p>To apply highlighting to source code, you must assign the <code>source</code> name and a source language to a paragraph or delimited block.</p>
 </div>
 <div class="listingblock">
 <div class="title">Code block with title and syntax highlighting</div>
 <div class="content">
-<pre class="nowrap">[source,ruby]
-.app.rb
-----
+<pre class="nowrap">[source,ruby] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
+.app.rb <i class="conum" data-value="3"></i><b>(3)</b>
+---- <i class="conum" data-value="4"></i><b>(4)</b>
 require 'sinatra'
 
 get '/hi' do
@@ -12475,7 +12282,28 @@ end
 ----</pre>
 </div>
 </div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Assign the block name <code>source</code> to the first position in the attribute list.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Assign a source language to the second position.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>An optional title can be added to the block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>The source block name is typically assigned to listing and literal blocks.</td>
+</tr>
+</table>
+</div>
 <div class="exampleblock">
+<div class="title">Rendered source block with title and syntax highlighting</div>
 <div class="content">
 <div class="listingblock">
 <div class="title">app.rb</div>
@@ -12490,34 +12318,29 @@ get <span class="string"><span class="delimiter">'</span><span class="content">/
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Code block sourced from file</div>
+<div class="title">Source paragraph</div>
 <div class="content">
-<pre class="nowrap">[source,ruby]
-----
-include::app.rb[]
-----</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Code block sourced from file relative to source directory</div>
-<div class="content">
-<pre class="nowrap">:sourcedir: src/main/java
-
-[source,java]
-----
-include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
-----</pre>
-</div>
-</div>
-<div class="listingblock">
-<div class="title">Code block without delimiters (no blank lines)</div>
-<div class="content">
-<pre class="nowrap">[source,xml]
+<pre class="nowrap">[source,xml] <i class="conum" data-value="1"></i><b>(1)</b>
 &lt;meta name="viewport"
-  content="width=device-width, initial-scale=1.0"&gt;</pre>
+  content="width=device-width, initial-scale=1.0"&gt;
+
+This is normal content.  <i class="conum" data-value="2"></i><b>(2)</b></pre>
 </div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Place the attribute list directly on the paragraph</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Once an empty line is encountered the syntax highlighting is unset.</td>
+</tr>
+</table>
 </div>
 <div class="exampleblock">
+<div class="title">Rendered source paragraph</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -12525,6 +12348,41 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
   <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>This is normal content.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>If the majority of your source blocks use the same source language, you can set the <code>source-language</code> attribute in the document header and assign a language to it.</p>
+</div>
+<div class="listingblock">
+<div class="title">Source language attribute</div>
+<div class="content">
+<pre class="nowrap">:source-highlighter: pygments
+:source-language: java
+
+[source]
+public void setAttributes(Attributes attributes) {
+		this.options.put(ATTRIBUTES, attributes.map());
+	}
+
+Don't worry, if you need to use another source language, you can assign the language directly on the block.
+
+[source,ruby]
+require 'sinatra'</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Additionally, you can use an <a href="user-manual/.html#include-directive">include directive</a> to insert source code into an AsciiDoc document directly from a file.</p>
+</div>
+<div class="listingblock">
+<div class="title">Code block inserted from another file</div>
+<div class="content">
+<pre class="nowrap">[source,ruby]
+----
+include::app.rb[]
+----</pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -12539,8 +12397,8 @@ Syntax highlighting is not disabled if an explicit <code>subs</code> attribute i
 </tr>
 </table>
 </div>
-<div class="sect3">
-<h4 id="pygments"><a class="anchor" href="#pygments"></a>4.1.1. Pygments</h4>
+<div class="sect2">
+<h3 id="pygments"><a class="anchor" href="#pygments"></a>3.1. Pygments</h3>
 <div class="paragraph">
 <p><a href="http://pygments.org">Pygments</a> is a popular syntax highlighter that supports a broad range of <a href="http://pygments.org/languages/">programming, template and markup languages</a>.</p>
 </div>
@@ -12654,8 +12512,8 @@ ORDERED_LIST_KEYWORDS = {
 <p>See the <a href="#hl-css">Pygments stylesheet section</a> to learn about the <code>pygments-css</code> attribute.</p>
 </div>
 </div>
-<div class="sect3">
-<h4 id="coderay"><a class="anchor" href="#coderay"></a>4.1.2. CodeRay</h4>
+<div class="sect2">
+<h3 id="coderay"><a class="anchor" href="#coderay"></a>3.2. CodeRay</h3>
 <div class="paragraph">
 <p><a href="http://coderay.rubychan.de/">CodeRay</a> is an encoding-aware, syntax highlighter that supports the languages listed below.</p>
 </div>
@@ -12772,6 +12630,167 @@ ORDERED_LIST_KEYWORDS = {
 <div class="paragraph">
 <p>See the <a href="#hl-css">CodeRay stylesheet section</a> to learn about the <code>coderay-css</code> attribute.</p>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="callouts"><a class="anchor" href="#callouts"></a>4. Callouts</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-note" title="Note"></i>
+</td>
+<td class="content">
+Pending
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="copy-and-paste-friendly-callouts"><a class="anchor" href="#copy-and-paste-friendly-callouts"></a>4.1. Copy and paste friendly callouts</h3>
+<div class="paragraph">
+<p>In versions prior to Asciidoctor 0.1.4, when a reader visiting an HTML page generated by Asciidoctor selected source code from a listing that contained callouts and copied it, the callout numbers would get caught up in the copy.
+If the reader pasted that code and tried to run it, likely the extra characters from the callouts caused compile or runtime errors.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor uses CSS to prevent callouts from being selected.</p>
+</div>
+<div class="paragraph">
+<p>On the other side of the coin, you don&#8217;t want the callout annotations or CSS messing up your raw source code either.
+You can tuck your callouts neatly inside line comments.
+Asciidoctor will recognize the line comments characters in front of a callout number, optionally offset by a space, and remove them when rendering the document.</p>
+</div>
+<div class="paragraph">
+<p>Here are the line comments that are supported:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code>----
+line of code  <i class="conum" data-value="1"></i><b>(1)</b>
+line of code  <i class="conum" data-value="2"></i><b>(2)</b>
+line of code  <i class="conum" data-value="3"></i><b>(3)</b>
+----
+&lt;1&gt; A callout behind a line comment for C-style languages.
+&lt;2&gt; A callout behind a line comment for Ruby, Python, Perl, etc.
+&lt;3&gt; A callout behind a line comment for Clojure.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how it looks when rendered:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">line of code  <i class="conum" data-value="1"></i><b>(1)</b>
+line of code  <i class="conum" data-value="2"></i><b>(2)</b>
+line of code  <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A callout behind a line comment for C-style languages.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>A callout behind a line comment for Ruby, Python, Perl, etc.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>A callout behind a line comment for Clojure.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Asciidoctor enforces that callouts be placed at the end of the line.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect3">
+<h4 id="xml-callouts"><a class="anchor" href="#xml-callouts"></a>4.1.1. XML callouts</h4>
+<div class="paragraph">
+<p>XML doesn&#8217;t have line comments, so our &#8220;tuck the callout behind a line comment&#8221; trick doesn&#8217;t work here.
+To use callouts in XML, you must place the callout&#8217;s angled brackets around the the XML comment and callout number.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how it appears in a listing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code>[source,xml]
+----
+&lt;section&gt;
+  &lt;title&gt;Section Title&lt;/title&gt; &lt;!--1--&gt;
+&lt;/section&gt;
+----
+&lt;1&gt; The section title is required.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how it looks when rendered:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;section&gt;</span>
+  <span class="tag">&lt;title&gt;</span>Section Title<span class="tag">&lt;/title&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="tag">&lt;/section&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The section title is required.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice the comment has been replaced with a circled number that cannot be selected.
+Now both you and the reader can copy and paste XML source code containing callouts without worrying about errors.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="callout-icons"><a class="anchor" href="#callout-icons"></a>4.2. Callout icons</h3>
+<div class="paragraph">
+<p>The font icons setting also enables callout icons drawn using CSS.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code>= Document Title
+:icons: font <i class="conum" data-value="1"></i><b>(1)</b>
+
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Activates font-based icons in the HTML5 backend</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Admonition block that uses a font-based icon</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -19338,7 +19357,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-30 06:23:51 UTC
+Last updated 2014-07-30 23:15:55 UTC
 </div>
 </div>
 </body>
