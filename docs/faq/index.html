@@ -550,9 +550,10 @@ When working with open blocks, you may need to add custom styles (such as a red 
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
-<p>This problem occurs because the processor misinterprets parts of the link target as valid <a href="user-manual.html#text-formatting">text formatting markup</a>.
+<p>This problem occurs because the markup parser interprets parts of the URL (i.e., the link target) as valid <a href="user-manual.html#text-formatting">text formatting markup</a>.
 Most lightweight markup languages have this issue because they don&#8217;t use a grammar-based parser.
-Asciidoctor plans to move to a grammar-based parser in the future, but don&#8217;t worry, there are ways to solve this problem now.</p>
+Asciidoctor plans to handle URLs more carefully in the future (see <a href="https://github.com/asciidoctor/asciidoctor/issues/281">issue #281</a>), which may be solved by moving to a grammar-based parser (see <a href="https://github.com/asciidoctor/asciidoctor/issues/61">issue #61</a>).
+Thankfully, there are many ways to include URLs of arbitrary complexity using the AsciiDoc passthrough mechanisms.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Solution A</div>
@@ -590,7 +591,19 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 <div class="paragraph">
 <p>The <code>pass</code> macro removes the URL from the document, applies the <code>macros</code> substitution to the URL, and then restores the processed URL to its original location once the substitutions are complete on the whole document.</p>
 </div>
+<div class="paragraph">
+<p>Alternatively, you can use <code>$$</code> around the URL only.
+However, when you use this approach, Asciidoctor won&#8217;t recognize it as a URL anymore, so you have to use the explicit <code>link:</code> prefix.</p>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores link:$$http://www.asciidoctor.org/now_this__link_works.html$$[].</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>For more information, see <a href="https://github.com/asciidoctor/asciidoctor/issues/625">issue #625</a>.</p>
 </div>
 </div>
 </div>
@@ -602,7 +615,7 @@ If you want to display a URL, and have it preserved, put it inside the <code>pas
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-07-31 00:38:25 UTC
+Last updated 2014-07-31 22:09:34 UTC
 </div>
 </div>
 </body>
