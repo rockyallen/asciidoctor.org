@@ -3,17 +3,7 @@
 <div class="paragraph">
 <p>The <a href="http://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> is the official means of using Asciidoctor to render your <a href="http://asciidoc.org/README.html">AsciiDoc</a> documentation using Java instead of Python or Ruby.</p>
 </div>
-<div id="toc" class="toc">
-<div id="toctitle" class="title">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#distribution">Distribution</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#optimization">Optimization</a></li>
-<li><a href="#resources">Resources</a></li>
-</ul>
-</div>
-
+<!-- toc disabled -->
 </div>
 </div>
 <div class="sect1">
@@ -23,13 +13,13 @@
 <p>The Asciidoctor Java integration is published to Maven Central.
 The artifact information is summarized in the table below.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all spread">
 <caption class="title">Artifact information for the Asciidoctor Java integration library</caption>
 <colgroup>
-<col style="width:16%;">
-<col style="width:33%;">
-<col style="width:8%;">
-<col style="width:41%;"> 
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 8%;">
+<col style="width: 41%;">
 </colgroup>
 <thead>
 <tr>
@@ -48,7 +38,6 @@ The artifact information is summarized in the table below.</p>
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>* This release is based on the Asciidoctor 0.1.4 release.</p>
 </div>
@@ -112,11 +101,11 @@ The artifact information is summarized in the table below.</p>
 <p>The main entry point for the Asciidoctor Java integration is the <code>Asciidoctor</code> Java interface.
 This interface provides four methods for rendering AsciiDoc content, <code>render</code>, <code>renderFile</code>, <code>renderFiles</code> and <code>renderDirectory</code>.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all spread">
 <caption class="title"><code>Asciidoctor</code> methods</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:66%;"> 
+<col style="width: 33%;">
+<col style="width: 66%;">
 </colgroup>
 <thead>
 <tr>
@@ -147,12 +136,11 @@ This interface provides four methods for rendering AsciiDoc content, <code>rende
 </tr>
 </tbody>
 </table>
-
 <div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="icon-note" title="Note"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 All methods are overloaded to accomodate various ways to supply content and options.
@@ -227,11 +215,11 @@ This method renders all of the files with AsciiDoc extensions (<code>.asc</code>
 <p>Strategy is set as first parameter of <code>renderDirectory</code> method and must implement <code>DirectoryWalker</code> interface.
 Currently <code>Asciidoctor</code> provides two implementations:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all spread">
 <caption class="title"><code>Asciidoctor</code> methods</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:66%;"> 
+<col style="width: 33%;">
+<col style="width: 66%;">
 </colgroup>
 <thead>
 <tr>
@@ -250,7 +238,6 @@ Currently <code>Asciidoctor</code> provides two implementations:</p>
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>If the rendered content is not written into files, <code>renderDirectory</code> will return an array listing all the documents rendered.</p>
 </div>
@@ -557,7 +544,7 @@ Options options = options().inPlace(<span class="predefined-constant">true</span
 <table>
 <tr>
 <td class="icon">
-<i class="icon-tip" title="Tip"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
 All methods used to render content are overloaded with <code>OptionsBuilder</code> parameter, so it is no longer required to call <code>get</code> nor <code>asMap</code> methods.
@@ -569,7 +556,7 @@ All methods used to render content are overloaded with <code>OptionsBuilder</cod
 <table>
 <tr>
 <td class="icon">
-<i class="icon-warning" title="Warning"></i>
+<i class="fa icon-warning" title="Warning"></i>
 </td>
 <td class="content">
 <code>icons</code> attribute requires a <code>String</code> to set the value used to "draw" icons.
@@ -714,11 +701,11 @@ Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&q
 <div class="paragraph">
 <p>In <code>Asciidoctor</code> there is 7 kind of extension points, ane each one have an abstract class in <code>Java</code> that represents them.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all spread">
 <caption class="title"><code>Asciidoctor</code> extensionAPI</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:66%;"> 
+<col style="width: 33%;">
+<col style="width: 66%;">
 </colgroup>
 <thead>
 <tr>
@@ -757,7 +744,6 @@ Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&q
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>To create an extension two things are required, create a class implementing an extension class (this will depend on the kind of interface being developed),
 and second one register it using <code>ExtensionRegistry</code> class.</p>
@@ -1478,11 +1464,11 @@ Several Java flags can also be used in conjunction with or apart from the JRuby 
 <div class="paragraph">
 <p>For small tasks such as converting an AsciiDoc document, two JRuby flags can improve the start time:</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:50%; ">
+<table class="tableblock frame-all grid-all" style="width: 50%;">
 <caption class="title">JRuby flags</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:66%;"> 
+<col style="width: 33%;">
+<col style="width: 66%;">
 </colgroup>
 <thead>
 <tr>
@@ -1501,7 +1487,6 @@ Several Java flags can also be used in conjunction with or apart from the JRuby 
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Both flags are set by default inside the Asciidoctor Java integration project.</p>
 </div>
@@ -1510,11 +1495,11 @@ Several Java flags can also be used in conjunction with or apart from the JRuby 
 These flags are set by using the <code>JRUBY_OPTS</code> environment variable.
 Let&#8217;s see a summary of these flags and in which environments they can be used.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="width:75%; ">
+<table class="tableblock frame-all grid-all" style="width: 75%;">
 <caption class="title">Java flags</caption>
 <colgroup>
-<col style="width:33%;">
-<col style="width:66%;"> 
+<col style="width: 33%;">
+<col style="width: 66%;">
 </colgroup>
 <thead>
 <tr>
@@ -1541,7 +1526,6 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 </tr>
 </tbody>
 </table>
-
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
 <div class="content">
@@ -1570,7 +1554,7 @@ If you identify an issue while using the Asciidoctor Java integration, please do
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
-</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="icon-github icon-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="icon-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="icon-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="icon-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="icon-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="icon-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="icon-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/install-and-use-asciidoctor-java-integration.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/install-and-use-asciidoctor-java-integration.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/install-and-use-asciidoctor-java-integration.adoc">History</a></li><li><i class="fa fa-github fa-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project, including this website, is an effort to bring a comprehensive and accessible documentation toolchain, centered around the AsciiDoc syntax, to the Ruby and JVM ecosystems.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="fa fa-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="fa fa-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="fa fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="fa fa-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="fa fa-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="fa fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span style="white-space: nowrap;">Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
