@@ -5,10 +5,9 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0.rc.4">
-<meta name="description" content="Frequently asked questions (FAQ) about the Asciidoctor project, Asciidoctor syntax and processor, and the AsciiDoc syntax. Tips for fixing installation, syntax, processing, and rendering problems when using Asciidoctor.">
-<meta name="keywords" content="Asciidoctor, AsciiDoc, syntax, question, render, process, problem, issue, tips">
-<meta name="author" content="Sarah White">
-<title>FAQs and Troubleshooting</title>
+<meta name="description" content="Migrating from Asciidoctor 0.1.4 to 1.5.0.">
+<meta name="author" content="Dan Allen">
+<title>Migrating to Asciidoctor 1.5.0</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -502,167 +501,294 @@ span.line-numbers { border-right: 1px solid #e5e5e5; color: #999; display: inlin
 </head>
 <body class="article">
 <div id="header">
-<h1>FAQs and Troubleshooting</h1>
-<span id="author" class="author">Sarah White</span><br>
-<span id="email" class="email"><a href="https://github.com/graphitefriction">@graphitefriction</a></span><br>
+<h1>Migrating to Asciidoctor 1.5.0</h1>
+<span id="author" class="author">Dan Allen</span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">2014-08-04</span>
 </div>
 <div id="content">
-<div class="sect1">
-<h2 id="frequently-asked-questions"><a class="anchor" href="#frequently-asked-questions"></a>Frequently Asked Questions</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="qlist qanda">
-<ol>
+<div class="paragraph">
+<p>We decided to rework some of the AsciiDoc syntax in Asciidoctor 1.5.0 in an effort to make it more consistent, deterministic and easy to learn.
+You can learn more about the changes in the <a href="/docs/asciidoctor-1.5.0-release-notes">Asciidoctor 1.5.0 release notes</a>.</p>
+</div>
+<div class="paragraph">
+<p>With that said, compatibility is very important to us.
+So we&#8217;ve added a compatibility mode as well as a transitional syntax to ease migration.
+This document covers these options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compat-mode"><a class="anchor" href="#compat-mode"></a>Compat mode</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you don&#8217;t want to deal with migration right now, you can simply activate compatibility mode by defining the document-level <code>compat-mode</code> attribute.
+In this mode, most <em>modifications</em> that deviate from the legacy AsciiDoc syntax are reverted.
+This mode does not disable syntax unique to Asciidoctor, such as inline icons (e.g., icon:fire[]).</p>
+</div>
+<div class="paragraph">
+<p>You can set the <code>compat-mode</code> attribute in the document header:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:compat-mode:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>pass it as a commandline flag:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">-a compat-mode</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or set it via the API:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">attributes: %w(compat-mode)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also set the <code>compat-mode</code> anywhere in the flow of the document:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:compat-mode:
+
+Sometimes you feel 'compat'.
+
+:compat-mode!:
+
+Sometimes you _don't_.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compat mode will be supported for the foreseeable future to avoid unnecessary disruption to your content.</p>
+</div>
+<div class="paragraph">
+<p>If you want to begin migration to the modern syntax, read on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="migration-scenarios"><a class="anchor" href="#migration-scenarios"></a>Migration scenarios</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There are several scenarios that are affected by the changes to the AsciiDoc syntax:</p>
+</div>
+<div class="ulist">
+<ul>
 <li>
-<p><em>Does Asciidoctor only encode in US-ASCII?</em></p>
-<p>No.
-Asciidoctor encodes in UTF-8 and has full Unicode support.</p>
+<p>Monospaced normal text (text that doesn&#8217;t contain any AsciiDoc syntax)</p>
 </li>
 <li>
-<p><em>How do I enable syntax highlighting in the deck.js backend?</em></p>
-<div class="openblock">
-<div class="content">
-<div class="paragraph">
-<p>You begin by setting the <code>source-highlighter</code> attribute to one of the accepted values, such as <code>coderay</code>.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:source-highlighter: coderay</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>That only gets you half way, though.
-The problem is that Asciidoctor only performs syntax highlighting when the "base" backend attribute (i.e., basebackend attribute) is html.
-The basebackend attribute is determined by removing the trailing numbers from the backend name.
-For instance, html5 becomes html.
-However, deckjs becomes&#8230;deckjs.
-There in lies our problem (see <a href="https://github.com/asciidoctor/asciidoctor/issues/891">issue #891</a>).</p>
+<p>Monospaced text without substitutions (you want to prevent the monospaced text from being interpreted)</p>
+</li>
+<li>
+<p>Monospaced text with substitutions (you want the monospaced text to be interpreted)</p>
+</li>
+<li>
+<p>Smart quote shorthand</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The workaround is to set the backend to html5 (or just don&#8217;t set it) and point the -T command argument to the <em class="file">haml/deckjs</em> folder under the <a href="https://github.com/asciidoctor/asciidoctor-backends">asciidoctor-backends</a> directory.
-For example:</p>
+<p>Let&#8217;s first consider the legacy syntax used in each of these examples.</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -T /path/to/asciidoctor-backends/haml/deckjs deck.adoc</pre>
-</div>
-</div>
+<div class="sect2">
+<h3 id="legacy-syntax"><a class="anchor" href="#legacy-syntax"></a>Legacy syntax</h3>
 <div class="paragraph">
-<p>Notice that the backend attribute <em>is not set</em>.
-The templates will be used in exactly the same way as if you had set the backend to <code>deckjs</code>, except this time syntax highlighting will work!</p>
+<p>Here&#8217;s the legacy syntax for the scenarios listed above:</p>
 </div>
-<div class="admonitionblock tip">
+<div class="ulist">
+<ul>
+<li>
+<p>+monospaced normal text+ or `monospaced normal text`</p>
+</li>
+<li>
+<p>`{asciidoctor-version} holds the version` (attribute is not replaced)</p>
+</li>
+<li>
+<p>+The Asciidoctor version is {asciidoctor-version}+ (attribute is replaced)</p>
+</li>
+<li>
+<p>``double quoted'' and ``single quoted'' (quotes are curved)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="modern-syntax"><a class="anchor" href="#modern-syntax"></a>Modern syntax</h3>
+<div class="paragraph">
+<p>Here are those same three scenarios using the syntax in Asciidoctor 1.5.0:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`monospaced normal text`</p>
+</li>
+<li>
+<p>`+{asciidoctor-version} holds the version` (attribute is not replaced)</p>
+</li>
+<li>
+<p>`The Asciidoctor version is {asciidoctor-version}` (attribute is replaced)</p>
+</li>
+<li>
+<p>"`double quoted`" and "`single quoted`" (quotes are curved)</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock warning">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+To escape single smart quotes in the legacy syntax, you place a single backslash in front of the start quote (e.g., \``single quoted'').
+In the new syntax, you need to use a backslash before the start quote and before the end quote (e.g., \'`single quoted\`').
+That&#8217;s because `' is an unconstrained (anywhere) right smart quote replacement.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Before jumping to the new syntax, you need to understand that it won&#8217;t be parsed correctly by Asciidoctor 0.1.4.
+Unfortunately, we can&#8217;t control when Asciidoctor is upgraded on services like GitHub, so there will be a period of time when you will need to use a syntax that works on both versions. So what do we do? The answer, use the transitional syntax.
+So what do you do?</p>
+</div>
+<div class="paragraph">
+<p>The answer is to use the transitional syntax we&#8217;ve prepared for you.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="transitional-syntax"><a class="anchor" href="#transitional-syntax"></a>Transitional syntax</h3>
+<div class="paragraph">
+<p>The transitional syntax allows you to pin-point the locations in your document that you&#8217;ll eventually want to migrate to the modern syntax, but can&#8217;t yet until Asciidoctor 0.1.4 is phased out.</p>
+</div>
+<div class="paragraph">
+<p>To use the transitional syntax, simply add the role <code>x-</code> in front of the legacy syntax to indicate that you want Asciidoctor 1.5.0 to use the old behavior.
+Naturally, Asciidoctor 0.1.4 already understands the old syntax and will simply ignore the role.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>`monospaced normal text` (<strong>No transitional syntax necessary!</strong>)</p>
+</li>
+<li>
+<p>[x-]`{asciidoctor-version} holds the version` (attribute is not replaced)</p>
+</li>
+<li>
+<p>[x-]+The Asciidoctor version is {asciidoctor-version}+ (attribute is replaced)</p>
+</li>
+<li>
+<p>“double quotes” and ‘single quotes’</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you want to have CodeRay embed the styles inline instead of using CSS classes, set the following attribute in your AsciiDoc document:</p>
+<p>There isn&#8217;t a transitional syntax for smart (i.e., smart) quotes.
+Instead, we encourage you to enter the smart quotes directly into your document.
+It is UTF-8 after all!</p>
 </div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:coderay-css: style</pre>
-</div>
+<div class="paragraph">
+<p>Refer to <a href="http://smartquotesforsmartpeople.com">Smart Quotes for Smart People</a> and <a href="http://www.kryogenix.org/days/2013/10/17/smart-quotes-for-smart-ubuntu-people">Smart Quotes for Smart Ubuntu (Linux) People</a> for instructions on how to type these characters.</p>
 </div>
 </td>
 </tr>
 </table>
 </div>
-</div>
-</div>
-</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="troubleshooting"><a class="anchor" href="#troubleshooting"></a>Troubleshooting</h2>
-<div class="sectionbody">
-<div class="qlist qanda">
-<ol>
-<li>
-<p><em>Part way through the document, the blocks stop rendering correctly. What went wrong?</em></p>
-<p>When content is not rendered as you expect in the later part of a document, it&#8217;s usually due to a delimited block missing its closing delimiter line.
-The most devious culprit is the <a href="user-manual.html#open-blocks">open block</a>.
-An open block doesn&#8217;t have any special styling, but its contents have the same restrictions as other delimited blocks, i.e. it can not contain section titles.</p>
 <div class="paragraph">
-<p>To solve this problem, first look for missing delimiter lines.
-<a href="user-manual.html#text-editor">Syntax highlighting in your text editor</a> can help with this.
-Also look at the rendered output to see if the block styles are extending past where you intended.
-When working with open blocks, you may need to add custom styles (such as a red border) to the class selector <code>.openblock</code> so that you can see its boundaries.</p>
+<p>If you aren&#8217;t worried about how the document renders on services like GitHub, you can start using the modern syntax immediately.</p>
 </div>
-</li>
-<li>
-<p><em>Why don&#8217;t URLs containing underscores (<code>_</code>) or carets (<code>^</code>) work after they&#8217;re rendered?</em></p>
-<div class="openblock">
-<div class="content">
+</div>
+<div class="sect2">
+<h3 id="migration-cheatsheet"><a class="anchor" href="#migration-cheatsheet"></a>Migration cheatsheet</h3>
 <div class="paragraph">
-<p>This problem occurs because the markup parser interprets parts of the URL (i.e., the link target) as valid <a href="user-manual.html#text-formatting">text formatting markup</a>.
-Most lightweight markup languages have this issue because they don&#8217;t use a grammar-based parser.
-Asciidoctor plans to handle URLs more carefully in the future (see <a href="https://github.com/asciidoctor/asciidoctor/issues/281">issue #281</a>), which may be solved by moving to a grammar-based parser (see <a href="https://github.com/asciidoctor/asciidoctor/issues/61">issue #61</a>).
-Thankfully, there are many ways to include URLs of arbitrary complexity using the AsciiDoc passthrough mechanisms.</p>
+<p>The following table provides a migration cheatsheet that compares the legacy, transitional and modern syntax side-by-side.</p>
 </div>
-<div class="exampleblock">
-<div class="title">Solution A</div>
-<div class="content">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Table 1. Syntax migration cheatsheet</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Legacy</th>
+<th class="tableblock halign-left valign-top">Transitional</th>
+<th class="tableblock halign-left valign-top">Modern</th>
+<th class="tableblock halign-left valign-top">Rendered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>'italic text'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>_single quoted_</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>italic text</em></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>+monospaced text+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`monospaced text`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>monospaced text</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`monospaced text`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`monospaced text`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>monospaced text</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`{asciidoctor-version}`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[x-]`{asciidoctor-version}`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`+{asciidoctor-version}+`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>{asciidoctor-version}</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>+{asciidoctor-version}+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>[x-]+{asciidoctor-version}+</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`{asciidoctor-version}`</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.5.0.rc.4</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>``double quoted''</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>“double quoted”</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>"`double quoted`"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">“double quoted”</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>`single quoted'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>‘single quoted’</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>'`single quoted`'</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">‘double quoted’</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p>The simplest way to get a link to behave is to assign it to an attribute.</p>
+<p>If you have feedback about the new syntax, feel free to let us know in the <a href="https://github.com/asciidoctor/asciidoctor/issues">issue tracker</a>.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Document Title
-:link-with-underscores: http://www.asciidoctor.org/now_this__link_works.html
-
-This URL has repeating underscores {link-with-underscores}.</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Asciidoctor won&#8217;t break links with underscores when they are assigned to an attribute because <a href="user-manual.html#text-substitutions">inline formatting markup is substituted before attributes</a>.
-The URL remains hidden while the rest of the document is being formatted (strong, emphasis, monospace, etc).</p>
-</div>
-</div>
-</div>
-<div class="exampleblock">
-<div class="title">Solution B</div>
-<div class="content">
-<div class="paragraph">
-<p>Another way to solve formatting glitches is to explicitly specify the formatting you want to have applied to a span of text.
-This can be done by using the <a href="user-manual.html#passthrough-macros">inline pass macro</a>.
-If you want to display a URL, and have it preserved, put it inside the <code>pass</code> macro and enable the <a href="user-manual.html#sub-macros">macros substitution</a>, which is what substitutes links.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores pass:macros[http://www.asciidoctor.org/now_this__link_works.html].</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>pass</code> macro removes the URL from the document, applies the <code>macros</code> substitution to the URL, and then restores the processed URL to its original location once the substitutions are complete on the whole document.</p>
-</div>
-<div class="paragraph">
-<p>Alternatively, you can use <code>$$</code> around the URL only.
-However, when you use this approach, Asciidoctor won&#8217;t recognize it as a URL anymore, so you have to use the explicit <code>link:</code> prefix.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">This URL has repeating underscores link:$$http://www.asciidoctor.org/now_this__link_works.html$$[].</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>For more information, see <a href="https://github.com/asciidoctor/asciidoctor/issues/625">issue #625</a>.</p>
-</div>
-</div>
-</div>
-</li>
-</ol>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
+Version 1.0<br>
 Last updated 2014-08-06 11:42:36 UTC
 </div>
 </div>

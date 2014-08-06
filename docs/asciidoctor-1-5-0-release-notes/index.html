@@ -1,0 +1,637 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>{"Asciidoctor 1.5.0"=>"Release Notes"} | Asciidoctor</title><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>{"Asciidoctor 1.5.0"=>"Release Notes"}</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns"><div class="sect1">
+<h2 id="get-technical-with-mathjax"><a class="anchor" href="#get-technical-with-mathjax"></a>Get technical with MathJax</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you need to get technical in your writing, Asciidoctor integrates with <a href="http://www.mathjax.org">MathJax</a>.
+MathJax is the standard library for displaying Science, Technology, Engineering and Math (STEM) expressions in the browser.</p>
+</div>
+<div class="paragraph">
+<p>First, enable STEM support by defining the <code>stem</code> attribute, optionally overriding the default STEM dialect of <code>asciimath</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:stem: latexmath</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, write <a href="http://docs.mathjax.org/en/latest/tex.html">TeX / LaTeX</a> or <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMath</a> expressions inside a block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[stem]
+++++
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}
+++++</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>a block macro:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">.Exponential growth
+stem::[x_0(1 + r)^2]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or an inline macro:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:stem: asciimath
+
+The earth's surface is mostly covered in stem:[H_2O].
+Respect it!</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is rendered beautifully in the browser thanks to MathJax!</p>
+</div>
+<div class="stemblock">
+<div class="content">
+\[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You don&#8217;t need to add special delimiters around the expression as the MathJax documentation suggests.
+Asciidoctor handles that for you automatically!
+</td>
+</tr>
+</table>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="consistent-quotes"><a class="anchor" href="#consistent-quotes"></a>Consistent quotes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The single quote (') and the backtick (`) are the two markup characters in the AsciiDoc syntax that often give people trouble.
+They like to get in each other&#8217;s way.
+We decided to shuffle around some of the AsciiDoc syntax to address this problem and, in general, make it more consistent and easy to learn.
+Not only do these changes reduce slipups in the parser, it also strengthens the meaning of the plus character and brings more alignment with Markdown by making backtick (`) the primary character for monospace.</p>
+</div>
+<div class="sect2">
+<h3 id="compat-mode-for-old-schoolers"><a class="anchor" href="#compat-mode-for-old-schoolers"></a>Compat mode for old-schoolers</h3>
+<div class="paragraph">
+<p>Before introducing what has changed, we want to highlight that you can forgo the changes to the syntax by setting the new <code>compat-mode</code> attribute, shown here defined in the document header:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:compat-mode:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compat mode is used to enable traditional syntax when the new syntax deviates from it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-for-passthrough"><a class="anchor" href="#use-for-passthrough"></a>Use “+” for “passthrough”</h3>
+<div class="paragraph">
+<p>The &#43; character in the traditional AsciiDoc syntax is not used consistently.
+Single plus (&#43;) and double plus (&#43;&#43;) are used to format text as monospace, whereas triple plus (&#43;&#43;&#43;) and quadruple plus (&#43;&#43;&#43;&#43;) are used to escape text from processing.</p>
+</div>
+<div class="paragraph">
+<p>We can make the AsciiDoc syntax easier to learn and remember by always using &#43; as a passthrough formatting mark.
+Instead of using the single plus and double plus for monospaced formatting, we&#8217;ve made them constrained and unconstrained literals (i.e., “render it as it looks”), respectively.
+For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">+_bar_+ becomes _bar_
+foo++_bar_++ becomes foo_bar_</pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You might notice that double plus (&#43;&#43;) is effectively the same as double dollar (&#36;&#36;).
+The latter should be viewed as deprecated.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We haven&#8217;t yet mentioned how to format text as monospace.
+For that, we&#8217;ll put the backtick back into play.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="markdown-style-monospace"><a class="anchor" href="#markdown-style-monospace"></a>Markdown-style monospace</h3>
+<div class="paragraph">
+<p>Authors who are familiar with Markdown are accustomed to using the backtick (`) to format text as monospace.
+We&#8217;ve embraced that convention in Asciidoctor.</p>
+</div>
+<div class="paragraph">
+<p>The backtick characters around text only means the text should be formatted as monospace.
+The backtick characters <em>do not</em> add passthrough semantics.
+In most cases, the passthrough semantics aren&#8217;t necessary, so using the backticks for monospaced formatting is all that&#8217;s necessary.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`literal` becomes literal (in monospace)
+`{backend}` becomes html5 (in monospace)
+a``||``b becomes a||b (where || is monospace)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to prevent substitutions in the monospaced text, you can either escape the special punctuation:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`\{backend}` becomes {backend} (in monospace)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or you can surround the text inside the backticks in pluses (remember, “plus for passthrough”):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`+{backend}+` becomes {backend} (in monospace)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>By not mixing monospace formatting with passthrough (literal) semantics, we are deviating slightly from the behavior of backticks in Markdown.
+However, that&#8217;s because AsciiDoc has additional features, such as attribute references, that we want to be able to leverage when formatting text as monospace.</p>
+</div>
+<div class="paragraph">
+<p>There will be a period of time during which you&#8217;ll have to process your document with both Asciidoctor 0.1.4 and 1.5.0 (mostly while we wait on GitHub to upgrade).
+We&#8217;ve added special logic in the processor to handle a hybrid syntax to use in the interim.
+Please refer to the <a href="/docs/migration">migration guide</a> for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="smarter-smart-quotes"><a class="anchor" href="#smarter-smart-quotes"></a>Smarter “smart” quotes</h3>
+<div class="paragraph">
+<p>The backtick character is also used for making curved quotes in the AsciiDoc syntax.
+Because the syntax is so similar to that of monospaced literal text, it often matches in unexpected ways.
+We&#8217;ve made the smart quotes syntax&#8230;smarter.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-quote-left fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>We use the backtick as a modifier on a quote to indicate it should be curved (i.e., a smart quote).
+You now place the backtick inside the quote character, adjacent to the quoted phrase.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Dig through a copy of '`The Times`' and you're bound to see a lot of "`smart`" quotes.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This change brings the backtick closer to the quote and makes parsing more deterministic since it no longer gets confused with other uses of the backtick.</p>
+</div>
+<div class="paragraph">
+<p>You can also use this syntax to force the use of single curved quotes anywhere in normal text.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">The `'50s and `'60s are referred to as the "`golden age`" of America.</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="open-source-fonts"><a class="anchor" href="#open-source-fonts"></a>Open Source fonts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The culture of Asciidoctor is deeply rooted in Open Source.
+That means Asciidoctor should use Open Source all the way down, including the fonts in the default stylesheet.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-font fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>In the past, the default stylesheet has relied on Microsoft Core Fonts (Arial &amp; Georgia) installed on the user&#8217;s system.
+We&#8217;ve replaced these proprietary fonts with Open Source fonts, which we now load from Google Fonts.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a list of the fonts we&#8217;ve selected:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Body font - Noto Serif</p>
+</li>
+<li>
+<p>Heading font - Open Sans Light</p>
+</li>
+<li>
+<p>Monospaced font - Droid Sans</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>I particularly like Noto Serif because it&#8217;s an extremely readable font that also happens to support the world&#8217;s languages.</p>
+</div>
+<div class="paragraph">
+<p>We also made some additional refinements to the default stylesheet that give it a professional, modern appearance.
+Here&#8217;s a preview of the new default theme:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/screenshot-default-theme.png" alt="Screenshot of default Asciidoctor theme">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="font-awesome-4-1"><a class="anchor" href="#font-awesome-4-1"></a>Font Awesome 4.1</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Speaking of fonts, Asciidoctor now integrates with Font Awesome 4.1, thanks to the work done by Guillaume Grossetie (@mogztter)!
+You now have <strong>over 400 icons</strong> to use to decorate your document!</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-flag fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>“Everything is AWESOME!”</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="diagrams-diagrams-diagrams"><a class="anchor" href="#diagrams-diagrams-diagrams"></a>Diagrams, diagrams, diagrams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can add even more visual elements to your document with diagrams conjured from plain-text.
+<a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a> emerged from the request to port the PlantUML extension for AsciiDoc Python to Asciidoctor.
+Pepijn Van Eeckhoudt (@pepijnve) took the reigns and created an extension that not only adds integration with PlantUML, but a comprehensive diagram extension that integrates the following four diagramming tools, as well as a framework for adding more in the futgure.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://plantuml.sourceforge.net">PlantUML</a></p>
+</li>
+<li>
+<p><a href="http://www.graphviz.org">Graphviz</a></p>
+</li>
+<li>
+<p><a href="http://ditaa.sourceforge.net">Ditaa</a></p>
+</li>
+<li>
+<p><a href="https://github.com/christiangoltz/shaape">Shaape</a></p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
+</div>
+</div>
+<div class="paragraph">
+<p>Read on to learn how to load extensions like Asciidoctor Diagram from the CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="load-extensions-from-the-cli"><a class="anchor" href="#load-extensions-from-the-cli"></a>Load extensions from the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor introduced an extensions API in 0.1.4 that allows you to extend the AsciiDoc syntax and tap into the lifecycle of the processor.
+However, it was only possible to load these extensions when invoking Asciidoctor via the API or by creating a custom launch script.</p>
+</div>
+<div class="paragraph">
+<p>The <code>asciidoctor</code> command now supports the <code>-r</code> and <code>-I</code> flags from the <code>ruby</code> command to require additional paths or modify the load path, respectively.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-gears fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of how to use the <code>-r</code> flag to enable the Asciidoctor Diagram extension:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -r asciidoctor-diagram sample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also pass an absolute or relative path to the <code>-r</code> flag and you can use the flag multiple times.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -r ./my-extension-a.rb -r ./my-extension-b.rb sample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The scripts are loaded before any processing occurs and in the order they are listed.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="level-your-offsets"><a class="anchor" href="#level-your-offsets"></a>Level your offsets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>leveloffset</code> attribute is used to shift the level of sections when combining documents.
+It works great for a single include level, but as Groovy developers Cedric and Guillaume discovered, it quickly breaks down when you get into multiple levels of nesting.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-indent fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>The problem is that the level offset value is assumed to be absolute.
+Asciidoctor now supports <em>relative</em> level offset values using a leading + or - operator.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:leveloffset: +1
+include::chapter-01.adoc[]
+:leveloffset: 0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can specify the <code>leveloffset</code> attribute directly on the include directive so you don&#8217;t have to worry about restoring the old value.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">include::chapter-01.adoc[leveloffset=+1]</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="filtering-tag-directives"><a class="anchor" href="#filtering-tag-directives"></a>Filtering tag directives</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Groovy developers have also been making heavy usage of partial file includes using lines selected by tag.
+Here they discovered that tag directives that appear within a broader tagged ranges get carried over into the document.
+These extra tag directives are now filtered out so you can nest fine-grained ranges inside of broader ranges.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-filter fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>For example, if our include file has the following content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">tag::all-snippets[]
+tag::snippet-a[]
+snippet a
+end::snippet-a[]
+
+tag::snippet-b[]
+snippet b
+end::snippet-b[]
+end::all-snippets[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And we include this file using the following include directive:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">include::file-with-snippets.adoc[tag=all-snippets]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Only the following lines will be selected:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">snippet a
+
+snippet b</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The tag directives are also searched using a more strict match to avoid false matches.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="embracing-docbook-5"><a class="anchor" href="#embracing-docbook-5"></a>Embracing DocBook 5</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-book fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>The <a href="http://www.docbook.org/specs/docbook-5.0-spec-cs-01.html">DocBook 5 specification</a> was finalized in 2008.
+It&#8217;s time we embrace it.
+DocBook 5 is now the default output for the <code>docbook</code> backend.
+If you still need to produce DocBook 4.5, just set the backend to <code>docbook45</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="xhtml-makes-happy-xml-parsers"><a class="anchor" href="#xhtml-makes-happy-xml-parsers"></a>XHTML makes happy XML parsers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HTML5 brought the return to the flexible HTML syntax of old, only loosely based on SGML and most certainly not XML.
+This decision was oriented at making HTML5 more approachable.
+However, it makes XML parsers sad (read as: choke).</p>
+</div>
+<div class="paragraph">
+<p>To accomodate tools in the chain that rely on XML parsers to read the generated HTML, Asciidoctor now supports the XHTML variant of HTML5, known as XHTML5.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-code fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>To output XHTML5 instead of HTML5, simply set the backend to <code>xhtml</code> or, to be explicit, <code>xhtml5</code>.
+The “x” at the beginning of the name tells Asciidoctor to add the xmlns attribute to the root, close short tags and assign values to boolean attributes.
+Your XML parser will thank you.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="asciidoctor-js-is-asciidoctor"><a class="anchor" href="#asciidoctor-js-is-asciidoctor"></a>Asciidoctor.js is Asciidoctor</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor in JavaScript.<br>
+It was a dream.<br>
+Then it was a prototype.<br>
+Now, it&#8217;s the real deal.</p>
+</div>
+<div class="paragraph">
+<p>Guillaume Grossetie (@mogztter) led the effort during the 1.5.0 development cycle to align the <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> code base with Asciidoctor core.
+After <em>a lot</em> of fiddling and Opal patches, we managed to get Asciidoctor.js building directly against master and the Asciidoctor 1.5.0 release.
+That means that for the first time, Asciidoctor.js <strong>is</strong> Asciidoctor.</p>
+</div>
+<div class="paragraph">
+<p>Anthonny Quérouil (@anthonny) then came along and put together a Grunt build script to bundle Asciidoctor.js and publish it to npm (the Node.js package manager) and Bower (the web package manager).</p>
+</div>
+<div class="paragraph">
+<p>Guillaume is the creator of the <a href="https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia">AsciiDoc preview for Chrome</a> and Anthonny the creator of the <a href="https://atom.io/packages/asciidoc-preview">AsciiDoc preview for Atom</a>.
+Thomas Kern (@nerk) was quick to follow up with an <a href="https://github.com/asciidoctor/brackets-asciidoc-preview">AsciiDoc preview for Brackets</a>.
+Guillaume, Anthonny and Thomas have been collaborating on tooling based on Asciidoctor.js and make Asciidoctor boldly go where no AsciiDoc implementation has gone before.</p>
+</div>
+<div class="paragraph">
+<p>The alignment of Asciidoctor.js with Asciidoctor core was a major effort and I want to sincerely thank Guillaume, Anthonny and the Opal team (Adam Beynon, meh and Elia Schito) for making this happen.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="refine-substitutions"><a class="anchor" href="#refine-substitutions"></a>Refine substitutions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you needed to customize the substitutions on a block, you used to have to list out all the substitutions you wanted to enable.
+It&#8217;s now possible to add or remove substitutions to the default substitution set using these modifiers:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">leading &#43;</dt>
+<dd>
+<p>appends the substitution group</p>
+</dd>
+<dt class="hdlist1">leading -</dt>
+<dd>
+<p>removes the substitution group</p>
+</dd>
+<dt class="hdlist1">trailing &#43;</dt>
+<dd>
+<p>prepends the substitution group</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you want to substitute attribute references in a listing block.
+You can set the value of the <code>subs</code> attribute on the block to <code>+attributes</code>:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">[source,xml,subs=+attributes]
+----
+&lt;version&gt;{application-version}&lt;/version&gt;
+----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you need to refer to the substitution group <code>specialcharacters</code>, you can abbreviate it as <code>specialchars</code>.</p>
+</div>
+<div class="paragraph">
+<p>When defining substitutions on the inline pass macro, you only have to type the first letter of the substitution group name:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">pass:q[_Save As..._]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>These changes should save a lot of unnecessary typing!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="secure-assets"><a class="anchor" href="#secure-assets"></a>Secure assets</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Serving assets over SSL is a best practice to avoid man-in-the-middle attacks and preying eyes in general.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>All remote assets used out of the box in Asciidoctor, such as Font Awesome, are now served over SSL from cdnjs.cloudflare.com and fonts.googleapis.com.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="print-your-docs"><a class="anchor" href="#print-your-docs"></a>Print your docs</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Leif Gruenwoldt (@leif81) pointed out that the print styles were too aggressive, causing the printed document to lose its integrity.
+We worked together to tweak the stylesheet until the output looked about as good as a PDF generated by the DocBook toolchain.
+The styles even separate chapters into different pages when the doctype is book.
+We also added table border styles for all the permutations of grid and frame.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-print fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>Who needs DocBook when you&#8217;ve got HTML5 and CSS3?</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="/images/screenshot-print-preview.png" alt="Print preview" width="400">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="hide-the-uri-schemes"><a class="anchor" href="#hide-the-uri-schemes"></a>Hide the URI schemes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor auto-detects and auto-links URLs.
+Writers often don&#8217;t take advantage of this feature because it shows the URI scheme prefix (e.g., http://).
+They opt instead for the long form for the sole purpose of hiding the scheme.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">http://asciidoctor.org[asciidoctor.org]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor can now produce the same result if you set the <code>hide-uri-scheme</code> attribute on the document:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:hide-uri-scheme:
+
+http://asciidoctor.org</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="human-friendly-cross-references"><a class="anchor" href="#human-friendly-cross-references"></a>Human-friendly cross references</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you are linking to an anchor point somewhere else in your document, you can refer to it by title instead of by ID.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Refer to &lt;&lt;Section A&gt;&gt;.
+
+== Section A</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll likely want to switch to using IDs as the document matures, but this should certainly help with flow in early drafts!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="pdf-and-epub3"><a class="anchor" href="#pdf-and-epub3"></a>PDF and EPUB3</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor can now convert directly from AsciiDoc to PDF and EPUB3, using <a href="https://github.com/asciidoctor/asciidoctor-pdf">Asciidoctor PDF</a> and <a href="https://github.com/asciidoctor/asciidoctor-epub3">Asciidoctor EPUB3</a>, respectively.
+These converters are hosted in their own repositories and are distributed as separate gems.</p>
+</div>
+<div class="paragraph">
+<p>TODO include EPUB3 screenshot</p>
+</div>
+<div class="paragraph">
+<p>The converters are currently alpha, but still very functional.</p>
+</div>
+</div>
+</div></div></div></div><div class="large-4 columns"><ul class="button-group radius" style="margin-top: 1.2em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoctor-1-5-0-release-notes.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoctor-1-5-0-release-notes.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoctor-1-5-0-release-notes.adoc">History</a></li><li><i class="fa fa-github fa-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project is an effort to bring a comprehensive and accessible publishing toolchain, centered around the AsciiDoc syntax, to a growing range of ecosystems, including Ruby, JavaScript and the JVM.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora, Debian and Ubuntu. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="fa fa-download"></i> Download: <a class="rubygem" href="http://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="fa fa-github"></i> Development: <a href="http://github.com/asciidoctor">GitHub</a><br><i class="fa fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="fa fa-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="fa fa-twitter"></i> Twitter: <a class="twitter" href="http://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="fa fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="http://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
