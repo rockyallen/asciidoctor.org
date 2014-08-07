@@ -2,75 +2,90 @@
 <h2 id="get-technical-with-mathjax"><a class="anchor" href="#get-technical-with-mathjax"></a>Get technical with MathJax</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you need to get technical in your writing, Asciidoctor integrates with <a href="http://www.mathjax.org">MathJax</a>.
-MathJax is the standard library for displaying Science, Technology, Engineering and Math (STEM) expressions in the browser.</p>
-</div>
-<div class="paragraph">
-<p>First, enable STEM support by defining the <code>stem</code> attribute, optionally overriding the default STEM dialect of <code>asciimath</code>:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">:stem: latexmath</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Then, write <a href="http://docs.mathjax.org/en/latest/tex.html">TeX / LaTeX</a> or <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMath</a> expressions inside a block:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">[stem]
-++++
-x = {-b \pm \sqrt{b^2-4ac} \over 2a}
-++++</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>a block macro:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">.Exponential growth
-stem::[x_0(1 + r)^2]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or an inline macro:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">:stem: asciimath
-
-The earth's surface is mostly covered in stem:[H_2O].
-Respect it!</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The result is rendered beautifully in the browser thanks to MathJax!</p>
+<p>If you need to get technical in your writing, Asciidoctor integrates with <a href="http://www.mathjax.org">MathJax</a> and allows you to write <a href="http://docs.mathjax.org/en/latest/tex.html">TeX / LaTeX</a> or <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMath</a> expressions.</p>
 </div>
 <div class="stemblock">
+<div class="title">A rendered LaTeXMath equation</div>
 <div class="content">
 \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
 </div>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You don&#8217;t need to add special delimiters around the expression as the MathJax documentation suggests.
-Asciidoctor handles that for you automatically!
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>With the introduction of the <a href="http://asciidoctor.org/docs/user-manual/#equations-and-formulas">STEM attribute</a>, you can now create <a href="http://asciidoctor.org/docs/user-manual/#inline-stem-content">inline</a> and <a href="http://asciidoctor.org/docs/user-manual/#block-stem-content">block</a> formulas.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="diagrams-diagrams-diagrams"><a class="anchor" href="#diagrams-diagrams-diagrams"></a>Diagrams, diagrams, diagrams</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can add even more visual elements to your document with diagrams conjured from plain text.
+<a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a> emerged from the request to port the PlantUML extension for AsciiDoc Python to Asciidoctor.
+Pepijn Van Eeckhoudt (@pepijnve) took the reins and created a comprehensive diagram extension that not only adds integration with PlantUML, but three additional diagramming tools, as well as a framework for adding more in the future.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor 1.5.0 supports the following diagramming tools.</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference</a></p>
+<p><a href="http://plantuml.sourceforge.net">PlantUML</a></p>
+</li>
+<li>
+<p><a href="http://www.graphviz.org">Graphviz</a></p>
+</li>
+<li>
+<p><a href="http://ditaa.sourceforge.net">Ditaa</a></p>
+</li>
+<li>
+<p><a href="https://github.com/christiangoltz/shaape">Shaape</a></p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
+</div>
+</div>
+<div class="paragraph">
+<p>Checkout the <a href="http://asciidoctor.org/docs/asciidoctor-diagram">Asciidoctor Diagram Guide</a> to learn how to create diagrams and ASCIIart in your AsciiDoc documents.</p>
+</div>
+<div class="paragraph">
+<p>Read on to learn how to load extensions like Asciidoctor Diagram from the CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="load-extensions-from-the-cli"><a class="anchor" href="#load-extensions-from-the-cli"></a>Load extensions from the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor introduced an extensions API in 0.1.4 that allows you to extend the AsciiDoc syntax and tap into the lifecycle of the processor.
+However, it was only possible to load these extensions when invoking Asciidoctor via the API or by creating a custom launch script.</p>
+</div>
+<div class="paragraph">
+<p>The <code>asciidoctor</code> command now supports the <code>-r</code> and <code>-I</code> flags from the <code>ruby</code> command to require additional paths or modify the load path, respectively.</p>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-gears fa-4x"></i></span></p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of how to use the <code>-r</code> flag to enable the Asciidoctor Diagram extension:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -r asciidoctor-diagram sample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also pass an absolute or relative path to the <code>-r</code> flag and you can use the flag multiple times.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -r ./my-extension-a.rb -r ./my-extension-b.rb sample.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The scripts are loaded before any processing occurs and in the order they are listed.</p>
 </div>
 </div>
 </div>
@@ -78,10 +93,10 @@ Asciidoctor handles that for you automatically!
 <h2 id="consistent-quotes"><a class="anchor" href="#consistent-quotes"></a>Consistent quotes</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The single quote (') and the backtick (`) are the two markup characters in the AsciiDoc syntax that often give people trouble.
+<p>The single quote (<code>'</code>) and the backtick (<code>`</code>) are the two markup characters in the AsciiDoc syntax that often give people trouble.
 They like to get in each other&#8217;s way.
 We decided to shuffle around some of the AsciiDoc syntax to address this problem and, in general, make it more consistent and easy to learn.
-Not only do these changes reduce slipups in the parser, it also strengthens the meaning of the plus character and brings more alignment with Markdown by making backtick (`) the primary character for monospace.</p>
+Not only do these changes reduce slipups in the parser, it also strengthens the meaning of the plus character and brings more alignment with Markdown by making backtick (<code>`</code>) the primary character for monospace.</p>
 </div>
 <div class="sect2">
 <h3 id="compat-mode-for-old-schoolers"><a class="anchor" href="#compat-mode-for-old-schoolers"></a>Compat mode for old-schoolers</h3>
@@ -100,11 +115,11 @@ Not only do these changes reduce slipups in the parser, it also strengthens the 
 <div class="sect2">
 <h3 id="use-for-passthrough"><a class="anchor" href="#use-for-passthrough"></a>Use “+” for “passthrough”</h3>
 <div class="paragraph">
-<p>The &#43; character in the traditional AsciiDoc syntax is not used consistently.
-Single plus (&#43;) and double plus (&#43;&#43;) are used to format text as monospace, whereas triple plus (&#43;&#43;&#43;) and quadruple plus (&#43;&#43;&#43;&#43;) are used to escape text from processing.</p>
+<p>The <code>&#43;</code> character in the traditional AsciiDoc syntax is not used consistently.
+Single plus (<code>&#43;</code>) and double plus (<code>&#43;&#43;</code>) are used to format text as monospace, whereas triple plus (<code>&#43;&#43;&#43;</code>) and quadruple plus (<code>&#43;&#43;&#43;&#43;</code>) are used to escape text from processing.</p>
 </div>
 <div class="paragraph">
-<p>We can make the AsciiDoc syntax easier to learn and remember by always using &#43; as a passthrough formatting mark.
+<p>We can make the AsciiDoc syntax easier to learn and remember by always using <code>&#43;</code> as a passthrough formatting mark.
 Instead of using the single plus and double plus for monospaced formatting, we&#8217;ve made them constrained and unconstrained literals (i.e., “render it as it looks”), respectively.
 For example:</p>
 </div>
@@ -269,74 +284,6 @@ You now have <strong>over 400 icons</strong> to use to decorate your document!</
 </div>
 </div>
 <div class="sect1">
-<h2 id="diagrams-diagrams-diagrams"><a class="anchor" href="#diagrams-diagrams-diagrams"></a>Diagrams, diagrams, diagrams</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>You can add even more visual elements to your document with diagrams conjured from plain-text.
-<a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a> emerged from the request to port the PlantUML extension for AsciiDoc Python to Asciidoctor.
-Pepijn Van Eeckhoudt (@pepijnve) took the reigns and created an extension that not only adds integration with PlantUML, but a comprehensive diagram extension that integrates the following four diagramming tools, as well as a framework for adding more in the futgure.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://plantuml.sourceforge.net">PlantUML</a></p>
-</li>
-<li>
-<p><a href="http://www.graphviz.org">Graphviz</a></p>
-</li>
-<li>
-<p><a href="http://ditaa.sourceforge.net">Ditaa</a></p>
-</li>
-<li>
-<p><a href="https://github.com/christiangoltz/shaape">Shaape</a></p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
-</div>
-</div>
-<div class="paragraph">
-<p>Read on to learn how to load extensions like Asciidoctor Diagram from the CLI.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="load-extensions-from-the-cli"><a class="anchor" href="#load-extensions-from-the-cli"></a>Load extensions from the CLI</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Asciidoctor introduced an extensions API in 0.1.4 that allows you to extend the AsciiDoc syntax and tap into the lifecycle of the processor.
-However, it was only possible to load these extensions when invoking Asciidoctor via the API or by creating a custom launch script.</p>
-</div>
-<div class="paragraph">
-<p>The <code>asciidoctor</code> command now supports the <code>-r</code> and <code>-I</code> flags from the <code>ruby</code> command to require additional paths or modify the load path, respectively.</p>
-</div>
-<div class="paragraph">
-<p><span class="icon"><i class="fa fa-gears fa-4x"></i></span></p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example of how to use the <code>-r</code> flag to enable the Asciidoctor Diagram extension:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -r asciidoctor-diagram sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>You can also pass an absolute or relative path to the <code>-r</code> flag and you can use the flag multiple times.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor -r ./my-extension-a.rb -r ./my-extension-b.rb sample.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>The scripts are loaded before any processing occurs and in the order they are listed.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="level-your-offsets"><a class="anchor" href="#level-your-offsets"></a>Level your offsets</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -371,46 +318,12 @@ include::chapter-01.adoc[]
 <h2 id="filtering-tag-directives"><a class="anchor" href="#filtering-tag-directives"></a>Filtering tag directives</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Groovy developers have also been making heavy usage of partial file includes using lines selected by tag.
-Here they discovered that tag directives that appear within a broader tagged ranges get carried over into the document.
-These extra tag directives are now filtered out so you can nest fine-grained ranges inside of broader ranges.</p>
+<p>The Groovy developers have also been making heavy usage of partial file includes using lines selected by the tag directive.
+They discovered that tag directives that appear within a broader tagged ranges get carried over into the document.
+These extra tag directives are now filtered out so you can <a href="http://asciidoctor.org/docs/user-manual/#selecting-parts-of-a-document-to-include">nest fine-grained ranges inside broader ranges</a>.</p>
 </div>
 <div class="paragraph">
 <p><span class="icon"><i class="fa fa-filter fa-4x"></i></span></p>
-</div>
-<div class="paragraph">
-<p>For example, if our include file has the following content:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap">tag::all-snippets[]
-tag::snippet-a[]
-snippet a
-end::snippet-a[]
-
-tag::snippet-b[]
-snippet b
-end::snippet-b[]
-end::all-snippets[]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>And we include this file using the following include directive:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">include::file-with-snippets.adoc[tag=all-snippets]</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Only the following lines will be selected:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">snippet a
-
-snippet b</pre>
-</div>
 </div>
 <div class="paragraph">
 <p>The tag directives are also searched using a more strict match to avoid false matches.</p>
@@ -426,8 +339,8 @@ snippet b</pre>
 <div class="paragraph">
 <p>The <a href="http://www.docbook.org/specs/docbook-5.0-spec-cs-01.html">DocBook 5 specification</a> was finalized in 2008.
 It&#8217;s time we embrace it.
-DocBook 5 is now the default output for the <code>docbook</code> backend.
-If you still need to produce DocBook 4.5, just set the backend to <code>docbook45</code>.</p>
+DocBook 5 is now the default output for the <a href="http://asciidoctor.org/docs/user-manual/#docbook"><code>docbook</code> converter</a>.
+If you still need to produce DocBook 4.5, set the backend to <code>docbook45</code>.</p>
 </div>
 </div>
 </div>
@@ -435,12 +348,12 @@ If you still need to produce DocBook 4.5, just set the backend to <code>docbook4
 <h2 id="xhtml-makes-happy-xml-parsers"><a class="anchor" href="#xhtml-makes-happy-xml-parsers"></a>XHTML makes happy XML parsers</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>HTML5 brought the return to the flexible HTML syntax of old, only loosely based on SGML and most certainly not XML.
-This decision was oriented at making HTML5 more approachable.
+<p>HTML5 reintroduced flexible HTML syntax that is only loosely based on SGML and most certainly not XML.
+This decision makes HTML5 more approachable.
 However, it makes XML parsers sad (read as: choke).</p>
 </div>
 <div class="paragraph">
-<p>To accomodate tools in the chain that rely on XML parsers to read the generated HTML, Asciidoctor now supports the XHTML variant of HTML5, known as XHTML5.</p>
+<p>To accomodate tools that rely on XML parsers to read the generated HTML, Asciidoctor now supports the XHTML variant of HTML5, known as XHTML5.</p>
 </div>
 <div class="paragraph">
 <p><span class="icon"><i class="fa fa-code fa-4x"></i></span></p>
@@ -467,58 +380,30 @@ After <em>a lot</em> of fiddling and Opal patches, we managed to get Asciidoctor
 That means that for the first time, Asciidoctor.js <strong>is</strong> Asciidoctor.</p>
 </div>
 <div class="paragraph">
-<p>Anthonny Quérouil (@anthonny) then came along and put together a Grunt build script to bundle Asciidoctor.js and publish it to npm (the Node.js package manager) and Bower (the web package manager).</p>
+<p>Anthonny Quérouil (@anthonny) then developed a Grunt build script to bundle Asciidoctor.js and publish it to npm (the Node.js package manager) and Bower (the web package manager).</p>
 </div>
 <div class="paragraph">
 <p>Guillaume is the creator of the <a href="https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia">AsciiDoc preview for Chrome</a> and Anthonny the creator of the <a href="https://atom.io/packages/asciidoc-preview">AsciiDoc preview for Atom</a>.
 Thomas Kern (@nerk) was quick to follow up with an <a href="https://github.com/asciidoctor/brackets-asciidoc-preview">AsciiDoc preview for Brackets</a>.
-Guillaume, Anthonny and Thomas have been collaborating on tooling based on Asciidoctor.js and make Asciidoctor boldly go where no AsciiDoc implementation has gone before.</p>
+Guillaume, Anthonny and Thomas have been collaborating on tooling based on Asciidoctor.js.
+They&#8217;re helping Asciidoctor boldly go where no AsciiDoc implementation has gone before.</p>
 </div>
 <div class="paragraph">
-<p>The alignment of Asciidoctor.js with Asciidoctor core was a major effort and I want to sincerely thank Guillaume, Anthonny and the Opal team (Adam Beynon, meh and Elia Schito) for making this happen.</p>
+<p>The alignment of Asciidoctor.js with Asciidoctor core was a major effort.
+I want to sincerely thank Guillaume, Anthonny and the Opal team (Adam Beynon, meh and Elia Schito) for making this happen.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="refine-substitutions"><a class="anchor" href="#refine-substitutions"></a>Refine substitutions</h2>
+<h2 id="refined-substitutions"><a class="anchor" href="#refined-substitutions"></a>Refined substitutions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>When you needed to customize the substitutions on a block, you used to have to list out all the substitutions you wanted to enable.
-It&#8217;s now possible to add or remove substitutions to the default substitution set using these modifiers:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">leading &#43;</dt>
-<dd>
-<p>appends the substitution group</p>
-</dd>
-<dt class="hdlist1">leading -</dt>
-<dd>
-<p>removes the substitution group</p>
-</dd>
-<dt class="hdlist1">trailing &#43;</dt>
-<dd>
-<p>prepends the substitution group</p>
-</dd>
-</dl>
+It&#8217;s now possible to add or remove substitutions to the default substitution set using the <code>+</code> and <code>-</code> modifiers.
+We&#8217;ve also abreviated the <code>substitutions</code> attribute to <code>subs</code> and <code>specialcharacters</code> to <code>specialchars</code>.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s say you want to substitute attribute references in a listing block.
-You can set the value of the <code>subs</code> attribute on the block to <code>+attributes</code>:</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">[source,xml,subs=+attributes]
-----
-&lt;version&gt;{application-version}&lt;/version&gt;
-----</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>If you need to refer to the substitution group <code>specialcharacters</code>, you can abbreviate it as <code>specialchars</code>.</p>
-</div>
-<div class="paragraph">
-<p>When defining substitutions on the inline pass macro, you only have to type the first letter of the substitution group name:</p>
+<p>Additionally, when defining substitutions on the inline pass macro, you only have to type the first letter of the substitution group name.</p>
 </div>
 <div class="literalblock">
 <div class="content">
