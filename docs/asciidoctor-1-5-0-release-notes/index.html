@@ -623,7 +623,7 @@ If you still need to produce DocBook 4.5, use the <code>docbook45</code> backend
 <div class="paragraph">
 <p>HTML5 reintroduced flexible HTML syntax that&#8217;s only loosely based on SGML&#8230;and most certainly <em>not</em> XML.
 This decision makes HTML5 more approachable.
-However, it makes XML parsers sad (read as: <span class="icon"><i class="fa fa-bomb"></i></span>).</p>
+However, it makes XML parsers <span class="icon"><i class="fa fa-bomb"></i></span>.</p>
 </div>
 <div class="paragraph">
 <p>To accomodate tools that use XML parsers to read the generated HTML, Asciidoctor now supports the XHTML variant of HTML5, known as <a href="http://www.w3.org/TR/html5/introduction.html#html-vs-xhtml">XHTML5</a>.</p>
@@ -687,7 +687,7 @@ Not only do these changes reduce slip ups by the parser, they also strengthen th
 <div class="sect2">
 <h3 id="migrating-with-compat-mode"><a class="anchor" href="#migrating-with-compat-mode"></a>Migrating with compat-mode</h3>
 <div class="paragraph">
-<p>Before introducing what has changed, we want to highlight that you can forgo the monospace and passthrough syntax changes by setting the <code>compat-mode</code> attribute, shown here defined in the document header:</p>
+<p>Before introducing what has changed, we want to highlight that you can forgo the italic, monospace and passthrough syntax changes by setting the <code>compat-mode</code> attribute, shown here defined in the document header:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -695,7 +695,7 @@ Not only do these changes reduce slip ups by the parser, they also strengthen th
 </div>
 </div>
 <div class="paragraph">
-<p>or using a two-line document title:</p>
+<p>or by using a two-line document title:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -705,14 +705,14 @@ Not only do these changes reduce slip ups by the parser, they also strengthen th
 </div>
 <div class="paragraph">
 <p>Compat mode is used to enable legacy syntax when the new syntax deviates from it.
-See the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for more information about migrating your AsciiDoc documents and using the transitional syntax.</p>
+See the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for more information about migrating your AsciiDoc documents and the transitional syntax that&#8217;s available.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="use-for-passthrough"><a class="anchor" href="#use-for-passthrough"></a>Use “+” for passthrough</h3>
+<h3 id="means-passthrough"><a class="anchor" href="#means-passthrough"></a>“+” means passthrough</h3>
 <div class="paragraph">
 <p>The <code>{plus}</code> character in the original AsciiDoc syntax is not used consistently.
-Single plus (<code>{plus}</code>) and double plus (<code>{plus-x2}</code>) were used to format text as monospace, whereas triple plus (<code>{plus-x3}</code>) and quadruple plus (<code>{plus-x4}</code>) were used to escape text from processing.</p>
+Single plus (<code>{plus}</code>) and double plus (<code>{plus-x2}</code>) are used to format text as monospace, whereas triple plus (<code>{plus-x3}</code>) and quadruple plus (<code>{plus-x4}</code>) are used to escape text from processing.</p>
 </div>
 <div class="paragraph">
 <p>We made AsciiDoc easier to learn and remember by always using <code>{plus}</code> as a <a href="http://asciidoctor.org/docs/user-manual/#passthru">passthrough formatting mark</a>.
@@ -737,9 +737,9 @@ For that, we&#8217;ll put the backtick back into play.</p>
 We&#8217;ve embraced this convention in Asciidoctor.</p>
 </div>
 <div class="paragraph">
-<p>The backtick characters around text only means the text should be formatted as monospace.
-The backtick characters <em>do not</em> add passthrough semantics.
-In most cases, the passthrough semantics aren&#8217;t necessary, so using the backticks for monospaced formatting is all that&#8217;s necessary.</p>
+<p>Using backtick characters around text now means the text should be formatted as monospace only.
+The backtick characters <em>do not</em> add passthrough semantics, as they did before.
+In most cases, the passthrough semantics aren&#8217;t necessary, so using the backticks for monospaced formatting is sufficient.</p>
 </div>
 <div class="paragraph">
 <p>By not mixing monospace formatting with passthrough (literal) semantics, we are deviating slightly from the behavior of backticks in Markdown.
@@ -754,13 +754,13 @@ Please refer to the <a href="http://asciidoctor.org/docs/migration/">migration g
 <div class="sect2">
 <h3 id="smarter-smart-quotes"><a class="anchor" href="#smarter-smart-quotes"></a>Smarter “smart” quotes</h3>
 <div class="paragraph">
-<p>Traditional AsciiDoc also uses the backtick character for making curved quotes.
+<p>Legacy AsciiDoc also uses the backtick character for making curved quotes.
 Because the syntax was so similar to that of monospaced literal text, it often matched in unexpected ways.
-We&#8217;ve made the smart quotes syntax&#8230;smarter.</p>
+We&#8217;ve made the smart quotes syntax&#8230;<em>smarter</em>.</p>
 </div>
 <div class="paragraph">
 <p>In Asciidoctor 1.5.0, the backtick acts as a modifier on a quote to indicate it should be curved.
-Place the backtick inside the quote character, adjacent to the quoted phrase.</p>
+You now place the backtick inside the quote character, adjacent to the quoted phrase, to make it “smart”.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -768,8 +768,14 @@ Place the backtick inside the quote character, adjacent to the quoted phrase.</p
 </div>
 </div>
 <div class="paragraph">
-<p>This change brings the backtick closer to the quote and makes parsing more deterministic since it no longer gets confused with other uses of the backtick.
+<p>This change brings the backtick closer in proximity to the quote and thus makes parsing more deterministic.
 See the user manual for <a href="http://asciidoctor.org/docs/user-manual/#quotation-marks-and-apostrophes">more curved quote and apostrophe examples</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="quote-means-quote"><a class="anchor" href="#quote-means-quote"></a>Quote means quote</h3>
+<div class="paragraph">
+<p>TODO: italic change</p>
 </div>
 </div>
 </div>
@@ -900,11 +906,11 @@ In addition to these styles, we also added the missing table border styles for a
 <h2 id="spotlight-fonts"><a class="anchor" href="#spotlight-fonts"></a><span class="icon"><i class="fa fa-font"></i></span> Open Source fonts</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The culture of Asciidoctor is deeply rooted in open source.</p>
+<p>The culture of Asciidoctor is deeply rooted in Open Source, so we want to be Open Source all the way down.</p>
 </div>
 <div class="paragraph">
 <p>In the past, the default stylesheet relied on Microsoft Core Fonts (Arial and Georgia) installed on the user&#8217;s system.
-We&#8217;ve replaced these proprietary fonts with open source fonts, which we load from Google Fonts.</p>
+We&#8217;ve replaced these proprietary fonts with Open Source fonts, which we load from Google Fonts.</p>
 </div>
 <div class="paragraph">
 <p>Here are the fonts we&#8217;ve selected:</p>
@@ -926,7 +932,7 @@ We&#8217;ve replaced these proprietary fonts with open source fonts, which we lo
 <p>I particularly like <a href="https://www.google.com/fonts/specimen/Noto+Serif">Noto Serif</a> because it&#8217;s an extremely readable font <em>and</em> it supports all the world&#8217;s languages.</p>
 </div>
 <div class="paragraph">
-<p>We also made additional refinements to the default stylesheet that bring a professional, modern appearance.
+<p>We made additional refinements to the default stylesheet that give it a professional, modern appearance.
 Here&#8217;s a preview of the new default theme:</p>
 </div>
 <div class="imageblock">
@@ -941,7 +947,7 @@ Here&#8217;s a preview of the new default theme:</p>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Speaking of fonts, Asciidoctor integrates with Font Awesome 4.1, thanks to the work done by Guillaume Grossetie (@mogztter)!
-You now have <strong>over 400 icons</strong> available to enhance your document!</p>
+You now have <strong>over 400 icons</strong> available to accessorize your document!</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -964,7 +970,7 @@ If you have existing documents that use the icon macro, you may want to add the 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-08 22:57:39 UTC
+Last updated 2014-08-08 23:46:47 UTC
 </div>
 </div>
 </body>
