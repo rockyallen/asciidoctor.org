@@ -670,14 +670,13 @@ MathJax.Hub.Config({
 <li><a href="#horizontal-rules">26. Horizontal Rules</a>
 <ul class="sectlevel2">
 <li><a href="#markdown-style-horizontal-rules">26.1. Markdown-style horizontal rules</a></li>
-<li><a href="#summary-5">26.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#page-break">27. Page break</a></li>
 <li><a href="#url">28. URLs</a>
 <ul class="sectlevel2">
 <li><a href="#link-to-relative-files">28.1. Link to relative files</a></li>
-<li><a href="#summary-6">28.2. Summary</a></li>
+<li><a href="#summary-5">28.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#xref">29. Cross references</a>
@@ -689,18 +688,18 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#set-the-images-directory">30.1. Set the images directory</a></li>
 <li><a href="#put-images-in-their-place">30.2. Put images in their place</a></li>
-<li><a href="#summary-7">30.3. Summary</a></li>
+<li><a href="#summary-6">30.3. Summary</a></li>
 </ul>
 </li>
 <li><a href="#video">31. Video</a>
 <ul class="sectlevel2">
 <li><a href="#youtube-and-vimeo-videos">31.1. YouTube and Vimeo videos</a></li>
-<li><a href="#summary-8">31.2. Summary</a></li>
+<li><a href="#summary-7">31.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#audio">32. Audio</a>
 <ul class="sectlevel2">
-<li><a href="#summary-9">32.1. Summary</a></li>
+<li><a href="#summary-8">32.1. Summary</a></li>
 </ul>
 </li>
 <li><a href="#admonition">33. Admonition</a></li>
@@ -733,7 +732,7 @@ MathJax.Hub.Config({
 <li><a href="#listing-blocks">40. Listing Blocks</a>
 <ul class="sectlevel2">
 <li><a href="#to-wrap-or-to-scroll">40.1. To wrap or to scroll</a></li>
-<li><a href="#summary-10">40.2. Summary</a></li>
+<li><a href="#summary-9">40.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#passthru">41. Macro and Block Passthroughs</a>
@@ -972,7 +971,7 @@ New contributors are always welcome!</p>
 </div>
 <div class="paragraph">
 <p>This manual assumes you are using Asciidoctor to produce and render your document.
-Asciidoctor implements additional syntax, attributes and functions that the AsciiDoc.py processor can not handle.
+Asciidoctor implements additional syntax, attributes and functions that the legacy AsciiDoc.py processor can not handle.
 <a href="#asciidoctor-vs-asciidoc">Appendix A</a> lists which features are available to the Asciidoctor and AsciiDoc processors.</p>
 </div>
 </div>
@@ -998,10 +997,10 @@ Section Pending
 <h2 id="what-is-asciidoctor"><a class="anchor" href="#what-is-asciidoctor"></a>1. What is Asciidoctor?</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://asciidoctor.org">Asciidoctor</a> is an open source text processor and publishing toolchain for transforming AsciiDoc markup into HTML 5, DocBook 4.5 and 5.0 and other custom formats.
+<p><a href="http://asciidoctor.org">Asciidoctor</a> is an open source text processor and publishing toolchain for transforming AsciiDoc markup into HTML 5, EPUB3, PDF, DocBook 5.0 and 4.5, slidedecks, and other custom formats.
 Asciidoctor is written entirely in Ruby, packaged as a RubyGem and published to <a href="http://rubygems.org/gems/asciidoctor">RubyGems.org</a>.
 There are also Fedora, Debian and Ubuntu packages available for installing Asciidoctor.
-The git repositories for the project are hosted under the <a href="https://github.com/asciidoctor">Asciidoctor organization on GitHub</a> to encourage continued growth.</p>
+The git repositories for the project are hosted under the <a href="https://github.com/asciidoctor">Asciidoctor organization on GitHub</a>.</p>
 </div>
 <div class="sect2">
 <h3 id="asciidoc-syntax-processing"><a class="anchor" href="#asciidoc-syntax-processing"></a>1.1. AsciiDoc syntax processing</h3>
@@ -8183,13 +8182,13 @@ Overridden by column and cell specifiers.</p></td>
 <h2 id="horizontal-rules"><a class="anchor" href="#horizontal-rules"></a>26. Horizontal Rules</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Horizontal rule</div>
+<div class="title">Horizontal rule syntax</div>
 <div class="content">
-<pre class="nowrap">'''</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">'''</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered horizontal rule</div>
+<div class="title">Result: Horizontal rule</div>
 <div class="content">
 <hr>
 </div>
@@ -8205,19 +8204,19 @@ The motivation here is to ease migration of Markdown documents to AsciiDoc docum
 As with Markdown, whitespace between the characters is optional.</p>
 </div>
 <div class="listingblock">
-<div class="title">Recognized Markdown horizontal rule syntax</div>
+<div class="title">Markdown-style horizontal rule syntax</div>
 <div class="content">
-<pre class="nowrap">---
+<pre class="CodeRay nowrap"><code class="markdown language-markdown">---
 
 - - -
 
 ***
 
-* * *</pre>
+* * *</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered horizontal rules</div>
+<div class="title">Result: Markdown-style horizontal rules</div>
 <div class="content">
 <hr>
 <hr>
@@ -8229,29 +8228,15 @@ As with Markdown, whitespace between the characters is optional.</p>
 <p>A macro definition for the Markdown horizontal rules is included in the AsciiDoc compatibility file so they can be recognized by the <code>asciidoc</code> command as well.</p>
 </div>
 </div>
-<div class="sect2">
-<h3 id="summary-5"><a class="anchor" href="#summary-5"></a>26.2. Summary</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
-</div>
-</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="page-break"><a class="anchor" href="#page-break"></a>27. Page break</h2>
 <div class="sectionbody">
 <div class="listingblock">
+<div class="title">Page break syntax</div>
 <div class="content">
-<pre class="nowrap">&lt;&lt;&lt;</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&lt;&lt;&lt;</code></pre>
 </div>
 </div>
 </div>
@@ -8537,7 +8522,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>28.2. Summary</h3>
+<h3 id="summary-5"><a class="anchor" href="#summary-5"></a>28.2. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Link attributes and values</caption>
 <colgroup>
@@ -9146,7 +9131,7 @@ Text below images.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>30.3. Summary</h3>
+<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>30.3. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Block and inline image attributes and values</caption>
 <colgroup>
@@ -9288,7 +9273,7 @@ Asciidoctor will generate the correct embed code and insert the video in the HTM
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-8"><a class="anchor" href="#summary-8"></a>31.2. Summary</h3>
+<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>31.2. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Video attributes and values</caption>
 <colgroup>
@@ -9369,7 +9354,7 @@ Pending
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-9"><a class="anchor" href="#summary-9"></a>32.1. Summary</h3>
+<h3 id="summary-8"><a class="anchor" href="#summary-8"></a>32.1. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Audio attributes and values</caption>
 <colgroup>
@@ -9431,7 +9416,7 @@ Asciidoctor provides five admonition style labels:</p>
 The label must be uppercase and followed by a colon (<code>:</code>).</p>
 </div>
 <div class="listingblock">
-<div class="title">Admonition paragraph</div>
+<div class="title">Admonition paragraph syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.  <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
 Enter at your own risk.</code></pre>
@@ -9450,7 +9435,7 @@ Enter at your own risk.</code></pre>
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered admonition paragraph</div>
+<div class="title">Result: Admonition paragraph</div>
 <div class="content">
 <div class="admonitionblock warning">
 <table>
@@ -9474,7 +9459,7 @@ This behavior is referred to as <strong>masquerading</strong>.
 The label must be uppercase when set as an attribute on a block.</p>
 </div>
 <div class="listingblock">
-<div class="title">Admonition block</div>
+<div class="title">Admonition block syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[IMPORTANT] <i class="conum" data-value="1"></i><b>(1)</b>
 .Feeding the Werewolves
@@ -9500,7 +9485,7 @@ While werewolves are hardy community members, keep in mind the following dietary
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered admonition block</div>
+<div class="title">Result: Admonition block</div>
 <div class="content">
 <div class="admonitionblock important">
 <table>
@@ -9535,17 +9520,17 @@ While werewolves are hardy community members, keep in mind the following dietary
 <div class="paragraph">
 <p>In the examples above, the admonition is rendered in a callout box with the style label in the gutter.
 You can replace the rendered labels with icons by setting the <code>icons</code> attribute on the document.
-This is how the <code>WARNING</code> admonition paragraph renders when <code>icons</code> is set and assigned the <code>font</code> value.</p>
+This is how the WARNING admonition paragraph renders when icons is set and assigned the <code>font</code> value.</p>
 </div>
 <div class="listingblock">
-<div class="title">Admonition paragraph with <code>icons</code> set</div>
+<div class="title">Admonition paragraph with icons set</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">WARNING: Wolpertingers are known to nest in server racks.
 Enter at your own risk.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered admonition paragraph with <code>icons</code> set</div>
+<div class="title">Result: Admonition paragraph with icons set</div>
 <div class="content">
 <div class="admonitionblock warning">
 <table>
@@ -9575,7 +9560,7 @@ Enter at your own risk.
 A sidebar can be titled and contain any type of content such as source code and images.</p>
 </div>
 <div class="listingblock">
-<div class="title">Sidebar</div>
+<div class="title">Sidebar syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.AsciiDoc history <i class="conum" data-value="1"></i><b>(1)</b>
 **** <i class="conum" data-value="2"></i><b>(2)</b>
@@ -9593,11 +9578,12 @@ for producing professional documents like DocBook and LaTeX.
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A sidebar is delimited by four asterisks (<code>****</code>).</td>
+<td>A sidebar is delimited by four asterisks (<code><strong>*</strong>*</code>).</td>
 </tr>
 </table>
 </div>
 <div class="exampleblock">
+<div class="title">Result: Sidebar with title</div>
 <div class="content">
 <div class="sidebarblock">
 <div class="content">
@@ -9617,9 +9603,9 @@ for producing professional documents like DocBook and LaTeX.</p>
 <h2 id="example"><a class="anchor" href="#example"></a>35. Example</h2>
 <div class="sectionbody">
 <div class="listingblock">
-<div class="title">Example</div>
+<div class="title">Example syntax</div>
 <div class="content">
-<pre class="nowrap">.Sample document
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.Sample document
 ====
 Here's a sample AsciiDoc document:
 
@@ -9633,11 +9619,11 @@ This guide provides...
 ....
 
 The document header is useful, but not required.
-====</pre>
+====</code></pre>
 </div>
 </div>
 <div class="openblock">
-<div class="content">
+<div class="title">Result: Example block</div><div class="content">
 <div class="exampleblock">
 <div class="title">Sample document</div>
 <div class="content">
@@ -9671,7 +9657,7 @@ This guide provides...</pre>
 <div class="ulist">
 <ul>
 <li>
-<p>style attribute, either <code>quote</code> or <code>verse</code></p>
+<p>block name, either <code>quote</code> or <code>verse</code></p>
 </li>
 <li>
 <p>name of who the content is attributed to</p>
@@ -9702,7 +9688,7 @@ Quote or excerpt text</pre>
 <p>If the quote is a single line or paragraph, you can place the attribute list directly on top of the text.</p>
 </div>
 <div class="listingblock">
-<div class="title">Quote paragraph</div>
+<div class="title">Quote paragraph syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.After landing the cloaked Klingon bird of prey in Golden Gate park: <i class="conum" data-value="1"></i><b>(1)</b>
 [quote, Captain James T. Kirk, Star Trek IV: The Voyage Home]   <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
@@ -9734,7 +9720,7 @@ Everybody remember where we parked. <i class="conum" data-value="5"></i><b>(5)</
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Rendered quote paragraph</div>
+<div class="title">Result: Quote paragraph</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.After landing the cloaked Klingon bird of prey in Golden Gate park:
 [quote, Captain James T. Kirk, Star Trek IV: The Voyage Home]
@@ -9742,10 +9728,10 @@ Everybody remember where we parked.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>If the quote or excerpt is more than one paragraph, place the text between delimiter lines consisting of four underscores (<code>____</code>).</p>
+<p>If the quote or excerpt is more than one paragraph, place the text between delimiter lines consisting of four underscores (<code><em>__</em></code>).</p>
 </div>
 <div class="listingblock">
-<div class="title">Quote block</div>
+<div class="title">Quote block syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[quote, Monty Python and the Holy Grail]
 ____
@@ -9758,7 +9744,7 @@ ____</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered quote block</div>
+<div class="title">Result: Quote block</div>
 <div class="content">
 <div class="quoteblock">
 <blockquote>
@@ -9786,27 +9772,26 @@ ____</code></pre>
 <div class="paragraph">
 <p>You can turn a single paragraph into a blockquote by:</p>
 </div>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>surrounding it with double quotes</p>
 </li>
 <li>
-<p>adding an optional attribution (prefixed with two dashes) below the quoted text.</p>
+<p>adding an optional attribution (prefixed with two dashes) below the quoted text</p>
 </li>
 </ol>
 </div>
 <div class="listingblock">
+<div class="title">Quoted paragraph syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&quot;I hold it that a little rebellion now and then is a good thing,
 and as necessary in the political world as storms in the physical.&quot;
 -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Here&#8217;s the result of the abbreviated blockquote syntax:</p>
-</div>
 <div class="exampleblock">
+<div class="title">Result: Quoted paragraph</div>
 <div class="content">
 <div class="quoteblock">
 <blockquote>
@@ -9835,7 +9820,7 @@ When the President does it, that means that it's not illegal.
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered air quotes</div>
+<div class="title">Result: Air quotes</div>
 <div class="content">
 <div class="quoteblock">
 <blockquote>
@@ -9853,16 +9838,18 @@ When the President does it, that means that it's not illegal.
 <div class="sect3">
 <h4 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>36.1.3. Markdown-style blockquotes</h4>
 <div class="paragraph">
-<p>Asciidoctor supports Markdown-style blockquotes:</p>
+<p>Asciidoctor supports Markdown-style blockquotes.</p>
 </div>
 <div class="listingblock">
+<div class="title">Markdown-style blockquote syntax</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">&gt; I hold it that a little rebellion now and then is a good thing,
+<pre class="CodeRay nowrap"><code class="markdown language-markdown">&gt; I hold it that a little rebellion now and then is a good thing,
 &gt; and as necessary in the political world as storms in the physical.
 &gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">Result: Markdown-style blockquote</div>
 <div class="content">
 <div class="quoteblock">
 <blockquote>
@@ -9879,7 +9866,7 @@ and as necessary in the political world as storms in the physical.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Like Markdown, Asciidoctor supports block content inside the blockquote, including nested blockquotes:</p>
+<p>Like Markdown, Asciidoctor supports block content inside the blockquote, including nested blockquotes.</p>
 </div>
 <div class="listingblock">
 <div class="title">Markdown-style blockquote containing block content</div>
@@ -9900,9 +9887,10 @@ and as necessary in the political world as storms in the physical.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how this conversation renders:</p>
+<p>Here&#8217;s how this conversation renders.</p>
 </div>
 <div class="exampleblock">
+<div class="title">Result: Markdown-style blockquote with block content</div>
 <div class="content">
 <div class="quoteblock">
 <blockquote>
@@ -9955,11 +9943,11 @@ and as necessary in the political world as storms in the physical.</p>
 <div class="sect2">
 <h3 id="verse"><a class="anchor" href="#verse"></a>36.2. Verse</h3>
 <div class="paragraph">
-<p>When you need to preserve indents and line breaks, use the <code>verse</code> style.
-Verses are defined by setting the <code>verse</code> attribute on a paragraph or an excerpt block delimited by four underscores (<code>____</code>).</p>
+<p>When you need to preserve indents and line breaks, use the <code>verse</code> block name.
+Verses are defined by setting <code>verse</code> on a paragraph or an excerpt block delimited by four underscores (<code><em>__</em></code>).</p>
 </div>
 <div class="listingblock">
-<div class="title">Verse paragraph</div>
+<div class="title">Verse paragraph syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[verse, Carl Sandburg, two lines from the poem Fog]
 The fog comes
@@ -9967,7 +9955,7 @@ on little cat feet.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered verse paragraph</div>
+<div class="title">Result: Verse paragraph</div>
 <div class="content">
 <div class="verseblock">
 <pre class="content">The fog comes
@@ -9983,7 +9971,7 @@ on little cat feet.</pre>
 <p>When the verse content includes blank or indented lines, enclose it in an excerpt block.</p>
 </div>
 <div class="listingblock">
-<div class="title">Verse delimited block</div>
+<div class="title">Verse delimited block syntax</div>
 <div class="content">
 <pre class="nowrap">[verse, Carl Sandburg, Fog]
 ____
@@ -9998,7 +9986,7 @@ ____</pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered verse block</div>
+<div class="title">Result: verse block</div>
 <div class="content">
 <div class="verseblock">
 <pre class="content">The fog comes
@@ -11286,11 +11274,11 @@ This method is a quick and easy way to insert code snippets.</p>
 <div class="listingblock">
 <div class="title">Implicit literal text</div>
 <div class="content">
-<pre class="nowrap"> ~/secure/vault/defops</pre>
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc"> ~/secure/vault/defops</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered implicit literal text</div>
+<div class="title">Result: Implicit literal text</div>
 <div class="content">
 <div class="literalblock">
 <div class="content">
@@ -11303,16 +11291,16 @@ This method is a quick and easy way to insert code snippets.</p>
 <p>When you want an entire block of text to be literal and would prefer not to indent it, set the <code>literal</code> attribute on top of the element.</p>
 </div>
 <div class="listingblock">
-<div class="title">Literal style paragraph</div>
+<div class="title">Literal style paragraph syntax</div>
 <div class="content">
-<pre class="nowrap">[literal]
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[literal]
 error: The requested operation returned error: 1954 Forbidden search for defensive operations manual
 absolutely fatal: operation initiation lost in the dodecahedron of doom
-would you like to die again? y/n</pre>
+would you like to die again? y/n</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered literal style paragraph</div>
+<div class="title">Result: Literal style paragraph</div>
 <div class="content">
 <div class="literalblock">
 <div class="content">
@@ -11328,9 +11316,9 @@ would you like to die again? y/n</pre>
 This method is useful when the content consists of several elements that are separated by blank lines.</p>
 </div>
 <div class="listingblock">
-<div class="title">Literal delimited block</div>
+<div class="title">Literal delimited block syntax</div>
 <div class="content">
-<pre class="nowrap">....
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">....
 Lazarus: Where is the *defensive operations manual*?
 
 Computer: Calculating ...
@@ -11340,14 +11328,14 @@ Would you like to ask another question?
 Lazarus: Did the werewolves tell you to say that?
 
 Computer: Calculating ...
-....</pre>
+....</code></pre>
 </div>
 </div>
 <div class="paragraph">
 <p>Notice in the output that the bold text formatting is not rendered nor are the three, consecutive periods replaced by the ellipsis Unicode character.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered literal delimited block</div>
+<div class="title">Result: Literal delimited block</div>
 <div class="content">
 <div class="literalblock">
 <div class="content">
@@ -11375,7 +11363,7 @@ Listing block content is rendered as <code>&lt;pre&gt;</code> text.
 The content in listing blocks is only subject to <a href="#special-characters">special character</a> and callout substitutions.</p>
 </div>
 <div class="paragraph">
-<p>The <code>listing</code> style can be applied to content two ways.</p>
+<p>The <code>listing</code> block name can be applied to content two ways.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -11383,14 +11371,15 @@ The content in listing blocks is only subject to <a href="#special-characters">s
 <p>Set the <code>listing</code> attribute on the element.</p>
 </li>
 <li>
-<p>Contain the content within a delimited <code>listing</code> block.</p>
+<p>Contain the content within a delimited listing block.</p>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>The <code>listing</code> style is applied to an element, such as a paragraph, by setting the <code>listing</code> attribute on that element.</p>
+<p>The listing block name is applied to an element, such as a paragraph, by setting the <code>listing</code> attribute on that element.</p>
 </div>
 <div class="listingblock">
+<div class="title">Listing paragraph syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[listing]
 This is an example of a paragraph styled with `listing`.
@@ -11398,7 +11387,7 @@ Notice that the monospace markup is preserved in the output.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered listing paragraph</div>
+<div class="title">Result: Listing paragraph</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -11412,6 +11401,7 @@ Notice that the monospace markup is preserved in the output.</pre>
 <p>A delimited listing block is surrounded by lines composed of four hyphens (<code>----</code>).</p>
 </div>
 <div class="listingblock">
+<div class="title">Delimited listing block syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">----
 This is an example of a _listing block_.
@@ -11420,10 +11410,10 @@ The content inside is rendered as &lt;pre&gt; text.
 </div>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how the block above appears when rendered as HTML:</p>
+<p>Here&#8217;s how the block above appears when rendered as HTML.</p>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered listing block</div>
+<div class="title">Result: Listing block</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -11434,7 +11424,7 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You should notice a few things about how the content is processed:</p>
+<p>You should notice a few things about how the content is processed.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -11445,7 +11435,7 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 <p>then endlines are preserved</p>
 </li>
 <li>
-<p>the phrase &#8220;listing block&#8221; is not italicized, despite having underscores around it.</p>
+<p>the phrase <em>listing block</em> is not italicized, despite having underscores around it.</p>
 </li>
 </ul>
 </div>
@@ -11454,6 +11444,7 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 The example below shows a listing block with <code>source</code> and the language <code>ruby</code> applied to its content.</p>
 </div>
 <div class="listingblock">
+<div class="title">Source block syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source,ruby]
 .app.rb
@@ -11467,7 +11458,7 @@ end
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered listing block with the <code>source</code> attribute set</div>
+<div class="title">Result: Listing block with the source attribute set</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -11478,15 +11469,14 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Detailed instructions for using the <code>source</code> and <code>source-highlighter</code> attributes are provided in the <a href="#source-code-blocks">source code blocks</a> section.</p>
+<p>Detailed instructions for using the source and source-highlighter attributes are provided in the <a href="#source-code-blocks">source code blocks</a> section.</p>
 </div>
 <div class="listingblock">
-<div class="title">Custom substitutions</div>
+<div class="title">Listing block with custom substitutions syntax</div>
 <div class="content">
 <pre class="nowrap">:version: 0.1.4
 
-[source,xml]
-[subs="verbatim,attributes"]
+[source,xml,subs="verbatim,attributes"]
 ----
 &lt;dependency&gt;
   &lt;groupId&gt;org.asciidoctor&lt;/groupId&gt;
@@ -11497,6 +11487,7 @@ The content inside is rendered as &lt;pre&gt; text.</pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">Result: Listing block with custom substitutions applied</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -11536,45 +11527,73 @@ This prevents horizontal scrolling which some users considered a greater readabi
 <p>You can use the <code>nowrap</code> option on literal or listing blocks to prevent lines from being wrapped in the HTML.</p>
 </div>
 <div class="listingblock">
+<div class="title">Listing block with nowrap option syntax</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source, java, options=&quot;nowrap&quot;]
-----
-public class ApplicationConfigurationProvider extends HttpConfigurationProvider
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source,java,options=&quot;nowrap&quot;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>public class ApplicationConfigurationProvider extends HttpConfigurationProvider
 {
    @Override
    public Configuration getConfiguration(ServletContext context)
    {
       return ConfigurationBuilder.begin()
                .addRule()
-               .when(Direction.isInbound().and(Path.matches(&quot;/{path}&quot;)))
-               .perform(Log.message(Level.INFO, &quot;Client requested path: {path}&quot;))
-               .where(&quot;path&quot;).matches(&quot;.*&quot;);
+               .when(Direction.isInbound().and(Path.matches("/{path}")))
+               .perform(Log.message(Level.INFO, "Client requested path: {path}"))
+               .where("path").matches(".*");
    }
-}
-----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When the <code>nowrap</code> option is used, the <code>nowrap</code> class is added to the <code>&lt;pre&gt;</code> element.
-This class changes the CSS to <code>white-space: pre</code> and <code>word-wrap: normal</code>.</p>
-</div>
-<div class="paragraph">
-<p>To prevent lines from wrapping globally, just set the <code>prewrap</code> attribute on the document.</p>
+}</p>
 </div>
 <div class="listingblock">
+<div class="content">
+<pre class="nowrap"></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the nowrap option is used, the <code>nowrap</code> class is added to the <code>&lt;pre&gt;</code> element.
+This class changes the CSS to <code>white-space: pre</code> and <code>word-wrap: normal</code>.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Result: Listing block with nowrap option applied</div>
+<div class="content">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ApplicationConfigurationProvider</span> <span class="directive">extends</span> HttpConfigurationProvider
+{
+   <span class="annotation">@Override</span>
+   <span class="directive">public</span> <span class="predefined-type">Configuration</span> getConfiguration(ServletContext context)
+   {
+      <span class="keyword">return</span> ConfigurationBuilder.begin()
+               .addRule()
+               .when(Direction.isInbound().and(Path.matches(<span class="string"><span class="delimiter">&quot;</span><span class="content">/{path}</span><span class="delimiter">&quot;</span></span>)))
+               .perform(Log.message(<span class="predefined-type">Level</span>.INFO, <span class="string"><span class="delimiter">&quot;</span><span class="content">Client requested path: {path}</span><span class="delimiter">&quot;</span></span>))
+               .where(<span class="string"><span class="delimiter">&quot;</span><span class="content">path</span><span class="delimiter">&quot;</span></span>).matches(<span class="string"><span class="delimiter">&quot;</span><span class="content">.*</span><span class="delimiter">&quot;</span></span>);
+   }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To prevent lines from wrapping globally, set the <code>prewrap</code> attribute on the document.</p>
+</div>
+<div class="listingblock">
+<div class="title">Prewrap syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">:prewrap:</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When the <code>prewrap</code> attribute is set, the <code>nowrap</code> class is added to any <code>&lt;pre&gt;</code> elements.</p>
+<p>When the prewrap attribute is set, the <code>nowrap</code> class is added to any <code>&lt;pre&gt;</code> elements.</p>
 </div>
 <div class="paragraph">
 <p>Now, you can use the line wrapping strategy that works best for you and your readers.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-10"><a class="anchor" href="#summary-10"></a>40.2. Summary</h3>
+<h3 id="summary-9"><a class="anchor" href="#summary-9"></a>40.2. Summary</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -11799,16 +11818,16 @@ image:tiger.png[]
 <p>The most versatile block of all is the open block.</p>
 </div>
 <div class="listingblock">
-<div class="title">Open</div>
+<div class="title">Open block syntax</div>
 <div class="content">
-<pre class="nowrap">--
+<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">--
 An open block can be an anonymous container,
 or it can masquerade as any other block.
---</pre>
+--</code></pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered open block</div>
+<div class="title">Result: Open block</div>
 <div class="content">
 <div class="openblock">
 <div class="content">
@@ -11822,9 +11841,10 @@ or it can masquerade as any other block.</p>
 </div>
 <div class="paragraph">
 <p>An open block can act as any other block, with the exception of <em>pass</em> and <em>table</em>.
-Here&#8217;s an example of an open block acting as a sidebar:</p>
+Here&#8217;s an example of an open block acting as a sidebar.</p>
 </div>
 <div class="listingblock">
+<div class="title">Open block masquerading as a sidebar syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[sidebar]
 .Related information
@@ -11836,7 +11856,7 @@ It is used to present information related to the main content.
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered open block masquerading as a sidebar</div>
+<div class="title">Result: Open block masquerading as a sidebar</div>
 <div class="content">
 <div class="sidebarblock">
 <div class="content">
@@ -11855,6 +11875,7 @@ It is used to present information related to the main content.
 <p>This is an open block acting as a source block.</p>
 </div>
 <div class="listingblock">
+<div class="title">Open block masquerading as a source block syntax</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[source]
 --
@@ -11863,7 +11884,7 @@ puts &quot;I'm a source block!&quot;
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Rendered open block masquerading as a source block</div>
+<div class="title">Result: Open block masquerading as a source block</div>
 <div class="content">
 <div class="listingblock">
 <div class="content">
@@ -19803,7 +19824,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-09 20:51:59 UTC
+Last updated 2014-08-09 23:07:17 UTC
 </div>
 </div>
 </body>
