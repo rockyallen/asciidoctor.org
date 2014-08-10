@@ -960,8 +960,8 @@ MathJax.Hub.Config({
 <td class="content">
 <div class="title">This document is under active development and discussion!</div>
 <div class="paragraph">
-<p>If you discover errors or omissions in this document, please don&#8217;t hesitate to submit an issue or open a pull request with a fix.
-We also encourage you to ask questions and discuss any aspects of the project on the mailing list or IRC.
+<p>If you find errors or omissions in this document, please don&#8217;t hesitate to <a href="https://github.com/asciidoctor/asciidoctor.org/issues">submit an issue or open a pull request</a> with a fix.
+We also encourage you to ask questions and discuss any aspects of the project on the <a href="https://discuss.asciidoctor.org">mailing list</a> or IRC.
 New contributors are always welcome!</p>
 </div>
 </td>
@@ -970,7 +970,7 @@ New contributors are always welcome!</p>
 </div>
 <div class="paragraph">
 <p>This manual assumes you are using Asciidoctor to produce and render your document.
-Asciidoctor implements additional syntax, attributes and functions that the legacy AsciiDoc.py processor can not handle.
+Asciidoctor implements more syntax, attributes and functions than the legacy AsciiDoc.py processor.
 <a href="#asciidoctor-vs-asciidoc">Appendix A</a> lists which features are available to the Asciidoctor and AsciiDoc processors.</p>
 </div>
 </div>
@@ -1819,10 +1819,10 @@ Attributes activate features and store predefined styles, options, and replaceme
 <p>Let&#8217;s use the <code>doctype</code> attribute to show how precedence works.</p>
 </div>
 <div class="paragraph">
-<p>The intrinsic value for the <code>doctype</code> attribute is <code>article</code>.
-Therefore, if <code>doctype</code> is not set and assigned a value in the document, API or CLI it will be assigned the <code>article</code> value (i.e. its default value).
-However, if <code>doctype</code> is set in the document and assigned a new value, such as <code>book</code>, the <code>book</code> value will override the intrinsic value.
-Finally, a value assigned to <code>doctype</code> via the API or CLI, will overrule the value in the document.</p>
+<p>The intrinsic value for the doctype attribute is <code>article</code>.
+Therefore, if doctype is not set and assigned a value in the document, API or CLI it will be assigned the article value (i.e. its default value).
+However, if doctype is set in the document and assigned a new value, such as <code>book</code>, the book value will override the intrinsic value.
+Finally, a value assigned to doctype via the API or CLI, will overrule the value in the document.</p>
 </div>
 <div class="paragraph">
 <p>You can adjust the precedence of attribute values passed to the API or CLI.
@@ -1868,7 +1868,7 @@ The reference is replaced with the attribute&#8217;s value when Asciidoctor proc
 <p>A number of attributes and values are automatically used when the Asciidoctor processor renders a document.
 These attributes are called intrinsic attributes.
 For example, you do not need to set the <code>normal</code> attribute on a basic paragraph because it is set by an intrinsic attribute.
-But when you want a paragraph to have a different style, such as <code>TIP</code>, you set the <code>TIP</code> attribute on a paragraph and <code>TIP</code> will override the intrinsic <code>normal</code> attribute.
+But when you want a paragraph to have a different style, such as <code>TIP</code>, you set the TIP attribute on a paragraph and TIP will override the intrinsic normal attribute.
 Intrinsic attributes can be overridden or unset from the command line or within the document.</p>
 </div>
 <div class="paragraph">
@@ -2232,7 +2232,7 @@ That name can only be used once in a document.</p>
 <p>Prefixing the name with a hash (<code>#</code>).</p>
 </li>
 <li>
-<p>Specifying the name with <code>id="name"</code>.</p>
+<p>Specifying the name with <code>id=&lt;name&gt;</code>.</p>
 </li>
 </ol>
 </div>
@@ -2274,7 +2274,7 @@ The order of id and role values in the shorthand syntax does not matter.
 <p>The id (<code>#</code>) shorthand can be used on inline quoted text.</p>
 </div>
 <div class="listingblock">
-<div class="title">Quoted text block with <code>id</code> assignment using Asciidoctor shorthand</div>
+<div class="title">Quoted text block with id assignment using Asciidoctor shorthand</div>
 <div class="content">
 <pre class="nowrap">[#free_the_world]*free the world*</pre>
 </div>
@@ -2309,7 +2309,7 @@ Section introduction pending
 <p>Prefixing the name with a dot (<code>.</code>).</p>
 </li>
 <li>
-<p>Specifying the name with <code>role="name"</code>.</p>
+<p>Specifying the name with <code>role=&lt;name&gt;</code>.</p>
 </li>
 </ol>
 </div>
@@ -2351,13 +2351,13 @@ Section introduction pending
 <p>The role (<code>.</code>) shorthand can be used on inline quoted text.</p>
 </div>
 <div class="listingblock">
-<div class="title">Quoted text with <code>role</code> assignments using traditional AsciiDoc syntax</div>
+<div class="title">Quoted text with role assignments using traditional AsciiDoc syntax</div>
 <div class="content">
 <pre class="nowrap">[big goal]*free the world*</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">Quoted text with <code>role</code> assignments using Asciidoctor shorthand</div>
+<div class="title">Quoted text with role assignments using Asciidoctor shorthand</div>
 <div class="content">
 <pre class="nowrap">[.big.goal]*free the world*</pre>
 </div>
@@ -2369,7 +2369,7 @@ Section introduction pending
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The attribute list preceding formatted text can be escaped using a backslash (e.g., <code>\[role]*bold*</code>).
+The attribute list preceding formatted text can be escaped using a backslash (e.g., <code>[role]*bold*</code>).
 In this case, the text will still be formatted, but the attribute list will be unescaped and output verbatim.
 </td>
 </tr>
@@ -2396,7 +2396,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 </div>
 <div class="paragraph">
-<p>Using the new shorthand notation in Asciidoctor 0.1.4, an id (i.e., anchor) can also be specified:</p>
+<p>Using the shorthand notation, an id (i.e., anchor) can also be specified:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2435,10 +2435,10 @@ In this case, the text will still be formatted, but the attribute list will be u
 <p>Prefixing the value with a percent sign (<code>%</code>).</p>
 </li>
 <li>
-<p>Specifying the value with <code>opts="name"</code></p>
+<p>Specifying the value with <code>opts=&lt;name&gt;</code></p>
 </li>
 <li>
-<p>Specifying the value with <code>options="name"</code>.</p>
+<p>Specifying the value with <code>options=&lt;name&gt;</code>.</p>
 </li>
 </ol>
 </div>
@@ -2458,7 +2458,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how the options are assigned to the table using <code>options=</code>.</p>
+<p>Here&#8217;s how the options are assigned to the table using <code>options</code>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Traditional AsciiDoc syntax</div>
@@ -2548,11 +2548,11 @@ To them, it&#8217;s not immediately apparent when a line goes missing.
 Discovering its absence often requires a full (and tedious) read-through of the document or section.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor 0.1.4 introduced two attributes to alleviate this inconvenience: <code>attribute-missing</code> and <code>attribute-undefined</code>.</p>
+<p>Asciidoctor has two attributes to alleviate this inconvenience: <code>attribute-missing</code> and <code>attribute-undefined</code>.</p>
 </div>
 <div class="paragraph">
 <div class="title">Missing attribute</div>
-<p>The attribute <code>attribute-missing</code> controls how missing references are handled.
+<p>The attribute attribute-missing controls how missing references are handled.
 By default, missing references are left intact so it&#8217;s clear to the author when one hasn&#8217;t been satisfied since, likely, the intent is for it to be replaced.</p>
 </div>
 <div class="paragraph">
@@ -2615,7 +2615,7 @@ By default, missing references are left intact so it&#8217;s clear to the author
 </div>
 <div class="paragraph">
 <div class="title">Undefined attribute</div>
-<p>The attribute <code>attribute-undefined</code> controls how expressions that undefine an attribute are handled.
+<p>The attribute attribute-undefined controls how expressions that undefine an attribute are handled.
 By default, the line is dropped since the expression is a statement, not content.</p>
 </div>
 <div class="paragraph">
@@ -2645,8 +2645,8 @@ By default, the line is dropped since the expression is a statement, not content
 </div>
 </div>
 <div class="paragraph">
-<p>Depending on whether <code>attribute-undefined</code> is <code>drop</code> or <code>drop-line</code>, either the statement or the line that contains it will be discarded.
-It&#8217;s reasonable to stick with the compliant behavior, <code>drop-line</code>, in this case.</p>
+<p>Depending on whether attribute-undefined is <code>drop</code> or <code>drop-line</code>, either the statement or the line that contains it will be discarded.
+It&#8217;s reasonable to stick with the compliant behavior, drop-line, in this case.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2724,12 +2724,12 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <dl>
 <dt class="hdlist1">Article</dt>
 <dd>
-<p>Default doctype
+<p>Default doctype.
 In DocBook, includes the appendix, abstract, bibliography, glossary, and index sections</p>
 </dd>
 <dt class="hdlist1">Book</dt>
 <dd>
-<p>The same as articles with the additional ability to use a top level title as part titles, includes the appendix, dedication, preface, bibliography, glossary, index, and colophon</p>
+<p>The same as articles with the additional ability to use a top level title as part titles, includes the appendix, dedication, preface, bibliography, glossary, index, and colophon.</p>
 </dd>
 <dt class="hdlist1">Inline</dt>
 <dd>
@@ -2787,7 +2787,7 @@ Asciidoctor only.
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Manpage</dt>
+<dt class="hdlist1">Man page</dt>
 <dd>
 <p>Special title and section naming conventions used to generate roff format UNIX manual pages.
 Corresponds to the DocBook refentry document type.</p>
@@ -2842,7 +2842,7 @@ The header can not contain any blank lines, but it can contain comments.</p>
 </div>
 <div class="paragraph">
 <p>The header is processed when rendering a full document.
-This means that the header of a document called via an <a href="#include-directive"><code>include</code> directive</a> will be processed and rendered.
+This means that the header of a document called via an <a href="#include-directive">include directive</a> will be processed and rendered.
 When you do not want the header of a document to be rendered, set the <code>noheader</code> or <code>no-header-footer</code> attribute in the document&#8217;s header or the CLI.</p>
 </div>
 <div class="sidebarblock">
@@ -2862,7 +2862,7 @@ See the <a href="#static-website-generators">static website generators</a> secti
 <h3 id="document-title"><a class="anchor" href="#document-title"></a>16.1. Document title</h3>
 <div class="paragraph">
 <p>A document title must be placed on the first line of the document.
-It is preceded by one equal sign followed by at least one space (<code>= </code>), and then the text of the title.</p>
+It is preceded by one equal sign followed by at least one space (<code>=</code>), and then the text of the title.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a document title followed by an abbreviated paragraph.</p>
@@ -2893,10 +2893,10 @@ The first section level 0 title, located in the header, is the document&#8217;s 
 <div class="paragraph">
 <p>A document&#8217;s title is assigned to the built-in <code>doctitle</code> attribute.
 Its value is identical to the value returned by <code>Document#doctitle</code> and <code>sect0</code>.
-The <code>doctitle</code> attribute can be referenced anywhere in a document and displays the document&#8217;s title when rendered.</p>
+The doctitle attribute can be referenced anywhere in a document and displays the document&#8217;s title when rendered.</p>
 </div>
 <div class="listingblock">
-<div class="title">Referencing the <code>doctitle</code> attribute</div>
+<div class="title">Referencing the doctitle attribute</div>
 <div class="content">
 <pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= The Dangerous and Thrilling Documentation Chronicles
 
@@ -2904,7 +2904,7 @@ The <code>doctitle</code> attribute can be referenced anywhere in a document and
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Result: <code>doctitle</code> output</div>
+<div class="title">Result: doctitle output</div>
 <div class="content">
 <div class="imageblock">
 <div class="content">
@@ -2980,7 +2980,7 @@ These attributes include:</p>
 <code>firstname</code>
 </td>
 <td class="hdlist2">
-<p>The first word in the <code>author</code> attribute.</p>
+<p>The first word in the author attribute.</p>
 </td>
 </tr>
 <tr>
@@ -2988,7 +2988,7 @@ These attributes include:</p>
 <code>lastname</code>
 </td>
 <td class="hdlist2">
-<p>The last word in the <code>author</code> attribute.</p>
+<p>The last word in the author attribute.</p>
 </td>
 </tr>
 <tr>
@@ -2996,7 +2996,7 @@ These attributes include:</p>
 <code>middlename</code>
 </td>
 <td class="hdlist2">
-<p>If a <code>firstname</code> and <code>lastname</code> are present, any remaining words or characters found between these attributes are assigned to the <code>middlename</code> attribute.</p>
+<p>If a firstname and lastname are present, any remaining words or characters found between these attributes are assigned to the middlename attribute.</p>
 </td>
 </tr>
 <tr>
@@ -3004,7 +3004,7 @@ These attributes include:</p>
 <code>authorinitials</code>
 </td>
 <td class="hdlist2">
-<p>The first character of the <code>firstname</code>, <code>middlename</code>, and <code>lastname</code> attributes.</p>
+<p>The first character of the firstname, middlename, and lastname attributes.</p>
 </td>
 </tr>
 <tr>
@@ -3046,7 +3046,7 @@ My initials are {authorinitials}.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively, the <code>author</code> and <code>email</code> attributes can be set explicitly in the header.</p>
+<p>Alternatively, the author and email attributes can be set explicitly in the header.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3078,7 +3078,7 @@ What else would you expect from a member of the Rocky Mountain {lastname} Clan?
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>html5</code> and <code>docbook</code> backends can render documents with multiple authors.
+<p>The <code>html5</code> and <code>docbook</code> converters can render documents with multiple authors.
 Multiple authors and their emails are separated by semicolons (<code>;</code>) when they&#8217;re listed on the same line.</p>
 </div>
 <div class="listingblock">
@@ -3142,7 +3142,7 @@ Any letters or symbols preceding the numeric character will not be rendered.</p>
 </td>
 <td class="hdlist2">
 <p>The date the document version was completed.
-When the <code>revnumber</code> or <code>revremark</code> attributes are set, but <code>revdate</code> is not, then <code>revdate</code> will be assigned the <code>docdate</code> value.</p>
+When the revnumber or <code>revremark</code> attributes are set, but revdate is not, then revdate will be assigned the <code>docdate</code> value.</p>
 </td>
 </tr>
 <tr>
@@ -3179,15 +3179,15 @@ Version Notes: {revremark}</code></pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td><code>revnumber</code> and <code>revdate</code> must be separated by a comma (<code>,</code>).</td>
+<td>revnumber and revdate must be separated by a comma (<code>,</code>).</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td><code>revdate</code> can contain words, letters, numbers, and symbols.</td>
+<td>revdate can contain words, letters, numbers, and symbols.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <code>revremark</code> attribute must be preceded by a colon (<code>:</code>), regardless of whether <code>revnumber</code> or <code>revdate</code> are set.</td>
+<td>The revremark attribute must be preceded by a colon (<code>:</code>), regardless of whether revnumber or revdate are set.</td>
 </tr>
 </table>
 </div>
@@ -3202,7 +3202,7 @@ Version Notes: {revremark}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When rendered, the <code>revnumber</code> in the byline is preceded by the word <em>Version</em>; however, when referenced in the body of the document, only the numerical value is displayed.
+<p>When rendered, the revnumber in the byline is preceded by the word <em>Version</em>; however, when referenced in the body of the document, only the numerical value is displayed.
 The <code>version-label</code> attribute controls the version number label in the byline.
 The revision information attributes can also be explicitly set in the header.</p>
 </div>
@@ -3234,11 +3234,11 @@ Version Notes: {revremark}</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The <code>revremark</code> can contain attribute references.</td>
+<td>The revremark can contain attribute references.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The <code>version-label</code> attribute is unset so that the word <em>Version</em> does not precede the <code>revnumber</code> in the byline.</td>
+<td>The version-label attribute is unset so that the word <em>Version</em> does not precede the revnumber in the byline.</td>
 </tr>
 </table>
 </div>
@@ -3253,7 +3253,7 @@ Version Notes: {revremark}</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In the rendered document, notice that the <em>V</em> preceding the <code>revnumber</code> is capitalized in the byline but not when the attribute is referenced in the body of the document.</p>
+<p>In the rendered document, notice that the <em>V</em> preceding the revnumber is capitalized in the byline but not when the attribute is referenced in the body of the document.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -3385,7 +3385,7 @@ The <a href="#docinfo-file">docinfo file</a> section details what these files ca
 <th class="tableblock halign-left valign-top">Values</th>
 <th class="tableblock halign-left valign-top">Description</th>
 <th class="tableblock halign-left valign-top">Notes</th>
-<th class="tableblock halign-left valign-top">Backends</th>
+<th class="tableblock halign-left valign-top">Converters</th>
 </tr>
 </thead>
 <tbody>
@@ -4254,48 +4254,48 @@ Never do today what you can put off `'til tomorrow.</code></pre>
 <tbody>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Header</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">None</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Normal</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Pass</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Verbatim</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -9010,19 +9010,19 @@ image::tiger.png[Tiger,200,200]</code></pre>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Block Image</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Inline Image</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10114,48 +10114,48 @@ The table below shows which substitution elements are included in each group.</p
 <tbody>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Header</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">None</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Normal</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Pass</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top"><p class="tableblock">Verbatim</p></th>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10343,35 +10343,35 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fenced</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Listing</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Macro</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Open</p></td>
@@ -10379,27 +10379,27 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Paragraph</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quote</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sidebar</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Special sections</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
@@ -10407,11 +10407,11 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10436,35 +10436,35 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fenced</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Listing</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Macro</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Open</p></td>
@@ -10472,27 +10472,27 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Paragraph</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quote</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sidebar</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Special sections</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
@@ -10500,11 +10500,11 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10721,35 +10721,35 @@ These attributes and their corresponding output are listed in <a href="#char-ref
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fenced</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Listing</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Macro</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Open</p></td>
@@ -10757,27 +10757,27 @@ These attributes and their corresponding output are listed in <a href="#char-ref
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Paragraph</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quote</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sidebar</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Special sections</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
@@ -10785,11 +10785,11 @@ These attributes and their corresponding output are listed in <a href="#char-ref
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10815,35 +10815,35 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fenced</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Listing</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Macro</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Open</p></td>
@@ -10851,27 +10851,27 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Paragraph</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quote</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sidebar</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Special sections</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
@@ -10879,11 +10879,11 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -10908,35 +10908,35 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Attribute value</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Comment</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fenced</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Header</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Literal</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Listing</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Macro</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Open</p></td>
@@ -10944,27 +10944,27 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Paragraph</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Quote</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sidebar</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-remove"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Special sections</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
@@ -10972,11 +10972,11 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Title</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Verse</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-ok"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -19834,7 +19834,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-10 00:30:59 UTC
+Last updated 2014-08-10 21:42:02 UTC
 </div>
 </div>
 </body>
