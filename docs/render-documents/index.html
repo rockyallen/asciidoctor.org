@@ -37,7 +37,7 @@ For step-by-step installation instructions, read the <a href="http://asciidoctor
 <p>While the AsciiDoc syntax is designed to be readable in raw form, the intended audience for that format are writers and editors.
 Readers aren&#8217;t going to appreciate the raw text nearly as much.
 Aesthetics matter.
-You&#8217;ll want to apply nice typography with font sizes that adhere to the &#8220;golden ratio&#8221;, colors, icons and images to give it the respect it deserves.
+You&#8217;ll want to apply nice typography with font sizes that adhere to the golden ratio, colors, icons and images to give it the respect it deserves.
 That&#8217;s where the Asciidoctor themes and backends come into play.</p>
 </div>
 </div>
@@ -59,6 +59,10 @@ If no backend is indicated, the processor uses the default backend (<code>html5<
 <dd>
 <p>HTML 5 markup styled with CSS3.
 Asciidoctor&#8217;s default backend.</p>
+</dd>
+<dt class="hdlist1"><code>xhtml5</code></dt>
+<dd>
+<p>XHTML 5 markup.</p>
 </dd>
 <dt class="hdlist1"><code>docbook</code></dt>
 <dd>
@@ -101,7 +105,7 @@ You can render a document to HTML using the CLI or the Ruby API.</p>
 <div class="sect2">
 <h3 id="using-the-command-line-tool"><a class="anchor" href="#using-the-command-line-tool"></a>Using the command line tool</h3>
 <div class="paragraph">
-<p>In this section, we&#8217;ll create a sample document, then process and render it with Asciidoctor&#8217;s <code>html5</code> backend.</p>
+<p>In this section, we&#8217;ll create a sample document, then process and render it with Asciidoctor&#8217;s <code>html5</code> converter.</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -128,7 +132,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="paragraph">
-<p>To convert <code>mysample.adoc</code> to HTML from the command line:</p>
+<p>To convert mysample.adoc to HTML from the command line:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -136,7 +140,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 <p>Open a console</p>
 </li>
 <li>
-<p>Switch to the directory that contains the <code>mysample.adoc</code> document</p>
+<p>Switch to the directory that contains the mysample.adoc document</p>
 </li>
 <li>
 <p>Call the Asciidoctor processor with the <code>asciidoctor</code> command, followed by the name of the document you want to render</p>
@@ -149,7 +153,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="paragraph">
-<p>Remember, Asciidoctor&#8217;s default backend is <code>html5</code>, so it isn&#8217;t necessary to specify it with the <code>-b</code> command.</p>
+<p>Remember, Asciidoctor&#8217;s default converter is html5, so it isn&#8217;t necessary to specify it with the <code>-b</code> command.</p>
 </div>
 <div class="paragraph">
 <p>You won&#8217;t see any messages printed to the console.
@@ -179,7 +183,7 @@ Your document should look like the image below.</p>
 </div>
 <div class="paragraph">
 <p>The document&#8217;s text, titles, and link is styled by the default Asciidoctor stylesheet, which is embedded in the HTML output.
-As a result, you could save <code>mysample.html</code> to any computer and it will look the same.</p>
+As a result, you could save mysample.html to any computer and it will look the same.</p>
 </div>
 </div>
 <div class="sect2">
@@ -209,7 +213,7 @@ puts html</code></pre>
 <div class="paragraph">
 <p>Asciidoctor uses CSS for HTML document styling and JavaScript for generating document attributes such as a table of contents and footnotes.
 It comes bundled with a fresh, modern stylesheet, named <code>asciidoctor.css</code>.
-When you generate a document with the <code>html5</code> backend, the <code>asciidoctor.css</code> stylesheet is embedded into the HTML output by default.</p>
+When you generate a document with the <code>html5</code> backend, the asciidoctor.css stylesheet is embedded into the HTML output by default.</p>
 </div>
 <div class="paragraph">
 <p>However, you can link to the stylesheet instead of embedding it.
@@ -231,7 +235,7 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="paragraph">
-<p>You can also set <code>linkcss</code> with the CLI.</p>
+<p>You can also set linkcss with the CLI.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -239,9 +243,9 @@ You may not be familiar with these http://en.wikipedia.org/wiki/Wolpertinger[rav
 </div>
 </div>
 <div class="paragraph">
-<p>Now, when you view the directory, you should see the file <code>asciidoctor.css</code> in addition to <code>mysample.adoc</code> and <code>mysample.html</code>.
-The <code>linkcss</code> attribute automatically copies <code>asciidoctor.css</code> to the output directory.
-Additionally, you can inspect <code>mysample.html</code> in your browser and see <code>&lt;link rel="stylesheet" href="./asciidoctor.css"&gt;</code> inside the <code>&lt;head&gt;</code> tags.</p>
+<p>Now, when you view the directory, you should see the file asciidoctor.css in addition to <code>mysample.adoc</code> and <code>mysample.html</code>.
+The linkcss attribute automatically copies asciidoctor.css to the output directory.
+Additionally, you can inspect mysample.html in your browser and see <code>&lt;link rel="stylesheet" href="./asciidoctor.css"&gt;</code> inside the <code>&lt;head&gt;</code> tags.</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -272,7 +276,7 @@ If you have image references in your document, you&#8217;ll have to save the ima
 Or, by passing the <code>data-uri</code> attribute to the processor, you can embed the images into the document.</p>
 </div>
 <div class="paragraph">
-<p>To embed images into the HTML output, set <code>data-uri</code> on the command line or in the document&#8217;s header.</p>
+<p>To embed images into the HTML output, set data-uri on the command line or in the document&#8217;s header.</p>
 </div>
 <div class="literalblock">
 <div class="content">
