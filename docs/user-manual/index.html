@@ -591,8 +591,8 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#attribute-assignment-precedence">12.1. Attribute assignment precedence</a></li>
 <li><a href="#using-attributes-set-assign-and-reference">12.2. Using attributes: set, assign, and reference</a></li>
-<li><a href="#built-in-data-attributes">12.3. Built-in data attributes</a></li>
-<li><a href="#setting-attributes-on-a-document">12.4. Setting attributes on a document</a></li>
+<li><a href="#setting-attributes-on-a-document">12.3. Setting attributes on a document</a></li>
+<li><a href="#built-in-data-attributes">12.4. Built-in data attributes</a></li>
 <li><a href="#setting-attributes-on-an-element">12.5. Setting attributes on an element</a></li>
 <li><a href="#assigning-document-variables-inline">12.6. Assigning document variables inline</a></li>
 <li><a href="#attribute-conventions">12.7. Attribute conventions</a></li>
@@ -1944,82 +1944,7 @@ The <code>!</code> can be placed before or after the attribute&#8217;s name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="built-in-data-attributes"><a class="anchor" href="#built-in-data-attributes"></a>12.3. Built-in data attributes</h3>
-<div class="paragraph">
-<p>Asciidoctor includes numerous intrinsic attributes that are assigned values when the document is rendered.
-The values of these built-in data attributes are derived from how the document is processed and when and where is it processed.
-These attributes can be referenced anywhere in the document.</p>
-</div>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Built-in data attributes</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Attribute</th>
-<th class="tableblock halign-left valign-top">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Calls the processor</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the processor</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>backend</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Backend used to render document</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdatetime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date and time</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdir</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document directory</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docfile</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document file</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified time</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctitle</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the document</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctype</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Document&#8217;s doctype (e.g., article)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local date when rendered</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdatetime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local date and time when rendered</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localtime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local time when rendered</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="setting-attributes-on-a-document"><a class="anchor" href="#setting-attributes-on-a-document"></a>12.4. Setting attributes on a document</h3>
+<h3 id="setting-attributes-on-a-document"><a class="anchor" href="#setting-attributes-on-a-document"></a>12.3. Setting attributes on a document</h3>
 <div class="paragraph">
 <p>When an attribute is set in the header of a document, it is called an attribute entry.</p>
 </div>
@@ -2132,6 +2057,123 @@ Here&#8217;s the attribute in use:</p>
 </li>
 </ul>
 </div>
+<div class="sect3">
+<h4 id="attribute-entry-substitutions"><a class="anchor" href="#attribute-entry-substitutions"></a>12.3.1. Attribute entry substitutions</h4>
+<div class="paragraph">
+<p>The <code>header</code> substitution group is applied to the header of your document.
+<a href="#subs">Text substitution elements</a> replace characters, markup, attribute references, and macros with converter specific styles and values.
+When Asciidoctor processes a document it uses a set of six text substitution elements.
+In the header, only <a href="#special-characters">special characters</a> and <a href="#attributes-2">attribute references</a> are replaced.</p>
+</div>
+<div class="paragraph">
+<p>However, if you require other substitutions to be applied to an attribute&#8217;s value, use the <a href="#pass-mac">pass inline macro</a>.
+This macro has special meaning in an attribute entry.
+It allows the substitutions to be applied at the time the attribute is defined.</p>
+</div>
+<div class="paragraph">
+<p>The pass inline macro accepts a list of substitutions in the <code>target</code> slot.
+In the next example, we&#8217;ll apply the <a href="#quotes">quotes substitution</a> to an attribute entry&#8217;s value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">:app-name: pass:quotes[MyApp^(C)^]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also specify the substitution using the single-character alias, <code>q</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">:app-name: pass:q[MyApp^(C)^]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another approach is to change the order of substitutions that are applied where the attribute is referenced.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">:app-name: MyApp^(C)^
+
+[subs=&quot;specialcharacters,attributes,quotes,replacements,macros,post_replacements&quot;]
+The application is called {app-name}.</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="built-in-data-attributes"><a class="anchor" href="#built-in-data-attributes"></a>12.4. Built-in data attributes</h3>
+<div class="paragraph">
+<p>Asciidoctor includes numerous intrinsic attributes that are assigned values when the document is rendered.
+The values of these built-in data attributes are derived from how the document is processed and when and where is it processed.
+These attributes can be referenced anywhere in the document.</p>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 70%;">
+<caption class="title">Built-in data attributes</caption>
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Attribute</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Calls the processor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the processor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>backend</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Backend used to render document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdatetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date and time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdir</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document directory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>docfile</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of document file</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctitle</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctype</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Document&#8217;s doctype (e.g., article)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdate</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local date when rendered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdatetime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local date and time when rendered</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>localtime</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Local time when rendered</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect2">
 <h3 id="setting-attributes-on-an-element"><a class="anchor" href="#setting-attributes-on-an-element"></a>12.5. Setting attributes on an element</h3>
@@ -11036,7 +11078,7 @@ The macros substitution replaces a macro&#8217;s content with the appropriate bu
 <div class="sect2">
 <h3 id="applying-substitutions"><a class="anchor" href="#applying-substitutions"></a>38.7. Applying substitutions</h3>
 <div class="paragraph">
-<p>Specific substitution elements can be applied to block and inline elements by setting the <code>subs</code> attribute.
+<p>Specific substitution elements can be applied to any block or paragraph by setting the <code>subs</code> attribute.
 The <code>subs</code> attribute can be assigned a comma separated list of the following substitution elements and groups.</p>
 </div>
 <div class="hdlist">
@@ -11117,7 +11159,7 @@ The <code>subs</code> attribute can be assigned a comma separated list of the fo
 </div>
 <div class="paragraph">
 <p>Let&#8217;s look at an example where you only want to process special characters, formatting markup, and callouts in a literal block.
-Normally, literal blocks are only subject to special characters substitution.
+By default, literal blocks are only subject to special characters substitution.
 But you can change this behavior by setting the <code>subs</code> attribute in the block&#8217;s attribute list.</p>
 </div>
 <div class="literalblock">
@@ -11167,7 +11209,7 @@ For example, if you set subs on a literal block, and assign it a value of <code>
 However, Asciidoctor also provides syntax to append or remove substitutions to a block&#8217;s default substitutions.</p>
 </div>
 <div class="paragraph">
-<p>You can add or remove a substitution from the default substitution list using the <code>+</code> and <code>-</code> modifiers.</p>
+<p>You can add or remove a substitution from the default substitution list using the plus (<code>+</code>) and minus (<code>-</code>) modifiers.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -11176,7 +11218,7 @@ However, Asciidoctor also provides syntax to append or remove substitutions to a
 <code>&lt;substitution&gt;+</code>
 </td>
 <td class="hdlist2">
-<p>Prepends the substitution to the default list</p>
+<p>Prepends the substitution to the default list.</p>
 </td>
 </tr>
 <tr>
@@ -11184,7 +11226,7 @@ However, Asciidoctor also provides syntax to append or remove substitutions to a
 <code>+&lt;substitution&gt;</code>
 </td>
 <td class="hdlist2">
-<p>Appends the substitution to the default list</p>
+<p>Appends the substitution to the default list.</p>
 </td>
 </tr>
 <tr>
@@ -11192,15 +11234,16 @@ However, Asciidoctor also provides syntax to append or remove substitutions to a
 <code>-&lt;substitution&gt;</code>
 </td>
 <td class="hdlist2">
-<p>Removes the substitution from the default list</p>
+<p>Removes the substitution from the default list.</p>
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>For example, here&#8217;s how you would add the attributes substitution to a listing block&#8217;s default substitution list.</p>
+<p>For example, you can add the <code>attributes</code> substitution to a listing block&#8217;s default substitution list.</p>
 </div>
 <div class="listingblock">
+<div class="title">Add attributes substitution to a default substitution list</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">[source,xml,subs=&quot;+attributes&quot;]
 ----
@@ -11209,9 +11252,10 @@ However, Asciidoctor also provides syntax to append or remove substitutions to a
 </div>
 </div>
 <div class="paragraph">
-<p>Similarly, here&#8217;s how you would remove the callouts substitution.</p>
+<p>Similarly, you can remove the <code>callouts</code> substitution.</p>
 </div>
 <div class="listingblock">
+<div class="title">Remove callouts substitution from a default substitution list</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">[source,xml,subs=&quot;-callouts&quot;]
 .An illegal XML tag
@@ -11262,6 +11306,24 @@ System.out.println(&quot;Hello *bold* text&quot;).
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>Custom substitutions can also be applied to some inline elements, such as the <a href="#pass-mac">pass macro</a>.</p>
+</div>
+<div class="paragraph">
+<p>For example, the quotes text substitution value is assigned in the inline pass macro below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">The markup pass:q[&lt;u&gt;underline *me*&lt;/u&gt;] renders as underlined text and &quot;`me`&quot; is bold.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The markup <u>underline <strong>me</strong></u> renders as underlined text and &#8220;me&#8221; is bold.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -19878,7 +19940,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-11 10:22:29 UTC
+Last updated 2014-08-11 21:23:20 UTC
 </div>
 </div>
 <script>
