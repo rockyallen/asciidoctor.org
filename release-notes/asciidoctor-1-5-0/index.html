@@ -5,6 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0.rc.6">
+<meta name="author" content="Dan Allen, Sarah White">
 <title>Asciidoctor 1.5.0: Release Notes</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
 <style>
@@ -530,22 +531,30 @@ MathJax.Hub.Config({
 <body class="article">
 <div id="header">
 <h1>Asciidoctor 1.5.0: Release Notes</h1>
+<div class="details">
+<span id="author" class="author">Dan Allen</span><br>
+<span id="email" class="email"><a href="https://github.com/mojavelinux">@mojavelinux</a></span><br>
+<span id="author2" class="author">Sarah White</span><br>
+<span id="email2" class="email"><a href="https://github.com/graphitefriction">@graphitefriction</a></span><br>
+<span id="revnumber">version 1.0,</span>
+<span id="revdate">2014-08-11</span>
+</div>
 </div>
 <div id="content">
 <div class="sect1">
 <h2 id="spotlight-mathjax"><a class="anchor" href="#spotlight-mathjax"></a><span class="icon"><i class="fa fa-flask"></i></span> Get technical with MathJax</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you need to get technical in your writing, Asciidoctor integrates with <a href="http://www.mathjax.org">MathJax</a> and enables you to write <a href="http://docs.mathjax.org/en/latest/tex.html">TeX / LaTeX</a> or <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMath</a> expressions.</p>
+<p>If you need to get technical in your writing, Asciidoctor integrates with <a href="http://www.mathjax.org">MathJax</a> to allow you to write <a href="http://docs.mathjax.org/en/latest/tex.html">TeX / LaTeX</a> or <a href="http://docs.mathjax.org/en/latest/asciimath.html">AsciiMath</a> expressions directly in your document.</p>
 </div>
 <div class="stemblock">
-<div class="title">A rendered LaTeXMath equation</div>
+<div class="title">A typeset LaTeX math equation</div>
 <div class="content">
 \[x = {-b \pm \sqrt{b^2-4ac} \over 2a}\]
 </div>
 </div>
 <div class="paragraph">
-<p>With the introduction of the <a href="http://asciidoctor.org/docs/user-manual/#equations-and-formulas">STEM attribute</a>, you can now create <a href="http://asciidoctor.org/docs/user-manual/#inline-stem-content">inline</a> and <a href="http://asciidoctor.org/docs/user-manual/#block-stem-content">block</a> formulas.</p>
+<p>With a simple declaration of the <a href="http://asciidoctor.org/docs/user-manual/#stem"><code>stem</code></a> attribute, you can now write <a href="http://asciidoctor.org/docs/user-manual/#inline-stem-content">inline</a> and <a href="http://asciidoctor.org/docs/user-manual/#block-stem-content">block</a> formulas in plain text too!</p>
 </div>
 </div>
 </div>
@@ -555,10 +564,10 @@ MathJax.Hub.Config({
 <div class="paragraph">
 <p>You can add even more visual elements to your document with diagrams conjured from plain text.
 <a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a> emerged from a request to port the PlantUML extension for AsciiDoc Python to Asciidoctor.
-Pepijn Van Eeckhoudt (@pepijnve) took the reins and created a comprehensive diagram extension that not only adds integration with PlantUML, but three additional diagramming tools, as well as a framework for adding more in the future.</p>
+Pepijn Van Eeckhoudt (<a href="https://github.com">@pepijnve</a>) took the reins and created a comprehensive diagram extension that not only adds integration with PlantUML, but three additional diagramming tools, as well as a framework for adding more in the future.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor 1.5.0 supports the following diagramming tools.</p>
+<p>Asciidoctor Diagram 1.5.0 now supports the following diagramming tools:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -582,10 +591,11 @@ Pepijn Van Eeckhoudt (@pepijnve) took the reins and created a comprehensive diag
 </div>
 </div>
 <div class="paragraph">
-<p>See the <a href="http://asciidoctor.org/docs/asciidoctor-diagram">Asciidoctor Diagram guide</a> to learn how to create diagrams and ASCII art in your AsciiDoc documents.</p>
+<p>See the <a href="http://asciidoctor.org/docs/asciidoctor-diagram">Asciidoctor Diagram guide</a> to learn how to create diagrams from ASCII art in your AsciiDoc documents.</p>
 </div>
 <div class="paragraph">
-<p>Read on to learn how to load extensions like Asciidoctor Diagram from the CLI.</p>
+<p>Curious how to load extensions like Asciidoctor Diagram from the commandline interface?
+Read on.</p>
 </div>
 </div>
 </div>
@@ -597,7 +607,7 @@ Pepijn Van Eeckhoudt (@pepijnve) took the reins and created a comprehensive diag
 However, it was only possible to load these extensions when invoking Asciidoctor via the API or by creating a custom launch script.</p>
 </div>
 <div class="paragraph">
-<p>The <code>asciidoctor</code> command now supports the <code>-r</code> and <code>-I</code> flags (borrowed from the <code>ruby</code> command) to require additional paths or modify the load path, respectively.</p>
+<p>The <code>asciidoctor</code> command now supports the <code>-r</code> and <code>-I</code> flags (ported from the <code>ruby</code> command) to require additional paths or modify the load path, respectively.</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of how to use the <code>-r</code> flag to enable the Asciidoctor Diagram extension:</p>
@@ -618,6 +628,9 @@ However, it was only possible to load these extensions when invoking Asciidoctor
 <div class="paragraph">
 <p>The scripts referenced by the <code>-r</code> flag are loaded in the order they are listed and before any processing occurs.</p>
 </div>
+<div class="paragraph">
+<p>Now you get the full power of the <code>asciidoctor</code> command plus extensions!</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -625,8 +638,10 @@ However, it was only possible to load these extensions when invoking Asciidoctor
 <div class="sectionbody">
 <div class="paragraph">
 <p>The <a href="http://www.docbook.org/specs/docbook-5.0-spec-cs-01.html">DocBook 5 specification</a> was finalized in 2008.
-It&#8217;s time we embrace it.
-DocBook 5 is now the default output when you use the <a href="http://asciidoctor.org/docs/user-manual/#docbook"><code>docbook</code> backend</a>.
+It&#8217;s time we embrace it.</p>
+</div>
+<div class="paragraph">
+<p>DocBook 5 is now the default output when you use the <a href="http://asciidoctor.org/docs/user-manual/#docbook"><code>docbook</code> backend</a>.
 If you still need to produce DocBook 4.5, use the <code>docbook45</code> backend.</p>
 </div>
 </div>
@@ -640,12 +655,14 @@ This decision makes HTML5 more approachable.
 However, it makes XML parsers <span class="icon"><i class="fa fa-bomb"></i></span>.</p>
 </div>
 <div class="paragraph">
-<p>To accommodate tools that use XML parsers to read the generated HTML, Asciidoctor now supports the XHTML variant of HTML5, known as <a href="http://www.w3.org/TR/html5/introduction.html#html-vs-xhtml">XHTML5</a>.</p>
+<p>To accommodate tools that use XML parsers to read the generated HTML, Asciidoctor can now output the XHTML variant of HTML5, known as <a href="http://www.w3.org/TR/html5/introduction.html#html-vs-xhtml">XHTML5</a>.</p>
 </div>
 <div class="paragraph">
 <p>To output XHTML5 instead of HTML5, set the backend to <a href="http://asciidoctor.org/docs/user-manual/#xhtml"><code>xhtml</code></a> or, to be more explicit, <code>xhtml5</code>.
-The “x” at the beginning of the name tells Asciidoctor to add the <code>xmlns</code> attribute to the root, close short tags and assign values to boolean attributes.
-Trust us, your XML parser will thank you.</p>
+The “x” at the beginning of the name cleverly tells Asciidoctor to add the <code>xmlns</code> attribute to the root, close short tags and assign values to boolean attributes.</p>
+</div>
+<div class="paragraph">
+<p>Trust us, your XML parser will thank you.</p>
 </div>
 </div>
 </div>
@@ -670,17 +687,19 @@ These converters are hosted in their own repositories and are distributed as sep
 <h2 id="spotlight-asciidoctorjs"><a class="anchor" href="#spotlight-asciidoctorjs"></a><span class="icon"><i class="fa fa-globe"></i></span> Asciidoctor.js is Asciidoctor</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Guillaume Grossetie (@mogztter) led the effort during the 1.5.0 development cycle to align the <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> code base with Asciidoctor core.
+<p>Guillaume Grossetie (<a href="https://github.com">@mogztter</a>) led the effort during the 1.5.0 development cycle to align the <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> code base with Asciidoctor core.
 After <em>a lot</em> of fiddling and Opal patches, Asciidoctor.js now builds directly against master and the Asciidoctor 1.5.0 release.
 That means that for the first time, Asciidoctor.js <strong>is</strong> Asciidoctor.</p>
 </div>
 <div class="paragraph">
-<p>Anthonny Quérouil (@anthonny) then developed a Grunt build script to bundle Asciidoctor.js and publish it to <a href="https://www.npmjs.org/package/asciidoctor.js">npm</a> (the Node.js package manager) and <a href="http://bower.io/search/?q=asciidoctor">Bower</a> (the web package manager).</p>
+<p>Anthonny Quérouil (<a href="https://github.com">@anthonny</a>) followed up by developing a Grunt build script to bundle Asciidoctor.js and publish it to <a href="https://www.npmjs.org/package/asciidoctor.js">npm</a> (the Node.js package manager) and <a href="http://bower.io/search/?q=asciidoctor">Bower</a> (the web package manager).</p>
 </div>
 <div class="paragraph">
 <p>Guillaume is the creator of the <a href="https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia">AsciiDoc preview for Chrome</a> and Anthonny the creator of the <a href="https://atom.io/packages/asciidoc-preview">AsciiDoc preview for Atom</a>.
-Thomas Kern (@nerk) was quick to follow up with an <a href="https://github.com/asciidoctor/brackets-asciidoc-preview">AsciiDoc preview for Brackets</a>.
-Guillaume, Anthonny and Thomas have been collaborating on tooling based on Asciidoctor.js.
+Thomas Kern (<a href="https://github.com">@nerk</a>) was quick to follow up with an <a href="https://github.com/asciidoctor/brackets-asciidoc-preview">AsciiDoc preview for Brackets</a>.
+We also invited the veteran project of Asciidoctor.js, <a href="http://gist.asciidoctor.org">DocGist</a>, into the Asciidoctor organization.
+DocGist was created by Anders Nawroth (<a href="https://github.com">@nawroth</a>}).
+Guillaume, Anthonny, Anders and Thomas have been collaborating on tooling based on Asciidoctor.js.
 They&#8217;re helping Asciidoctor boldly go where no AsciiDoc implementation has gone before.</p>
 </div>
 <div class="paragraph">
@@ -693,7 +712,7 @@ I want to sincerely thank Guillaume, Anthonny and the Opal team (Adam Beynon, me
 <h2 id="spotlight-syntax"><a class="anchor" href="#spotlight-syntax"></a><span class="icon"><i class="fa fa-edit"></i></span> AsciiDoc syntax shuffle</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The single quote (<code>'</code>) and the backtick (<code>{backtick}</code>) are the two markup characters in the AsciiDoc syntax that often give people trouble.
+<p>The single quote (<code>'</code>) and the backtick (<code>`</code>) are two markup characters in the AsciiDoc syntax that often give people trouble.
 They like to get in each other&#8217;s way.
 We decided to shuffle some of the AsciiDoc syntax to address this problem and, in general, make it more consistent and easy to learn.
 Not only do these changes reduce slip ups by the parser, they also strengthen the meaning of the plus character and bring more alignment with Markdown by making the backtick the primary character for monospace formatting.</p>
@@ -701,7 +720,7 @@ Not only do these changes reduce slip ups by the parser, they also strengthen th
 <div class="sect2">
 <h3 id="migrating-with-compat-mode"><a class="anchor" href="#migrating-with-compat-mode"></a>Migrating with compat-mode</h3>
 <div class="paragraph">
-<p>Before introducing what has changed, we want to highlight that you can forgo the italic, monospace and passthrough syntax changes by setting the <code>compat-mode</code> attribute, shown here defined in the document header:</p>
+<p>Before introducing what&#8217;s changed, we want to emphasize that you can forgo the italic, monospace and passthrough syntax changes by setting the <code>compat-mode</code> attribute, shown here defined in the document header:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -725,11 +744,11 @@ See the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for
 <div class="sect2">
 <h3 id="means-passthrough"><a class="anchor" href="#means-passthrough"></a>“+” means passthrough</h3>
 <div class="paragraph">
-<p>The <code>{plus}</code> character in the original AsciiDoc syntax is not used consistently.
-Single plus (<code>{plus}</code>) and double plus (<code>{plus-x2}</code>) are used to format text as monospace, whereas triple plus (<code>{plus-x3}</code>) and quadruple plus (<code>{plus-x4}</code>) are used to escape text from processing.</p>
+<p>The <code>&#43;</code> character in the original AsciiDoc syntax is not used consistently.
+Single plus (<code>&#43;</code>) and double plus (<code>&#43;&#43;</code>) are used to format text as monospace, whereas triple plus (<code>&#43;&#43;&#43;</code>) and quadruple plus (<code>&#43;&#43;&#43;&#43;</code>) are used to escape text from processing.</p>
 </div>
 <div class="paragraph">
-<p>We made AsciiDoc easier to learn and remember by always using <code>{plus}</code> as a <a href="http://asciidoctor.org/docs/user-manual/#passthru">passthrough formatting mark</a>.
+<p>We made AsciiDoc more intuitive and easier to teach by always using <code>&#43;</code> as a <a href="http://asciidoctor.org/docs/user-manual/#passthru">passthrough formatting mark</a>.
 Instead of using the single plus and double plus for monospaced formatting, we&#8217;ve made them constrained and unconstrained literals (i.e., “render it as it looks”), respectively.
 For example:</p>
 </div>
@@ -747,13 +766,28 @@ For that, we&#8217;ll put the backtick back into play.</p>
 <div class="sect2">
 <h3 id="markdown-style-monospace"><a class="anchor" href="#markdown-style-monospace"></a>Markdown-style monospace</h3>
 <div class="paragraph">
-<p>Authors who are familiar with Markdown are accustomed to using the backtick (<code>{backtick}</code>) to format text as monospace.
+<p>Authors who are familiar with Markdown are accustomed to using the backtick (<code>`</code>) to format text as monospace.
 We&#8217;ve embraced this convention in Asciidoctor.</p>
 </div>
 <div class="paragraph">
 <p>Using backtick characters around text now means the text should be formatted as monospace only.
 The backtick characters <em>do not</em> add passthrough semantics, as they did before.
 In most cases, the passthrough semantics aren&#8217;t necessary, so using the backticks for monospaced formatting is sufficient.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`literal` becomes literal (in monospace)
+`{backend}` becomes html5 (in monospace)
+a``||``b becomes a||b (where || is monospace)</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to prevent substitutions in the monospaced text, just remember, “plus for passthrough”:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">`+{backend}+` becomes {backend} (in monospace)</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>By not mixing monospace formatting with passthrough (literal) semantics, we are deviating slightly from the behavior of backticks in Markdown.
@@ -789,7 +823,17 @@ See the user manual for <a href="http://asciidoctor.org/docs/user-manual/#quotat
 <div class="sect2">
 <h3 id="quote-means-quote"><a class="anchor" href="#quote-means-quote"></a>Quote means quote</h3>
 <div class="paragraph">
-<p>TODO: italic change</p>
+<p>Single quotes around a phrase are now left alone unless you&#8217;re running Asciidoctor in compat mode.</p>
+</div>
+<div class="paragraph">
+<p>AsciiDoc traditionally supported single quotes as an alternate syntax for marking a phrase as italic.
+However, single quotes around a phrase already have a very well-defined meaning in Western languages.
+Making them something they aren&#8217;t just isn&#8217;t a good idea.
+We never recommended them for this purpose anyway.
+Furthermore, they conflict with the new curved quote syntax, so they had to go.</p>
+</div>
+<div class="paragraph">
+<p>Refer to the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> to help ensure a smooth transition to the new syntax.</p>
 </div>
 </div>
 </div>
@@ -836,13 +880,23 @@ Asciidoctor now drops these lines so you can <a href="http://asciidoctor.org/doc
 </div>
 </div>
 <div class="sect1">
+<h2 id="span-class-icon-i-class-fa-fa-refresh-i-span-substitution-modifiers"><a class="anchor" href="#span-class-icon-i-class-fa-fa-refresh-i-span-substitution-modifiers"></a><span class="icon"><i class="fa fa-refresh"></i></span> Substitution modifiers</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you needed to customize the substitutions on a block, you used to have to list out all the substitutions you wanted to enable.
+It&#8217;s now possible to add or remove substitutions to the default substitution set <a href="http://asciidoctor.org/docs/user-manual/#applying-substitutions">using the <code>+</code> and <code>-</code> modifiers</a> (e.g., <code>[subs=+quotes]</code>).
+That should save a lot of unnecessary typing!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="spotlight-secure-assets"><a class="anchor" href="#spotlight-secure-assets"></a><span class="icon"><i class="fa fa-lock"></i></span> Secure assets</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Serving assets over SSL is a best practice to avoid man-in-the-middle attacks and preying eyes in general.</p>
 </div>
 <div class="paragraph">
-<p>All remote assets used out of the box in Asciidoctor, such as Font Awesome, are now served over SSL from <a href="https://cdnjs.cloudflare.com">cdnjs.cloudflare.com</a> and <a href="https://fonts.googleapis.com">fonts.googleapis.com</a>.</p>
+<p>All remote assets referenced out of the box in Asciidoctor, such as Font Awesome, are now served over SSL from <a href="https://cdnjs.cloudflare.com">cdnjs.cloudflare.com</a> and <a href="https://fonts.googleapis.com">fonts.googleapis.com</a>.</p>
 </div>
 </div>
 </div>
@@ -883,7 +937,7 @@ http://asciidoctor.org</pre>
 <h2 id="spotlight-xrefs"><a class="anchor" href="#spotlight-xrefs"></a><span class="icon"><i class="fa fa-compass"></i></span> Human-friendly cross references</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you are linking to an anchor point somewhere else in your document, you can refer to it by title instead of by ID.</p>
+<p>If you&#8217;re linking to an anchor point somewhere else in your document, you can refer to it by title instead of by ID.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -901,7 +955,7 @@ http://asciidoctor.org</pre>
 <h2 id="spotlight-print-styles"><a class="anchor" href="#spotlight-print-styles"></a><span class="icon"><i class="fa fa-print"></i></span> Print your docs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Leif Gruenwoldt (@leif81) pointed out that the print styles were too aggressive, causing the printed document to lose its integrity.
+<p>Leif Gruenwoldt (<a href="https://github.com">@leif81</a>) pointed out that the print styles were too aggressive, causing the printed document to lose its integrity.
 We worked together to tweak the stylesheet until the output looked nearly as good as the PDF generated by the DocBook toolchain.
 The styles even separate chapters into different pages when using the <code>book</code> doctype.
 In addition to these styles, we also added the missing table border styles for all the grid and frame permutations on both web and print.</p>
@@ -943,7 +997,7 @@ We&#8217;ve replaced these proprietary fonts with Open Source fonts, which we lo
 </ul>
 </div>
 <div class="paragraph">
-<p>I particularly like <a href="https://www.google.com/fonts/specimen/Noto+Serif">Noto Serif</a> because it&#8217;s an extremely readable font <em>and</em> it supports all the world&#8217;s languages.</p>
+<p>We particularly like <a href="https://www.google.com/fonts/specimen/Noto+Serif">Noto Serif</a> because it&#8217;s an extremely readable font <em>and</em> it supports all the world&#8217;s languages.</p>
 </div>
 <div class="paragraph">
 <p>We made additional refinements to the default stylesheet that give it a professional, modern appearance.
@@ -960,7 +1014,7 @@ Here&#8217;s a preview of the new default theme:</p>
 <h2 id="spotlight-font-awesome"><a class="anchor" href="#spotlight-font-awesome"></a><span class="icon"><i class="fa fa-flag"></i></span> Font Awesome 4.1</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Speaking of fonts, Asciidoctor integrates with Font Awesome 4.1, thanks to the work done by Guillaume Grossetie (@mogztter)!
+<p>Speaking of fonts, Asciidoctor integrates with Font Awesome 4.1, thanks to the work done by Guillaume Grossetie (<a href="https://github.com">@mogztter</a>)!
 You now have <strong>over 400 icons</strong> available to accessorize your document!</p>
 </div>
 <div class="admonitionblock caution">
@@ -984,8 +1038,22 @@ If you have existing documents that use the icon macro, you may want to add the 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-11 06:19:01 UTC
+Version 1.0<br>
+Last updated 2014-08-11 09:32:38 UTC
 </div>
 </div>
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script');
+  ga.type = 'text/javascript';
+  ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0];
+  s.parentNode.insertBefore(ga, s);
+})();
+</script>
 </body>
 </html>
