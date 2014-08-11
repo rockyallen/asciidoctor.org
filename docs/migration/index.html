@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.0.rc.6">
-<meta name="description" content="Migrating from Asciidoctor 0.1.4 to 1.5.0.">
+<meta name="description" content="A guide that assists with migration from Asciidoctor 0.1.4 to 1.5.0.">
 <meta name="keywords" content="Asciidoctor 1.5, migrate to Asciidoctor 1.5, Asciidoctor 1.5 migration, migrating to Asciidoctor 1.5, migrating to Asciidoctor, compat mode, Asciidoctor compat mode, compat-mode">
 <meta name="author" content="Dan Allen">
 <title>Migrating to Asciidoctor 1.5.0</title>
@@ -521,8 +521,8 @@ table.CodeRay td.code>pre{padding:0}
 <h1>Migrating to Asciidoctor 1.5.0</h1>
 <div class="details">
 <span id="author" class="author">Dan Allen</span><br>
-<span id="revnumber">version 1.0,</span>
-<span id="revdate">2014-08-04</span>
+<span id="revnumber">version 1.1,</span>
+<span id="revdate">2014-08-10</span>
 </div>
 </div>
 <div id="content">
@@ -530,7 +530,7 @@ table.CodeRay td.code>pre{padding:0}
 <div class="sectionbody">
 <div class="paragraph">
 <p>We decided to rework some of the AsciiDoc syntax in Asciidoctor 1.5.0 in an effort to make it more consistent, deterministic and easy to learn.
-You can learn more about the changes in the <a href="/docs/asciidoctor-1.5.0-release-notes">Asciidoctor 1.5.0 release notes</a>.</p>
+You can learn more about the changes in the <a href="/release-notes/asciidoctor-1.5.0">Asciidoctor 1.5.0 release notes</a>.</p>
 </div>
 <div class="paragraph">
 <p>With that said, compatibility is very important to us.
@@ -543,12 +543,14 @@ This document covers these attribute and syntax options.</p>
 <h2 id="compat-mode"><a class="anchor" href="#compat-mode"></a>Compat mode</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you can&#8217;t migrate right now, you can activate compatibility mode by setting the document-level <code>compat-mode</code> attribute.
-In this mode, most of Asciidoctor 1.5.0&#8217;s <em>syntax modifications</em> that deviate from the legacy AsciiDoc syntax are reverted.
+<p>If you can&#8217;t migrate right now, you can activate compatibility mode by setting the document-level <code>compat-mode</code> attribute or by using a setext-style (i.e., two-line) document title.</p>
+</div>
+<div class="paragraph">
+<p>In compat mode, most of Asciidoctor 1.5.0&#8217;s <em>syntax modifications</em> that deviate from the legacy AsciiDoc syntax are reverted.
 This mode does not disable syntax unique to Asciidoctor, such as inline icons (e.g., icon:fire[]).</p>
 </div>
 <div class="paragraph">
-<p>You can set the <code>compat-mode</code> attribute in the document header.</p>
+<p>You can define the <code>compat-mode</code> attribute in the document header:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -556,7 +558,7 @@ This mode does not disable syntax unique to Asciidoctor, such as inline icons (e
 </div>
 </div>
 <div class="paragraph">
-<p>Or pass it as a commandline flag.</p>
+<p>using the <code>-a</code> commandline flag:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -564,7 +566,7 @@ This mode does not disable syntax unique to Asciidoctor, such as inline icons (e
 </div>
 </div>
 <div class="paragraph">
-<p>Or set it via the API.</p>
+<p>or using the <code>attributes</code> option in the API:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -572,18 +574,32 @@ This mode does not disable syntax unique to Asciidoctor, such as inline icons (e
 </div>
 </div>
 <div class="paragraph">
-<p>You can also set <code>compat-mode</code> anywhere in the flow of a document.</p>
+<p>Alternatively, you can enable compat mode by using a setext-style (i.e., two-line) section title:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Document Title
+==============
+
+Content parsed in compat-mode by default.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since setext-style headings are typically in older AsciiDoc documents, this convention allows Asciidoctor to accomodate these older documents without having to wake any sleeping giants ;)</p>
+</div>
+<div class="paragraph">
+<p>You can set <code>compat-mode</code> anywhere in the flow of a document.</p>
 </div>
 <div class="listingblock">
 <div class="title">Setting and unsetting compat-mode in a document</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code>:compat-mode: <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="nowrap">:compat-mode: <i class="conum" data-value="1"></i><b>(1)</b>
 
 Sometimes you feel 'compat'.
 
 :compat-mode!: <i class="conum" data-value="2"></i><b>(2)</b>
 
-Sometimes you _don't_.</code></pre>
+Sometimes you _don't_.</pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -821,8 +837,8 @@ It is UTF-8 after all!</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 1.0<br>
-Last updated 2014-08-11 03:37:59 UTC
+Version 1.1<br>
+Last updated 2014-08-11 03:51:16 UTC
 </div>
 </div>
 </body>
