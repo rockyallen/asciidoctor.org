@@ -521,7 +521,7 @@ table.CodeRay td.code>pre{padding:0}
 <h1>Asciidoctor Diagram</h1>
 <div class="details">
 <span id="author" class="author">Pepijn Van Eeckhoudt</span><br>
-<span id="email" class="email"><a href="https://github.com/pepijnve">https://github.com/pepijnve</a></span><br>
+<span id="email" class="email"><a href="https://github.com/pepijnve">@pepijnve</a></span><br>
 <span id="author2" class="author">Sarah White</span><br>
 <span id="email2" class="email"><a href="https://github.com/graphitefriction">@graphitefriction</a></span><br>
 </div>
@@ -543,7 +543,7 @@ table.CodeRay td.code>pre{padding:0}
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor Diagram is a set of extensions for Asciidoctor that allow you to embed diagrams written using the {plantuml}[PlantUML], <a href="http://www.graphviz.org">Graphviz</a>, <a href="http://ditaa.sourceforge.net/">ditaa</a>, or <a href="https://github.com/christiangoltz/shaape">Shaape</a> syntax inside your AsciiDoc documents.
+<p>Asciidoctor Diagram is a set of extensions for Asciidoctor that allow you to embed diagrams written using the <a href="http://plantuml.sourceforge.net">PlantUML</a>, <a href="http://www.graphviz.org">Graphviz</a>, <a href="http://ditaa.sourceforge.net/">ditaa</a>, or <a href="https://github.com/christiangoltz/shaape">Shaape</a> syntax inside your AsciiDoc documents.
 The extension runs the diagram processor to generate an SVG, PNG, or TXT file from the input text.
 The generated file is then inserted into your rendered document.</p>
 </div>
@@ -559,11 +559,8 @@ The generated file is then inserted into your rendered document.</p>
 <p>Asciidoctor Diagram is a RubyGem.
 You can install it using your application&#8217;s Gemfile or the <code>gem</code> command.</p>
 </div>
-<div class="paragraph">
-<p>To
-.Gemfile</p>
-</div>
 <div class="listingblock">
+<div class="title">Gemfile</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">gem <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
@@ -681,26 +678,11 @@ ditaa, Graphviz, or PlantUML syntax
 <div class="paragraph">
 <p>The ditaa block above results in the following generated diagram.</p>
 </div>
-<div class="literalblock">
-<div class="title">Rendered ditaa diagram</div>
+<div class="imageblock">
 <div class="content">
-<pre class="nowrap">                   +-------------+
-                   | Asciidoctor |-------+
-                   |   diagram   |       |
-                   +-------------+       | PNG out
-                       ^                 |
-                       | ditaa in        |
-                       |                 v
- +--------+   +--------+----+    /---------------\
- |        | --+ Asciidoctor +--&gt; |               |
- |  Text  |   +-------------+    |   Beautiful   |
- |Document|   |   !magic!   |    |    Output     |
- |     {d}|   |             |    |               |
- +---+----+   +-------------+    \---------------/
-     :                                   ^
-     |          Lots of work             |
-     +-----------------------------------+</pre>
+<img src="/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
 </div>
+<div class="title">Rendered ditaa diagram</div>
 </div>
 <div class="paragraph">
 <p>The rendered ditaa diagram above gets the file name <code>58372f7d2ceffae9e91fd0a7cbb080b6.png</code>.
@@ -759,18 +741,11 @@ DiagramBlock &lt;|-- PlantUmlBlock
 </tr>
 </table>
 </div>
-<div class="literalblock">
-<div class="title">Rendered PlantUML diagram</div>
+<div class="imageblock">
 <div class="content">
-<pre class="nowrap">class BlockProcessor
-class DiagramBlock
-class DitaaBlock
-class PlantUmlBlock
-
-BlockProcessor &lt;|-- DiagramBlock
-DiagramBlock &lt;|-- DitaaBlock
-DiagramBlock &lt;|-- PlantUmlBlock</pre>
+<img src="/images/diagram-classes.png" alt="Asciidoctor Diagram classes diagram" width="650" height="319">
 </div>
+<div class="title">Rendered PlantUML diagram</div>
 </div>
 </div>
 </div>
@@ -866,7 +841,7 @@ You can then manually register the extensions at the appropriate times using the
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-08-11 05:43:21 UTC
+Last updated 2014-08-11 05:55:06 UTC
 </div>
 </div>
 </body>
