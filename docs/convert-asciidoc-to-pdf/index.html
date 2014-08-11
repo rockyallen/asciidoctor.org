@@ -1,0 +1,365 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>How to Convert AsciiDoc to PDF with Asciidoctor | Asciidoctor</title><meta name="author" content="Dan Allen"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>How to Convert AsciiDoc to PDF with Asciidoctor</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor PDF is a native PDF renderer for AsciiDoc.
+We&#8217;re talking AsciiDoc direct to PDF!</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">Project status</div>
+<div class="paragraph">
+<p>Asciidoctor PDF is currently <em>alpha</em> software.
+Use accordingly.
+Though the bulk of AsciiDoc content is rendered, there&#8217;s still work needed to fill in gaps where rendering is incomplete, incorrect or not implemented.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#notable-features">Notable Features</a>
+<ul class="sectlevel2">
+<li><a href="#missing-features">Missing Features</a></li>
+</ul>
+</li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#getting-started">Getting Started</a>
+<ul class="sectlevel2">
+<li><a href="#retrieve-the-project">Retrieve the project</a></li>
+<li><a href="#install-the-dependencies">Install the Dependencies</a></li>
+<li><a href="#example-asciidoc-document">Example AsciiDoc document</a></li>
+<li><a href="#convert-asciidoc-to-pdf">Convert AsciiDoc to PDF</a></li>
+</ul>
+</li>
+<li><a href="#themes">Themes</a></li>
+<li><a href="#additional-scripts">Additional Scripts</a></li>
+<li><a href="#contributing">Contributing</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+</div>
+</div>
+<div class="sect1">
+<h2 id="notable-features"><a class="anchor" href="#notable-features"></a>Notable Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Direct AsciiDoc to PDF rendering</p>
+</li>
+<li>
+<p>Configuration-driven style and layout</p>
+</li>
+<li>
+<p>PDF document outline (i.e., bookmarks)</p>
+</li>
+<li>
+<p>Document metadata (title, authors, subject, keywords, etc)</p>
+</li>
+<li>
+<p>Internal cross reference links</p>
+</li>
+<li>
+<p>Syntax highlighting with CodeRay or Pygments</p>
+</li>
+<li>
+<p>Page breaks avoided in block content</p>
+</li>
+<li>
+<p>Orphan section titles avoided</p>
+</li>
+<li>
+<p>Table border settings honored</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Asciidoctor PDF is built with <a href="http://asciidoctor.org">Asciidoctor</a> and Prawn.
+<a href="http://prawn.majesticseacreature.com">Prawn</a> is a nimble PDF writer for Ruby.</p>
+</div>
+<div class="sect2">
+<h3 id="missing-features"><a class="anchor" href="#missing-features"></a>Missing Features</h3>
+<div class="paragraph">
+<p>See <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/WORKLOG.adoc">WORKLOG</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="prerequisites"><a class="anchor" href="#prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor PDF requires Ruby 1.9.3 or greater and a few RubyGems, which we explain how to install in the next section.</p>
+</div>
+<div class="paragraph">
+<p>To determine if you have Ruby available, open an terminal and use the <code>ruby</code> command to query the version installed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ ruby --version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re using <a href="http://rvm.io">RVM</a>, we recommend creating a new gemset to work with Asciidoctor and Asciidoctor PDF.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ rvm use @asciidoctor-pdf --create</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>RVM keeps the dependencies required by various projects isolated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor PDF isn&#8217;t yet published as a RubyGem, so you&#8217;ll need to get the source code.</p>
+</div>
+<div class="sect2">
+<h3 id="retrieve-the-project"><a class="anchor" href="#retrieve-the-project"></a>Retrieve the project</h3>
+<div class="paragraph">
+<p>You can retrieve the Asciidoctor PDF project in one of two ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Clone the git repository</p>
+</li>
+<li>
+<p>Download a zip archive of the repository</p>
+</li>
+</ol>
+</div>
+<div class="sect3">
+<h4 id="option-1-fetch-using-git-clone"><a class="anchor" href="#option-1-fetch-using-git-clone"></a>Option 1: Fetch using git clone</h4>
+<div class="paragraph">
+<p>If you want to clone the git repository, copy the <a href="https://github.com/asciidoctor/asciidoctor-pdf">GitHub repository URL</a> and pass it to <code>git clone</code> command.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ git clone https://github.com/asciidoctor/asciidoctor-pdf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next, change to the project directory.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ cd asciidoctor-pdf</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="option-2-download-the-archive"><a class="anchor" href="#option-2-download-the-archive"></a>Option 2: Download the archive</h4>
+<div class="paragraph">
+<p>If you want to download a zip archive, click on the btn:[Download Zip] button on the right-hand side of the repository page on GitHub.
+Once the download finishes, extract the archive, open a console and change to that directory.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Instead of working out of the asciidoctor-pdf directory, you can simply add the directory to your <code>PATH</code> environment variable.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>We&#8217;ll leverage the project configuration to install the necessary dependencies.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-the-dependencies"><a class="anchor" href="#install-the-dependencies"></a>Install the Dependencies</h3>
+<div class="paragraph">
+<p>The dependencies needed to use Asciidoctor PDF are defined in the <em class="file">Gemfile</em> at the root of the project.
+We can use Bundler to install the dependencies for us.</p>
+</div>
+<div class="paragraph">
+<p>To see if you have Bundler available, use the <code>bundle</code> command to query the version installed.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ bundle --version</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If it&#8217;s not installed, use the <code>gem</code> command to install it.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ gem install bundle</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then use the <code>bundle</code> command to install the project dependencies.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ bundle install</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;re now ready to use Asciidoctor PDF.
+Let&#8217;s grab an AsciiDoc document to distill.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="example-asciidoc-document"><a class="anchor" href="#example-asciidoc-document"></a>Example AsciiDoc document</h3>
+<div class="paragraph">
+<p>If you don&#8217;t already have an AsciiDoc document, you can use the <em class="file">example.adoc</em> file found in the <a href="https://github.com/asciidoctor/asciidoctor-pdf/tree/master/examples">examples directory</a> of the Asciidoctor PDF repository.</p>
+</div>
+<div class="listingblock">
+<div class="title">example.adoc</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">= Document Title
+Doc Writer &lt;doc@example.com&gt;
+:doctype: book
+:source-highlighter: coderay
+:listing-caption: Listing
+
+A simple http://asciidoc.org[AsciiDoc] document.
+
+== Introduction
+
+A paragraph followed by a simple list with square bullets.
+
+[square]
+* item 1
+* item 2
+
+Here's how you say ``Hello, World!'' in Prawn:
+
+.Create a basic PDF document using Prawn
+[source,ruby]
+....
+require 'prawn'
+
+Prawn::Document.generate 'example.pdf' do
+  text 'Hello, World!'
+end
+....</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s time to convert the AsciiDoc document direct to PDF.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="convert-asciidoc-to-pdf"><a class="anchor" href="#convert-asciidoc-to-pdf"></a>Convert AsciiDoc to PDF</h3>
+<div class="paragraph">
+<p>The <code>generate-pdf</code> script converts an AsciiDoc document to a PDF.</p>
+</div>
+<div class="paragraph">
+<p>From the root of your project, pass your AsciiDoc document to the script.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ ruby bin/asciidoctor-pdf example.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the script completes, you should see the file <em class="file">example.pdf</em> in the same directory.
+Open that file with a PDF viewer to see the result.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/example-pdf-screenshot.png" alt="Screenshot of PDF document">
+</div>
+<div class="title">Example PDF document rendered in a PDF viewer</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;re also encouraged to try rendering the documents in the examples directory to see more of what Asciidoctor PDF can do.
+Another example is the <a href="https://github.com/cdi-spec/cdi/tree/master/spec">CDI Specification</a>.</p>
+</div>
+<div class="paragraph">
+<p>The pain of the DocBook toolchain should be melting away about now.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="themes"><a class="anchor" href="#themes"></a>Themes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The layout and styling of the PDF is driven by a YAML configuration file.
+See the files <em class="file">default-theme.yml</em> and <em class="file">asciidoctor-theme.yml</em> found in the <a href="https://github.com/asciidoctor/asciidoctor-pdf/tree/master/data/themes">data/themes directory</a> for examples.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="additional-scripts"><a class="anchor" href="#additional-scripts"></a>Additional Scripts</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor PDF also provides a shell script that invokes GhostScript (<code>gs</code>) to optimize and compress the generated PDF with minimal impact on quality.
+You must have Ghostscript installed to use it.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example usage:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ ./bin/optimize-pdf example.pdf</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The command will generate the file <em class="file">example-optimized.pdf</em> in the current directory.
+If a file is found with the extension <code>.pdfmarks</code> and the same rootname as the input file, it is used to add metadata to the generated PDF document.
+This file is necessary to preserve the document metadata since Ghostscript will otherwise drop it.
+That&#8217;s why Asciidoctor PDF always creates this file in addition to the PDF.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributing"><a class="anchor" href="#contributing"></a>Contributing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the spirit of free software, <em>everyone</em> is encouraged to help improve this project.</p>
+</div>
+<div class="paragraph">
+<p>To contribute code, simply fork the project on GitHub, hack away and send a pull request with your proposed changes.</p>
+</div>
+<div class="paragraph">
+<p>Feel free to use the <a href="https://github.com/asciidoctor/asciidoctor-pdf/issues">issue tracker</a> or <a href="http://discuss.asciidoctor.org">Asciidoctor mailing list</a> to provide feedback or suggestions in other ways.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="license"><a class="anchor" href="#license"></a>License</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Asciidoctor PDF was written by <a href="https://github.com/mojavelinux">Dan Allen</a> and <a href="https://github.com/graphitefriction">Sarah White</a> of OpenDevise Inc. on behalf of the Asciidoctor Project.</p>
+</div>
+<div class="paragraph">
+<p>Copyright &#169; 2014 OpenDevise Inc. and the Asciidoctor Project.
+Free use of this software is granted under the terms of the MIT License.</p>
+</div>
+<div class="paragraph">
+<p>For the full text of the license, see the <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/LICENSE.adoc">LICENSE</a> file.
+Refer to the <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/NOTICE.adoc">NOTICE</a> file for information about third-party Open Source software in use.</p>
+</div>
+</div>
+</div></div></div></div><div class="large-4 columns secondary"><ul class="button-group radius" style="margin-top: 0.5em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/convert-asciidoc-to-pdf.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/convert-asciidoc-to-pdf.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/convert-asciidoc-to-pdf.adoc">History</a></li><li><i class="fa fa-github fa-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project is an effort to bring a comprehensive and accessible publishing toolchain, centered around the AsciiDoc syntax, to a growing range of ecosystems, including Ruby, JavaScript and the JVM.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora, Debian and Ubuntu. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="fa fa-download"></i> Download: <a class="rubygem" href="https://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="fa fa-github"></i> Development: <a href="https://github.com/asciidoctor">GitHub</a><br><i class="fa fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="fa fa-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="fa fa-twitter"></i> Twitter: <a class="twitter" href="https://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="fa fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="https://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
