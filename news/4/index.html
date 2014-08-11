@@ -167,7 +167,7 @@ I summarized this information in an article titled <a href="https://nofluffjusts
 <div class="sectionbody">
 <div class="paragraph">
 <p>The amount of participation in the Asciidoctor project, particularly around the integrations, has increased <em>tremendously</em> since the last release.
-Asciidoctor 0.1.1 crossed the <a href="http://rubygems.org/gems/asciidoctor">10</a> prior to this release.
+Asciidoctor 0.1.1 crossed the <a href="http://rubygems.org/gems/asciidoctor">10,000 downloads mark</a> prior to this release.
 We look forward to 0.1.2 breaking the next 10,000.</p>
 </div>
 <div class="paragraph">
@@ -237,7 +237,7 @@ We&#8217;d especially like to thank the following people for their contributions
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
@@ -291,7 +291,7 @@ We&#8217;d especially like to thank the following people for their contributions
 <div class="listingblock">
 <div class="title">Creation of Asciidoctor interface</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
@@ -303,7 +303,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a String</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
 <span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
@@ -313,7 +313,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a File</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
 <span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
@@ -328,7 +328,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Example of using in_place Option and backend Attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
 attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>);
 
 <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
@@ -350,7 +350,7 @@ options.put(<span class="string"><span class="delimiter">&quot;</span><span clas
 <div class="listingblock">
 <div class="title">Example setting attributes and options</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 ...
@@ -370,7 +370,7 @@ Map&lt;<span class="predefined-type">String</span>, <span class="predefined-type
 <div class="listingblock">
 <div class="title">Example of finding all asciidoc</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+<pre class="CodeRay highlight nowrap"><code class="java language-java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
 <span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan();</code></pre>
 </div>
 </div>
@@ -439,7 +439,7 @@ Just add this plugin declaration:</p>
 <div class="listingblock">
 <div class="title">pom.xml fragment: Asciidoctor Maven plugin configuration</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;plugin&gt;</span>
+<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;plugin&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>asciidoctor-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
   <span class="tag">&lt;version&gt;</span>0.1.1<span class="tag">&lt;/version&gt;</span>
@@ -623,7 +623,7 @@ Together, we can take the agony out of writing documentation!</p>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="listingblock">
 <div class="content">
-<pre class="CodeRay"><code class="asciidoc language-asciidoc">= Asciidoctor
+<pre class="CodeRay highlight"><code class="asciidoc language-asciidoc">= Asciidoctor
 Ryan Waldron, Dan Allen
 
 http://asciidoctor.org[Asciidoctor] is a native Ruby processor

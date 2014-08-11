@@ -52,7 +52,7 @@ The artifact information is summarized in the table below.</p>
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven&#8217;s pom.xml</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
@@ -64,7 +64,7 @@ The artifact information is summarized in the table below.</p>
 <div class="listingblock">
 <div class="title">Dependency declaration in Gradle&#8217;s build.gradle</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="groovy language-groovy">dependencies {
+<pre class="CodeRay highlight nowrap"><code class="groovy language-groovy">dependencies {
   compile(<span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-java-integration:${asciidoctor.version}</span><span class="delimiter">'</span></span>) { <i class="conum" data-value="1"></i><b>(1)</b>
     transitive = <span class="predefined-constant">false</span>
   }
@@ -154,7 +154,7 @@ All methods are overloaded to accomodate various ways to supply content and opti
 <div class="listingblock">
 <div class="title">Creating an <code>Asciidoctor</code> instance</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
@@ -167,7 +167,7 @@ Use <code>render</code> to render a string.</p>
 <div class="listingblock">
 <div class="title">Rendering a string</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="keyword">import</span> <span class="include">java.util.HashMap</span>;
 <span class="comment">//...</span>
 <span class="predefined-type">String</span> rendered = asciidoctor.render(
@@ -181,7 +181,7 @@ Use <code>render</code> to render a string.</p>
 <div class="listingblock">
 <div class="title">Rendering a file</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="keyword">import</span> <span class="include">java.util.HashMap</span>;
 <span class="comment">//...</span>
 <span class="predefined-type">String</span> rendered = asciidoctor.renderFile(
@@ -195,7 +195,7 @@ Use <code>render</code> to render a string.</p>
 <div class="listingblock">
 <div class="title">Rendering a list of files</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderFiles(
     <span class="predefined-type">Arrays</span>.asList(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/rendersample.adoc</span><span class="delimiter">&quot;</span></span>)), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
@@ -244,7 +244,7 @@ Currently <code>Asciidoctor</code> provides two implementations:</p>
 <div class="listingblock">
 <div class="title">Rendering all the files in a directory</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">String</span><span class="type">[]</span> renderedFiles = asciidoctor.renderDirectory(
     <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/src</span><span class="delimiter">&quot;</span></span>), <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;());
 
@@ -260,7 +260,7 @@ The <code>Reader</code> interface is used as the source, and the rendered conten
 <div class="listingblock">
 <div class="title">Rendering content read from a <code>java.io.Reader</code> to a <code>java.io.Writer</code></div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">FileReader</span> reader = <span class="keyword">new</span> <span class="predefined-type">FileReader</span>(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>));
 <span class="predefined-type">StringWriter</span> writer = <span class="keyword">new</span> <span class="predefined-type">StringWriter</span>();
 
@@ -277,7 +277,7 @@ This method returns an instance of <code>org.asciidoctor.DocumentHeader</code> w
 <div class="listingblock">
 <div class="title">Example AsciiDoc document with header information</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Sample Document
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">= Sample Document
 Doc Writer &lt;doc.writer@asciidoc.org&gt;; John Smith &lt;john.smith@asciidoc.org&gt;
 v1.0, 2013-05-20: First draft
 :title: Sample Document
@@ -289,7 +289,7 @@ Preamble...</code></pre>
 <div class="listingblock">
 <div class="title">Reading header information from the AsciiDoc document</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 DocumentHeader header = asciidoctor.readDocumentHeader(
     <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">target/test-classes/documentheaders.adoc</span><span class="delimiter">&quot;</span></span>));
 
@@ -343,7 +343,7 @@ RevisionInfo revisionInfo = header.getRevisionInfo();
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.io.File</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.io.File</span>;
 <span class="keyword">import</span> <span class="include">java.util.HashSet</span>;
 <span class="keyword">import</span> <span class="include">java.util.Set</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
@@ -397,7 +397,7 @@ The options listed above can be set in <code>java.util.Map</code>.</p>
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
 attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
 
 <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
@@ -434,7 +434,7 @@ Note that related with <code>org.asciidoctor.Options</code> class, there is <cod
 <div class="listingblock">
 <div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="predefined-type">Attributes</span> attributes = <span class="keyword">new</span> <span class="predefined-type">Attributes</span>();
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">Attributes</span> attributes = <span class="keyword">new</span> <span class="predefined-type">Attributes</span>();
 attributes.setBackend(<span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
 
 Options options = <span class="keyword">new</span> Options();
@@ -481,7 +481,7 @@ options.setInPlace(<span class="predefined-constant">true</span>); <i class="con
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 <span class="comment">//...</span>
@@ -514,7 +514,7 @@ options.setInPlace(<span class="predefined-constant">true</span>); <i class="con
 <div class="listingblock">
 <div class="title">Setting attributes and options with the builder classes</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 <span class="comment">//...</span>
@@ -571,7 +571,7 @@ At this time, you can use two constants <code>org.asciidoctor.Attributes.IMAGE_I
 <div class="listingblock">
 <div class="title">Passing attributes as a String</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">Attributes</span> attributes = attributes().attributes(<span class="string"><span class="delimiter">&quot;</span><span class="content">toc numbered</span><span class="delimiter">&quot;</span></span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -582,7 +582,7 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">Attributes</span> attributes = attributes().tableOfContents(<span class="predefined-constant">true</span>).sectionNumbers(<span class="predefined-constant">true</span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -593,7 +593,7 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing attributes as an Array</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">String</span><span class="type">[]</span> attributesArray = <span class="keyword">new</span> <span class="predefined-type">String</span><span class="type">[]</span>{<span class="string"><span class="delimiter">&quot;</span><span class="content">toc</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">source-highlighter=coderay</span><span class="delimiter">&quot;</span></span>};
 <span class="predefined-type">Attributes</span> attributes = attributes().attributes(attributesArray).sectionNumbers(<span class="predefined-constant">true</span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
@@ -605,7 +605,7 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Passing individual attributes</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="comment">//...</span>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="comment">//...</span>
 <span class="predefined-type">Attributes</span> attributes = attributes().tableOfContents(<span class="predefined-constant">true</span>).sectionNumbers(<span class="predefined-constant">true</span>).sourceHighlighter(<span class="string"><span class="delimiter">&quot;</span><span class="content">coderay</span><span class="delimiter">&quot;</span></span>).get();
 Options options = options().attributes(attributes).get();</code></pre>
 </div>
@@ -620,7 +620,7 @@ Options options = options().attributes(attributes).get();</code></pre>
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>AsciiDocDirectoryWalker</code></div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.AsciiDocDirectoryWalker</span>;
 
 DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -646,7 +646,7 @@ DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciiDocDirec
 <div class="listingblock">
 <div class="title">Locating AsciiDoc files with <code>GlobDirectoryWalker</code></div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">java.util.List</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.GlobDirectoryWalker</span>;
 
 DirectoryWalker directoryWalker = <span class="keyword">new</span> GlobDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">**/*.adoc</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -677,7 +677,7 @@ Internally <code>asciidoctor-java-integration</code> will set <code>GEM_PATH</co
 <div class="listingblock">
 <div class="title">Example of setting GEM_PATH</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&quot;</span><span class="content">/my/gem/path</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
@@ -756,7 +756,7 @@ and second one register it using <code>ExtensionRegistry</code> class.</p>
 <div class="listingblock">
 <div class="title">Preprocessor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FrontMatterPreprocessorExtension</span> <span class="directive">extends</span> Preprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">FrontMatterPreprocessorExtension</span> <span class="directive">extends</span> Preprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> FrontMatterPreprocessorExtension(DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="local-variable">super</span>(documentRuby);
@@ -834,7 +834,7 @@ and second one register it using <code>ExtensionRegistry</code> class.</p>
 <div class="listingblock">
 <div class="title">Register a Preprocessor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.preprocessor(FrontMatterPreprocessorExtension.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -868,7 +868,7 @@ extensionRegistry.preprocessor(FrontMatterPreprocessorExtension.class); <i class
 <div class="listingblock">
 <div class="title">Treeprocessor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TerminalCommandTreeprocessor</span> <span class="directive">extends</span> Treeprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">TerminalCommandTreeprocessor</span> <span class="directive">extends</span> Treeprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> TerminalCommandTreeprocessor(DocumentRuby documentRuby) {
         <span class="local-variable">super</span>(documentRuby);
@@ -939,7 +939,7 @@ extensionRegistry.preprocessor(FrontMatterPreprocessorExtension.class); <i class
 <div class="listingblock">
 <div class="title">Register a Treeprocessor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.treeprocessor(TerminalCommandTreeprocessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -973,7 +973,7 @@ extensionRegistry.treeprocessor(TerminalCommandTreeprocessor.class); <i class="c
 <div class="listingblock">
 <div class="title">Postprocessor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomFooterPostProcessor</span> <span class="directive">extends</span> Postprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">CustomFooterPostProcessor</span> <span class="directive">extends</span> Postprocessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> CustomFooterPostProcessor(DocumentRuby documentRuby) {
         <span class="local-variable">super</span>(documentRuby);
@@ -1020,7 +1020,7 @@ extensionRegistry.treeprocessor(TerminalCommandTreeprocessor.class); <i class="c
 <div class="listingblock">
 <div class="title">Register a Postprocessor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.postprocessor(CustomFooterPostProcessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -1054,7 +1054,7 @@ extensionRegistry.postprocessor(CustomFooterPostProcessor.class); <i class="conu
 <div class="listingblock">
 <div class="title">Block processor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">YellBlock</span> <span class="directive">extends</span> BlockProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">YellBlock</span> <span class="directive">extends</span> BlockProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">static</span> { <i class="conum" data-value="2"></i><b>(2)</b>
         config.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">contexts</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Arrays</span>.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">:paragraph</span><span class="delimiter">&quot;</span></span>));
@@ -1111,7 +1111,7 @@ extensionRegistry.postprocessor(CustomFooterPostProcessor.class); <i class="conu
 <div class="listingblock">
 <div class="title">Register a Block processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.block(<span class="string"><span class="delimiter">&quot;</span><span class="content">yell</span><span class="delimiter">&quot;</span></span>, YellBlock.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -1139,7 +1139,7 @@ extensionRegistry.block(<span class="string"><span class="delimiter">&quot;</spa
 <div class="listingblock">
 <div class="title">Example of Block processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">[yell] <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">[yell] <i class="conum" data-value="1"></i><b>(1)</b>
 The time is now. Get a move on.</code></pre>
 </div>
 </div>
@@ -1160,7 +1160,7 @@ The time is now. Get a move on.</code></pre>
 <div class="listingblock">
 <div class="title">Block macro processor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">GistMacro</span> <span class="directive">extends</span> BlockMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">GistMacro</span> <span class="directive">extends</span> BlockMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> GistMacro(<span class="predefined-type">String</span> macroName, DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="local-variable">super</span>(macroName, documentRuby);
@@ -1208,7 +1208,7 @@ The time is now. Get a move on.</code></pre>
 <div class="listingblock">
 <div class="title">Register a Block macro processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.blockMacro(<span class="string"><span class="delimiter">&quot;</span><span class="content">gist</span><span class="delimiter">&quot;</span></span>, GistMacro.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -1236,7 +1236,7 @@ extensionRegistry.blockMacro(<span class="string"><span class="delimiter">&quot;
 <div class="listingblock">
 <div class="title">Example of Block macro processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">.My Gist
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">.My Gist
 gist::123456[] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
@@ -1257,7 +1257,7 @@ gist::123456[] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 <div class="listingblock">
 <div class="title">Inline macro processor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ManpageMacro</span> <span class="directive">extends</span> InlineMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">ManpageMacro</span> <span class="directive">extends</span> InlineMacroProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> ManpageMacro(<span class="predefined-type">String</span> macroName, DocumentRuby documentRuby) { <i class="conum" data-value="2"></i><b>(2)</b>
         <span class="local-variable">super</span>(macroName, documentRuby);
@@ -1296,7 +1296,7 @@ gist::123456[] <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 <div class="listingblock">
 <div class="title">Register an Inline macro processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.inlineMacro(<span class="string"><span class="delimiter">&quot;</span><span class="content">man</span><span class="delimiter">&quot;</span></span>, ManpageMacro.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -1324,7 +1324,7 @@ extensionRegistry.inlineMacro(<span class="string"><span class="delimiter">&quot
 <div class="listingblock">
 <div class="title">Example of Inline macro processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">See man:gittutorial[7] to get started. <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">See man:gittutorial[7] to get started. <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -1344,7 +1344,7 @@ extensionRegistry.inlineMacro(<span class="string"><span class="delimiter">&quot
 <div class="listingblock">
 <div class="title">Include processor example</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UriIncludeProcessor</span> <span class="directive">extends</span> IncludeProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="directive">public</span> <span class="type">class</span> <span class="class">UriIncludeProcessor</span> <span class="directive">extends</span> IncludeProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
 
     <span class="directive">public</span> UriIncludeProcessor(DocumentRuby documentRuby) {
         <span class="local-variable">super</span>(documentRuby);
@@ -1412,7 +1412,7 @@ extensionRegistry.inlineMacro(<span class="string"><span class="delimiter">&quot
 <div class="listingblock">
 <div class="title">Register an Inline macro processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code class="java language-java">ExtensionRegistry extensionRegistry = <span class="local-variable">this</span>.asciidoctor.extensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
 
 extensionRegistry.includeProcessor(UriIncludeProcessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
 
@@ -1440,7 +1440,7 @@ extensionRegistry.includeProcessor(UriIncludeProcessor.class); <i class="conum" 
 <div class="listingblock">
 <div class="title">Example of include processor</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="asciidoc language-asciidoc">= Example of URI
+<pre class="CodeRay highlight nowrap"><code class="asciidoc language-asciidoc">= Example of URI
 
 .Gemfile
 [source,ruby]
@@ -1529,7 +1529,7 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 <div class="listingblock">
 <div class="title">Setting flags for Java SE 6</div>
 <div class="content">
-<pre class="CodeRay nowrap"><code class="shell language-shell">export JRUBY_OPTS=&quot;-J-Xverify:none -J-client&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight nowrap"><code class="shell language-shell">export JRUBY_OPTS=&quot;-J-Xverify:none -J-client&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
