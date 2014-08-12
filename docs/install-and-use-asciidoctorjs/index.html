@@ -94,7 +94,7 @@ For instance, in an HTML page, add these two <code>&lt;script&gt;</code> tags (i
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="html language-html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">opal.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">opal.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span>
 <span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoctor.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
 </div>
 </div>
@@ -164,7 +164,7 @@ The content on the page was rendered from AsciiDoc by asciidoctor.js when you lo
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">data = <span class="string"><span class="delimiter">&lt;&lt;-EOS</span></span><span class="string"><span class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">data = <span class="string"><span class="delimiter">&lt;&lt;-EOS</span></span><span class="string"><span class="content">
 = asciidoctor.js, AsciiDoc in JavaScript
 Doc Writer &lt;docwriter@example.com&gt;
 
@@ -186,7 +186,7 @@ EOS</span></span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">html_doc = <span class="constant">Asciidoctor</span>.render(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html_doc = <span class="constant">Asciidoctor</span>.render(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
   <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">notitle! anchors imagesdir=./images</span><span class="delimiter">)</span></span>)</code></pre>
 </div>
 </div>
@@ -195,7 +195,7 @@ EOS</span></span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby"><span class="global-variable">$window</span>.addEventListener <span class="string"><span class="delimiter">'</span><span class="content">DOMContentLoaded</span><span class="delimiter">'</span></span>, proc {
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="global-variable">$window</span>.addEventListener <span class="string"><span class="delimiter">'</span><span class="content">DOMContentLoaded</span><span class="delimiter">'</span></span>, proc {
   <span class="global-variable">$document</span>.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = html_doc
 }, <span class="predefined-constant">false</span></code></pre>
 </div>
@@ -205,7 +205,7 @@ EOS</span></span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">env = <span class="constant">Opal</span>::<span class="constant">Environment</span>.new
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">env = <span class="constant">Opal</span>::<span class="constant">Environment</span>.new
 env.append_path <span class="string"><span class="delimiter">'</span><span class="content">examples</span><span class="delimiter">'</span></span>
 compiled = env[<span class="string"><span class="delimiter">'</span><span class="content">asciidoctor_example</span><span class="delimiter">'</span></span>].to_s
 <span class="constant">File</span>.open(<span class="string"><span class="delimiter">'</span><span class="content">build/asciidoctor_example.js</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">w</span><span class="delimiter">'</span></span>) { |f| f &lt;&lt; compiled }</code></pre>
@@ -233,7 +233,7 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="javascript language-javascript"><span class="keyword">var</span> html_doc =Opal.Asciidoctor.<span class="predefined">$render</span>(
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span class="keyword">var</span> html_doc =Opal.Asciidoctor.<span class="predefined">$render</span>(
     <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -244,7 +244,7 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="javascript language-javascript">document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = Opal.Asciidoctor.<span class="predefined">$render</span>(
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript">document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = Opal.Asciidoctor.<span class="predefined">$render</span>(
     <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -255,7 +255,7 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="javascript language-javascript">Opal.hash2([<span class="string"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>], {<span class="key"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>: [<span class="string"><span class="delimiter">'</span><span class="content">notitle!</span><span class="delimiter">'</span></span>]})</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript">Opal.hash2([<span class="string"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>], {<span class="key"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>: [<span class="string"><span class="delimiter">'</span><span class="content">notitle!</span><span class="delimiter">'</span></span>]})</code></pre>
 </div>
 </div>
 </div>

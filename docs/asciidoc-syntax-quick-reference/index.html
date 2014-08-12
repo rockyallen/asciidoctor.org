@@ -16,7 +16,7 @@ This guide is a quick reference for the common AsciiDoc document and text format
 AsciiDoc produces complementary output when generating PDF, EPUB, and DocBook.</p>
 </div>
 <div class="paragraph">
-<p>Most features labeled <em>Asciidoctor only</em> can be made available to the legacy AsciiDoc.py processor by using <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">this AsciiDoc configuration file</a> from the Asciidoctor project.</p>
+<p>Most features labeled <em>Asciidoctor only</em> can be made available to the legacy AsciiDoc Python processor by using <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">this AsciiDoc configuration file</a> provided by the Asciidoctor project.</p>
 </div>
 </td>
 </tr>
@@ -1327,7 +1327,7 @@ https://github.com/asciidoctor[Asciidoctor @ *GitHub*]</pre>
 <div class="exampleblock result">
 <div class="content">
 <div class="paragraph">
-<p><a href="http://asciidoctor.org">http://asciidoctor.org</a> - automatic!</p>
+<p><a href="http://asciidoctor.org" class="bare">http://asciidoctor.org</a> - automatic!</p>
 </div>
 <div class="paragraph">
 <p><a href="http://asciidoctor.org">Asciidoctor</a></p>
@@ -1374,7 +1374,7 @@ irc://irc.freenode.org/#asciidoctor</pre>
 <p><a href="mailto:devel-join@discuss.arquillian.org?subject=Subscribe%20me&amp;body=I%20want%20to%20join!">Subscribe</a></p>
 </div>
 <div class="paragraph">
-<p><a href="irc://irc.freenode.org/#asciidoctor">irc://irc.freenode.org/#asciidoctor</a></p>
+<p><a href="irc://irc.freenode.org/#asciidoctor" class="bare">irc://irc.freenode.org/#asciidoctor</a></p>
 </div>
 </div>
 </div>
@@ -1749,7 +1749,7 @@ end
 <div class="listingblock">
 <div class="title">app.rb</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
 
 get <span class="string"><span class="delimiter">'</span><span class="content">/hi</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
   <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>
@@ -1778,7 +1778,7 @@ end
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
 
 get <span class="string"><span class="delimiter">'</span><span class="content">/hi</span><span class="delimiter">'</span></span> <span class="keyword">do</span> <i class="conum" data-value="2"></i><b>(2)</b>
   <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="3"></i><b>(3)</b>
@@ -1859,7 +1859,7 @@ line of code  <i class="conum" data-value="3"></i><b>(3)</b></pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;section&gt;</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;section&gt;</span>
   <span class="tag">&lt;title&gt;</span>Section Title<span class="tag">&lt;/title&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
 <span class="tag">&lt;/section&gt;</span></code></pre>
 </div>
@@ -1938,7 +1938,7 @@ This is normal content.</pre>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;meta</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">viewport</span><span class="delimiter">&quot;</span></span>
   <span class="attribute-name">content</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">width=device-width, initial-scale=1.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
 </div>
 </div>
@@ -2299,7 +2299,7 @@ or it can masquerade as any other block.</p>
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;dependency&gt;</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
   <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
   <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
   <span class="tag">&lt;version&gt;</span>0.1.4<span class="tag">&lt;/version&gt;</span>
@@ -3693,7 +3693,7 @@ end
 <div class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="ruby language-ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
 
 get <span class="string"><span class="delimiter">'</span><span class="content">/hi</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
   <span class="string"><span class="delimiter">&quot;</span><span class="content">Hello World!</span><span class="delimiter">&quot;</span></span>

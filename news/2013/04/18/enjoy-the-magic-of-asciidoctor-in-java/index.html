@@ -16,7 +16,7 @@ Since asciidoctor-java-integration is a..."><meta name="twitter:url" content="ht
 <div class="listingblock">
 <div class="title">Dependency declaration in Maven</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="xml language-xml"><span class="tag">&lt;dependencies&gt;</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctor-java-integration<span class="tag">&lt;/artifactId&gt;</span>
@@ -70,7 +70,7 @@ Since asciidoctor-java-integration is a..."><meta name="twitter:url" content="ht
 <div class="listingblock">
 <div class="title">Creation of Asciidoctor interface</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
 <span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
 
 Asciidoctor asciidoctor = create();</code></pre>
@@ -82,7 +82,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a String</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="predefined-type">String</span> rendered = asciidoctor.render(<span class="string"><span class="delimiter">&quot;</span><span class="content">*This* is it.</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
 <span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
@@ -92,7 +92,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Rendering a File</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="predefined-type">String</span> rendered = asciidoctor.renderFile(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs/sample.adoc</span><span class="delimiter">&quot;</span></span>, <span class="predefined-type">Collections</span>.EMPTY_MAP);
 <span class="predefined-type">System</span>.out.println(rendered);</code></pre>
 </div>
 </div>
@@ -107,7 +107,7 @@ Asciidoctor asciidoctor = create();</code></pre>
 <div class="listingblock">
 <div class="title">Example of using in_place Option and backend Attribute</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
 attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>);
 
 <span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
@@ -129,7 +129,7 @@ options.put(<span class="string"><span class="delimiter">&quot;</span><span clas
 <div class="listingblock">
 <div class="title">Example setting attributes and options</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.AttributesBuilder.attributes</span>;
 <span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
 
 ...
@@ -149,7 +149,7 @@ Map&lt;<span class="predefined-type">String</span>, <span class="predefined-type
 <div class="listingblock">
 <div class="title">Example of finding all asciidoc</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code class="java language-java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
+<pre class="CodeRay highlight nowrap"><code data-lang="java">DirectoryWalker directoryWalker = <span class="keyword">new</span> AsciidocDirectoryWalker(<span class="string"><span class="delimiter">&quot;</span><span class="content">docs</span><span class="delimiter">&quot;</span></span>);
 <span class="predefined-type">List</span>&lt;<span class="predefined-type">File</span>&gt; asciidocFiles = directoryWalker.scan();</code></pre>
 </div>
 </div>
