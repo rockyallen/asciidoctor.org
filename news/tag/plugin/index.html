@@ -1,4 +1,72 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/06/23/asciidoctor-maven-plugin-0-1-3-1-released/">Asciidoctor Maven plugin 0.1.3.1 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-06-23T20:05:00-06:00">Sunday, June 23, 2013</time></h4></header><div class="entry-content"><div class="paragraph">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/21/asciidoctor-gradle-plugin-1-5-0-released/">Asciidoctor Gradle plugin 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Andres Almiray</span> - <time class="pubdate" datetime="2014-08-21T03:24:37-06:00">Thursday, August 21, 2014</time></h4></header><div class="entry-content"><div class="paragraph">
+<p>It took us longer than what we hoped but <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Asciidoctor Gradle plugin</a> version 1.5.0 is finally here!
+The Asciidoctor Gradle plugin is based on <a href="https://github.com/asciidoctor/asciidoctorj#readme">AsciidoctorJ</a> and, for the first time, aligns with its version numbering scheme.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the basic setup to get you started:</p>
+</div>
+<div class="videoblock">
+<iframe src="http://showterm.io/5d4eb98839d3627f296a2" width="640" height="480"></iframe>
+</div>
+<div class="paragraph">
+<p>The plugin tracks the AsciidoctorJ version starting with this release, hence the jump from 0.7.3 to 1.5.0.
+There are many goodies inside Asciidoctor 1.5.0 as explained in the <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/">release notes</a>, but perhaps the most interesting one for Gradle users is the capability to write custom extensions (or tag handlers if you will) using Groovy.
+You can include extensions just by placing their containing JAR in the classpath, or you can write them directly in your Gradle build, by placing the code inside <code>buildSrc</code>.
+There&#8217;s a trivial example of the latest option at <a href="https://github.com/aalmiray/asciidoctor-piglatin-example" class="bare">github.com/aalmiray/asciidoctor-piglatin-example</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other features found in this release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ability to load Ruby-based extensions using the <code>requires</code> property on <code>AsciidoctorTask</code>.</p>
+</li>
+<li>
+<p>ability to set the gem installation path using the <code>gemPath</code> property on <code>AsciidoctorTask</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Developers are advised to upgrade as soon as possible.
+Be mindful of the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin#compatibility-with-previous-releases">compatibility issues</a> raised at the plugins&#8217; readme.
+Do not forget to review the changes brought by Asciidoctor 1.5.0 found at the <a href="http://asciidoctor.org/docs/migration">migration guide</a>.</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="http://photos2.meetupstatic.com/photos/event/4/c/2/4/600_391999492.jpeg" alt="Hackergarten">
+</div>
+<div class="title">Figure 1. Basel Hackergarten @ Canoo July 24th</div>
+</div>
+<div class="paragraph">
+<p>The development team would like to thank participants of various <a href="http://hackergarten.net/">Hackergarten</a> sessions, both in Switzerland and abroad.
+Several issues and features have been contributed during those sessions.
+We couldn&#8217;t have done it without your help.
+Also, thank you to all the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/contributors">contributors</a> for helping out.</p>
+</div>
+<div class="paragraph">
+<p>Go forth and make great (and Groovy) documentation once again!</p>
+</div>
+<div class="paragraph">
+<p>Upgrading to 1.5.0 (recommended) is simple.
+Just update the version in your Gradle build file.
+All necessary dependencies should be pulled in via Gradle.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When upgrading to Asciidoctor 1.5.0, please refer to the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for details about how to migrate your content.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues?milestone=1.5.0&amp;state=closed">1.5.0 milestone</a> in the issue tracker!</p>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a>, <a href="/news/tag/gradle/">gradle</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/06/23/asciidoctor-maven-plugin-0-1-3-1-released/">Asciidoctor Maven plugin 0.1.3.1 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-06-23T20:05:00-06:00">Sunday, June 23, 2013</time></h4></header><div class="entry-content"><div class="paragraph">
 <p>I&#8217;m proud to announce the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a> 0.1.3.1 release!
 This is simply a bug fix release to correct some of the things I messed up with 0.1.3 (sorry about that).
 Like version 0.1.3 before it, it&#8217;s based on the same version of the <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a> project and the <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> projects&#8201;&#8212;&#8201;0.1.3.</p>
@@ -681,122 +749,7 @@ Map&lt;<span class="predefined-type">String</span>, <span class="predefined-type
 <p>You can contribute with patches, better documentation, feature requests, any help you&#8217;re able to provide.</p>
 </div>
 </div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/16/introducing-the-asciidoctor-maven-plugin/">Introducing the Asciidoctor Maven plugin</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-04-16T16:42:55-06:00">Tuesday, April 16, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>I&#8217;d like to introduce you to the easiest way to use AsciiDoc from Maven, the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a>!</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Plugin artifact information</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Group ID</th>
-<th class="tableblock halign-left valign-top">Artifact ID</th>
-<th class="tableblock halign-left valign-top">Latest version</th>
-<th class="tableblock halign-left valign-top">Download</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1%7Cmaven-plugin">0.1.1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1/asciidoctor-maven-plugin-0.1.1.jar">jar</a></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>This plugin is a great option for projects interested in using AsciiDoc to author documentation, or any part of this project utilizing AsciiDoc.
-Best of all, it&#8217;s already available from Maven Central.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="how-it-works"><a class="anchor" href="#how-it-works"></a>How it works</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Maven plugin loads JRuby, scans for AsciiDoc files in the specified directory, then invokes <a href="http://asciidoctor.org">Asciidoctor</a> to render them.
-You have the option of rendering the files to HTML 5 and DocBook 4.5.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="setup-and-usage"><a class="anchor" href="#setup-and-usage"></a>Setup and usage</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Adding this plugin to your Maven POM is simple.
-Just add this plugin declaration:</p>
-</div>
-<div class="listingblock">
-<div class="title">pom.xml fragment: Asciidoctor Maven plugin configuration</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
-  <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
-  <span class="tag">&lt;artifactId&gt;</span>asciidoctor-maven-plugin<span class="tag">&lt;/artifactId&gt;</span>
-  <span class="tag">&lt;version&gt;</span>0.1.1<span class="tag">&lt;/version&gt;</span>
-  <span class="tag">&lt;executions&gt;</span>
-    <span class="tag">&lt;execution&gt;</span>
-      <span class="tag">&lt;id&gt;</span>render-asciidoc<span class="tag">&lt;/id&gt;</span>
-      <span class="tag">&lt;phase&gt;</span>generate-resources<span class="tag">&lt;/phase&gt;</span>
-      <span class="tag">&lt;goals&gt;</span>
-        <span class="tag">&lt;goal&gt;</span>process-asciidoc<span class="tag">&lt;/goal&gt;</span>
-      <span class="tag">&lt;/goals&gt;</span>
-    <span class="tag">&lt;/execution&gt;</span>
-  <span class="tag">&lt;/executions&gt;</span>
-  <span class="tag">&lt;configuration&gt;</span>
-      <span class="tag">&lt;sourceDirectory&gt;</span>docs<span class="tag">&lt;/sourceDirectory&gt;</span>
-      <span class="tag">&lt;outputDirectory&gt;</span>target/docbook/en-US<span class="tag">&lt;/outputDirectory&gt;</span>
-      <span class="tag">&lt;backend&gt;</span>docbook<span class="tag">&lt;/backend&gt;</span>
-  <span class="tag">&lt;/configuration&gt;</span>
-<span class="tag">&lt;/plugin&gt;</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Execution is handled by Maven when you execute a build.</p>
-</div>
-<div class="paragraph">
-<p>You can find more detailed information about setup and usage in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin#readme">README</a> located in the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">project&#8217;s repository on GitHub</a>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="versioning"><a class="anchor" href="#versioning"></a>Versioning</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The version of the Maven plugin will track the version of Asciidoctor.
-In most cases, the version number will match the Asciidoctor version (e.g., 0.1.1).
-If an interim fix needs to be made to the plugin, an additional number will be added to the end of the Asciidoctor version number (e.g., 0.1.1.1).</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="future"><a class="anchor" href="#future"></a>Future</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Currently, the plugin uses its own JRuby integration to invoke Asciidoctor (which is written in Ruby).
-The next version (<a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues">roadmap</a>) will use the newly-released Asciidoctor Java integration to streamline the hand off and simplify maintenance of the project.</p>
-</div>
-<div class="paragraph">
-<p>In conjunction with the change to use the Asciidoctor Java integration internally, new configuration options will be added.
-One of those options will allow you to pass AsciiDoc attributes to the renderer.
-AsciiDoc attributes control options such as adding a table of contents, turning on section numbering and configuring the source highlighter.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="contributing"><a class="anchor" href="#contributing"></a>Contributing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We&#8217;re always open for patches, better documentation, feature requests, evangelizing or any help you&#8217;re able to provide.</p>
-</div>
-</div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-backward"></i></a></li><li>1 of 1</li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-forward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-backward"></i></a></li><li>1 of 2</li><li class="arrow"><a href="/news/tag/plugin/2/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/tag/plugin/2/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
