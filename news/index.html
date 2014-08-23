@@ -1,4 +1,338 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/23/asciidoctor-maven-plugin-1-5-0-released/">Asciidoctor Maven plugin 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2014-08-23T03:24:20-06:00">Saturday, August 23, 2014</time></h4></header><div class="entry-content"><div id="preamble">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/23/asciidoctor-js-1-5-0-released/">Asciidoctor.js 1.5.0 released to Bower and npm!</a></h1><h4><em>by</em> <span class="author">Guillaume Grossetie</span> and <span class="author">Anthonny Quérouil</span> - <time class="pubdate" datetime="2014-08-23T13:20:39-06:00">Saturday, August 23, 2014</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The release train is on the move! Version 1.5.0 of Asciidoctor.js has been released and is now available in <a href="http://bower.io">Bower</a> and <a href="https://www.npmjs.org">npm</a>.
+This release is an important step toward making Asciidoctor.js widely available to the JavaScript ecosystem.</p>
+</div>
+<div class="imageblock right">
+<div class="content">
+<img src="/images/bower-npm-logos.png" alt="Bower and npm" width="225" height="100">
+</div>
+</div>
+<div class="verseblock">
+<pre class="content">Asciidoctor in JavaScript.
+It was a dream.
+Then it was a prototype.
+Now, it&#8217;s the real deal.</pre>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">What is Asciidoctor.js?</div>
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> is the official library for using Asciidoctor in JavaScript.
+It shares the same source code as Asciidoctor and is transcompiled to JavaScript using Opal.
+With Asciidoctor.js, you can convert AsciiDoc content or analyze the structure of a parsed AsciiDoc document from JavaScript.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When upgrading to Asciidoctor 1.5.0, please refer to the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for details about how to migrate your content.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-highlights"><a class="anchor" href="#release-highlights"></a>Release highlights</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="asciidoctor-js-is-asciidoctor"><a class="anchor" href="#asciidoctor-js-is-asciidoctor"></a>Asciidoctor.js is Asciidoctor</h3>
+<div class="paragraph">
+<p>As mentioned in the <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/#spotlight-asciidoctorjs">release notes for Asciidoctor 1.5.0</a>, we worked hard to align Asciidoctor.js (JavaScript) and Asciidoctor core (Ruby).
+That means you can expect Asciidoctor.js to parse and convert documents just like the original.
+Even includes work!</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Getting certain features to work, like includes, requires special consideration because JavaScript is a different environment than Ruby and there are even key variations between JavaScript environments!</p>
+</div>
+<div class="paragraph">
+<p>For example, reading an include file in Ruby is just a matter of using the normal Ruby IO API.
+In a browser environment, we have to use <code>XMLHttpRequest</code> (i.e., Ajax) as the IO API instead.
+If Asciidoctor.js is running on Node.js, we have to use the Node IO API, <code>fs.readSync()</code>, to make it work.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Rest assured we&#8217;re continuing to work on smoothing any differences to bring all the great features of Asciidoctor core to JavaScript.</p>
+</div>
+<div class="paragraph">
+<p>Read on to learn how to get your hands on Asciidoctor.js!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="using-asciidoctor-js-is-easier-than-ever-before"><a class="anchor" href="#using-asciidoctor-js-is-easier-than-ever-before"></a>Using Asciidoctor.js is easier than ever before</h3>
+<div class="paragraph">
+<p>If you are a frontend or backend JavaScript developer, you&#8217;re only one command away from getting the latest version of Asciidoctor.js</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="bower-package"><a class="anchor" href="#bower-package"></a>Bower package</h3>
+<div class="listingblock">
+<div class="title">Installing Asciidoctor.js with Bower</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ bower install asciidoctor.js --save</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The optional <code>--save</code> flag automatically adds the package to your project&#8217;s dependencies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the package installed, you can add the following <code>script</code> tag to your HTML page:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">bower_components/asciidoctor.js/dist/asciidoctor-all.min.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>asciidoctor-all.min.js</code> is a <code>minified</code> version and includes Asciidoctor core, extensions API and Opal.</p>
+</div>
+<div class="paragraph">
+<p>Here is a simple example that converts AsciiDoc to HTML5 using the <code>doctype: 'inline'</code> option and <code>showtitle</code> attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span class="keyword">var</span> content = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> options = Opal.hash2([<span class="string"><span class="delimiter">'</span><span class="content">doctype</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>], {<span class="key">doctype</span>: <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span>, <span class="key">attributes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">showtitle</span><span class="delimiter">'</span></span>]});
+<span class="keyword">var</span> html = Opal.Asciidoctor.<span class="predefined">$convert</span>(asciidoc, options);
+console.log(html);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://github.com/asciidoctor/asciidoctor.js#front-end-development">Front-end development guide</a> to learn more about the Bower package.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="npm-package"><a class="anchor" href="#npm-package"></a>npm package</h3>
+<div class="listingblock">
+<div class="title">Installing Asciidoctor.js with npm</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="bash">$ npm install asciidoctor.js --save</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+The optional <code>--save</code> flag automatically adds the package to your project&#8217;s dependencies.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the package is installed, the first thing to do is to load the <code>asciidoctor.js</code> module using <code>require</code>, then you&#8217;re ready to start using the API:</p>
+</div>
+<div class="listingblock">
+<div class="title">sample.js</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span class="keyword">var</span> asciidoctor = require(<span class="string"><span class="delimiter">'</span><span class="content">asciidoctor.js</span><span class="delimiter">'</span></span>)(); <i class="conum" data-value="1"></i><b>(1)</b>
+<span class="keyword">var</span> opal = asciidoctor.Opal; <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="keyword">var</span> processor = <span class="predefined-constant">null</span>;
+<span class="keyword">var</span> useExtensions = <span class="predefined-constant">true</span>;
+
+<span class="keyword">if</span> (useExtensions) {
+  processor = asciidoctor.Asciidoctor(<span class="predefined-constant">true</span>); <i class="conum" data-value="3"></i><b>(3)</b>
+}
+<span class="keyword">else</span> {
+  processor = asciidoctor.Asciidoctor(); <i class="conum" data-value="4"></i><b>(4)</b>
+}
+
+<span class="keyword">var</span> content = <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
+    <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to Node.js!</span><span class="delimiter">&quot;</span></span>;
+<span class="keyword">var</span> options = opal.hash2(
+    [<span class="string"><span class="delimiter">'</span><span class="content">doctype</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">attributes</span><span class="delimiter">'</span></span>],
+    {<span class="key">doctype</span>: <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span>, <span class="key">attributes</span>: [<span class="string"><span class="delimiter">'</span><span class="content">showtitle</span><span class="delimiter">'</span></span>]});
+<span class="keyword">var</span> html = processor.<span class="predefined">$convert</span>(content, options); <i class="conum" data-value="5"></i><b>(5)</b>
+console.log(html); <i class="conum" data-value="6"></i><b>(6)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Load the Asciidoctor.js library</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Retrieve and alias the top-level Opal namespace</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Instantiate Asciidoctor with extensions enabled</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Instantiate Asciidoctor without extensions</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Convert AsciiDoc content to HTML5 using Asciidoctor.js</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Print the HTML5 output to the console</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Save the file as <code>sample.js</code> and run it using the <code>node</code> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ node sample.js</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see the following output in your terminal:</p>
+</div>
+<div class="literalblock output">
+<div class="content">
+<pre class="nowrap">&lt;a href="http://asciidoctor.org"&gt;&lt;strong&gt;Asciidoctor&lt;/strong&gt;&lt;/a&gt; running on &lt;a href="http://opalrb.org"&gt;&lt;em&gt;Opal&lt;/em&gt;&lt;/a&gt; brings AsciiDoc to Node.js!&lt;/p&gt;</pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+To be successful with Asciidoctor.js, it&#8217;s important to understand how to work with Ruby objects in the JavaScript environment.
+We recommend that you browse the <a href="http://opalrb.org/docs/using_ruby_from_javascript">Opal documentation</a> to learn how method names are mapped and what data types it expects.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://github.com/asciidoctor/asciidoctor.js#back-end-development">Back-end development guide</a> to learn more about the npm package.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asciidoctor-js-is-heating-up-on-node"><a class="anchor" href="#asciidoctor-js-is-heating-up-on-node"></a>Asciidoctor.js is heating up on Node</h3>
+<div class="paragraph">
+<p>Node.js is where the hottest JavaScript is happening and npm is the package manager that manages and distributes that hotness.
+We wanted Asciidoctor.js to be a part of this ecosystem.
+We also needed it there to start building tools.
+That&#8217;s why we took the first step of packaging Asciidoctor.js as an npm package&#8230;&#8203;in fact, several!
+Asciidoctor now has a new playground!</p>
+</div>
+<div class="paragraph">
+<p>Here are the npm packages that are published:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://www.npmjs.org/package/asciidoctor.js">asciidoctor.js</a></dt>
+<dd>
+<p>the main npm package for Asciidoctor.js</p>
+</dd>
+<dt class="hdlist1"><a href="https://www.npmjs.org/package/grunt-asciidoctor">grunt-asciidoctor</a></dt>
+<dd>
+<p>an npm package for processing AsciiDoc source files in your <a href="http://gruntjs.com">Grunt</a> project</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how the community is playing with these packages already:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><a href="https://atom.io/packages/asciidoc-preview">asciidoc-preview (Atom Editor)</a></dt>
+<dd>
+<p>A plugin for Atom that shows you a preview of your document while you type!</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/asciidoctor/brackets-asciidoc-preview">asciidoc-preview (Brackets Editor)</a></dt>
+<dd>
+<p>An extension for Brackets that shows you a preview of your document while you type!</p>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/tedbergeron/grunt-asciidoctor-assemble">grunt-asciidoctor-assemble</a></dt>
+<dd>
+<p>a static website generator for <a href="http://gruntjs.com">Grunt</a> by <a href="https://github.com/tedbergeron">@tedbergeron</a></p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Of course there are still challenges, but we&#8217;ll solve them.
+Head over to the <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js project</a> to get involved.</p>
+</div>
+<div class="paragraph">
+<p>Let us play this new game!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asciidoctor-js-on-the-jvm"><a class="anchor" href="#asciidoctor-js-on-the-jvm"></a>Asciidoctor.js on the JVM</h3>
+<div class="paragraph">
+<p>You read that right.
+The browser ain&#8217;t the only JavaScript game in town.
+(And we&#8217;re not talking about JavaScript engines that have escaped from the browser, like Node.js.)
+We&#8217;re talking about the most polyglot of polyglot runtimes, <em>the JVM</em>.</p>
+</div>
+<div class="paragraph">
+<p>Alex Soto is working at getting <a href="https://github.com/asciidoctor/asciidoctorj/issues/189">Asciidoctor.js integrated into AsciidoctorJ</a> so you can use it on the JVM using <a href="http://openjdk.java.net/projects/nashorn">Nashorn</a>, <a href="http://dynjs.org">dynjs</a> and other JavaScript engines that run on it.
+The <a href="https://github.com/rahmanusta/AsciidocFX">AsciidocFX project</a> is already using Asciidoctor.js on Nashorn, so it&#8217;s more than just an idea!</p>
+</div>
+<div class="paragraph">
+<p>There are still several challenges to tackle to ensure Asciidoctor.js runs smoothly on the JVM, such as getting includes working.
+Head over to the <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ project</a> to get involved and help make it happen!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="acknowledgments"><a class="anchor" href="#acknowledgments"></a>Acknowledgments</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The alignment of Asciidoctor.js with Asciidoctor core was a major effort.
+It required input from a lot of people and they really pulled together to meet this challenge.</p>
+</div>
+<div class="paragraph">
+<p>We want to especially thank the <a href="https://github.com/opal/opal/graphs/contributors">Opal developers</a>, notably Adam Beynon, meh and Elia Schito, for making Asciidoctor.js happen.
+They were very responsive to our effort, making changes and fixes to Opal and generally providing input that allowed us to continuously move forward.</p>
+</div>
+<div class="paragraph">
+<p>We also want to thank Anthonny Quérouil for crafting a Grunt build to compile, aggregate and compress Asciidoctor.js and for helping to get the artifacts published to Bower and npm.</p>
+</div>
+<div class="paragraph">
+<p>Thanks to everyone who tested Asciidoctor.js, either directly or by using the tools.
+Your participation has helped Asciidoctor.js become the real deal!</p>
+</div>
+<div class="paragraph">
+<p>If you have questions or feedback, we encourage you to participate in the <a href="http://discuss.asciidoctor.org">discussion list</a>.
+Talk to you there!</p>
+</div>
+</div>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/asciidoctor.js/">asciidoctor.js</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/23/asciidoctor-maven-plugin-1-5-0-released/">Asciidoctor Maven plugin 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2014-08-23T03:24:20-06:00">Saturday, August 23, 2014</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="imageblock thumb" style="float: right">
 <div class="content">
@@ -1236,263 +1570,7 @@ From now on, we plan to iterate much faster and only do announcements for major 
 <p>See the <a href="https://github.com/asciidoctor/asciidoctor/blob/master/CHANGELOG.adoc">CHANGELOG</a> for a complete list of changes.</p>
 </div>
 </div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/core/">core</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/02/18/plain-text-diagrams-in-asciidoctor/">Plain-text diagrams take shape in Asciidoctor!</a></h1><h4><em>by</em> <span class="author">Pepijn Van Eeckhoudt</span> - <time class="pubdate" datetime="2014-02-18T16:41:04-07:00">Tuesday, February 18, 2014</time></h4></header><div class="entry-content"><div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>You write in plain text.
-You code in plain text.
-How about creating diagrams in plain text too?
-Now you can using <a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a>!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><a href="http://asciidoctor.org">Asciidoctor</a> is a fantastic tool to use when writing technical documentation.
-It allows you to spend more time focusing on your content rather than struggling with WYSIWYG tools.</p>
-</div>
-<div class="paragraph">
-<p>One task that still pulls your focus away, and is more difficult than it should be, is integrating technical diagrams into your documents.
-It involves launching a UML or diagramming tool, pushing pixels around the screen to draw the diagrams, exporting the result to a web-friendly image format and linking to them from your source document.
-The many benefits that AsciiDoc provides in terms of visual consistency, ease of collaboration, etc. are not available when you are working with diagrams.</p>
-</div>
-<div class="paragraph">
-<p>All that changes today with the announcement of the Asciidoctor Diagram extension.
-<a href="https://github.com/asciidoctor/asciidoctor-diagram">Asciidoctor Diagram</a> integrates existing plain text syntax diagramming tools into the Asciidoctor processing.
-That means you can embed the source code for your diagrams <em>directly</em> into your documents!</p>
-</div>
-<div class="paragraph">
-<p>The first version of Asciidoctor Diagram supports the following diagram languages:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://ditaa.sourceforge.net">ditaa</a></p>
-</li>
-<li>
-<p><a href="http://www.graphviz.org/content/dot-language">Graphviz dot</a></p>
-</li>
-<li>
-<p><a href="http://www.plantuml.com">PlantUML</a></p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These “lightweight diagram languages” are to graphical diagrams what AsciiDoc is to HTML.
-Another way of saying it:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/language-analogy-diagram.png" alt="language analogy diagram">
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="your-first-plain-text-diagram"><a class="anchor" href="#your-first-plain-text-diagram"></a>Your first plain-text diagram</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The simplest way to add diagrams to your documents is by using diagram blocks.
-Just add a listing block to your file using the appropriate syntax name (<code>ditaa</code>, <code>graphviz</code> or <code>plantuml</code>) as the block name (aka style).</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>[ditaa]
-----
-                   +-------------+
-                   | Asciidoctor |-------+
-                   |  Diagram    |       |
-                   +-------------+       | PNG out
-                       ^                 |
-                       | ditaa in        |
-                       |                 v
- +--------+   +--------+----+    /----------------\
- |        | --+ Asciidoctor +--&gt; |                |
- |  Text  |   +-------------+    |Beautiful output|
- |Document|   |   !magic!   |    |                |
- |     {d}|   |             |    |                |
- +---+----+   +-------------+    \----------------/
-     :                                   ^
-     |          Lots of work             |
-     +-----------------------------------+
-----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>When the Asciidoctor Diagram extension processes this type of block, it will read the body of the block, pass it to the ditaa library, write the resulting image to disk and generate an image block.
-Here&#8217;s how it appears in the rendered document:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/sample-ditaa-diagram.png" alt="sample ditaa diagram">
-</div>
-</div>
-<div class="paragraph">
-<p><strong>Magic!</strong></p>
-</div>
-<div class="paragraph">
-<p>Generating one of these images is fairly quick, but if you start adding lots of diagrams to your document the processing time can start adding up.
-Asciidoctor Diagram optimizes the processing by keeping track of diagram metadata in *.cache files and will only regenerate the images if the diagram source code was modified.
-This keeps incremental rendering of documents a speedy process.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="controlling-the-output"><a class="anchor" href="#controlling-the-output"></a>Controlling the output</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>By default Asciidoctor Diagram creates PNG images and calculates an output file name automatically based on the diagram source code.
-This behavior can be overridden using the <code>target</code> and <code>format</code> attributes.
-You can specify these attributes as the first and second positional attributes or as explicitly named attributes.
-An SVG file with a specific name a Graphviz diagram can be generated as follows</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>[graphviz, dot-example, svg]
-----
-digraph g {
-    a -&gt; b
-    b -&gt; c
-    c -&gt; d
-    d -&gt; a
-}
-----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After the magic happens, you&#8217;ll see:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/sample-graphviz-diagram.png" alt="sample graphviz diagram">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Asciidoctor Diagram bundles both the ditaa and PlantUML libraries and will use them to generate diagrams.
-In order to generate diagrams using Graphviz, you must install it separately (meaning the <code>dot</code> command must be available on your PATH).
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Asciidoctor Diagram turns the diagram blocks into image blocks and applies any additional attributes.
-This means you can use the normal Asciidoctor facilities to control the positioning of the generated image.
-Block titles and IDs can also be assigned in the same way.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>[[main-classes]]
-.The PlantUML block extension class
-[plantuml, sample-plantuml-diagram, alt="Class diagram", width=135, height=118]
-----
-class BlockProcessor
-class PlantUmlBlock
-BlockProcessor &lt;|-- PlantUmlBlock
-----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s what gets rendered:</p>
-</div>
-<div id="main-classes" class="imageblock">
-<div class="content">
-<img src="/images/sample-plantuml-diagram.png" alt="Class diagram" width="135" height="118">
-</div>
-<div class="title">The PlantUML block extension class</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="including-external-diagrams"><a class="anchor" href="#including-external-diagrams"></a>Including external diagrams</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>It might not always be desirable to embed the source code for diagrams in your document.
-External diagrams can also be processed using the block macro syntax.
-This is very similar to how you typically include images in your documents.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code>plantuml::classes.txt[format=svg, alt="Class diagram", width=300, height=200]</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="enabling-the-extension"><a class="anchor" href="#enabling-the-extension"></a>Enabling the extension</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Asciidoctor 0.1.4 does not yet allow extensions to be enabled via the command line.
-That is a feature coming in Asciidoctor 1.5.0.
-Until then, the easiest way to enable the extensions is to use a short wrapper script.
-The following script, <code>asciidoctor-diagram</code>, loads and registers the Asciidoctor Diagram extension, then invokes Asciidoctor in the same way as the <code>asciidoctor</code> command.</p>
-</div>
-<div class="listingblock">
-<div class="title"><code>asciidoctor-diagram</code> launch script</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="doctype">#!/usr/bin/env ruby</span>
-
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/cli/options</span><span class="delimiter">'</span></span>
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/cli/invoker</span><span class="delimiter">'</span></span>
-
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span> <i class="conum" data-value="2"></i><b>(2)</b>
-
-invoker = <span class="constant">Asciidoctor</span>::<span class="constant">Cli</span>::<span class="constant">Invoker</span>.new <span class="predefined-constant">ARGV</span> <i class="conum" data-value="3"></i><b>(3)</b>
-invoker.invoke!
-exit invoker.code</code></pre>
-</div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Loads Asciidoctor</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Loads and registers the Asciidoctor Diagram extensions</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>Invoke the Asciidoctor CLI</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Put the <code>asciidoctor-diagram</code> script on your PATH, make it executable and use it in place of the <code>asciidoctor</code> command.</p>
-</div>
-<div class="literalblock">
-<div class="content">
-<pre class="nowrap">$ asciidoctor-diagram my-doc-with-cool-diagrams.adoc</pre>
-</div>
-</div>
-<div class="paragraph">
-<p>After running the <code>asciidoctor-diagram</code> script on your document, go check out the cool diagrams it made for you!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="go-play"><a class="anchor" href="#go-play"></a>Go play!</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Now it&#8217;s time to go play with Asciidoctor Diagram.
-Explore what you can do with it and how it can be improved.
-To help you get started, check out <a href="https://github.com/asciidoctor/asciidoctor-diagram/blob/master/examples/features.adoc">these examples</a> in the Asciidoctor Diagram repository.
-We look forward to hearing from you on the Asciidoctor <a href="http://discuss.asciidoctor.org">discussion list</a> or the Asciidoctor Diagram <a href="https://github.com/asciidoctor/asciidoctor-diagram/issues">issue tracker</a>.</p>
-</div>
-<div class="paragraph">
-<p>Together, we can make diagrams and documentation come to life out of plain ol' text!</p>
-</div>
-</div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/extension/">extension</a>, <a href="/news/tag/announcement/">announcement</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-backward"></i></a></li><li>1 of 5</li><li class="arrow"><a href="/news/2/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/5/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: {   inlineMath: [["\\(", "\\)"]],   displayMath: [["\\[", "\\]"]],   ignoreClass: "nostem|nolatexmath" }, asciimath2jax: {   delimiters: [["\\$", "\\$"]],   ignoreClass: "nostem|noasciimath" }});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/core/">core</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-backward"></i></a></li><li>1 of 5</li><li class="arrow"><a href="/news/2/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/5/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: {   inlineMath: [["\\(", "\\)"]],   displayMath: [["\\[", "\\]"]],   ignoreClass: "nostem|nolatexmath" }, asciimath2jax: {   delimiters: [["\\$", "\\$"]],   ignoreClass: "nostem|noasciimath" }});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
