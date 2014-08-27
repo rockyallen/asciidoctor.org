@@ -765,139 +765,223 @@ We&#8217;ll also look at how to put complex content inside a list item.</p>
 <div class="sect3">
 <h4 id="lists-of-things"><a class="anchor" href="#lists-of-things"></a>Lists of things</h4>
 <div class="paragraph">
-<p>If you were to create a list of items in an e-mail, how would you do it?
-Chances are, what you&#8217;d type is exactly how you define an outline list in AsciiDoc.</p>
+<p>If you were to create a list in an e-mail, how would you do it?
+Chances are, you&#8217;d mark list items using the same characters that Asciidoctor uses to find list items.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a grocery list written as an unordered list in AsciiDoc:</p>
+<p>In the example below, each list item is marked using an asterisk (<code>*</code>), the AsciiDoc syntax specifying an unordered list item.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Milk
-* Eggs
-* Bread
-* Bananas</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Edgar Allen Poe
+* Sheri S. Tepper
+* Bill Bryson</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Was your instinct to use a hyphen instead of an asterisk?
+<p>A list item&#8217;s first line of text must be offset from the marker (<code>*</code>) by at least one space.
+If you prefer, you can indent list items.
+Blank lines are required before and after a list.
+Additionally, blank lines are permitted, but not required, between list items.</p>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered unordered list</div>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Edgar Allen Poe</p>
+</li>
+<li>
+<p>Sheri S. Tepper</p>
+</li>
+<li>
+<p>Bill Bryson</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>You can add a title to a list by prefixing the title with a period (<code>.</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.Kizmet's Favorite Authors
+* Edgar Allen Poe
+* Sheri S. Tepper
+* Bill Bryson</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered unordered list with a title</div>
+<div class="content">
+<div class="ulist">
+<div class="title">Kizmet&#8217;s Favorite Authors</div>
+<ul>
+<li>
+<p>Edgar Allen Poe</p>
+</li>
+<li>
+<p>Sheri S. Tepper</p>
+</li>
+<li>
+<p>Bill Bryson</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Was your instinct to use a hyphen (<code>-</code>) instead of an asterisk to mark list items?
 Guess what?
-That works too:</p>
+That works too!</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">- Milk
-- Eggs
-- Bread
-- Bananas</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">- Edgar Allen Poe
+- Sheri S. Tepper
+- Bill Bryson</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In either case, you don&#8217;t need to see the output.
-You already know how it will look ;)</p>
+<p>You should reserve the hyphen for lists that only have a single level because the hyphen marker (<code>-</code>) doesn&#8217;t work for nested lists.
+Now that we&#8217;ve mentioned nested lists, let&#8217;s go to the next section and learn how to create lists with multiple levels.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You are free to indent the list however it suits you.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-The item&#8217;s first line of text must be offset from the marker by at least one space.
-</td>
-</tr>
-</table>
-</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Seperating Lists</div>
 <div class="paragraph">
-<p>What if you wanted to group the grocery list by aisle?
-Then you might organize it as a nested list.</p>
-</div>
-<div class="paragraph">
-<p>To get a nested item, just add another asterisk in front of the item:</p>
+<p>If you have adjacent lists, they have the tendency to want to fuse together.
+To force the lists apart, place a line comment between them (<code>\\</code>), offset on either side by a blank line (i.e., an end of list marker).
+Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Diary
-** Milk
-** Eggs
-* Bakery
-** Bread
-* Produce
-** Bananas</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Apples
+* Oranges
+
+//^
+
+* Walnuts
+* Almonds</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>You can have up to five levels of nesting:</p>
+<p>To nest an item, just add another asterisk (<code>*</code>) in front of it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Kingdom
-** Phylum
-*** Class
-**** Order
-***** Family</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.Possible DefOps manual locations
+* West wood maze
+** Maze heart
+*** Reflection pool
+** Secret exit
+* Untracked file in git repository</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered nested, unordered list</div>
+<div class="content">
+<div class="ulist">
+<div class="title">Possible DefOps manual locations</div>
+<ul>
+<li>
+<p>West wood maze</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maze heart</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Reflection pool</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Secret exit</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Untracked file in git repository</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>The hyphen doesn&#8217;t work for nested lists since repeating hyphens are used for other purposes in AsciiDoc.
-Since a hyphen only works for a single level nesting in an AsciiDoc list, we recommend reserving the hyphen for lists that only have a single level:</p>
+<p>You can have up to five levels of nesting.</p>
 </div>
 <div class="listingblock">
-<div class="title">List without nested items</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">- Fedora
-- Ubuntu
-- Slackware</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* level 1
+** level 2
+*** level 3
+**** level 4
+***** level 5
+* level 1</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>level 1</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 2</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 3</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 4</p>
+<div class="ulist">
+<ul>
+<li>
+<p>level 5</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>level 1</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>For lists that have more than one level, use asterisks.</p>
-</div>
-<div class="listingblock">
-<div class="title">List with nested items</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Linux
-** Fedora
-** Ubuntu
-** Slackware
-* BSD
-** FreeBSD
-** NetBSD</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>While it would seem as though the number of asterisks represents the nesting level, that&#8217;s <em>not</em> how depth is determined.
+<p>While it would seem as though the number of asterisks represents the nesting level, that&#8217;s not how depth is determined.
 A new level is created for each unique marker encountered.
-However, it&#8217;s much more intuitive to embrace the following convention:</p>
-</div>
-<div class="verseblock">
-<div class="title">Recommended convention for nesting unordered lists</div>
-<pre class="content">number of <code>*</code> &#xff1d; level of nesting</pre>
-</div>
-<div class="paragraph">
-<p>After all, we are shooting for plain text markup that is readable <em>as is</em>.</p>
-</div>
-<div class="paragraph">
-<p>Using a different marker, we can create an ordered list in the same way.</p>
+However, it&#8217;s much more intuitive to follow the convention that the number of asterisks equals the level of nesting.
+After all, we are shooting for plain text markup that is readable <em>as is</em>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="ordering-the-things"><a class="anchor" href="#ordering-the-things"></a>Ordering the things</h4>
 <div class="paragraph">
 <p>Sometimes, we need to number the items in a list.
-Instinct might tell you to prefix each item with a number, like in this next list.</p>
+Instinct might tell you to prefix each item with a number, like in this next list:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -907,7 +991,7 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 </div>
 </div>
 <div class="paragraph">
-<p>Since the numbering is obvious, the AsciiDoc processor will insert the numbers for you if you omit them.</p>
+<p>Since the numbering is obvious, the AsciiDoc processor will insert the numbers for you if you omit them:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -916,43 +1000,66 @@ Instinct might tell you to prefix each item with a number, like in this next lis
 . Neutrons</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Protons</p>
+</li>
+<li>
+<p>Electrons</p>
+</li>
+<li>
+<p>Neutrons</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
 <div class="paragraph">
-<p>Like with unordered lists, you create a nested item by using one or more dots in front of each the item.</p>
+<p>You can give a list a title by prefixing the line with a dot immediately followed by the text (without leaving any space after the dot).</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a list with a title:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">. Lists
-.. Outline
-... Unordered
-... Ordered
-.. Labeled
-. Titles
-.. Document
-.. Section
-.. Block</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.Parts of an atom
+. Protons
+. Electrons
+. Neutrons</code></pre>
 </div>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Like with the asterisks in an unordered list, the number of dots in an ordered list <em>doesn&#8217;t</em> represent the nesting level.
-However, it&#8217;s much more intuitive to embrace the follow convention:</p>
+<div class="exampleblock">
+<div class="content">
+<div class="olist arabic">
+<div class="title">Parts of an atom</div>
+<ol class="arabic">
+<li>
+<p>Protons</p>
+</li>
+<li>
+<p>Electrons</p>
+</li>
+<li>
+<p>Neutrons</p>
+</li>
+</ol>
 </div>
-<div class="verseblock">
-<div class="title">Recommended convention for nesting ordered lists</div>
-<pre class="content">number of <code>.</code> &#xff1d; level of nesting</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Again, we are shooting for plain text markup that is readable <em>as is</em>.</p>
+<p>You create a nested item by using one or more dots in front of each the item.</p>
 </div>
-</td>
-</tr>
-</table>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">. Step 1
+. Step 2
+.. Step 2a
+.. Step 2b
+. Step 3</code></pre>
+</div>
 </div>
 <div class="paragraph">
 <p>AsciiDoc selects a different number scheme for each level of nesting.
@@ -964,50 +1071,30 @@ Here&#8217;s how the previous list renders:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Lists</p>
+<p>Step 1</p>
+</li>
+<li>
+<p>Step 2</p>
 <div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>Outline</p>
-<div class="olist lowerroman">
-<ol class="lowerroman" type="i">
-<li>
-<p>Unordered</p>
+<p>Step 2a</p>
 </li>
 <li>
-<p>Ordered</p>
+<p>Step 2b</p>
 </li>
 </ol>
 </div>
 </li>
 <li>
-<p>Labeled</p>
-</li>
-</ol>
-</div>
-</li>
-<li>
-<p>Titles</p>
-<div class="olist loweralpha">
-<ol class="loweralpha" type="a">
-<li>
-<p>Document</p>
-</li>
-<li>
-<p>Section</p>
-</li>
-<li>
-<p>Block</p>
-</li>
-</ol>
-</div>
+<p>Step 3</p>
 </li>
 </ol>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>The following table shows the number scheme used by default for each nesting level:</p>
+<p>The following table shows the number scheme used by default for each nesting level.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Ordered list numbering scheme by level</caption>
@@ -1073,32 +1160,6 @@ You can also set the starting number using the <code>start</code> attribute:</p>
 .. c
 . Seven</code></pre>
 </div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="titling-a-list"><a class="anchor" href="#titling-a-list"></a>Titling a list</h4>
-<div class="paragraph">
-<p>You can give any block element, such as a list, a title by prefixing the line with a dot immediately followed by the text (without leaving any space after the dot).</p>
-</div>
-<div class="paragraph">
-<p>Here are examples of two lists with titles:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.Shopping list
-* Milk
-* Eggs
-* Bread
-
-.Parts of an atom
-. Protons
-. Electrons
-. Neutrons</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Not all lists have punctuation markers.
-Let&#8217;s look at lists that use terms to tag each item.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1181,6 +1242,38 @@ Hard drive:: Permanent storage for operating system and/or user files.
 RAM:: Temporarily stores information the CPU uses during operation.</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+CPU
+</td>
+<td class="hdlist2">
+<p>The brain of the computer.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Hard drive
+</td>
+<td class="hdlist2">
+<p>Permanent storage for operating system and/or user files.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+RAM
+</td>
+<td class="hdlist2">
+<p>Temporarily stores information the CPU uses during operation.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
 <div class="paragraph">
 <p>The content of a labeled list can be any AsciiDoc element.
 For instance, we could rewrite the grocery list from above so that each aisle is a label rather than a parent outline list item.</p>
@@ -1194,6 +1287,47 @@ Bakery::
 * Bread
 Produce::
 * Bananas</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Diary</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Milk</p>
+</li>
+<li>
+<p>Eggs</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Bakery</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Bread</p>
+</li>
+</ul>
+</div>
+</dd>
+<dt class="hdlist1">Produce</dt>
+<dd>
+<div class="ulist">
+<ul>
+<li>
+<p>Bananas</p>
+</li>
+</ul>
+</div>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1218,61 +1352,33 @@ Produce::
 </div>
 <div class="sect3">
 <h4 id="hybrid-lists"><a class="anchor" href="#hybrid-lists"></a>Hybrid lists</h4>
-<div class="paragraph">
-<p>You can mix and match the three list types within a single hybrid list.
-AsciiDoc works hard to infer the relationships between the items that are most intuitive to us humans.</p>
+<div id="three-hybrid" class="paragraph">
+<p>Finally, you can mix and match the three list types within a single hybrid list.
+Asciidoctor works hard to infer the relationships between the items that are most intuitive to us humans.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of nesting an unordered list inside of an ordered list:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">. Linux
-* Fedora
-* Ubuntu
-* Slackware
-. BSD
-* FreeBSD
-* NetBSD</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Again, you can spread the items out and indent the nested lists if that makes it more readable for you:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">. Linux
-
-  * Fedora
-  * Ubuntu
-  * Slackware
-
-. BSD
-
-  * FreeBSD
-  * NetBSD</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s a list that mixes all three types of lists:</p>
+<p>Here&#8217;s a list that mixes labeled, ordered, and unordered list items:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Operating Systems::
-  . Linux
-    * Fedora
-    * Ubuntu
-    * Slackware
-  . BSD
-    * FreeBSD
-    * NetBSD
+  Linux:::
+    . Fedora
+      * Desktop
+    . Ubuntu
+      * Desktop
+      * Server
+  BSD:::
+    . FreeBSD
+    . NetBSD
+
 Cloud Providers::
-  . PaaS
-    * OpenShift
-    * CloudBees
-  . IaaS
-    * Amazon EC2
-    * Rackspace</code></pre>
+  PaaS:::
+    . OpenShift
+    . CloudBees
+  IaaS:::
+    . Amazon EC2
+    . Rackspace</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1285,33 +1391,31 @@ Cloud Providers::
 <dl>
 <dt class="hdlist1">Operating Systems</dt>
 <dd>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Linux</dt>
+<dd>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Linux</p>
+<p>Fedora</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Fedora</p>
-</li>
-<li>
-<p>Ubuntu</p>
-</li>
-<li>
-<p>Slackware</p>
+<p>Desktop</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>BSD</p>
+<p>Ubuntu</p>
 <div class="ulist">
 <ul>
 <li>
-<p>FreeBSD</p>
+<p>Desktop</p>
 </li>
 <li>
-<p>NetBSD</p>
+<p>Server</p>
 </li>
 </ul>
 </div>
@@ -1319,37 +1423,53 @@ Cloud Providers::
 </ol>
 </div>
 </dd>
-<dt class="hdlist1">Cloud Providers</dt>
+<dt class="hdlist1">BSD</dt>
 <dd>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>PaaS</p>
-<div class="ulist">
-<ul>
+<p>FreeBSD</p>
+</li>
+<li>
+<p>NetBSD</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</dd>
+<dt class="hdlist1">Cloud Providers</dt>
+<dd>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">PaaS</dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>OpenShift</p>
 </li>
 <li>
 <p>CloudBees</p>
 </li>
-</ul>
+</ol>
 </div>
-</li>
-<li>
-<p>IaaS</p>
-<div class="ulist">
-<ul>
+</dd>
+<dt class="hdlist1">IaaS</dt>
+<dd>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p>Amazon EC2</p>
 </li>
 <li>
 <p>Rackspace</p>
 </li>
-</ul>
-</div>
-</li>
 </ol>
+</div>
+</dd>
+</dl>
 </div>
 </dd>
 </dl>
@@ -1365,7 +1485,7 @@ Cloud Providers::
 <div class="paragraph">
 <p>Aside from nested lists, all of the list items you&#8217;ve seen only have one line of text.
 A list item can hold any type of AsciiDoc content, including paragraphs, listing blocks and even tables.
-You just need to ``attach'' them to the list item.</p>
+You just need to <em>attach</em> them to the list item.</p>
 </div>
 <div class="paragraph">
 <p>Like with regular paragraph text, the text in a list item can wrap across any number of lines, as long as all the lines are adjacent.
@@ -1385,6 +1505,27 @@ immediately follows the header title.
   blank lines and cannot contain blank lines.</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The header in AsciiDoc is optional, but if
+it is used it must start with a document title.</p>
+</li>
+<li>
+<p>Optional Author and Revision information
+immediately follows the header title.</p>
+</li>
+<li>
+<p>The document header must be separated from
+the remainder of the document by one or more
+blank lines and cannot contain blank lines.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -1399,18 +1540,37 @@ When items contain more than one line of text, leave a blank line before the nex
 </div>
 <div class="paragraph">
 <p>If you want to attach additional paragraphs to a list item, you &#8220;add&#8221; them together using a <em>list continuation</em>.
-A list continuation is a <code>+</code> symbol on a line by itself, immediately adjacent to the two blocks it&#8217;s connecting.
+A list continuation is a <code>&#43;</code> symbol on a line by itself, immediately adjacent to the two blocks it&#8217;s connecting.
 Here&#8217;s an example:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">* The header in AsciiDoc must start with a
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* The header in AsciiDoc must start with a
   document title.
 +
 The header is optional.
 
 * Optional Author and Revision information
-  immediately follows the header title.</pre>
+  immediately follows the header title.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The header in AsciiDoc must start with a
+document title.</p>
+<div class="paragraph">
+<p>The header is optional.</p>
+</div>
+</li>
+<li>
+<p>Optional Author and Revision information
+immediately follows the header title.</p>
+</li>
+</ul>
+</div>
 </div>
 </div>
 <div class="paragraph">
@@ -1485,27 +1645,6 @@ v1.0, 2013-01-01</pre>
 </div>
 </div>
 </div>
-<div class="sect3">
-<h4 id="dividing-lists"><a class="anchor" href="#dividing-lists"></a>Dividing lists</h4>
-<div class="paragraph">
-<p>If you have adjacent lists, they have the tendency to want to fuse together.
-To force the lists apart, place a line comment between them, offset on either side by a blank line (i.e., an end of list marker).
-Here&#8217;s an example:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">* Apples
-* Oranges
-* Bananas
-
-//^
-
-* Walnuts
-* Almonds
-* Cashews</code></pre>
-</div>
-</div>
-</div>
 </div>
 <div class="sect2">
 <h3 id="links-and-images"><a class="anchor" href="#links-and-images"></a>Links and images</h3>
@@ -1518,84 +1657,178 @@ Here&#8217;s an example:</p>
 <p>There&#8217;s nothing you have to do to make a link to a URL.
 Just include the URL in the document and AsciiDoc will turn it into a link.</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">You can learn more about AsciiDoc at http://asciidoc.org.</code></pre>
+<div class="paragraph">
+<p>Asciidoctor recognizes the following common schemes without the help of any markup.</p>
 </div>
+<div id="schemes" class="ulist">
+<ul>
+<li>
+<p>http</p>
+</li>
+<li>
+<p>https</p>
+</li>
+<li>
+<p>ftp</p>
+</li>
+<li>
+<p>irc</p>
+</li>
+<li>
+<p>mailto</p>
+</li>
+<li>
+<p>email\@email.com</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The trailing period will not get caught up in the link.
-AsciiDoc is smart like that.</p>
+<p>Since the URL in the example below begins with <em>http</em>, Asciidoctor will automatically turn it into a hyperlink when it is processed.</p>
 </div>
-<div class="admonitionblock note">
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The homepage for the Asciidoctor Project is http://www.asciidoctor.org. <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
 <table>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-AsciiDoc recognizes URLs that begin with <code>http://</code>, <code>https://</code>, <code>ftp://</code>, and <code>irc://</code>.
-</td>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The trailing period will not get caught up in the link.</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>To turn a word or phrase into a link, just enclose it in square brackets at the end of the URL:</p>
+<p>If you prefer URLs to be rendered without a visible scheme, set the <code>hide-uri-scheme</code> attribute in the document&#8217;s header.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://asciidoc.org[AsciiDoc] is a lightweight markup language.</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:hide-uri-scheme:
+
+http://asciidoctor.org</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the hide-uri-scheme attribute is set, the above URL will render as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>asciidoctor.org<span class="tag">&lt;/a&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note the absence of <em>http</em> inside the <code>&lt;a&gt;</code> element.</p>
+</div>
+<div class="paragraph">
+<p>To attach a URL to text, enclose the text in square brackets at the end of the URL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When a URL does not start with one of the <a href="#schemes">common schemes</a>, you must use the <code>link</code> macro.
+The URL is preceded by <code>link:</code> and followed by square brackets.
+The square brackets can include optional link text, target preference, and roles.</p>
+</div>
+<div class="listingblock">
+<div class="title">Anatomy of a link macro</div>
+<div class="content">
+<pre class="nowrap">link:url[optional link text, optional target attribute, optional role attribute]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>First, let&#8217;s look at an example of a link macro that contains link text.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage].</pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Let&#8217;s view the raw HTML of the <a href="view-source:asciidoctor.org">Asciidoctor homepage</a>.</p>
+</div>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="target-window-and-role-attributes-for-links"><a class="anchor" href="#target-window-and-role-attributes-for-links"></a>Target window and role attributes for links</h4>
 <div class="paragraph">
-<p>You often need to set the target attribute on a link element (<code>&lt;a&gt;</code>) so the link opens in a new window (e.g., <code>&lt;a href="&#8230;&#8203;" target="_blank"&gt;</code>).</p>
-</div>
-<div class="paragraph">
-<p>This type of configuration is normally specified using attributes.
-However, AsciiDoc does not parse attributes in the link macro by default.
-In Asciidoctor 0.1.3, you can enable parsing of link macro attributes by setting the <code>linkattrs</code> document attribute in the header.</p>
+<p>When you set attributes in the link macro, you must also set the <code>linkattrs</code> attribute in the document&#8217;s header because Asciidoctor does not parse attributes in the link macro by default.
+Once you&#8217;ve set linkattrs in the header, you can then specify the name of the target window using the <code>window</code> attribute.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:linkattrs:</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Asciidoctor Document Title
+:linkattrs:
+
+Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage, window=&quot;_blank&quot;].</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>You can also specify the name of the target window using the <code>window</code> attribute:</p>
-</div>
-<div class="listingblock">
+<div class="exampleblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google, window=&quot;_blank&quot;]</code></pre>
+<div class="paragraph">
+<p>Let&#8217;s view the raw HTML of the <a href="view-source:asciidoctor.org" target="_blank">Asciidoctor homepage</a>.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>Asciidoctor incluedes shorthand for <code>_blank</code>, since it is the most common window name.
+<p>Since <code>_blank</code> is the most common window name, we&#8217;ve introduced shorthand for it.
 Just end the link text with a caret (<code>^</code>):</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google^]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Let's view the raw HTML of the link:view-source:asciidoctor.org[Asciidoctor homepage^].</code></pre>
 </div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:</p>
+<p>When linkattrs is set, you can add a role (i.e., CSS class) to the link.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google^, role=&quot;external&quot;]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Chat with other Asciidoctor users in the irc://irc.freenode.org/#asciidoctor[Asciidoctor IRC channel] or on the http://discuss.asciidoctor.org/[*mailing list*^, role=&quot;green&quot;].</code></pre>
 </div>
 </div>
+<div class="exampleblock">
+<div class="content">
 <div class="paragraph">
-<p>You can now have fun styling your links.</p>
+<p>Chat with other Asciidoctor users in the <a href="irc://irc.freenode.org/#asciidoctor">Asciidoctor IRC channel</a> or on the <a href="http://discuss.asciidoctor.org/" class="green" target="_blank"><strong>mailing list</strong></a>.</p>
+</div>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Links with attributes (including the subject and body segments on mailto links) are a feature unique to Asciidoctor.
+When they are enabled, you must surround the link text in double quotes if it contains a comma.
+</td>
+</tr>
+</table>
 </div>
 </div>
 <div class="sect3">
 <h4 id="links-to-relative-files"><a class="anchor" href="#links-to-relative-files"></a>Links to relative files</h4>
 <div class="paragraph">
-<p>If you want to link to a file relative to the current document, use the <code>link:</code> prefix in front of the file name:</p>
+<p>If you want to link to a file relative to the current document, use the <code>link</code> macro in front of the file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1603,7 +1836,7 @@ Just end the link text with a caret (<code>^</code>):</p>
 </div>
 </div>
 <div class="paragraph">
-<p>To link directly to a section in the document (a &#8220;deep&#8221; link), append a hash (<code>#</code>) followed by the id of the section to the end of the file name:</p>
+<p>To link directly to a section in the document, append a hash (<code>#</code>) followed by the section&#8217;s ID to the end of the file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1617,21 +1850,60 @@ Just end the link text with a caret (<code>^</code>):</p>
 <div class="sect3">
 <h4 id="internal-cross-references"><a class="anchor" href="#internal-cross-references"></a>Internal cross references</h4>
 <div class="paragraph">
-<p>A link to another location in the current document is called a <em>cross reference</em>.
-You create a cross reference by enclosing the element&#8217;s id in double angled brackets:</p>
+<p>A link to another location within an AsciiDoc document or between AsciiDoc documents is called a <em>cross reference</em> (also referred to as an <em>xref</em>).
+In Asciidoctor, the xref inline macro is used to create cross references to content, sections, and elements using an ID.
+Cross reference are created by enclosing the element&#8217;s ID in double angled brackets.</p>
 </div>
 <div class="listingblock">
+<div class="title">Cross reference using a section heading&#8217;s ID</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The section &lt;&lt;content-is-king&gt;&gt; covers paragraphs in AsciiDoc.</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered cross reference using a section heading&#8217;s ID</div>
+<div class="content">
+<div class="paragraph">
+<p>The section <a href="#page-break">[page-break]</a> describes how to add a page break.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
-<p>In some backends, the text of the link will be automatically generated from the title of the element, if one exists.
-If you want to customize the linked text, include it after the id, separated by a comma:</p>
+<p>You can also link to section headings using their titles.</p>
+</div>
+<div class="listingblock">
+<div class="title">Cross reference using a section&#8217;s title</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Refer to &lt;&lt;Section A&gt;&gt;.
+
+== Section A</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered cross reference using a section&#8217;s title</div>
+<div class="content">
+<div class="paragraph">
+<p>Refer to <a href="#Section A">[Section A]</a>.</p>
+</div>
+<div class="paragraph">
+<p>== Section A</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Some converters, such as the HTML converter, will automatically generate a link from the title of the element.
+If you want to customize the linked text, include it after the ID, separating them by a comma.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to create &lt;&lt;content-is-king,paragraphs&gt;&gt; in AsciiDoc.</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to &lt;&lt;target-window-and-role-attributes,use attributes within the link macro&gt;&gt;.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Learn how to <a href="#target-window-and-role-attributes">use attributes within the link macro</a>.</p>
+</div>
 </div>
 </div>
 <div class="paragraph">
