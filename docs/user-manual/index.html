@@ -13267,14 +13267,16 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 <h2 id="include-directive"><a class="anchor" href="#include-directive"></a>48. Include Directive</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The include directive allows you to insert the content of one file directly into another file.
-Files are resolved relative to the current document instead of the root document.
-This applies to include directives used inside a file which itself has been included.</p>
+<p>The include directive allows you to insert content from one file directly into another file, effectively merging the content.</p>
 </div>
 <div class="paragraph">
-<p>Only AsciiDoc files are preprocessed when included.
-Asciidoctor recognizes those files with the <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code> extensions as AsciiDoc files.
-Therefore, include content in non-AsciiDoc file formats will not be processed.</p>
+<p>Files included in the master (top-level) document are resolved relative to the base directory, which defaults to the directory of the master document unless otherwise specified.
+Files included inside a file which itself has been included are resolved relative to the current document.</p>
+</div>
+<div class="paragraph">
+<p>Only content in AsciiDoc files are preprocessed when included.
+Asciidoctor recognizes files with the extensions <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code> as AsciiDoc files.
+The content in all other files are included as is.</p>
 </div>
 <div class="listingblock">
 <div class="title">Document parts</div>
@@ -13291,13 +13293,23 @@ include::installation.adoc[]
 include::example.adoc[]</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Asciidoctor does not insert blank lines between adjacent include statements.
-Be sure to insert a blank line between include directives to avoid unexpected results, such as a section title getting appended to the end of a previous paragraph.
-Also, the relative indentation between the lines of source code <strong>is not affected</strong> unless you set the <a href="#normalizing-block-indentation">indent attribute</a>.</p>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="title">Includes and whitespace</div>
+Asciidoctor does not insert blank lines between adjacent include statements.
+Be sure to insert a blank line around include directives to avoid unexpected results (e.g., a section title getting appended to the end of a previous paragraph).
+Also, the indentation of included content <strong>is not affected</strong> unless you set the <a href="#normalizing-block-indentation">indent attribute</a>.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The include directive, in concert with the <code>tag</code> directive or <code>line</code> attribute can also be used to retrieve specific chunks of content.</p>
+<p>The <code>tag</code> and <code>line</code> attributes on the include directive can be used to retrieve specific chunks of content.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -13310,6 +13322,24 @@ Asciidoctor supports targets that include spaces and the <code>{sp}</code> attri
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>If you need to prevent the include directive from being processed, perhaps to show an include directive example in your document, escape it by prefixing the line with a backslash.</p>
+</div>
+<div class="listingblock">
+<div class="title">Escaping an include directive</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">\include::fragment.adoc[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The include directive will be shown without the preceding backslash in the output document.</p>
+</div>
+<div class="listingblock">
+<div class="title">Unprocessed include directive</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">include::fragment.adoc[]</code></pre>
+</div>
 </div>
 <div class="sect2">
 <h3 id="selecting-parts-of-a-document-to-include"><a class="anchor" href="#selecting-parts-of-a-document-to-include"></a>48.1. Selecting parts of a document to include</h3>
@@ -19941,7 +19971,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-09-05 20:00:15 UTC
+Last updated 2014-09-08 03:44:36 UTC
 </div>
 </div>
 <script>
