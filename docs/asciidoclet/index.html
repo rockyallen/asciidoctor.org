@@ -1,0 +1,335 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Installing and Using Asciidoclet | Asciidoctor</title><meta name="author" content="John Ericksen"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing and Using Asciidoclet</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoclet">Asciidoclet</a> is a Javadoc Doclet based on Asciidoctor that lets you write Javadoc in the AsciiDoc syntax.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Traditionally, Javadocs have mixed minor markup with HTML which, if you&#8217;re writing for HTML Javadoc output, becomes unreadable and hard to write over time.
+This is where lightweight markup languages like <a href="http://asciidoc.org">AsciiDoc</a> thrive.
+AsciiDoc straddles the line between readable markup and beautifully rendered content.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoclet incorporates an AsciiDoc renderer (Asciidoctor via the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration/">Asciidoctor Java integration</a> library) into a simple Doclet that enables AsciiDoc formatting within Javadoc comments and tags.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="example"><a class="anchor" href="#example"></a>Example</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Here&#8217;s an example of a class with traditional Javadoc.</p>
+</div>
+<div class="listingblock">
+<div class="title">A Java class with traditional Javadoc</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * &lt;h1&gt;Asciidoclet&lt;/h1&gt;
+ *
+ * &lt;p&gt;Sample comments that include {@code source code}.&lt;/p&gt;
+ *
+ * &lt;pre&gt;{@code
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     {@literal @}SuppressWarnings(&quot;UnusedDeclaration&quot;)
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * }&lt;/pre&gt;
+ *
+ * @author &lt;a href=&quot;https://github.com/johncarl81&quot;&gt;John Ericksen&lt;/a&gt;
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Asciidoclet</span> <span class="directive">extends</span> Doclet {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is the same class with Asciidoclet.</p>
+</div>
+<div class="listingblock">
+<div class="title">A Java class with Asciidoclet Javadoc</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * = Asciidoclet
+ *
+ * Sample comments that include `source code`.
+ *
+ * [source,java]
+ * --
+ * public class Asciidoclet extends Doclet {
+ *     private final Asciidoctor asciidoctor = Asciidoctor.Factory.create();
+ *
+ *     @SuppressWarnings(&quot;UnusedDeclaration&quot;)
+ *     public static boolean start(RootDoc rootDoc) {
+ *         new Asciidoclet().render(rootDoc);
+ *         return Standard.start(rootDoc);
+ *     }
+ * }
+ * --
+ *
+ * @author https://github.com/johncarl81[John Ericksen]
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Asciidoclet</span> <span class="directive">extends</span> Doclet {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The result is readable source and beautifully rendered Javadocs, the best of both worlds!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Run Javadoc with the <code>org.asciidoctor.Asciidoclet</code> doclet class.
+Some examples for common build systems are shown below.
+See <a href="#doclet-options">Doclet Options</a> for supported options.</p>
+</div>
+<div class="sect2">
+<h3 id="maven"><a class="anchor" href="#maven"></a>Maven</h3>
+<div class="paragraph">
+<p>Asciidoclet may be used via a <code>maven-javadoc-plugin</code> doclet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>2.9<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;configuration&gt;</span>
+        <span class="tag">&lt;source&gt;</span>1.7<span class="tag">&lt;/source&gt;</span>
+        <span class="tag">&lt;doclet&gt;</span>org.asciidoctor.Asciidoclet<span class="tag">&lt;/doclet&gt;</span>
+        <span class="tag">&lt;docletArtifact&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>asciidoclet<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>${asciidoclet.version}<span class="tag">&lt;/version&gt;</span>
+        <span class="tag">&lt;/docletArtifact&gt;</span>
+        <span class="tag">&lt;overview&gt;</span>src/main/java/overview.adoc<span class="tag">&lt;/overview&gt;</span>
+        <span class="tag">&lt;additionalparam&gt;</span>
+          --base-dir ${project.basedir}
+          --attribute &quot;name=${project.name}&quot;
+          --attribute &quot;version=${project.version}&quot;
+          --attribute &quot;title-link=http://example.com[${project.name} ${project.version}]&quot;
+        <span class="tag">&lt;/additionalparam&gt;</span>
+    <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="gradle"><a class="anchor" href="#gradle"></a>Gradle</h3>
+<div class="paragraph">
+<p>Asciidoclet may be used via a doclet in the <code>Javadoc</code> task:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">configurations {
+    asciidoclet
+}
+
+dependencies {
+    asciidoclet <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoclet:1.+</span><span class="delimiter">'</span></span>
+}
+
+javadoc {
+    options.docletpath = configurations.asciidoclet.files.asType(<span class="predefined-type">List</span>)
+    options.doclet = <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.Asciidoclet</span><span class="delimiter">'</span></span>
+    options.overview = <span class="string"><span class="delimiter">&quot;</span><span class="content">src/main/java/overview.adoc</span><span class="delimiter">&quot;</span></span>
+    options.addStringOption <span class="string"><span class="delimiter">&quot;</span><span class="content">-base-dir</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>projectDir<span class="inline-delimiter">}</span></span><span class="delimiter">&quot;</span></span> <i class="conum" data-value="1"></i><b>(1)</b>
+    options.addStringOption <span class="string"><span class="delimiter">&quot;</span><span class="content">-attribute</span><span class="delimiter">&quot;</span></span>, <i class="conum" data-value="2"></i><b>(2)</b>
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">name=</span><span class="inline"><span class="inline-delimiter">${</span>project.name<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">&quot;</span></span> +
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">version=</span><span class="inline"><span class="inline-delimiter">${</span>project.version<span class="inline-delimiter">}</span></span><span class="content">,</span><span class="delimiter">&quot;</span></span> +
+            <span class="string"><span class="delimiter">&quot;</span><span class="content">title-link=http://example.com[</span><span class="inline"><span class="inline-delimiter">${</span>project.name<span class="inline-delimiter">}</span></span><span class="content"> </span><span class="inline"><span class="inline-delimiter">${</span>project.version<span class="inline-delimiter">}</span></span><span class="content">]</span><span class="delimiter">&quot;</span></span>)
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Option names passed to Gradle&#8217;s <code>javadoc</code> task must omit the leading "-", so here "-base-dir" means "--base-dir".
+See <a href="#doclet-options">Doclet Options</a> below.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Gradle&#8217;s <code>javadoc</code> task does not allow multiple occurrences of the same option.
+Multiple attributes can be specified in a single string, separated by commas.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ant"><a class="anchor" href="#ant"></a>Ant</h3>
+<div class="paragraph">
+<p>Asciidoclet may be used via a doclet element in Ant&#8217;s <code>javadoc</code> task:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;javadoc</span> <span class="attribute-name">destdir</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target/javadoc</span><span class="delimiter">&quot;</span></span>
+         <span class="attribute-name">sourcepath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src</span><span class="delimiter">&quot;</span></span>
+         <span class="attribute-name">overview</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/overview.adoc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+  <span class="tag">&lt;doclet</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.asciidoctor.Asciidoclet</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">pathref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoclet.classpath</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">--base-dir</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">${basedir}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">--attribute</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">name=${ant.project.name}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">--attribute</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">version=${version}</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;param</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">--attribute</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">value</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">title-link=http://example.com[${ant.project.name} ${version}]</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+  <span class="tag">&lt;/doclet&gt;</span>
+<span class="tag">&lt;/javadoc&gt;</span></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Assumes a path reference has been defined for Asciidoclet and its dependencies, e.g.
+using <a href="http://ant.apache.org/ivy/">Ivy</a> or similar.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="doclet-options"><a class="anchor" href="#doclet-options"></a>Doclet Options</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">--base-dir &lt;dir&gt;</dt>
+<dd>
+<p>Sets the base directory that will be used to resolve relative path names in Asciidoc <code>include::</code> directives.
+This should be set to the project&#8217;s root directory.</p>
+</dd>
+<dt class="hdlist1">-a, --attribute "name[=value], &#8230;&#8203;"</dt>
+<dd>
+<p>Sets <a href="http://asciidoctor.org/docs/user-manual/#attributes" target="_blank">document attributes</a> that will be expanded in Javadoc comments.
+The argument is a string containing a single attribute, or multiple attributes separated by commas.</p>
+<div class="paragraph">
+<p>This option may be used more than once, for example: <code>-a name=foo -a version=1</code>.</p>
+</div>
+<div class="paragraph">
+<p>Attributes use the same syntax as Asciidoctor command-line attributes:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p><code>name</code> sets the attribute (with an empty value)</p>
+</li>
+<li>
+<p><code>name=value</code> assigns <code>value</code> to the attribute. Occurrences of <code>{name}</code> in the Javadoc will be replaced by this value.</p>
+</li>
+<li>
+<p><code>name=value@</code> assigns <code>value</code> to the attribute, unless the attribute is defined in the attributes file or Javadoc.</p>
+</li>
+<li>
+<p><code>name!</code> unsets the attribute.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>The document attribute <code>javadoc</code> is set automatically by the doclet.
+This can be used for conditionally selecting content when using the same Asciidoc file for Javadoc and other documentation.</p>
+</div>
+</dd>
+<dt class="hdlist1">--attributes-file &lt;file&gt;</dt>
+<dd>
+<p>Reads <a href="http://asciidoctor.org/docs/user-manual/#attributes" target="_blank">document attributes</a> from an Asciidoc file.
+The attributes will be expanded in Javadoc comments.</p>
+<div class="paragraph">
+<p>If <code>&lt;file&gt;</code> is a relative path name, it is assumed to be relative to the <code>--base-dir</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>Attributes set by the <code>-a</code>/<code>--attribute</code> option take precedence over those in the attributes file.</p>
+</div>
+</dd>
+<dt class="hdlist1">-r, --require &lt;library&gt;,&#8230;&#8203;</dt>
+<dd>
+<p>Make the specified RubyGems library available to Asciidoctor&#8217;s JRuby runtime, for example <code>-r asciidoctor-diagram</code>.</p>
+<div class="paragraph">
+<p>This option may be specified more than once.
+Alternatively multiple library names may be specified in a single argument, separated by commas.</p>
+</div>
+</dd>
+<dt class="hdlist1">--gem-path &lt;path&gt;</dt>
+<dd>
+<p>Sets the <code>GEM_PATH</code> for Asciidoctor&#8217;s JRuby runtime.
+This option is only needed when using the <code>--require</code> option to load additional gems on the <code>GEM_PATH</code>.</p>
+</dd>
+<dt class="hdlist1">-overview &lt;file&gt;</dt>
+<dd>
+<p>Overview documentation can be generated from an Asciidoc file using the standard <code>-overview</code> option.
+Files matching <code class="x-">*.adoc</code>, <code class="x-">*.ad</code>, <code class="x-">*.asciidoc</code> or <code class="x-">*.txt</code> are processed by Asciidoclet.
+Other files are assumed to be HTML and will be processed by the standard doclet.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Resources and help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For more information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoclet">Asciidoclet Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoclet/issues">Asciidoclet Issue Tracker</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java Integration Source Code</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you have questions or would like to help develop this project, please join the <a href="http://discuss.asciidoctor.org/">Asciidoctor discussion list</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="license"><a class="anchor" href="#license"></a>License</h2>
+<div class="sectionbody">
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Copyright (C) 2013-2014 John Ericksen
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</pre>
+</div>
+</div>
+</div>
+</div></div></div></div><div class="large-4 columns secondary"><ul class="button-group radius" style="margin-top: 0.5em; margin-bottom: -0.625em"><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoclet.adoc">Edit</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoclet.adoc">Raw</a></li><li><a class="small secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoclet.adoc">History</a></li><li><i class="fa fa-github fa-2x"></i></li></ul><h4>Asciidoctor Project</h4><p>The Asciidoctor project is an effort to bring a comprehensive and accessible publishing toolchain, centered around the AsciiDoc syntax, to a growing range of ecosystems, including Ruby, JavaScript and the JVM.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora, Debian and Ubuntu. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><p><i class="fa fa-download"></i> Download: <a class="rubygem" href="https://badge.fury.io/rb/asciidoctor"><img src="https://badge.fury.io/rb/asciidoctor.png" alt="Gem version" style="margin-top: -2px"></a><br><i class="fa fa-github"></i> Development: <a href="https://github.com/asciidoctor">GitHub</a><br><i class="fa fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a><br><i class="fa fa-comments"></i> Chat (IRC): <a href="irc://irc.freenode.org/#asciidoctor">#asciidoctor on FreeNode</a><br><i class="fa fa-twitter"></i> Twitter: <a class="twitter" href="https://twitter.com/#!/asciidoctor">@asciidoctor</a><br><i class="fa fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="https://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>
