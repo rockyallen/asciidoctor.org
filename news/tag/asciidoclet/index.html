@@ -1,0 +1,427 @@
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link href="/feed.atom" rel="alternate" title="AsciiDoctor.org News Feed" type="application/atom+xml"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/09/09/asciidoclet-1.5.0-released/">Asciidoclet 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">John Ericksen</span> and <span class="author">Ben Evans</span> - <time class="pubdate" datetime="2014-09-09T01:11:13-06:00">Tuesday, September 9, 2014</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Following on from the releases of <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/">Asciidoctor 1.5.0</a> and <a href="http://asciidoctor.org/news/2014/08/21/asciidoctorj-1-5-0-released/">AsciidoctorJ 1.5.0</a>, version 1.5.0 of <a href="https://github.com/asciidoctor/asciidoclet/">Asciidoclet</a> has been released with several significant new features, including a new look &amp; feel!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-is-asciidoclet"><a class="anchor" href="#what-is-asciidoclet"></a>What is Asciidoclet?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="../docs/install-and-use-asciidoclet/index.html">Asciidoclet</a> allows Java developers to write Javadoc comments in the portable and rich <a href="http://asciidoctor.org/docs/what-is-asciidoc/">AsciiDoc</a> syntax instead of HTML.</p>
+</div>
+<div class="paragraph">
+<p>In short, why write messy Javadoc like this?</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * This class has the following features:
+ * &lt;ul&gt;
+ *   &lt;li&gt;Support for &lt;strong&gt;foo&lt;/strong&gt;&lt;/li&gt;
+ *   &lt;li&gt;Support for bar&lt;/li&gt;
+ * &lt;/ul&gt;
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Thing</span> <span class="directive">implements</span> Something { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>&#8230;&#8203;when you can write tidy Javadoc like this!</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * This class has the following features:
+ *
+ * - Support for *foo*
+ * - Support for bar
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">Thing</span> <span class="directive">implements</span> Something { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Much better!
+Now comments in the source code are much easier to read and write and can be reused outside of Javadoc.
+Best of all, the HTML generated from Javadoc still looks great (perhaps even better).</p>
+</div>
+<div class="paragraph">
+<p>Of course, this example just scratches the surface of what&#8217;s possible.
+Tables, lists, code examples with syntax highlighting, links, includes and all of <a href="http://asciidoctor.org/">Asciidoctor&#8217;s</a> capabilities are available via the lightweight AsciiDoc syntax.</p>
+</div>
+<div class="paragraph">
+<p>Now, developers can focus on <em>content</em> rather than <em>formatting</em>, and still achieve a beautiful end result.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="artifact-information"><a class="anchor" href="#artifact-information"></a>Artifact information</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Artifact information (jCenter @ Bintray)</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 8%;">
+<col style="width: 41%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group Id</th>
+<th class="tableblock halign-left valign-top">Artifact Id</th>
+<th class="tableblock halign-center valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bintray.com/asciidoctor/maven/asciidoclet/view/general">asciidoclet</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://bintray.com/asciidoctor/maven/asciidoclet/1.5.0/view">1.5.0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoclet/1.5.0/asciidoclet-1.5.0.pom">pom</a> <a href="https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoclet/1.5.0/asciidoclet-1.5.0.jar">jar</a> <a href="https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoclet/1.5.0/asciidoclet-1.5.0-javadoc.jar">javadoc (jar)</a> <a href="https://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoclet/1.5.0/asciidoclet-1.5.0-sources.jar">sources (jar)</a></p></td>
+</tr>
+</tbody>
+</table>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Artifact information (Maven Central)</caption>
+<colgroup>
+<col style="width: 16%;">
+<col style="width: 33%;">
+<col style="width: 8%;">
+<col style="width: 41%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Group Id</th>
+<th class="tableblock halign-left valign-top">Artifact Id</th>
+<th class="tableblock halign-center valign-top">Version</th>
+<th class="tableblock halign-left valign-top">Download</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoclet%22%20AND%20v%3A%221.5.0%22">asciidoclet</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoclet%7C1.5.0%7Cjar">1.5.0</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/1.5.0/asciidoctorj-1.5.0.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/1.5.0/asciidoctorj-1.5.0.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/1.5.0/asciidoctorj-1.5.0-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoclet/1.5.0/asciidoctorj-1.5.0-sources.jar">sources (jar)</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installing"><a class="anchor" href="#installing"></a>Installing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In Maven, just add the Asciidoclet doclet name and artifact to the <code>maven-javadoc-plugin</code> declaration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;plugin&gt;</span>
+  <span class="tag">&lt;groupId&gt;</span>org.apache.maven.plugins<span class="tag">&lt;/groupId&gt;</span>
+  <span class="tag">&lt;artifactId&gt;</span>maven-javadoc-plugin<span class="tag">&lt;/artifactId&gt;</span>
+  <span class="tag">&lt;version&gt;</span>2.9<span class="tag">&lt;/version&gt;</span>
+  <span class="tag">&lt;executions&gt;</span>
+    <span class="tag">&lt;execution&gt;</span>
+      <span class="tag">&lt;goals&gt;</span>
+        <span class="tag">&lt;goal&gt;</span>jar<span class="tag">&lt;/goal&gt;</span>
+      <span class="tag">&lt;/goals&gt;</span>
+    <span class="tag">&lt;/execution&gt;</span>
+  <span class="tag">&lt;/executions&gt;</span>
+  <span class="tag">&lt;configuration&gt;</span>
+    <span class="tag">&lt;doclet&gt;</span>org.asciidoctor.Asciidoclet<span class="tag">&lt;/doclet&gt;</span>
+    <span class="tag">&lt;docletArtifact&gt;</span>
+      <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+      <span class="tag">&lt;artifactId&gt;</span>asciidoclet<span class="tag">&lt;/artifactId&gt;</span>
+      <span class="tag">&lt;version&gt;</span>1.5.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;/docletArtifact&gt;</span>
+  <span class="tag">&lt;/configuration&gt;</span>
+<span class="tag">&lt;/plugin&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>See the <a href="../docs/install-and-use-asciidoclet/index.html">Asciidoclet guide</a> for examples that apply to other build systems and all the available doclet options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="release-highlights"><a class="anchor" href="#release-highlights"></a>Release highlights</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="built-on-asciidoctor-1-5-0"><a class="anchor" href="#built-on-asciidoctor-1-5-0"></a>Built on Asciidoctor 1.5.0</h3>
+<div class="paragraph">
+<p>Asciidoclet inherits all of the improvements from <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/">Asciidoctor 1.5.0</a> and <a href="http://asciidoctor.org/news/2014/08/21/asciidoctorj-1-5-0-released/">AsciidoctorJ 1.5.0</a>.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Asciidoctor 1.5.0 introduced some syntax changes.
+Please refer to the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for details about how to migrate your content.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="improved-stylesheets"><a class="anchor" href="#improved-stylesheets"></a>Improved stylesheets</h3>
+<div class="paragraph">
+<p>Asciidoclet includes a default stylesheet with styles from Asciidoctor 1.5.0.
+This means that AsciiDoc content in the Javadoc is rendered with a similar look and feel to Asciidoctor in other environments.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/asciidoclet-screenshot.png" alt="Javadoc output" width="800" height="500">
+</div>
+<div class="title">Figure 1. Example Javadoc using the Java 8-derived stylesheet</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Javadoc&#8217;s HTML output varies between releases of the Java platform, so Asciidoclet selects an appropriate stylesheet based on the Java version it is running under:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For Java 7 &amp; 8, a stylesheet based on the default Java 8 Javadoc stylesheet is used.</p>
+</li>
+<li>
+<p>For Java 5 &amp; 6, the stylesheet is based on the Java 6 Javadoc stylesheet.</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to use your own stylesheet, you can still do this by using Javadoc&#8217;s <code>-stylesheetfile</code> option.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asciidoc-overview-files"><a class="anchor" href="#asciidoc-overview-files"></a>AsciiDoc overview files</h3>
+<div class="paragraph">
+<p>Javadoc&#8217;s <code>-overview</code> option lets you specify an HTML file that will be used as the overview or index page in the generated documentation.
+This is especially useful for larger projects, where the overview can provide users with a useful introduction and help them to navigate the API.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoclet now supports overview files written in AsciiDoc as well, with full support for AsciiDoc features such as includes and document attributes.
+Overview files named <code>*.adoc</code>, <code>*.ad</code>, <code>*.asciidoc</code> or <code>*.txt</code> are processed by Asciidoclet.
+Other files are assumed to be HTML, and will be processed by Javadoc&#8217;s standard doclet.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="document-attributes"><a class="anchor" href="#document-attributes"></a>Document attributes</h3>
+<div class="paragraph">
+<p>Asciidoclet now fully supports Asciidoctor&#8217;s <a href="http://asciidoctor.org/docs/user-manual/#attributes">document attributes</a>.
+These are one of Asciidoctor&#8217;s most powerful features.
+Document attributes are parameters that can be passed to Asciidoctor to affect how the final output is generated.</p>
+</div>
+<div class="paragraph">
+<p>Attributes are specified using one or more <code>-a</code> (or <code>--attribute</code>) options when running Asciidoclet.
+The <code>--attributes-file</code> option reads attributes from an AsciiDoc file.
+The attributes are passed to Asciidoctor when it renders Javadoc comments.</p>
+</div>
+<div class="paragraph">
+<p>Here are some examples of how document attributes might be useful in your Javadoc.</p>
+</div>
+<div class="sect3">
+<h4 id="variable-substitution"><a class="anchor" href="#variable-substitution"></a>Variable substitution</h4>
+<div class="paragraph">
+<p>Attribute references in Javadoc comments or overview files are replaced with attribute values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * {product-name} will change your life!
+ * @version {version}
+ */</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the doclet is run with <code>-a product-name=Foo -a version=1.0</code>, Asciidoctor replaces all <code>{product-name}</code> and <code>{version}</code> attribute references with the given values in the generated HTML output.
+This makes it very simple to inject values into the Javadoc, without changing the source.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="conditional-inclusion"><a class="anchor" href="#conditional-inclusion"></a>Conditional inclusion</h4>
+<div class="paragraph">
+<p>AsciiDoc&#8217;s <a href="http://asciidoc.org/userguide.html#_conditional_inclusion_macros">conditional directives</a> can selectively include content based on the presence or absence of attributes.
+This is useful when the same AsciiDoc source is used in different environments.</p>
+</div>
+<div class="paragraph">
+<p>For example, if you wanted to reuse the same AsciiDoc content in your Javadoc overview page and your web site, but with some differences, you can use attributes to tell Asciidoctor when certain content should be included:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Documentation for the Foo project
+
+ifdef::javadoc[]
+// content that should only appear in Javadoc
+endif::javadoc[]
+
+ifdef::my-website[]
+// content that should only appear on the web site
+endif::my-website[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoclet automatically sets the <code>javadoc</code> attribute when it runs, so Javadoc-only content can easily be selected.
+You can of course define your own attributes as well.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="java-and-ruby-extension-support"><a class="anchor" href="#java-and-ruby-extension-support"></a>Java and Ruby extension support</h3>
+<div class="paragraph">
+<p>Asciidoctor can be extended using Java or Ruby libraries, and Asciidoclet inherits this capability as well.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Java extensions are loaded automatically when they are made available in the classpath, using <a href="http://asciidoctor.org/docs/asciidoctorj/#extension-spi">AsciidoctorJ&#8217;s Extension SPI</a>.</p>
+</li>
+<li>
+<p>Ruby libraries (Gems) are loaded using the <code>-r</code> (or <code>--require</code>) option.</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When using the <code>--require</code> option, we recommend specifying the <code>--gem-path</code> option as well to explicitly set the location of installed gems.
+Doing so ensures that your build remains portable and reproducible.
+You can use the {https://github.com/torquebox/jruby-maven-plugins/blob/master/gem-maven-plugin/src/it/initialize/pom.xml}[gem-maven-plugin] to install gems directly into your build directory.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/asciidoctor/asciidoctor-extensions-lab/">Many extensions</a> are available, but one that is probably most useful for Javadoc authors is <a href="http://asciidoctor.org/docs/asciidoctor-diagram/">Asciidoctor Diagram</a>.
+Let&#8217;s see how it can be used with Asciidoclet.</p>
+</div>
+<div class="sect3">
+<h4 id="embedding-diagrams-in-javadoc"><a class="anchor" href="#embedding-diagrams-in-javadoc"></a>Embedding diagrams in Javadoc</h4>
+<div class="paragraph">
+<p><a href="http://asciidoctor.org/docs/asciidoctor-diagram/">Asciidoctor Diagram</a> is a popular Asciidoctor extension that lets you embed plain text diagram descriptions in your AsciiDoc source, which get rendered to images when Asciidoctor runs.
+This can be extremely valuable in Javadoc for describing the architecture or behavior implemeted by the software.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a Javadoc comment containing a <a href="http://plantuml.sourceforge.net/index.html">PlantUML</a> sequence diagram:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="comment">/**
+ * This class implements the following protocol:
+ *
+ * [plantuml]
+ * ....
+ * Alice -&gt; Bob: Authentication Request
+ * Bob --&gt; Alice: Authentication Response
+ *
+ * Alice -&gt; Bob: Another authentication Request
+ * Alice &lt;-- Bob: another authentication Response
+ * ....
+ */</span>
+<span class="directive">public</span> <span class="type">class</span> <span class="class">AuthServer</span> { ... }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how the diagram above appears in the Javadoc output:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/asciidoclet-diagram-example.png" alt="Example output using Asciidoctor Diagram" width="800" height="600">
+</div>
+<div class="title">Figure 2. Example output using Asciidoctor Diagram</div>
+</div>
+<div class="paragraph">
+<p>Not bad!
+Developers can easily view and update diagrams in plain text, and users reading the Javadoc will see nicely rendered images.</p>
+</div>
+<div class="paragraph">
+<p>Many other types of diagrams are supported, including <a href="http://graphviz.org/">Graphviz</a>, <a href="http://blockdiag.com/">blockdiag</a> and <a href="http://ditaa.sourceforge.net/">ditaa</a>.
+See the <a href="http://asciidoctor.org/docs/asciidoctor-diagram/">documentation for Asciidoctor Diagram</a> for more examples.</p>
+</div>
+<div class="paragraph">
+<p>To enable <a href="http://asciidoctor.org/docs/asciidoctor-diagram/">Asciidoctor Diagram</a> support in Asciidoclet:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the Asciidoctor Diagram gem, <code>asciidoctor-diagram</code>:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">$ gem install asciidoctor-diagram</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Run Asciidoclet with the following doclet options:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">--require asciidoctor-diagram
+--gem-path ${env.GEM_PATH} <i class="conum" data-value="1"></i><b>(1)</b>
+--attribute data-uri <i class="conum" data-value="2"></i><b>(2)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>--gem-path ${env.GEM_PATH}</code> option tells Asciidoctor&#8217;s JRuby runtime where to find gems when using <code>--require</code> (effectively setting the <code>$GEM_PATH</code> environment variable internally).</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>data-uri</code> attribute is required so that the image data is embedded inside the generated HTML files.<span class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</span></td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Admire the beautiful diagrams adorning your Javadoc!</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="thanks"><a class="anchor" href="#thanks"></a>Thanks!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We hope this new version makes your Javadocs even better.
+We appreciate <a href="https://github.com/asciidoctor/asciidoclet/graphs/contributors">everyone who has contributed</a> to Asciidoclet.
+If you have ideas about how to improve on it, ideas and pull requests are always welcome via the <a href="https://github.com/asciidoctor/asciidoclet/">repository on GitHub</a>.</p>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<hr>
+<div class="footnote" id="_footnote_1">
+<a href="#_footnoteref_1">1</a> Without the <code>data-uri</code> attribute, Asciidoctor Diagram writes image files to a location that doesn&#8217;t line up with the generated HTML. This problem is being addressed in Asciidoctor Diagram at the time of writing. Refer to <a href="https://github.com/asciidoctor/asciidoctor-diagram/issues/39">issue #39</a> for details.
+</div>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a>, <a href="/news/tag/asciidoclet/">asciidoclet</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-backward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-backward"></i></a></li><li>1 of 1</li><li class="arrow unavailable"><a href="#"><i class="fa fa-step-forward"></i></a></li><li class="arrow unavailable"><a href="#"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount','UA-38215684-1']);
+_gaq.push(['_trackPageview']);
+(function() {
+ var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+ ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+</body></html>

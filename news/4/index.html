@@ -1,4 +1,1656 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link href="/feed.atom" rel="alternate" title="AsciiDoctor.org News Feed" type="application/atom+xml"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link href="/feed.atom" rel="alternate" title="AsciiDoctor.org News Feed" type="application/atom+xml"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/31/asciidoctor-0-1-3-released/">Asciidoctor 0.1.3 released!</a></h1><h4><em>by</em> <span class="author">Sarah White</span> and <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-31T22:24:04-06:00">Friday, May 31, 2013</time></h4></header><div class="entry-content"><div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>We&#8217;re thrilled to announce the release of <a href="http://rubygems.org/gems/asciidoctor">Asciidoctor 0.1.3</a>.<br>
+Read <a href="/docs/install-toolchain/#installing-or-updating-asciidoctor">Installing or Updating Asciidoctor</a> to learn how to get it setup.</p>
+</div>
+<div class="paragraph">
+<p><em>Asciidoctor is an open source text processor and publishing toolchain written in Ruby for converting AsciiDoc markup into HTML 5, DocBook 4.5 and custom formats.
+Asciidoctor is written in Ruby, but available to any JVM language using the Java integration library.</em></p>
+</div>
+<div class="paragraph">
+<p>This release marks an important milestone.
+It&#8217;s been exactly 6 months since Dan picked up Asciidoctor and started driving it forward.
+The project sure has come a long way since then.
+With this release, we&#8217;ve moved past just implementing AsciiDoc to advancing it, as this post highlights.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="overview"><a class="anchor" href="#overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The focus of this release cycle was on:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AsciiDoc compliance (yes, still)</p>
+</li>
+<li>
+<p>New shorthand syntax and macros</p>
+</li>
+<li>
+<p>Improved styles</p>
+</li>
+<li>
+<p>Markdown compatibility</p>
+</li>
+<li>
+<p>Bug fixes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The valuable feedback we&#8217;ve received has helped bring Asciidoctor to 99.5% compliance with the AsciiDoc syntax and key parts of the Markdown syntax.
+The improvements have given Asciidoctor a <strong>10% boost in speed</strong> over the previous release, nearly <strong>40x as fast</strong> as the native AsciiDoc processor.</p>
+</div>
+<div class="paragraph">
+<p>This document covers most of the new and noteworthy fixes and enhancements.
+Here&#8217;s the TL;DR version if you&#8217;re in a hurry.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>File encoding and Windows path bugs fixed!</p>
+</li>
+<li>
+<p>Haml/Slim/Jade-inspired syntax for defining the id and role for block content</p>
+</li>
+<li>
+<p>Shorthand syntax to set the table format using the first position of the block delimiter</p>
+</li>
+<li>
+<p>Alternate "air quotes" delimiters for defining block quotations</p>
+</li>
+<li>
+<p>Support for Markdown blockquotes and headings (to join fenced code blocks)</p>
+</li>
+<li>
+<p>Font-based admonition icons powered by <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a> and CSS-based callout icons</p>
+</li>
+<li>
+<p>Linked section titles as floating anchors or linked title text</p>
+</li>
+<li>
+<p>Target window and role (i.e., CSS class) attributes for links</p>
+</li>
+<li>
+<p>Option to use <a href="https://code.google.com/p/google-code-prettify" target="_blank">google-code-prettify</a> to highlight source code blocks</p>
+</li>
+<li>
+<p>Attributes resolved in target of include macro</p>
+</li>
+<li>
+<p>Control over block indentation of included content</p>
+</li>
+<li>
+<p>Sidebar placement for table of contents (<code>toc2</code>)</p>
+</li>
+<li>
+<p>Macros for keyboard shortcuts, menu selections and UI buttons (experimental)</p>
+</li>
+<li>
+<p>Table of contents honors numbered setting for section titles</p>
+</li>
+<li>
+<p>Inline doctype for rendering simple, unstructured content</p>
+</li>
+<li>
+<p>Shorthand syntax for passing attributes to the Asciidoctor API</p>
+</li>
+<li>
+<p>General style improvements in default stylesheet</p>
+</li>
+<li>
+<p>Updated asciidoc.conf compatibility configuration</p>
+</li>
+<li>
+<p>1,000+ tests in the test suite</p>
+</li>
+<li>
+<p>Over <a href="https://github.com/asciidoctor/asciidoctor/issues?milestone=4&amp;state=closed">40 issues resolved</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Read on to learn about these great improvements!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="write-faster-with-new-shorthand-syntax"><a class="anchor" href="#write-faster-with-new-shorthand-syntax"></a>Write faster with new shorthand syntax!</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="shorthand-notation-for-setting-code-id-code-and-code-role-code-block-attributes"><a class="anchor" href="#shorthand-notation-for-setting-code-id-code-and-code-role-code-block-attributes"></a>Shorthand notation for setting <code>id</code> and <code>role</code> block attributes</h3>
+<div class="paragraph">
+<p>In the spirit of Haml, Jade, and Slim, Asciidoctor allows you to assign the <code>id</code> and <code>role</code> attributes on a block using attribute shortcuts.
+This shorthand syntax is useful for creating presentations with AsciiDoc, where lots of style classes in the markup are needed.</p>
+</div>
+<div class="paragraph">
+<p>Consider the following AsciiDoc markup:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[[goals]]
+[role=&quot;incremental&quot;]
+* Goal 1
+* Goal 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In Asciidoctor, this can now be written as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[#goals.incremental]
+* Goal 1
+* Goal 2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>#</code> prefix is recognized as shorthand for <code>id=</code>, and the <code>.</code> prefix is recognized as shorthand for <code>role=</code>.</p>
+</div>
+<div class="paragraph">
+<p>Both source snippets produce the following HTML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">goals</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ulist incremental</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;ul&gt;</span>
+<span class="tag">&lt;li&gt;</span><span class="tag">&lt;p&gt;</span>Goal 1<span class="tag">&lt;/p&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;li&gt;</span><span class="tag">&lt;p&gt;</span>Goal 2<span class="tag">&lt;/p&gt;</span><span class="tag">&lt;/li&gt;</span>
+<span class="tag">&lt;/ul&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This shorthand notation is part of a block&#8217;s style.
+Thus, it leverages the first attribute position to its fullest extent.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s say you want to create a blockquote from an open block and assign it an id and role.
+You prepend the style <code>quote</code> to the <code>#</code> (<code>id</code>) and <code>.</code> (<code>role</code>) in the first attribute position, as this example shows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[quote#think.big, Donald Trump]
+____
+As long as you're going to be thinking anyway, think big.
+____</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That produces the following HTML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">think</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">quoteblock big</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;blockquote&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;p&gt;</span>As long as your going to be thinking anyway, think big.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/blockquote&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">attribution</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="entity">&amp;#8212;</span> Donald Trump
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here are some other things to know about this notation:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>To specifiy multiple roles using the shorthand syntax, separate them by dots</p>
+<div class="paragraph">
+<p>For example, <code>[.summary.incremental]</code> emits the HTML attribute <code>class="summary incremental"</code>.</p>
+</div>
+</li>
+<li>
+<p>The order of id and role values in the shorthand syntax does not matter</p>
+<div class="paragraph">
+<p>For example, <code>[#goals.incremental]</code> and <code>[.incremental#goals]</code> produce the same output.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#block-metadata">block attributes</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats"><a class="anchor" href="#shorthand-notation-for-setting-code-csv-code-and-code-dsv-code-table-formats"></a>Shorthand notation for setting <code>csv</code> and <code>dsv</code> table formats</h3>
+<div class="paragraph">
+<p>The first position of the table block delimiter (i.e., <code>|===</code>) can be replaced by the data delimiter to set the table format.</p>
+</div>
+<div class="paragraph">
+<p>Instead of specifying the <code>csv</code> format using a block attribute, as shown here:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[format=&quot;csv&quot;]
+|===
+a,b,c
+|===</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>you can simply replace the leading pipe (<code>|</code>) with a comma (<code>,</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">,===
+a,b,c
+,===</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In the same way, the <code>dsv</code> format can be specified by replacing the leading pipe (<code>|</code>) with a colon (<code>:</code>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:===
+a:b:c
+:===</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, you only need the block attribute list for setting any additional options.</p>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#a-new-perspective-on-tables">tables</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="alternate-blockquote-syntax"><a class="anchor" href="#alternate-blockquote-syntax"></a>Alternate blockquote syntax</h3>
+<div class="paragraph">
+<p>Asciidoctor 0.1.3 brings three new syntax variations for marking up blockquotes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Quoted paragraph</p>
+</li>
+<li>
+<p>Air quotes</p>
+</li>
+<li>
+<p>Markdown-style</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a traditional AsciiDoc quote block with three parts (quoted text, attribution and source):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[quote, Thomas Jefferson, Papers of Thomas Jefferson: Volume 11]
+____
+I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.
+____</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here are the three new alternatives.</p>
+</div>
+<div class="sect3">
+<h4 id="quoted-paragraph-blockquote"><a class="anchor" href="#quoted-paragraph-blockquote"></a>Quoted paragraph blockquote</h4>
+<div class="paragraph">
+<p>You can turn a single paragraph into a blockquote by:</p>
+</div>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>surrounding it with double quotes</p>
+</li>
+<li>
+<p>adding an optional attribution (prefixed with two dashes) below the quoted text.</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.&quot;
+-- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the result of the abbreviated blockquote syntax:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+I hold it that a little rebellion now and then is a good thing,
+and as necessary in the political world as storms in the physical.
+</blockquote>
+<div class="attribution">
+&#8212; Thomas Jefferson<br>
+<cite>Papers of Thomas Jefferson: Volume 11</cite>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="nixon-inspired-air-quotes"><a class="anchor" href="#nixon-inspired-air-quotes"></a>Nixon-inspired &#8220;Air quotes&#8221;</h4>
+<div class="paragraph">
+<p>As a tip of the hat to Dick, Asciidoctor recognizes text between "air quotes" as a quote block.
+Air quotes are the best thing since fenced code blocks.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[, Richard M. Nixon]
+&quot;&quot;
+When the President does it, that means that it's not illegal.
+&quot;&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://en.wikipedia.org/wiki/Air_quotes" target="_blank">Air quotes\</a> are two double quotes on each line, emulating the gesture of making quote marks with two fingers on each hand.
+This gesture is reminiscinet of the <a href="http://www.flickr.com/photos/lee20sk/3942032514" target="_blank">V for Victory gesture</a> made famous by Richard Nixon.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="markdown-style-blockquotes"><a class="anchor" href="#markdown-style-blockquotes"></a>Markdown-style blockquotes</h4>
+<div class="paragraph">
+<p>Asciidoctor even supports Markdown-style blockquotes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&gt; I hold it that a little rebellion now and then is a good thing,
+&gt; and as necessary in the political world as storms in the physical.
+&gt; -- Thomas Jefferson, Papers of Thomas Jefferson: Volume 11</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This markup renders the same as the example above.</p>
+</div>
+<div class="paragraph">
+<p>Like Markdown, Asciidoctor supports block content inside the blockquote, including nested blockquotes:</p>
+</div>
+<div class="listingblock">
+<div class="title">Markdown-style blockquote containing block content</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="markdown">&gt; &gt; What's new?
+&gt;
+&gt; I've got Markdown in my AsciiDoc!
+&gt;
+&gt; &gt; Like what?
+&gt;
+&gt; * Blockquotes
+&gt; * Headings
+&gt; * Fenced code blocks
+&gt;
+&gt; &gt; Is there more?
+&gt;
+&gt; Yep. AsciiDoc and Markdown share a lot of common syntax already.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how this conversation renders:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>What&#8217;s new?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>I&#8217;ve got Markdown in my AsciiDoc!</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Like what?</p>
+</div>
+</blockquote>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blockquotes</p>
+</li>
+<li>
+<p>Headings</p>
+</li>
+<li>
+<p>Fenced code blocks</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Is there more?</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Yep. AsciiDoc and Markdown share a lot of common syntax already. Just try it.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#building-blocks-in-asciidoc">blocks</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="target-window-and-role-attributes-for-links"><a class="anchor" href="#target-window-and-role-attributes-for-links"></a>Target window and role attributes for links</h3>
+<div class="paragraph">
+<p>You often need to set the target attribute on a link element (<code>&lt;a&gt;</code>) so the link opens in a new window (e.g., <code>&lt;a href="&#8230;&#8203;" target="_blank"&gt;</code>).</p>
+</div>
+<div class="paragraph">
+<p>This type of configuration is normally specified using attributes.
+However, AsciiDoc does not parse attributes in the link macro by default.
+In Asciidoctor, you can now enable parsing of link macro attributes by setting the <code>linkattrs</code> document attribute in the header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc"> :linkattrs:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then specify the name of the target window using the <code>window</code> attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google, window=&quot;_blank&quot;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since <code>_blank</code> is the most common window name, we&#8217;ve introduced shorthand for it.
+Just end the link text with a caret (<code>^</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google^]</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+If you use the caret syntax more than once in a single paragraph, you may need to escape the first occurrence with a backslash.
+If the link text contains a comma, then you need to surround the link text in double quotes.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Since Asciidoctor is parsing the attributes, that opens the door for adding a role (i.e., CSS class) to the link:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://google.com[Google^, role=&quot;external&quot;]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Have fun styling your links!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="font-awesome-icons-fancy-section-anchors-and-other-style-options"><a class="anchor" href="#font-awesome-icons-fancy-section-anchors-and-other-style-options"></a>Font awesome icons, fancy section anchors and other style options</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You no longer have to carry icons around with you where ever you go!
+Asciidoctor 0.1.3 introduces Font-based admonition and CSS-based callout icons.</p>
+</div>
+<div class="sect2">
+<h3 id="admonition-icons-powered-by-font-awesome"><a class="anchor" href="#admonition-icons-powered-by-font-awesome"></a>Admonition icons powered by Font Awesome</h3>
+<div class="paragraph">
+<p>Icons can make your document look sharp, but they are a pain to manage.
+That is, until now!
+Asciidoctor can "draw" icons using <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a> and CSS.</p>
+</div>
+<div class="paragraph">
+<p>To use this feature, just set the value of the <code>icons</code> document attribute to <code>font</code>.
+Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example, starting with the AsciiDoc source:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:icons: font
+
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome!</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the HTML it produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">admonitionblock note</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;table&gt;</span>
+<span class="tag">&lt;tr&gt;</span>
+<span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;i</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">icon-note</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">title</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Note</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/i&gt;</span>
+<span class="tag">&lt;/td&gt;</span>
+<span class="tag">&lt;td</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
+<span class="tag">&lt;/td&gt;</span>
+<span class="tag">&lt;/tr&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And here&#8217;s a preview of how it renders:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asciidoctor now supports font-based admonition icons, powered by Font Awesome!
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor adds a reference to the Font Awesome stylesheet, served from a CDN, to the document header.
+The stylesheet then imports the font from the same server.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;link</span> <span class="attribute-name">rel</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">stylesheet</span><span class="delimiter">&quot;</span></span>
+  <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The default stylesheet (or any stylesheet produced by the <a href="/docs/produce-custom-themes-using-asciidoctor-stylesheet-factory/">Asciidoctor stylesheet factory</a>) is required for this feature to work.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#admonitions">admonition blocks</a> | <a href="/docs/render-documents/styles-and-attributes">Asciidoctor stylesheets</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="css-based-callout-icons"><a class="anchor" href="#css-based-callout-icons"></a>CSS-based callout icons</h3>
+<div class="paragraph">
+<p>The font icons setting also enables callout icons drawn using CSS.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:icons: font <i class="conum" data-value="1"></i><b>(1)</b>
+
+NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awesome! <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Activates font-based icons in the HTML5 backend</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Admonition block that uses a font-based icon</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Kick that icon directory to the curb.
+You&#8217;re untethered!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="section-titles-as-links-and-styled-with-floating-icons"><a class="anchor" href="#section-titles-as-links-and-styled-with-floating-icons"></a>Section titles as links and styled with floating icons</h3>
+<div class="paragraph">
+<p>Two document attributes are available to control section linking:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><code>sectanchors</code></dt>
+<dd>
+<p>When this attribute is enabled on a document, an anchor (empty link) is added before the section title.
+The default Asciidoctor stylesheet renders the anchor as a section entity (<code>&sect;</code>) that floats to the left of the section title.</p>
+</dd>
+<dt class="hdlist1"><code>sectlinks</code></dt>
+<dd>
+<p>When this attribute is enabled on a document, the section titles are turned into links.
+The default Asciidoctor stylesheet displays linked section titles in the same color as normal section titles.</p>
+</dd>
+</dl>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Section title anchors depend on the default Asciidoctor stylesheet to render properly.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#section-titles">section titles</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="lead-paragraph-style"><a class="anchor" href="#lead-paragraph-style"></a>Lead paragraph style</h3>
+<div class="paragraph">
+<p>Simply apply <code>role="lead"</code> (or <code>.lead</code>) above any paragraph, and it will appear in the style of a lead paragraph (i.e., larger font).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cleaner-quote-blocks-and-verses"><a class="anchor" href="#cleaner-quote-blocks-and-verses"></a>Cleaner quote blocks and verses</h3>
+<div class="paragraph">
+<p>If a quote or verse block does not have an attribution, the empty attribution div is no longer displayed in the HTML5 output.
+This corrects any output styling inconsistencies caused by the empty div.</p>
+</div>
+<div class="listingblock">
+<div class="title">AsciiDoc quote block syntax without attribution</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[quote]
+____
+Words of wisdom.
+____</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">HTML output using Asciidoctor 0.1.2 and older versions</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">quoteblock</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;blockquote&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;p&gt;</span>Words of wisdom.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/blockquote&gt;</span>
+
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">attribution</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">HTML output using Asciidoctor 0.1.3</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">quoteblock</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;blockquote&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;p&gt;</span>Words of wisdom.<span class="tag">&lt;/p&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/blockquote&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The default stylesheet has been updated to follow suit.
+Additionally, verse blocks have been given a style makeover, so they should appear consistent with the default look and feel.</p>
+</div>
+<div class="paragraph">
+<p>The stylesheet has also been updated with some new styles for the experimental user input macros.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="return-of-the-mac-ros-making-it-clear-what-readers-are-supposed-to-press"><a class="anchor" href="#return-of-the-mac-ros-making-it-clear-what-readers-are-supposed-to-press"></a>Return of the Mac(ros): Making it clear what readers are supposed to press</h2>
+<div class="sectionbody">
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+You <strong>must</strong> set the <code>experimental</code> attribute to enable these macros.
+</td>
+</tr>
+</table>
+</div>
+<div class="sect2">
+<h3 id="keyboard-shortcuts"><a class="anchor" href="#keyboard-shortcuts"></a>Keyboard shortcuts</h3>
+<div class="paragraph">
+<p>Asciidoctor now recognizes a macro for creating keyboard shortcuts following the syntax <code>kbd:[key(+key)*]</code>.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[options=&quot;header&quot;, caption=&quot;&quot;]
+.Common browser keyboard shortcuts
+|===
+|Shortcut |Purpose
+
+|kbd:[F11]
+|Toggle fullscreen
+
+|kbd:[Ctrl+T]
+|Open a new tab
+
+|kbd:[Ctrl+Shift+N]
+|New incognito window
+
+|kbd:[Ctrl + +]
+|Increase zoom
+|===</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>renders as:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Common browser keyboard shortcuts</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Shortcut</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><kbd>F11</kbd></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Toggle fullscreen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>T</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open a new tab</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">New incognito window</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="keyseq"><kbd>Ctrl</kbd>+<kbd>+</kbd></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Increase zoom</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You no longer have to struggle to explain to users what combination of keys they are supposed to press.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="menu-selections"><a class="anchor" href="#menu-selections"></a>Menu selections</h3>
+<div class="paragraph">
+<p>Trying to explain to someone how to select a menu item can be a pain.
+With the new <code>menu</code> macro, the symbols do the work.</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">To save the file, select menu:File[Save].
+
+Select menu:View[Zoom &gt; Reset] to reset the zoom level to the default setting.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The instructions in the example appove appear as:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>To save the file, select <span class="menuseq"><span class="menu">File</span>&#160;&#9656; <span class="menuitem">Save</span></span>.</p>
+</div>
+<div class="paragraph">
+<p>Select <span class="menuseq"><span class="menu">View</span>&#160;&#9656; <span class="submenu">Zoom</span>&#160;&#9656; <span class="menuitem">Reset</span></span> to reset the zoom level to the default setting.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="ui-buttons"><a class="anchor" href="#ui-buttons"></a>UI buttons</h3>
+<div class="paragraph">
+<p>It can be equally difficult to communicate to the reader that they need to press a button.
+They can&#8217;t tell if you are saying &#8220;OK&#8221; or they are supposed to look for a button labeled "OK".
+It&#8217;s all about getting the semantics right.
+The new <code>btn</code> macro to the rescue!</p>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Press the btn:[OK] button when you are finished.
+
+Select a file in the file navigator and click btn:[Open].</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the result:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>Press the <b class="button">OK</b> button when you are finished.</p>
+</div>
+<div class="paragraph">
+<p>Select a file in the file navigator and click <b class="button">Open</b>.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>We are looking for feedback on these macros before setting them in stone.
+If you have suggestions, we want to hear from you!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="a-better-programmer-s-best-friend"><a class="anchor" href="#a-better-programmer-s-best-friend"></a>A better programmer&#8217;s best friend</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>AsciiDoc is a programmer&#8217;s best friend because it keeps your source code close to the documentation and makes inserting source code easy.
+Now there are even more options for pulling source code snippets into your document and highlighting them.</p>
+</div>
+<div class="sect2">
+<h3 id="normalizing-the-block-indentation-of-included-source-code"><a class="anchor" href="#normalizing-the-block-indentation-of-included-source-code"></a>Normalizing the block indentation of included source code</h3>
+<div class="paragraph">
+<p>Source code snippets from external files are often padded with leading block indent.
+This leading block indent is relevant in its original context.
+However, once inside the documentation, this leading block indent is no longer needed.</p>
+</div>
+<div class="paragraph">
+<p>The attribute <code>indent</code> allows the leading block indent to be stripped and, optionally, a new block indent to be inserted for blocks with verbatim content (listing, literal, source, verse, etc.).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When <code>indent</code> is 0, the leading block indent is stripped (tabs are replaced with 4 spaces).</p>
+</li>
+<li>
+<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped (tabs are replaced with 4 spaces), then a block is indented by the number of columns equal to this value.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>For example, this AsciiDoc source:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source,ruby,indent=0]
+----
+    def names
+      @name.split ' '
+    end
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="keyword">def</span> <span class="function">names</span>
+  <span class="instance-variable">@name</span>.split <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>
+<span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll need this feature when including content:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source,ruby,indent=0]
+----
+include::lib/document.rb[lines=5..10]
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This AsciiDoc source:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[indent=2]
+----
+    def names
+      @name.split ' '
+    end
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">  <span class="keyword">def</span> <span class="function">names</span>
+    <span class="instance-variable">@name</span>.split <span class="string"><span class="delimiter">'</span><span class="content"> </span><span class="delimiter">'</span></span>
+  <span class="keyword">end</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The relative indentation between the lines of source code <strong>is not affected</strong>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="including-files-relative-to-a-common-source-directory"><a class="anchor" href="#including-files-relative-to-a-common-source-directory"></a>Including files relative to a common source directory</h3>
+<div class="paragraph">
+<p>Asciidoctor now expands attributes in the target of the include macro.
+That means you only have to type the unique part of the path when linking to a source file.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:sourcedir: src/main/java
+
+[source,java]
+----
+include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The target of the include macro resolves to:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">src/main/java/org/asciidoctor/Asciidoctor.java</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-writers-guide/#listing-and-source-code-blocks">include macro and blocks</a></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-source-highlighter-google-code-prettify"><a class="anchor" href="#new-source-highlighter-google-code-prettify"></a>New source highlighter: google-code-prettify</h3>
+<div class="paragraph">
+<p>Source code snippets can now be highlighted with the <a href="https://code.google.com/p/google-code-prettify">google-code-prettify library</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use prettify, enable it by setting the <code>source-highlighter</code> attribute in the document header (or pass it as an argument):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:source-highlighter: prettify</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor will link to the prettify JavaScript library and stylesheet and emit the HTML prettify requires to highlight the source code.</p>
+</div>
+<div class="paragraph">
+<p>Consider this source code block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source,java]
+----
+public class Person {
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+}
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor produces the following HTML:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">listingblock</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;div</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">content monospaced</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;pre</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">prettyprint java language-java</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;code&gt;</span>public class Person {
+  private String name;
+
+  public String getName() {
+    return name;
+  }
+}<span class="tag">&lt;/code&gt;</span><span class="tag">&lt;/pre&gt;</span>
+<span class="tag">&lt;/div&gt;</span>
+<span class="tag">&lt;/div&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The key addition is the <code>prettyprint</code> class on the <code>&lt;pre&gt;</code> tag.</p>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/docs/asciidoc-quick-reference/#source-code">enabling source code highlighters</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="documents-with-more-depth-a-bigger-picture-and-mini-content"><a class="anchor" href="#documents-with-more-depth-a-bigger-picture-and-mini-content"></a>Documents with more depth, a bigger picture and mini content</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="level-5-section-title-added"><a class="anchor" href="#level-5-section-title-added"></a>Level 5 section title added</h3>
+<div class="paragraph">
+<p>Asciidoctor 0.1.3 includes syntax for the level 5 section title.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">===== Level 5 Section Title</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The level 5 title maps to the <code>&lt;h6&gt;</code> tag in the <code>html5</code> backend.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="part-headings-in-html-backend"><a class="anchor" href="#part-headings-in-html-backend"></a>Part headings in HTML backend</h3>
+<div class="paragraph">
+<p>Previously, part headings (level 0 sections in a book doctype document) weren&#8217;t distinguishable from other <code>&lt;h1&gt;</code> tags.
+In 0.1.3, these <code>&lt;h1&gt;</code> tags get the <code>sect0</code> class name to be consistent with the class names assigned to the other section levels.
+This addition simplifies the effort of adding custom styles to the part headings.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="table-of-contents-layout-and-style-options"><a class="anchor" href="#table-of-contents-layout-and-style-options"></a>Table of contents layout and style options</h3>
+<div class="paragraph">
+<p>Asciidoctor 0.1.3 includes numerous table of contents (TOC) style changes and options.</p>
+</div>
+<div class="sect3">
+<h4 id="more-table-of-contents-position-options"><a class="anchor" href="#more-table-of-contents-position-options"></a>More table of contents position options</h4>
+<div class="paragraph">
+<p>The AsciiDoc <code>toc2</code> layout is now included in the Asciidoctor default stylesheet as the <code>toc2</code> class.
+To use the alternate TOC, specify the document attribute <code>toc2</code> in the header.</p>
+</div>
+<div class="paragraph">
+<p>The table of contents can also be inserted directly beneath a document&#8217;s preamble.
+To place the TOC under the preamble, assign the new value, <code>preamble</code> to the <code>toc-placement</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>The TOC macro requires the <code>toc</code> attribute to be set.
+To disable the built-in TOC, unassign the <code>toc-placement</code> attribute (<code>toc-placement!</code>)</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="updated-level-0-section-title-styles"><a class="anchor" href="#updated-level-0-section-title-styles"></a>Updated level 0 section title styles</h4>
+<div class="paragraph">
+<p>Level 0 section titles (only applicable to book doctype) are now organized in their own level within the table of contents (in the HTML backend).
+A CSS class has been added to each outline level (i.e., <code>&lt;ol&gt;</code> element) that cooresponds to the level of the sections it contains (e.g., <code>sect1level</code>)
+The addition of these CSS classes make it easier to style the TOC.</p>
+</div>
+<div class="paragraph">
+<p>In the default stylesheet, the following style changes have been made to the TOC:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Level 0 and level 1 section titles are aligned vertically</p>
+</li>
+<li>
+<p>Extra spacing has been added between level 0 and level 1 section titles to make level 0 section titles stand out</p>
+</li>
+<li>
+<p>Level 0 section titles (i.e., parts) appear in italic text</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Also, the <code>type="none"</code> attribute has been added to the <code>&lt;ol&gt;</code> elements to provide a hint to the browser not to add a number in front of each item.
+This change satisfies the requirement that the TOC should "just work" without a stylesheet.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text"><a class="anchor" href="#introducing-the-code-inline-code-doctype-for-inline-formatting-on-input-text"></a>Introducing the <code>inline</code> doctype for inline formatting on input text</h3>
+<div class="paragraph">
+<p>There may be cases when you only want to apply inline AsciiDoc formatting to input text without wrapping it in a block element.
+For example, in the <a href="https://github.com/asciidoctor/asciidoclet/blob/master/README.asciidoc">Asciidoclet project</a> (AsciiDoc in Javadoc), only the inline formatting is needed for the text in Javadoc tags.</p>
+</div>
+<div class="paragraph">
+<p>The rules for the inline doctype are as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Only a single paragraph is read from the AsciiDoc source</p>
+</li>
+<li>
+<p>Inline formatting is applied</p>
+</li>
+<li>
+<p>The output is not wrapped in the normal paragraph tags</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Given the following input:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Processing it with the options <code>doctype=inline</code> and <code>backend=html5</code> produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;a</span> <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/a&gt;</span> is a <span class="tag">&lt;em&gt;</span>lightweight<span class="tag">&lt;/em&gt;</span> markup language<span class="entity">&amp;#8230;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Asciidoctor processor is now able to cover the full range of output, from unstructured (inline) text to a full, standalone document!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="markdown-in-your-asciidoc"><a class="anchor" href="#markdown-in-your-asciidoc"></a>Markdown in your AsciiDoc?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>That&#8217;s right!
+Asciidoctor supports three key elements from the Markdown syntax (where AsciiDoc and Markdown don&#8217;t already overlap).</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Headings</p>
+</li>
+<li>
+<p>Blockquotes</p>
+</li>
+<li>
+<p>Fenced code blocks</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In addition to the equal marker (<code>=</code>) used for defining single-line section titles, Asciidoctor recognizes the hash symbol (<code>#</code>) from Markdown.
+That means the outline of a Markdown document will render just fine as an AsciiDoc document.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="markdown"># Document Title
+
+## Section One
+
+content</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The Markdown-style blockquotes where previously described in <a href="#alternate-blockquote-syntax">Alternate blockquote syntax</a>.</p>
+</div>
+<div class="paragraph">
+<p>Markdown-style headings and blockquotes join support for fenced code blocks (from GitHub-flavored Markdown), which was added in a previous release.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="markdown">```ruby
+require 'asciidoctor'
+
+puts Asciidoctor.render(&quot;http://asciidoc.org[AsciiDoc] is a _lightweight_ markup language...&quot;)
+```</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We hope these additions help to ease and encourage migration from Markdown to AsciiDoc.
+To alleviate concerns about fragmentation from AsciiDoc, we maintain an <a href="https://github.com/asciidoctor/asciidoctor/blob/master/compat/asciidoc.conf">AsciiDoc configuration file</a> in the project that brings these same enhancements to AsciiDoc when used.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="important-bug-fixes"><a class="anchor" href="#important-bug-fixes"></a>Important bug fixes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="the-windows-path-bug-is-fixed"><a class="anchor" href="#the-windows-path-bug-is-fixed"></a>The Windows path bug is fixed</h3>
+<div class="paragraph">
+<p>Asciidoctor 0.1.3 properly detects the Windows environment and converts all backslashes to forward slashes.
+This eliminates file path resolution errors in Windows.
+Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/330">330</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed"><a class="anchor" href="#file-encoding-errors-when-using-ruby-1-9-and-above-is-fixed"></a>File encoding errors when using Ruby 1.9 and above is fixed</h3>
+<div class="paragraph">
+<p>Asciidoctor was not properly setting the encoding on data read from files when the default system encoding was not UTF-8.
+To correct this issue, any data that comes into Asciidoctor 0.1.3 is force encoded to UTF-8 on Ruby 1.9 and above.
+Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/308">308</a>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="additional-bug-fixes"><a class="anchor" href="#additional-bug-fixes"></a>Additional bug fixes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The Asciidoctor CLI no longer splits attribute key/value pairs on the first equal sign.
+Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/291">291</a>.</p>
+</li>
+<li>
+<p>Asciidoctor no longer crashes if <code>to_file</code> and <code>base_dir</code> are both set.
+Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/335">335</a>.</p>
+</li>
+<li>
+<p>DocBook renderer works if the author is defined using document attributes.
+Resolves issue <a href="https://github.com/asciidoctor/asciidoctor/issues/301">301</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="compliance-fixes"><a class="anchor" href="#compliance-fixes"></a>Compliance fixes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="code-doctitle-code-attribute"><a class="anchor" href="#code-doctitle-code-attribute"></a><code>doctitle</code> attribute</h3>
+<div class="paragraph">
+<p>The <code>doctitle</code> attribute can be used anywhere in a document.
+It&#8217;s value is identical to the value returned by <code>Document#doctitle</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">AsciiDoc <code>doctitle</code> syntax</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Document Title
+
+The document title is {doctitle}.</code></pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="title"><code>doctitle</code> output result</div>
+<div class="content">
+<pre class="nowrap">The document title is Document Title.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend"><a class="anchor" href="#horizontal-layout-for-labeled-lists-added-to-docbook-4-5-backend"></a>Horizontal layout for labeled lists added to DocBook 4.5 backend</h3>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[horizontal]
+first term:: definition
++
+more detail
+
+second term:: definition</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Renders:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;informaltable</span> <span class="attribute-name">tabstyle</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">horizontal</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">frame</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">none</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">colsep</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">rowsep</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;tgroup</span> <span class="attribute-name">cols</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">2</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;colspec</span> <span class="attribute-name">colwidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">15*</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;colspec</span> <span class="attribute-name">colwidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">85*</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+<span class="tag">&lt;tbody</span> <span class="attribute-name">valign</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">top</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+<span class="tag">&lt;row&gt;</span>
+<span class="tag">&lt;entry&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>first term<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;/entry&gt;</span>
+<span class="tag">&lt;entry&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>definition<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>more detail<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;/entry&gt;</span>
+<span class="tag">&lt;/row&gt;</span>
+<span class="tag">&lt;row&gt;</span>
+<span class="tag">&lt;entry&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>second term<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;/entry&gt;</span>
+<span class="tag">&lt;entry&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>definition<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;/entry&gt;</span>
+<span class="tag">&lt;/row&gt;</span>
+<span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/tgroup&gt;</span>
+<span class="tag">&lt;/informaltable&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="consecutive-terms-in-labeled-list-share-same-code-varlistentry-code"><a class="anchor" href="#consecutive-terms-in-labeled-list-share-same-code-varlistentry-code"></a>Consecutive terms in labeled list share same <code>varlistentry</code></h3>
+<div class="paragraph">
+<p>Consecutive terms in a labeled list share the same <code>varlistentry</code> in the <code>docbook</code> backend.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">term::
+alt term::
+definition</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Produces:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;variablelist&gt;</span>
+<span class="tag">&lt;varlistentry&gt;</span>
+<span class="tag">&lt;term&gt;</span>
+term
+<span class="tag">&lt;/term&gt;</span>
+<span class="tag">&lt;term&gt;</span>
+alt term
+<span class="tag">&lt;/term&gt;</span>
+<span class="tag">&lt;listitem&gt;</span>
+<span class="tag">&lt;simpara&gt;</span>
+definition
+<span class="tag">&lt;/simpara&gt;</span>
+<span class="tag">&lt;/listitem&gt;</span>
+<span class="tag">&lt;/varlistentry&gt;</span>
+<span class="tag">&lt;/variablelist&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="special-sections-and-styles"><a class="anchor" href="#special-sections-and-styles"></a>Special sections and styles</h3>
+<div class="paragraph">
+<p>The <code>partintro</code> and <code>abstract</code> styles can be used on open blocks and are handled correctly by the renderer.</p>
+</div>
+<div class="paragraph">
+<p>Sections assigned the <code>glossary</code> and <code>appendix</code> styles are now handled correctly in Asciidoctor.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="assign-document-variables-inline"><a class="anchor" href="#assign-document-variables-inline"></a>Assign document variables inline</h3>
+<div class="paragraph">
+<p>Document variables can be assigned using the following syntax:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">{set:&lt;attrname&gt;[!][:&lt;value&gt;]}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">{set:sourcedir:src/main/java}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It&#8217;s effectively the same as:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:sourcedir: src/main/java</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This is important for being able to assign document attributes in places where attribute entry lines are not normally processed, such as in a table cell.</p>
+</div>
+<div class="paragraph">
+<p>An example of where this might be used is documented in the <a href="https://github.com/asciidoctor/asciidoctor/wiki/How-to-set-the-background-color-of-a-table-cell">how to set the background color of a table cell</a> tip.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="block-title-not-allowed-above-document-title"><a class="anchor" href="#block-title-not-allowed-above-document-title"></a>Block title not allowed above document title</h3>
+<div class="paragraph">
+<p>Previously, a block title line above a level 0 heading was being processed and passed on to the first content block.
+AsciiDoc sees the block title as the first line of content and does not create a header as a result.
+Asciidoctor&#8217;s behavior is now consistent with AsciiDoc.</p>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.Misplaced block title
+= Document Title
+Author Name</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="irc-scheme-rendered-as-link"><a class="anchor" href="#irc-scheme-rendered-as-link"></a>irc: scheme rendered as link</h3>
+<div class="paragraph">
+<p>The following input is now rendered as a link.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">irc://irc.freenode.org/#asciidoctor</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cli-and-api-updates"><a class="anchor" href="#cli-and-api-updates"></a>CLI and API updates</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="specify-any-backend-with-the-asciidoctor-cli"><a class="anchor" href="#specify-any-backend-with-the-asciidoctor-cli"></a>Specify any backend with the Asciidoctor CLI</h3>
+<div class="paragraph">
+<p>Previously, the Asciidoctor CLI restricted the user from specifying a backend other than <code>html5</code> or <code>docbook45</code>.
+Now, any non-empty value can be specified as the backend.
+This is critical when you want to use a <a href="https://github.com/asciidoctor/asciidoctor-backends">custom backend</a>, such as deck.js or dzslides.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api"><a class="anchor" href="#set-safe-mode-with-a-string-symbol-or-integer-in-the-asciidoctor-api"></a>Set safe mode with a string, symbol or integer in the Asciidoctor API</h3>
+<div class="paragraph">
+<p>The safe level option now accepts a symbol, string or integer value to lookup the safe level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">server</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>can now be written as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:server</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api"><a class="anchor" href="#use-a-string-or-symbol-to-set-the-backend-in-the-asciidoctor-api"></a>Use a string or symbol to set the backend in the Asciidoctor API</h3>
+<div class="paragraph">
+<p>The backend option now accepts a symbol or string value.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>can now be written as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:backend</span> =&gt; <span class="symbol">:docbook</span>)</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="pass-attributes-as-a-string-or-array-to-the-asciidoctor-api"><a class="anchor" href="#pass-attributes-as-a-string-or-array-to-the-asciidoctor-api"></a>Pass attributes as a string or array to the Asciidoctor API</h3>
+<div class="paragraph">
+<p>Previously, attributes were passed as a Hash to the Asciidoctor API methods.
+At times, this made the argument list feel heavy.
+These methods now accept the attributes as a string or array.</p>
+</div>
+<div class="paragraph">
+<p>For instance, consider a user wants to pass the attribute that enables the table of contents (<code>toc</code>) and auto-numbering (<code>numbered</code>).
+Previously, that required:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:attributes</span> =&gt; {<span class="string"><span class="delimiter">'</span><span class="content">toc</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">numbered</span><span class="delimiter">'</span></span> =&gt; <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>})</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since both attributes are simple flags, the invocation can be simplified as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:attributes</span> =&gt; [<span class="string"><span class="delimiter">'</span><span class="content">toc</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">numbered</span><span class="delimiter">'</span></span>])</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It can be further simplified using the array-from-string shorthand in Ruby:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">toc numbered</span><span class="delimiter">)</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That leads us into attributes specified as a string:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">toc numbered</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That&#8217;s quite an improvement over the original call.</p>
+</div>
+<div class="paragraph">
+<p>If the attribute requires a value, such as <code>source-highlighter</code>, you just use the key=value form:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">result = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">master.ad</span><span class="delimiter">'</span></span>,
+    <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">toc numbered source-highlighter=coderay</span><span class="delimiter">'</span></span>)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This API call parallels this commandline invocation:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -a toc -a numbered -a source-highlighter=coderay master.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This enhancement is particularly useful in the integrations, such as the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Gradle plugin</a>.</p>
+</div>
+<div class="paragraph">
+<p>Learn more in the Asciidoctor Docs: <a href="/rdoc/Asciidoctor.html">Asciidoctor Ruby API</a> | <a href="https://oss.sonatype.org/service/local/repositories/releases/archive/org/asciidoctor/asciidoctor-java-integration/0.1.2.1/asciidoctor-java-integration-0.1.2.1-javadoc.jar/!/org/asciidoctor/package-summary.html">Asciidoctor Java API</a></p>
+</div>
+<div class="paragraph">
+<p>And that&#8217;s a wrap!</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="thanks"><a class="anchor" href="#thanks"></a>Thanks!</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As we hoped, Asciidoctor 0.1.2 downloads broke into the next increment of 10,000.
+RubyGems.org was reporting over <a href="http://rubygems.org/gems/asciidoctor">20,000 downloads</a> of the Asciidoctor gem prior to this release and Maven Central over 100 downloads of the Java integration.
+We look forward reaching new landmarks with 0.1.3.</p>
+</div>
+<div class="paragraph">
+<p>The level of participation in the Asciidoctor project continues to grow at an impressive rate.
+We welcomed several new projects in this development iteration, including <a href="https://github.com/asciidoctor/asciidoclet/blob/master/README.asciidoc">Asciidoclet</a>, a Javadoclet for writing Javadoc in AsciiDoc by <a href="https://github.com/johncarl81">John Ericksen</a>, as well as several AsciiDoc editor initiatives.
+We&#8217;re very grateful to everyone who participates, especially those who contribute and spread the word :)</p>
+</div>
+<div class="paragraph">
+<p>We&#8217;d especially like to thank the following people for their contributions and feedback on this release:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/bleathem">Brian Leathem</a> (Enhancements, patches and QA)</p>
+</li>
+<li>
+<p><a href="https://github.com/lightguard">Jason Porter</a> (CLI improvements)</p>
+</li>
+<li>
+<p><a href="https://github.com/graphitefriction">Sarah White</a> (Documentation, user experience and QA)</p>
+</li>
+<li>
+<p><a href="https://github.com/lordofthejars">Alex Soto</a> (Java integration improvements)</p>
+</li>
+<li>
+<p><a href="https://github.com/johncarl81">John Ericksen</a> (Asciidoclet)</p>
+</li>
+<li>
+<p><a href="https://github.com/aalmiray">Andres Almiray</a> (Doctorpad editor)</p>
+</li>
+<li>
+<p><a href="https://github.com/glaforge">Guillaume Laforge</a> (Doctorpad editor)</p>
+</li>
+<li>
+<p><a href="https://github.com/pilhuhn">Heiko Rupp</a> (Bug reports and suggestions)</p>
+</li>
+<li>
+<p><a href="https://github.com/eddelplus">Jochen Eddelbüttel</a> (Bug reports and Windows testing)</p>
+</li>
+<li>
+<p><a href="https://github.com/davidfavor">David Favor</a> (Bug reports)</p>
+</li>
+<li>
+<p><a href="https://github.com/snowolfe">Bruce Wolfe</a> (Bug reports)</p>
+</li>
+<li>
+<p><a href="https://github.com/ge0ffrey">Geoffrey De Smet</a> (Feature requests)</p>
+</li>
+<li>
+<p><a href="https://github.com/dobermai">Obermaier Dominik</a> (Feature requests)</p>
+</li>
+<li>
+<p><a href="https://github.com/lincolnthree">Lincoln Baxter III</a> (Feature requests)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>A special shout out to Brian Leathem for finding a critical regression the night before the release.</strong></p>
+</div>
+<div class="paragraph">
+<p>Additional thanks goes to everyone who is using the project and has contributed to it.
+Together, we&#8217;re making documentation fun, easy, and rewarding!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="what-s-next"><a class="anchor" href="#what-s-next"></a>What&#8217;s next?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This release is just the beginning of the release train.
+Look for releases of the Java integration, Maven plugin, Gradle plugin and more recent additions such as the editors.</p>
+</div>
+</div>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/05/21/asciidoctor-js-render-asciidoc-in-the-browser/">asciidoctor.js - Render AsciiDoc in your browser!</a></h1><h4><em>by</em> <span class="author">Dan Allen</span> - <time class="pubdate" datetime="2013-05-21T01:29:55-06:00">Tuesday, May 21, 2013</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;ve combined <a href="http://asciidoctor.org">Asciidoctor</a> and <a href="http://opalrb.org">Opal</a> to bring AsciiDoc rendering to the browser!</p>
@@ -307,53 +1959,7 @@ If you&#8217;re currently using the <code>Asciidoctor#renderFile</code> method, 
 </div>
 <div class="paragraph">
 <p>For more information, visit the <a href="https://github.com/asciidoctor/asciidoctor-java-integration">Asciidoctor Java integration</a> project on GitHub.</p>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/04/28/asciidoctor-maven-plugin-0-1-2-released/">Asciidoctor Maven plugin 0.1.2 released!</a></h1><h4><em>by</em> <span class="author">Jason Porter</span> - <time class="pubdate" datetime="2013-04-28T02:15:15-06:00">Sunday, April 28, 2013</time></h4></header><div class="entry-content"><div class="paragraph">
-<p>Following the tradition of quick updates shortly after the release of <a href="/">Asciidoctor</a>, I&#8217;d like to announce the release of versions 0.1.2 and 0.1.1.1 of the
-<a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven plugin</a>!</p>
-</div>
-<div class="paragraph">
-<p>These releases are based on Asciidoctor 0.1.2 and 0.1.1, respectively.
-Both versions of the plugin have been migrated to the newly released <a href="https://github.com/asciidoctor/asciidoctor-java-integration#readme">Asciidoctor Java integration</a>, and thus supports all the options exposed through that library.</p>
-</div>
-<table class="tableblock frame-all grid-all spread">
-<caption class="title">Plugin artifact information</caption>
-<colgroup>
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-<col style="width: 25%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Group ID</th>
-<th class="tableblock halign-left valign-top">Artifact ID</th>
-<th class="tableblock halign-left valign-top">Latest versions</th>
-<th class="tableblock halign-left valign-top">Download</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.2%7Cmaven-plugin">0.1.2</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.2/asciidoctor-maven-plugin-0.1.2.jar">jar</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctor-maven-plugin%22">asciidoctor-maven-plugin</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctor-maven-plugin%7C0.1.1.1%7Cmaven-plugin">0.1.1.1</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctor-maven-plugin/0.1.1.1/asciidoctor-maven-plugin-0.1.1.1.jar">jar</a></p></td>
-</tr>
-</tbody>
-</table>
-<div class="paragraph">
-<p>Upgrading to 0.1.2 (recommended) or 0.1.1.1 is simple.
-Just update the version in your Maven POM.
-All necessary dependencies should be pulled in via Maven.</p>
-</div>
-<div class="paragraph">
-<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin/issues?milestone=3&amp;state=closed">0.1.2 milestone</a> in the issue tracker!</p>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="fa fa-fast-backward"></i></a></li><li class="arrow"><a href="/news/3/"><i class="fa fa-step-backward"></i></a></li><li>4 of 5</li><li class="arrow"><a href="/news/5/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/5/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="fa fa-fast-backward"></i></a></li><li class="arrow"><a href="/news/3/"><i class="fa fa-step-backward"></i></a></li><li>4 of 6</li><li class="arrow"><a href="/news/5/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/6/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2014.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
