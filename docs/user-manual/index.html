@@ -14173,23 +14173,22 @@ Crawling through the twisted understory...</pre>
 <div class="sect2">
 <h3 id="manual-placement"><a class="anchor" href="#manual-placement"></a>53.2. Manual placement</h3>
 <div class="paragraph">
-<p>The <code>toc-placement</code> attribute allows you to place the TOC anywhere in your document.
-To control where the TOC is rendered in your document, unset the toc-placement attribute.
+<p>The <code>macro</code> value on the toc attribute allows you to place the TOC anywhere in your document.
+To control where the TOC is rendered in your document, set the toc attribute to <code>macro</code>.
 Then, within the body of your document, use the <code>toc::[]</code> block macro to indicate the TOC&#8217;s location.</p>
 </div>
 <div class="listingblock">
-<div class="title">Unsetting toc-placement and using the toc::[] macro</div>
+<div class="title">Setting toc value to macro and using the toc::[] macro</div>
 <div class="content">
 <pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon
-:toc: <i class="conum" data-value="1"></i><b>(1)</b>
-:toc-placement!: <i class="conum" data-value="2"></i><b>(2)</b>
+:toc: macro <i class="conum" data-value="1"></i><b>(1)</b>
 
 This journey begins on a bleary...
 
 == Cavern Glow
 
-toc::[] <i class="conum" data-value="3"></i><b>(3)</b>
+toc::[] <i class="conum" data-value="2"></i><b>(2)</b>
 
 The river rages through the cavern, rattling its content...</pre>
 </div>
@@ -14198,20 +14197,16 @@ The river rages through the cavern, rattling its content...</pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The toc attribute must be set in order to use toc-placement.</td>
+<td>The toc attribute must be to macro in order to enable the use of the toc::[] macro.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>toc-placement is unset by placing a <code>!</code> after its name in the document&#8217;s header.</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>In this example, the toc::[] macro is placed below the first section&#8217;s title, indicating that this is the location where the TOC will be displayed once the document is rendered.</td>
 </tr>
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Result: Unsetting toc-placement and using the toc::[] macro</div>
+<div class="title">Result: Setting toc value to macro and using the toc::[] macro</div>
 <div class="content">
 <div class="imageblock">
 <div class="content">
@@ -14221,12 +14216,11 @@ The river rages through the cavern, rattling its content...</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Asciidoctor also includes a built-in <code>preamble</code> value.
-This value places the TOC below the preamble.
+<p>Asciidoctor also has a <code>toc-placement</code> attribute, that when set with a value of <code>preamble</code> places the TOC below the preamble.
 You do not need to include the toc::[] block macro in the document when using the preamble value.</p>
 </div>
 <div class="paragraph">
-<p>If you set toc-placement but don&#8217;t assign it a value, the TOC will be placed in the document&#8217;s header.</p>
+<p>If you set toc-placement but don&#8217;t assign it a value, the TOC will be placed in the document&#8217;s header by default.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -14363,9 +14357,9 @@ Crawling through the twisted understory...</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>auto</code>, <code>left</code>, <code>right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>auto</code>, <code>left</code>, <code>right</code>, <code>macro</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend sets it by default.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DocBook backend sets it by default. Use <code>macro</code> in order to use the <code>toc::[]</code> macro in the document body.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html, docbook</p></td>
 </tr>
 <tr>
@@ -14379,7 +14373,7 @@ Crawling through the twisted understory...</pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-placement</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>auto</code>, <code>preamble</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-placement: preamble</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unset <code>toc-placement</code> in order to use the <code>toc::[]</code> macro in the document body.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Detault value is <code>auto</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
 </tr>
 <tr>
@@ -16869,6 +16863,10 @@ If you only want the inline markup to be processed, set the <code>:doctype</code
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>When rendering a string the TOC is only included by default when using the <code>:header_footer</code> option as shown above.
+However, you can force it to be included without the header and footer by setting the <code>toc</code> attribute with a value of <code>macro</code> and using the <code>toc::[]</code> macro in the string itself.</p>
 </div>
 <div class="paragraph">
 <p>If you don&#8217;t like the output you see, you can change it.
@@ -20020,7 +20018,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-10-29 04:13:08 UTC
+Last updated 2014-10-29 04:38:11 UTC
 </div>
 </div>
 <script>
