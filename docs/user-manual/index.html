@@ -4140,7 +4140,17 @@ If there is a name conflict, the last attribute defined wins.
 <h3 id="delimited-blocks"><a class="anchor" href="#delimited-blocks"></a>19.3. Delimited blocks</h3>
 <div class="paragraph">
 <p>The AsciiDoc syntax provides a set of components for including non-paragraph text, such as block quotes, source code listings, sidebars and tables, in your document.
-These components are referred to as <em>delimited blocks</em> because they are surrounded by delimiter lines.</p>
+These components are referred to as <em>delimited blocks</em> because they are surrounded by delimiter lines (e.g., <code><strong>*</strong>*</code>).</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a sidebar block:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">****
+sidebar block
+****</pre>
+</div>
 </div>
 <div class="paragraph">
 <p>Within the boundaries of a delimited block, you can enter any content or blank lines.
@@ -4148,7 +4158,40 @@ The block doesn&#8217;t end until the ending delimiter is found.
 The delimiters around the block determine the type of block, how the content is processed and rendered and what elements are used to wrap the content in the output.</p>
 </div>
 <div class="sect3">
-<h4 id="optional-delimiters"><a class="anchor" href="#optional-delimiters"></a>19.3.1. Optional delimiters</h4>
+<h4 id="delimiter-lines"><a class="anchor" href="#delimiter-lines"></a>19.3.1. Delimiter lines</h4>
+<div class="paragraph">
+<p>The boundaries of a delimited block <em>must be balanced</em>.
+In other words, the opening delimiter line must be the same length as the closing delimiter line.</p>
+</div>
+<div class="paragraph">
+<p>For example, the following delimited block is not balanced and therefore invalid:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">********
+invalid sidebar block
+****</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When the processor encounters the previous example, it will put the remainder of the content in the document inside the delimited block (without warning, currently).
+As far as the processor is concerned, the closing delimiter is just a line of content.
+If you want the closing delimiter to be matched, it must be the same length as the opening delimiter.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">****
+valid example block
+****</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The AsciiDoc Python processor did not require the delimiters to be balanced, but also never documented that this was permissible.
+We view AsciiDoc Python&#8217;s behavior of matching unbalanced delimited blocks to be a bug and therefore do not allow it in Asciidoctor.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="optional-delimiters"><a class="anchor" href="#optional-delimiters"></a>19.3.2. Optional delimiters</h4>
 <div class="paragraph">
 <p>If the content is contiguous (not interrupted by blank lines), you can forgo the use of the block delimiters and instead use the block name above a paragraph to repurpose it as one of the delimited block types.</p>
 </div>
@@ -4172,7 +4215,7 @@ Never do today what you can put off `'til tomorrow.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="masquerading-blocks"><a class="anchor" href="#masquerading-blocks"></a>19.3.2. Masquerading blocks</h4>
+<h4 id="masquerading-blocks"><a class="anchor" href="#masquerading-blocks"></a>19.3.3. Masquerading blocks</h4>
 <div class="paragraph">
 <p>Some blocks can masquerade as other blocks, a feature which is controlled by the block name.</p>
 </div>
@@ -20018,7 +20061,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-10-29 20:47:06 UTC
+Last updated 2014-11-05 06:52:49 UTC
 </div>
 </div>
 <script>
