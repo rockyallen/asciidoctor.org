@@ -261,59 +261,6 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 </div>
 <div class="sect1">
-<h2 id="changes-to-asciidoctor-from-upstream"><a class="anchor" href="#changes-to-asciidoctor-from-upstream"></a>Changes to Asciidoctor (from upstream)</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Compiling Asciidoctor to JavaScript currently requires some changes in Asciidoctor.
-That&#8217;s why the Asciidoctor source is linked into the project as a Git submodule.
-The goal is to eventually eliminate all of these differences so that Asciidoctor can be compiled to JavaScript as is.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s a list of some of the changes that are currently needed:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>ERB templates, loaded from the <em>asciidoctor/lib/asciidoctor/backends/html5</em> directory, are used in place of the built-in template classes</p>
-<div class="ulist">
-<ul>
-<li>
-<p>These templates must be loaded explicitly since Opal doesn&#8217;t support loading libraries at runtime</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Named posix groups in regular expressions are replaced with their Ascii equivalent</p>
-<div class="ulist">
-<ul>
-<li>
-<p>JavaScript doesn&#8217;t support named posix groups, such as <code><a id=":alpha:"></a></code>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>A shim library is needed to implement missing classes in Opal, such as <code>Set</code> and <code>File</code></p>
-</li>
-<li>
-<p>All mutable String operations have been replaced with assignments</p>
-<div class="ulist">
-<ul>
-<li>
-<p>JavaScript doesn&#8217;t support mutable strings</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Resources and help</h2>
 <div class="sectionbody">
 <div class="paragraph">

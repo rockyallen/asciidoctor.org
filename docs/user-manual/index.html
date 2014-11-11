@@ -684,7 +684,7 @@ MathJax.Hub.Config({
 <li><a href="#summary-5">28.2. Summary</a></li>
 </ul>
 </li>
-<li><a href="#xref">29. Cross references</a>
+<li><a href="#xref">29. Internal cross references</a>
 <ul class="sectlevel2">
 <li><a href="#inter-document-cross-references">29.1. Inter-document cross references</a></li>
 </ul>
@@ -966,7 +966,7 @@ MathJax.Hub.Config({
 <div class="title">This document is under active development and discussion!</div>
 <div class="paragraph">
 <p>If you find errors or omissions in this document, please don&#8217;t hesitate to <a href="https://github.com/asciidoctor/asciidoctor.org/issues">submit an issue or open a pull request</a> with a fix.
-We also encourage you to ask questions and discuss any aspects of the project on the <a href="https://discuss.asciidoctor.org">mailing list</a> or <a href="irc://irc.freenode.org/#asciidoctor">IRC</a>.
+We also encourage you to ask questions and discuss any aspects of the project on the <a href="http://discuss.asciidoctor.org">mailing list</a> or <a href="irc://irc.freenode.org/#asciidoctor">IRC</a>.
 New contributors are always welcome!</p>
 </div>
 </td>
@@ -1063,7 +1063,7 @@ Asciidoctor also offers several levels of security, further justifying its suita
 <div class="title">Beyond Ruby</div>
 <p>Asciidoctor&#8217;s usage is not limited to the Ruby community.
 Thanks to <a href="http://jruby.org">JRuby</a>, a port of Ruby to the JVM, Asciidoctor can be used inside Java applications as well.
-Plugins are available for <a href="https://github.com/asciidoctor/asciidoctor/asciidoctor-maven-plugin">Apache Maven</a>, <a href="https://github.com/asciidoctor/asciidoctor/asciidoctor-gradle-plugin">Gradle</a>, and <a href="https://github.com/ocpsoft/rewrite/tree/master/transform-markup">Rewrite</a>.
+Plugins are available for <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Apache Maven</a>, <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Gradle</a>, and <a href="https://github.com/ocpsoft/rewrite/tree/master/transform-markup">Rewrite</a>.
 These plugins are based on the <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> for Asciidoctor.</p>
 </div>
 <div class="paragraph">
@@ -2904,7 +2904,7 @@ If absent, Asciidoctor will render the content that is present.</p>
 </td>
 <td class="content">
 A header must be present when the document type is <code>manpage</code>.
-The requirements for a manual page (man page) are described in the <a href="#manpages">man pages</a> section.
+The requirements for a manual page (man page) are described in the <a href="#man-pages">man pages</a> section.
 </td>
 </tr>
 </table>
@@ -8540,8 +8540,10 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 </div>
 </div>
 <div class="paragraph">
-<p>Next, we&#8217;ll add a target and role to a link macro.
-When you set attributes in the link macro, you must also set the <code>linkattrs</code> attribute in the document&#8217;s header because Asciidoctor does not parse attributes in the link macro by default.
+<p>Next, we&#8217;ll add a target and role to a link macro.</p>
+</div>
+<div id="link-macro-attributes" class="paragraph">
+<p>When you set attributes in the link macro, you must also set the <code>linkattrs</code> attribute in the document&#8217;s header because Asciidoctor does not parse attributes in the link macro by default.
 Once you&#8217;ve set linkattrs in the header, you can then specify the name of the target window using the <code>window</code> attribute.</p>
 </div>
 <div class="listingblock">
@@ -8661,7 +8663,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 <tr>
 <td class="tableblock halign-left valign-top"><div class="literal"><pre>window</pre></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">^</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">http://search.example.com["Google, Yahoo, Bing^"] and http://discuss.asciidoctor.org[Discuss Asciidoctor^]</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http://example.org["Google, Yahoo, Bing^"] and http://discuss.asciidoctor.org[Discuss Asciidoctor^]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Requires <code>linkattrs</code>.</p></td>
 </tr>
 <tr>
@@ -8682,7 +8684,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 </div>
 <div class="sect1">
-<h2 id="xref"><a class="anchor" href="#xref"></a>29. Cross references</h2>
+<h2 id="xref"><a class="anchor" href="#xref"></a>29. Internal cross references</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A link to another location within an AsciiDoc document or between AsciiDoc documents is called a <em>cross reference</em> (also referred to as an <em>xref</em>).
@@ -8692,14 +8694,14 @@ A cross reference is created by enclosing the element&#8217;s ID in double angle
 <div class="listingblock">
 <div class="title">Cross reference using a section heading&#8217;s ID</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The section &lt;&lt;images&gt;&gt; describes how to insert images into your document.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="title">Rendered cross reference using a section heading&#8217;s ID</div>
 <div class="content">
 <div class="paragraph">
-<p>The section <a href="#page-break">Page break</a> describes how to add a page break.</p>
+<p>The section <a href="#images">Images</a> describes how to insert images into your document.</p>
 </div>
 </div>
 </div>
@@ -8709,19 +8711,14 @@ A cross reference is created by enclosing the element&#8217;s ID in double angle
 <div class="listingblock">
 <div class="title">Cross reference using a section&#8217;s title</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Refer to &lt;&lt;Section A&gt;&gt;.
-
-== Section A</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Refer to &lt;&lt;Internal cross references&gt;&gt;.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="title">Rendered cross reference using a section&#8217;s title</div>
 <div class="content">
 <div class="paragraph">
-<p>Refer to <a href="#Section A">[Section A]</a>.</p>
-</div>
-<div class="paragraph">
-<p>== Section A</p>
+<p>Refer to <a href="#xref">Internal cross references</a>.</p>
 </div>
 </div>
 </div>
@@ -8731,13 +8728,13 @@ If you want to customize the linked text, include it after the ID, separating th
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to &lt;&lt;target-window-and-role-attributes,use attributes within the link macro&gt;&gt;.</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to &lt;&lt;link-macro-attributes,use attributes within the link macro&gt;&gt;.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
 <div class="content">
 <div class="paragraph">
-<p>Learn how to <a href="#target-window-and-role-attributes">use attributes within the link macro</a>.</p>
+<p>Learn how to <a href="#link-macro-attributes">use attributes within the link macro</a>.</p>
 </div>
 </div>
 </div>
@@ -8753,7 +8750,7 @@ It also captures the intent of the author to establish a reference to a section 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">The section &lt;&lt;page-break&gt;&gt; describes how to add a page break.</pre>
+<pre class="nowrap">The section &lt;&lt;images&gt;&gt; describes how to insert images into your document.</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -12377,8 +12374,8 @@ Select a file in the file navigator and click btn:[Open].</code></pre>
 <div class="paragraph">
 <p>Asciidoctor provides a number of ways to display icons in a document.
 The default stylesheet includes admonition and callout icons for the admonition and callout blocks, but you can also specify custom icons.
-Additionally, Asciidoctor can &#8220;draw&#8221; icons using the <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a> font-based icon set.
-You can see the icon name options on the <a href="http://fortawesome.github.io/Font-Awesome/icons/">icons page</a>.</p>
+Additionally, Asciidoctor can &#8220;draw&#8221; icons using the <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> font-based icon set.
+You can see the icon name options on the <a href="http://fortawesome.github.io/Font-Awesome//icons/">icons page</a>.</p>
 </div>
 <div class="paragraph">
 <p>When you aren&#8217;t using font-based icons, or you are using the DocBook backend, the icon set is limited to which icons you have in your <code>iconsdir</code> directory.</p>
@@ -12876,7 +12873,7 @@ require 'sinatra'</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Additionally, you can use an <a href="user-manual/.html#include-directive">include directive</a> to insert source code into an AsciiDoc document directly from a file.</p>
+<p>Additionally, you can use an <a href="#include-directive">include directive</a> to insert source code into an AsciiDoc document directly from a file.</p>
 </div>
 <div class="listingblock">
 <div class="title">Code block inserted from another file</div>
@@ -14644,11 +14641,12 @@ From Journeyman to Master. Addison-Wesley. 1999.</p>
 <pre class="nowrap">=== Sir Lancelot
 
 The Lady of the Lake, her arm clad in the purest shimmering samite,
-held aloft Excalibur from the bosom of the water, signifying by divine
-providence that I, ((Arthur)) &lt;1&gt;, was to carry Excalibur (((Sword,
-Broadsword, Excalibur))) &lt;2&gt;. That is why I am your king. Shut up! Will
-you shut up?! Burn her anyway! I'm not a witch. Look, my liege! We
-found them.
+held aloft Excalibur from the bosom of the water,
+signifying by divine providence that I, ((Arthur)), <i class="conum" data-value="1"></i><b>(1)</b>
+was to carry Excalibur (((Sword, Broadsword, Excalibur))). <i class="conum" data-value="2"></i><b>(2)</b>
+That is why I am your king. Shut up! Will you shut up?!
+Burn her anyway! I'm not a witch.
+Look, my liege! We found them.
 
 indexterm:[Lancelot] <i class="conum" data-value="3"></i><b>(3)</b></pre>
 </div>
@@ -15204,7 +15202,7 @@ Set the attribute <code>noxmlns</code> to disable this feature.</p>
 </table>
 </div>
 <div class="paragraph">
-<p>If you&#8217;re on Linux, you can view the DocBook file with <a href="http://live.gnome.org/Yelp">Yelp</a>.</p>
+<p>If you&#8217;re on Linux, you can view the DocBook file with <a href="https://wiki.gnome.org/action/show/Apps/Yelp">Yelp</a>.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -16325,7 +16323,7 @@ Backends for other presentation frameworks are in the works.</p>
 <p>Create a directory named <code>deck.js</code> inside your working directory (i.e. where your AsciiDoc document resides).</p>
 </li>
 <li>
-<p><a href="https://github.com/imakewebthings/deck.js/zipball/stable">Download</a> and extract the deck.js archive or <code>git clone</code> the <a href="https://github.com/imakewebthings/deck.js">deck.js</a> repository into the <code>deck.js</code> directory you created in step 2.</p>
+<p><a href="https://github.com/imakewebthings/deck.js/archive/latest.zip">Download</a> and extract the deck.js archive or <code>git clone</code> the <a href="https://github.com/imakewebthings/deck.js">deck.js</a> repository into the <code>deck.js</code> directory you created in step 2.</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$ git clone git://github.com/imakewebthings/deck.js.git</pre>
@@ -16592,7 +16590,7 @@ once the document is rendered.</pre>
 <p>The command <code>-T</code> (<code>--template-dir</code>) tells the Asciidoctor processor to override the built-in backends.</p>
 </li>
 <li>
-<p>Directly after <code>-T</code> is the path to where you saved or cloned the Asciidoctor backends repository containing the <code>deckjs</code> backend (step 1 under the <a href="#backend-and-deckjs-installation">installation section</a>).</p>
+<p>Directly after <code>-T</code> is the path to where you saved or cloned the Asciidoctor backends repository containing the <code>deckjs</code> backend (step 1 under the <a href="#backend-and-deck-js-installation">installation section</a>).</p>
 </li>
 </ol>
 </div>
@@ -16922,7 +16920,7 @@ Any of it!</p>
 <h2 id="provide-custom-templates"><a class="anchor" href="#provide-custom-templates"></a>80. Provide custom templates</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor allows you to override the <a href="https://github.com/asciidoctor/asciidoctor/blob/master/lib/asciidoctor/backends">built-in templates</a> used to render almost any individual AsciiDoc element.
+<p>Asciidoctor allows you to override the converter methods used to render almost any individual AsciiDoc element.
 If you provide a directory of {tilt}[Tilt]-compatible templates, named in such a way that Asciidoctor can figure out which template goes with which element, Asciidoctor will use the templates in this directory instead of its built-in templates for any elements for which it finds a matching template.
 It will fallback to its default templates for everything else.</p>
 </div>
@@ -20061,7 +20059,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-11-11 03:58:45 UTC
+Last updated 2014-11-11 09:19:48 UTC
 </div>
 </div>
 <script>
