@@ -1609,17 +1609,8 @@ If you need the latest version immediately, use the <code>gem install</code> opt
 <div class="sect1">
 <h2 id="extensions-and-integrations"><a class="anchor" href="#extensions-and-integrations"></a>9. Extensions and Integrations</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section Pending
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>See <a href="#extensions">Extensions</a>.</p>
 </div>
 </div>
 </div>
@@ -17044,11 +17035,11 @@ Just keep in mind that you may need to rework parts of your extensions when you 
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
   preprocessor <span class="constant">FrontMatterPreprocessor</span>
-  treeprocessor <span class="constant">TerminalCommandTreeprocessor</span>
-  postprocessor <span class="constant">CustomFooterPostprocessor</span>
-  block <span class="symbol">:yell</span>, <span class="constant">YellBlock</span>
-  block_macro <span class="symbol">:gist</span>, <span class="constant">GistMacro</span> <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
-  inline_macro <span class="symbol">:man</span>, <span class="constant">ManpageMacro</span>
+  treeprocessor <span class="constant">ShellSessionTreeprocessor</span>
+  postprocessor <span class="constant">CopyrightFooterPostprocessor</span>
+  block <span class="constant">ShoutBlock</span>
+  block_macro <span class="constant">GistBlockMacro</span> <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
+  inline_macro <span class="constant">ManInlineMacro</span>
   include_processor <span class="constant">UriIncludeProcessor</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17066,27 +17057,6 @@ Each registered class is instantiated when the <span class="class">Asciidoctor::
 <td class="content">
 There is currently no extension point for processing a built-in block, such as a normal paragraph.
 Look for that feature in a future Asciidoctor release.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>For now, you need to use the Asciidoctor API (not the CLI) in order to register the extensions and invoke Asciidoctor.
-Eventually, we&#8217;ll be able to load extensions packaged in a RubyGem (Ruby) or JAR (Java) by scanning
-the LOAD_PATH (Ruby) or classpath (Java), respectively.
-We may also ship some built-in extensions that can be enabled using an attribute named <code>extensions</code>, similar to how Markdown processors work.</p>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-For those of you on the JVM, yes, you can write extensions in Java.
-We&#8217;ve prototyped it and it works.
-We&#8217;re still sorting out a few technical challenges and documentation to make it completely smooth, but we&#8217;ll get there.
-For details, follow the discussion in issue <a href="https://github.com/asciidoctor/asciidoctor/issues/79">#79</a>.
 </td>
 </tr>
 </table>
@@ -17110,7 +17080,7 @@ For details, follow the discussion in issue <a href="https://github.com/asciidoc
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">sample-with-front-matter.ad</div>
+<div class="title">sample-with-front-matter.adoc</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">---
 tags: [announcement, website]
@@ -17135,7 +17105,8 @@ content
 require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
 
 <span class="keyword">class</span> <span class="class">FrontMatterPreprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Preprocessor</span>
-  <span class="keyword">def</span> <span class="function">process</span> reader, lines
+  <span class="keyword">def</span> <span class="function">process</span> document, reader
+    lines = reader.lines <span class="comment"># get raw lines</span>
     <span class="keyword">return</span> reader <span class="keyword">if</span> lines.empty?
     front_matter = []
     <span class="keyword">if</span> lines.first.chomp == <span class="string"><span class="delimiter">'</span><span class="content">---</span><span class="delimiter">'</span></span>
@@ -17149,7 +17120,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
         lines = original_lines
       <span class="keyword">else</span>
         lines.shift
-        <span class="instance-variable">@document</span>.attributes[<span class="string"><span class="delimiter">'</span><span class="content">front-matter</span><span class="delimiter">'</span></span>] = front_matter.join.chomp
+        document.attributes[<span class="string"><span class="delimiter">'</span><span class="content">front-matter</span><span class="delimiter">'</span></span>] = front_matter.join.chomp
         <span class="comment"># advance the reader by the number of lines taken</span>
         (front_matter.length + <span class="integer">2</span>).times { reader.advance }
       <span class="keyword">end</span>
@@ -17162,11 +17133,11 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span>
   preprocessor <span class="constant">FrontMatterPreprocessor</span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-front-matter.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-front-matter.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
 </div>
 </div>
@@ -17176,29 +17147,34 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <dl>
 <dt class="hdlist1">Purpose</dt>
 <dd>
-<p>Detect literal blocks that contain terminal commands, strip the prompt character and style the command using CSS in such a way that the prompt character cannot be selected (as seen on help.github.com).</p>
+<p>Detect literal blocks that contain shell commands, strip the prompt character and style the command using CSS in such a way that the prompt character cannot be selected (as seen on help.github.com).</p>
 </dd>
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">sample-with-terminal-command.ad</div>
+<div class="title">sample-with-shell-session.adoc</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc"> $ echo &quot;Hello, World!&quot;
+ &gt; Hello, World!
 
  $ gem install asciidoctor</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">TerminalCommandTreeprocessor</div>
+<div class="title">ShellSessionTreeprocessor</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="keyword">class</span> <span class="class">TerminalCommandTreeprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Treeprocessor</span>
-  <span class="keyword">def</span> <span class="function">process</span>
-    process_blocks <span class="instance-variable">@document</span> <span class="keyword">if</span> <span class="instance-variable">@document</span>.blocks?
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="keyword">class</span> <span class="class">ShellSessionTreeprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Treeprocessor</span>
+  <span class="keyword">def</span> <span class="function">process</span> document
+    <span class="keyword">return</span> <span class="keyword">unless</span> document.blocks?
+    process_blocks document
+    <span class="predefined-constant">nil</span>
   <span class="keyword">end</span>
 
   <span class="keyword">def</span> <span class="function">process_blocks</span> node
     node.blocks.each_with_index <span class="keyword">do</span> |block, i|
-      <span class="keyword">if</span> block.context == <span class="symbol">:literal</span> &amp;&amp; block.lines.first.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">$ </span><span class="delimiter">'</span></span>)
+      <span class="keyword">if</span> block.context == <span class="symbol">:literal</span> &amp;&amp;
+          (((first_line = block.lines.first).start_with? <span class="string"><span class="delimiter">'</span><span class="content">$ </span><span class="delimiter">'</span></span>) ||
+            (first_line.start_with? <span class="string"><span class="delimiter">'</span><span class="content">&gt; </span><span class="delimiter">'</span></span>))
         node.blocks[i] = convert_to_terminal_listing block
       <span class="keyword">else</span>
         process_blocks block <span class="keyword">if</span> block.blocks?
@@ -17207,18 +17183,21 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
   <span class="keyword">end</span>
 
   <span class="keyword">def</span> <span class="function">convert_to_terminal_listing</span> block
-    attributes = block.attributes
-    attributes[<span class="string"><span class="delimiter">'</span><span class="content">role</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">terminal</span><span class="delimiter">'</span></span>
+    attrs = block.attributes
+    attrs[<span class="string"><span class="delimiter">'</span><span class="content">role</span><span class="delimiter">'</span></span>] = <span class="string"><span class="delimiter">'</span><span class="content">terminal</span><span class="delimiter">'</span></span>
+    prompt_attr = (attrs.has_key? <span class="string"><span class="delimiter">'</span><span class="content">prompt</span><span class="delimiter">'</span></span>) ?
+        <span class="string"><span class="delimiter">%(</span><span class="content"> data-prompt=&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>block.sub_specialchars attrs[<span class="string"><span class="delimiter">'</span><span class="content">prompt</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="content">&quot;</span><span class="delimiter">)</span></span> : <span class="predefined-constant">nil</span>
     lines = block.lines.map <span class="keyword">do</span> |line|
-      line = block.sub_specialcharacters line.chomp
+      line = block.sub_specialchars line.chomp
       <span class="keyword">if</span> line.start_with? <span class="string"><span class="delimiter">'</span><span class="content">$ </span><span class="delimiter">'</span></span>
-        <span class="string"><span class="delimiter">%(</span><span class="content">&lt;span class=&quot;command&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>line[<span class="integer">2</span>..<span class="integer">-1</span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/span&gt;</span><span class="delimiter">)</span></span>
+        <span class="string"><span class="delimiter">%(</span><span class="content">&lt;span class=&quot;command&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>prompt_attr<span class="inline-delimiter">}</span></span><span class="content">&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>line[<span class="integer">2</span>..<span class="integer">-1</span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/span&gt;</span><span class="delimiter">)</span></span>
+      <span class="keyword">elsif</span> line.start_with? <span class="string"><span class="delimiter">'</span><span class="content">&amp;gt; </span><span class="delimiter">'</span></span>
+        <span class="string"><span class="delimiter">%(</span><span class="content">&lt;span class=&quot;output&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>line[<span class="integer">5</span>..<span class="integer">-1</span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/span&gt;</span><span class="delimiter">)</span></span>
       <span class="keyword">else</span>
         line
       <span class="keyword">end</span>
     <span class="keyword">end</span>
-    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new <span class="instance-variable">@document</span>, <span class="symbol">:listing</span>, <span class="symbol">:content_model</span> =&gt; <span class="symbol">:verbatim</span>, <span class="symbol">:subs</span> =&gt; [],
-        <span class="symbol">:source</span> =&gt; lines * <span class="string"><span class="delimiter">&quot;</span><span class="char">\n</span><span class="delimiter">&quot;</span></span>, <span class="symbol">:attributes</span> =&gt; attributes
+    create_listing_block block.document, lines * <span class="constant">EOL</span>, attrs, <span class="key">subs</span>: <span class="predefined-constant">nil</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17227,26 +17206,10 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="title">Usage</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
-  treeprocessor <span class="constant">TerminalCommandTreeprocessor</span>
+  treeprocessor <span class="constant">ShellSessionTreeprocessor</span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-terminal-command.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>In the example below the Treeprocessor examines the block contents looking for the <code>// (*)</code> suffix and rewrites the line so that Asciidoctor formats it appropriately.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="directive">protected</span> <span class="type">void</span> configure(HttpSecurity http) <span class="directive">throws</span> <span class="exception">Exception</span> {
-    http
-        .authorizeRequests()
-            .antMatchers(<span class="string"><span class="delimiter">&quot;</span><span class="content">/resources/**</span><span class="delimiter">&quot;</span></span>).permitAll() <span class="comment">// (*)</span>
-            .anyRequest().authenticated()
-            .and()
-        .formLogin()
-            .loginPage(<span class="string"><span class="delimiter">&quot;</span><span class="content">/login</span><span class="delimiter">&quot;</span></span>)
-            .permitAll();</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-shell-session.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
 </div>
 </div>
@@ -17256,20 +17219,20 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <dl>
 <dt class="hdlist1">Purpose</dt>
 <dd>
-<p>Insert custom footer text.</p>
+<p>Insert copyright text in the footer.</p>
 </dd>
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">CustomFooterPostprocessor</div>
+<div class="title">CopyrightFooterPostprocessor</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="keyword">class</span> <span class="class">CustomFooterPostprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Postprocessor</span>
-  <span class="keyword">def</span> <span class="function">process</span> output
-    content = <span class="string"><span class="delimiter">'</span><span class="content">Copyright Acme, Inc.</span><span class="delimiter">'</span></span>
-    <span class="keyword">if</span> <span class="instance-variable">@document</span>.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="keyword">class</span> <span class="class">CopyrightFooterPostprocessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">Postprocessor</span>
+  <span class="keyword">def</span> <span class="function">process</span> document, output
+    content = (document.attr <span class="string"><span class="delimiter">'</span><span class="content">copyright</span><span class="delimiter">'</span></span>) || <span class="string"><span class="delimiter">'</span><span class="content">Copyright Acme, Inc.</span><span class="delimiter">'</span></span>
+    <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
       replacement = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div id=&quot;footer-text&quot;&gt;</span><span class="char">\\</span><span class="content">1&lt;br&gt;</span><span class="char">\n</span><span class="inline"><span class="inline-delimiter">#{</span>content<span class="inline-delimiter">}</span></span><span class="char">\n</span><span class="content">&lt;/div&gt;</span><span class="delimiter">)</span></span>
       output = output.sub(<span class="regexp"><span class="delimiter">/</span><span class="content">&lt;div id=&quot;footer-text&quot;&gt;(.*?)&lt;</span><span class="char">\/</span><span class="content">div&gt;</span><span class="delimiter">/</span><span class="modifier">m</span></span>, replacement)
-    <span class="keyword">elsif</span> <span class="instance-variable">@document</span>.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>
+    <span class="keyword">elsif</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>
       replacement = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;simpara&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>content<span class="inline-delimiter">}</span></span><span class="content">&lt;/simpara&gt;</span><span class="char">\n</span><span class="char">\\</span><span class="content">1</span><span class="delimiter">)</span></span>
       output = output.sub(<span class="regexp"><span class="delimiter">/</span><span class="content">(&lt;</span><span class="char">\/</span><span class="content">(?:article|book)&gt;)</span><span class="delimiter">/</span></span>, replacement)
     <span class="keyword">end</span>
@@ -17281,11 +17244,11 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Asciidoctor::Extensions.register do |document|
-  postprocessor CustomFooterPostprocessor
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Asciidoctor::Extensions.register do
+  postprocessor CopyrightFooterPostprocessor
 end
 
-Asciidoctor.render_file 'sample.ad', :safe =&gt; :safe, :in_place =&gt; true</code></pre>
+Asciidoctor.convert_file 'sample-with-copyright-footer.adoc', :safe =&gt; :safe</code></pre>
 </div>
 </div>
 </div>
@@ -17295,30 +17258,36 @@ Asciidoctor.render_file 'sample.ad', :safe =&gt; :safe, :in_place =&gt; true</co
 <dl>
 <dt class="hdlist1">Purpose</dt>
 <dd>
-<p>Register a custom block style named <code>yell</code> that uppercases all the words and converts periods to exclamation points.</p>
+<p>Register a custom block style named <code>shout</code> that uppercases all the words and converts periods to exclamation points.</p>
 </dd>
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">sample-with-yell-block.ad</div>
+<div class="title">sample-with-shout-block.adoc</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[yell]
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[shout]
 The time is now. Get a move on.</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">YellBlock</div>
+<div class="title">ShoutBlock</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
 
-<span class="keyword">class</span> <span class="class">YellBlock</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockProcessor</span>
-  option <span class="symbol">:contexts</span>, [<span class="symbol">:paragraph</span>]
-  option <span class="symbol">:content_model</span>, <span class="symbol">:simple</span>
+<span class="keyword">class</span> <span class="class">ShoutBlock</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockProcessor</span>
+  <span class="constant">PeriodRx</span> = <span class="regexp"><span class="delimiter">/</span><span class="char">\.</span><span class="content">(?= |$)</span><span class="delimiter">/</span></span>
 
-  <span class="keyword">def</span> <span class="function">process</span> parent, reader, attributes
-    lines = reader.lines.map {|line| line.upcase.gsub(<span class="regexp"><span class="delimiter">/</span><span class="char">\.</span><span class="content">( |$)</span><span class="delimiter">/</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">!</span><span class="char">\\</span><span class="content">1</span><span class="delimiter">'</span></span>) }
-    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new parent, <span class="symbol">:paragraph</span>, <span class="symbol">:source</span> =&gt; lines, <span class="symbol">:attributes</span> =&gt; attributes
+  use_dsl
+
+  named <span class="symbol">:shout</span>
+  on_context <span class="symbol">:paragraph</span>
+  name_positional_attributes <span class="string"><span class="delimiter">'</span><span class="content">vol</span><span class="delimiter">'</span></span>
+  parse_content_as <span class="symbol">:simple</span>
+
+  <span class="keyword">def</span> <span class="function">process</span> parent, reader, attrs
+    volume = ((attrs.delete <span class="string"><span class="delimiter">'</span><span class="content">vol</span><span class="delimiter">'</span></span>) || <span class="integer">1</span>).to_i
+    create_paragraph parent, (reader.lines.map {|l| l.upcase.gsub <span class="constant">PeriodRx</span>, <span class="string"><span class="delimiter">'</span><span class="content">!</span><span class="delimiter">'</span></span> * volume }), attrs
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17326,11 +17295,11 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
-  block <span class="symbol">:yell</span>, <span class="constant">YellBlock</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span>
+  block <span class="constant">ShoutBlock</span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-yell-block.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-shout-block.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
 </div>
 </div>
@@ -17345,28 +17314,34 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">sample-with-gist-macro.ad</div>
+<div class="title">sample-with-gist-macro.adoc</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.My Gist
 gist::123456[]</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">GistMacro</div>
+<div class="title">GistBlockMacro</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
 
-<span class="keyword">class</span> <span class="class">GistMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockMacroProcessor</span>
-  <span class="keyword">def</span> <span class="function">process</span> parent, target, attributes
-    title = (attributes.has_key? <span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>) ?
-        <span class="string"><span class="delimiter">%(</span><span class="char">\n</span><span class="content">&lt;div class=&quot;title&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>attributes[<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/div&gt;</span><span class="delimiter">)</span></span> : <span class="predefined-constant">nil</span>
-    source = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div class=&quot;gistblock&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>title<span class="inline-delimiter">}</span></span><span class="content">
-&lt;div class=&quot;content&quot;&gt;
+<span class="keyword">class</span> <span class="class">GistBlockMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">BlockMacroProcessor</span>
+  use_dsl
+
+  named <span class="symbol">:gist</span>
+
+  <span class="keyword">def</span> <span class="function">process</span> parent, target, attrs
+    title_html = (attrs.has_key? <span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>) ?
+        <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div class=&quot;title&quot;&gt;</span><span class="inline"><span class="inline-delimiter">#{</span>attrs[<span class="string"><span class="delimiter">'</span><span class="content">title</span><span class="delimiter">'</span></span>]<span class="inline-delimiter">}</span></span><span class="content">&lt;/div&gt;</span><span class="char">\n</span><span class="delimiter">)</span></span> : <span class="predefined-constant">nil</span>
+
+    html = <span class="string"><span class="delimiter">%(</span><span class="content">&lt;div class=&quot;openblock gist&quot;&gt;
+</span><span class="inline"><span class="inline-delimiter">#{</span>title_html<span class="inline-delimiter">}</span></span><span class="content">&lt;div class=&quot;content&quot;&gt;
 &lt;script src=&quot;https://gist.github.com/</span><span class="inline"><span class="inline-delimiter">#{</span>target<span class="inline-delimiter">}</span></span><span class="content">.js&quot;&gt;&lt;/script&gt;
 &lt;/div&gt;
 &lt;/div&gt;</span><span class="delimiter">)</span></span>
-    <span class="constant">Asciidoctor</span>::<span class="constant">Block</span>.new parent, <span class="symbol">:pass</span>, <span class="symbol">:content_model</span> =&gt; <span class="symbol">:raw</span>, <span class="symbol">:source</span> =&gt; source
+
+    create_pass_block parent, html, attrs, <span class="key">subs</span>: <span class="predefined-constant">nil</span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17374,13 +17349,11 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
-  <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
-    block_macro <span class="symbol">:gist</span>, <span class="constant">GistMacro</span>
-  <span class="keyword">end</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span>
+  block_macro <span class="constant">GistBlockMacro</span> <span class="keyword">if</span> document.basebackend? <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-gist.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-gist.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
 </div>
 </div>
@@ -17395,29 +17368,34 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </dl>
 </div>
 <div class="listingblock">
-<div class="title">sample-with-man-link.ad</div>
+<div class="title">sample-with-man-link.adoc</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">See man:gittutorial[7] to get started.</code></pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">ManpageMacro</div>
+<div class="title">ManpageInlineMacro</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
 
-<span class="keyword">class</span> <span class="class">ManpageMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">InlineMacroProcessor</span>
-  option <span class="symbol">:pos_attrs</span>, [<span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>]
+<span class="keyword">class</span> <span class="class">ManInlineMacro</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">InlineMacroProcessor</span>
+  use_dsl
 
-  <span class="keyword">def</span> <span class="function">process</span> parent, target, attributes
+  named <span class="symbol">:man</span>
+  name_positional_attributes <span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>
+
+  <span class="keyword">def</span> <span class="function">process</span> parent, target, attrs
     text = manname = target
     suffix = <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>
-    target = <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">#{</span>manname<span class="inline-delimiter">}</span></span><span class="content">.html</span><span class="delimiter">&quot;</span></span>
-    <span class="keyword">if</span> (volnum = attributes.fetch(<span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>, <span class="predefined-constant">nil</span>))
-      suffix = <span class="string"><span class="delimiter">&quot;</span><span class="content">(</span><span class="inline"><span class="inline-delimiter">#{</span>volnum<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+    target = <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span>manname<span class="inline-delimiter">}</span></span><span class="content">.html</span><span class="delimiter">)</span></span>
+    suffix = <span class="keyword">if</span> (volnum = attrs[<span class="string"><span class="delimiter">'</span><span class="content">volnum</span><span class="delimiter">'</span></span>])
+      <span class="string"><span class="delimiter">&quot;</span><span class="content">(</span><span class="inline"><span class="inline-delimiter">#{</span>volnum<span class="inline-delimiter">}</span></span><span class="content">)</span><span class="delimiter">&quot;</span></span>
+    <span class="keyword">else</span>
+      <span class="predefined-constant">nil</span>
     <span class="keyword">end</span>
-    <span class="instance-variable">@document</span>.register(<span class="symbol">:links</span>, target)
-    <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span><span class="constant">Asciidoctor</span>::<span class="constant">Inline</span>.new(parent, <span class="symbol">:anchor</span>, text, <span class="symbol">:type</span> =&gt; <span class="symbol">:link</span>, <span class="symbol">:target</span> =&gt; target).render<span class="inline-delimiter">}</span></span><span class="inline"><span class="inline-delimiter">#{</span>suffix<span class="inline-delimiter">}</span></span><span class="delimiter">)</span></span>
+    parent.document.register <span class="symbol">:links</span>, target
+    <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span>(create_anchor parent, text, <span class="key">type</span>: <span class="symbol">:link</span>, <span class="key">target</span>: target).render<span class="inline-delimiter">}</span></span><span class="inline"><span class="inline-delimiter">#{</span>suffix<span class="inline-delimiter">}</span></span><span class="delimiter">)</span></span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17425,11 +17403,11 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
-  inline_macro <span class="symbol">:man</span>, <span class="constant">ManpageMacro</span>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span>
+  inline_macro <span class="constant">ManInlineMacro</span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-man-link.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-man-link.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
 </div>
 </div>
@@ -17443,8 +17421,20 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 </dd>
 </dl>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Asciidoctor supports including content from a URI out of the box if you set the <code>allow-uri-read</code> attribute (not available if the safe mode is <code>secure</code>).
+</td>
+</tr>
+</table>
+</div>
 <div class="listingblock">
-<div class="title">sample-with-uri-include.ad</div>
+<div class="title">sample-with-uri-include.adoc</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:source-highlighter: coderay
 
@@ -17460,16 +17450,17 @@ include::https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/Gemfil
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/extensions</span><span class="delimiter">'</span></span>
-require <span class="string"><span class="delimiter">'</span><span class="content">uri-open</span><span class="delimiter">'</span></span>
+require <span class="string"><span class="delimiter">'</span><span class="content">open-uri</span><span class="delimiter">'</span></span>
 
 <span class="keyword">class</span> <span class="class">UriIncludeProcessor</span> &lt; <span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>::<span class="constant">IncludeProcessor</span>
   <span class="keyword">def</span> <span class="function">handles?</span> target
-    target.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">http://</span><span class="delimiter">'</span></span>) <span class="keyword">or</span> target.start_with?(<span class="string"><span class="delimiter">'</span><span class="content">https://</span><span class="delimiter">'</span></span>)
+    (target.start_with? <span class="string"><span class="delimiter">'</span><span class="content">http://</span><span class="delimiter">'</span></span>) <span class="keyword">or</span> (target.start_with? <span class="string"><span class="delimiter">'</span><span class="content">https://</span><span class="delimiter">'</span></span>)
   <span class="keyword">end</span>
 
-  <span class="keyword">def</span> <span class="function">process</span> reader, target, attributes
-    content = open(target).readlines
+  <span class="keyword">def</span> <span class="function">process</span> doc, reader, target, attributes
+    content = (open target).readlines
     reader.push_include content, target, target, <span class="integer">1</span>, attributes
+    reader
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -17477,12 +17468,15 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
 <div class="listingblock">
 <div class="title">Usage</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span> |document|
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>::<span class="constant">Extensions</span>.register <span class="keyword">do</span>
   include_processor <span class="constant">UriIncludeProcessor</span>
 <span class="keyword">end</span>
 
-<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">sample-with-uri-include.ad</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample-with-uri-include.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span></code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>You can see plenty more extension examples in the <a href="https://github.com/asciidoctor/asciidoctor-extensions-lab">extensions lab</a>.</p>
 </div>
 </div>
 </div>
@@ -20061,7 +20055,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-11-11 21:56:07 UTC
+Last updated 2014-11-12 08:49:47 UTC
 </div>
 </div>
 <script>
