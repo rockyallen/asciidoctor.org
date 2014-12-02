@@ -578,6 +578,26 @@ The templates will be used in exactly the same way as if you had set the backend
 </div>
 </div>
 </li>
+<li>
+<p><em>How do I get relative links to other AsciiDoc files to work correctly on GitHub?</em></p>
+<p>By default, the suffix for relative links in the generated HTML is <code>.html</code>.
+You need to adjust the <code>outfilesuffix</code> parameter to be <code>.adoc</code> so that the links work properly, since GitHub uses the <code>.adoc</code> extension in the URL even though the document is rendered as HTML.</p>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">ifdef::env-github[:outfilesuffix: .adoc]
+
+This is a link:example{outfilesuffix}[relative link] to an example file.
+
+This is a &lt;&lt;example#,relative link&gt;&gt; to the same file using the xref macro.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that you probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</code> unconditionally, as that will result in Asciidoctor overwriting input files by default.</p>
+</div>
+</li>
 </ol>
 </div>
 </div>
@@ -669,7 +689,7 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-02 10:23:27 UTC
+Last updated 2014-12-02 10:34:29 UTC
 </div>
 </div>
 </body>
