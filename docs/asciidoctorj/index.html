@@ -1,7 +1,7 @@
 <!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Getting Started with Asciidoctor in Java using AsciidoctorJ | Asciidoctor</title><meta name="author" content="Alex Soto"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Getting Started with Asciidoctor in Java using AsciidoctorJ</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> is the official library for running <a href="http://asciidoctor.org/docs/what-is-asciidoctor">Asciidoctor</a> on the JVM.
+<p><a href="http://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> is the official library for running <a href="/docs/what-is-asciidoctor">Asciidoctor</a> on the JVM.
 Using AsciidoctorJ, you can convert AsciiDoc content or analyze the structure of a parsed AsciiDoc document from Java and other JVM languages.</p>
 </div>
 <div id="toc" class="toc">
@@ -13,12 +13,13 @@ Using AsciidoctorJ, you can convert AsciiDoc content or analyze the structure of
 <li><a href="#locating-files">Locating files</a></li>
 <li><a href="#reading-the-document-tree">Reading the document tree</a></li>
 <li><a href="#extension-api">Extension API</a></li>
-<li><a href="#converting-to-epub3-and-kf8-mobi">Converting to EPUB3 and KF8/MOBI</a></li>
+<li><a href="#converting-to-epub3">Converting to EPUB3</a></li>
 <li><a href="#loading-ruby-libraries">Loading Ruby libraries</a></li>
 <li><a href="#jruby-instance">JRuby instance</a></li>
 <li><a href="#gem_path">GEM_PATH</a></li>
 <li><a href="#optimization">Optimization</a></li>
 <li><a href="#running-asciidoctorj-on-wildfly-as">Running AsciidoctorJ on WildFly AS</a></li>
+<li><a href="#using-a-pre-release-version">Using a pre-release version</a></li>
 <li><a href="#resources">Resources</a></li>
 </ul>
 </div>
@@ -28,8 +29,9 @@ Using AsciidoctorJ, you can convert AsciiDoc content or analyze the structure of
 <h2 id="distribution"><a class="anchor" href="#distribution"></a>Distribution</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AsciidoctorJ is published to Maven Central and Bintray.
-The artifact information is summarized in the tables below.</p>
+<p>The version of AsciidoctorJ matches the version of Asciidoctor RubyGem it bundles.
+AsciidoctorJ is published to Maven Central and Bintray.
+The artifact information can be found in the tables below.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Artifact information for AsciidoctorJ in jCenter (Bintray)</caption>
@@ -51,8 +53,8 @@ The artifact information is summarized in the tables below.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bintray.com/lordofthejars/maven/asciidoctorj/view/general">asciidoctorj</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://bintray.com/lordofthejars/maven/asciidoctorj/1.5.0/view">1.5.0</a><sup>&#8224;</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0.pom">pom</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0.jar">jar</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0-javadoc.jar">javadoc (jar)</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0-sources.jar">sources (jar)</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://bintray.com/lordofthejars/maven/asciidoctorj/1.5.1/view">1.5.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1.pom">pom</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1.jar">jar</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1-javadoc.jar">javadoc (jar)</a> <a href="http://dl.bintray.com/lordofthejars/maven/org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1-sources.jar">sources (jar)</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -75,15 +77,12 @@ The artifact information is summarized in the tables below.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctorj%22%20AND%20v%3A%221.5.0%22">asciidoctorj</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctorj%7C1.5.0%7Cjar">1.5.0</a><sup>&#8224;</sup></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.0/asciidoctorj-1.5.0-sources.jar">sources (jar)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctorj%22%20AND%20v%3A%221.5.1%22">asciidoctorj</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctorj%7C1.5.1%7Cjar">1.5.1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.1/asciidoctorj-1.5.1-sources.jar">sources (jar)</a></p></td>
 </tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p>&#8224; Based on Asciidoctor 1.5.0.</p>
-</div>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -106,40 +105,36 @@ The artifactId changed from <code>asciidoctor-java-integration</code> to <code>a
 To start using it, you need to add the library to your project&#8217;s classpath.</p>
 </div>
 <div class="listingblock">
-<div class="title">Declaring the dependency in Maven&#8217;s pom.xml</div>
+<div class="title">Declaring the dependency in a Maven build file (i.e., pom.xml)</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctorj<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>1.5.0<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;version&gt;</span>1.5.1<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Specifying the version of AsciidoctorJ implicitly selects the version of Asciidoctor core (i.e., Ruby).</td>
-</tr>
-</table>
-</div>
 <div class="listingblock">
-<div class="title">Declaring the dependency in Gradle&#8217;s build.gradle</div>
+<div class="title">Declaring the dependency in a Gradle build file (e.g., build.gradle)</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-  compile(<span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctorj:1.5.0</span><span class="delimiter">'</span></span>) { <i class="conum" data-value="1"></i><b>(1)</b>
-    transitive = <span class="predefined-constant">false</span>
-  }
+  compile <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctorj:1.5.1</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Declaring the dependency in an SBT build file (e.g., build.sbt)</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="scala">libraryDependencies += &quot;org.asciidoctor&quot; % &quot;asciidoctorj&quot; % &quot;1.5.1&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+</div>
+</div>
 <div class="colist arabic">
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Specifying the version of AsciidoctorJ implicitly selects the version of Asciidoctor core (i.e., Ruby).</td>
+<td>Specifying the version of AsciidoctorJ implicitly selects the version of Asciidoctor</td>
 </tr>
 </table>
 </div>
@@ -193,7 +188,7 @@ This interface provides four methods for converting AsciiDoc content.</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll learn about these methods in the <a href="#converting-documents">converting documents sections</a>.</p>
+<p>You&#8217;ll learn about these methods in the <a href="#converting-documents">converting documents section</a>.</p>
 </div>
 <div class="admonitionblock important">
 <table>
@@ -430,7 +425,7 @@ asciidoctor.convert(reader, writer, options().asMap());
 The options listed above can be set in <code>java.util.Map</code>.</p>
 </div>
 <div class="listingblock">
-<div class="title">Using the in_place option and the backend attribute</div>
+<div class="title">Using the <code>in_place</code> option and the <code>backend</code> attribute</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; attributes = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
 attributes.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">backend</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">docbook</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
@@ -595,7 +590,7 @@ All methods used to convert content are overloaded with <code>OptionsBuilder</co
 </td>
 <td class="content">
 The <code>icons</code> attribute requires a <code>String</code> to set the value used to “draw” icons.
-At this time, you can use two constants <code>org.asciidoctor.Attributes.IMAGE_ICONS</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or <code>org.asciidoctor.Attributes.FONT_ICONS</code> for using icons from <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a>.
+At this time, you can use two constants <code>org.asciidoctor.Attributes.IMAGE_ICONS</code> for using the same approach as AsciiDoc, that is using <code>img</code> tags, or <code>org.asciidoctor.Attributes.FONT_ICONS</code> for using icons from <a href="http://fortawesome.github.io/Font-Awesome" target="_blank">Font Awesome</a>.
 </td>
 </tr>
 </table>
@@ -1234,7 +1229,6 @@ For example, you can inject any extension inside the code and then register that
 
         <span class="annotation">@Override</span>
         <span class="directive">public</span> PreprocessorReader process(<span class="predefined-type">Document</span> document, PreprocessorReader reader) { <i class="conum" data-value="3"></i><b>(3)</b>
-
                 document.getAttributes().put(<span class="string"><span class="delimiter">&quot;</span><span class="content">content</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">Alex</span><span class="delimiter">&quot;</span></span>);
                 <span class="keyword">return</span> reader;
         }
@@ -1317,8 +1311,7 @@ It strips the prompt character and styles the command.</p>
             Block block = (Block)currentBlock;
             <span class="predefined-type">List</span>&lt;<span class="predefined-type">String</span>&gt; lines = block.lines(); <i class="conum" data-value="3"></i><b>(3)</b>
             <span class="keyword">if</span> (lines.size() &gt; <span class="integer">0</span> &amp;&amp; lines.get(<span class="integer">0</span>).startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">$</span><span class="delimiter">&quot;</span></span>)) {
-                blocks.set(
-                          i, convertToTerminalListing(block));
+                blocks.set(i, convertToTerminalListing(block));
             }
         }
     }
@@ -1337,10 +1330,11 @@ It strips the prompt character and styles the command.</p>
     <span class="keyword">for</span> (<span class="predefined-type">String</span> line : lines) {
         <span class="keyword">if</span> (line.startsWith(<span class="string"><span class="delimiter">&quot;</span><span class="content">$</span><span class="delimiter">&quot;</span></span>)) {
             resultLines.append(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;span class=</span><span class="char">\&quot;</span><span class="content">command</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>)
-                        .append(line.substring(<span class="integer">2</span>, line.length()))
-                        .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/command</span><span class="delimiter">&quot;</span></span>);
-        } <span class="keyword">else</span> {
-                resultLines.append(line);
+                       .append(line.substring(<span class="integer">2</span>, line.length()))
+                       .append(<span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;/command</span><span class="delimiter">&quot;</span></span>);
+        }
+        <span class="keyword">else</span> {
+            resultLines.append(line);
         }
     }
 
@@ -1990,10 +1984,30 @@ Now when a <code>.jar</code> file containing the previous structure is dropped i
 </div>
 </div>
 <div class="sect1">
-<h2 id="converting-to-epub3-and-kf8-mobi"><a class="anchor" href="#converting-to-epub3-and-kf8-mobi"></a>Converting to EPUB3 and KF8/MOBI</h2>
+<h2 id="converting-to-epub3"><a class="anchor" href="#converting-to-epub3"></a>Converting to EPUB3</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AsciidoctorJ bundles the <em class="app">asciidoctor-epub3</em> gem inside the distribution JAR, which means that you can set the <code>backend</code> attribute to <code>epub3</code>.
+<p>The Asciidoctor EPUB3 gem (asciidoctor-epub3) is bundled inside the AsciidoctorJ EPUB3 jar (asciidoctorj-epub3).
+To use it, simply add the asciidoctorj-epub3 jar to your dependencies.
+The version of the AsciidoctorJ EPUB3 jar aligns with the version of the Asciidoctor EPUB3 gem.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how you can add the AsciidoctorJ EPUB3 jar to your Maven dependencies:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependencies&gt;</span>
+  <span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>asciidoctorj-epub3<span class="tag">&lt;/artifactId&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.5.0-alpha.4<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;scope&gt;</span>runtime<span class="tag">&lt;/scope&gt;</span>
+  <span class="tag">&lt;/dependency&gt;</span>
+<span class="tag">&lt;/dependencies&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once you&#8217;ve added the AsciidoctorJ EPUB3 jar to your classpath, you can set the <code>backend</code> attribute to <code>epub3</code>.
 The document will be converted to the <a href="http://idpf.org/epub/30" target="_blank">EPUB3</a> format.</p>
 </div>
 <div class="admonitionblock caution">
@@ -2282,7 +2296,7 @@ Dependencies: org.asciidoctor
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctorj<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>1.5.0<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.5.1<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     ...
   <span class="tag">&lt;/dependency&gt;</span>
@@ -2324,11 +2338,38 @@ Dependencies: org.asciidoctor
 </div>
 </div>
 <div class="sect1">
+<h2 id="using-a-pre-release-version"><a class="anchor" href="#using-a-pre-release-version"></a>Using a pre-release version</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Pre-release versions of <code>AsciidoctorJ</code> are published to Bintray.
+You can find them in <a href="https://bintray.com/lordofthejars/maven/asciidoctorj/view" class="bare">https://bintray.com/lordofthejars/maven/asciidoctorj/view</a>.
+Final releases are released to both Maven Central and Bintray.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s how to use a pre-release version in Maven:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;repositories&gt;</span>
+  <span class="tag">&lt;repository&gt;</span>
+    <span class="tag">&lt;id&gt;</span>central<span class="tag">&lt;/id&gt;</span>
+    <span class="tag">&lt;name&gt;</span>bintray<span class="tag">&lt;/name&gt;</span>
+    <span class="tag">&lt;url&gt;</span>http://dl.bintray.com/lordofthejars/maven<span class="tag">&lt;/url&gt;</span>
+    <span class="tag">&lt;snapshots&gt;</span>
+      <span class="tag">&lt;enabled&gt;</span>false<span class="tag">&lt;/enabled&gt;</span>
+    <span class="tag">&lt;/snapshots&gt;</span>
+  <span class="tag">&lt;/repository&gt;</span>
+<span class="tag">&lt;/repositories&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The source code for AsciidoctorJ, including the latest developments and issues, can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctorj">repository</a> on GitHub.
-If you identify an issue while using AsciidoctorJ, please don&#8217;t hesitate to <a href="https://github.com/asciidoctor/asciidoctorj/issues">file a bug report</a>.
+If you identify an issue while using AsciidoctorJ, please don&#8217;t hesitate to <a href="http://github.com/asciidoctor/asciidoctorj/issues">file a bug report</a>.
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
