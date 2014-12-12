@@ -4,16 +4,16 @@
 <meta charset="UTF-8">
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 1.5.1">
+<meta name="generator" content="Asciidoctor 1.5.2">
 <meta name="description" content="This guide describes the Asciidoctor attributes, values, and layout options available for producing a customized and polished document.">
 <meta name="keywords" content="AsciiDoc, Asciidoctor, syntax, reference, learn, how to, AsciiMath, LaTeXMath, MathJax, Pygments, CodeRay">
 <meta name="author" content="Sarah White, Dan Allen">
 <title>Asciidoctor User Manual</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
 /* Remove the comments around the @import statement below when using this as a custom stylesheet */
-/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Noto+Serif:400,400italic,700,700italic|Droid+Sans+Mono:400";*/
+/*@import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400";*/
 article,aside,details,figcaption,figure,footer,header,hgroup,main,nav,section,summary{display:block}
 audio,canvas,video{display:inline-block}
 audio:not([controls]){display:none;height:0}
@@ -277,8 +277,8 @@ dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
 ol>li p,ul>li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
 ul.unstyled,ol.unnumbered,ul.checklist,ul.none{list-style-type:none}
 ul.unstyled,ol.unnumbered,ul.checklist{margin-left:.625em}
-ul.checklist li>p:first-child>.fa-check-square-o:first-child,ul.checklist li>p:first-child>input[type="checkbox"]:first-child{margin-right:.25em}
-ul.checklist li>p:first-child>input[type="checkbox"]:first-child{position:relative;top:1px}
+ul.checklist li>p:first-child>.fa-square-o:first-child,ul.checklist li>p:first-child>.fa-check-square-o:first-child{width:1em;font-size:.85em}
+ul.checklist li>p:first-child>input[type="checkbox"]:first-child{width:1em;position:relative;top:1px}
 ul.inline{margin:0 auto .625em auto;margin-left:-1.375em;margin-right:0;padding:0;list-style:none;overflow:hidden}
 ul.inline>li{list-style:none;float:left;margin-left:1.375em;display:block}
 ul.inline>li>*{display:block}
@@ -411,7 +411,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 .hide-for-print{display:none!important}
 .show-for-print{display:inherit!important}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
 <style>
 /* Stylesheet for CodeRay to match GitHub theme | MIT License | http://foundation.zurb.com */
 /*pre.CodeRay {background-color:#f7f7f8;}*/
@@ -513,7 +513,8 @@ MathJax.Hub.Config({
   asciimath2jax: {
     delimiters: [["\\$", "\\$"]],
     ignoreClass: "nostem|noasciimath"
-  }
+  },
+  TeX: { equationNumbers: { autoNumber: "none" } }
 });
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script>
@@ -16712,9 +16713,9 @@ Front matter typically starts on the first line of a file and is bounded by bloc
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">--- <i class="conum" data-value="1"></i><b>(1)</b>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">-<i class="conum" data-value="1"></i><b>(1)</b>
 layout: default <i class="conum" data-value="2"></i><b>(2)</b>
---- <i class="conum" data-value="1"></i><b>(1)</b>
+-<i class="conum" data-value="1"></i><b>(1)</b>
 = Document Title
 
 content</code></pre>
@@ -20020,47 +20021,42 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </tr>
 <tr>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{vbar}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>|</pre></div></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock">|</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{caret}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>^</pre></div></td>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>||{caret}</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">^</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>^</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{asterisk}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>*</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">*</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>*</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{tilde}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>~</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">~</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>~</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{backslash}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>\</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">\</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>\</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{backtick}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>`</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">`</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>`</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{two-colons}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>::</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">::</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>::</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{two-semicolons}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>;;</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">;;</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>;;</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>{cpp}</pre></div></td>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>C++</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">C++</p></td>
 </tr>
 </tbody>
@@ -20070,7 +20066,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-12 07:05:30 UTC
+Last updated 2014-12-12 08:41:28 UTC
 </div>
 </div>
 <script>
