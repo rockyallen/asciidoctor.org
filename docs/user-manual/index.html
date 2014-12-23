@@ -787,9 +787,10 @@ MathJax.Hub.Config({
 <li><a href="#include-directive">48. Include Directive</a>
 <ul class="sectlevel2">
 <li><a href="#selecting-parts-of-a-document-to-include">48.1. Selecting parts of a document to include</a></li>
-<li><a href="#normalizing-block-indentation">48.2. Normalizing block indentation</a></li>
-<li><a href="#include-files-relative-to-a-common-source-directory">48.3. Include files relative to a common source directory</a></li>
-<li><a href="#include-content-from-a-uri">48.4. Include content from a URI</a></li>
+<li><a href="#relative-leveloffset">48.2. Relative leveloffset</a></li>
+<li><a href="#normalizing-block-indentation">48.3. Normalizing block indentation</a></li>
+<li><a href="#include-files-relative-to-a-common-source-directory">48.4. Include files relative to a common source directory</a></li>
+<li><a href="#include-content-from-a-uri">48.5. Include content from a URI</a></li>
 </ul>
 </li>
 <li><a href="#docinfo-file">49. Docinfo file</a>
@@ -13568,7 +13569,33 @@ for XML files you can use the <code>&lt;!-- tag::name[] -&#8594;</code> and <cod
 </div>
 </div>
 <div class="sect2">
-<h3 id="normalizing-block-indentation"><a class="anchor" href="#normalizing-block-indentation"></a>48.2. Normalizing block indentation</h3>
+<h3 id="relative-leveloffset"><a class="anchor" href="#relative-leveloffset"></a>48.2. Relative leveloffset</h3>
+<div class="paragraph">
+<p>The <code>leveloffset</code> attribute is used to <a href="http://asciidoc.org/userguide.html#X90">shift the level of sections</a> when combining documents.
+It works great for a single include level, but it quickly breaks down when you get into multiple levels of nesting.</p>
+</div>
+<div class="paragraph">
+<p>The problem is that the level offset value is assumed to be absolute.
+Asciidoctor now supports <em>relative</em> level offset values using a leading + or - operator.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">:leveloffset: +1
+include::chapter-01.adoc[]
+:leveloffset: -1</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can specify the <code>leveloffset</code> attribute directly on the include directive so you don&#8217;t have to worry about restoring the old value.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">include::chapter-01.adoc[leveloffset=+1]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="normalizing-block-indentation"><a class="anchor" href="#normalizing-block-indentation"></a>48.3. Normalizing block indentation</h3>
 <div class="paragraph">
 <p>Source code snippets from external files are often padded with a leading block indent.
 This leading block indent is relevant in its original context.
@@ -13635,7 +13662,7 @@ end</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="include-files-relative-to-a-common-source-directory"><a class="anchor" href="#include-files-relative-to-a-common-source-directory"></a>48.3. Include files relative to a common source directory</h3>
+<h3 id="include-files-relative-to-a-common-source-directory"><a class="anchor" href="#include-files-relative-to-a-common-source-directory"></a>48.4. Include files relative to a common source directory</h3>
 <div class="paragraph">
 <p>Asciidoctor expands attributes in the target of the include directive.
 That means you only have to type the unique part of the path when linking to a source file.</p>
@@ -13663,7 +13690,7 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 </div>
 </div>
 <div class="sect2">
-<h3 id="include-content-from-a-uri"><a class="anchor" href="#include-content-from-a-uri"></a>48.4. Include content from a URI</h3>
+<h3 id="include-content-from-a-uri"><a class="anchor" href="#include-content-from-a-uri"></a>48.5. Include content from a URI</h3>
 <div class="paragraph">
 <p>The include directive can insert content directly from a URI.</p>
 </div>
@@ -20066,7 +20093,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-12 09:05:17 UTC
+Last updated 2014-12-23 07:08:38 UTC
 </div>
 </div>
 <script>
