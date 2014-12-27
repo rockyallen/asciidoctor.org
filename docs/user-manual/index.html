@@ -13318,16 +13318,26 @@ NOTE: Asciidoctor now supports font-based admonition icons, powered by Font Awes
 <h2 id="include-directive"><a class="anchor" href="#include-directive"></a>48. Include Directive</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The include directive allows you to insert content from one file directly into another file, effectively merging the content.</p>
+<p>The include directive allows you to insert content from a file into a parent file, effectively merging the content.</p>
 </div>
 <div class="paragraph">
-<p>Files included in the master (top-level) document are resolved relative to the base directory, which defaults to the directory of the master document unless otherwise specified.
-Files included inside a file which itself has been included are resolved relative to the current document.</p>
+<p>Include directives are handled by the preprocessor, so they are oblivious to the structure of the document.
+They are primarily just a file merger, with one exception.
+The include directives can resolve document-level attributes.</p>
 </div>
 <div class="paragraph">
 <p>Only content in AsciiDoc files are preprocessed when included.
 Asciidoctor recognizes files with the extensions <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code> as AsciiDoc files.
 The content in all other files are included as is.</p>
+</div>
+<div class="paragraph">
+<p>The include directive is <em>disabled</em> when Asciidoctor is run in secure mode, which is the default safe mode when using Asciidoctor via the API.
+In secure mode, include directives become <em>links</em> in the output document.
+To learn more about secure mode, refer to the section <a href="#running-asciidoctor-securely">Running Asciidoctor Securely</a>.</p>
+</div>
+<div class="paragraph">
+<p>Files included in the master (top-level) document are resolved relative to the base directory, which defaults to the directory of the master document unless otherwise specified.
+Files included inside a file which itself has been included are resolved relative to the current document.</p>
 </div>
 <div class="listingblock">
 <div class="title">Document parts</div>
@@ -20093,7 +20103,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-23 07:08:38 UTC
+Last updated 2014-12-27 22:58:07 UTC
 </div>
 </div>
 <script>
