@@ -186,7 +186,7 @@ EOS</span></span></code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html_doc = <span class="constant">Asciidoctor</span>.render(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html_doc = <span class="constant">Asciidoctor</span>.convert(data, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>,
   <span class="symbol">:attributes</span> =&gt; <span class="string"><span class="delimiter">%w(</span><span class="content">notitle! anchors imagesdir=./images</span><span class="delimiter">)</span></span>)</code></pre>
 </div>
 </div>
@@ -229,11 +229,11 @@ compiled = env[<span class="string"><span class="delimiter">'</span><span class=
 <div class="paragraph">
 <p>All Opal-compiled classes are stored under the Opal namespace.
 Ruby variables and methods on a class or object get prefixed with <code>$</code>.
-Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execute <code>Opal.Asciidoctor.$render</code> in JavaScript.</p>
+Thus, where you would execute <code>Asciidoctor.convert</code> in Ruby, you execute <code>Opal.Asciidoctor.$convert</code> in JavaScript.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span class="keyword">var</span> html_doc =Opal.Asciidoctor.<span class="predefined">$render</span>(
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript"><span class="keyword">var</span> html_doc =Opal.Asciidoctor.<span class="predefined">$convert</span>(
     <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>
@@ -244,7 +244,7 @@ Thus, where you would execute <code>Asciidoctor.render</code> in Ruby, you execu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="javascript">document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = Opal.Asciidoctor.<span class="predefined">$render</span>(
+<pre class="CodeRay highlight nowrap"><code data-lang="javascript">document.getElementById(<span class="string"><span class="delimiter">'</span><span class="content">content</span><span class="delimiter">'</span></span>).innerHTML = Opal.Asciidoctor.<span class="predefined">$convert</span>(
     <span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoctor.org[*Asciidoctor*] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">running on http://opalrb.org[_Opal_] </span><span class="delimiter">&quot;</span></span> +
     <span class="string"><span class="delimiter">&quot;</span><span class="content">brings AsciiDoc to the browser!</span><span class="delimiter">&quot;</span></span>)</code></pre>

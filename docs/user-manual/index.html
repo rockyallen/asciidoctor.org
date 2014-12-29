@@ -1279,7 +1279,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1290,7 +1290,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14977,7 +14977,7 @@ As a result, you could save mysample.html to any computer and it will look the s
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 
-<span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -14985,7 +14985,7 @@ As a result, you could save mysample.html to any computer and it will look the s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
 puts html</code></pre>
 </div>
 </div>
@@ -15261,7 +15261,7 @@ Set the attribute <code>noxmlns</code> to disable this feature.</p>
 <div class="listingblock">
 <div class="title">Generate DocBook output from the API</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
     <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>)</code></pre>
 </div>
 </div>
@@ -15694,7 +15694,7 @@ The value must be set in the document constructor using the <code>:safe</code> o
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; 'server')</pre>
+<pre class="nowrap">result = Asciidoctor.convert_file('master.ad', :safe =&gt; 'server')</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15702,7 +15702,7 @@ The value must be set in the document constructor using the <code>:safe</code> o
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; :server)</pre>
+<pre class="nowrap">result = Asciidoctor.convert_file('master.ad', :safe =&gt; :server)</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -15710,7 +15710,7 @@ The value must be set in the document constructor using the <code>:safe</code> o
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">result = Asciidoctor.render_file('master.ad', :safe =&gt; 10)</pre>
+<pre class="nowrap">result = Asciidoctor.convert_file('master.ad', :safe =&gt; 10)</pre>
 </div>
 </div>
 </div>
@@ -16693,7 +16693,7 @@ Then, just pass both the directory holding the original templates and the direct
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
     <span class="symbol">:template_dirs</span> =&gt; [<span class="string"><span class="delimiter">'</span><span class="content">/path/to/original/templates</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">/path/to/modified/templates</span><span class="delimiter">'</span></span>]</code></pre>
 </div>
 </div>
@@ -16896,7 +16896,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16907,7 +16907,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.render_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16921,7 +16921,7 @@ If you&#8217;re on Linux, you can view the file using <a href="https://wiki.gnom
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.convert <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16930,7 +16930,7 @@ If you want the header and footer, just enable it using the <code>:header_footer
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.convert <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16939,7 +16939,7 @@ If you only want the inline markup to be processed, set the <code>:doctype</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:doctype</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.convert <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:doctype</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">inline</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -16947,7 +16947,7 @@ If you only want the inline markup to be processed, set the <code>:doctype</code
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.convert <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -16972,7 +16972,7 @@ It will fallback to its default templates for everything else.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.render <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"> puts <span class="constant">Asciidoctor</span>.convert <span class="string"><span class="delimiter">'</span><span class="content">*This* is Asciidoctor.</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>,
    <span class="symbol">:template_dir</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">templates</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -17448,7 +17448,7 @@ require <span class="string"><span class="delimiter">'</span><span class="conten
       <span class="predefined-constant">nil</span>
     <span class="keyword">end</span>
     parent.document.register <span class="symbol">:links</span>, target
-    <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span>(create_anchor parent, text, <span class="key">type</span>: <span class="symbol">:link</span>, <span class="key">target</span>: target).render<span class="inline-delimiter">}</span></span><span class="inline"><span class="inline-delimiter">#{</span>suffix<span class="inline-delimiter">}</span></span><span class="delimiter">)</span></span>
+    <span class="string"><span class="delimiter">%(</span><span class="inline"><span class="inline-delimiter">#{</span>(create_anchor parent, text, <span class="key">type</span>: <span class="symbol">:link</span>, <span class="key">target</span>: target).convert<span class="inline-delimiter">}</span></span><span class="inline"><span class="inline-delimiter">#{</span>suffix<span class="inline-delimiter">}</span></span><span class="delimiter">)</span></span>
   <span class="keyword">end</span>
 <span class="keyword">end</span></code></pre>
 </div>
@@ -20103,7 +20103,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2014-12-27 22:58:07 UTC
+Last updated 2014-12-29 05:14:26 UTC
 </div>
 </div>
 <script>
