@@ -161,7 +161,7 @@ Install Guard and the shell file monitor using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">gem install guard guard-shell rb-inotify</pre>
+<pre class="nowrap">gem install guard guard-shell</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -238,7 +238,7 @@ The easiest way to get started is to follow the steps below:</p>
 <p>Start a basic <code>Gemfile</code></p>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">bundler init</pre>
+<pre class="nowrap">bundle init</pre>
 </div>
 </div>
 </li>
@@ -250,7 +250,6 @@ The easiest way to get started is to follow the steps below:</p>
 
 gem </span><span class="delimiter">'</span></span>guard<span class="string"><span class="delimiter">'</span><span class="content">
 gem </span><span class="delimiter">'</span></span>guard-shell<span class="string"><span class="delimiter">'</span><span class="content">
-gem </span><span class="delimiter">'</span></span>rb-inotify<span class="string"><span class="delimiter">'</span><span class="content">
 gem </span><span class="delimiter">'</span></span>asciidoctor<span class="string"><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
@@ -259,7 +258,29 @@ gem </span><span class="delimiter">'</span></span>asciidoctor<span class="string
 <p>Install the bundle</p>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">bundler install</pre>
+<pre class="nowrap">bundle install</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create Guardfile</p>
+<div class="paragraph">
+<p>Create a file named <code>Guardfile</code> in the same directory as your document.
+Configure <code>Guardfile</code> to monitor the file (or files) you are editing and then regenerate the HTML file whenever a change is detected.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example of a basic Guard configuration for monitoring a single file:</p>
+</div>
+<div class="listingblock">
+<div class="title">Guardfile</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Bundler</span>.require(<span class="symbol">:default</span>)
+
+guard <span class="string"><span class="delimiter">'</span><span class="content">shell</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
+  watch(<span class="regexp"><span class="delimiter">/</span><span class="content">^mydoc</span><span class="char">\.</span><span class="content">adoc$</span><span class="delimiter">/</span></span>) {|m|
+    <span class="constant">Asciidoctor</span>.convert_file(m[<span class="integer">0</span>], <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)
+  }
+<span class="keyword">end</span></code></pre>
 </div>
 </div>
 </li>
@@ -267,7 +288,7 @@ gem </span><span class="delimiter">'</span></span>asciidoctor<span class="string
 <p>Run</p>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">bundler exec guard</pre>
+<pre class="nowrap">bundle exec guard</pre>
 </div>
 </div>
 </li>
