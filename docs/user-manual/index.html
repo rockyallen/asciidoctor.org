@@ -14682,17 +14682,89 @@ The mud had turned to cement...</pre>
 <div class="sect1">
 <h2 id="user-appendix"><a class="anchor" href="#user-appendix"></a>59. Appendix</h2>
 <div class="sectionbody">
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-Section pending
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>You can define that some sections are appendix sections by adding the <code>[appendix]</code> marker before the section header.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[appendix]
+== Copyright and License</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Sections marked as appendix have different header, built as follow:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A fixed prefix (&#8220;Appendix&#8221; is the default value)</p>
+</li>
+<li>
+<p>Letters are used to number the section (A, B, C&#8230;&#8203;)</p>
+</li>
+<li>
+<p>A colon</p>
+</li>
+<li>
+<p>The section title</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The prefix can be modified with the <code>appendix-caption</code> attribute.
+It can be unset with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">: appendix-caption!:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or set to a different value with</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">: appendix-caption: App</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Appendix sections can be combined with subsections.
+Example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:appendix-caption: App
+:numbered:
+
+== Title
+
+=== Subsection
+
+[appendix]
+== First Appendix
+
+=== First subsection
+
+=== Second subsection
+
+[appendix]
+== Second Appendix</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sections will be numbered as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">1. Title
+1.1. Subsection
+
+App A: First Appendix
+A.1. First subsection
+A.2. Second subsection
+
+App B: Second Appendix</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -20187,7 +20259,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-04-22 20:36:39 UTC
+Last updated 2015-04-23 21:46:35 UTC
 </div>
 </div>
 <script>
