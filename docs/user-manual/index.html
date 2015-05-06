@@ -17310,6 +17310,20 @@ Just keep in mind that you may need to rework parts of your extensions when you 
 <span class="keyword">end</span></code></pre>
 </div>
 </div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Extension classes must be defined outside of the register block.
+Once an extension class is registered, it is frozen, preventing further modification.
+If you define an extension class inside the register block, it will result in an error on subsequent invocations.
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>You can register more than one processor of each type, though you can only have one processor per custom block or macro.
 Each registered class is instantiated when the <span class="class">Asciidoctor::Document</span> is created.</p>
@@ -20321,7 +20335,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-05-06 21:04:07 UTC
+Last updated 2015-05-06 22:06:51 UTC
 </div>
 </div>
 <script>
