@@ -11754,26 +11754,21 @@ This prevents horizontal scrolling which some users considered a greater readabi
 <div class="listingblock">
 <div class="title">Listing block with nowrap option syntax</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source%nowrap,java]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>public class ApplicationConfigurationProvider extends HttpConfigurationProvider
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source%nowrap,java]
+----
+public class ApplicationConfigurationProvider extends HttpConfigurationProvider
 {
    @Override
    public Configuration getConfiguration(ServletContext context)
    {
       return ConfigurationBuilder.begin()
                .addRule()
-               .when(Direction.isInbound().and(Path.matches("/{path}")))
-               .perform(Log.message(Level.INFO, "Client requested path: {path}"))
-               .where("path").matches(".*");
+               .when(Direction.isInbound().and(Path.matches(&quot;/{path}&quot;)))
+               .perform(Log.message(Level.INFO, &quot;Client requested path: {path}&quot;))
+               .where(&quot;path&quot;).matches(&quot;.*&quot;);
    }
-}</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="nowrap"></pre>
+}
+----</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -20335,7 +20330,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-05-06 22:06:51 UTC
+Last updated 2015-05-06 22:14:29 UTC
 </div>
 </div>
 <script>
