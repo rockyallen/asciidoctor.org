@@ -1856,27 +1856,27 @@ When they are enabled, you must surround the link text in double quotes if it co
 <div class="sect3">
 <h4 id="links-to-relative-files"><a class="anchor" href="#links-to-relative-files"></a>Links to relative files</h4>
 <div class="paragraph">
-<p>If you want to link to a file relative to the current document, use the <code>link</code> macro in front of the file name.</p>
+<p>If you want to link to an external file relative to the current document, use the <code>link</code> macro in front of the file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">link:editing-asciidoc-with-live-preview[Editing with Live Preview]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">link:protocol.json[Open the JSON file]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>To link directly to a section in the document, append a hash (<code>#</code>) followed by the section&#8217;s ID to the end of the file name.</p>
+<p>If your file is an HTML file, you can link directly to a section in the document, append a hash (<code>#</code>) followed by the section&#8217;s ID to the end of the file name.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">link:editing-asciidoc-with-live-preview/#livereload[LiveReload]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">link:external.html#livereload[LiveReload]</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>You can also create links that refer to sections within the current document.</p>
+<p>For links to relative AsciiDoc documents cross references should be used.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="internal-cross-references"><a class="anchor" href="#internal-cross-references"></a>Internal cross references</h4>
+<h4 id="cross-references"><a class="anchor" href="#cross-references"></a>Cross references</h4>
 <div class="paragraph">
 <p>A link to another location within an AsciiDoc document or between AsciiDoc documents is called a <em>cross reference</em> (also referred to as an <em>xref</em>).
 In Asciidoctor, the xref inline macro is used to create cross references to content, sections, and elements using an ID.
@@ -1909,7 +1909,7 @@ A cross reference is created by enclosing the element&#8217;s ID in double angle
 <div class="title">Rendered cross reference using a section&#8217;s title</div>
 <div class="content">
 <div class="paragraph">
-<p>Refer to <a href="#internal-cross-references">Internal cross references</a>.</p>
+<p>Refer to <a href="#Internal cross references">[Internal cross references]</a>.</p>
 </div>
 </div>
 </div>
@@ -1928,6 +1928,48 @@ If you want to customize the linked text, include it after the ID, separating th
 <p>Learn how to <a href="#link-macro-attributes">use attributes within the link macro</a>.</p>
 </div>
 </div>
+</div>
+<div class="paragraph">
+<p>Cross references can also be used to create a link to a file relative to the current document.
+For links to another AsciiDoc document, this is the preferred way.</p>
+</div>
+<div class="paragraph">
+<p>The trailing hash (<code>#</code>) means that you refer to the top of the document.</p>
+</div>
+<div class="listingblock">
+<div class="title">Cross reference to the top of a relative Asciidoc document</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Refer to &lt;&lt;document-b.adoc#,Document B&gt;&gt; for more information.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered cross reference to the top of a relative Asciidoc document</div>
+<div class="content">
+<div class="paragraph">
+<p>Refer to <a href="../document-b/">Document B</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To link directly to a section in the document, append the section&#8217;s ID after the hash (<code>#</code>)</p>
+</div>
+<div class="listingblock">
+<div class="title">Cross reference to a specific section of a relative Asciidoc document</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Refer to &lt;&lt;document-b.adoc#section-b,Section B&gt;&gt; for more information.</code></pre>
+</div>
+</div>
+<div class="exampleblock">
+<div class="title">Rendered cross reference to a specific section of a relative Asciidoc document</div>
+<div class="content">
+<div class="paragraph">
+<p>Refer to <a href="../document-b/#section-b">Section B</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>In both cases, this syntax will also work if you are inside the document you are referring to.
+This is useful if you are sharing the same link across multiple documents.</p>
 </div>
 <div class="paragraph">
 <p>Image references are similar to links since they are also references to URLs or files.
