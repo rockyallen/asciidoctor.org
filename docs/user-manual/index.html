@@ -3220,7 +3220,9 @@ Until our next adventure!
 </td>
 <td class="hdlist2">
 <p>The document&#8217;s version number which must contain at least one numeric character.
-Any letters or symbols preceding the numeric character will not be rendered.</p>
+Any letters or symbols preceding the numeric character will not be rendered.
+If the <code>revdate</code> is absent, the <code>revnumber</code> must be followed by a comma (e.g., <code>v1.0,</code>) or (as of Asciidoctor 1.5.3) begin with a "v" character (e.g., <code>v1.0</code>).
+If the <code>revdate</code> is present, it must be separated from the <code>revnumber</code> by a comma.</p>
 </td>
 </tr>
 <tr>
@@ -3229,7 +3231,7 @@ Any letters or symbols preceding the numeric character will not be rendered.</p>
 </td>
 <td class="hdlist2">
 <p>The date the document version was completed.
-When the revnumber or <code>revremark</code> attributes are set, but revdate is not, then revdate will be assigned the <code>docdate</code> value.</p>
+When the <code>revnumber</code> or <code>revremark</code> attributes are set, but <code>revdate</code> is not, then <code>revdate</code> will be assigned the <code>docdate</code> value.</p>
 </td>
 </tr>
 <tr>
@@ -3297,7 +3299,7 @@ The revision information attributes can also be explicitly set in the header.</p
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon &lt;kismet@asciidoctor.org&gt;
-:revnumber: v1.0 <i class="conum" data-value="1"></i><b>(1)</b>
+:revnumber: 1.0 <i class="conum" data-value="1"></i><b>(1)</b>
 :revdate: 10-02-2013
 :revremark: The first incarnation of {doctitle} <i class="conum" data-value="2"></i><b>(2)</b>
 :version-label!: <i class="conum" data-value="3"></i><b>(3)</b>
@@ -20330,7 +20332,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-05-07 00:33:38 UTC
+Last updated 2015-05-14 06:20:14 UTC
 </div>
 </div>
 <script>
