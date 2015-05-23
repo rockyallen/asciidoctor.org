@@ -599,21 +599,25 @@ MathJax.Hub.Config({
 <li><a href="#document-title">16.1. Document title</a></li>
 <li><a href="#author-and-email">16.2. Author and email</a></li>
 <li><a href="#revision-number-date-and-remark">16.3. Revision number, date, and remark</a></li>
-<li><a href="#metadata">16.4. Metadata</a></li>
-<li><a href="#header-summary">16.5. Header summary</a></li>
+<li><a href="#subtitle-partitioning">16.4. Subtitle partitioning</a></li>
+<li><a href="#metadata">16.5. Metadata</a></li>
+<li><a href="#header-summary">16.6. Header summary</a></li>
 </ul>
 </li>
 <li><a href="#doc-preamble">17. Preamble</a></li>
 <li><a href="#sections">18. Sections</a>
 <ul class="sectlevel2">
-<li><a href="#titles-as-headings">18.1. Titles as headings</a></li>
-<li><a href="#title-id-and-prefix">18.2. Title id and prefix</a></li>
+<li><a href="#titles-as-html-headings">18.1. Titles as HTML headings</a></li>
+<li><a href="#auto-generated-ids">18.2. Auto-generated IDs</a></li>
 <li><a href="#links">18.3. Links</a></li>
 <li><a href="#anchors">18.4. Anchors</a></li>
 <li><a href="#numbering">18.5. Numbering</a></li>
-<li><a href="#discrete-or-floating-section-titles">18.6. Discrete or floating section titles</a></li>
-<li><a href="#section-styles">18.7. Section styles</a></li>
-<li><a href="#sections-summary">18.8. Sections summary</a></li>
+<li><a href="#links-2">18.6. Links</a></li>
+<li><a href="#anchors-2">18.7. Anchors</a></li>
+<li><a href="#numbering-2">18.8. Numbering</a></li>
+<li><a href="#discrete-or-floating-section-titles">18.9. Discrete or floating section titles</a></li>
+<li><a href="#section-styles">18.10. Section styles</a></li>
+<li><a href="#sections-summary">18.11. Sections summary</a></li>
 </ul>
 </li>
 <li><a href="#blocks">19. Blocks</a>
@@ -3358,13 +3362,99 @@ Revision extraction information and an extraction example are pending.
 </div>
 </div>
 <div class="sect2">
-<h3 id="metadata"><a class="anchor" href="#metadata"></a>16.4. Metadata</h3>
+<h3 id="subtitle-partitioning"><a class="anchor" href="#subtitle-partitioning"></a>16.4. Subtitle partitioning</h3>
+<div class="paragraph">
+<p>By default, the document title is separated into a main title and subtitle using the industry standard, a colon followed by a space.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+As of Asciidoctor 1.5.2, subtitle partitioning is not implemented in the HTML 5 backend.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">A document title that contains a subtitle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Main Title: Subtitle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The separator is searched from the end of the text.
+Therefore, only the last occurrence of the separator is used for partitioning the title.</p>
+</div>
+<div class="listingblock">
+<div class="title">A document title that contains a subtitle and more than one separator</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Main Title: Main Title Continued: Subtitle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can modify the title separator by specifying the <code>separator</code> block attribute explicitly above the document title (since Asciidoctor 1.5.3).
+Note that a space will automatically be appended to the separator value.</p>
+</div>
+<div class="listingblock">
+<div class="title">A document title with an explicit title separator</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[separator=::]
+= Main Title:: Subtitle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can also set the separator using a document attribute, either in the document:</p>
+</div>
+<div class="listingblock">
+<div class="title">A document title with an explicit title separator</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Main Title:: Subtitle
+:title-separator: ::</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>or from the API or CLI (shown here):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -a title-separator=:: document.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can partition the title from the API when calling the <code>doctitle</code> method on Document:</p>
+</div>
+<div class="listingblock">
+<div class="title">Retrieving a partitioned document title</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">title_parts = document.doctitle <span class="key">partition</span>: <span class="predefined-constant">true</span>
+puts title_parts.title
+puts title_parts.subtitle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can partition the title in an arbitrary way by passing the separator as a value to the partition option.
+In this case, the partition option both activates subtitle partitioning and passes in a custom separator.</p>
+</div>
+<div class="listingblock">
+<div class="title">Retrieving a partitioned document title with a custom separator</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">title_parts = document.doctitle <span class="key">partition</span>: <span class="string"><span class="delimiter">'</span><span class="content">::</span><span class="delimiter">'</span></span>
+puts title_parts.title
+puts title_parts.subtitle</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="metadata"><a class="anchor" href="#metadata"></a>16.5. Metadata</h3>
 <div class="paragraph">
 <p>Document metadata, such as a description of the document, keywords, and an alternate title, can be assigned to attributes in the header.
 When rendered to HTML, the values of these attributes will correspond to tags contained in the <code>&lt;head&gt;</code> section of an HTML document.</p>
 </div>
 <div class="sect3">
-<h4 id="description"><a class="anchor" href="#description"></a>16.4.1. Description</h4>
+<h4 id="description"><a class="anchor" href="#description"></a>16.5.1. Description</h4>
 <div class="paragraph">
 <p>You can include a description of the document using the <code>description</code> attribute.</p>
 </div>
@@ -3410,7 +3500,7 @@ This journey begins on a bleary Monday morning.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="keywords"><a class="anchor" href="#keywords"></a>16.4.2. Keywords</h4>
+<h4 id="keywords"><a class="anchor" href="#keywords"></a>16.5.2. Keywords</h4>
 <div class="paragraph">
 <p>The <code>keywords</code> attribute contains a list of comma separated values that are assigned to the HTML <code>&lt;meta&gt;</code> tag.</p>
 </div>
@@ -3443,14 +3533,14 @@ This journey begins on a bleary Monday morning.</code></pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="alternate-title"><a class="anchor" href="#alternate-title"></a>16.4.3. Alternate title</h4>
+<h4 id="alternate-title"><a class="anchor" href="#alternate-title"></a>16.5.3. Alternate title</h4>
 <div class="paragraph">
 <p>By default, the document title is used as the HTML <code>&lt;title&gt;</code> tag value.
 However, you can set the <code>title</code> attribute in the document&#8217;s header to override this behavior.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="custom-metadata-styles-and-functions"><a class="anchor" href="#custom-metadata-styles-and-functions"></a>16.4.4. Custom metadata, styles and functions</h4>
+<h4 id="custom-metadata-styles-and-functions"><a class="anchor" href="#custom-metadata-styles-and-functions"></a>16.5.4. Custom metadata, styles and functions</h4>
 <div class="paragraph">
 <p>You can add content, such as custom metadata, stylesheet, and script information, to the header of a rendered document with document information (<code>docinfo</code>) files.
 The <a href="#docinfo-file">docinfo file</a> section details what these files can contain and how to use them.</p>
@@ -3458,7 +3548,7 @@ The <a href="#docinfo-file">docinfo file</a> section details what these files ca
 </div>
 </div>
 <div class="sect2">
-<h3 id="header-summary"><a class="anchor" href="#header-summary"></a>16.5. Header summary</h3>
+<h3 id="header-summary"><a class="anchor" href="#header-summary"></a>16.6. Header summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Header attributes and values</caption>
 <colgroup>
@@ -3759,14 +3849,14 @@ Content of second section</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="titles-as-headings"><a class="anchor" href="#titles-as-headings"></a>18.1. Titles as headings</h3>
+<h3 id="titles-as-html-headings"><a class="anchor" href="#titles-as-html-headings"></a>18.1. Titles as HTML headings</h3>
 <div class="paragraph">
 <p>When the document is rendered as HTML 5 (using the built-in <code>html5</code> backend), each section title becomes a heading element where the heading level matches the number of equal signs.
 For example, a level 1 section (<code>==</code>) maps to an <code>&lt;h2&gt;</code> element.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="title-id-and-prefix"><a class="anchor" href="#title-id-and-prefix"></a>18.2. Title id and prefix</h3>
+<h3 id="auto-generated-ids"><a class="anchor" href="#auto-generated-ids"></a>18.2. Auto-generated IDs</h3>
 <div class="paragraph">
 <p>Section ids are generated from the section title.
 By default, the id is prefixed with an underscore (<code>_</code>) and each word in the title is separated by an underscore.
@@ -3919,7 +4009,110 @@ Last Colophon Section
 </div>
 </div>
 <div class="sect2">
-<h3 id="discrete-or-floating-section-titles"><a class="anchor" href="#discrete-or-floating-section-titles"></a>18.6. Discrete or floating section titles</h3>
+<h3 id="links-2"><a class="anchor" href="#links-2"></a>18.6. Links</h3>
+<div class="paragraph">
+<p>To turn section titles into links, enable the <code>sectlinks</code> attribute.
+The default Asciidoctor stylesheet displays linked section titles with the same color and styles as unlinked section titles.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="anchors-2"><a class="anchor" href="#anchors-2"></a>18.7. Anchors</h3>
+<div class="paragraph">
+<p>When the <code>sectanchors</code> attribute is enabled on a document, an anchor (empty link) is added before the section title.
+The default Asciidoctor stylesheet renders the anchor as a section entity (<code>&sect;</code>) that floats to the left of the section title.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="numbering-2"><a class="anchor" href="#numbering-2"></a>18.8. Numbering</h3>
+<div class="paragraph">
+<p>Asciidoctor allows section numbering to be toggled on and off throughout a document.
+You can enable section numbers using the <code>sectnums</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:sectnums:</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Asciidoctor still supports the attribute name <code>numbered</code> to number sections for backward compatibility with AsciiDoc Python, but the name <code>sectnums</code> is preferred.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>You can also use this attribute entry above any section title in the document to toggle the auto-numbering setting.
+When you want to turn off the numbering, add an exclamation point to the end of the attribute name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:sectnums!:
+
+== Unnumbered Section</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For regions of the document where section numbering is turned off, the section numbering will not be incremented.</p>
+</div>
+<div class="paragraph">
+<p>Given:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Document Title
+
+:sectnums!:
+
+== Colophon Section
+
+== Another Colophon Section
+
+== Last Colophon Section
+
+:sectnums:
+
+== Section One
+
+== Section Two
+
+== Section Three</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sections will be numbered as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Colophon Section
+
+Another Colophon Section
+
+Last Colophon Section
+
+1. Section One
+
+2. Section Two
+
+3. Section Three</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Asciidoctor will always curtail incrementing the section number in regions of the document where section numbers are off.</p>
+</div>
+<div class="paragraph">
+<p>If <code>sectnums</code> is set on the command line (or API), that overrides the value set in the document header, but it does not prevent the document from toggling the value for regions of the document.</p>
+</div>
+<div class="paragraph">
+<p>If <code>sectnums!</code> is set on the command line (or API), then the numbers are disabled regardless of toggling within the document.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="discrete-or-floating-section-titles"><a class="anchor" href="#discrete-or-floating-section-titles"></a>18.9. Discrete or floating section titles</h3>
 <div class="paragraph">
 <p>The <code>discrete</code> attribute can be applied to any section titles that start with two to six equal signs (<code>==</code>).
 A discrete title is styled like a section title but is not part of the content hierarchy (i.e., it ignores section nesting rules).
@@ -3966,7 +4159,7 @@ However, the content in the discrete section will not be repositioned (i.e., flo
 </div>
 </div>
 <div class="sect2">
-<h3 id="section-styles"><a class="anchor" href="#section-styles"></a>18.7. Section styles</h3>
+<h3 id="section-styles"><a class="anchor" href="#section-styles"></a>18.10. Section styles</h3>
 <div class="paragraph">
 <p>Asciidoctor provides styles for the frontmatter and backmatter sections commonly found in journal articles, academic papers, and books.
 The styles are:</p>
@@ -4022,7 +4215,7 @@ Documentation is a distillation of many long, squiggly adventures.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sections-summary"><a class="anchor" href="#sections-summary"></a>18.8. Sections summary</h3>
+<h3 id="sections-summary"><a class="anchor" href="#sections-summary"></a>18.11. Sections summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Section attributes and values</caption>
 <colgroup>
@@ -20351,7 +20544,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-05-19 23:20:00 UTC
+Last updated 2015-05-23 20:54:18 UTC
 </div>
 </div>
 <script>
