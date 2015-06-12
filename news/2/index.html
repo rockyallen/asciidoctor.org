@@ -1,4 +1,72 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link href="/feed.atom" rel="alternate" title="AsciiDoctor.org News Feed" type="application/atom+xml"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/21/asciidoctorj-1-5-0-released/">AsciidoctorJ 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2014-08-21T02:58:16-06:00">Thursday, August 21, 2014</time></h4></header><div class="entry-content"><div id="preamble">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor | An open source implementation of AsciiDoc in Ruby</title><link href="/feed.atom" rel="alternate" title="AsciiDoctor.org News Feed" type="application/atom+xml"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><div class="row"><div class="large-12 columns"><div class="row"><div class="large-12 columns primary"><div id="content"><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/21/asciidoctor-gradle-plugin-1-5-0-released/">Asciidoctor Gradle plugin 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Andres Almiray</span> - <time class="pubdate" datetime="2014-08-21T03:24:37-06:00">Thursday, August 21, 2014</time></h4></header><div class="entry-content"><div class="paragraph">
+<p>It took us longer than what we hoped but <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Asciidoctor Gradle plugin</a> version 1.5.0 is finally here!
+The Asciidoctor Gradle plugin is based on <a href="https://github.com/asciidoctor/asciidoctorj#readme">AsciidoctorJ</a> and, for the first time, aligns with its version numbering scheme.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the basic setup to get you started:</p>
+</div>
+<div class="videoblock">
+<iframe src="http://showterm.io/5d4eb98839d3627f296a2" width="640" height="480"></iframe>
+</div>
+<div class="paragraph">
+<p>The plugin tracks the AsciidoctorJ version starting with this release, hence the jump from 0.7.3 to 1.5.0.
+There are many goodies inside Asciidoctor 1.5.0 as explained in the <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/">release notes</a>, but perhaps the most interesting one for Gradle users is the capability to write custom extensions (or tag handlers if you will) using Groovy.
+You can include extensions just by placing their containing JAR in the classpath, or you can write them directly in your Gradle build, by placing the code inside <code>buildSrc</code>.
+There&#8217;s a trivial example of the latest option at <a href="https://github.com/aalmiray/asciidoctor-piglatin-example" class="bare">github.com/aalmiray/asciidoctor-piglatin-example</a>.</p>
+</div>
+<div class="paragraph">
+<p>Other features found in this release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ability to load Ruby-based extensions using the <code>requires</code> property on <code>AsciidoctorTask</code>.</p>
+</li>
+<li>
+<p>ability to set the gem installation path using the <code>gemPath</code> property on <code>AsciidoctorTask</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Developers are advised to upgrade as soon as possible.
+Be mindful of the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin#compatibility-with-previous-releases">compatibility issues</a> raised at the plugins&#8217; readme.
+Do not forget to review the changes brought by Asciidoctor 1.5.0 found at the <a href="http://asciidoctor.org/docs/migration">migration guide</a>.</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="http://photos2.meetupstatic.com/photos/event/4/c/2/4/600_391999492.jpeg" alt="Hackergarten">
+</div>
+<div class="title">Figure 1. Basel Hackergarten @ Canoo July 24th</div>
+</div>
+<div class="paragraph">
+<p>The development team would like to thank participants of various <a href="http://hackergarten.net/">Hackergarten</a> sessions, both in Switzerland and abroad.
+Several issues and features have been contributed during those sessions.
+We couldn&#8217;t have done it without your help.
+Also, thank you to all the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/contributors">contributors</a> for helping out.</p>
+</div>
+<div class="paragraph">
+<p>Go forth and make great (and Groovy) documentation once again!</p>
+</div>
+<div class="paragraph">
+<p>Upgrading to 1.5.0 (recommended) is simple.
+Just update the version in your Gradle build file.
+All necessary dependencies should be pulled in via Gradle.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+When upgrading to Asciidoctor 1.5.0, please refer to the <a href="http://asciidoctor.org/docs/migration/">migration guide</a> for details about how to migrate your content.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>For more information about issues fixed in this release, please see the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues?milestone=1.5.0&amp;state=closed">1.5.0 milestone</a> in the issue tracker!</p>
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/release/">release</a>, <a href="/news/tag/plugin/">plugin</a>, <a href="/news/tag/gradle/">gradle</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2014/08/21/asciidoctorj-1-5-0-released/">AsciidoctorJ 1.5.0 released!</a></h1><h4><em>by</em> <span class="author">Alex Soto</span> - <time class="pubdate" datetime="2014-08-21T02:58:16-06:00">Thursday, August 21, 2014</time></h4></header><div class="entry-content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>We&#8217;re thrilled to bring the latest Asciidoctor milestone, <a href="http://asciidoctor.org/news/2014/08/12/asciidoctor-1-5-0-released/">Asciidoctor 1.5.0</a>, to the JVM as AsciidoctorJ 1.5.0!</p>
@@ -1629,82 +1697,7 @@ It&#8217;s the real deal, syntax highlighting and all.</p>
 <div class="footnote" id="_footnote_1">
 <a href="#_footnoteref_1">1</a> I&#8217;m a little footnote, short and stout.
 </div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/github/">github</a></div></footer><hr></article><article class="post"><header class="entry-header"><h1 class="title"><a href="/news/2013/09/18/introducing-asciidoctor-js-live-preview/">Introducing Asciidoctor.js live preview in your browser</a></h1><h4><em>by</em> <span class="author">Guillaume Grossetie</span> - <time class="pubdate" datetime="2013-09-18T02:19:35-06:00">Wednesday, September 18, 2013</time></h4></header><div class="entry-content"><div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>I&#8217;d like to introduce you to the easiest way to render any AsciiDoc file, local or remote, as HTML directly in your browser!</p>
-</div>
-<div class="paragraph">
-<p>All you need to do is install the <a href="https://chrome.google.com/webstore/detail/asciidoctorjs-live-previe/iaalpfgpbocpdfblpnhhgllgbdbchmia">Chrome extension</a> or the <a href="https://addons.mozilla.org/fr/firefox/addon/asciidoctorjs-live-preview/">Firefox add-on</a>.
-Then you can preview any AsciiDoc file as HTML just by visiting it!</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="how-it-works"><a class="anchor" href="#how-it-works"></a>How it works</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Chrome extension and the Firefox add-on use <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> to render AsciiDoc as HTML inside your browser.
-Both provide a toggle button to switch between HTML output and AsciiDoc source.</p>
-</div>
-<div class="paragraph">
-<p>Here you can see a local AsciiDoc file rendered inside of Chrome.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="/images/chrome-extension-enabled.png" alt="chrome extension enabled">
-</div>
-<div class="title">Chrome extension in action</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You can view any AsciiDoc file on GitHub through the lens of Asciidoctor.js with this extension!
-Simply navigate to the file in the GitHub web interface (try <a href="https://github.com/asciidoctor/asciidoctor.org/blob/master/news/introducing-asciidoctor-js-live-preview.adoc">this blog post</a>) and click the <b class="button">Raw</b> button that appears above the file preview.
-Looks much better, doesn&#8217;t it?
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="future"><a class="anchor" href="#future"></a>Future</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Currently, we are using <a href="https://github.com/asciidoctor/asciidoctor.js">Asciidoctor.js</a> based on <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> 0.1.2.
-We planned to cross-compile the newly-released <a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor</a> 0.1.4 to Javascript, to support the latest and greatest features!</p>
-</div>
-<div class="paragraph">
-<p>We are also working on adding some cool new features :</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>browser-based editor using <a href="http://markitup.jaysalvat.com/">MarkItUp!</a></p>
-</li>
-<li>
-<p>live reload to automatically refresh on local file changes</p>
-</li>
-<li>
-<p>and many more&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="contributing"><a class="anchor" href="#contributing"></a>Contributing</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>We&#8217;re always open for patches, better documentation, feature requests, evangelizing or any help you&#8217;re able to provide.</p>
-</div>
-</div>
-</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/announcement/">announcement</a>, <a href="/news/tag/javascript/">javascript</a>, <a href="/news/tag/extension/">extension</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="fa fa-fast-backward"></i></a></li><li class="arrow"><a href="/news/"><i class="fa fa-step-backward"></i></a></li><li>2 of 6</li><li class="arrow"><a href="/news/3/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/6/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2015.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: {   inlineMath: [["\\(", "\\)"]],   displayMath: [["\\[", "\\]"]],   ignoreClass: "nostem|nolatexmath" }, asciimath2jax: {   delimiters: [["\\$", "\\$"]],   ignoreClass: "nostem|noasciimath" }});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
+</div></div><footer class="entry-footer"><div class="tags"><i class="label fa fa-tags"></i><a href="/news/tag/github/">github</a></div></footer><hr></article><div class="pagination-centered"><ul class="pagination"><li class="arrow"><a href="/news/"><i class="fa fa-fast-backward"></i></a></li><li class="arrow"><a href="/news/"><i class="fa fa-step-backward"></i></a></li><li>2 of 6</li><li class="arrow"><a href="/news/3/"><i class="fa fa-step-forward"></i></a></li><li class="arrow"><a href="/news/6/"><i class="fa fa-fast-forward"></i></a></li></ul></div></div></div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><p>&copy; Asciidoctor Project 2015.<br><span>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.</span><br>Content licensed under the CC BY 3.0 License.</p></div><div class="large-6 columns"></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script type="text/x-mathjax-config">MathJax.Hub.Config({ tex2jax: {   inlineMath: [["\\(", "\\)"]],   displayMath: [["\\[", "\\]"]],   ignoreClass: "nostem|nolatexmath" }, asciimath2jax: {   delimiters: [["\\$", "\\$"]],   ignoreClass: "nostem|noasciimath" }});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.4.0/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script>(function() { var p1 = document.createElement('script'); p1.async = true; p1.src = 'https://apis.google.com/js/plusone.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(p1, s);})();</script><script type="text/javascript">
 var _gaq = _gaq || [];
 _gaq.push(['_setAccount','UA-38215684-1']);
 _gaq.push(['_trackPageview']);
