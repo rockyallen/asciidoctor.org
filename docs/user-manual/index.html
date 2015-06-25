@@ -609,12 +609,13 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#titles-as-html-headings">18.1. Titles as HTML headings</a></li>
 <li><a href="#auto-generated-ids">18.2. Auto-generated IDs</a></li>
-<li><a href="#links">18.3. Links</a></li>
-<li><a href="#anchors">18.4. Anchors</a></li>
-<li><a href="#numbering">18.5. Numbering</a></li>
-<li><a href="#discrete-or-floating-section-titles">18.6. Discrete or floating section titles</a></li>
-<li><a href="#section-styles">18.7. Section styles</a></li>
-<li><a href="#sections-summary">18.8. Sections summary</a></li>
+<li><a href="#custom-ids">18.3. Custom IDs</a></li>
+<li><a href="#links">18.4. Links</a></li>
+<li><a href="#anchors">18.5. Anchors</a></li>
+<li><a href="#numbering">18.6. Numbering</a></li>
+<li><a href="#discrete-or-floating-section-titles">18.7. Discrete or floating section titles</a></li>
+<li><a href="#section-styles">18.8. Section styles</a></li>
+<li><a href="#sections-summary">18.9. Sections summary</a></li>
 </ul>
 </li>
 <li><a href="#blocks">19. Blocks</a>
@@ -686,9 +687,11 @@ MathJax.Hub.Config({
 <li><a href="#summary-5">28.2. Summary</a></li>
 </ul>
 </li>
-<li><a href="#xref">29. Internal cross references</a>
+<li><a href="#xref">29. Cross references</a>
 <ul class="sectlevel2">
-<li><a href="#inter-document-cross-references">29.1. Inter-document cross references</a></li>
+<li><a href="#anchordef">29.1. Defining an Anchor</a></li>
+<li><a href="#internal-cross-references">29.2. Internal cross references</a></li>
+<li><a href="#inter-document-cross-references">29.3. Inter-document cross references</a></li>
 </ul>
 </li>
 <li><a href="#images">30. Images</a>
@@ -3919,21 +3922,34 @@ If you are generating a PDF from AsciiDoc using a2x and dblatex, see <a href="ht
 </div>
 </div>
 <div class="sect2">
-<h3 id="links"><a class="anchor" href="#links"></a>18.3. Links</h3>
+<h3 id="custom-ids"><a class="anchor" href="#custom-ids"></a>18.3. Custom IDs</h3>
+<div class="paragraph">
+<p>Like with on every components (see <a href="#anchordef">Defining an Anchor</a>) you can define a custom ID for your section header.
+This can be useful when you define a cross reference pointing to this section.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[[tigers-section, Tigers]]
+=== Subspecies of Tiger</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="links"><a class="anchor" href="#links"></a>18.4. Links</h3>
 <div class="paragraph">
 <p>To turn section titles into links, enable the <code>sectlinks</code> attribute.
 The default Asciidoctor stylesheet displays linked section titles with the same color and styles as unlinked section titles.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="anchors"><a class="anchor" href="#anchors"></a>18.4. Anchors</h3>
+<h3 id="anchors"><a class="anchor" href="#anchors"></a>18.5. Anchors</h3>
 <div class="paragraph">
 <p>When the <code>sectanchors</code> attribute is enabled on a document, an anchor (empty link) is added before the section title.
 The default Asciidoctor stylesheet renders the anchor as a section entity (<code>&sect;</code>) that floats to the left of the section title.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="numbering"><a class="anchor" href="#numbering"></a>18.5. Numbering</h3>
+<h3 id="numbering"><a class="anchor" href="#numbering"></a>18.6. Numbering</h3>
 <div class="paragraph">
 <p>Asciidoctor allows section numbering to be toggled on and off throughout a document.
 You can enable section numbers using the <code>sectnums</code> attribute.</p>
@@ -4022,7 +4038,7 @@ Last Colophon Section
 </div>
 </div>
 <div class="sect2">
-<h3 id="discrete-or-floating-section-titles"><a class="anchor" href="#discrete-or-floating-section-titles"></a>18.6. Discrete or floating section titles</h3>
+<h3 id="discrete-or-floating-section-titles"><a class="anchor" href="#discrete-or-floating-section-titles"></a>18.7. Discrete or floating section titles</h3>
 <div class="paragraph">
 <p>The <code>discrete</code> attribute can be applied to any section titles that start with two to six equal signs (<code>==</code>).
 A discrete title is styled like a section title but is not part of the content hierarchy (i.e., it ignores section nesting rules).
@@ -4069,7 +4085,7 @@ However, the content in the discrete section will not be repositioned (i.e., flo
 </div>
 </div>
 <div class="sect2">
-<h3 id="section-styles"><a class="anchor" href="#section-styles"></a>18.7. Section styles</h3>
+<h3 id="section-styles"><a class="anchor" href="#section-styles"></a>18.8. Section styles</h3>
 <div class="paragraph">
 <p>Asciidoctor provides styles for the frontmatter and backmatter sections commonly found in journal articles, academic papers, and books.
 The styles are:</p>
@@ -4125,7 +4141,7 @@ Documentation is a distillation of many long, squiggly adventures.</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="sections-summary"><a class="anchor" href="#sections-summary"></a>18.8. Sections summary</h3>
+<h3 id="sections-summary"><a class="anchor" href="#sections-summary"></a>18.9. Sections summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Section attributes and values</caption>
 <colgroup>
@@ -4261,7 +4277,7 @@ ____</code></pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Id: gettysburg</td>
+<td>ID: gettysburg, see <a href="#anchordef">Defining an Anchor</a></td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
@@ -8882,11 +8898,63 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 </div>
 <div class="sect1">
-<h2 id="xref"><a class="anchor" href="#xref"></a>29. Internal cross references</h2>
+<h2 id="xref"><a class="anchor" href="#xref"></a>29. Cross references</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>A link to another location within an AsciiDoc document or between AsciiDoc documents is called a <em>cross reference</em> (also referred to as an <em>xref</em>).
-In Asciidoctor, the xref inline macro is used to create cross references to content, sections, and elements using an ID.
+To be able to create a cross reference, you first need to define the location where the reference will point to.
+This is the anchor definition.</p>
+</div>
+<div class="sect2">
+<h3 id="anchordef"><a class="anchor" href="#anchordef"></a>29.1. Defining an Anchor</h3>
+<div class="paragraph">
+<p>Anchor can be defined everywhere: header, image, listing or text bloc.
+The cross reference ID is defined between two square brackets.</p>
+</div>
+<div class="listingblock">
+<div class="title">Inline anchor example</div>
+<div class="content">
+<pre class="nowrap">[[bookmark-a]]Inline anchors make arbitrary content referenceable.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="paragraph">
+<p><a id="bookmark-a"></a>Inline anchors make arbitrary content referenceable.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>It is possible to define the text that will be used in the cross reference link (called <code>xreflabel</code>).
+If not defined asciidoctor does it best to find a suitable text (the solution differs from case to case).
+In case of an image, the image caption will be used.
+In case of a section header, the text of the header will be used.</p>
+</div>
+<div class="paragraph">
+<p>To define the <code>xreflabel</code>, add it in the anchor definition right after the ID (separated by a coma).</p>
+</div>
+<div class="listingblock">
+<div class="title">anchor with a defined xreflabel, the caption will not be used as link text</div>
+<div class="content">
+<pre class="nowrap">[[tiger-image,Image of a tiger]]
+.This image represents a Bengal tiger also called the Indian tiger
+image::tiger.png[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead of the bracket form, you can use the macro <code>anchor</code> to achieve the same goal.</p>
+</div>
+<div class="listingblock">
+<div class="title">anchor using the macro form</div>
+<div class="content">
+<pre class="nowrap">anchor:tiger-image[Image of a tiger]</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="internal-cross-references"><a class="anchor" href="#internal-cross-references"></a>29.2. Internal cross references</h3>
+<div class="paragraph">
+<p>In Asciidoctor, the xref inline macro is used to create cross references to content, sections, and elements using an ID.
 A cross reference is created by enclosing the element&#8217;s ID in double angled brackets.</p>
 </div>
 <div class="listingblock">
@@ -8916,13 +8984,13 @@ A cross reference is created by enclosing the element&#8217;s ID in double angle
 <div class="title">Rendered cross reference using a section&#8217;s title</div>
 <div class="content">
 <div class="paragraph">
-<p>Refer to <a href="#xref">Internal cross references</a>.</p>
+<p>Refer to <a href="#internal-cross-references">Internal cross references</a>.</p>
 </div>
 </div>
 </div>
 <div class="paragraph">
-<p>Some converters, such as the HTML converter, will automatically generate a link from the title of the element.
-If you want to customize the linked text, include it after the ID, separating them by a comma.</p>
+<p>Some converters, such as the HTML converter, will use the <code>xreflabel</code> as default text of the link.
+For each link, you can also customize this text, include it after the ID, separating them by a comma.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8936,8 +9004,17 @@ If you want to customize the linked text, include it after the ID, separating th
 </div>
 </div>
 </div>
+<div class="paragraph">
+<p>You can also use the macro <code>xref</code> to achieve the same goal.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to xref:link-macro-attributes[use attributes within the link macro].</code></pre>
+</div>
+</div>
+</div>
 <div class="sect2">
-<h3 id="inter-document-cross-references"><a class="anchor" href="#inter-document-cross-references"></a>29.1. Inter-document cross references</h3>
+<h3 id="inter-document-cross-references"><a class="anchor" href="#inter-document-cross-references"></a>29.3. Inter-document cross references</h3>
 <div class="paragraph">
 <p>The xref inline macro can also link between IDs in other AsciiDoc documents.
 This eliminates the need to use direct links between documents that are coupled to a particular converter (e.g., HTML links).
@@ -9045,7 +9122,7 @@ image::sunset.jpg[Sunset, 300, 200, link=&quot;http://www.flickr.com/photos/javh
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>id</td>
+<td>ID, see <a href="#anchordef">Defining an Anchor</a>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
@@ -11789,7 +11866,8 @@ The example below shows a listing block with <code>source</code> and the languag
 <div class="listingblock">
 <div class="title">Source block syntax</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[source,ruby]
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[[app-listing]]
+[source,ruby]
 .app.rb
 ----
 require 'sinatra'
@@ -13010,9 +13088,10 @@ You can also set the source language globally using the <code>source-language</c
 <div class="listingblock">
 <div class="title">Code block with title and syntax highlighting</div>
 <div class="content">
-<pre class="nowrap">[source,ruby] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b>
-.app.rb <i class="conum" data-value="3"></i><b>(3)</b>
----- <i class="conum" data-value="4"></i><b>(4)</b>
+<pre class="nowrap">[[app-listing]] <i class="conum" data-value="1"></i><b>(1)</b>
+[source,ruby] <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+.app.rb <i class="conum" data-value="4"></i><b>(4)</b>
+---- <i class="conum" data-value="5"></i><b>(5)</b>
 require 'sinatra'
 
 get '/hi' do
@@ -13025,18 +13104,22 @@ end
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Assign the block name <code>source</code> to the first position in the attribute list.</td>
+<td>An optional ID can be added to the block. See <a href="#anchordef">Defining an Anchor</a>.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>Assign a source language to the second position.</td>
+<td>Assign the block name <code>source</code> to the first position in the attribute list.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>An optional title can be added to the block.</td>
+<td>Assign a source language to the second position.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>An optional title can be added to the block.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
 <td>The source block name is typically assigned to listing and literal blocks.</td>
 </tr>
 </table>
@@ -13044,7 +13127,7 @@ end
 <div class="exampleblock">
 <div class="title">Result: Source block with title and syntax highlighting</div>
 <div class="content">
-<div class="listingblock">
+<div id="app-listing" class="listingblock">
 <div class="title">app.rb</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
@@ -20461,7 +20544,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-23 19:23:57 UTC
+Last updated 2015-06-25 22:56:18 UTC
 </div>
 </div>
 <script>

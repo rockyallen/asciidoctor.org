@@ -1452,7 +1452,9 @@ When they are enabled, you must quote the link text if it contains a comma.
 <div class="content">
 <pre class="nowrap">[[bookmark-a]]Inline anchors make arbitrary content referenceable.
 
-anchor:bookmark-b[]Use a cross reference to link to this location.</pre>
+anchor:bookmark-b[]Use a cross reference to link to this location.
+
+[[bookmark-c,last paragraph]]The xreflabel attribute will be used as link text in the cross-reference link.</pre>
 </div>
 </div>
 <div class="exampleblock result">
@@ -1462,6 +1464,9 @@ anchor:bookmark-b[]Use a cross reference to link to this location.</pre>
 </div>
 <div class="paragraph">
 <p><a id="bookmark-b"></a>Use a cross reference to link to this location.</p>
+</div>
+<div class="paragraph">
+<p><a id="bookmark-c"></a>The xreflabel attribute will be used as link text in the cross-reference link.</p>
 </div>
 </div>
 </div>
@@ -1765,7 +1770,8 @@ DEPENDENCIES
 <div class="listingblock">
 <div class="title">Code block with title and syntax highlighting</div>
 <div class="content">
-<pre class="nowrap">[source,ruby]
+<pre class="nowrap">[[app-listing]]
+[source,ruby]
 .app.rb
 ----
 require 'sinatra'
@@ -1778,7 +1784,7 @@ end
 </div>
 <div class="exampleblock result">
 <div class="content">
-<div class="listingblock">
+<div id="app-listing" class="listingblock">
 <div class="title">app.rb</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">sinatra</span><span class="delimiter">'</span></span>
