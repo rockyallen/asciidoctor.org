@@ -3811,7 +3811,7 @@ The number of equal signs represents the nesting level (using a 0-based index) o
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-In addition to the equals marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (#) from Markdown.
+In addition to the equals sign marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (#) from Markdown.
 That means the outline of a Markdown document will render just fine as an AsciiDoc document.
 </td>
 </tr>
@@ -3874,8 +3874,8 @@ For example, a level 1 section (<code>==</code>) maps to an <code>&lt;h2&gt;</co
 <div class="sect2">
 <h3 id="auto-generated-ids"><a class="anchor" href="#auto-generated-ids"></a>18.2. Auto-generated IDs</h3>
 <div class="paragraph">
-<p>Section ids are generated from the section title.
-By default, the id is prefixed with an underscore (<code>_</code>) and each word in the title is separated by an underscore.
+<p>Section IDs are generated from the section title.
+By default, the ID is prefixed with an underscore (<code>_</code>) and each word in the title is separated by an underscore.
 You can change the prefix using the <code>idprefix</code> attribute.</p>
 </div>
 <div class="listingblock">
@@ -3924,8 +3924,8 @@ If you are generating a PDF from AsciiDoc using a2x and dblatex, see <a href="ht
 <div class="sect2">
 <h3 id="custom-ids"><a class="anchor" href="#custom-ids"></a>18.3. Custom IDs</h3>
 <div class="paragraph">
-<p>Like with on every components (see <a href="#anchordef">Defining an Anchor</a>) you can define a custom ID for your section header.
-This can be useful when you define a cross reference pointing to this section.</p>
+<p>You can also assign a custom ID and reference text label to a section (see <a href="#anchordef">Defining an Anchor</a>).
+This can be useful when you define a cross reference pointing to the section.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -8908,11 +8908,11 @@ This is the anchor definition.</p>
 <div class="sect2">
 <h3 id="anchordef"><a class="anchor" href="#anchordef"></a>29.1. Defining an Anchor</h3>
 <div class="paragraph">
-<p>Anchor can be defined everywhere: header, image, listing or text bloc.
-The cross reference ID is defined between two square brackets.</p>
+<p>An anchor can be defined anywhere: header, image, listing or text block.
+The anchor&#8217;s ID is defined between two square brackets.</p>
 </div>
 <div class="listingblock">
-<div class="title">Inline anchor example</div>
+<div class="title">Defining an inline anchor ID</div>
 <div class="content">
 <pre class="nowrap">[[bookmark-a]]Inline anchors make arbitrary content referenceable.</pre>
 </div>
@@ -8925,16 +8925,16 @@ The cross reference ID is defined between two square brackets.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>It is possible to define the text that will be used in the cross reference link (called <code>xreflabel</code>).
-If not defined asciidoctor does it best to find a suitable text (the solution differs from case to case).
+<p>It is possible to customize the text that will be used in the cross reference link (called <code>xreflabel</code>).
+If not defined, Asciidoctor does it best to find suitable text (the solution differs from case to case).
 In case of an image, the image caption will be used.
-In case of a section header, the text of the header will be used.</p>
+In case of a section header, the text of the section&#8217;s title will be used.</p>
 </div>
 <div class="paragraph">
-<p>To define the <code>xreflabel</code>, add it in the anchor definition right after the ID (separated by a coma).</p>
+<p>To define the <code>xreflabel</code>, add it in the anchor definition right after the ID (separated by a comma).</p>
 </div>
 <div class="listingblock">
-<div class="title">anchor with a defined xreflabel, the caption will not be used as link text</div>
+<div class="title">An anchor ID with a defined xreflabel. The caption will not be used as link text.</div>
 <div class="content">
 <pre class="nowrap">[[tiger-image,Image of a tiger]]
 .This image represents a Bengal tiger also called the Indian tiger
@@ -8945,7 +8945,7 @@ image::tiger.png[]</pre>
 <p>Instead of the bracket form, you can use the macro <code>anchor</code> to achieve the same goal.</p>
 </div>
 <div class="listingblock">
-<div class="title">anchor using the macro form</div>
+<div class="title">Setting an anchor ID using the macro form</div>
 <div class="content">
 <pre class="nowrap">anchor:tiger-image[Image of a tiger]</pre>
 </div>
@@ -8954,8 +8954,10 @@ image::tiger.png[]</pre>
 <div class="sect2">
 <h3 id="internal-cross-references"><a class="anchor" href="#internal-cross-references"></a>29.2. Internal cross references</h3>
 <div class="paragraph">
-<p>In Asciidoctor, the xref inline macro is used to create cross references to content, sections, and elements using an ID.
-A cross reference is created by enclosing the element&#8217;s ID in double angled brackets.</p>
+<p>In Asciidoctor, the xref inline macro is used to create cross references (i.e. links) to content, sections, and elements using an autogenerated ID, custom ID or a set anchor point.</p>
+</div>
+<div class="paragraph">
+<p>An implicit cross reference is created by enclosing the element&#8217;s ID or a location&#8217;s anchor in double angled brackets.</p>
 </div>
 <div class="listingblock">
 <div class="title">Cross reference using a section heading&#8217;s ID</div>
@@ -8989,15 +8991,18 @@ A cross reference is created by enclosing the element&#8217;s ID in double angle
 </div>
 </div>
 <div class="paragraph">
-<p>Some converters, such as the HTML converter, will use the <code>xreflabel</code> as default text of the link.
-For each link, you can also customize this text, include it after the ID, separating them by a comma.</p>
+<p>Some converters, such as the HTML converter, will use the <code>xreflabel</code> as the default text of the link.
+However, you can also customize this text.
+After the ID, add a comma and then enter the custom text you want the cross reference to display.</p>
 </div>
 <div class="listingblock">
+<div class="title">Cross reference with custom xreflabel text</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to &lt;&lt;link-macro-attributes,use attributes within the link macro&gt;&gt;.</code></pre>
 </div>
 </div>
 <div class="exampleblock">
+<div class="title">Rendered cross reference using custom xreflabel text</div>
 <div class="content">
 <div class="paragraph">
 <p>Learn how to <a href="#link-macro-attributes">use attributes within the link macro</a>.</p>
@@ -9005,9 +9010,10 @@ For each link, you can also customize this text, include it after the ID, separa
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use the macro <code>xref</code> to achieve the same goal.</p>
+<p>You can also use the explicit xref macro to achieve the same goal.</p>
 </div>
 <div class="listingblock">
+<div class="title">Explicit xref macro</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Learn how to xref:link-macro-attributes[use attributes within the link macro].</code></pre>
 </div>
@@ -9016,12 +9022,12 @@ For each link, you can also customize this text, include it after the ID, separa
 <div class="sect2">
 <h3 id="inter-document-cross-references"><a class="anchor" href="#inter-document-cross-references"></a>29.3. Inter-document cross references</h3>
 <div class="paragraph">
-<p>The xref inline macro can also link between IDs in other AsciiDoc documents.
+<p>The xref inline macro can also link to IDs in other AsciiDoc documents.
 This eliminates the need to use direct links between documents that are coupled to a particular converter (e.g., HTML links).
 It also captures the intent of the author to establish a reference to a section in another document.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s how an xref is normally defined in Asciidoctor:</p>
+<p>Here&#8217;s how a cross reference is normally defined in Asciidoctor:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9029,10 +9035,10 @@ It also captures the intent of the author to establish a reference to a section 
 </div>
 </div>
 <div class="paragraph">
-<p>This xref creates a link to the section with the ID <em>cross-references</em>.</p>
+<p>This cross reference creates a link to the section with the ID <em>images</em>.</p>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s assume the xref is defined in the document <em class="file">document-a.adoc</em>.
+<p>Let&#8217;s assume the cross reference is defined in the document <em class="file">document-a.adoc</em>.
 If the target section is in a separate document, <em class="file">document-b.adoc</em>, the author may be tempted to write:</p>
 </div>
 <div class="listingblock">
@@ -9058,7 +9064,7 @@ Preceding the hash is the name of the reference document (the file extension is 
 We&#8217;ve also added a label since Asciidoctor cannot (yet) resolve the section title in a separate document.</p>
 </div>
 <div class="paragraph">
-<p>When Asciidoctor generates the link for this xref, it first checks to see if <em class="file">document-b.adoc</em> is included in the same master as <em class="file">document-a.doc</em>.
+<p>When Asciidoctor generates the link for this cross reference, it first checks to see if <em class="file">document-b.adoc</em> is included in the same master as <em class="file">document-a.doc</em>.
 If not, it will generate a link to <em class="file">document-b.html</em>, intelligently substituting the original file extension with the file extension of the output file.</p>
 </div>
 <div class="listingblock">
@@ -9067,7 +9073,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 </div>
 <div class="paragraph">
-<p>If <em class="file">document-b.adoc</em> is included in the same master as <em class="file">document-a.doc</em>, then the document will be dropped in the link target and look like the output of a normal xref:</p>
+<p>If <em class="file">document-b.adoc</em> is included in the same master as <em class="file">document-a.doc</em>, then the document will be dropped in the link target and look like the output of a normal cross reference:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -9075,7 +9081,7 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 </div>
 </div>
 <div class="paragraph">
-<p>Now you can create inter-document references without the headache.</p>
+<p>Now you can create inter-document cross references without the headache.</p>
 </div>
 </div>
 </div>
@@ -20544,7 +20550,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-06-25 22:56:18 UTC
+Last updated 2015-06-26 00:54:32 UTC
 </div>
 </div>
 <script>
