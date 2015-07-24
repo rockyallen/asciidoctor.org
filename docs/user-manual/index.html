@@ -13338,14 +13338,33 @@ ORDERED_LIST_KEYWORDS = {
 </div>
 </div>
 </div>
-<div class="admonitionblock note">
+<div class="admonitionblock tip">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-note" title="Note"></i>
+<i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Type <code>pygmentize -L styles</code> in your CLI to see a list of the Pygments styles you have installed.
+<div class="paragraph">
+<p>To list the available Pygments styles, run the following command in a terminal:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ $(dirname $(gem which pygments.rb))/../vendor/pygments-main/pygmentize -L styles</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The pygments.rb gem uses the version of Pygments that it bundles.
+This command ensures that you are invoking the <code>pygmentize</code> command used by that gem.</p>
+</div>
+<div class="paragraph">
+<p>If you already have Pygments installed on your system, and you&#8217;re invoking Asciidoctor via the API, you can instruct Asciidoctor to use your own installation of Pygments by adding the following line before invoking Asciidoctor the first time:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Pygments</span>.start <span class="string"><span class="delimiter">'</span><span class="content">/path/to/pygments</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
 </td>
 </tr>
 </table>
@@ -20555,7 +20574,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-07-15 07:22:10 UTC
+Last updated 2015-07-24 18:54:10 UTC
 </div>
 </div>
 <script>
