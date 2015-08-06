@@ -522,7 +522,18 @@ You can learn more about the changes in the <a href="/release-notes/asciidoctor-
 </div>
 <div class="paragraph">
 <p>Compatibility is very important to us, so we&#8217;ve added a compatibility mode as well as a transitional syntax to ease migration from Asciidoctor 0.1.4 to Asciidoctor 1.5.0.
-This document covers how to migrate your content and how to enable compatibility mode if you&#8217;re not ready for the migration.</p>
+This document explains how to enable <a href="#compat-mode">compat(ibility) mode</a>, if you&#8217;re not yet ready to migrate, as well as the <a href="#migration-scenarios">migration scenarios</a>, for when you are ready to make the switch.
+It also draws your attention to a few minor changes you&#8217;ll need to be aware of that could affect your content.</p>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle" class="title">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#compat-mode">Compat mode</a></li>
+<li><a href="#migration-scenarios">Migration scenarios</a></li>
+<li><a href="#migration-cheatsheet">Migration cheatsheet</a></li>
+<li><a href="#toc-table-of-contents-positioning">TOC (Table of Contents) positioning</a></li>
+<li><a href="#font-awesome-upgrade-3-2-1-4-1">Font Awesome upgrade (3.2.1 &#8594; 4.1)</a></li>
+</ul>
 </div>
 </div>
 </div>
@@ -857,10 +868,80 @@ If you want the syntax to work in both Asciidoctor and AsciiDoc Python, you need
 </div>
 </div>
 <div class="sect1">
-<h2 id="font-awesome-upgrade-3-2-1-to-4"><a class="anchor" href="#font-awesome-upgrade-3-2-1-to-4"></a>Font Awesome Upgrade (3.2.1 to 4)</h2>
+<h2 id="toc-table-of-contents-positioning"><a class="anchor" href="#toc-table-of-contents-positioning"></a>TOC (Table of Contents) positioning</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Asciidoctor 1.5.0 release brought an upgrade from Font Awesome 3.2.1 to 4.
+<p>Say goodbye to the <code>toc2</code> attribute.
+It&#8217;s deprecated!</p>
+</div>
+<div class="paragraph">
+<p>As of Asciidoctor 1.5.0, the <code>toc2</code>, <code>toc-placement</code> and <code>toc-position</code> attributes have been combined into a more expressive <code>toc</code> attribute.
+The <code>toc</code> attribute does it all!
+It&#8217;s now responsible for enabling the table of contents and specifying the location where it should appear.</p>
+</div>
+<div class="paragraph">
+<p>For example, to activate the table of contents in the left sidebar, define the <code>toc</code> attribute <em>in the document header</em> with the value of <code>left</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Enable the (left) sidebar table of contents</div>
+<div class="content">
+<pre class="nowrap">= Document Title
+Author Name
+:toc: left</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to position the table of contents manually, then you&#8217;d set the value of the <code>toc</code> attribute to <code>macro</code> (<em>not</em> <code>manual</code>) and use the <code>toc::[]</code> macro to indicate the location where the table of contents should appear.</p>
+</div>
+<div class="listingblock">
+<div class="title">Position the sidebar explicitly</div>
+<div class="content">
+<pre class="nowrap">= Document Title
+Author Name
+:toc: macro
+
+some content
+
+toc::[]
+
+more content</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following list shows the permitted values for the <code>toc</code> attribute:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>auto (default value when the <code>toc</code> attribute value is blank)</p>
+</li>
+<li>
+<p>left</p>
+</li>
+<li>
+<p>right</p>
+</li>
+<li>
+<p>preamble</p>
+</li>
+<li>
+<p>macro</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>We recommend you remove all other attributes that affect the positioning of the toc from your document or launch scripts (i.e., <code>toc2</code>, <code>toc-placement</code> and <code>toc-position</code>).</p>
+</div>
+<div class="paragraph">
+<p>For more information about the table of contents, see the <a href="../user-manual/#user-toc">Table of Contents</a> section of the user manual.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="font-awesome-upgrade-3-2-1-4-1"><a class="anchor" href="#font-awesome-upgrade-3-2-1-4-1"></a>Font Awesome upgrade (3.2.1 &#8594; 4.1)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Asciidoctor 1.5.0 release brought an upgrade from Font Awesome 3.2.1 to 4.1.
 Font Awesome 4 introduced a new naming pattern for icons.
 This won&#8217;t affect any of the built-in use of Font Awesome, such as admonition icons, but it does affect the inline icon macro.
 If you use the inline icon macro, consult the <a href="https://github.com/FortAwesome/Font-Awesome/wiki/Upgrading-from-3.2.1-to-4#new-icon-names">mapping between old and new names</a> to ensure you don&#8217;t have any broken images.</p>
@@ -874,7 +955,7 @@ If you use the inline icon macro, consult the <a href="https://github.com/FortAw
 <div id="footer">
 <div id="footer-text">
 Version 1.1<br>
-Last updated 2015-08-03 06:31:56 UTC
+Last updated 2015-08-06 05:53:03 UTC
 </div>
 </div>
 <script>
