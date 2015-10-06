@@ -9094,20 +9094,35 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 <div class="sect3">
 <h4 id="navigating-between-source-files"><a class="anchor" href="#navigating-between-source-files"></a>29.3.1. Navigating between source files</h4>
 <div class="paragraph">
-<p>In some environments, such as GitHub and the browser extensions, you view the rendered document through the AsciiDoc source URL.
-In these cases, you need to get the inter-document cross references to navigate between AsciiDoc source files.
-You can control this behavior by resetting the <code>outfilesuffix</code> attribute to the value as <code>.adoc</code>, as the example below shows.</p>
+<p>In certain environments, such as GitHub and the browser extensions, you view the generated HTML from the AsciiDoc source URL.
+Since the default suffix for relative links is <code>.html</code>, the inter-document cross references end up pointing to non-existent HTML files.
+You need, instead, to get inter-document cross references to refer to other AsciiDoc source files.
+You can achieve this behavior by setting the <code>outfilesuffix</code> attribute to the value as <code>.adoc</code>, as the example below shows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="nowrap">= Document Title
 ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-&lt;&lt;README#,README&gt;&gt;</pre>
+See the &lt;&lt;README#,README&gt;&gt;.
+
+We could also write the link as link:README{outfilesuffix}[README].</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The link in the rendered document will now point to <em class="path">README.adoc</em> instead of the default, <em class="path">README.html</em>.</p>
+<p>The links in the generated document will now point to <em class="path">README.adoc</em> instead of the default, <em class="path">README.html</em>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+You probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</code> without the <code>ifdef</code> condition as it could result in Asciidoctor overwriting input files when you run it locally (though there&#8217;s some protection against this).
+</td>
+</tr>
+</table>
 </div>
 </div>
 </div>
@@ -20604,7 +20619,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-06 05:19:01 UTC
+Last updated 2015-10-06 05:33:28 UTC
 </div>
 </div>
 <script>

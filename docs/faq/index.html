@@ -579,28 +579,50 @@ The templates will be used in exactly the same way as if you had set the backend
 </div>
 </li>
 <li>
-<p><em>How do I get relative links to other AsciiDoc files to work correctly on GitHub?</em></p>
-<p>By default, the suffix for relative links in the generated HTML is <code>.html</code>.
-You need to adjust the <code>outfilesuffix</code> parameter to be <code>.adoc</code> so that the links work properly, since GitHub uses the <code>.adoc</code> extension in the URL even though the document is rendered as HTML.</p>
+<p><em>How do I make relative links to other AsciiDoc files to work correctly on GitHub?</em></p>
+<div class="openblock">
+<div class="content">
 <div class="paragraph">
-<p>For example:</p>
+<p>In certain environments, such as GitHub and the browser extensions, you view the generated HTML from the AsciiDoc source URL.
+Since the default suffix for relative links is <code>.html</code>, the inter-document cross references end up pointing to non-existent HTML files.
+You need, instead, to get inter-document cross references to refer to other AsciiDoc source files.
+You can achieve this behavior by setting the <code>outfilesuffix</code> attribute to the value as <code>.adoc</code>, as the example below shows.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">ifdef::env-github[:outfilesuffix: .adoc]
+<pre class="nowrap">= Document Title
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
 
-This is a link:example{outfilesuffix}[relative link] to an example file.
+See the &lt;&lt;README#,README&gt;&gt;.
 
-This is a &lt;&lt;example#,relative link&gt;&gt; to the same file using the xref macro.</code></pre>
+We could also write the link as link:README{outfilesuffix}[README].</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note that you probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</code> unconditionally, as that could result in Asciidoctor overwriting input files (although there&#8217;s some guarantee it won&#8217;t).</p>
+<p>The links in the generated document will now point to <em class="path">README.adoc</em> instead of the default, <em class="path">README.html</em>.</p>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+You probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</code> without the <code>ifdef</code> condition as it could result in Asciidoctor overwriting input files when you run it locally (though there&#8217;s some protection against this).
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
 </li>
 <li>
 <p><em>What is the <a href="http://en.wikipedia.org/wiki/Internet_media_type">internet mime type</a> (aka MIME type) for AsciiDoc?</em></p>
+<div class="openblock">
+<div class="content">
+<div class="paragraph">
 <p>The first idea that emerged from the <a href="http://discuss.asciidoctor.org/Mimetype-for-Asciidoc-td211.html">Mimetype for AsciiDoc</a> discussion on the Asciidoctor mailinglist was:</p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">text/x-asciidoc</pre>
@@ -616,6 +638,8 @@ This is a &lt;&lt;example#,relative link&gt;&gt; to the same file using the xref
 </div>
 <div class="paragraph">
 <p>Either one will do, though it probably makes sense to align with Markdown on this one.</p>
+</div>
+</div>
 </div>
 </li>
 </ol>
@@ -709,7 +733,7 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-06 05:19:01 UTC
+Last updated 2015-10-06 05:33:28 UTC
 </div>
 </div>
 </body>
