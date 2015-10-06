@@ -9091,6 +9091,25 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 <div class="paragraph">
 <p>Now you can create inter-document cross references without the headache.</p>
 </div>
+<div class="sect3">
+<h4 id="navigating-between-source-files"><a class="anchor" href="#navigating-between-source-files"></a>29.3.1. Navigating between source files</h4>
+<div class="paragraph">
+<p>In some environments, such as GitHub and the browser extensions, you view the rendered document through the AsciiDoc source URL.
+In these cases, you need to get the inter-document cross references to navigate between AsciiDoc source files.
+You can control this behavior by resetting the <code>outfilesuffix</code> attribute to the value as <code>.adoc</code>, as the example below shows.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= Document Title
+ifdef::env-github,env-browser[:outfilesuffix: .adoc]
+
+&lt;&lt;README#,README&gt;&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The link in the rendered document will now point to <em class="path">README.adoc</em> instead of the default, <em class="path">README.html</em>.</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -20585,7 +20604,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-04 01:43:16 UTC
+Last updated 2015-10-06 05:19:01 UTC
 </div>
 </div>
 <script>
