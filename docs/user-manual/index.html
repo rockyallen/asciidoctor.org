@@ -819,7 +819,8 @@ MathJax.Hub.Config({
 <li><a href="#manual-placement">54.2. Manual placement</a></li>
 <li><a href="#title-2">54.3. Title</a></li>
 <li><a href="#levels">54.4. Levels</a></li>
-<li><a href="#table-of-contents-summary">54.5. Table of Contents summary</a></li>
+<li><a href="#using-a-toc-with-embeddable-html">54.5. Using a TOC with embeddable HTML</a></li>
+<li><a href="#table-of-contents-summary">54.6. Table of Contents summary</a></li>
 </ul>
 </li>
 <li><a href="#user-abstract">55. Abstract</a></li>
@@ -14593,21 +14594,21 @@ The printing and binding is by Ceres Lithographing, Inc., Ceres, Milky Way.</pre
 <div class="sectionbody">
 <div class="paragraph">
 <p>A table of contents (TOC) is a list of section and nested subsection titles that is generated when Asciidoctor processes a document.
-When the <code>docbook</code> converter is set, a TOC is created automatically from the section level IDs.
-The TOC is inserted directly below the document&#8217;s title and author, titled <em>Table of Contents</em>, and lists the section 1 and section 2 level titles.</p>
+The TOC is inserted directly below the document&#8217;s title and author, titled <em>Table of Contents</em>, and lists the section 1 and section 2 level titles by default.</p>
 </div>
 <div class="paragraph">
-<p>To include a TOC when using the <code>html</code> or a custom backend, you must set the <code>toc</code> attribute.
+<p>When the <code>docbook</code> converter is used, a TOC is inserted by default.
+To include a TOC when using the <code>html</code> or a custom backend, you must set the <code>toc</code> attribute.
 The toc attribute can be specified via the command line (<code>-a toc</code>) or in the document&#8217;s header (<code>:toc:</code>)</p>
 </div>
 <div class="listingblock">
-<div class="title">toc set via the CLI</div>
+<div class="title">TOC enabled via the CLI</div>
 <div class="content">
 <pre class="nowrap">$ asciidoctor -a toc adventure.adoc</pre>
 </div>
 </div>
 <div class="listingblock">
-<div class="title">toc set in the document&#8217;s header</div>
+<div class="title">TOC enabled via the document&#8217;s header</div>
 <div class="content">
 <pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon
@@ -14621,7 +14622,7 @@ The river rages through the cavern, rattling its content...</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When the toc attribute is set, a TOC is inserted directly below the title and author in the rendered document.</p>
+<p>When the <code>toc</code> attribute is set, a TOC is inserted directly below the title and author in the rendered document.</p>
 </div>
 <div class="exampleblock">
 <div class="title">Result: Setting the toc attribute</div>
@@ -14844,7 +14845,40 @@ Crawling through the twisted understory...</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="table-of-contents-summary"><a class="anchor" href="#table-of-contents-summary"></a>54.5. Table of Contents summary</h3>
+<h3 id="using-a-toc-with-embeddable-html"><a class="anchor" href="#using-a-toc-with-embeddable-html"></a>54.5. Using a TOC with embeddable HTML</h3>
+<div class="paragraph">
+<p>When converting AsciiDoc to embeddable HTML (i.e., the <code>header_footer</code> option is <code>false</code>), there are only two valid values for the <code>toc</code> attribute:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>preamble</p>
+</li>
+<li>
+<p>macro</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The sidebar TOC (left or right) isn&#8217;t available in this mode.
+That&#8217;s because the embeddable HTML doesn&#8217;t have the outer framing necessary to support a sidebar TOC.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The <a href="#manual-placement">macro (aka manual) placement</a> requires the use of the <code>toc::[]</code> macro somewhere in the document.
+The preamble placement only works if your document has a preamble (otherwise, there is no slot for it).</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="table-of-contents-summary"><a class="anchor" href="#table-of-contents-summary"></a>54.6. Table of Contents summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table of contents attributes and values</caption>
 <colgroup>
@@ -14869,36 +14903,40 @@ Crawling through the twisted understory...</pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">auto, left, right, macro, preamble</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc:</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defaults to <code>auto</code> if value is blank.
+When <code>header_footer</code> is disabled, only <code>macro</code> and <code>preamble</code> are recognized.
 Use <code>macro</code> in order to use the <code>toc::[]</code> block macro in the document body.
 DocBook backend sets <code>toc</code> by default.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html, docbook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html, docbook, pdf</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toclevels</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1–5</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toclevels: 4</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default value is <code>2</code>.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-placement</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">auto, preamble</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-placement: preamble</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Detault value is <code>auto</code> when <code>toc</code> is specified.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-position</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">left, right</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-position: right</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html, pdf</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-title</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;user defined&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-title: Rocking the Table</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default title is <em>Table of Contents</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html, pdf</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-placement</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto, preamble</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-placement: preamble</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deprecated.
+Use <code>toc</code> attribute instead.</em><br>
+</p><p class="tableblock">Default value is <code>auto</code> when <code>toc</code> is specified.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-position</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">left, right</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-position: right</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deprecated.
+Use <code>toc</code> attribute instead.</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
 </tr>
 </tbody>
@@ -20619,7 +20657,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-10-07 05:20:28 UTC
+Last updated 2015-10-07 05:38:46 UTC
 </div>
 </div>
 <script>
