@@ -14421,23 +14421,24 @@ You want to add the same content to the headers of both documents when they&#821
 <div class="sect2">
 <h3 id="footer-docinfo-files"><a class="anchor" href="#footer-docinfo-files"></a>50.3. Footer docinfo files</h3>
 <div class="paragraph">
-<p>Footer docinfo files are differentiated from header docinfo files by adding <code>-footer+</code> to the file name.
-In the HTML output, the footer content is inserted inside the footer div (i.e., <code>&lt;div id="footer"&gt;</code>).
+<p>Footer docinfo files are differentiated from header docinfo files by adding <code>-footer</code> to the file name.
+In the HTML output, the footer content is inserted immediately after the footer div (that is, <code>&lt;div id="footer"&gt;</code>).
 In the DocBook output, the footer content is inserted immediately before the ending <code>&lt;/article&gt;</code> or <code>&lt;/book&gt;</code> element.</p>
 </div>
 <div class="paragraph">
 <div class="title">docinfo</div>
-<p>If you want to add content to the footer of a specific document, put the content in the file <code>&lt;docname&gt;-docinfo-footer.html</code> (for HTML output) or <code>&lt;docname&gt;-docinfo-footer.xml</code> (for DocBook output), where <code>&lt;docname&gt;</code> is the name of the document without the AsciiDoc extension.
-Then, set the attribute docinfo in the source document.</p>
+<p>If you want additional footer content for a specific document, put the content in the file <code>&lt;docname&gt;-docinfo-footer.html</code> (for HTML output) or <code>&lt;docname&gt;-docinfo-footer.xml</code>
+(for DocBook output), where <code>&lt;docname&gt;</code> is the name of the document without the AsciiDoc extension.
+Then set the attribute <code>docinfo</code> in the source document.</p>
 </div>
 <div class="paragraph">
 <div class="title">docinfo1</div>
-<p>If you want to add content to the footer of all documents in the same directory, put the content in the file docinfo-footer.html or docinfo-footer.xml.
-Then, set the attribute docinfo1 in the source document to enable the feature.</p>
+<p>If you want additional footer content for all documents in the same directory, put the content in the file <code>docinfo-footer.html</code> or <code>docinfo-footer.xml</code>.
+Then set the attribute <code>docinfo1</code> in the source document.</p>
 </div>
 <div class="paragraph">
 <div class="title">docinfo2</div>
-<p>If you want the document to look for either docinfo file, set the attribute docinfo2 in the source document.</p>
+<p>If you want the document to look for either docinfo file, set the attribute <code>docinfo2</code> in the source document.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -14446,7 +14447,9 @@ Then, set the attribute docinfo1 in the source document to enable the feature.</
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The "Last updated" line in the footer can be disabled by unassigning the attribute <code>last-update-label</code>.
+To change the text in the "Last updated" line in the footer, set the text in the attribute <code>last-update-label</code> (for example, <code>:last-update-label: &lt;your text&gt; Last Updated</code>).<br>
+To disable the "Last updated" line in the footer, unassign the attribute <code>last-update-label</code> (however, this leaves an empty footer div).<br>
+To disable the footer completely, set the attribute <code>nofooter</code>. Then having a footer docinfo file effectively replaces the default footer with your custom footer.
 </td>
 </tr>
 </table>
@@ -20702,7 +20705,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-11-26 02:57:39 UTC
+Last updated 2015-11-26 18:48:14 UTC
 </div>
 </div>
 <script>
