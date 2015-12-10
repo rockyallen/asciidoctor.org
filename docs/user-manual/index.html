@@ -796,6 +796,7 @@ MathJax.Hub.Config({
 <li><a href="#normalizing-block-indentation">49.3. Normalizing block indentation</a></li>
 <li><a href="#include-files-relative-to-a-common-source-directory">49.4. Include files relative to a common source directory</a></li>
 <li><a href="#include-content-from-a-uri">49.5. Include content from a URI</a></li>
+<li><a href="#caching-uri-content">49.6. Caching URI Content</a></li>
 </ul>
 </li>
 <li><a href="#docinfo-file">50. Docinfo file</a>
@@ -14215,10 +14216,23 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 <div class="sect2">
 <h3 id="include-content-from-a-uri"><a class="anchor" href="#include-content-from-a-uri"></a>49.5. Include content from a URI</h3>
 <div class="paragraph">
-<p>The include directive can insert content directly from a URI.</p>
+<p>The include directive can insert content directly from a URI when the <code>allow-uri-read</code> attribute is:</p>
 </div>
+<div class="ulist">
+<ul>
+<li>
+<p>Passed on the command-line,</p>
+</li>
+<li>
+<p>Passed as an attribute to the Asciidoctor API (Asciidoctor, AsciidoctorJ or Asciidoctor.js).</p>
+</li>
+</ul>
+</div>
+<div class="exampleblock">
+<div class="title">Including content through a URI</div>
+<div class="content">
 <div class="paragraph">
-<p>Here&#8217;s an example that demonstrates how to include AsciiDoc content:</p>
+<p>This example demonstrates how to include an AsciiDoc file from a GitHub repo directly into your document.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14227,29 +14241,56 @@ include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
 include::{asciidoctor-source}/README.adoc[]</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>Since this is a potentially dangerous feature, it&#8217;s disabled if the safe mode is <code>SECURE</code> or greater.
-Assuming the safe mode is less than SECURE, you must also set the <code>allow-uri-read</code> attribute to permit Asciidoctor to read content from a URI.</p>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Including content from sources outside your control carries certain risks, including the potential to introduce malicious behavior into your documentation.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>Reading content from a URI is obviously much slower than reading it from a local file.
-Asciidoctor provides a way for the content read from a URI to be cached, which is highly recommended.</p>
+<p>Because <code>allow-uri-read</code> is a potentially dangerous feature, it will only work if safe mode is set to <code>SERVER</code> or less. <code>SECURE</code> or higher prevents this feature from running altogether.</p>
+</div>
+<div class="paragraph">
+<p>When running Asciidoctor with safe mode set to <code>SERVER</code> or less, you must also set the <code>allow-uri-read</code> attribute on the command-line to permit Asciidoctor to read content from a URI.</p>
+</div>
+<div class="listingblock">
+<div class="title">Command Example</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">asciidoctor -a allow-uri-read filename.adoc</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="caching-uri-content"><a class="anchor" href="#caching-uri-content"></a>49.6. Caching URI Content</h3>
+<div class="paragraph">
+<p>Reading content from a URI is obviously much slower than reading it from a local file.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor provides a way for the content read from a URI to be cached, which is highly recommended.</p>
 </div>
 <div class="paragraph">
 <p>To enable the built-in cache, you must:</p>
 </div>
-<div class="ulist">
-<ul>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
-<p>install the open-uri-cached gem</p>
+<p>Install the <code>open-uri-cached</code> gem.</p>
 </li>
 <li>
-<p>set the <code>cache-uri</code> attribute</p>
+<p>Set the <code>cache-uri</code> attribute in the document.</p>
 </li>
-</ul>
+</ol>
 </div>
 <div class="paragraph">
-<p>When these two conditions are satisfied, Asciidoctor will cache content read from a URI according the to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">HTTP caching recommendations</a>.</p>
+<p>When these two conditions are satisfied, Asciidoctor caches content read from a URI according the to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">HTTP caching recommendations</a>.</p>
 </div>
 </div>
 </div>
@@ -20763,7 +20804,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-09 08:45:39 UTC
+Last updated 2015-12-10 07:34:07 UTC
 </div>
 </div>
 <script>
