@@ -16083,17 +16083,46 @@ The man pages for git are also produced from AsciiDoc documents, so you can use 
 <h2 id="pdfs"><a class="anchor" href="#pdfs"></a>69. PDFs</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>PDF output is made possible by a number of tools.</p>
+<p>Conversion from AsciiDoc to PDF is made possible by a number of tools.</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1">fopub Tool</dt>
+<dt class="hdlist1"><a href="https://github.com/asciidoctor/asciidoctor-pdf">Asciidoctor PDF</a></dt>
 <dd>
-<p>Directions for using the tool are documented in the <a href="https://github.com/asciidoctor/asciidoctor-fopub/blob/master/README.adoc">asciidoctor-fopub README</a>. To alter themes, it is necessary to pass XSL parameters or modify the XSLT.</p>
+<p>A native PDF converter for Asciidoctor (converts directly from AsciiDoc to PDF using Prawn).</p>
+<div class="paragraph">
+<p>Instructions for installing and using Asciidoctor PDF are documented in the project&#8217;s <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/README.adoc">README</a>.
+The tool provides built-in theming via a YAML configuration file, which is documented in the <a href="http://gist.asciidoctor.org/?github-asciidoctor%2Fasciidoctor-pdf%2F%2Fdocs%2Ftheming-guide.adoc">theming guide</a>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Asciidoctor PDF is the preferred tool for converting to PDF and is fully supported by the Asciidoctor community.
+</td>
+</tr>
+</table>
+</div>
 </dd>
-<dt class="hdlist1">asciidoctor-pdf Tool</dt>
+<dt class="hdlist1">a2x</dt>
 <dd>
-<p>Directions for using the tool are documented in the <a href="https://github.com/asciidoctor/asciidoctor-pdf/blob/master/README.adoc">asciidoctor-pdf README</a>. There is built-in theming via YAML, which is documented in  <a href="http://gist.asciidoctor.org/?github-asciidoctor%2Fasciidoctor-pdf%2F%2Fdocs%2Ftheming-guide.adoc">this gist</a>.</p>
+<p>A DocBook toolchain frontend provided by that AsciiDoc Python project.</p>
+<div class="paragraph">
+<p>To use this tool, you should first convert to DocBook using Asciidoctor, then convert the DocBook to PDF using a2x.
+Instructions for using a2x are documented in the project&#8217;s <a href="http://asciidoc.org/a2x.1.html">man page</a>.</p>
+</div>
+</dd>
+<dt class="hdlist1"><a href="https://github.com/asciidoctor/asciidoctor-fopub">asciidoctor-fopub</a></dt>
+<dd>
+<p>A DocBook toolchain frontend similar to a2x, but which only requires Java to be installed on your machine.</p>
+<div class="paragraph">
+<p>Instructions for using asciidoctor-fopub are documented in the project&#8217;s <a href="https://github.com/asciidoctor/asciidoctor-fopub/blob/master/README.adoc">README</a>.
+To alter the look and feel of the PDF, it&#8217;s necessary to pass XSL parameters or modify the XSLT.
+More information about customization can be found in <a href="http://www.sagehill.net/docbookxsl/">DocBook XSL: The Complete Guide</a>.</p>
+</div>
 </dd>
 </dl>
 </div>
@@ -20797,7 +20826,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2015-12-11 20:06:34 UTC
+Last updated 2015-12-11 20:21:53 UTC
 </div>
 </div>
 <script>
