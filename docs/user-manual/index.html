@@ -9072,6 +9072,43 @@ The anchor&#8217;s ID is defined between two square brackets.</p>
 </div>
 </div>
 <div class="paragraph">
+<p>In addition to being able to define anchors on sections and blocks, anchors can be defined inline where ever you can type normal text (anchors are a macro substitution).
+The anchors in the text get replaced with invisible anchor points in the output.</p>
+</div>
+<div class="paragraph">
+<p>For example, you would not put an anchor in front of a list item:</p>
+</div>
+<div class="listingblock">
+<div class="title">Wrong position for an anchor ID in front of a list item.</div>
+<div class="content">
+<pre class="nowrap">[[anchor-point]]* list item text</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Instead, you would put it at the very start of the text of the list item:</p>
+</div>
+<div class="listingblock">
+<div class="title">Defining an inline anchor ID in a list item</div>
+<div class="content">
+<pre class="nowrap">* Fist item
+* [[step2]]Second item
+* Third item</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An other example with headers (the anchor needs to be in the text):</p>
+</div>
+<div class="listingblock">
+<div class="title">Defining an inline anchor ID in an header</div>
+<div class="content">
+<pre class="nowrap">=== [[current]]Version 4.9</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Just keep in mind that inline anchor points are discovered where text is permitted.
+If text doesn&#8217;t belong somewhere, then neither does an inline anchor point.</p>
+</div>
+<div class="paragraph">
 <p>It is possible to customize the text that will be used in the cross reference link (called <code>xreflabel</code>).
 If not defined, Asciidoctor does it best to find suitable text (the solution differs from case to case).
 In case of an image, the image caption will be used.
@@ -20878,7 +20915,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-01-26 01:42:59 UTC
+Last updated 2016-02-09 06:30:51 UTC
 </div>
 </div>
 <script>
