@@ -789,6 +789,7 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#pygments">48.1. Pygments</a></li>
 <li><a href="#coderay">48.2. CodeRay</a></li>
+<li><a href="#highlightjs">48.3. HighlightJs</a></li>
 </ul>
 </li>
 <li><a href="#callouts">49. Callouts</a>
@@ -13935,6 +13936,46 @@ ORDERED_LIST_KEYWORDS = {
 <p>See the <a href="#hl-css">CodeRay stylesheet section</a> to learn about the <code>coderay-css</code> attribute.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="highlightjs"><a class="anchor" href="#highlightjs"></a>48.3. HighlightJs</h3>
+<div class="paragraph">
+<p><a href="https://highlightjs.org/">Highlight.js</a> is a popular client-side syntax highlighter that supports a broad range of <a href="https://highlightjs.org/download/">languages</a>.</p>
+</div>
+<div class="paragraph">
+<p>To use highlight.js just add <code>:source-highlighter: highlightjs</code> in your AsciiDoc file.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Asciidoctor defaults to the basic language bundle as shipped by cdnjs (latest version).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To enable support for a wider range of languages and/or a newer version:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>create your custom bundle in the <a href="https://highlightjs.org/download/">download page</a></p>
+</li>
+<li>
+<p>unpack the downloaded zip as a folder called <code>highlight</code> inside the folder of your AsciiDoc file</p>
+</li>
+<li>
+<p>rename <code>highlight.pack.js</code> to <code>highlight.min.js</code></p>
+</li>
+<li>
+<p>add <code>:highlightjsdir: highlight</code> in your AsciiDoc file or call <code>asciidoctor -a highlightjsdir=highlight input</code> from the CLI</p>
+</li>
+</ol>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -21117,7 +21158,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-16 08:00:08 UTC
+Last updated 2016-02-16 08:50:27 UTC
 </div>
 </div>
 <script>
