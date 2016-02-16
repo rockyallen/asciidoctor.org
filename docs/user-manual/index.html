@@ -576,12 +576,12 @@ MathJax.Hub.Config({
 <ul class="sectlevel1">
 <li><a href="#elements">10. Elements</a></li>
 <li><a href="#macros">11. Macros</a></li>
-<li><a href="#constrained-and-unconstrained-formatting-marks">12. Constrained and unconstrained formatting marks</a>
+<li><a href="#formatting-marks">12. Formatting marks</a>
 <ul class="sectlevel2">
 <li><a href="#constrained-quotes">12.1. Constrained quotes</a></li>
 <li><a href="#unconstrained-quotes">12.2. Unconstrained quotes</a></li>
-<li><a href="#why-are-unconstrained-formatting-marks-required">12.3. Why are unconstrained formatting marks required?</a></li>
-<li><a href="#when-should-i-use-unconstrained-quotes">12.4. When should I use unconstrained quotes?</a></li>
+<li><a href="#when-should-i-use-unconstrained-quotes">12.3. When should I use unconstrained quotes?</a></li>
+<li><a href="#unconstrained-formatting-edge-cases">12.4. Unconstrained formatting edge cases</a></li>
 </ul>
 </li>
 <li><a href="#attributes">13. Attributes</a>
@@ -1832,22 +1832,24 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/443">Issue 44
 </div>
 </div>
 <div class="sect1">
-<h2 id="constrained-and-unconstrained-formatting-marks"><a class="anchor" href="#constrained-and-unconstrained-formatting-marks"></a>12. Constrained and unconstrained formatting marks</h2>
+<h2 id="formatting-marks"><a class="anchor" href="#formatting-marks"></a>12. Formatting marks</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Two categories of formatting marks (or <em>quotes</em> as they are referred to in AsciiDoc syntax) control how text is displayed after it is parsed.</p>
+<p>There are two categories of formatting marks for applying styles (i.e., formatting) to text, <em>constrained</em> and <em>unconstrained</em>.
+These formatting marks are referred to as <em>quotes</em> in the AsciiDoc syntax.
+This section covers their purpose, their differences and how to apply them.</p>
 </div>
 <div class="sect2">
 <h3 id="constrained-quotes"><a class="anchor" href="#constrained-quotes"></a>12.1. Constrained quotes</h3>
 <div class="paragraph">
-<p>In short, "constrained" means <strong>around</strong> a word.</p>
+<p>In short, &#8220;constrained&#8221; means <strong>around</strong> a word or sequence of words.</p>
 </div>
 <div class="paragraph">
-<p>Constrained quotes are single characters that are placed around a word.
-The "around" is defined by the fact that word characters do not appear outside the marks.</p>
+<p>Constrained quotes are single characters (often symbols) placed around a word.
+The &#8220;around&#8221; is defined by the fact that word characters do not appear immediately outside the enclosing marks.</p>
 </div>
 <div class="paragraph">
-<p>You use this form when the word stands alone.</p>
+<p>You use this form to format a word that stands alone,</p>
 </div>
 <div class="listingblock">
 <div class="title">When the word stands alone</div>
@@ -1856,7 +1858,7 @@ The "around" is defined by the fact that word characters do not appear outside t
 </div>
 </div>
 <div class="paragraph">
-<p>You can also use this form when there are multiple words.</p>
+<p>to format a sequence of words,</p>
 </div>
 <div class="listingblock">
 <div class="title">When there are multiple words</div>
@@ -1865,7 +1867,7 @@ The "around" is defined by the fact that word characters do not appear outside t
 </div>
 </div>
 <div class="paragraph">
-<p>Or when the word is adjacent to punctuation, like an exclamation mark.</p>
+<p>or to format a word adjacent to punctuation, like an exclamation mark.</p>
 </div>
 <div class="listingblock">
 <div class="title">When the word is adjacent to punctuation</div>
@@ -1877,11 +1879,11 @@ The "around" is defined by the fact that word characters do not appear outside t
 <div class="sect2">
 <h3 id="unconstrained-quotes"><a class="anchor" href="#unconstrained-quotes"></a>12.2. Unconstrained quotes</h3>
 <div class="paragraph">
-<p>In short, "unconstrained" means anywhere <strong>inside</strong> a word.</p>
+<p>In short, &#8220;unconstrained&#8221; means anywhere, including <strong>within</strong> a word.</p>
 </div>
 <div class="paragraph">
-<p>Unconstrained quotes are double-characters that are placed within a word.
-The "within" is defined by the fact that a word character appears directly outside one of the marks.</p>
+<p>Unconstrained quotes are repeated characters (often symbols) placed anywhere in the text, including within a word.
+The &#8220;within&#8221; is defined by the fact that a word character may appear directly outside one of the enclosing marks.</p>
 </div>
 <div class="listingblock">
 <div class="title">Unconstrained formatting</div>
@@ -1891,60 +1893,7 @@ The "within" is defined by the fact that a word character appears directly outsi
 </div>
 </div>
 <div class="sect2">
-<h3 id="why-are-unconstrained-formatting-marks-required"><a class="anchor" href="#why-are-unconstrained-formatting-marks-required"></a>12.3. Why are unconstrained formatting marks required?</h3>
-<div class="paragraph">
-<p>There are cases when it might seem logical to use constrained quotes, however unconstrained quotes are required.
-This happens because of the way the Asciidoctor parser (and the AsciiDoc Python parser) currently handles substitutions.</p>
-</div>
-<div class="paragraph">
-<p>Substitutions may be applied by the parser before getting to the formatting marks, in which case the characters adjacent to those marks may not be what you see in the original source.</p>
-</div>
-<div class="paragraph">
-<p>One such example is enclosing monospaced text inside quotation marks, such as &#8220;<code>endponts</code>&#8221;.</p>
-</div>
-<div class="listingblock">
-<div class="title">Monospaced text inside quotes</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;```endpoints```&quot;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Logic would suggest that you should be able to use the following syntax:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;`endpoints`&quot;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Specifying this only gives you &#8220;endpoints&#8221;.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;``endpoints``&quot;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Adding another backtick gets closer, but the parser still ignores the constrained formatting marks and mistakenly believes you are trying to use the backticks in a literal sense.</p>
-</div>
-<div class="paragraph">
-<p>The parser is processing the markup too conservatively, and you have to double up the marks to coerce it into formatting the text to monospace.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The Asciidoctor parser is constantly maturing, thanks to the dedication of the community that supports it.
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="when-should-i-use-unconstrained-quotes"><a class="anchor" href="#when-should-i-use-unconstrained-quotes"></a>12.4. When should I use unconstrained quotes?</h3>
+<h3 id="when-should-i-use-unconstrained-quotes"><a class="anchor" href="#when-should-i-use-unconstrained-quotes"></a>12.3. When should I use unconstrained quotes?</h3>
 <div class="paragraph">
 <p>Consider the following questions:</p>
 </div>
@@ -1962,7 +1911,7 @@ The Asciidoctor parser is constantly maturing, thanks to the dedication of the c
 </ul>
 </div>
 <div class="paragraph">
-<p>If you answered "yes" to any of these questions, you need to switch to unconstrained (double formatting) quotes.</p>
+<p>If you answered &#8220;yes&#8221; to any of these questions, you need to switch to unconstrained (double formatting) quotes.</p>
 </div>
 <div class="paragraph">
 <p>To help you determine whether a particular syntax pattern requires unconstrained quotes, consider the following syntactical situations.</p>
@@ -1985,17 +1934,17 @@ The Asciidoctor parser is constantly maturing, thanks to the dedication of the c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sara__h__</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sara<em>h</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the "a" to the left.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the &#8220;a&#8221; to the left.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">**B**old</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>B</strong>old</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the "o" to the right.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the &#8220;o&#8221; to the right.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&endash;**2016**</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&endash;<strong>2016</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the "&endash;" to the left of the emboldened number.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unconstrained, because of the &#8220;&endash;&#8221; to the left of the emboldened number.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">** bold **</p></td>
@@ -2005,7 +1954,7 @@ The Asciidoctor parser is constantly maturing, thanks to the dedication of the c
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">*2016*&endash;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>2016</strong>&endash;</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constrained, because the &amp; is not a letter, number, underscore, or semi-colon.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constrained, because the &#8220;&amp;&#8221; is not a letter, number, underscore, or semi-colon.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">*9*-to-*5*</p></td>
@@ -2014,6 +1963,65 @@ The Asciidoctor parser is constantly maturing, thanks to the dedication of the c
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="unconstrained-formatting-edge-cases"><a class="anchor" href="#unconstrained-formatting-edge-cases"></a>12.4. Unconstrained formatting edge cases</h3>
+<div class="paragraph">
+<p>There are cases when it might seem logical to use constrained quotes, however unconstrained quotes are required.
+This happens because of the way the Asciidoctor parser (and the AsciiDoc Python parser) currently handles substitutions.</p>
+</div>
+<div class="paragraph">
+<p>Substitutions may be applied by the parser before getting to the formatting marks, in which case the characters adjacent to those marks may not be what you see in the original source.</p>
+</div>
+<div class="paragraph">
+<p>One such example is enclosing monospaced text inside quotation marks, such as &#8220;<code>endponts</code>&#8221;.</p>
+</div>
+<div class="listingblock">
+<div class="title">Monospaced text inside quotes</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;```endpoints```&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You might start with the following syntax:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;`endpoints`&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>That only gives you &#8220;endpoints&#8221;, since the backticks are contributing to the enclosing smart quotes.</p>
+</div>
+<div class="paragraph">
+<p>Adding another backtick gets closer, but the parser still ignores the constrained formatting marks and interprets the backticks literally:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;``endpoints``&quot;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So you have to double up the marks to coerce it into formatting the text to monospace.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">&quot;```endpoints```&quot;</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+This situation may improve in the future when Asciidoctor is switched to using a parsing expression grammar for inline formatting instead of the current regular expression-based strategy.
+For details, follow <a href="https://github.com/asciidoctor/asciidoctor/issues/61">issue #61</a>.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 </div>
@@ -21109,7 +21117,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-16 07:36:56 UTC
+Last updated 2016-02-16 08:00:08 UTC
 </div>
 </div>
 <script>
