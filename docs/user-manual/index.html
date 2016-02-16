@@ -789,7 +789,7 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#pygments">48.1. Pygments</a></li>
 <li><a href="#coderay">48.2. CodeRay</a></li>
-<li><a href="#highlightjs">48.3. HighlightJs</a></li>
+<li><a href="#highlight-js">48.3. highlight.js</a></li>
 </ul>
 </li>
 <li><a href="#callouts">49. Callouts</a>
@@ -13937,43 +13937,60 @@ ORDERED_LIST_KEYWORDS = {
 </div>
 </div>
 <div class="sect2">
-<h3 id="highlightjs"><a class="anchor" href="#highlightjs"></a>48.3. HighlightJs</h3>
+<h3 id="highlight-js"><a class="anchor" href="#highlight-js"></a>48.3. highlight.js</h3>
 <div class="paragraph">
-<p><a href="https://highlightjs.org/">Highlight.js</a> is a popular client-side syntax highlighter that supports a broad range of <a href="https://highlightjs.org/download/">languages</a>.</p>
+<p><a href="https://highlightjs.org/">highlight.js</a> is a popular client-side syntax highlighter that supports a broad range of <a href="https://highlightjs.org/download/">languages</a>.</p>
 </div>
 <div class="paragraph">
-<p>To use highlight.js just add <code>:source-highlighter: highlightjs</code> in your AsciiDoc file.</p>
+<p>To use highlight.js, simply add the following attribute entry to the header of your AsciiDoc file:</p>
 </div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-Asciidoctor defaults to the basic language bundle as shipped by cdnjs (latest version).
-</td>
-</tr>
-</table>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:source-highlighter: highlight.js</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>To enable support for a wider range of languages and/or a newer version:</p>
+<p>By default, Asciidoctor will link to the highlight.js library and stylesheet hosted on <a href="https://cdnjs.com/libraries/highlight.js">cdnjs</a>.</p>
+</div>
+<div class="paragraph">
+<p>The version of the highlight.js library hosted on cdnjs only includes the basic language bundle.
+To enable support for a wider range of languages (or to use a different version), follow these steps:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>create your custom bundle in the <a href="https://highlightjs.org/download/">download page</a></p>
+<p>Create your custom bundle on the <a href="https://highlightjs.org/download/">download page</a>.</p>
 </li>
 <li>
-<p>unpack the downloaded zip as a folder called <code>highlight</code> inside the folder of your AsciiDoc file</p>
+<p>Download and unpack the zip into a folder called <em class="path">highlight</em> adjacent to your AsciiDoc file (or in the output directory, if different)</p>
 </li>
 <li>
-<p>rename <code>highlight.pack.js</code> to <code>highlight.min.js</code></p>
+<p>Rename <em class="path">highlight/highlight.pack.js</em> to <em class="path">highlight/highlight.min.js</em></p>
 </li>
 <li>
-<p>add <code>:highlightjsdir: highlight</code> in your AsciiDoc file or call <code>asciidoctor -a highlightjsdir=highlight input</code> from the CLI</p>
+<p>Rename <em class="path">highlight/styles/github.css</em> to <em class="path">highlight/styles/github.min.css</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace <code>github</code> with the name of the <code>highlightjs-theme</code> you are using, if different.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Add the attribute entry <code>:highlightjsdir: highlight</code> to the header of your AsciiDoc file.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Alternatively, you can pass the <code>-a highlightjsdir=highlight</code> flag when invoking the Asciidoctor CLI.</p>
+</li>
+</ul>
+</div>
 </li>
 </ol>
+</div>
+<div class="paragraph">
+<p>The output file will use your personal copy of the highlight.js library and stylesheet instead of the one hosted on cdnjs.</p>
 </div>
 </div>
 </div>
@@ -21158,7 +21175,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-16 08:50:27 UTC
+Last updated 2016-02-16 09:04:10 UTC
 </div>
 </div>
 <script>
