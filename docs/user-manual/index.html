@@ -680,7 +680,7 @@ MathJax.Hub.Config({
 <li><a href="#footer-row">26.5. Footer Row</a></li>
 <li><a href="#table-lines-placement-and-size">26.6. Table lines, placement, and size</a></li>
 <li><a href="#data-formats">26.7. CSV and DSV Data Formats</a></li>
-<li><a href="#summary-4">26.8. Summary</a></li>
+<li><a href="#summary-tables">26.8. Summary</a></li>
 </ul>
 </li>
 <li><a href="#horizontal-rules">27. Horizontal Rules</a>
@@ -692,7 +692,7 @@ MathJax.Hub.Config({
 <li><a href="#url">29. URLs</a>
 <ul class="sectlevel2">
 <li><a href="#link-to-relative-files">29.1. Link to relative files</a></li>
-<li><a href="#summary-5">29.2. Summary</a></li>
+<li><a href="#summary-4">29.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#xref">30. Cross references</a>
@@ -706,18 +706,18 @@ MathJax.Hub.Config({
 <ul class="sectlevel2">
 <li><a href="#set-the-images-directory">31.1. Set the images directory</a></li>
 <li><a href="#put-images-in-their-place">31.2. Put images in their place</a></li>
-<li><a href="#summary-6">31.3. Summary</a></li>
+<li><a href="#summary-5">31.3. Summary</a></li>
 </ul>
 </li>
 <li><a href="#video">32. Video</a>
 <ul class="sectlevel2">
 <li><a href="#youtube-and-vimeo-videos">32.1. YouTube and Vimeo videos</a></li>
-<li><a href="#summary-7">32.2. Summary</a></li>
+<li><a href="#summary-6">32.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#audio">33. Audio</a>
 <ul class="sectlevel2">
-<li><a href="#summary-8">33.1. Summary</a></li>
+<li><a href="#summary-7">33.1. Summary</a></li>
 </ul>
 </li>
 <li><a href="#admonition">34. Admonition</a></li>
@@ -750,7 +750,7 @@ MathJax.Hub.Config({
 <li><a href="#listing-blocks">41. Listing Blocks</a>
 <ul class="sectlevel2">
 <li><a href="#to-wrap-or-to-scroll">41.1. To wrap or to scroll</a></li>
-<li><a href="#summary-9">41.2. Summary</a></li>
+<li><a href="#summary-8">41.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#passthru">42. Macro and Block Passthroughs</a>
@@ -8668,7 +8668,7 @@ include::tracks.csv[]
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-4"><a class="anchor" href="#summary-4"></a>26.8. Summary</h3>
+<h3 id="summary-tables"><a class="anchor" href="#summary-tables"></a>26.8. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table attributes and values</caption>
 <colgroup>
@@ -8689,32 +8689,47 @@ include::tracks.csv[]
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cols</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comma separated list of column specifiers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">specifiers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">see <a href="#cols">Columns</a> for details</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>format</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">data format of the table&#8217;s contents</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>psv</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefixed Separated Values, default, cells are delimited by a <code>|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cells are delimited by <code>separator</code> (default <code>|</code>) (aka prefix-separated values)</p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>dsv</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Delimiter Separated Values, cells are delimited by a colon (<code>:</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cells are delimited by a colon (<code>:</code>) (aka delimiter-separated values)</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>csv</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Comma Separated Values, cells are delimited by a comma (<code>,</code>)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cells are delimited by a comma (<code>,</code>) (aka comma-separated values)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>separator</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cell separator</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|</code>, <code>:</code>, <code>,</code>, <code>!</code>, or a user defined attribute</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|</code> is the default, <code>!</code> separates cells in nested PSV tables</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>separator</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">character used to separate cells (psv data format only)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>|</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default for top-level tables</p></td>
+<td class="tableblock halign-left valign-top" rowspan="3"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>!</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default for nested tables</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">user-defined</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">can be any single character, ideally one not found in the cell content</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>frame</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">draws a border around the table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>all</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, border on all sides</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">border on all sides (default)</p></td>
 <td class="tableblock halign-left valign-top" rowspan="4"></td>
 </tr>
 <tr>
@@ -8733,7 +8748,7 @@ include::tracks.csv[]
 <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>grid</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">draws boundary lines between rows and columns</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>all</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, draws boundary lines around each cell</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">draws boundary lines around each cell (default)</p></td>
 <td class="tableblock halign-left valign-top" rowspan="4"></td>
 </tr>
 <tr>
@@ -8752,8 +8767,9 @@ include::tracks.csv[]
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>align</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">horizontally aligns table within page width</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>left</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, aligns to left side of page</p></td>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Not yet implemented in Asciidoctor. AsciiDoc HTML output only.
+<td class="tableblock halign-left valign-top"><p class="tableblock">aligns to left side of page (default)</p></td>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Not yet implemented in Asciidoctor.
+Applies to HTML output only.
 The <code>align</code> and <code>float</code> attributes are mutually exclusive.</p></td>
 </tr>
 <tr>
@@ -8766,23 +8782,24 @@ The <code>align</code> and <code>float</code> attributes are mutually exclusive.
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock"><code>float</code></p></td>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">aligns the table to the side of the page in conjunction with the table&#8217;s <code>width</code> attribute</p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">floats the table to the specified side of the page</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>left</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, aligns the table with the left side of the page</p></td>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">AsciiDoc HTML output only.
+<td class="tableblock halign-left valign-top"><p class="tableblock">floats the table to the left side of the page (default)</p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Applies to HTML output only.
+Must be used in conjunction with the table&#8217;s <code>width</code> attribute to take affect.
 The <code>float</code> and <code>align</code> attributes are mutually exclusive.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>right</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">aligns the table with the right side of the page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">floats the table to the right side of the page</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>halign</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">horizontally aligns all of the cell contents in a table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>left</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, aligns the contents of the cells to the left</p></td>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Not yet implemented in Asciidoctor. AsciiDoc HTML output only.
-Overridden by column and cell specifiers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aligns the contents of the cells to the left (default)</p></td>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Not implemented in Asciidoctor.
+Define instead using column or cell specifiers (e.g., <code>3*&gt;</code>), which take precedence over this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>right</code></p></td>
@@ -8796,9 +8813,8 @@ Overridden by column and cell specifiers.</p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock"><code>valign</code></p></td>
 <td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">vertically aligns all of the cell contents in a table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>top</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">default, aligns the cell contents to the top of the cell</p></td>
-<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Not yet implemented in Asciidoctor. AsciiDoc HTML output only.
-Overridden by column and cell specifiers.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">aligns the cell contents to the top of the cell (default)</p></td>
+<td class="tableblock halign-left valign-top" rowspan="3"><p class="tableblock">Define instead using column or cell specifiers (e.g., <code>3*.&gt;</code>), which take precedence over this value.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>bottom</code></p></td>
@@ -8809,45 +8825,36 @@ Overridden by column and cell specifiers.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">aligns the cell contents to the middle of the cell</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock"><code>options</code></p></td>
-<td class="tableblock halign-left valign-top" rowspan="4"><p class="tableblock">comma separated list of values</p></td>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock"><code>options</code></p></td>
+<td class="tableblock halign-left valign-top" rowspan="5"><p class="tableblock">comma separated list of option names</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>header</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">styles the first table row</p></td>
-<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">By default header and footer rows are omitted</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">promotes first row to the table header</p></td>
+<td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">header and footer rows are omitted by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>footer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">styles the last table row</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">promotes last row to the table footer</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>breakable</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Allow the table to split across a page (default)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allows the table to split across a page (default)</p></td>
 <td class="tableblock halign-left valign-top" rowspan="2"><p class="tableblock">Mutually exclusive.
 Only applies to DocBook output when generating PDF using FOP.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>unbreakable</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prevent the table from being split across a page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prevents the table from being split across a page</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>cols</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">comma separated list of column specifiers</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">specifiers</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>autowidth</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">disables explicit column widths (ignores <code>cols</code> attribute)</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>width</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">the table width relative to the available page width</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">user defined value</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a percentage between 1 and 99</p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filter</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">a shell command for content within a cell</p></td>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a percentage value between 0% and 100%</p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
@@ -9204,7 +9211,7 @@ When they are enabled, you must surround the link text in double quotes if it co
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-5"><a class="anchor" href="#summary-5"></a>29.2. Summary</h3>
+<h3 id="summary-4"><a class="anchor" href="#summary-4"></a>29.2. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Link attributes and values</caption>
 <colgroup>
@@ -9962,7 +9969,7 @@ Text below images.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>31.3. Summary</h3>
+<h3 id="summary-5"><a class="anchor" href="#summary-5"></a>31.3. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Block and inline image attributes and values</caption>
 <colgroup>
@@ -10104,7 +10111,7 @@ Asciidoctor will generate the correct embed code and insert the video in the HTM
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>32.2. Summary</h3>
+<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>32.2. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Video attributes and values</caption>
 <colgroup>
@@ -10185,7 +10192,7 @@ Pending
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-8"><a class="anchor" href="#summary-8"></a>33.1. Summary</h3>
+<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>33.1. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Audio attributes and values</caption>
 <colgroup>
@@ -12450,7 +12457,7 @@ This class changes the CSS to <code>white-space: pre</code> and <code>word-wrap:
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-9"><a class="anchor" href="#summary-9"></a>41.2. Summary</h3>
+<h3 id="summary-8"><a class="anchor" href="#summary-8"></a>41.2. Summary</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -21185,7 +21192,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-18 07:00:04 UTC
+Last updated 2016-02-18 08:04:40 UTC
 </div>
 </div>
 <script>
