@@ -807,6 +807,7 @@ MathJax.Hub.Config({
 <li><a href="#include-files-relative-to-a-common-source-directory">50.4. Include files relative to a common source directory</a></li>
 <li><a href="#include-content-from-a-uri">50.5. Include content from a URI</a></li>
 <li><a href="#caching-uri-content">50.6. Caching URI Content</a></li>
+<li><a href="#include-a-file-more-than-once-in-the-same-document">50.7. Include a file more than once in the same document</a></li>
 </ul>
 </li>
 <li><a href="#docinfo-file">51. Docinfo file</a>
@@ -14713,6 +14714,50 @@ Including content from sources outside your control carries certain risks, inclu
 <p>When these two conditions are satisfied, Asciidoctor caches content read from a URI according the to <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html">HTTP caching recommendations</a>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="include-a-file-more-than-once-in-the-same-document"><a class="anchor" href="#include-a-file-more-than-once-in-the-same-document"></a>50.7. Include a file more than once in the same document</h3>
+<div class="paragraph">
+<p>A document can include the same file any number of times.
+The problem comes if there are IDs in the included file; the output document (HTML or DocBook) will then have duplicate IDs which will make it not well-formed.
+To fix this, make the ID depend on a variable in the main document.</p>
+</div>
+<div class="paragraph">
+<p>For example, say you want to include the same subsection describing a bike chain in both the operation and maintenance chapters:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= Bike Manual
+
+:chapter: oper
+== Operation
+
+include::fragment-chain.ad[]
+
+:chapter: maint
+== Maintenance
+
+include::fragment-chain.ad[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Write 'fragment-chain.ad' as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[id='{chapter}-chain']
+=== Chain
+
+See xref:{chapter}-chain[].</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first time it is included its ID is 'oper-chain', and the second time it is 'maint-chain'.</p>
+</div>
+<div class="paragraph">
+<p>Note that for this to work, you have to use the longhand forms of both the ID assignment and the cross-reference.
+The single quotes around the variable name in the assignment are needed to force variable substitution.</p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -21240,7 +21285,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-19 09:38:25 UTC
+Last updated 2016-02-19 09:40:28 UTC
 </div>
 </div>
 <script>
