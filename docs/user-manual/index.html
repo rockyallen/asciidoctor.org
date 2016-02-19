@@ -586,13 +586,14 @@ MathJax.Hub.Config({
 </li>
 <li><a href="#attributes">13. Attributes</a>
 <ul class="sectlevel2">
-<li><a href="#attribute-assignment-precedence">13.1. Attribute assignment precedence</a></li>
-<li><a href="#using-attributes-set-assign-and-reference">13.2. Using attributes: set, assign, and reference</a></li>
-<li><a href="#setting-attributes-on-a-document">13.3. Setting attributes on a document</a></li>
-<li><a href="#built-in-data-attributes">13.4. Built-in data attributes</a></li>
-<li><a href="#setting-attributes-on-an-element">13.5. Setting attributes on an element</a></li>
-<li><a href="#assigning-document-variables-inline">13.6. Assigning document variables inline</a></li>
-<li><a href="#attribute-conventions">13.7. Attribute conventions</a></li>
+<li><a href="#attribute-restrictions">13.1. Attribute restrictions</a></li>
+<li><a href="#attribute-assignment-precedence">13.2. Attribute assignment precedence</a></li>
+<li><a href="#using-attributes-set-assign-and-reference">13.3. Using attributes: set, assign, and reference</a></li>
+<li><a href="#setting-attributes-on-a-document">13.4. Setting attributes on a document</a></li>
+<li><a href="#built-in-data-attributes">13.5. Built-in data attributes</a></li>
+<li><a href="#setting-attributes-on-an-element">13.6. Setting attributes on an element</a></li>
+<li><a href="#assigning-document-variables-inline">13.7. Assigning document variables inline</a></li>
+<li><a href="#attribute-conventions">13.8. Attribute conventions</a></li>
 </ul>
 </li>
 </ul>
@@ -2059,7 +2060,38 @@ Attributes activate features and store predefined styles, options, and replaceme
 </ul>
 </div>
 <div class="sect2">
-<h3 id="attribute-assignment-precedence"><a class="anchor" href="#attribute-assignment-precedence"></a>13.1. Attribute assignment precedence</h3>
+<h3 id="attribute-restrictions"><a class="anchor" href="#attribute-restrictions"></a>13.1. Attribute restrictions</h3>
+<div class="paragraph">
+<p>All attributes have a name and value.
+The name:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>is at least one character long</p>
+</li>
+<li>
+<p>begins with a word character (A-Z, a-z, 0-9 or _)</p>
+</li>
+<li>
+<p>contains only word characters and hyphens</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>so it cannot contain dots or spaces.</p>
+</div>
+<div class="paragraph">
+<p>Case is ignored, so <code>APPLE</code> <code>Apple</code> and <code>aPPle</code> are all the same, ie <code>apple</code>.
+It is good practise to only use lower case, and not begin with a number.</p>
+</div>
+<div class="paragraph">
+<p>The value can be almost anything, but it cannot contain line breaks.
+Certain attributes have a restricted range of allowable values - see the individual attribute definitions for details.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="attribute-assignment-precedence"><a class="anchor" href="#attribute-assignment-precedence"></a>13.2. Attribute assignment precedence</h3>
 <div class="paragraph">
 <p>By default, the attribute assignment precedence, from highest to lowest, is as follows:</p>
 </div>
@@ -2110,7 +2142,7 @@ By adding an <code>@</code> symbol to the end of an attribute value passed to th
 </div>
 </div>
 <div class="sect2">
-<h3 id="using-attributes-set-assign-and-reference"><a class="anchor" href="#using-attributes-set-assign-and-reference"></a>13.2. Using attributes: set, assign, and reference</h3>
+<h3 id="using-attributes-set-assign-and-reference"><a class="anchor" href="#using-attributes-set-assign-and-reference"></a>13.3. Using attributes: set, assign, and reference</h3>
 <div class="paragraph">
 <p>Before you can use an attribute in your document, you must <strong>set</strong> it.
 Sometimes, setting an attribute is also referred to as <strong>toggling on</strong>.
@@ -2160,7 +2192,7 @@ The <code>!</code> can be placed before or after the attribute&#8217;s name.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="setting-attributes-on-a-document"><a class="anchor" href="#setting-attributes-on-a-document"></a>13.3. Setting attributes on a document</h3>
+<h3 id="setting-attributes-on-a-document"><a class="anchor" href="#setting-attributes-on-a-document"></a>13.4. Setting attributes on a document</h3>
 <div class="paragraph">
 <p>When an attribute is set in the header of a document, it is called an attribute entry.</p>
 </div>
@@ -2276,7 +2308,7 @@ Here&#8217;s the attribute in use:</p>
 </ul>
 </div>
 <div class="sect3">
-<h4 id="attribute-entry-substitutions"><a class="anchor" href="#attribute-entry-substitutions"></a>13.3.1. Attribute entry substitutions</h4>
+<h4 id="attribute-entry-substitutions"><a class="anchor" href="#attribute-entry-substitutions"></a>13.4.1. Attribute entry substitutions</h4>
 <div class="paragraph">
 <p>The <code>header</code> substitution group is applied to the header of your document.
 <a href="#subs">Text substitution elements</a> replace characters, markup, attribute references, and macros with converter specific styles and values.
@@ -2319,7 +2351,7 @@ The application is called {app-name}.</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="built-in-data-attributes"><a class="anchor" href="#built-in-data-attributes"></a>13.4. Built-in data attributes</h3>
+<h3 id="built-in-data-attributes"><a class="anchor" href="#built-in-data-attributes"></a>13.5. Built-in data attributes</h3>
 <div class="paragraph">
 <p>Asciidoctor includes numerous intrinsic attributes that are assigned values when the document is rendered.
 The values of these built-in data attributes are derived from how the document is processed and when and where is it processed.
@@ -2398,7 +2430,7 @@ These attributes can be referenced anywhere in the document.</p>
 </table>
 </div>
 <div class="sect2">
-<h3 id="setting-attributes-on-an-element"><a class="anchor" href="#setting-attributes-on-an-element"></a>13.5. Setting attributes on an element</h3>
+<h3 id="setting-attributes-on-an-element"><a class="anchor" href="#setting-attributes-on-an-element"></a>13.6. Setting attributes on an element</h3>
 <div class="paragraph">
 <p>An attribute list can apply to blocks, inline quotes text, and macros.
 The attributes and their values contained in the list will take precedence over attribute entries.</p>
@@ -2426,7 +2458,7 @@ The attributes and their values contained in the list will take precedence over 
 </ol>
 </div>
 <div class="sect3">
-<h4 id="positional-attribute"><a class="anchor" href="#positional-attribute"></a>13.5.1. Positional attribute</h4>
+<h4 id="positional-attribute"><a class="anchor" href="#positional-attribute"></a>13.6.1. Positional attribute</h4>
 <div class="paragraph">
 <p>in an attribute list</p>
 </div>
@@ -2441,7 +2473,7 @@ The attributes and their values contained in the list will take precedence over 
 </div>
 </div>
 <div class="sect3">
-<h4 id="named-attribute"><a class="anchor" href="#named-attribute"></a>13.5.2. Named attribute</h4>
+<h4 id="named-attribute"><a class="anchor" href="#named-attribute"></a>13.6.2. Named attribute</h4>
 <div class="paragraph">
 <p>Named attributes are assigned a value with an <code>=</code> in an attribute list.</p>
 </div>
@@ -2450,7 +2482,7 @@ The attributes and their values contained in the list will take precedence over 
 </div>
 </div>
 <div class="sect3">
-<h4 id="style"><a class="anchor" href="#style"></a>13.5.3. Style</h4>
+<h4 id="style"><a class="anchor" href="#style"></a>13.6.3. Style</h4>
 <div class="paragraph">
 <p>The style attribute is the first positional attribute in an attribute list.
 It specifies a predefined set of characteristics that should apply to a block element or macro.</p>
@@ -2512,7 +2544,7 @@ It specifies a predefined set of characteristics that should apply to a block el
 </div>
 </div>
 <div class="sect3">
-<h4 id="id"><a class="anchor" href="#id"></a>13.5.4. Id</h4>
+<h4 id="id"><a class="anchor" href="#id"></a>13.6.4. Id</h4>
 <div class="paragraph">
 <p>The id attribute specifies a unique name for an element.
 That name can only be used once in a document.</p>
@@ -2591,7 +2623,7 @@ The order of id and role values in the shorthand syntax does not matter.
 </div>
 </div>
 <div class="sect3">
-<h4 id="role"><a class="anchor" href="#role"></a>13.5.5. Role</h4>
+<h4 id="role"><a class="anchor" href="#role"></a>13.6.5. Role</h4>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2726,7 +2758,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 </div>
 <div class="sect3">
-<h4 id="options"><a class="anchor" href="#options"></a>13.5.6. Options</h4>
+<h4 id="options"><a class="anchor" href="#options"></a>13.6.6. Options</h4>
 <div class="paragraph">
 <p>The options attribute is a versatile named attribute that can contain a comma separated list of values.</p>
 </div>
@@ -2801,7 +2833,7 @@ property 2:: does different stuff</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="assigning-document-variables-inline"><a class="anchor" href="#assigning-document-variables-inline"></a>13.6. Assigning document variables inline</h3>
+<h3 id="assigning-document-variables-inline"><a class="anchor" href="#assigning-document-variables-inline"></a>13.7. Assigning document variables inline</h3>
 <div class="paragraph">
 <p>Document variables can be assigned using the following syntax:</p>
 </div>
@@ -2831,7 +2863,7 @@ property 2:: does different stuff</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="attribute-conventions"><a class="anchor" href="#attribute-conventions"></a>13.7. Attribute conventions</h3>
+<h3 id="attribute-conventions"><a class="anchor" href="#attribute-conventions"></a>13.8. Attribute conventions</h3>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -2846,7 +2878,7 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/444">Issue 44
 </table>
 </div>
 <div class="sect3">
-<h4 id="catch-a-missing-or-undefined-attribute"><a class="anchor" href="#catch-a-missing-or-undefined-attribute"></a>13.7.1. Catch a missing or undefined attribute</h4>
+<h4 id="catch-a-missing-or-undefined-attribute"><a class="anchor" href="#catch-a-missing-or-undefined-attribute"></a>13.8.1. Catch a missing or undefined attribute</h4>
 <div class="paragraph">
 <p>By default, the original AsciiDoc processor drops the entire line if it contains a reference to a missing attribute (e.g., <code>{bogus}</code>).
 This "feature" was added for use in templates written for the original processor, which also used the AsciiDoc syntax.</p>
@@ -21192,7 +21224,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-18 08:04:40 UTC
+Last updated 2016-02-19 09:28:57 UTC
 </div>
 </div>
 <script>
