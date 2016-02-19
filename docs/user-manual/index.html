@@ -2062,32 +2062,48 @@ Attributes activate features and store predefined styles, options, and replaceme
 <div class="sect2">
 <h3 id="attribute-restrictions"><a class="anchor" href="#attribute-restrictions"></a>13.1. Attribute restrictions</h3>
 <div class="paragraph">
-<p>All attributes have a name and value.
-The name:</p>
+<p>All attributes have a name and a value.</p>
+</div>
+<div class="paragraph">
+<p>The attribute name:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>is at least one character long</p>
+<p>must be at least one character long,</p>
 </li>
 <li>
-<p>begins with a word character (A-Z, a-z, 0-9 or _)</p>
+<p>must begin with a word character (A-Z, a-z, 0-9 or _) and</p>
 </li>
 <li>
-<p>contains only word characters and hyphens</p>
+<p>must only contain word characters and hyphens.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>so it cannot contain dots or spaces.</p>
+<p>In other words, the name cannot contain dots or spaces.</p>
 </div>
 <div class="paragraph">
-<p>Case is ignored, so <code>APPLE</code> <code>Apple</code> and <code>aPPle</code> are all the same, ie <code>apple</code>.
-It is good practise to only use lower case, and not begin with a number.</p>
+<p>Currently, case is ignored when resolving attributes, so <code>URI</code>, <code>Uri</code> and <code>uRI</code> are all the same as <code>uri</code>.
+(See <a href="https://github.com/asciidoctor/asciidoctor/issues/509">issue #509</a> for a proposed change to this restriction).
+A best practice is to only use lower case in the name and avoid starting the name with a number.</p>
 </div>
 <div class="paragraph">
-<p>The value can be almost anything, but it cannot contain line breaks.
-Certain attributes have a restricted range of allowable values - see the individual attribute definitions for details.</p>
+<p>The attribute value:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>can be any inline content and</p>
+</li>
+<li>
+<p>can only contain line breaks if an explicit line continuation is used.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Certain attributes have a restricted range of allowable values.
+See the individual attribute definitions for details.</p>
 </div>
 </div>
 <div class="sect2">
@@ -21224,7 +21240,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-19 09:28:57 UTC
+Last updated 2016-02-19 09:38:25 UTC
 </div>
 </div>
 <script>
