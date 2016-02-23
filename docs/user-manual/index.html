@@ -947,23 +947,24 @@ MathJax.Hub.Config({
 <li><a href="#java">85. Java</a></li>
 <li><a href="#gradle">86. Gradle</a></li>
 <li><a href="#maven">87. Maven</a></li>
-<li><a href="#javadoc">88. JavaDoc</a></li>
-<li><a href="#javascript">89. JavaScript</a></li>
-<li><a href="#yard">90. Yard</a></li>
-<li><a href="#rdoc">91. Rdoc</a></li>
+<li><a href="#apache-ant">88. Apache Ant</a></li>
+<li><a href="#javadoc">89. JavaDoc</a></li>
+<li><a href="#javascript">90. JavaScript</a></li>
+<li><a href="#yard">91. Yard</a></li>
+<li><a href="#rdoc">92. Rdoc</a></li>
 </ul>
 </li>
 <li><a href="#conversions-and-migrations">Conversions and Migrations</a>
 <ul class="sectlevel1">
-<li><a href="#convert-markdown-strong-to-strong-asciidoctor">92. Convert Markdown <strong>to</strong> Asciidoctor</a></li>
+<li><a href="#convert-markdown-strong-to-strong-asciidoctor">93. Convert Markdown <strong>to</strong> Asciidoctor</a></li>
 </ul>
 </li>
 <li><a href="#resources">Resources</a>
 <ul class="sectlevel1">
-<li><a href="#copyright-and-license">93. Copyright and License</a></li>
-<li><a href="#authors">94. Authors</a></li>
-<li><a href="#troubleshoot">95. Troubleshooting</a></li>
-<li><a href="#glossary">96. Glossary</a></li>
+<li><a href="#copyright-and-license">94. Copyright and License</a></li>
+<li><a href="#authors">95. Authors</a></li>
+<li><a href="#troubleshoot">96. Troubleshooting</a></li>
+<li><a href="#glossary">97. Glossary</a></li>
 <li><a href="#asciidoctor-vs-asciidoc">Appendix A: Comparison of Asciidoctor and AsciiDoc Features</a></li>
 <li><a href="#char-ref-table">Appendix B: Built-in attributes for character replacements</a></li>
 </ul>
@@ -18786,7 +18787,36 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/457">Issue 45
 </div>
 </div>
 <div class="sect1">
-<h2 id="javadoc"><a class="anchor" href="#javadoc"></a>88. JavaDoc</h2>
+<h2 id="apache-ant"><a class="anchor" href="#apache-ant"></a>88. Apache Ant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>asciidoctor-ant</code> task is an all-in-one solution for running Asciidoctor from Ant.
+It is based on AsciidoctorJ and JRuby, both of which are encapsulated in a single jar file.</p>
+</div>
+<div class="paragraph">
+<p>Usage is:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;project</span> <span class="attribute-name">xmlns:asciidoctor</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">antlib:org.asciidoctor.ant</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+...
+    <span class="tag">&lt;target</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">doc</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+        <span class="tag">&lt;taskdef</span> <span class="attribute-name">uri</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">antlib:org.asciidoctor.ant</span><span class="delimiter">&quot;</span></span>
+           <span class="attribute-name">resource</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org/asciidoctor/ant/antlib.xml</span><span class="delimiter">&quot;</span></span>
+           <span class="attribute-name">classpath</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">lib/asciidoctor-ant.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;asciidoctor:convert</span> <span class="attribute-name">sourceDirectory</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">src/asciidoc</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">outputDirectory</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">target</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/target&gt;</span>
+...
+<span class="tag">&lt;/project&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For more details, see <a href="https://github.com/asciidoctor/asciidoctor-ant#asciidoctor-ant-task">asciidoctor-ant on GitHub</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="javadoc"><a class="anchor" href="#javadoc"></a>89. JavaDoc</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -18804,7 +18834,7 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/458">Issue 45
 </div>
 </div>
 <div class="sect1">
-<h2 id="javascript"><a class="anchor" href="#javascript"></a>89. JavaScript</h2>
+<h2 id="javascript"><a class="anchor" href="#javascript"></a>90. JavaScript</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -18822,7 +18852,7 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/459">Issue 45
 </div>
 </div>
 <div class="sect1">
-<h2 id="yard"><a class="anchor" href="#yard"></a>90. Yard</h2>
+<h2 id="yard"><a class="anchor" href="#yard"></a>91. Yard</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -18840,7 +18870,7 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/460">Issue 46
 </div>
 </div>
 <div class="sect1">
-<h2 id="rdoc"><a class="anchor" href="#rdoc"></a>91. Rdoc</h2>
+<h2 id="rdoc"><a class="anchor" href="#rdoc"></a>92. Rdoc</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -18864,7 +18894,7 @@ NOTE: Section pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="convert-markdown-strong-to-strong-asciidoctor"><a class="anchor" href="#convert-markdown-strong-to-strong-asciidoctor"></a>92. Convert Markdown <strong>to</strong> Asciidoctor</h2>
+<h2 id="convert-markdown-strong-to-strong-asciidoctor"><a class="anchor" href="#convert-markdown-strong-to-strong-asciidoctor"></a>93. Convert Markdown <strong>to</strong> Asciidoctor</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -18888,7 +18918,7 @@ NOTE: Section pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="copyright-and-license"><a class="anchor" href="#copyright-and-license"></a>93. Copyright and License</h2>
+<h2 id="copyright-and-license"><a class="anchor" href="#copyright-and-license"></a>94. Copyright and License</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Copyright &#169; 2012-2014 Dan Allen and Ryan Waldron.
@@ -18900,7 +18930,7 @@ Free use of this software is granted under the terms of the MIT License.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="authors"><a class="anchor" href="#authors"></a>94. Authors</h2>
+<h2 id="authors"><a class="anchor" href="#authors"></a>95. Authors</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Asciidoctor</strong> was written by <a href="https://github.com/mojavelinux">Dan Allen</a>, <a href="https://github.com/erebor">Ryan Waldron</a>, <a href="https://github.com/lightguard">Jason Porter</a>, <a href="http://github.com/nickh">Nick Hengeveld</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a>.</p>
@@ -18915,7 +18945,7 @@ Refer to the commit history of <a href="https://github.com/github/gitscm-next/co
 </div>
 </div>
 <div class="sect1">
-<h2 id="troubleshoot"><a class="anchor" href="#troubleshoot"></a>95. Troubleshooting</h2>
+<h2 id="troubleshoot"><a class="anchor" href="#troubleshoot"></a>96. Troubleshooting</h2>
 <div class="sectionbody">
 <div class="qlist qanda">
 <ol>
@@ -18999,7 +19029,7 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="anchor" href="#glossary"></a>96. Glossary</h2>
+<h2 id="glossary"><a class="anchor" href="#glossary"></a>97. Glossary</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -21286,7 +21316,7 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-21 11:11:44 UTC
+Last updated 2016-02-23 00:37:03 UTC
 </div>
 </div>
 <script>
