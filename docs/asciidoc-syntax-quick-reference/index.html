@@ -3225,74 +3225,196 @@ To make an attribute value that is passed to the API or CLI have a lower precede
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Built-in data attributes</caption>
+<table class="tableblock frame-all grid-all" style="width: 80%;">
+<caption class="title">Intrinsic document attributes related to runtime information</caption>
 <colgroup>
-<col style="width: 25%;">
-<col style="width: 75%;">
+<col style="width: 20%;">
+<col style="width: 60%;">
+<col style="width: 20%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Attribute</th>
 <th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Example Value</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Calls the processor</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defined if the current processor is Asciidoctor.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>asciidoctor-version</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Version of the processor</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Asciidoctor version.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>1.5.4</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>backend</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Backend used to render document</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Backend used to create the output file.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>html5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>basebackend</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>The backend value minus any trailing numbers. E.g. if the backend is <code>docbook5</code>, basebackend is <code>docbook</code>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>html</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Last modified date of the document. [1]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2015-01-04</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdatetime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified date and time</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Last modified date and time of the document. [1]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2015-01-04 19:26:06 GMT+0000</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docdir</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Full path of the document directory</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Full path of the directory containing the document.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/home/user/docs</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docfile</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Full path of the document file</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Full path of the document.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/home/user/docs/userguide.adoc</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>docname</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Basename of the document file (no directory or file extension)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Name of the input document without path or extension.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>userguide</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Last modified time</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctitle</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The title of the document</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Last modified time. [1]</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19:26:06 GMT+0000</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>doctype</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Document&#8217;s doctype (e.g., article)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Document type (article, book or manpage.)</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>article</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>filetype</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>File extension of output file name (without leading period).</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>html</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdate</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local date when rendered</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Date when converted.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2016-02-17</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localdatetime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local date and time when rendered</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Date and time when converted.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>2016-02-17 19:31:05 GMT+0000</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>localtime</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Local time when rendered</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Time when converted.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>19:31:05 GMT+0000</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>outdir</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Full path of the output directory.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/home/user/docs/dist</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>outfile</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Full path of the output file.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/home/user/docs/dist/userguide.html</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>outfilesuffix</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>File extension of output file name (including leading period).</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>.html</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-level</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Numeric value of safe-mode. UNSAFE is 0, SECURE is 20.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>20</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-name</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Text value of <code>safe-mode</code>.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>SERVER</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-unsafe</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defined if <code>safe-mode</code> is UNSAFE.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-safe</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defined if <code>safe-mode</code> is SAFE.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-server</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defined if <code>safe-mode</code> is SERVER.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>safe-mode-secure</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>Defined if <code>safe-mode</code> is SECURE.</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>user-home</code></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="paragraph">
+<p>home directory of the current user.
+If the safe mode is server or greater it resolves to ".."</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>/home/user</code></p></td>
 </tr>
 </tbody>
 </table>
