@@ -21416,23 +21416,24 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <div class="sect1">
 <h2 id="char-ref-table"><a class="anchor" href="#char-ref-table"></a>Appendix B: Predefined attributes for character replacements</h2>
 <div class="sectionbody">
-<table class="tableblock frame-all grid-all" style="width: 70%;">
-<caption class="title">Predefined attributes for character replacements</caption>
+<table class="tableblock frame-all grid-all" style="width: 75%;">
+<caption class="title">Predefined attributes for character replacements<sup>[1]</sup></caption>
 <colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
+<col style="width: 40%;">
+<col style="width: 30%;">
+<col style="width: 30%;">
 </colgroup>
 <thead>
 <tr>
 <th class="tableblock halign-center valign-top">Attribute reference</th>
-<th class="tableblock halign-center valign-top">Replacement text <sup>[1]</sup></th>
+<th class="tableblock halign-center valign-top">Replacement text</th>
 <th class="tableblock halign-center valign-top">Appearance</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{blank}, {empty}</pre></div></td>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>{blank}
+{empty}</pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre><em>nothing</em></pre></div></td>
 <td class="tableblock halign-center valign-top"></td>
 </tr>
@@ -21447,12 +21448,12 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{zwsp} <sup>[2]</sup></pre></div></td>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>{zwsp}<sup>[2]</sup></pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8203;</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#8203;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-center valign-top"><div class="literal"><pre>{wj} <sup>[3]</sup></pre></div></td>
+<td class="tableblock halign-center valign-top"><div class="literal"><pre>{wj}<sup>[3]</sup></pre></div></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&amp;#8288;</pre></div></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">&#8288;</p></td>
 </tr>
@@ -21574,23 +21575,22 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 </tbody>
 </table>
 <div class="paragraph">
-<p><sup>[1]</sup> In case you are wondering why some replacement text is a literal string and others are numeric entities,
-numeric entities are used where the processor or browser might get confused.
-This way it "just works".</p>
+<p><sup>[1]</sup> Some replacements are literal (Unicode) characters, whereas others are numeric character references.
+The character references (e.g., &amp;#34;) are used whenever the literal character might otherwise interfere with the AsciiDoc syntax or confuse the renderer (i.e., the browser).
+The idea is to generate the text that just works.</p>
 </div>
 <div class="paragraph">
 <p><sup>[2]</sup> The Zero Width Space (ZWSP) is a code point in Unicode that shows where a long word can be split if necessary.</p>
 </div>
 <div class="paragraph">
-<p><sup>[3]</sup> The word joiner (WJ) is a code point in Unicode used to separate words when using scripts that do not use explicit spacing.
-It is non-breaking.</p>
+<p><sup>[3]</sup> The word joiner (WJ) is a code point in Unicode prevents a line break at its position.</p>
 </div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-26 07:01:29 UTC
+Last updated 2016-02-26 07:18:11 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
