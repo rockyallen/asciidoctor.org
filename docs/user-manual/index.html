@@ -699,10 +699,10 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#include-directive">31. Include Directive</a>
 <ul class="sectlevel2">
 <li><a href="#include-basics">31.1. Basics</a></li>
-<li><a href="#include-partition">31.2. Partitioning large documents: leveloffset</a></li>
-<li><a href="#include-filemanagement">31.3. File management</a></li>
-<li><a href="#include-nonasciidoc">31.4. Asciidoc vs non-Asciidoc files</a></li>
-<li><a href="#include-byparts">31.5. Select parts of a document to include</a></li>
+<li><a href="#include-resolution">31.2. File resolution</a></li>
+<li><a href="#include-partitioning">31.3. Partitioning large documents and using leveloffset</a></li>
+<li><a href="#include-nonasciidoc">31.4. AsciiDoc vs non-AsciiDoc files</a></li>
+<li><a href="#include-partial">31.5. Select portions of a document to include</a></li>
 <li><a href="#normalize-block-indentation">31.6. Normalize block indentation</a></li>
 <li><a href="#include-uri">31.7. Include content from a URI</a></li>
 <li><a href="#caching-uri-content">31.8. Caching URI Content</a></li>
@@ -9726,30 +9726,32 @@ You probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</
 <h2 id="include-directive"><a class="anchor" href="#include-directive"></a>31. Include Directive</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The include directive allows you to insert content from a file into a parent file, effectively merging the content.
-Use includes to:</p>
+<p>The include directive, <code>include::path[attributes]</code>, allows you to insert content from another file into the current document.
+You can use the include directive to:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>partition a large document into several smaller files</p>
+<p>partition a large document into smaller files (for better organization and to make restructuring simpler),</p>
 </li>
 <li>
-<p>re-use fragments and boiler plate many times in the same document</p>
+<p>insert snippets of source code (so your examples are kept up-to-date with the latest source files),</p>
 </li>
 <li>
-<p>easily restructure documents</p>
+<p>populate tables with output from other programs (e.g., CSV data),</p>
 </li>
 <li>
-<p>create document familes by combining <code>include</code> with <code>#ifdef</code></p>
+<p>create document variants by combining the include directive with preprocessor conditionals (e.g., <code>ifdef</code>), and</p>
 </li>
 <li>
-<p>populate tables with data from other programs</p>
-</li>
-<li>
-<p>insert snippets of source code files so that your documentation is always up-to-date with the program</p>
+<p>reuse fragments and boilerplate content multiple times within the same document.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to understand that the include directive is <em>not</em> aware of the document structure.
+It effectively copies the content from the other file and pastes it at the location of the include directive.
+This is called a preprocessor operation.</p>
 </div>
 <div class="admonitionblock caution">
 <table>
@@ -9758,8 +9760,8 @@ Use includes to:</p>
 <i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-The include directive is <em>disabled</em> when Asciidoctor is in secure mode.
-In secure mode, include directives become <em>links</em> in the output document.
+The include directive is <em>disabled</em> when Asciidoctor is run in secure mode.
+In secure mode, include directives get converted to links in the output document.
 To learn more about secure mode, refer to the section <a href="#running-asciidoctor-securely">Running Asciidoctor Securely</a>.
 </td>
 </tr>
@@ -9768,19 +9770,105 @@ To learn more about secure mode, refer to the section <a href="#running-asciidoc
 <div class="sect2">
 <h3 id="include-basics"><a class="anchor" href="#include-basics"></a>31.1. Basics</h3>
 <div class="paragraph">
-<p>An include has these parts:</p>
-</div>
-<div class="paragraph">
-<p><code>include::<em>filename</em>[<em>leveloffset=offset,lines=linerange,tags=tagslist</em>]</code></p>
-</div>
-<div class="paragraph">
-<p>leveloffset, lines, and tags are optional, so the simplest case looks like:</p>
+<p>The include directive has the following anatomy:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= My document
+<pre class="nowrap">include::path[leveloffset=<em>offset</em>,lines=<em>ranges</em>,tag(s)=<em>name(s)</em>,indent=<em>depth</em>]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The leveloffset, lines, tag(s) and indent attributes are optional, making the simplest case look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= Document Title
 
-include::content.adoc[]</code></pre>
+include::content.adoc[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The sections that follow go into detail about how the include file is resolved and how each attribute is used.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="include-resolution"><a class="anchor" href="#include-resolution"></a>31.2. File resolution</h3>
+<div class="paragraph">
+<p>The path used in an include directive may be either relative or absolute.</p>
+</div>
+<div class="paragraph">
+<p>If the path relative, the processor resolves the path using the following rules:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If the include directive is used in the main (top-level) document, relative paths are resolved relative to the base directory.
+(The base directory defaults to the directory of the main document and can be overridden from the CLI or API).</p>
+</li>
+<li>
+<p>If the include directive is used in a file that has itself been included, the path is resolved relative to the including (i.e., current) file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These defaults makes it easy to reason about how the path to the include file is resolved.</p>
+</div>
+<div class="paragraph">
+<p>If the processor cannot locate the file (perhaps because you mistyped the path), you&#8217;ll still be able to convert the document.
+However, you will get the following warning message during conversion:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">asciidoctor: WARNING: master.adoc: line 3: include file not found: /.../content.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following message will also be inserted into the output:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">Unresolved directive in master.adoc - include::content.adoc[]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To fix the problem, edit the file path and run the converter again.</p>
+</div>
+<div class="paragraph">
+<p>If you store your AsciiDoc files in nested folders at different levels, relative file paths can quickly become awkward and inflexible.
+A common pattern to help here is to define the path (or several paths) in an attribute defined at the top of the document, then prefix all include paths with a reference to one of these attributes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:includedir: _includes
+:sourcedir: ../src/main/java
+
+include::{includedir}/fragment1.adoc[]
+
+[source,java]
+----
+include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
+----</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Keep in mind that no matter how Asciidoctor resolves the path to the file, access to that file is limited by the safe mode setting under which Asciidoctor is run.
+If a path violates the security restrictions, it may be truncated.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="include-partitioning"><a class="anchor" href="#include-partitioning"></a>31.3. Partitioning large documents and using leveloffset</h3>
+<div class="paragraph">
+<p>When your document gets large, you can split it up into subsections for easier editing as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">= My book
+
+include::chapter01.adoc[]
+
+include::chapter02.adoc[]
+
+include::chapter03.adoc[]</pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -9790,65 +9878,39 @@ include::content.adoc[]</code></pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-Note the blank lines before and after the include directive.
-This is recommended to avoid unexpected results (e.g., a section title getting appended to the end of a previous paragraph).
+Note the blank lines before and after the include directives.
+This practice is recommended whenever including AsciiDoc content to avoid unexpected results (e.g., a section title getting interpreted as a line at the end of a previous paragraph).
 </td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>If you mis-type the filename so that Asciidoctor cannot find it, you will still be able to convert the document, but you will get a warning during conversion (<code>include file not found: content.adoc</code>), and this message will be inserted into the output:</p>
+<p>The leveloffset attribute can help here by pushing all headings in the included document down by the specified number of levels.
+This allows you to publish each chapter as a standalone document (complete with a document title), but still be able to include the chapters into a master document (which has its own document title).</p>
+</div>
+<div class="paragraph">
+<p>You can easily assemble your book so that the chapter document titles become level 1 headings using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="text">Unresolved directive in master.adoc - include::content.adoc[]</code></pre>
+<pre class="nowrap">= My Book
+
+include::chapter01.adoc[leveloffset=+1]
+
+include::chapter02.adoc[leveloffset=+1]
+
+include::chapter03.adoc[leveloffset=+1]</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Edit the file path and try again.</p>
+<p>Because the leveloffset is <em>relative</em> (it begins with + or -), this works even if the included document has its own includes and leveloffsets.</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="include-partition"><a class="anchor" href="#include-partition"></a>31.2. Partitioning large documents: leveloffset</h3>
 <div class="paragraph">
-<p>When your document gets large, you can split it up into subsections for easier editing:</p>
+<p>If you have lots of chapters to include and want them all to have the same offset, you can save some typing by setting leveloffset around the includes:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= My book
-
-include::chapter01.adoc[]
-
-include::chapter02.adoc[]
-
-include::chapter03.adoc[]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>leveloffset helps here by pushing all headings in the included document down by the specified number of levels.
-In the example above, while you are working you might want to publish each chapter separately, so that each chapter has to be a complete document with a header.
-When you are finished, you can easily assemble your book so that the chapter document titles become level 1 headings using:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= My Book
-
-include::chapter01.adoc[+1]
-
-include::chapter02.adoc[+1]
-
-include::chapter03.adoc[+1]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Because the leveloffset is <em>relative</em> (it begins with + or -) this works even if the included document has its own includes and leveloffsets.</p>
-</div>
-<div class="paragraph">
-<p>If you have lots of chapters to include and want them all to have the same offset, you can save some typing by setting leveloffset at the document level instead:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= My book
+<pre class="nowrap">= My book
 
 :leveloffset: +1
 
@@ -9858,72 +9920,47 @@ include::chapter02.adoc[]
 
 include::chapter03.adoc[]
 
-:leveloffset: -1</code></pre>
+:leveloffset: -1</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Note the final line returning the leveloffset to 0.</p>
+<p>The final line returns the leveloffset to 0.</p>
 </div>
 <div class="paragraph">
-<p>You could use absolute levels instead:</p>
+<p>Alternatively, you could use absolute levels:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:leveloffset: 1
-...
-:leveloffset: 0</code></pre>
+<pre class="nowrap">:leveloffset: 1
+
+//includes
+
+:leveloffset: 0</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>but relative levels are preferred because absolute levels become awkward when you have multiple levels of include.</p>
+<p>Relative levels are preferred.
+Absolute levels become awkward when you have nested includes since they aren&#8217;t context aware.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="include-filemanagement"><a class="anchor" href="#include-filemanagement"></a>31.3. File management</h3>
-<div class="paragraph">
-<p>The file path can be relative or absolute.
-If it is relative, it is assumed to be relative to the <em>including</em> file.<sup class="footnote">[<a id="_footnoteref_1" class="footnote" href="#_footnote_1" title="View footnote.">1</a>]</sup>
-This makes it easy to work out what to type when you are editing the including file:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">include::../_includes/fragment1.adoc[]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>However, if you keep your Asciidoc files in nested folders at different levels, relative file paths quickly become awkward and inflexible.
-You can try to keep all your files at the same nesting level, but a more common pattern is to define the path (or several paths) in a variable at the top of the document:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:includedir: _includes
-:sourcedir: ../src/main/java
-
-include::{includedir}/fragment1.adoc[]
-
-[source,java]
-----
-include::{sourcedir}/org/asciidoctor/Asciidoctor.java[]
-----</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="include-nonasciidoc"><a class="anchor" href="#include-nonasciidoc"></a>31.4. Asciidoc vs non-Asciidoc files</h3>
+<h3 id="include-nonasciidoc"><a class="anchor" href="#include-nonasciidoc"></a>31.4. AsciiDoc vs non-AsciiDoc files</h3>
 <div class="paragraph">
 <p>The include directive performs a simple file merge, so it works with any text file.
-But if the file is recognized as an Asciidoc file (ie it has an extension of <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code>), it will action these Asciidoc commands:</p>
+The content of all included content is normalized.
+This means that the encoding is forced to UTF-8 (or converted from UTF-16 to UTF-8 if the file contains a BOM) and trailing whitespace and endlines are removed from each line and replaced with a Unix line feed.
+This normalization is important to how Asciidoctor works.</p>
+</div>
+<div class="paragraph">
+<p>If the file is recognized as an AsciiDoc file (i.e., it has one of the following extensions: <code>.asciidoc</code>, <code>.adoc</code>, <code>.ad</code>, <code>.asc</code>, or <code>.txt</code>), Asciidoctor runs the preprocessor on the lines, looking for and interpreting the following directives:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>header attributes</p>
+<p>includes</p>
 </li>
 <li>
-<p>ifdef</p>
-</li>
-<li>
-<p>include</p>
+<p>preprocessor conditionals (e.g., <code>ifdef</code>)</p>
 </li>
 </ul>
 </div>
@@ -9931,41 +9968,26 @@ But if the file is recognized as an Asciidoc file (ie it has an extension of <co
 <p>This allows includes to be nested, and provides lot of flexibility in constructing radically different documents with a single master document and a few command line attributes.</p>
 </div>
 <div class="paragraph">
-<p>On the other hand, including non-Asciidoc files is normally to merge output from other programs, or include data for graphics:</p>
+<p>Including non-AsciiDoc files is normally done to merge output from other programs or populate table data:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">.2016 Company Results
-|====
-
-include::../export/2016/results.csv[]
-
-|====</code></pre>
+<pre class="nowrap">.2016 Sales Results
+,===
+include::sales/2016/results.csv[]
+,===</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The include directive does not do any processing, and the file is inserted as-is.</p>
-</div>
-<div class="admonitionblock caution">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-caution" title="Caution"></i>
-</td>
-<td class="content">
-You <strong>can</strong> put Asciidoc content in a non-Asciidoc file.
-Its content will still be processed as Asciidoc, but any include statements will be ignored, and therefore cause errors later in processing.
-It is likely to cause confusion, so best avoided.
-</td>
-</tr>
-</table>
+<p>In this case, the include directive does not do any processing of AsciiDoc directives.
+The content is inserted as is (after being normalized).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="include-byparts"><a class="anchor" href="#include-byparts"></a>31.5. Select parts of a document to include</h3>
+<h3 id="include-partial"><a class="anchor" href="#include-partial"></a>31.5. Select portions of a document to include</h3>
 <div class="paragraph">
 <p>The include directive supports extracting portions of content from within a document.
-The content is specified either by user defined tags or a range of line numbers.</p>
+The content is specified either by user-defined tags or a range of line numbers.</p>
 </div>
 <div class="paragraph">
 <p>When including multiple line ranges or multiple tags, the individual values can be separated either by a comma or a semi-colon.
@@ -22473,15 +22495,9 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 </div>
 </div>
-<div id="footnotes">
-<hr>
-<div class="footnote" id="_footnote_1">
-<a href="#_footnoteref_1">1</a>. Except for files included in the master (top-level) document. These are resolved relative to the base directory, which defaults to the directory of the master document, but can be overridden from the command line with <code>--base-dir</code>.
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-27 06:52:16 UTC
+Last updated 2016-02-27 08:19:53 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
