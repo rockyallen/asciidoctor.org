@@ -15927,19 +15927,34 @@ endif::[]</pre>
 <div class="title">ifeval expression examples</div>
 <div class="content">
 <pre class="nowrap">ifeval::[2 &gt; 1]
+...
+endif::[]
+
 ifeval::["{backend}" == "html5"]
-ifeval::[{sectnumlevels} == 3]</pre>
+...
+endif::[]
+
+ifeval::[{sectnumlevels} == 3]
+...
+endif::[]
+
+ifeval::["{docname}{outfilesuffix}" == "master.html"]
+...
+endif::[]</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="values"><a class="anchor" href="#values"></a>52.4.2. Values</h4>
 <div class="paragraph">
-<p>Each expression value can reference the name of an AsciiDoc attribute using the attribute reference syntax (for example, <code>{backend}</code>).</p>
+<p>Each expression value can reference the name of zero or more AsciiDoc attribute using the attribute reference syntax (for example, <code>{backend}</code>).</p>
 </div>
 <div class="paragraph">
 <p>Attribute references are resolved (substituted) first.
 Once attributes references have been resolved, each value is coerced to a recognized type.</p>
+</div>
+<div class="paragraph">
+<p>When the expected value is a string (i.e., a string of characters), we recommend that you enclose the expression in quotes.</p>
 </div>
 <div class="paragraph">
 <p>The following values types are recognized:</p>
@@ -23615,7 +23630,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-28 08:12:26 UTC
+Last updated 2016-02-28 08:18:46 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
