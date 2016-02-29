@@ -3408,10 +3408,10 @@ The requirements for a manual page (man page) are described in the <a href="#man
 <p>When the header is present, it must start with a document title.
 The title can be immediately followed by two optional lines of text defining author and revision information.
 Finally, any document-wide settings are configured using attribute entries.
-The header can not contain any blank lines, but it can contain comments.</p>
+<strong>The header must not contain any blank lines</strong>, but it may contain comments.</p>
 </div>
 <div class="paragraph">
-<p>The header is processed when rendering a full document.
+<p>The header is processed when converting a full document.
 This means that the header of a document called via an <a href="#include-directive">include directive</a> will be processed and rendered.
 When you do not want the header of a document to be rendered, set the <code>noheader</code> or <code>no-header-footer</code> attribute in the document&#8217;s header or the CLI.</p>
 </div>
@@ -3426,23 +3426,26 @@ See the <a href="#static-website-generators">static website generators</a> secti
 </div>
 </div>
 <div class="paragraph">
-<p>Now let&#8217;s look at the document title in detail.</p>
+<p>Now let&#8217;s explore the document title in detail.</p>
 </div>
 <div class="sect2">
 <h3 id="document-title"><a class="anchor" href="#document-title"></a>17.1. Document title</h3>
 <div class="paragraph">
-<p>A document title must be placed on the first line of the document.
-It is preceded by one equal sign followed by at least one space (<code>=</code>), and then the text of the title.</p>
+<p>The document title is written as a level-0 section, which consists of a single equal sign followed by at least one space (i.e., <code>= </code>) and the text of the title.
+The document title must be the first level-0 section in the document.
+The only content permitted above the document title are blank lines, comment lines and attribute entries.</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a document title followed by an abbreviated paragraph.</p>
+<p>Here&#8217;s an example of a document title followed by a short paragraph.
+Notice the blank line between the document title and the first line of prose.
+That blank line is what offsets the document header from the body.</p>
 </div>
 <div class="listingblock">
 <div class="title">Document with a title</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 
-This journey begins on a bleary Monday morning.</code></pre>
+This journey begins on a bleary Monday morning.</pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -3456,21 +3459,22 @@ This journey begins on a bleary Monday morning.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>When <code>doctype</code> is set to <code>article</code> or <code>manpage</code>, a document can have only one section level 0 title.
-The <code>book</code> document type can have multiple section level 0 titles.
-The first section level 0 title, located in the header, is the document&#8217;s title, and subsequent section level 0 titles are considered the titles of parts.</p>
+<p>When the <code>doctype</code> is <code>article</code> or <code>manpage</code>, the document can only have one level-0 section title.
+In contrast, the <code>book</code> document type permits multiple level-0 section titles.
+When the <code>doctype</code> is <code>book</code>, the first level-0 section title, located in the header, is the document&#8217;s title and subsequent level-0 section titles are the part titles.</p>
 </div>
+<div class="sect3">
+<h4 id="doctitle-attribute"><a class="anchor" href="#doctitle-attribute"></a>17.1.1. doctitle attribute</h4>
 <div class="paragraph">
 <p>A document&#8217;s title is assigned to the built-in <code>doctitle</code> attribute.
-Its value is identical to the value returned by <code>Document#doctitle</code> and <code>sect0</code>.
-The doctitle attribute can be referenced anywhere in a document and displays the document&#8217;s title when rendered.</p>
+The doctitle attribute can be referenced anywhere in a document and resolves to the document&#8217;s title when displayed.</p>
 </div>
 <div class="listingblock">
 <div class="title">Referencing the doctitle attribute</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= The Dangerous and Thrilling Documentation Chronicles
+<pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 
-{doctitle} begins on a bleary Monday morning.</code></pre>
+{doctitle} begins on a bleary Monday morning.</pre>
 </div>
 </div>
 <div class="exampleblock">
@@ -3484,14 +3488,127 @@ The doctitle attribute can be referenced anywhere in a document and displays the
 </div>
 </div>
 <div class="paragraph">
-<p>You can control whether or not the title is displayed when the document is rendered with the attributes <code>notitle</code> and <code>showtitle</code>.
-If you don&#8217;t want the title to be rendered, set the <code>notitle</code> attribute in the header or CLI.
-On the other hand, the title is not displayed when a document&#8217;s header and footer are disabled.
-The header and footer are disabled when a document is embedded.
-In this case, set the <code>showtitle</code> attribute in order to render the title.</p>
+<p>The <code>doctitle</code> attribute can also be used to set the document title instead of using a level-0 section title.
+However, the attribute must still be set in the document header.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="document-subtitle"><a class="anchor" href="#document-subtitle"></a>17.1.2. Document subtitle</h4>
+<div class="paragraph">
+<p>Asciidoctor recognizes a subtitle in the primary level-0 heading.
+If the primary title contains at least one colon followed by a space (i.e, <code>: </code>), Asciidoctor treats the text after the final colon-space sequence as the subtitle.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The subtitle is not distinguished from the main title in the <code>html5</code> output.
+It&#8217;s only distinguished from the main title when using the <code>docbook</code>, <code>epub3</code>, and <code>pdf</code> converters.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Document with a subtitle</div>
+<div class="content">
+<pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles: A Tale of Caffeine and Words
+
+It began on a bleary Monday morning.</pre>
+</div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s see how to add additional information to the header, including an author and her email address.</p>
+<p>In this example, the following is true:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Main title
+</td>
+<td class="hdlist2">
+<p>The Dangerous and Thrilling Documentation Chronicles</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Subtitle
+</td>
+<td class="hdlist2">
+<p>A Tale of Caffeine and Words</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">Document with a subtitle and multiple colons</div>
+<div class="content">
+<pre class="nowrap">= A Cautionary Tale: The Dangerous and Thrilling Documentation Chronicles: A Tale of Caffeine and Words
+
+It began on a bleary Monday morning.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In this example, the following is true:</p>
+</div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+Main title
+</td>
+<td class="hdlist2">
+<p>A Cautionary Tale: The Dangerous and Thrilling Documentation Chronicles</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+Subtitle
+</td>
+<td class="hdlist2">
+<p>A Tale of Caffeine and Words</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Instead of using a colon followed by a space as the separator characters between the main title and the subtitle, you can specify a custom separator using the <code>title-separator</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="title">Document with a subtitle using a custom separator</div>
+<div class="content">
+<pre class="nowrap">= A Cautionary Tale: The Dangerous and Thrilling Documentation Chronicles: A Tale of Caffeine and Words
+
+It began on a bleary Monday morning.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that a space is always appended to the value of the <code>title-separator</code> (making the default value of the <code>title-separator</code> effectively a single colon).</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor also provides an API for extracting the title and subtitle.
+See the API docs for the <a href="http://www.rubydoc.info/gems/asciidoctor/Asciidoctor/Document/Title">Document::Title</a> for more information.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="document-title-visibility"><a class="anchor" href="#document-title-visibility"></a>17.1.3. Document title visibility</h4>
+<div class="paragraph">
+<p>You can control whether or not the document title is shown in the rendered document using the <code>showtitle</code> attribute.</p>
+</div>
+<div class="paragraph">
+<p>When converting a standalone document, the document title is shown by default.
+If you don&#8217;t want the title to be shown in this case, unset the <code>showtitle</code> attribute using <code>showtitle!</code> in the document header or via the CLI or API.</p>
+</div>
+<div class="paragraph">
+<p>When converted to an embeddable document, the document title is <em>not</em> shown by default.
+If you want the title to be shown, set the <code>showtitle</code> attribute in the document header or via the CLI or API.
+The author and revision information is not shown below the document title in the embeddable version of the document like it is in the standalone document, even when the <code>showtitle</code> attribute is set.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s look at how to add additional metadata to the document header, including an author and her email address.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -23683,7 +23800,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-29 00:54:24 UTC
+Last updated 2016-02-29 09:53:27 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
