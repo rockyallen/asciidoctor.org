@@ -22746,6 +22746,14 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#footer-docinfo-files">Footer docinfo files</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">listing-caption</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the text used to label listing blocks.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">manname-title</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Label for the program name section in the manpage.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAME</p></td>
@@ -22768,6 +22776,14 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">preface-title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the title text for the preamble when the doctype is book.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-preface">Preface</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">table-caption</p></td>
@@ -22796,7 +22812,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">untitled-label</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The default document title when the document does not have one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Used as the default document title if the document does not have a document title.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Untitled</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23141,7 +23157,7 @@ Can also be set implicity from the revision line.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">iconsdir</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Where admonition icons are stored (when <code>icons</code> is set to <code>image</code>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">./images/icons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{imagesdir}/icons (or ./images/icons if imagesdir is not set)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
@@ -23149,7 +23165,7 @@ Can also be set implicity from the revision line.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">imagesdir</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Where image files are resolved.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (Same directory as document).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Same directory as document).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
 <td class="tableblock halign-center valign-top"></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a></p></td>
@@ -23365,7 +23381,7 @@ Sets the default behavior only; you can still switch off wrapping on specific li
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">stylesdir</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Location for resolving CSS stylesheets.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (Same directory as document).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">. (Same directory as document).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#creating-a-theme">Creating a theme</a></p></td>
@@ -23396,7 +23412,9 @@ Sets the default behavior only; you can still switch off wrapping on specific li
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">max-width</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constrain the maximum width of the document body.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constrain the maximum width of the document body.
+<strong>Not recommended.
+Use custom CSS instead.</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">CSS length (e.g. 55em, 12cm, etc)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23665,7 +23683,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-29 00:07:47 UTC
+Last updated 2016-02-29 00:35:40 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
