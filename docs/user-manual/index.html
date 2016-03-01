@@ -11105,9 +11105,41 @@ Text below images.</code></pre>
 <h2 id="video"><a class="anchor" href="#video"></a>33. Video</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>video</code> macro supports displaying videos stored relatively as well as externally.</p>
+<p>The <code>video</code> macro enables you to embed videos in your documentation.
+You can embed self-hosted videos or videos hosted on popular video-sharing sites such as YouTube and Vimeo.</p>
+</div>
+<div class="paragraph">
+<p>The video formats that Asciidoctor supports are dictated by the formats supported by the browser (and, in turn, the user&#8217;s system).
+While this was once a precarious ordeal, HTML5 has brought sanity to video support in the browser by adding a dedicated <code>&lt;video&gt;</code> element and introducing several standard video formats.
+Those formats are now widely supported across browsers and systems.</p>
+</div>
+<div class="paragraph">
+<p>For a canonical list of supported web video formats and their interaction with modern browsers, see the  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">Mozilla Developer Supported Media Formats</a> documentation.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">A recommendation for serving video to browsers</div>
+<div class="paragraph">
+<p>Where appropriate, we recommend using a video-hosting service like YouTube or Vimeo to serve videos in online documentation.
+These services specialize in streaming optimized video to the browser, with the lowest latency possible given hardware, software, and network capabilities of the device viewing the video.</p>
+</div>
+<div class="paragraph">
+<p>Vimeo even offers a white-label mode so users aren&#8217;t aware the video is being served through its service.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="#youtube-and-vimeo-videos">YouTube and Vimeo videos</a> for details about how to serve videos from these services.</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="listingblock">
+<div class="title">Basic video file include</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">video::video_file.mp4[]</code></pre>
 </div>
@@ -11117,6 +11149,7 @@ Text below images.</code></pre>
 For instance, you can offset the start time of playback using the <code>start</code> attribute and enable autoplay using the <code>autoplay</code> option.</p>
 </div>
 <div class="listingblock">
+<div class="title">Setting attributes for local video playback</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">video::video_file.mp4[width=640, start=60, end=140, options=autoplay]</code></pre>
 </div>
@@ -11124,9 +11157,13 @@ For instance, you can offset the start time of playback using the <code>start</c
 <div class="sect2">
 <h3 id="youtube-and-vimeo-videos"><a class="anchor" href="#youtube-and-vimeo-videos"></a>33.1. YouTube and Vimeo videos</h3>
 <div class="paragraph">
-<p>The video macro supports videos from external video hosting services like YouTube and Vimeo.
-To use this feature, put the video ID in the macro target and the name of the hosting service in the first positional attribute.
-Asciidoctor will generate the correct embed code and insert the video in the HTML output.</p>
+<p>The video macro supports videos from external video hosting services like YouTube and Vimeo.</p>
+</div>
+<div class="paragraph">
+<p>To use this feature, put the video ID in the macro target and the name of the hosting service in the first positional attribute.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor will generate the correct code to embed the video in the HTML output.</p>
 </div>
 <div class="listingblock">
 <div class="title">Embedding a YouTube video</div>
@@ -23802,7 +23839,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-02-29 09:56:45 UTC
+Last updated 2016-03-01 06:55:37 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
