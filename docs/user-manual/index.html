@@ -720,12 +720,12 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#video">33. Video</a>
 <ul class="sectlevel2">
 <li><a href="#youtube-and-vimeo-videos">33.1. YouTube and Vimeo videos</a></li>
-<li><a href="#summary-6">33.2. Summary</a></li>
+<li><a href="#supported-attributes">33.2. Supported attributes</a></li>
 </ul>
 </li>
 <li><a href="#audio">34. Audio</a>
 <ul class="sectlevel2">
-<li><a href="#summary-7">34.1. Summary</a></li>
+<li><a href="#summary-6">34.1. Summary</a></li>
 </ul>
 </li>
 <li><a href="#admonition">35. Admonition</a></li>
@@ -758,7 +758,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#listing-blocks">42. Listing Blocks</a>
 <ul class="sectlevel2">
 <li><a href="#to-wrap-or-to-scroll">42.1. To wrap or to scroll</a></li>
-<li><a href="#summary-8">42.2. Summary</a></li>
+<li><a href="#summary-7">42.2. Summary</a></li>
 </ul>
 </li>
 <li><a href="#passthru">43. Macro and Block Passthroughs</a>
@@ -11105,16 +11105,16 @@ Text below images.</code></pre>
 <h2 id="video"><a class="anchor" href="#video"></a>33. Video</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <code>video</code> macro enables you to embed videos in your documentation.
-You can embed self-hosted videos or videos hosted on popular video-sharing sites such as YouTube and Vimeo.</p>
+<p>The <code>video</code> block macro enables you to embed videos into your documentation.
+You can embed self-hosted videos or videos shared on popular video hosting sites such as YouTube and Vimeo.</p>
 </div>
 <div class="paragraph">
-<p>The video formats that Asciidoctor supports are dictated by the formats supported by the browser (and, in turn, the user&#8217;s system).
-While this was once a precarious ordeal, HTML5 has brought sanity to video support in the browser by adding a dedicated <code>&lt;video&gt;</code> element and introducing several standard video formats.
+<p>The video formats Asciidoctor supports is dictated by the formats supported by the browser (and, in turn, the user&#8217;s system).
+While this was once a precarious ordeal, HTML5 has brought sanity to video support in the browser by adding a dedicated <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video"><code>&lt;video&gt;</code></a> element and by introducing several standard video formats.
 Those formats are now widely supported across browsers and systems.</p>
 </div>
 <div class="paragraph">
-<p>For a canonical list of supported web video formats and their interaction with modern browsers, see the  <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">Mozilla Developer Supported Media Formats</a> documentation.</p>
+<p>For a canonical list of supported web video formats and their interaction with modern browsers, see the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">Mozilla Developer Supported Media Formats</a> documentation.</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -11125,11 +11125,11 @@ Those formats are now widely supported across browsers and systems.</p>
 <td class="content">
 <div class="title">A recommendation for serving video to browsers</div>
 <div class="paragraph">
-<p>Where appropriate, we recommend using a video-hosting service like YouTube or Vimeo to serve videos in online documentation.
+<p>Where appropriate, we recommend using a video hosting service like YouTube or Vimeo to serve videos in online documentation.
 These services specialize in streaming optimized video to the browser, with the lowest latency possible given hardware, software, and network capabilities of the device viewing the video.</p>
 </div>
 <div class="paragraph">
-<p>Vimeo even offers a white-label mode so users aren&#8217;t aware the video is being served through its service.</p>
+<p>Vimeo even offers a white label mode so users aren&#8217;t made aware that the video is being served through its service.</p>
 </div>
 <div class="paragraph">
 <p>See <a href="#youtube-and-vimeo-videos">YouTube and Vimeo videos</a> for details about how to serve videos from these services.</p>
@@ -11157,13 +11157,11 @@ For instance, you can offset the start time of playback using the <code>start</c
 <div class="sect2">
 <h3 id="youtube-and-vimeo-videos"><a class="anchor" href="#youtube-and-vimeo-videos"></a>33.1. YouTube and Vimeo videos</h3>
 <div class="paragraph">
-<p>The video macro supports videos from external video hosting services like YouTube and Vimeo.</p>
+<p>The video macro supports embedding videos from external video hosting services like YouTube and Vimeo.
+Asciidoctor automatically generates the correct code to embed the video in the HTML output.</p>
 </div>
 <div class="paragraph">
 <p>To use this feature, put the video ID in the macro target and the name of the hosting service in the first positional attribute.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor will generate the correct code to embed the video in the HTML output.</p>
 </div>
 <div class="listingblock">
 <div class="title">Embedding a YouTube video</div>
@@ -11179,7 +11177,7 @@ For instance, you can offset the start time of playback using the <code>start</c
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>33.2. Summary</h3>
+<h3 id="supported-attributes"><a class="anchor" href="#supported-attributes"></a>33.2. Supported attributes</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Video attributes and values</caption>
 <colgroup>
@@ -11205,39 +11203,53 @@ For instance, you can offset the start time of playback using the <code>start</c
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>poster</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined URL or file of a video</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[poster=sunset.jpg]</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A URL to an image to show until the user plays or seeks.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>poster=sunset.jpg</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be specified as the first positional (unnamed) attribute.
+Also used to specify the service when referring to a video hosted on YouTube (youtube) or Vimeo (vimeo).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>width</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined size in pixels</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[width=400]</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-defined size in pixels.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>width=640</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be specified as the second positional (unnamed) attribute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>height</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined size in pixels</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[height=400]</code></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-defined size in pixels.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>height=480</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Can be specified as the third positional (unnamed) attribute.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>options</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">autoplay, loop, controls, nocontrols</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[options=loop]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The controls value is enabled by default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">autoplay, loop, modest, nocontrols, nofullscreen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>opts="autoplay,loop"</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The controls are enabled by default.
+The modest option enables modest branding for a YouTube video.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>start</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined playback start time in seconds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[start=30]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-defined playback start time in seconds.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>start=30</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>end</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">User defined playback end time in seconds</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>video::ocean_sunset.mp4[end=90]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User-defined playback end time in seconds.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>end=90</code></p></td>
 <td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>theme</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The YouTube theme to use for the frame.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>theme=light</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Valid values are dark (the default) and light.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lang</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The language used in the YouTube frame.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>lang=fr</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A two-letter language code or fully specified locale.</p></td>
 </tr>
 </tbody>
 </table>
@@ -11260,7 +11272,7 @@ Pending
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>34.1. Summary</h3>
+<h3 id="summary-6"><a class="anchor" href="#summary-6"></a>34.1. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Audio attributes and values</caption>
 <colgroup>
@@ -13525,7 +13537,7 @@ This class changes the CSS to <code>white-space: pre</code> and <code>word-wrap:
 </div>
 </div>
 <div class="sect2">
-<h3 id="summary-8"><a class="anchor" href="#summary-8"></a>42.2. Summary</h3>
+<h3 id="summary-7"><a class="anchor" href="#summary-7"></a>42.2. Summary</h3>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -23839,7 +23851,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-01 06:55:37 UTC
+Last updated 2016-03-01 07:17:45 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
