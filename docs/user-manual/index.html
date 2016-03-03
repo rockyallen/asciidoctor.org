@@ -980,15 +980,17 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#conversions-and-migrations">Conversions and Migrations</a>
 <ul class="sectlevel1">
-<li><a href="#convert-markdown-strong-to-strong-asciidoctor">96. Convert Markdown <strong>to</strong> Asciidoctor</a></li>
+<li><a href="#convert-markdown-to-asciidoc">96. Convert Markdown to AsciiDoc</a></li>
+<li><a href="#convert-docbook-xml-to-asciidoc">97. Convert DocBook XML to AsciiDoc</a></li>
+<li><a href="#convert-confluence-xhtml-to-asciidoc">98. Convert Confluence XHTML to AsciiDoc</a></li>
 </ul>
 </li>
 <li><a href="#resources">Resources</a>
 <ul class="sectlevel1">
-<li><a href="#copyright-and-license">97. Copyright and License</a></li>
-<li><a href="#authors">98. Authors</a></li>
-<li><a href="#troubleshoot">99. Troubleshooting</a></li>
-<li><a href="#glossary">100. Glossary</a></li>
+<li><a href="#copyright-and-license">99. Copyright and License</a></li>
+<li><a href="#authors">100. Authors</a></li>
+<li><a href="#troubleshoot">101. Troubleshooting</a></li>
+<li><a href="#glossary">102. Glossary</a></li>
 <li><a href="#asciidoctor-vs-asciidoc">Appendix A: Comparison of Asciidoctor and AsciiDoc Features</a></li>
 <li><a href="#builtin-predefined-attributes">Appendix B: Built-in and predefined document attributes</a>
 <ul class="sectlevel2">
@@ -20631,7 +20633,7 @@ NOTE: Section pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="convert-markdown-strong-to-strong-asciidoctor"><a class="anchor" href="#convert-markdown-strong-to-strong-asciidoctor"></a>96. Convert Markdown <strong>to</strong> Asciidoctor</h2>
+<h2 id="convert-markdown-to-asciidoc"><a class="anchor" href="#convert-markdown-to-asciidoc"></a>96. Convert Markdown to AsciiDoc</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -20648,6 +20650,130 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/462">Issue 46
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="convert-docbook-xml-to-asciidoc"><a class="anchor" href="#convert-docbook-xml-to-asciidoc"></a>97. Convert DocBook XML to AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of the things Asciidoctor excels at is converting AsciiDoc source into valid and well-formed DocBook XML content.</p>
+</div>
+<div class="paragraph">
+<p>What if you&#8217;re in the position where you need to go the other way: migrate all your legacy DocBook XML content to AsciiDoc?
+The prescription (℞) you need to get rid of your DocBook pains could be <a href="https://github.com/opendevise/docbookrx">DocBookRx</a>.</p>
+</div>
+<div class="paragraph">
+<p>DocBookRx is an early version of a DocBook to AsciiDoc converter written in Ruby.
+This converter is far from perfect at the moment, but it improves with each document it converts.</p>
+</div>
+<div class="paragraph">
+<p>The plan is to evolve it into a robust library for performing this conversion in a reliable way.
+You can read more about this initiative in the <a href="https://github.com/opendevise/docbookrx/blob/master/README.adoc">README</a>.</p>
+</div>
+<div class="paragraph">
+<p>The best thing about this tool is all the active users who are putting it through its paces.
+The more advanced the DocBook XML this tool tackles, and the more feedback we receive, the better the tool will become.
+Use it today to escape from XML hell!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="convert-confluence-xhtml-to-asciidoc"><a class="anchor" href="#convert-confluence-xhtml-to-asciidoc"></a>98. Convert Confluence XHTML to AsciiDoc</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can convert Atlassian Confluence XHTML pages to Asciidoctor using this <a href="http://www.groovy-lang.org/download.html">Groovy</a> script.</p>
+</div>
+<div class="paragraph">
+<p>The script calls <a href="http://pandoc.org/">Pandoc</a> to convert single or multiple HTML files exported from Confluence to AsciiDoc files.
+You&#8217;ll need Pandoc installed before running this script.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+If you have trouble running this script, you can use the Pandoc command referenced inside the script to convert XHTML files to AsciiDoc manually.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="title">convert.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span class="annotation">@Grab</span>(<span class="string"><span class="delimiter">'</span><span class="content">net.sourceforge.htmlcleaner:htmlcleaner:2.4</span><span class="delimiter">'</span></span>)
+<span class="keyword">import</span> <span class="include">org.htmlcleaner.*</span>
+
+<span class="keyword">def</span> src = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>).toPath()
+<span class="keyword">def</span> dst = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">asciidoc</span><span class="delimiter">'</span></span>).toPath()
+
+<span class="keyword">def</span> cleaner = <span class="keyword">new</span> HtmlCleaner()
+<span class="keyword">def</span> props = cleaner.properties
+props.translateSpecialEntities = <span class="predefined-constant">false</span>
+<span class="keyword">def</span> serializer = <span class="keyword">new</span> SimpleHtmlSerializer(props)
+
+src.toFile().eachFileRecurse { f -&gt;
+    <span class="keyword">def</span> relative = src.relativize(f.toPath())
+    <span class="keyword">def</span> target = dst.resolve(relative)
+    <span class="keyword">if</span> (f.isDirectory()) {
+        target.toFile().mkdir()
+    } <span class="keyword">else</span> <span class="keyword">if</span> (f.name.endsWith(<span class="string"><span class="delimiter">'</span><span class="content">.html</span><span class="delimiter">'</span></span>)) {
+        <span class="keyword">def</span> tmpHtml = <span class="predefined-type">File</span>.createTempFile(<span class="string"><span class="delimiter">'</span><span class="content">clean</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">html</span><span class="delimiter">'</span></span>)
+        println <span class="string"><span class="delimiter">&quot;</span><span class="content">Converting </span><span class="inline"><span class="inline-delimiter">$</span>relative</span><span class="delimiter">&quot;</span></span>
+        <span class="keyword">def</span> result = cleaner.clean(f)
+        result.traverse({ tagNode, htmlNode -&gt;
+                tagNode?.attributes?.remove <span class="string"><span class="delimiter">'</span><span class="content">class</span><span class="delimiter">'</span></span>
+                <span class="keyword">if</span> (<span class="string"><span class="delimiter">'</span><span class="content">td</span><span class="delimiter">'</span></span> == tagNode?.name || <span class="string"><span class="delimiter">'</span><span class="content">th</span><span class="delimiter">'</span></span>==tagNode?.name) {
+                    tagNode.name=<span class="string"><span class="delimiter">'</span><span class="content">td</span><span class="delimiter">'</span></span>
+                    <span class="predefined-type">String</span> txt = tagNode.text
+                    tagNode.removeAllChildren()
+                    tagNode.insertChild(<span class="integer">0</span>, <span class="keyword">new</span> ContentNode(txt))
+                }
+
+            <span class="predefined-constant">true</span>
+        } <span class="keyword">as</span> TagNodeVisitor)
+        serializer.writeToFile(
+                result, tmpHtml.absolutePath, <span class="string"><span class="delimiter">&quot;</span><span class="content">utf-8</span><span class="delimiter">&quot;</span></span>
+        )
+        <span class="string"><span class="delimiter">&quot;</span><span class="content">pandoc -f html -t asciidoc -R -S --normalize -s </span><span class="inline"><span class="inline-delimiter">$</span>tmpHtml</span><span class="content"> -o </span><span class="inline"><span class="inline-delimiter">${</span>target<span class="inline-delimiter">}</span></span><span class="content">.adoc</span><span class="delimiter">&quot;</span></span>.execute().waitFor()
+        tmpHtml.delete()
+    }<span class="comment">/* else {
+        &quot;cp html/$relative $target&quot;.execute()
+    }*/</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The script is designed to be run locally on HTML files or directories containing HTML files exported from Confluence.</p>
+</div>
+<div class="olist arabic">
+<div class="title">Usage</div>
+<ol class="arabic">
+<li>
+<p>Save the script contents to a <code>convert.groovy</code> file in a working directory.</p>
+</li>
+<li>
+<p>Make the file executable according to your specific OS requirements.</p>
+</li>
+<li>
+<p>Place individual files, or a directory containing files into the working directory.</p>
+</li>
+<li>
+<p>Run <code>groovy convert filename.html</code> to convert a single file.</p>
+</li>
+<li>
+<p>Confirm the output file meets requirements</p>
+</li>
+<li>
+<p>Recurse through a directory by using this command pattern: <code>groovy convert directory/*.html</code></p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This script was created by Cédric Champeau (<a href="https://gist.github.com/melix">melix</a>).
+You can find the source of this script hosted at this <a href="https://gist.github.com/melix/6020336">GitHub Gist</a>.</p>
+</div>
+</div>
+</div>
 <h1 id="resources" class="sect0"><a class="anchor" href="#resources"></a>Resources</h1>
 <div class="openblock partintro">
 <div class="content">
@@ -20655,7 +20781,7 @@ NOTE: Section pending
 </div>
 </div>
 <div class="sect1">
-<h2 id="copyright-and-license"><a class="anchor" href="#copyright-and-license"></a>97. Copyright and License</h2>
+<h2 id="copyright-and-license"><a class="anchor" href="#copyright-and-license"></a>99. Copyright and License</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Copyright &#169; 2012-2014 Dan Allen and Ryan Waldron.
@@ -20667,7 +20793,7 @@ Free use of this software is granted under the terms of the MIT License.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="authors"><a class="anchor" href="#authors"></a>98. Authors</h2>
+<h2 id="authors"><a class="anchor" href="#authors"></a>100. Authors</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p><strong>Asciidoctor</strong> was written by <a href="https://github.com/mojavelinux">Dan Allen</a>, <a href="https://github.com/erebor">Ryan Waldron</a>, <a href="https://github.com/lightguard">Jason Porter</a>, <a href="http://github.com/nickh">Nick Hengeveld</a> and <a href="https://github.com/asciidoctor/asciidoctor/graphs/contributors">other contributors</a>.</p>
@@ -20682,7 +20808,7 @@ Refer to the commit history of <a href="https://github.com/github/gitscm-next/co
 </div>
 </div>
 <div class="sect1">
-<h2 id="troubleshoot"><a class="anchor" href="#troubleshoot"></a>99. Troubleshooting</h2>
+<h2 id="troubleshoot"><a class="anchor" href="#troubleshoot"></a>101. Troubleshooting</h2>
 <div class="sectionbody">
 <div class="qlist qanda">
 <ol>
@@ -20766,7 +20892,7 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 </div>
 </div>
 <div class="sect1">
-<h2 id="glossary"><a class="anchor" href="#glossary"></a>100. Glossary</h2>
+<h2 id="glossary"><a class="anchor" href="#glossary"></a>102. Glossary</h2>
 <div class="sectionbody">
 <div class="admonitionblock tip">
 <table>
@@ -23977,7 +24103,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-02 08:39:40 UTC
+Last updated 2016-03-03 06:32:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
