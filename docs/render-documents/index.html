@@ -63,52 +63,72 @@ That&#8217;s where the Asciidoctor themes and backends come into play.</p>
 <h2 id="selecting-an-output-format"><a class="anchor" href="#selecting-an-output-format"></a>Selecting an Output Format</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Asciidoctor processor parses an AsciiDoc document and converts it to a variety of formats, including HTML, DocBook and PDF.
-The processor produces the output format by using a backend that you specify with the <code>-b</code> (<code>--backend</code>) command line option.
-If no backend is indicated, the processor uses the default backend (<code>html5</code>).</p>
+<p>The Asciidoctor processor is typically used to parse an AsciiDoc document and convert it to a variety of formats, including HTML, DocBook and PDF.
+This section describes how to specify the output format.</p>
 </div>
 <div class="paragraph">
-<p>Asciidoctor has four native backends.</p>
+<p>The processor generates the output format using a converter, which is mapped to the name of a backend.
+You specify the backend&#8212;&#8203;and therefore the converter&#8212;&#8203;using the <code>-b</code> (<code>--backend</code>) command line option or <code>:backend</code> API option.
+If no backend is specified, the processor uses the converter for the default backend (<code>html5</code>).</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor provides several built-in converters, which are mapped to the following backend names:</p>
 </div>
 <div class="dlist">
 <dl>
-<dt class="hdlist1"><code>html5</code></dt>
+<dt class="hdlist1">html (or html5)</dt>
 <dd>
-<p>HTML 5 markup styled with CSS3.
-Asciidoctor&#8217;s default backend.</p>
+<p>HTML 5, styled with CSS3 (default).</p>
 </dd>
-<dt class="hdlist1"><code>xhtml5</code></dt>
+<dt class="hdlist1">xhtml (or xhtml5)</dt>
 <dd>
-<p>XHTML 5 markup.</p>
+<p>The XHTML variant of the output from <code>html5</code>.</p>
 </dd>
-<dt class="hdlist1"><code>docbook</code></dt>
+<dt class="hdlist1">docbook (or docbook5)</dt>
 <dd>
-<p>DocBook XML 5.0 markup.</p>
+<p>DocBook 5.0 XML.0.</p>
 </dd>
-<dt class="hdlist1"><code>docbook45</code></dt>
+<dt class="hdlist1">docbook45</dt>
 <dd>
-<p>DocBook XML 4.5 markup.</p>
+<p>DocBook 4.5 XML.</p>
 </dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>It also has several backends that can be plugged in.</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>manpage</code></dt>
+<dt class="hdlist1">manpage</dt>
 <dd>
 <p>Manual pages for Unix and Unix-like operating systems.</p>
 </dd>
-<dt class="hdlist1"><code>pdf</code></dt>
+</dl>
+</div>
+<div class="paragraph">
+<p>Asciidoctor also has several add-on converters, which can be plugged in by adding the appropriate library to the runtime path.
+These converters are mapped to the following backend names:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">pdf</dt>
 <dd>
-<p>Portable Document Format (PDF).</p>
+<p>PDF, a portable document format.
+Requires the <a href="https://rubygems.org/gems/asciidoctor-pdf">asciidoctor-pdf</a> gem.</p>
 </dd>
-<dt class="hdlist1"><code>deckjs</code></dt>
+<dt class="hdlist1">epub3</dt>
 <dd>
-<p>Deck.js slideshow.</p>
+<p>EPUB3, a distribution and interchange format standard for digital publications and documents.
+Requires the <a href="https://rubygems.org/gems/asciidoctor-epub3">asciidoctor-epub3</a> gem.</p>
+</dd>
+<dt class="hdlist1">latex</dt>
+<dd>
+<p>LaTeX, a document preparation system for high-quality typesetting.
+Requires the <a href="https://rubygems.org/gems/asciidoctor-latex">asciidoctor-latex</a> gem.</p>
+</dd>
+<dt class="hdlist1">mallard</dt>
+<dd>
+<p>Mallard 1.0 XML.
+Requires the <a href="https://github.com/asciidoctor/asciidoctor-mallard">asciidoctor-mallard</a> gem (not yet released).</p>
 </dd>
 </dl>
+</div>
+<div class="paragraph">
+<p>There are also converters available for HTML5 presentation systems such as Bespoke.js, reveal.js and deck.js.
+Those converters are still in development and will be documented once releases become available.</p>
 </div>
 </div>
 </div>
