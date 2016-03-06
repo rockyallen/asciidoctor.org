@@ -1,40 +1,4 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>AsciiDoc Writer&#8217;s Guide | Asciidoctor</title><meta name="description" content="This guide describes the basic structure of an AsciiDoc document, how to create your first AsciiDoc document, how to add other structural elements such as lists, block quotes and source code, and how to convert an AsciiDoc document to HTML, DocBook and PDF."><meta name="author" content="Dan Allen"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>AsciiDoc Writer&#8217;s Guide</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><div id="toc" class="toc">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#writing-in-asciidoc">Writing in AsciiDoc</a>
-<ul class="sectlevel2">
-<li><a href="#it-s-just-text-mate">It&#8217;s just text, mate.</a></li>
-<li><a href="#content-is-king">Content is king!</a></li>
-<li><a href="#admonitions">Admonitions</a></li>
-<li><a href="#mild-punctuation-strong-impact">Mild punctuation, strong impact</a></li>
-<li><a href="#lists-lists-lists">Lists, lists, lists</a></li>
-<li><a href="#links-and-images">Links and images</a></li>
-<li><a href="#titles-titles-titles">Titles, titles, titles</a></li>
-</ul>
-</li>
-<li><a href="#building-blocks-in-asciidoc">Building blocks in AsciiDoc</a>
-<ul class="sectlevel2">
-<li><a href="#delimited-blocks">Delimited blocks</a></li>
-<li><a href="#block-metadata">Block metadata</a></li>
-<li><a href="#masquerading-blocks">Masquerading blocks</a></li>
-<li><a href="#delimiters-optional">Delimiters optional</a></li>
-<li><a href="#a-new-perspective-on-tables">A new perspective on tables</a></li>
-</ul>
-</li>
-<li><a href="#what-else-can-asciidoc-do">What else can AsciiDoc do?</a></li>
-<li><a href="#rendering-your-document">Rendering your document</a>
-<ul class="sectlevel2">
-<li><a href="#converting-a-document-to-html-5">Converting a document to HTML 5</a></li>
-<li><a href="#converting-a-document-to-docbook">Converting a document to DocBook</a></li>
-<li><a href="#output-galore">Output galore</a></li>
-<li><a href="#where-else-is-asciidoc-rendered">Where else is AsciiDoc rendered?</a></li>
-</ul>
-</li>
-<li><a href="#wrap-up">Wrap-up</a></li>
-<li><a href="#glossary">Glossary</a></li>
-</ul>
-</div>
-<div id="preamble">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>AsciiDoc Writer&#8217;s Guide | Asciidoctor</title><meta name="description" content="This guide describes the basic structure of an AsciiDoc document, how to create your first AsciiDoc document, how to add other structural elements such as lists, block quotes and source code, and how to convert an AsciiDoc document to HTML, DocBook and PDF."><meta name="author" content="Dan Allen"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li class="g-plusone-slot"><div class="g-plusone" data-annotation="none"></div></li><li class="divider"></li><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>AsciiDoc Writer&#8217;s Guide</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>This guide provides a gentle introduction to AsciiDoc, a <em>plain text</em> documentation <strong>syntax</strong> and <strong>processor</strong>.
@@ -78,6 +42,42 @@ If you&#8217;re looking for a concise survey of the AsciiDoc syntax, consult the
 <div class="paragraph">
 <p>Let&#8217;s dive in to AsciiDoc!</p>
 </div>
+</div>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#writing-in-asciidoc">Writing in AsciiDoc</a>
+<ul class="sectlevel2">
+<li><a href="#it-s-just-text-mate">It&#8217;s just text, mate.</a></li>
+<li><a href="#content-is-king">Content is king!</a></li>
+<li><a href="#admonitions">Admonitions</a></li>
+<li><a href="#mild-punctuation-strong-impact">Mild punctuation, strong impact</a></li>
+<li><a href="#lists-lists-lists">Lists, lists, lists</a></li>
+<li><a href="#links-and-images">Links and images</a></li>
+<li><a href="#titles-titles-titles">Titles, titles, titles</a></li>
+</ul>
+</li>
+<li><a href="#building-blocks-in-asciidoc">Building blocks in AsciiDoc</a>
+<ul class="sectlevel2">
+<li><a href="#delimited-blocks">Delimited blocks</a></li>
+<li><a href="#block-metadata">Block metadata</a></li>
+<li><a href="#masquerading-blocks">Masquerading blocks</a></li>
+<li><a href="#delimiters-optional">Delimiters optional</a></li>
+<li><a href="#a-new-perspective-on-tables">A new perspective on tables</a></li>
+</ul>
+</li>
+<li><a href="#what-else-can-asciidoc-do">What else can AsciiDoc do?</a></li>
+<li><a href="#rendering-your-document">Rendering your document</a>
+<ul class="sectlevel2">
+<li><a href="#converting-a-document-to-html-5">Converting a document to HTML 5</a></li>
+<li><a href="#converting-a-document-to-docbook">Converting a document to DocBook</a></li>
+<li><a href="#output-galore">Output galore</a></li>
+<li><a href="#where-else-is-asciidoc-rendered">Where else is AsciiDoc rendered?</a></li>
+</ul>
+</li>
+<li><a href="#wrap-up">Wrap-up</a></li>
+<li><a href="#glossary">Glossary</a></li>
+</ul>
 </div>
 </div>
 <div class="sect1">
