@@ -2924,14 +2924,14 @@ That name can only be used once in a document.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Let&#8217;s say you want to create a blockquote from an open block and assign it an id and role.
-You prepend the style <code>quote</code> to the <code>#</code> (<code>id</code>) in the first attribute position, as this example shows:</p>
+<p>Let&#8217;s say you want to create a blockquote from an open block and assign it an ID and role.
+You add <code>quote</code> (the block style) in front of the <code>#</code> (the ID) in the first attribute position, as this example shows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[quote#think, Donald Trump]
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[quote#roads, Dr. Emmett Brown]
 ____
-As long as you're going to be thinking anyway, think big.
+Roads? Where we're going, we don't need roads.
 ____</code></pre>
 </div>
 </div>
@@ -2942,7 +2942,7 @@ ____</code></pre>
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-The order of id and role values in the shorthand syntax does not matter.
+The order of ID and role values in the shorthand syntax does not matter.
 </td>
 </tr>
 </table>
@@ -14684,12 +14684,20 @@ icon:heart[fw] heart</pre>
 <h2 id="source-code-blocks"><a class="anchor" href="#source-code-blocks"></a>49. Source Code and Syntax Highlighting</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Listing blocks and paragraphs are commonly used to display source code.
-For this reason, Asciidoctor has enabled several syntax highlighting libraries, including CodeRay, highlight.js, Prettify, and Pygments, that you can use to style source code.</p>
+<p>Developers are accustomed to seeing source code which uses color and other styling to emphasize the code&#8217;s structure (e.g., keywords, types, matching delimiters).
+This technique is known as <em class="term">syntax highlighting</em> (or source highlighting).</p>
 </div>
 <div class="paragraph">
-<p>To enable syntax highlighting in a document, set the <code>source-highlighter</code> attribute in the <a href="#doc-header">document header</a>.
-If you set the attribute in the document, it <em>must</em> be defined in the document header.</p>
+<p>Since this technique is so prevelant (you could even say expected), Asciidoctor integrates a wealth of libraries you can choose from to syntax highlight the source code blocks in your document.
+This list includes CodeRay, Pygments, highlight.js and prettify.</p>
+</div>
+<div class="paragraph">
+<p>Syntax highlighting applies to listing or literal blocks marked with the <code>source</code> block style.
+However, keep in mind that syntax highlighting is <em>not</em> enabled by default.</p>
+</div>
+<div class="paragraph">
+<p>To enable syntax highlighting in a document, you need to set the <code>source-highlighter</code> attribute.
+If you set the attribute in the document, it <em>must</em> be defined in the <a href="#doc-header">document header</a>.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14698,7 +14706,7 @@ If you set the attribute in the document, it <em>must</em> be defined in the doc
 </div>
 </div>
 <div class="paragraph">
-<p>For example:</p>
+<p>For example, here&#8217;s how to enable syntax highlighting using CodeRay:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -14707,10 +14715,13 @@ If you set the attribute in the document, it <em>must</em> be defined in the doc
 </div>
 </div>
 <div class="paragraph">
-<p>See the following table for possible values of the <code>source-highlighter</code> attribute.</p>
+<p>You can also set the <code>source-highlighter</code> attribute from the command line or API.</p>
+</div>
+<div class="paragraph">
+<p>The following table lists the recognized values for the <code>source-highlighter</code> attribute.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">Possible values for the <code>source-highlighter</code> attribute</caption>
+<caption class="title">Recognized values and supported environments for the <code>source-highlighter</code> attribute</caption>
 <colgroup>
 <col style="width: 25%;">
 <col style="width: 25%;">
@@ -14731,11 +14742,11 @@ If you set the attribute in the document, it <em>must</em> be defined in the doc
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://highlightjs.org">highlight.js</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>highlightjs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>highlight.js</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor, AsciidoctorJ, Asciidoctor.js</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://code.google.com/p/google-code-prettify">Prettify</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://code.google.com/p/google-code-prettify">prettify</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>prettify</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor, AsciidoctorJ, Asciidoctor.js</p></td>
 </tr>
@@ -14746,9 +14757,27 @@ If you set the attribute in the document, it <em>must</em> be defined in the doc
 </tr>
 </tbody>
 </table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
 <div class="paragraph">
-<p>To apply highlighting to source code, you must assign the <code>source</code> name and a source language to a paragraph or delimited block.
-You can also set the source language globally using the <code>source-language</code> attribute.</p>
+<p>In order to use CodeRay or Pygments, you must have the appropriate library installed on your system.
+See the <a href="#coderay">CodeRay</a> or <a href="#pygments">Pygments</a> section to find installation instructions.</p>
+</div>
+<div class="paragraph">
+<p>On the other hand, if you&#8217;re using a client-side syntax highlighting library like highlight.js or prettify, there&#8217;s no need to install additional libraries.
+The generated HTML will load the required source files from a CDN.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To apply highlighting to source code, you must assign the <code>source</code> block style to a listing block, literal block or paragrah and also specify a source language.</p>
 </div>
 <div class="listingblock">
 <div class="title">Code block with title and syntax highlighting</div>
@@ -14850,11 +14879,13 @@ This is normal content.  <i class="conum" data-value="2"></i><b>(2)</b></pre>
 :source-language: java
 
 [source]
+----
 public void setAttributes(Attributes attributes) {
-		this.options.put(ATTRIBUTES, attributes.map());
-	}
+    this.options.put(ATTRIBUTES, attributes.map());
+}
+----
 
-Don't worry, if you need to use another source language, you can assign the language directly on the block.
+You can override the global source language by specifying a source language on the block.
 
 [source,ruby]
 require 'sinatra'</pre>
@@ -15098,16 +15129,39 @@ This command ensures that you are invoking the <code>pygmentize</code> command u
 </tbody>
 </table>
 <div class="paragraph">
-<p>In order to use CodeRay with Asciidoctor, you need the <a href="https://rubygems.org/gems/coderay">coderay RubyGem</a>.</p>
+<p>In order to use CodeRay with Asciidoctor, you need the <a href="https://rubygems.org/gems/coderay">coderay RubyGem</a>.
+You can use one of the following methods to install CodeRay.</p>
 </div>
-<div class="listingblock">
-<div class="title">Installing the CodeRay RubyGem via the CLI</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Install using <code>gem</code> (all systems)</dt>
+<dd>
+<div class="literalblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="console">$ gem install coderay</code></pre>
+<pre class="nowrap">$ gem install coderay</pre>
 </div>
+</div>
+</dd>
+<dt class="hdlist1">Install using <code>apt-get</code> (Debian-based systems)</dt>
+<dd>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo apt-get install coderay</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1">Install using <code>dnf</code> (Fedora-based systems)</dt>
+<dd>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo dnf install rubygem-coderay</pre>
+</div>
+</div>
+</dd>
+</dl>
 </div>
 <div class="paragraph">
-<p>Once you&#8217;ve installed the RubyGem, assign <code>coderay</code> to the <code>source-highlighter</code> attribute in your document&#8217;s header.</p>
+<p>Once you&#8217;ve installed the RubyGem, assign the <code>coderay</code> value to the <code>source-highlighter</code> attribute in the document header to activate it.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -15124,7 +15178,9 @@ This command ensures that you are invoking the <code>pygmentize</code> command u
 coderay-css
 </td>
 <td class="hdlist2">
-<p>Controls what method is used for applying CSS to the tokens. Can be <code>class</code> or <code>style</code>. Default: <code>class</code>.</p>
+<p>Controls what method is used for applying CSS to the tokens.
+Can be <code>class</code> or <code>style</code>.
+Default: <code>class</code>.</p>
 </td>
 </tr>
 <tr>
@@ -15132,7 +15188,9 @@ coderay-css
 coderay-linenums-mode
 </td>
 <td class="hdlist2">
-<p>Controls how line numbers are laid out. Can be <code>table</code> or <code>inline</code>. Default: <code>table</code>.</p>
+<p>Controls how line numbers are laid out.
+Can be <code>table</code> or <code>inline</code>.
+Default: <code>table</code>.</p>
 </td>
 </tr>
 </table>
@@ -24123,7 +24181,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-07 08:12:22 UTC
+Last updated 2016-03-07 09:11:36 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
