@@ -672,10 +672,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#cols-format">26.2. Column formatting</a></li>
 <li><a href="#cell">26.3. Cell Formatting</a></li>
 <li><a href="#header-row">26.4. Header row</a></li>
-<li><a href="#footer-row">26.5. Footer Row</a></li>
-<li><a href="#table-lines-placement-and-size">26.6. Table lines, placement, and size</a></li>
-<li><a href="#data-formats">26.7. CSV and DSV Data Formats</a></li>
-<li><a href="#summary-tables">26.8. Summary</a></li>
+<li><a href="#footer-row">26.5. Footer row</a></li>
+<li><a href="#table-width">26.6. Table width</a></li>
+<li><a href="#table-borders">26.7. Table borders</a></li>
+<li><a href="#data-formats">26.8. CSV and DSV Data Formats</a></li>
+<li><a href="#summary-tables">26.9. Summary</a></li>
 </ul>
 </li>
 <li><a href="#horizontal-rules">27. Horizontal Rules</a>
@@ -7215,16 +7216,19 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/447">Issue 44
 <h2 id="tables"><a class="anchor" href="#tables"></a>26. Tables</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Tables are one of the most refined areas of the AsciiDoc syntax.
-They are easy to create, easy to read in raw form and also remarkably sophisticated.</p>
+<p>Tables are one of the most intricate, yet refined areas of the AsciiDoc syntax.
+Armed with a bit of knowledge, you should discover that they are both easy to create and easy to read in raw form.
+Yet, under all that simplicity, they are remarkably sophisticated.</p>
 </div>
 <div class="paragraph">
 <p>Tables are delimited by <code>|===</code> and made up of cells.
 The default table data format is PSV (Prefix Separated Values), which means that the processor creates a new cell each time it encounters a vertical bar (<code>|</code>).
-The cells are grouped into rows.
+Cells are grouped into rows.
 Each row must share the same number of cells, taking into account any <a href="#cell">column or row spans</a>.
-Then, each consecutive cell in a row is placed in a separate column.
-The simple table example below consists of two columns and three rows.</p>
+Then, each consecutive cell in a row is placed in a separate column.</p>
+</div>
+<div class="paragraph">
+<p>The simple table example below consists of two columns and three rows.</p>
 </div>
 <div class="listingblock">
 <div class="title">Simple table</div>
@@ -8678,7 +8682,7 @@ Thus, if you rely on this convention to enable the header row, it&#8217;s advise
 </div>
 </div>
 <div class="sect2">
-<h3 id="footer-row"><a class="anchor" href="#footer-row"></a>26.5. Footer Row</h3>
+<h3 id="footer-row"><a class="anchor" href="#footer-row"></a>26.5. Footer row</h3>
 <div class="paragraph">
 <p>The last row of a table can be styled as a footer by assigning the <code>footer</code> value to the <code>options</code> attribute.</p>
 </div>
@@ -8740,19 +8744,17 @@ Remember that when the options attribute is set, and you want the first row of t
 </div>
 </div>
 <div class="sect2">
-<h3 id="table-lines-placement-and-size"><a class="anchor" href="#table-lines-placement-and-size"></a>26.6. Table lines, placement, and size</h3>
+<h3 id="table-width"><a class="anchor" href="#table-width"></a>26.6. Table width</h3>
 <div class="paragraph">
-<p>There are several attributes available for customizing the placement, size and lines of a table.</p>
-</div>
-<div class="paragraph">
-<p>By default, a table will stretch to 100 percent of the page width.
+<p>By default, a table will stretch to fit the width of the page.
 To reduce the width of the table, set the <code>width</code> attribute in the table&#8217;s attribute list.
-The width value can be any number between 1 and 99.</p>
+The width is a percentage value ranging from 0 to 100.
+The <code>%</code> sign is optional.</p>
 </div>
 <div class="listingblock">
 <div class="title">Table with width set to 65%</div>
 <div class="content">
-<pre class="nowrap">[width="65"]
+<pre class="nowrap">[width=65]
 |===
 |Name of Column 1 |Name of Column 2 |Name of Column 3
 
@@ -8767,7 +8769,7 @@ The width value can be any number between 1 and 99.</p>
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 65%;">
-<caption class="title">Result: Render table with a width of 65%</caption>
+<caption class="title">Result: Table rendered with a width of 65%</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8793,17 +8795,26 @@ The width value can be any number between 1 and 99.</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect2">
+<h3 id="table-borders"><a class="anchor" href="#table-borders"></a>26.7. Table borders</h3>
 <div class="paragraph">
-<p>The border around a table can be changed by setting the <code>frame</code> attribute.
+<p>The borders on a table are controlled using the <code>frame</code> and <code>grid</code> attributes.
+You can combine these two attributes to achieve a variety of border styles for your tables.</p>
+</div>
+<div class="sect3">
+<h4 id="frame"><a class="anchor" href="#frame"></a>26.7.1. Frame</h4>
+<div class="paragraph">
+<p>The border around a table is controlled using the <code>frame</code> attribute.
 By default, the frame attribute is assigned the <code>all</code> value, which draws a border on each side of the table.
-If you set the frame attribute, you can override the default value with <code>topbot</code>, <code>sides</code> or <code>none</code>.</p>
+If you set the frame attribute, you can override the default value with the values <code>topbot</code>, <code>sides</code> or <code>none</code>.</p>
 </div>
 <div class="paragraph">
 <p>The <code>topbot</code> value draws a border on the top and bottom of the table.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[frame="topbot"]
+<pre class="nowrap">[frame=topbot]
 |===
 |Name of Column 1 |Name of Column 2 |Name of Column 3
 
@@ -8818,7 +8829,7 @@ If you set the frame attribute, you can override the default value with <code>to
 </div>
 </div>
 <table class="tableblock frame-topbot grid-all" style="width: 90%;">
-<caption class="title">Result: Table rendered with topbot value</caption>
+<caption class="title">Result: Table rendered with frame=topbot</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8849,7 +8860,7 @@ If you set the frame attribute, you can override the default value with <code>to
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[frame="sides"]
+<pre class="nowrap">[frame=sides]
 |===
 |Name of Column 1 |Name of Column 2 |Name of Column 3
 
@@ -8864,7 +8875,7 @@ If you set the frame attribute, you can override the default value with <code>to
 </div>
 </div>
 <table class="tableblock frame-sides grid-all" style="width: 90%;">
-<caption class="title">Result: Table rendered with sides value</caption>
+<caption class="title">Result: Table rendered with frame=sides</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8895,7 +8906,7 @@ If you set the frame attribute, you can override the default value with <code>to
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[frame="none"]
+<pre class="nowrap">[frame=none]
 |===
 |Name of Column 1 |Name of Column 2 |Name of Column 3
 
@@ -8910,7 +8921,7 @@ If you set the frame attribute, you can override the default value with <code>to
 </div>
 </div>
 <table class="tableblock frame-none grid-all" style="width: 90%;">
-<caption class="title">Result: Table rendered with none value</caption>
+<caption class="title">Result: Table rendered with frame=none</caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -8936,21 +8947,156 @@ If you set the frame attribute, you can override the default value with <code>to
 </tr>
 </tbody>
 </table>
-<div class="admonitionblock note">
-<table>
+</div>
+<div class="sect3">
+<h4 id="grid"><a class="anchor" href="#grid"></a>26.7.2. Grid</h4>
+<div class="paragraph">
+<p>The borders between the cells in a table are controlled using the <code>grid</code> attribute.
+By default, the grid attribute is assigned the <code>all</code> value, which draws a border between all cells.
+If you set the <code>grid</code> attribute, you can override the default value with the values <code>rows</code>, <code>cols</code> or <code>none</code>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>rows</code> value draws a border between the rows of the table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[grid=rows]
+|===
+|Name of Column 1 |Name of Column 2 |Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-rows" style="width: 90%;">
+<caption class="title">Result: Table rendered with grid=rows</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-At this time, Asciidoctor has not implemented the <code>align</code>, <code>halign</code>, or <code>valign</code> attributes.
-</td>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+<th class="tableblock halign-left valign-top">Name of Column 3</th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>cols</code> value draws borders between the columns.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[grid=cols]
+|===
+|Name of Column 1 |Name of Column 2 |Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-cols" style="width: 90%;">
+<caption class="title">Result: Table rendered with grid=cols</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+<th class="tableblock halign-left valign-top">Name of Column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The <code>none</code> value removes all borders between the cells.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[grid=none]
+|===
+|Name of Column 1 |Name of Column 2 |Name of Column 3
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+|Cell in column 3, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|Cell in column 3, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-none" style="width: 90%;">
+<caption class="title">Result: Table rendered with grid=none</caption>
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+<th class="tableblock halign-left valign-top">Name of Column 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 3, row 2</p></td>
+</tr>
+</tbody>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-formats"><a class="anchor" href="#data-formats"></a>26.7. CSV and DSV Data Formats</h3>
+<h3 id="data-formats"><a class="anchor" href="#data-formats"></a>26.8. CSV and DSV Data Formats</h3>
 <div class="paragraph">
 <p>Tables can be created from Comma Separated Values (CSV) and Delimiter Separated Values (DSV).
 To use these type of datasets, set the <code>format</code> attribute and assign it the <code>csv</code> or <code>dsv</code> value.
@@ -9158,7 +9304,7 @@ include::tracks.csv[]
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-tables"><a class="anchor" href="#summary-tables"></a>26.8. Summary</h3>
+<h3 id="summary-tables"><a class="anchor" href="#summary-tables"></a>26.9. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table attributes and values</caption>
 <colgroup>
@@ -24184,7 +24330,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-07 09:52:14 UTC
+Last updated 2016-03-08 06:44:08 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
