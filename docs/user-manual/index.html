@@ -675,8 +675,9 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#footer-row">26.5. Footer row</a></li>
 <li><a href="#table-width">26.6. Table width</a></li>
 <li><a href="#table-borders">26.7. Table borders</a></li>
-<li><a href="#data-formats">26.8. CSV and DSV Data Formats</a></li>
-<li><a href="#summary-tables">26.9. Summary</a></li>
+<li><a href="#table-caption">26.8. Table caption</a></li>
+<li><a href="#data-formats">26.9. CSV and DSV Data Formats</a></li>
+<li><a href="#summary-tables">26.10. Summary</a></li>
 </ul>
 </li>
 <li><a href="#horizontal-rules">27. Horizontal Rules</a>
@@ -9096,7 +9097,147 @@ If you set the <code>grid</code> attribute, you can override the default value w
 </div>
 </div>
 <div class="sect2">
-<h3 id="data-formats"><a class="anchor" href="#data-formats"></a>26.8. CSV and DSV Data Formats</h3>
+<h3 id="table-caption"><a class="anchor" href="#table-caption"></a>26.8. Table caption</h3>
+<div class="paragraph">
+<p>If you specify a title on a table, the title will be used as part of the table&#8217;s caption.
+Adding a title also designates the table as a <em class="term">formal table</em>.</p>
+</div>
+<div class="paragraph">
+<p>By default, the title of a formal table is prefixed with the label <code>Table &lt;n&gt;.</code> followed by a space, where <code>&lt;n&gt;</code> is the 1-based index of all formal tables in the document.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">.A formal table
+|===
+|Name of Column 1 |Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<caption class="title">Table 1. A table with a title</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>You can customize the caption label by specifying the <code>caption</code> attribute.
+If you want a space between the label and the title, you must add a trailing space to the value of the caption attribute.
+(Don&#8217;t let the name of the attribute mislead you.
+The caption attribute only sets the caption&#8217;s label, not the whole caption line).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[caption="Table A. "]
+.A formal table
+|===
+|Name of Column 1 |Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<caption class="title">Table A. A formal table</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If you want to exclude the caption label altogether, simply assign a blank value to the <code>caption</code> attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">[caption=]
+.A formal table
+|===
+|Name of Column 1 |Name of Column 2
+
+|Cell in column 1, row 1
+|Cell in column 2, row 1
+
+|Cell in column 1, row 2
+|Cell in column 2, row 2
+|===</pre>
+</div>
+</div>
+<table class="tableblock frame-all grid-all" style="width: 90%;">
+<caption class="title">A formal table</caption>
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name of Column 1</th>
+<th class="tableblock halign-left valign-top">Name of Column 2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 1, row 2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cell in column 2, row 2</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Alternatively, you can disable the caption label for tables globally by undefining the <code>table-caption</code> document attribute.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:table-caption!:</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="data-formats"><a class="anchor" href="#data-formats"></a>26.9. CSV and DSV Data Formats</h3>
 <div class="paragraph">
 <p>Tables can be created from Comma Separated Values (CSV) and Delimiter Separated Values (DSV).
 To use these type of datasets, set the <code>format</code> attribute and assign it the <code>csv</code> or <code>dsv</code> value.
@@ -9304,7 +9445,7 @@ include::tracks.csv[]
 </table>
 </div>
 <div class="sect2">
-<h3 id="summary-tables"><a class="anchor" href="#summary-tables"></a>26.9. Summary</h3>
+<h3 id="summary-tables"><a class="anchor" href="#summary-tables"></a>26.10. Summary</h3>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table attributes and values</caption>
 <colgroup>
@@ -24330,7 +24471,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-08 06:44:08 UTC
+Last updated 2016-03-09 05:20:13 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
