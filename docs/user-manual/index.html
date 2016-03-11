@@ -2709,7 +2709,8 @@ For example, if the backend is <code>docbook5</code>, the basebackend is <code>d
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>outfilesuffix</code></p></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>File extension of output file name (including leading period).</p>
+<p>Default file extension of output file (<em>not</em> the file extension of the specified output file).
+Value depends on backend (<code>.html</code> for <code>html</code>, <code>.xml</code> for <code>docbook</code>, etc).</p>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>.html</code></p></td>
 </tr>
@@ -10266,11 +10267,14 @@ If not, it will generate a link to <em class="file">document-b.html</em>, intell
 <p>Now you can create inter-document cross references without the headache.</p>
 </div>
 <div class="sect3">
-<h4 id="navigating-between-source-files"><a class="anchor" href="#navigating-between-source-files"></a>30.3.1. Navigating between source files</h4>
+<h4 id="navigating-between-source-files"><a class="anchor" href="#navigating-between-source-files"></a>30.3.1. Navigating Between Source Files</h4>
 <div class="paragraph">
-<p>In certain environments, such as GitHub and the browser extensions, you view the generated HTML from the AsciiDoc source URL.
-Since the default suffix for relative links is <code>.html</code>, the inter-document cross references end up pointing to non-existent HTML files.
-You need, instead, to get inter-document cross references to refer to other AsciiDoc source files.
+<p>In certain environments, such as GitHub and the browser preview extensions, you view the generated HTML through the AsciiDoc source URL.
+This has consequences for inter-document cross references.</p>
+</div>
+<div class="paragraph">
+<p>Since the default suffix for relative links in the <code>html5</code> backend is <code>.html</code>, the inter-document cross references end up pointing to non-existent HTML files.
+In this case, you need to change the inter-document cross references to refer to other AsciiDoc source files instead.
 You can achieve this behavior by setting the <code>outfilesuffix</code> attribute to the value as <code>.adoc</code>, as the example below shows.</p>
 </div>
 <div class="listingblock">
@@ -10297,6 +10301,30 @@ You probably don&#8217;t want to set <code>outfilesuffix</code> to <code>.adoc</
 </td>
 </tr>
 </table>
+</div>
+<div class="paragraph">
+<p>While <code>outfilesuffix</code> gives you control over the end of the resolved path for an inter-document cross reference, the <code>relfileprefix</code> attribute gives you control over the beginning of the path.
+When resolving the path of an inter-document cross reference, if the <code>relfileprefix</code> attribute is set, the value of this attribute gets prepended to the path.
+Let&#8217;s look at an example of when these two attributes are used together.</p>
+</div>
+<div class="paragraph">
+<p>A common practice in website architecture is to move files into their own folder to make the path format agnostic (called &#8220;indexify&#8221;).
+For example, the path <code>filename.html</code> becomes <code>filename/</code> (which targets <code>filename/index.html</code>).
+However, this is problematic for inter-document cross references.
+Any cross reference that resolves to the path <code>filename.html</code> is now invalid since the file has moved to a subfolder (and thus no longer a sibling of the referencing document).</p>
+</div>
+<div class="paragraph">
+<p>To solve this problem, you can define the following two attributes:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">:relfileprefix: ../
+:outfilesuffix: /</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now, the cross reference <code>&lt;&lt;filename#,Label&gt;&gt;</code> will resolve to <code>../filename/</code> instead of <code>filename.html</code>.
+Since this change is specific to the website architecture described, you want to be sure to only set these attributes in that particular environment (either using an ifdef directive or via the API).</p>
 </div>
 </div>
 </div>
@@ -23999,12 +24027,20 @@ Can also be set implicity from the revision line.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docbook">DocBook</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outfilesuffix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default file extension of output file (includes leading period).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set according to backend (<code>.html</code> for <code>html</code>, <code>.xml</code> for <code>docbook</code>, etc).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file extension.</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#navigating-between-source-files">Navigating Between Source Files</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">relfileprefix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The path prefix to add to relative xrefs.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A path segment.</p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#xref">Cross references</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#navigating-between-source-files">Navigating Between Source Files</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">skip-front-matter</p></td>
@@ -24471,7 +24507,7 @@ It&#8217;s up to the converter to transform this text into something the viewer 
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-09 09:48:08 UTC
+Last updated 2016-03-11 06:03:03 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
