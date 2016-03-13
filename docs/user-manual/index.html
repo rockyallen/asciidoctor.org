@@ -23486,7 +23486,7 @@ See <a href="#asciidoctor-vs-asciidoc">Comparison of Asciidoctor and AsciiDoc Fe
 <td class="tableblock halign-left valign-top"><p class="tableblock">experimental</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Enable experimental extensions.
 The features behind this attribute are subject to change and may even be removed in a future version.
-Currently enables the UI macros (button, menu, kbd).</p></td>
+Currently enables the UI macros (button, menu and kbd).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23620,7 +23620,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">toc-title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Title for the TOC.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Title for the table of contents.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table of Contents</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
@@ -24119,7 +24119,7 @@ Mutually exclusive with the <code>notitle</code> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">coderay-linenums-mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets how Coderay inserts line numbers into source listings.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">table, inline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table or inline</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#coderay">CodeRay</a></p></td>
 </tr>
@@ -24184,7 +24184,7 @@ Sets the default behavior only; you can still switch off wrapping on specific li
 <td class="tableblock halign-left valign-top"><p class="tableblock">pygments-linenums-mode</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets how Pygments inserts line numbers into source listings.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">table, inline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table or inline</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#pygments">Pygments</a></p></td>
 </tr>
@@ -24232,11 +24232,37 @@ Sets the default behavior only; you can still switch off wrapping on specific li
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">HTML styling</p></th>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copycss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, copy the CSS files to the output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (File is copied if <code>linkcss</code> is set).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a theme</a></p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">css-signature</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If set, assign the value to the <code>id</code> attribute of the <code>&lt;body&gt;</code> element (HTML only).
 The prefered approach is to assign an ID to the document title.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A valid XML ID name.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">linkcss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, link to the stylesheet instead of embedding it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#styling-the-html-with-css">Styling the HTML with CSS</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max-width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constrain the maximum width of the document body.
+<strong>Not recommended.
+Use custom CSS instead.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSS length (e.g. 55em, 12cm, etc)</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -24257,30 +24283,12 @@ The prefered approach is to assign an ID to the document title.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a theme</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">copycss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, copy the CSS files to the output.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (File is copied if <code>linkcss</code> is set).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc-class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The CSS class on the table of contents container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid CSS class name.</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a theme</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">linkcss</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, link to the stylesheet instead of embedding it.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#styling-the-html-with-css">Styling the HTML with CSS</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">max-width</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Constrain the maximum width of the document body.
-<strong>Not recommended.
-Use custom CSS instead.</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CSS length (e.g. 55em, 12cm, etc)</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Manpage attributes (relevant only when using the manpage doctype and/or converter)</p></th>
@@ -24560,7 +24568,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-12 08:55:55 UTC
+Last updated 2016-03-13 01:40:57 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
