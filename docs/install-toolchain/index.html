@@ -4,6 +4,7 @@
 <li><a href="#system-requirements">System Requirements</a></li>
 <li><a href="#installing-the-asciidoctor-rubygem">Installing the Asciidoctor RubyGem</a>
 <ul class="sectlevel2">
+<li><a href="#install-using-code-gem-code">Install using <code>gem</code></a></li>
 <li><a href="#install-using-bundler">Install using Bundler</a></li>
 <li><a href="#install-using-code-yum-code-or-code-dnf-code-on-fedora">Install using <code>yum</code> or <code>dnf</code> on Fedora</a></li>
 <li><a href="#install-using-code-apt-get-code-on-debian-or-ubuntu">Install using <code>apt-get</code> on Debian or Ubuntu</a></li>
@@ -80,8 +81,10 @@ We welcome your help testing those versions if you are interested in seeing them
 <h2 id="installing-the-asciidoctor-rubygem"><a class="anchor" href="#installing-the-asciidoctor-rubygem"></a>Installing the Asciidoctor RubyGem</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor can be installed via the <code>gem</code> command, bundler, or popular Linux package managers.</p>
+<p>Asciidoctor can be installed using the <code>gem</code> command, Bundler or a Linux package manager.</p>
 </div>
+<div class="sect2">
+<h3 id="install-using-code-gem-code"><a class="anchor" href="#install-using-code-gem-code"></a>Install using <code>gem</code></h3>
 <div class="paragraph">
 <p>To install Asciidoctor using the <code>gem</code> command:</p>
 </div>
@@ -91,7 +94,7 @@ We welcome your help testing those versions if you are interested in seeing them
 <p>Open a terminal</p>
 </li>
 <li>
-<p>Type the <code>gem</code> command</p>
+<p>Type the following <code>gem</code> command</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$ gem install asciidoctor</pre>
@@ -110,25 +113,26 @@ To confirm that Asciidoctor is available, execute:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following information should be output in your terminal:</p>
+<p>The following output should appear in your terminal:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">Asciidoctor 1.5.2 [http://asciidoctor.org]
-Runtime Environment (ruby 2.2.1p85 [x86_64-linux]) (lc:UTF-8 fs:UTF-8 in:- ex:UTF-8)</pre>
+<pre class="nowrap">Asciidoctor 1.5.4 [http://asciidoctor.org]
+Runtime Environment (ruby 2.3.0p0 [x86_64-linux]) (lc:UTF-8 fs:UTF-8 in:- ex:UTF-8)</pre>
 </div>
 </div>
 <div class="sidebarblock">
 <div class="content">
-<div class="title">Two API Flavors</div>
+<div class="title">Alternate Entry Points</div>
 <div class="paragraph">
-<p>In addition to the CLI, Asciidoctor provides a <a href="/docs/user-manual/#api">Ruby API</a>.
+<p>In addition to the command line interface, Asciidoctor provides a Ruby API.
 The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor also has a Java API that mirrors the Ruby API.
 The Java API calls through to the Ruby API using an embedded JRuby runtime.
-See the <a href="/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.</p>
+See the <a href="/docs/asciidoctorj">AsciidoctorJ project</a> for more information.</p>
+</div>
 </div>
 </div>
 </div>
@@ -260,7 +264,7 @@ See the <a href="/docs/install-and-use-asciidoctor-java-integration">Asciidoctor
 <h2 id="upgrading-the-asciidoctor-ruby-gem"><a class="anchor" href="#upgrading-the-asciidoctor-ruby-gem"></a>Upgrading the Asciidoctor Ruby Gem</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you have an earlier version of Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
+<p>If you have an earlier version of Asciidoctor installed, you can update the gem using the <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -275,8 +279,8 @@ See the <a href="/docs/install-and-use-asciidoctor-java-integration">Asciidoctor
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you accidentally use <code>gem install</code> instead of <code>gem update</code> then you will have both versions installed.
-If you wish to remove the older version use the <code>gem</code> command:</p>
+<p>If you accidentally use <code>gem install</code> instead of <code>gem update</code>, then you&#8217;ll end up with both versions installed.
+To remove the older version, use the following <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -288,7 +292,7 @@ If you wish to remove the older version use the <code>gem</code> command:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>On Fedora, you can update it using:</p>
+<p>On Fedora, you can update the package using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -309,11 +313,19 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 </table>
 </div>
 <div class="paragraph">
-<p>On Debian or Ubuntu, you can update it using:</p>
+<p>On Debian or Ubuntu, you can update the package using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$ sudo apt-get upgrade asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On Alpine Linux, you can update the package using:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo apk add --upgrade asciidoctor</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -323,9 +335,9 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The Fedora, Debian and Ubuntu packages will not be available right away after a release of the RubyGem.
-It may take several weeks before the packages become available for a new release.
-If you need the latest version immediately, use the <code>gem install</code> option.
+The Linux packages may not be available right away after a release of the gem.
+It may take several weeks for the packages to be updated.
+If you need to upgrade to the latest version immediately, use the <code>gem</code> install option documented above.
 </td>
 </tr>
 </table>

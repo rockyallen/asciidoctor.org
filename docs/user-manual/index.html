@@ -556,10 +556,11 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#system-requirements">6. System Requirements</a></li>
 <li><a href="#installing-the-asciidoctor-ruby-gem">7. Installing the Asciidoctor Ruby Gem</a>
 <ul class="sectlevel2">
-<li><a href="#install-using-bundler">7.1. Install using Bundler</a></li>
-<li><a href="#install-using-code-yum-code-or-code-dnf-code-on-fedora">7.2. Install using <code>yum</code> or <code>dnf</code> on Fedora</a></li>
-<li><a href="#install-using-code-apt-get-code-on-debian-or-ubuntu">7.3. Install using <code>apt-get</code> on Debian or Ubuntu</a></li>
-<li><a href="#install-using-code-apk-code-on-alpine-linux">7.4. Install using <code>apk</code> on Alpine Linux</a></li>
+<li><a href="#install-using-code-gem-code">7.1. Install using <code>gem</code></a></li>
+<li><a href="#install-using-bundler">7.2. Install using Bundler</a></li>
+<li><a href="#install-using-code-yum-code-or-code-dnf-code-on-fedora">7.3. Install using <code>yum</code> or <code>dnf</code> on Fedora</a></li>
+<li><a href="#install-using-code-apt-get-code-on-debian-or-ubuntu">7.4. Install using <code>apt-get</code> on Debian or Ubuntu</a></li>
+<li><a href="#install-using-code-apk-code-on-alpine-linux">7.5. Install using <code>apk</code> on Alpine Linux</a></li>
 </ul>
 </li>
 <li><a href="#upgrading-the-asciidoctor-ruby-gem">8. Upgrading the Asciidoctor Ruby Gem</a></li>
@@ -1288,19 +1289,10 @@ This mode is very similar to the safe mode of <code>asciidoc.py</code>.</p>
 <p>In addition to the command line interface, Asciidoctor provides a Ruby API.
 The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Asciidoctor also has a Java API that mirrors the Ruby API.
+<div class="paragraph">
+<p>Asciidoctor also has a Java API that mirrors the Ruby API.
 The Java API calls through to the Ruby API using an embedded JRuby runtime.
-See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.
-</td>
-</tr>
-</table>
+See the <a href="/docs/asciidoctorj">AsciidoctorJ project</a> for more information.</p>
 </div>
 <div class="paragraph">
 <p>To use Asciidoctor in your application, you first need to require the gem:</p>
@@ -1455,8 +1447,10 @@ We welcome your help testing those versions if you are interested in seeing them
 <h2 id="installing-the-asciidoctor-ruby-gem"><a class="anchor" href="#installing-the-asciidoctor-ruby-gem"></a>7. Installing the Asciidoctor Ruby Gem</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor can be installed via the <code>gem</code> command, bundler, or popular Linux package managers.</p>
+<p>Asciidoctor can be installed using the <code>gem</code> command, Bundler or a Linux package manager.</p>
 </div>
+<div class="sect2">
+<h3 id="install-using-code-gem-code"><a class="anchor" href="#install-using-code-gem-code"></a>7.1. Install using <code>gem</code></h3>
 <div class="paragraph">
 <p>To install Asciidoctor using the <code>gem</code> command:</p>
 </div>
@@ -1466,7 +1460,7 @@ We welcome your help testing those versions if you are interested in seeing them
 <p>Open a terminal</p>
 </li>
 <li>
-<p>Type the <code>gem</code> command</p>
+<p>Type the following <code>gem</code> command</p>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$ gem install asciidoctor</pre>
@@ -1485,30 +1479,17 @@ To confirm that Asciidoctor is available, execute:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The following information should be output in your terminal:</p>
+<p>The following output should appear in your terminal:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">Asciidoctor 1.5.2 [http://asciidoctor.org]
-Runtime Environment (ruby 2.2.1p85 [x86_64-linux]) (lc:UTF-8 fs:UTF-8 in:- ex:UTF-8)</pre>
-</div>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="title">Two API Flavors</div>
-<div class="paragraph">
-<p>In addition to the CLI, Asciidoctor provides a <a href="#api">Ruby API</a>.
-The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
-</div>
-<div class="paragraph">
-<p>Asciidoctor also has a Java API that mirrors the Ruby API.
-The Java API calls through to the Ruby API using an embedded JRuby runtime.
-See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.</p>
+<pre class="nowrap">Asciidoctor 1.5.4 [http://asciidoctor.org]
+Runtime Environment (ruby 2.3.0p0 [x86_64-linux]) (lc:UTF-8 fs:UTF-8 in:- ex:UTF-8)</pre>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-using-bundler"><a class="anchor" href="#install-using-bundler"></a>7.1. Install using Bundler</h3>
+<h3 id="install-using-bundler"><a class="anchor" href="#install-using-bundler"></a>7.2. Install using Bundler</h3>
 <div class="paragraph">
 <p>To install Asciidoctor for a project using Bundler:</p>
 </div>
@@ -1543,7 +1524,7 @@ See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-in
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-using-code-yum-code-or-code-dnf-code-on-fedora"><a class="anchor" href="#install-using-code-yum-code-or-code-dnf-code-on-fedora"></a>7.2. Install using <code>yum</code> or <code>dnf</code> on Fedora</h3>
+<h3 id="install-using-code-yum-code-or-code-dnf-code-on-fedora"><a class="anchor" href="#install-using-code-yum-code-or-code-dnf-code-on-fedora"></a>7.3. Install using <code>yum</code> or <code>dnf</code> on Fedora</h3>
 <div class="paragraph">
 <p>To install Asciidoctor on Fedora (or RHEL via EPEL) using the <a href="https://apps.fedoraproject.org/packages/rubygem-asciidoctor">rubygem-asciidoctor</a> package:</p>
 </div>
@@ -1582,7 +1563,7 @@ See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-in
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-using-code-apt-get-code-on-debian-or-ubuntu"><a class="anchor" href="#install-using-code-apt-get-code-on-debian-or-ubuntu"></a>7.3. Install using <code>apt-get</code> on Debian or Ubuntu</h3>
+<h3 id="install-using-code-apt-get-code-on-debian-or-ubuntu"><a class="anchor" href="#install-using-code-apt-get-code-on-debian-or-ubuntu"></a>7.4. Install using <code>apt-get</code> on Debian or Ubuntu</h3>
 <div class="paragraph">
 <p>To install Asciidoctor on Debian Sid or Ubuntu Saucy or greater:</p>
 </div>
@@ -1606,7 +1587,7 @@ See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-in
 </div>
 </div>
 <div class="sect2">
-<h3 id="install-using-code-apk-code-on-alpine-linux"><a class="anchor" href="#install-using-code-apk-code-on-alpine-linux"></a>7.4. Install using <code>apk</code> on Alpine Linux</h3>
+<h3 id="install-using-code-apk-code-on-alpine-linux"><a class="anchor" href="#install-using-code-apk-code-on-alpine-linux"></a>7.5. Install using <code>apk</code> on Alpine Linux</h3>
 <div class="paragraph">
 <p>To install Asciidoctor on Alpine Linux using the <a href="https://pkgs.alpinelinux.org/package/main/x86_64/asciidoctor">asciidoctor</a> package:</p>
 </div>
@@ -1635,7 +1616,7 @@ See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-in
 <h2 id="upgrading-the-asciidoctor-ruby-gem"><a class="anchor" href="#upgrading-the-asciidoctor-ruby-gem"></a>8. Upgrading the Asciidoctor Ruby Gem</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you have an earlier version of Asciidoctor installed, you can update it using the <code>gem</code> command:</p>
+<p>If you have an earlier version of Asciidoctor installed, you can update the gem using the <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1650,8 +1631,8 @@ See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-in
 </td>
 <td class="content">
 <div class="paragraph">
-<p>If you accidentally use <code>gem install</code> instead of <code>gem update</code> then you will have both versions installed.
-If you wish to remove the older version use the <code>gem</code> command:</p>
+<p>If you accidentally use <code>gem install</code> instead of <code>gem update</code>, then you&#8217;ll end up with both versions installed.
+To remove the older version, use the following <code>gem</code> command:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1663,7 +1644,7 @@ If you wish to remove the older version use the <code>gem</code> command:</p>
 </table>
 </div>
 <div class="paragraph">
-<p>On Fedora, you can update it using:</p>
+<p>On Fedora, you can update the package using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -1684,11 +1665,19 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 </table>
 </div>
 <div class="paragraph">
-<p>On Debian or Ubuntu, you can update it using:</p>
+<p>On Debian or Ubuntu, you can update the package using:</p>
 </div>
 <div class="literalblock">
 <div class="content">
 <pre class="nowrap">$ sudo apt-get upgrade asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>On Alpine Linux, you can update the package using:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo apk add --upgrade asciidoctor</pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1698,9 +1687,9 @@ Refer to the <a href="http://docs.fedoraproject.org">Fedora docs</a> if you are 
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-The Fedora, Debian and Ubuntu packages will not be available right away after a release of the RubyGem.
-It may take several weeks before the packages become available for a new release.
-If you need the latest version immediately, use the <code>gem install</code> option.
+The Linux packages may not be available right away after a release of the gem.
+It may take several weeks for the packages to be updated.
+If you need to upgrade to the latest version immediately, use the <code>gem</code> install option documented above.
 </td>
 </tr>
 </table>
@@ -20158,19 +20147,10 @@ The rest of the keys only have a colon after the key.
 <p>In addition to the command line interface, Asciidoctor provides a Ruby API.
 The API is intended for integration with other software projects and is suitable for server-side applications, such as Rails, Sinatra and GitHub.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-Asciidoctor also has a Java API that mirrors the Ruby API.
+<div class="paragraph">
+<p>Asciidoctor also has a Java API that mirrors the Ruby API.
 The Java API calls through to the Ruby API using an embedded JRuby runtime.
-See the <a href="http://asciidoctor.org/docs/install-and-use-asciidoctor-java-integration">Asciidoctor Java integration project</a> for more information.
-</td>
-</tr>
-</table>
+See the <a href="/docs/asciidoctorj">AsciidoctorJ project</a> for more information.</p>
 </div>
 </div>
 </div>
@@ -24577,7 +24557,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-13 02:37:41 UTC
+Last updated 2016-03-13 09:07:43 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
