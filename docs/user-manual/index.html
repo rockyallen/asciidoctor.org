@@ -18356,7 +18356,7 @@ mysample.adoc  mysample.html  mysample.xml</pre>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;article</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://docbook.org/ns/docbook</span><span class="delimiter">&quot;</span></span>
-    <span class="attribute-name">xmlns:xlink</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/1999/xlink</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xml:lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="attribute-name">xmlns:xl</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.w3.org/1999/xlink</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">version</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">xml:lang</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">en</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
   <span class="tag">&lt;info&gt;</span>
     <span class="tag">&lt;title&gt;</span>Hello, AsciiDoc!<span class="tag">&lt;/title&gt;</span>
     <span class="tag">&lt;date&gt;</span>2013-09-03<span class="tag">&lt;/date&gt;</span>
@@ -18370,7 +18370,7 @@ mysample.adoc  mysample.html  mysample.xml</pre>
     <span class="tag">&lt;authorinitials&gt;</span>DW<span class="tag">&lt;/authorinitials&gt;</span>
   <span class="tag">&lt;/info&gt;</span>
   <span class="tag">&lt;simpara&gt;</span>
-    An introduction to <span class="tag">&lt;link</span> <span class="attribute-name">xlink:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/link&gt;</span>.
+    An introduction to <span class="tag">&lt;link</span> <span class="attribute-name">xl:href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://asciidoc.org</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>AsciiDoc<span class="tag">&lt;/link&gt;</span>.
   <span class="tag">&lt;/simpara&gt;</span>
   <span class="tag">&lt;section</span> <span class="attribute-name">xml:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">_first_section</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
     <span class="tag">&lt;title&gt;</span>First Section<span class="tag">&lt;/title&gt;</span>
@@ -18394,8 +18394,8 @@ mysample.adoc  mysample.html  mysample.xml</pre>
 </td>
 <td class="content">
 <div class="paragraph">
-<p>The <code>xmlns</code> attribute is now added to the root DocBook element by default.
-Set the attribute <code>noxmlns</code> to disable this feature.</p>
+<p>By default, the <code>xmlns</code> attribute is not added to the root element of the DocBook 4.5 document.
+To enable it, assign an empty value to the <code>xmlns</code> attribute.</p>
 </div>
 </td>
 </tr>
@@ -18443,7 +18443,7 @@ Set the attribute <code>noxmlns</code> to disable this feature.</p>
 <p><code>&lt;link&gt;</code> is used for links instead of <code>&lt;ulink&gt;</code></p>
 </li>
 <li>
-<p>the URL for a link is defined using the <code>xlink:href</code> attribute</p>
+<p>the URL for a link is defined using the <code>xl:href</code> attribute</p>
 </li>
 </ul>
 </div>
@@ -22586,8 +22586,8 @@ Place the file in the same directory as your AsciiDoc document and the AsciiDoc 
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>noxmlns</code></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xmlns</code></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon red"><i class="fa fa-times"></i></span></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"></td>
 </tr>
@@ -23494,7 +23494,7 @@ Currently enables the UI macros (button, menu and kbd).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">reproducible</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, stops the last-updated date from being output in the HTML footer or DocBook info element.
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, prevents the last-updated date from being added to the HTML footer or DocBook info element.
 Useful if you want to store the output in a source code control system as it prevents spurious changes every time you convert the document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
@@ -23546,7 +23546,7 @@ Useful if you want to store the output in a source code control system as it pre
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lang</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Set the <code>lang</code> attribute in the DocBook backend.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the value of the <code>lang</code> attribute on the root element of the output document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">en</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A valid XML country code</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23579,7 +23579,7 @@ Unsetting it will remove the label and time from the footer.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">nolang</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents the <code>lang</code> attribute from being added to the HTML or DocBook root element.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prevents the <code>lang</code> attribute from being added to root element of the output document.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23655,7 +23655,8 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">app-name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Application name (for mobile devices).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application name (for mobile devices).
+If set, adds an <code>application-name</code> meta element inside the HTML document head.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23683,7 +23684,7 @@ Derived automatically from the author attribute by default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">authors</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Sets the document authors as a comma-separated list.
 Can be set automatically via the author info line.
-If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.</p></td>
+If set, adds an <code>author</code> meta element inside the HTML document head.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23691,7 +23692,7 @@ If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.<
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">copyright</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, adds a <code>copyright</code> meta element inside the HTML document head.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23699,7 +23700,7 @@ If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.<
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">description</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, adds a <code>description</code> meta element inside the HTML document head.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23734,7 +23735,7 @@ Can be set automatically via the author info line.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keywords</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, add to the HTML document <code>&lt;head&gt;</code> element as metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, adds a <code>keywords</code> meta element inside the HTML document head.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -23760,7 +23761,7 @@ Can be set automatically via the author info line.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">orgname</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, add to the DocBook <code>&lt;info&gt;</code> element as metadata.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, add an <code>&lt;orgname&gt;</code> element with this value to the DocBook info element.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
@@ -24048,14 +24049,6 @@ Can be set automatically via the revision info line.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#doc-header">Header</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">noxmlns</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Remove the namespace from the DocBook 5 XML output.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Namespace will be added).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docbook">DocBook</a></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">outfilesuffix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Default file extension of output file (includes leading period).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Set according to backend (<code>.html</code> for <code>html</code>, <code>.xml</code> for <code>docbook</code>, etc).</p></td>
@@ -24111,6 +24104,14 @@ Mutually exclusive with the <code>notitle</code> attribute.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a theme</a> and <a href="https://github.com/asciidoctor/asciidoctor.org/issues/410">issue #410</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmlns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The XML namespace to add to the DocBook 4.5 document. (The DocBook 5 document always declares a namespace).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (alias for the DocBook namespace) or a valid XML namespace.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docbook">DocBook</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Code highlighting and formatting</p></th>
@@ -24576,7 +24577,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-13 02:00:43 UTC
+Last updated 2016-03-13 02:37:41 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
