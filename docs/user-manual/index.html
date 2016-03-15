@@ -926,7 +926,7 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#language-support">81. Using Asciidoctor with other languages</a>
 <ul class="sectlevel2">
-<li><a href="#customizing-labels">81.1. Customizing labels</a></li>
+<li><a href="#customizing-built-in-labels">81.1. Customizing built-in labels</a></li>
 <li><a href="#translation">81.2. Translation</a></li>
 </ul>
 </li>
@@ -19656,7 +19656,10 @@ You can customize the built-in labels (e.g., &#8220;Appendix&#8221;) to match th
 <div class="ulist">
 <ul>
 <li>
-<p>Currently, the official html5 and pdf converters only fully support left-to-right (and top-to-bottom) reading. Support for right-to-left (RTL) is being worked on. (See <a href="https://github.com/asciidoctor/asciidoctor/issues/1601">issue #1601</a>). In the interim, you can leverage the DocBook toolchain to get right-to-left support.</p>
+<p>Currently, the official HTML and PDF converters only fully support left-to-right (and top-to-bottom) reading.
+Support for right-to-left (RTL) is being worked on.
+See <a href="https://github.com/asciidoctor/asciidoctor/issues/1601">issue #1601</a> for details.
+In the interim, you can leverage the DocBook toolchain to get right-to-left support.</p>
 </li>
 <li>
 <p>Attributes that generate dates and times (like <code>docdatetime</code>) are always formated like <code>2015-01-04 19:26:06 GMT+0000</code>.</p>
@@ -19664,12 +19667,16 @@ You can customize the built-in labels (e.g., &#8220;Appendix&#8221;) to match th
 <li>
 <p>Message strings are always in English.</p>
 </li>
+<li>
+<p>Asciidoctor does not support the language conf files used by AsciiDoc Python.</p>
+</li>
 </ul>
 </div>
 <div class="sect2">
-<h3 id="customizing-labels"><a class="anchor" href="#customizing-labels"></a>81.1. Customizing labels</h3>
+<h3 id="customizing-built-in-labels"><a class="anchor" href="#customizing-built-in-labels"></a>81.1. Customizing built-in labels</h3>
 <div class="paragraph">
-<p>To customize the labels for the DocBook backend, set the <code>lang</code> attribute (it defaults to <code>en</code> for English).
+<p>If you&#8217;re creating DocBook output, you can rely on the DocBook toolchain to translate (most) built-in labels.
+To activate this feature, simply set the <code>lang</code> attribute to a valid country code (which defaults to <code>en</code> for English).
 For example:</p>
 </div>
 <div class="listingblock">
@@ -19678,10 +19685,10 @@ For example:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The list of languages supported, and additional language considerations for DocBook are described in <a href="http://www.sagehill.net/docbookxsl/Localizations.html">DocBook XSL: The Complete Guide</a>.</p>
+<p>The list of supported languages, as well as additional language considerations for DocBook, are described in <a href="http://www.sagehill.net/docbookxsl/Localizations.html">DocBook XSL: The Complete Guide</a>.</p>
 </div>
 <div class="paragraph">
-<p>To customize the labels for the html and pdf backends, translate the various captions yourself by setting attributes:</p>
+<p>When creating HTML or PDF (via Asciidoctor PDF), you must translate each built-in label yourself by setting the following attributes in the document header or via the API or CLI:</p>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 80%;">
 <colgroup>
@@ -19766,6 +19773,18 @@ If you specify <code>listing-caption</code>, then you also turn on captions for 
 </tr>
 </tbody>
 </table>
+<div class="paragraph">
+<p>If you plan to support multiple languages, you&#8217;ll want to define the attributes for each language inside a conditional preprocessor directive.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">ifeval::[&quot;{lang}&quot; == &quot;de&quot;]
+:caution-caption: Achtung
+...
+endif::[]</code></pre>
+</div>
+</div>
 <div class="paragraph">
 <p>There&#8217;s an ongoing discussion about how to make language support even simpler (<a href="https://github.com/asciidoctor/asciidoctor/issues/1129">issue #1129</a>).
 Input is welome.</p>
@@ -23498,7 +23517,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">Appendix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-appendix">Appendix</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-appendix">Appendix</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">caution-caption</p></td>
@@ -23506,7 +23525,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">Caution</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">example-caption</p></td>
@@ -23514,7 +23533,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">Example</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">figure-caption</p></td>
@@ -23522,7 +23541,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">Figure</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">important-caption</p></td>
@@ -23530,7 +23549,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">Important</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">lang</p></td>
@@ -23538,7 +23557,7 @@ Useful if you want to store the output in a source code control system as it pre
 <td class="tableblock halign-left valign-top"><p class="tableblock">en</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A valid XML country code</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">last-update-label</p></td>
@@ -23547,7 +23566,7 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Last updated</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#footer-docinfo-files">Footer docinfo files</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#footer-docinfo-files">Footer docinfo files</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">listing-caption</p></td>
@@ -23555,7 +23574,7 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">manname-title</p></td>
@@ -23563,7 +23582,7 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">NAME</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">nolang</p></td>
@@ -23579,7 +23598,7 @@ Unsetting it will remove the label and time from the footer.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Note</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">preface-title</p></td>
@@ -23596,7 +23615,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">tip-caption</p></td>
@@ -23604,7 +23623,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tip</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition">Admonition</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">toc-title</p></td>
@@ -23612,7 +23631,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Table of Contents</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">untitled-label</p></td>
@@ -23620,7 +23639,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Untitled</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">version-label</p></td>
@@ -23628,7 +23647,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#revision-number-date-and-remark">Revision number, date, and remark</a>, <a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#revision-number-date-and-remark">Revision number, date, and remark</a>, <a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">warning-caption</p></td>
@@ -23636,7 +23655,7 @@ To turn off table caption labels and numbers, add the <code>table-caption</code>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Warning</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
 <td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">Customizing labels</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#customizing-labels">[customizing-labels]</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Header and metadata</p></th>
@@ -24583,7 +24602,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-15 20:26:38 UTC
+Last updated 2016-03-15 21:17:56 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
