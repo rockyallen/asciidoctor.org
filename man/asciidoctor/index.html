@@ -1,4 +1,4 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>asciidoctor(1) | Asciidoctor</title><meta name="author" content="Dan Allen"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>asciidoctor(1)</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><h2>NAME</h2>
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>asciidoctor(1) | Asciidoctor</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>asciidoctor(1)</h1></div></div></header><div class="row"><div class="large-8 columns"><div class="row"><div class="large-12 columns primary"><h2>NAME</h2>
 <div class="sectionbody">
 <p>asciidoctor - converts AsciiDoc source files to HTML, DocBook and other formats</p>
 </div>
@@ -14,8 +14,7 @@
 <h2 id="description"><a class="anchor" href="#description"></a>DESCRIPTION</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The asciidoctor(1) command converts the AsciiDoc source file(s) <em>FILE</em> to HTML5,
-DocBook 4.5, DocBook 5.0 and other custom output formats.</p>
+<p>The asciidoctor(1) command converts the AsciiDoc source file(s) <em>FILE</em> to HTML5, DocBook 5, DocBook 4.5, man(ual) page and other custom output formats.</p>
 </div>
 <div class="paragraph">
 <p>If <em>FILE</em> is <em>-</em> then the AsciiDoc source is read from standard input.</p>
@@ -31,24 +30,22 @@ DocBook 4.5, DocBook 5.0 and other custom output formats.</p>
 <dl>
 <dt class="hdlist1"><strong>-B, --base-dir</strong>=<em>DIR</em></dt>
 <dd>
-<p>Base directory containing the document and resources. Defaults to the
-directory containing the source file, or the working directory if the
-source is read from a stream. Can be used as a way to chroot the execution
-of the program.</p>
+<p>Base directory containing the document and resources.
+Defaults to the directory containing the source file, or the working directory if the source is read from a stream.
+Can be used as a way to chroot the execution of the program.</p>
 </dd>
 <dt class="hdlist1"><strong>-S, --safe-mode</strong>=<em>SAFE_MODE</em></dt>
 <dd>
-<p>Set safe mode level: <em>unsafe</em>, <em>safe</em>, <em>server</em> or <em>secure</em>. Disables
-potentially dangerous macros in source files, such as include::[]. If not
-set, the safe mode level defaults to <em>unsafe</em> when Asciidoctor is invoked
-using this script.</p>
+<p>Set safe mode level: <em>unsafe</em>, <em>safe</em>, <em>server</em> or <em>secure</em>.
+Disables potentially dangerous macros in source files, such as <code>include::[]</code>.
+If not set, the safe mode level defaults to <em>unsafe</em> when Asciidoctor is invoked using this script.</p>
 </dd>
 <dt class="hdlist1"><strong>--safe</strong></dt>
 <dd>
-<p>Set safe mode level to <em>safe</em>. Enables include macros, but restricts access
-to ancestor paths of source file. Provided for compatibility with the
-asciidoc command. If not set, the safe mode level defaults to <em>unsafe</em> when
-Asciidoctor is invoked using this script.</p>
+<p>Set safe mode level to <em>safe</em>.
+Enables include macros, but restricts access to ancestor paths of source file.
+Provided for compatibility with the asciidoc command.
+If not set, the safe mode level defaults to <em>unsafe</em> when Asciidoctor is invoked using this script.</p>
 </dd>
 </dl>
 </div>
@@ -59,14 +56,12 @@ Asciidoctor is invoked using this script.</p>
 <dl>
 <dt class="hdlist1"><strong>-a, --attribute</strong>=<em>ATTRIBUTE</em></dt>
 <dd>
-<p>Define, override or delete a document attribute. Command-line attributes
-take precedence over attributes defined in the source file.</p>
+<p>Define, override or delete a document attribute.
+Command-line attributes take precedence over attributes defined in the source file.</p>
 <div class="paragraph">
 <p><em>ATTRIBUTE</em> is normally formatted as a key-value pair, in the form <em>NAME=VALUE</em>.
-Alternate acceptable forms are <em>NAME</em> (where the <em>VALUE</em> defaults to an empty
-string), <em>NAME!</em> (unassigns the <em>NAME</em> attribute) and <em>NAME=VALUE@</em> (where
-<em>VALUE</em> does not override value of <em>NAME</em> attribute if it&#8217;s already defined in
-the source document). Values containing spaces should be enclosed in quotes.</p>
+Alternate acceptable forms are <em>NAME</em> (where the <em>VALUE</em> defaults to an empty string), <em>NAME!</em> (unassigns the <em>NAME</em> attribute) and <em>NAME=VALUE@</em> (where <em>VALUE</em> does not override value of <em>NAME</em> attribute if it&#8217;s already defined in the source document).
+Values containing spaces should be enclosed in quotes.</p>
 </div>
 <div class="paragraph">
 <p>This option may be specified more than once.</p>
@@ -74,22 +69,19 @@ the source document). Values containing spaces should be enclosed in quotes.</p>
 </dd>
 <dt class="hdlist1"><strong>-b, --backend</strong>=<em>BACKEND</em></dt>
 <dd>
-<p>Backend output file format: <em>html5</em>, <em>docbook45</em> and <em>docbook5</em> supported
-out of the box. You can also use the backend alias names <em>html</em> (aliased to
-<em>html5</em>) or <em>docbook</em> (aliased to <em>docbook5</em>). Defaults to <em>html5</em>. Other
-options can be passed, but if Asciidoctor cannot find the backend, it will
-fail during rendering.</p>
+<p>Backend output file format: <em>html5</em>, <em>docbook5</em>, <em>docbook45</em> and <em>manpage</em> are supported out of the box.
+You can also use the backend alias names <em>html</em> (aliased to <em>html5</em>) or <em>docbook</em> (aliased to <em>docbook5</em>).
+Defaults to <em>html5</em>.
+Other options can be passed, but if Asciidoctor cannot find the backend, it will fail during conversion.</p>
 </dd>
 <dt class="hdlist1"><strong>-d, --doctype</strong>=<em>DOCTYPE</em></dt>
 <dd>
-<p>Document type: <em>article</em>, <em>book</em>, <em>manpage</em> or <em>inline</em>. Sets the root
-element when using the <em>docbook</em> backend and the style class on the HTML
-body element when using the <em>html</em> backend. The <em>book</em> document type allows
-multiple level-0 section titles in a single document. The <em>manpage</em> document
-type enables parsing of metadata necessary to produce a manpage. The
-<em>inline</em> document type allows the content of a single paragraph to be
-formatted and returned without wrapping it in a containing element. Defaults
-to <em>article</em>.</p>
+<p>Document type: <em>article</em>, <em>book</em>, <em>manpage</em> or <em>inline</em>.
+Sets the root element when using the <em>docbook</em> backend and the style class on the HTML body element when using the <em>html</em> backend.
+The <em>book</em> document type allows multiple level-0 section titles in a single document.
+The <em>manpage</em> document type enables parsing of metadata necessary to produce a manpage.
+The <em>inline</em> document type allows the content of a single paragraph to be formatted and returned without wrapping it in a containing element.
+Defaults to <em>article</em>.</p>
 </dd>
 </dl>
 </div>
@@ -100,38 +92,50 @@ to <em>article</em>.</p>
 <dl>
 <dt class="hdlist1"><strong>-C, --compact</strong></dt>
 <dd>
-<p>Compact the output by removing blank lines. (No longer in use).</p>
+<p>Compact the output by removing blank lines.
+(No longer in use).</p>
 </dd>
 <dt class="hdlist1"><strong>-D, --destination-dir</strong>=<em>DIR</em></dt>
 <dd>
-<p>Destination output directory. Defaults to the directory containing the
-source file, or the working directory if the source is read from a stream.
+<p>Destination output directory.
+Defaults to the directory containing the source file, or the working directory if the source is read from a stream.
 If specified, the directory is resolved relative to the working directory.</p>
 </dd>
 <dt class="hdlist1"><strong>-E, --template-engine</strong>=<em>NAME</em></dt>
 <dd>
-<p>Template engine to use for the custom render templates. The gem with the
-same name as the engine will be loaded automatically. This name is also
-used to build the full path to the custom templates. If a template engine
-is not specified, it will be auto-detected based on the file extension
-of the custom templates found.</p>
+<p>Template engine to use for the custom converter templates.
+The gem with the same name as the engine will be loaded automatically.
+This name is also used to build the full path to the custom converter templates.
+If a template engine is not specified, it will be auto-detected based on the file extension of the custom converter templates found.</p>
 </dd>
 <dt class="hdlist1"><strong>-e, --eruby</strong></dt>
 <dd>
-<p>Specifies the eRuby implementation to use for rendering the custom ERB
-templates. Supported values are <em>erb</em> and <em>erubis</em>. Defaults to <em>erb</em>.</p>
+<p>Specifies the eRuby implementation to use for executing the custom converter templates written in ERB.
+Supported values are <em>erb</em> and <em>erubis</em>.
+Defaults to <em>erb</em>.</p>
+</dd>
+<dt class="hdlist1"><strong>-I, --load-path</strong>=<em>DIRECTORY</em></dt>
+<dd>
+<p>Add the specified directory to the load path, so that <em>-r</em> can load extensions from outside the default Ruby load path.
+This option may be specified more than once.</p>
 </dd>
 <dt class="hdlist1"><strong>-n, --section-numbers</strong></dt>
 <dd>
-<p>Auto-number section titles. Synonym for <strong>--attribute numbered</strong>.</p>
+<p>Auto-number section titles.
+Synonym for <strong>--attribute numbered</strong>.</p>
 </dd>
 <dt class="hdlist1"><strong>-o, --out-file</strong>=<em>OUT_FILE</em></dt>
 <dd>
-<p>Write output to file <em>OUT_FILE</em>. Defaults to the base name of the input
-file suffixed with <em>backend</em> extension. If the input is read from standard
-input, then the output file defaults to stdout. If <em>OUT_FILE</em> is <em>-</em> then
-the standard output is also used. If specified, the file is resolved
-relative to the working directory.</p>
+<p>Write output to file <em>OUT_FILE</em>.
+Defaults to the base name of the input file suffixed with <em>backend</em> extension.
+If the input is read from standard input, then the output file defaults to stdout.
+If <em>OUT_FILE</em> is <em>-</em> then the standard output is also used.
+If specified, the file is resolved relative to the working directory.</p>
+</dd>
+<dt class="hdlist1"><strong>-r, --require</strong>=<em>LIBRARY</em></dt>
+<dd>
+<p>Require the specified library before executing the processor, using the standard Ruby require.
+This option may be specified more than once.</p>
 </dd>
 <dt class="hdlist1"><strong>-s, --no-header-footer</strong></dt>
 <dd>
@@ -139,17 +143,15 @@ relative to the working directory.</p>
 </dd>
 <dt class="hdlist1"><strong>-T, --template-dir</strong>=<em>DIR</em></dt>
 <dd>
-<p>A directory containing custom render templates that override one or more
-templates from the built-in set. (requires <em>tilt</em> gem)</p>
+<p>A directory containing custom converter templates that override one or more templates from the built-in set.
+(requires <em>tilt</em> gem)</p>
 <div class="paragraph">
-<p>If there is a subfolder that matches the engine name (if specified), that folder
-is appended to the template directory path. Similarly, if there is a subfolder
-in the resulting template directory that matches the name of the backend, that
-folder is appended to the template directory path.</p>
+<p>If there is a subfolder that matches the engine name (if specified), that folder is appended to the template directory path.
+Similarly, if there is a subfolder in the resulting template directory that matches the name of the backend, that folder is appended to the template directory path.</p>
 </div>
 <div class="paragraph">
-<p>This option may be specified more than once. Matching templates found in
-subsequent directories override ones previously discovered.</p>
+<p>This option may be specified more than once.
+Matching templates found in subsequent directories override ones previously discovered.</p>
 </div>
 </dd>
 </dl>
@@ -165,16 +167,16 @@ subsequent directories override ones previously discovered.</p>
 </dd>
 <dt class="hdlist1"><strong>--trace</strong></dt>
 <dd>
-<p>Include backtrace information on errors. Not enabled by default.</p>
+<p>Include backtrace information on errors.
+Not enabled by default.</p>
 </dd>
 <dt class="hdlist1"><strong>-v, --verbose</strong></dt>
 <dd>
-<p>Verbosely print processing information and configuration file checks to
-stderr.</p>
+<p>Verbosely print processing information and configuration file checks to stderr.</p>
 </dd>
 <dt class="hdlist1"><strong>-t, --timings</strong></dt>
 <dd>
-<p>Display timings information (time to read, parse and convert)</p>
+<p>Display timings information (time to read, parse and convert).</p>
 </dd>
 </dl>
 </div>
@@ -190,6 +192,9 @@ stderr.</p>
 <dt class="hdlist1"><strong>-V, --version</strong></dt>
 <dd>
 <p>Print program version number.</p>
+<div class="paragraph">
+<p><code>-v</code> can also be used if no other flags or arguments are present.</p>
+</div>
 </dd>
 </dl>
 </div>
@@ -203,12 +208,11 @@ stderr.</p>
 <dl>
 <dt class="hdlist1"><strong>0</strong></dt>
 <dd>
-<p>Success</p>
+<p>Success.</p>
 </dd>
 <dt class="hdlist1"><strong>1</strong></dt>
 <dd>
-<p>Failure (syntax or usage error; configuration error; document processing
-failure; unexpected error).</p>
+<p>Failure (syntax or usage error; configuration error; document processing failure; unexpected error).</p>
 </dd>
 </dl>
 </div>
@@ -218,7 +222,7 @@ failure; unexpected error).</p>
 <h2 id="bugs"><a class="anchor" href="#bugs"></a>BUGS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>See the <strong>Asciidoctor</strong> issue tracker: &lt;<strong><a href="https://github.com/asciidoctor/asciidoctor/issues?state=open" class="bare">https://github.com/asciidoctor/asciidoctor/issues?state=open</a></strong>&gt;</p>
+<p>Refer to the <strong>Asciidoctor</strong> issue tracker at <a href="https://github.com/asciidoctor/asciidoctor/issues?q=is%3Aopen" class="bare">https://github.com/asciidoctor/asciidoctor/issues?q=is%3Aopen</a>.</p>
 </div>
 </div>
 </div>
@@ -226,12 +230,10 @@ failure; unexpected error).</p>
 <h2 id="authors"><a class="anchor" href="#authors"></a>AUTHORS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><strong>Asciidoctor</strong> was written by Dan Allen, Ryan Waldron, Jason Porter, Nick
-Hengeveld and other contributors.</p>
+<p><strong>Asciidoctor</strong> was written by Dan Allen, Ryan Waldron, Jason Porter, Nick Hengeveld and other contributors.</p>
 </div>
 <div class="paragraph">
-<p><strong>AsciiDoc</strong> was written by Stuart Rackham and has received contributions from
-many other individuals.</p>
+<p><strong>AsciiDoc</strong> was written by Stuart Rackham and has received contributions from many other individuals.</p>
 </div>
 </div>
 </div>
@@ -239,16 +241,16 @@ many other individuals.</p>
 <h2 id="resources"><a class="anchor" href="#resources"></a>RESOURCES</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Git source repository on GitHub: &lt;<strong><a href="https://github.com/asciidoctor/asciidoctor" class="bare">https://github.com/asciidoctor/asciidoctor</a></strong>&gt;</p>
+<p><strong>Project web site:</strong> <a href="http://asciidoctor.org" class="bare">http://asciidoctor.org</a></p>
 </div>
 <div class="paragraph">
-<p>Project web site: &lt;<strong><a href="http://asciidoctor.org" class="bare">http://asciidoctor.org</a></strong>&gt;</p>
+<p><strong>Git source repository on GitHub:</strong> <a href="https://github.com/asciidoctor/asciidoctor" class="bare">https://github.com/asciidoctor/asciidoctor</a></p>
 </div>
 <div class="paragraph">
-<p>GitHub organization: &lt;<strong><a href="https://github.com/asciidoctor" class="bare">https://github.com/asciidoctor</a></strong>&gt;</p>
+<p><strong>GitHub organization:</strong> <a href="https://github.com/asciidoctor" class="bare">https://github.com/asciidoctor</a></p>
 </div>
 <div class="paragraph">
-<p>Discussion list: &lt;<strong><a href="http://discuss.asciidoctor.org" class="bare">http://discuss.asciidoctor.org</a></strong>&gt;</p>
+<p><strong>Discussion list / forum:</strong> <a href="http://discuss.asciidoctor.org" class="bare">http://discuss.asciidoctor.org</a></p>
 </div>
 </div>
 </div>
@@ -256,8 +258,8 @@ many other individuals.</p>
 <h2 id="copying"><a class="anchor" href="#copying"></a>COPYING</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Copyright (C) 2012-2014 Dan Allen, Ryan Waldron and the Asciidoctor Project. Free use of this
-software is granted under the terms of the MIT License.</p>
+<p>Copyright (C) 2012-2016 Dan Allen, Ryan Waldron and the Asciidoctor Project.
+Free use of this software is granted under the terms of the MIT License.</p>
 </div>
 </div>
 </div></div></div></div><div class="large-4 columns secondary"><h4>Asciidoctor Project</h4><p>The Asciidoctor project is an effort to bring a comprehensive and accessible publishing toolchain, centered around the AsciiDoc syntax, to a growing range of ecosystems, including Ruby, JavaScript and the JVM.<br><br>In addition to an AsciiDoc processor and a collection of stylesheets, the project provides plugins for Maven, Gradle and Guard and packages for operating systems such as Fedora, Debian and Ubuntu. It also pushes AsciiDoc to evolve by introducing new ideas and innovation and helps promote AsciiDoc through education and advocacy.</p><h4>Contribute to asciidoctor.org</h4><p>This website is open source! The source is hosted under the Asciidoctor organization on GitHub.</p><p>If you want to help by improving upon it, <a href="https://github.com/asciidoctor/asciidoctor.org">fork the project</a>, revise the content, then send a pull request. When the pull request is merged, the site will be updated automatically.</p></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><div class="row" style="margin-bottom: 1em"><div class="large-5 columns"><p><i class="fa fa-fw fa-download"></i> Download: <a class="rubygem" href="https://rubygems.org/gems/asciidoctor"><img src="https://img.shields.io/gem/v/asciidoctor.svg" alt="Asciidoctor gem version" style="margin-top: -2px"></a><br><i class="fa fa-fw fa-github"></i> Development: <a href="https://github.com/asciidoctor">GitHub</a><br><i class="fa fa-fw fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a></p></div><div class="large-7 columns"><p><i class="fa fa-fw fa-comments"></i> Chat: <a href="https://gitter.im/asciidoctor">Gitter</a><br><i class="fa fa-fw fa-twitter"></i> Twitter: <a class="twitter" href="https://twitter.com/asciidoctor">@asciidoctor</a><br><i class="fa fa-fw fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p></div></div></div><div class="large-6 large-text-right columns"><p style="margin-bottom: 1em">Thanks to our <a href="/supporters/">supporters</a> and <a href="/contributors/">contributors</a>!</p><p>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.<br>&copy; Asciidoctor Project 2016. Content licensed under CC BY 3.0.</p></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>!function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);}(window,document,'script','//www.google-analytics.com/analytics.js','ga'),ga('create','UA-38215684-1','auto'),ga('send','pageview');</script></body></html>
