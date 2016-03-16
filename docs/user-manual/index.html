@@ -3286,28 +3286,19 @@ Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/445">Issue 44
 <h2 id="doc-header"><a class="anchor" href="#doc-header"></a>17. Header</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The document header contains title, author and revision information as well as any document-wide attributes set and defined by the user.
-The header is <em>not required</em> when the <code>doctype</code> is <code>article</code> or <code>book</code>.
-If absent, Asciidoctor will render the content that is present.</p>
-</div>
-<div class="admonitionblock warning">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-warning" title="Warning"></i>
-</td>
-<td class="content">
-A header must be present when the document type is <code>manpage</code>.
-The requirements for a manual page (man page) are described in the <a href="#man-pages">man pages</a> section.
-</td>
-</tr>
-</table>
+<p>The document header contains title, author and revision information as well as any document-wide attributes set and defined by the user.</p>
 </div>
 <div class="paragraph">
 <p>When the header is present, it must start with a document title.
 The title can be immediately followed by two optional lines of text defining author and revision information.
 Finally, any document-wide settings are configured using attribute entries.
-<strong>The header must not contain any blank lines</strong>, but it may contain comments.</p>
+<strong>The header must not contain any blank lines</strong>, but it may contain comments.
+The first blank line marks the end of the header.</p>
+</div>
+<div class="paragraph">
+<p>The header is <em>not required</em> when the <code>doctype</code> is <code>article</code> or <code>book</code>.
+However, a header must be present when the document type is <code>manpage</code>.
+The requirements for a manual page (man page) are described in the <a href="#man-pages">man pages</a> section.</p>
 </div>
 <div class="paragraph">
 <p>The header is processed when converting a full document.
@@ -24618,7 +24609,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-15 21:55:45 UTC
+Last updated 2016-03-16 08:54:42 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
