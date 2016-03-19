@@ -1345,7 +1345,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 <p>The command will output to the file <code>sample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
-<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code>'docbook'</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -2847,7 +2847,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[rolename]`escaped monospace text`</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[rolename]`monospace text`</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2855,7 +2855,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;code</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rolename</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>escaped monospace text<span class="tag">&lt;/code&gt;</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;code</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rolename</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>monospace text<span class="tag">&lt;/code&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2863,7 +2863,7 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[#idname.rolename]`escaped monospace text`</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[#idname.rolename]`monospace text`</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -2871,11 +2871,8 @@ In this case, the text will still be formatted, but the attribute list will be u
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;a</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">idname</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;code</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rolename</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>escaped monospace text<span class="tag">&lt;/code&gt;</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;a</span> <span class="attribute-name">id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">idname</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/a&gt;</span><span class="tag">&lt;code</span> <span class="attribute-name">class</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">rolename</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>monospace text<span class="tag">&lt;/code&gt;</span></code></pre>
 </div>
-</div>
-<div class="paragraph">
-<p>Keep in mind that text enclosed is not subject to other inline substitutions, but rather passed through as is.</p>
 </div>
 </div>
 </div>
@@ -4295,7 +4292,7 @@ The number of equal signs represents the nesting level (using a 0-based index) o
 <i class="fa icon-tip" title="Tip"></i>
 </td>
 <td class="content">
-In addition to the equals sign marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (#) from Markdown.
+In addition to the equals sign marker used for defining single-line section titles, Asciidoctor recognizes the hash symbol (<code>#</code>) from Markdown.
 That means the outline of a Markdown document will render just fine as an AsciiDoc document.
 </td>
 </tr>
@@ -4308,7 +4305,7 @@ There are two rules you must follow:</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>A document can only have multiple level 0 sections if the doctype is set to book.</p>
+<p>A document can only have multiple level 0 sections if the <code>doctype</code> is set to <code>book</code>.</p>
 </li>
 <li>
 <p>Section levels cannot be skipped when nesting sections (i.e., you can&#8217;t nest a level 5 section directly in a level 3 section)</p>
@@ -4682,38 +4679,38 @@ Documentation is a distillation of many long, squiggly adventures.</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectid</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:sectid!:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:sectid!:</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Intrinsic; set to autogenerate by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>idprefix</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>_</code>, or user defined text</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:idprefix: -</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:idprefix: -</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Intrinsic; set to autogenerate a <code>_</code> by default</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectanchors</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:sectanchors:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:sectanchors:</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor only</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectlinks</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:sectlinks:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:sectlinks:</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor only</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectnums</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">N/A</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:sectnums:</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:sectnums:</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Section numbering is off by default.
 Can be toggled on or off through document.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>sectnumlevels</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">0-5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:sectnumlevels: 3</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><code>:sectnumlevels: 3</code></code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Intrinsic; set to autogenerate section numbers up to level three by default.
 Setting a value of <code>0</code> has the same effect as setting <code>sectnums!</code>.</p></td>
 </tr>
@@ -4842,7 +4839,7 @@ If there is a name conflict, the last attribute defined wins.
 <h3 id="delimited-blocks"><a class="anchor" href="#delimited-blocks"></a>20.3. Delimited blocks</h3>
 <div class="paragraph">
 <p>The AsciiDoc syntax provides a set of components for including non-paragraph text, such as block quotes, source code listings, sidebars and tables, in your document.
-These components are referred to as <em>delimited blocks</em> because they are surrounded by delimiter lines (e.g., <code><strong>*</strong>*</code>).</p>
+These components are referred to as <em>delimited blocks</em> because they are surrounded by delimiter lines (e.g., <code>****</code>).</p>
 </div>
 <div class="paragraph">
 <p>Here&#8217;s an example of a sidebar block:</p>
@@ -7314,7 +7311,7 @@ If the <code>cols</code> attribute is not set, the first non-blank line inside t
 </div>
 </div>
 <table class="tableblock frame-all grid-all" style="width: 90%;">
-<caption class="title">Result: Rendered table with two columns as defined by the cols attribute</caption>
+<caption class="title">Result: Rendered table with two columns as defined by the <code>cols</code> attribute</caption>
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
@@ -8094,12 +8091,12 @@ These components, listed and defined below, are all optional.</p>
 <pre class="nowrap">[cols="3"]
 |===
 ^|Prefix the +{vbar}+ with +{caret}+ to center content horizontally
-&lt;|Prefix the +{vbar}+ with +&lt;+ to align the content to the left horizontally
-&gt;|Prefix the +{vbar}+ with +&gt;+ to align the content to the right horizontally
+&lt;|Prefix the +{vbar}+ with `&lt;` to align the content to the left horizontally
+&gt;|Prefix the +{vbar}+ with `&gt;` to align the content to the right horizontally
 
-.^|Prefix the +{vbar}+ with a +.+ and +{caret}+ to center the content in the cell vertically
-.&lt;|Prefix the +{vbar}+ with a +.+ and +&lt;+ to align the content to the top of the cell
-.&gt;|Prefix the +{vbar}+ with a +.+ and +&gt;+ to align the content to the bottom of the cell
+.^|Prefix the +{vbar}+ with a `.` and +{caret}+ to center the content in the cell vertically
+.&lt;|Prefix the +{vbar}+ with a `.` and `&lt;` to align the content to the top of the cell
+.&gt;|Prefix the +{vbar}+ with a `.` and `&gt;` to align the content to the bottom of the cell
 
 3+^.^|This content spans three columns (+3{plus}+) and is centered horizontally (+{caret}+) and vertically (+.{caret}+) within the cell.
 
@@ -8116,13 +8113,13 @@ These components, listed and defined below, are all optional.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-center valign-top"><p class="tableblock">Prefix the {vbar} with {caret} to center content horizontally</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix the {vbar} with &lt; to align the content to the left horizontally</p></td>
-<td class="tableblock halign-right valign-top"><p class="tableblock">Prefix the {vbar} with &gt; to align the content to the right horizontally</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix the {vbar} with <code>&lt;</code> to align the content to the left horizontally</p></td>
+<td class="tableblock halign-right valign-top"><p class="tableblock">Prefix the {vbar} with <code>&gt;</code> to align the content to the right horizontally</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Prefix the {vbar} with a . and {caret} to center the content in the cell vertically</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix the {vbar} with a . and &lt; to align the content to the top of the cell</p></td>
-<td class="tableblock halign-left valign-bottom"><p class="tableblock">Prefix the {vbar} with a . and &gt; to align the content to the bottom of the cell</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Prefix the {vbar} with a <code>.</code> and {caret} to center the content in the cell vertically</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prefix the {vbar} with a <code>.</code> and <code>&lt;</code> to align the content to the top of the cell</p></td>
+<td class="tableblock halign-left valign-bottom"><p class="tableblock">Prefix the {vbar} with a <code>.</code> and <code>&gt;</code> to align the content to the bottom of the cell</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-center valign-middle" colspan="3"><p class="tableblock">This content spans three columns (3{plus}) and is centered horizontally ({caret}) and vertically (.{caret}) within the cell.</p></td>
@@ -8151,22 +8148,22 @@ For example, you can apply the AsciiDoc element styles to an individual cell by 
 <pre class="nowrap">[cols="2"]
 |===
 
-a|This cell is prefixed with an +a+ so the following list is rendered with the AsciiDoc list element styles.
+a|This cell is prefixed with an `a` so the following list is rendered with the AsciiDoc list element styles.
 
 * List item 1
 * List item 2
 * List item 3
-|This cell *is not* prefixed with an +a+ so the following list is not rendered with the AsciiDoc list element styles.
+|This cell *is not* prefixed with an `a` so the following list is not rendered with the AsciiDoc list element styles.
 
 * List item 1
 * List item 2
 * List item 3
 
-a|This cell is prefixed with an +a+ so the following paragraph is rendered with the +lead+ style.
+a|This cell is prefixed with an `a` so the following paragraph is rendered with the `lead` style.
 
 [.lead]
 I am a paragraph styled with the lead attribute.
-|This cell *is not* prefixed with an +a+ so the following paragraph is not rendered with the +lead+ style.
+|This cell *is not* prefixed with an `a` so the following paragraph is not rendered with the `lead` style.
 
 [.lead]
 I am a paragraph styled with the lead attribute.
@@ -8183,7 +8180,7 @@ I am a paragraph styled with the lead attribute.
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>This cell is prefixed with an a so the following list is rendered with the AsciiDoc list element styles.</p>
+<p>This cell is prefixed with an <code>a</code> so the following list is rendered with the AsciiDoc list element styles.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -8198,19 +8195,19 @@ I am a paragraph styled with the lead attribute.
 </li>
 </ul>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This cell <strong>is not</strong> prefixed with an a so the following list is not rendered with the AsciiDoc list element styles.
+<td class="tableblock halign-left valign-top"><p class="tableblock">This cell <strong>is not</strong> prefixed with an <code>a</code> so the following list is not rendered with the AsciiDoc list element styles.
 </p><p class="tableblock">* List item 1
 * List item 2
 * List item 3</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p>This cell is prefixed with an a so the following paragraph is rendered with the lead style.</p>
+<p>This cell is prefixed with an <code>a</code> so the following paragraph is rendered with the <code>lead</code> style.</p>
 </div>
 <div class="paragraph lead">
 <p>I am a paragraph styled with the lead attribute.</p>
 </div></div></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This cell <strong>is not</strong> prefixed with an a so the following paragraph is not rendered with the lead style.
+<td class="tableblock halign-left valign-top"><p class="tableblock">This cell <strong>is not</strong> prefixed with an <code>a</code> so the following paragraph is not rendered with the <code>lead</code> style.
 </p><p class="tableblock">[.lead]
 I am a paragraph styled with the lead attribute.</p></td>
 </tr>
@@ -10994,7 +10991,7 @@ This feature is included in the AsciiDoc compatibility file so that AsciiDoc get
 <div class="paragraph">
 <p>Out of the box, images and text behave like oil and water.
 Images don&#8217;t like to share space with text.
-They are kind of "pushy" about it.
+They are kind of &#8220;pushy&#8221; about it.
 That&#8217;s why we focused on tuning the controls in the image macros so you can get the images and the text to flow together.</p>
 </div>
 <div class="paragraph">
@@ -11713,7 +11710,7 @@ for producing professional documents like DocBook and LaTeX.
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>A sidebar is delimited by four asterisks (<code><strong>*</strong>*</code>).</td>
+<td>A sidebar is delimited by four asterisks (<code>****</code>).</td>
 </tr>
 </table>
 </div>
@@ -11870,7 +11867,7 @@ Everybody remember where we parked.
 </div>
 </div>
 <div class="paragraph">
-<p>If the quote or excerpt is more than one paragraph, place the text between delimiter lines consisting of four underscores (<code><em>__</em></code>).</p>
+<p>If the quote or excerpt is more than one paragraph, place the text between delimiter lines consisting of four underscores (<code>____</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Quote block syntax</div>
@@ -12086,7 +12083,7 @@ and as necessary in the political world as storms in the physical.</p>
 <h3 id="verse"><a class="anchor" href="#verse"></a>38.2. Verse</h3>
 <div class="paragraph">
 <p>When you need to preserve indents and line breaks, use the <code>verse</code> block name.
-Verses are defined by setting <code>verse</code> on a paragraph or an excerpt block delimited by four underscores (<code><em>__</em></code>).</p>
+Verses are defined by setting <code>verse</code> on a paragraph or an excerpt block delimited by four underscores (<code>____</code>).</p>
 </div>
 <div class="listingblock">
 <div class="title">Verse paragraph syntax</div>
@@ -12414,10 +12411,10 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 </div>
 </div>
 <div class="paragraph">
-<p>The following table shows the markup syntax that is replaced by the quotes substitution process.</p>
+<p>The following table shows the HTML markup that is generated by the quotes substitution process.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
-<caption class="title">HTML tags that replace AsciiDoc markup syntax</caption>
+<caption class="title">HTML markup generated from AsciiDoc formatting syntax</caption>
 <colgroup>
 <col style="width: 30%;">
 <col style="width: 30%;">
@@ -12426,8 +12423,8 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 <thead>
 <tr>
 <th class="tableblock halign-left valign-top">Name</th>
-<th class="tableblock halign-center valign-top">Syntax</th>
-<th class="tableblock halign-center valign-top">Tag</th>
+<th class="tableblock halign-center valign-top">AsciiDoc</th>
+<th class="tableblock halign-center valign-top">HTML</th>
 </tr>
 </thead>
 <tbody>
@@ -12442,7 +12439,7 @@ For example, on the command line, type <code>-a toctitle="Sections, Tables &amp;
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&lt;strong&gt;word&lt;/strong&gt;</pre></div></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">monospaced</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">monospace</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock">`word`</p></td>
 <td class="tableblock halign-center valign-top"><div class="literal"><pre>&lt;code&gt;word&lt;/code&gt;</pre></div></td>
 </tr>
@@ -13394,7 +13391,7 @@ When your document is processed, the backslash is removed so it doesn&#8217;t di
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">\*Stars* will appear as *Stars*, not as bold text.
 
-\&amp;sect; will appear as an entity reference, not the &amp;sect; symbol.
+\&amp;sect; will appear as an entity, not the &amp;sect; symbol.
 
 \\__func__ will appear as __func__, not as emphasized text.
 
@@ -17030,7 +17027,7 @@ The river rages through the cavern, rattling its content...</pre>
 The column is scrollable and fixed.</p>
 </div>
 <div class="listingblock">
-<div class="title">Assigning the left value to toc</div>
+<div class="title">Assigning the left value to <code>toc</code></div>
 <div class="content">
 <pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon
@@ -17056,7 +17053,7 @@ Crawling through the twisted understory...</pre>
 </div>
 </div>
 <div class="exampleblock">
-<div class="title">Result: Assigning the left value to toc</div>
+<div class="title">Result: Assigning the left value to <code>toc</code></div>
 <div class="content">
 <div class="imageblock">
 <div class="content">
@@ -17074,7 +17071,7 @@ To control where the TOC is rendered in your document, set the toc attribute to 
 Then, within the body of your document, use the <code>toc::[]</code> block macro to indicate the TOC&#8217;s location.</p>
 </div>
 <div class="listingblock">
-<div class="title">Setting toc value to macro and using the toc::[] macro</div>
+<div class="title">Setting toc value to macro and using the <code>toc::[]</code> macro</div>
 <div class="content">
 <pre class="nowrap">= The Dangerous and Thrilling Documentation Chronicles
 Kismet Chameleon
@@ -17093,16 +17090,16 @@ The river rages through the cavern, rattling its content...</pre>
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The toc attribute must be set to macro in order to enable the use of the toc::[] macro.</td>
+<td>The toc attribute must be set to macro in order to enable the use of the <code>toc::[]</code> macro.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>In this example, the toc::[] macro is placed below the first section&#8217;s title, indicating that this is the location where the TOC will be displayed once the document is rendered.</td>
+<td>In this example, the <code>toc::[]</code> macro is placed below the first section&#8217;s title, indicating that this is the location where the TOC will be displayed once the document is rendered.</td>
 </tr>
 </table>
 </div>
 <div class="exampleblock">
-<div class="title">Result: Setting toc value to macro and using the toc::[] macro</div>
+<div class="title">Result: Setting toc value to macro and using the <code>toc::[]</code> macro</div>
 <div class="content">
 <div class="imageblock">
 <div class="content">
@@ -17113,7 +17110,7 @@ The river rages through the cavern, rattling its content...</pre>
 </div>
 <div class="paragraph">
 <p>Asciidoctor also has a <code>toc-placement</code> attribute, that when set with a value of <code>preamble</code> places the TOC below the preamble.
-You do not need to include the toc::[] block macro in the document when using the preamble value.</p>
+You do not need to include the <code>toc::[]</code> block macro in the document when using the preamble value.</p>
 </div>
 <div class="paragraph">
 <p>If you set toc-placement but don&#8217;t assign it a value, the TOC will be placed in the document&#8217;s header by default.</p>
@@ -17215,7 +17212,7 @@ Crawling through the twisted understory...</pre>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>toclevels is set and assigned the value 4 in the document&#8217;s header. The TOC will list the titles of the section 1, 2, 3, and 4 levels when the document is rendered.</td>
+<td>toclevels is set and assigned the value <code>4</code> in the document&#8217;s header. The TOC will list the titles of the section 1, 2, 3, and 4 levels when the document is rendered.</td>
 </tr>
 </table>
 </div>
@@ -18539,62 +18536,62 @@ Asciidoctor can match files in the current directory and subfolders at any depth
 <h2 id="running-asciidoctor-securely"><a class="anchor" href="#running-asciidoctor-securely"></a>76. Running Asciidoctor Securely</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor provides security levels that control the read and write access of attributes, the <code>include</code> directive, macros, and scripts while a document is processing.
+<p>Asciidoctor provides security levels that control the read and write access of attributes, the include directive, macros, and scripts while a document is processing.
 Each level includes the restrictions enabled in the prior security level.</p>
 </div>
 <div class="hdlist">
 <table>
 <tr>
 <td class="hdlist1">
-<code>UNSAFE</code>
+UNSAFE
 </td>
 <td class="hdlist2">
 <p>A safe mode level that disables any security features enforced by Asciidoctor.
 Ruby is still subject to its own restrictions.</p>
 <div class="paragraph">
 <p><strong>This is the default safe mode for the CLI.</strong>
-Its integer value is <code>0</code>.</p>
+Its integer value is 0.</p>
 </div>
 </td>
 </tr>
 <tr>
 <td class="hdlist1">
-<code>SAFE</code>
+SAFE
 </td>
 <td class="hdlist2">
 <p>This safe mode level prevents access to files which reside outside of the parent directory of the source file.
-It disables all macros, except the <code>include</code> directive.
-The paths to <code>include</code> files must be within the parent directory.
+It disables all macros, except the include directive.
+The paths to include files must be within the parent directory.
 It allows assets to be embedded in the document.</p>
 <div class="paragraph">
-<p>Its integer value is <code>1</code>.</p>
+<p>Its integer value is 1.</p>
 </div>
 </td>
 </tr>
 <tr>
 <td class="hdlist1">
-<code>SERVER</code>
+SERVER
 </td>
 <td class="hdlist2">
 <p>A safe mode level that disallows the document from setting attributes that would affect the rendering of the document.
-This level trims <code>docfile</code> to its relative path and prevents the document from:</p>
+This level trims docfile to its relative path and prevents the document from:</p>
 <div class="openblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>setting <code>source-highlighter</code>, <code>doctype</code>, <code>docinfo</code> and <code>backend</code></p>
+<p>setting source-highlighter, doctype, docinfo and backend</p>
 </li>
 <li>
-<p>seeing <code>docdir</code></p>
+<p>seeing docdir</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>It allows <code>icons</code> and <code>linkcss</code>.</p>
+<p>It allows icons and linkcss.</p>
 </div>
 <div class="paragraph">
-<p>Its integer value is <code>10</code>.</p>
+<p>Its integer value is 10.</p>
 </div>
 </div>
 </div>
@@ -18602,7 +18599,7 @@ This level trims <code>docfile</code> to its relative path and prevents the docu
 </tr>
 <tr>
 <td class="hdlist1">
-<code>SECURE</code>
+SECURE
 </td>
 <td class="hdlist2">
 <p>A safe mode level that disallows the document from attempting to read files from the file system and including their contents into the document.
@@ -18615,7 +18612,7 @@ Additionally, it:</p>
 <p>disables icons</p>
 </li>
 <li>
-<p>disables the <code>include</code> directive</p>
+<p>disables the include directive</p>
 </li>
 <li>
 <p>data can not be retrieved from URIs</p>
@@ -18624,16 +18621,16 @@ Additionally, it:</p>
 <p>prevents access to stylesheets and JavaScripts</p>
 </li>
 <li>
-<p>sets the backend to <code>html5</code></p>
+<p>sets the backend to html5</p>
 </li>
 <li>
-<p>disables <code>docinfo</code> files</p>
+<p>disables docinfo files</p>
 </li>
 <li>
-<p>disables <code>data-uri</code></p>
+<p>disables data-uri</p>
 </li>
 <li>
-<p>disables <code>docdir</code> and <code>docfile</code></p>
+<p>disables docdir and docfile</p>
 </li>
 <li>
 <p>disables source highlighting</p>
@@ -18644,7 +18641,7 @@ Additionally, it:</p>
 <p>Asciidoctor extensions may still embed content into the document depending whether they honor the safe mode setting.</p>
 </div>
 <div class="paragraph">
-<p><strong>This is the default safe mode for the API.</strong> Its integer value is <code>20</code>.</p>
+<p><strong>This is the default safe mode for the API.</strong> Its integer value is 20.</p>
 </div>
 </div>
 </div>
@@ -19002,7 +18999,7 @@ One way to solve this problem is to maintain the path to <code>stylesdir</code> 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">/:stylesdir: mystylesheets</pre>
+<pre class="nowrap">:stylesdir: mystylesheets</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -19010,7 +19007,7 @@ One way to solve this problem is to maintain the path to <code>stylesdir</code> 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">/:stylesdir: ./mystylesheets</pre>
+<pre class="nowrap">:stylesdir: ./mystylesheets</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -20051,7 +20048,7 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 <p>The command will output to the file <code>sample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
-<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code><em>docbook</em></code>:</p>
+<p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code>'docbook'</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -20083,7 +20080,7 @@ If you want the header and footer, just enable it using the <code>:header_footer
 </div>
 <div class="paragraph">
 <p>Now you&#8217;ll get a full HTML 5 file.
-If you only want the inline markup to be processed, set the <code>:doctype</code> option to <code><em>inline</em></code>:</p>
+If you only want the inline markup to be processed, set the <code>:doctype</code> option to <code>'inline'</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -20125,14 +20122,14 @@ It will fallback to its default templates for everything else.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>The Document and Section templates should begin with <code>document.</code> and <code>section.</code>, respectively.
+<p>The Document and Section templates should begin with document. and section., respectively.
 The file extension is used by Tilt to determine which view framework it will use to use to render the template.
-For instance, if you want to write the template in ERB, you&#8217;d name these two templates <code>document.html.erb</code> and <code>section.html.erb</code>.
-To use Haml, you&#8217;d name them <code>document.html.haml</code> and <code>section.html.haml</code>.</p>
+For instance, if you want to write the template in ERB, you&#8217;d name these two templates document.html.erb and section.html.erb.
+To use Haml, you&#8217;d name them document.html.haml and section.html.haml.</p>
 </div>
 <div class="paragraph">
-<p>Templates for block elements, like a Paragraph or Sidebar, would begin with <code>block_&lt;style&gt;.</code>.
-For instance, to override the default Paragraph template with an ERB template, put a file named <code>block_paragraph.html.erb</code> in the template directory you pass to the <code>Document</code> constructor using the <code>:template_dir</code> option.</p>
+<p>Templates for block elements, like a Paragraph or Sidebar, would begin with block_&lt;style&gt;..
+For instance, to override the default Paragraph template with an ERB template, put a file named block_paragraph.html.erb in the template directory you pass to the Document constructor using the :template_dir option.</p>
 </div>
 <div class="paragraph">
 <p>For more usage examples, see the (massive) <a href="https://github.com/asciidoctor/asciidoctor/tree/master/test">test suite</a>.</p>
@@ -20221,7 +20218,7 @@ Just keep in mind that you may need to rework parts of your extensions when you 
 </dd>
 <dt class="hdlist1">Inline macro processor</dt>
 <dd>
-<p>Registers a custom inline macro and processes it (e.g., <code>btn:[Save]</code>).</p>
+<p>Registers a custom inline macro and processes it (e.g., <code><b class="button">Save</b></code>).</p>
 </dd>
 <dt class="hdlist1">Include processor</dt>
 <dd>
@@ -21038,13 +21035,13 @@ Consult the <a href="https://github.com/asciidoctor/docs/migration/">Migration G
 <td class="tableblock halign-left valign-top"><p class="tableblock">`+{asciidoc-version}+`</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8220;double quotes&#8221;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">``double quotes''</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">``double quotes''<br>
 <em>not available in compat mode</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">"`double quotes`" or type the Unicode quote characters using your editor</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8216;single quotes&#8217;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">`single quotes'</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">`single quotes'<br>
 <em>not available in compat mode</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">'`single quotes`' or type the Unicode quote characters using your editor</p></td>
@@ -21094,7 +21091,7 @@ If you want to use the new Asciidoctor syntax, make sure to use the single-line 
 <td class="tableblock halign-left valign-top"><p class="tableblock">Underline length must match title length +/- 1 character (Underlined titles are deprecated anyway. See <a href="#sections">Sections</a>.)</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ifeval::[]</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ifeval::[]</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Evaluates any Python expression.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Evaluates simple logical expressions testing the value of attributes.
 See <a href="#ifeval-directive">ifeval directive</a>.</p></td>
@@ -21284,7 +21281,7 @@ See <a href="#stem-bl">Block Stem Content</a>.</p>
 <div class="sect2">
 <h3 id="migrate-extensions"><a class="anchor" href="#migrate-extensions"></a>96.6. AsciiDoc Python Extensions</h3>
 <div class="paragraph">
-<p>The extension mechanism is completely different in Asciidoctor, but the <em><code>standard</code></em> extensions have been re-implemented, so they should work with minor changes.</p>
+<p>The extension mechanism is completely different in Asciidoctor, but the &#8216;standard&#8217; extensions have been re-implemented, so they should work with minor changes.</p>
 </div>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Standard extensions</caption>
@@ -21590,14 +21587,11 @@ An open block doesn&#8217;t have any special styling, but its contents have the 
 <p>To solve this problem, first look for missing delimiter lines.
 <a href="#text-editor">Syntax highlighting in your text editor</a> can help with this.
 Also look at the rendered output to see if the block styles are extending past where you intended.
-When working with open blocks, you may need to add custom styles (such as a red border) to the class selector <code>.openblock</code> so that you can see its boundaries.</p>
+When working with open blocks, you may need to add custom styles (such as a red border) to the class selector .openblock so that you can see its boundaries.</p>
 </div>
 </li>
 <li>
-<p><em>Why don&#8217;t URLs containing underscores (<code>_</code>) or carets (<code>{caret}</code>) work after they&#8217;re rendered?</em></p>
-</li>
-</ol>
-</div>
+<p><em>Why don&#8217;t URLs containing underscores (<code>_</code>) or carets (<code>^</code>) work after they&#8217;re rendered?</em></p>
 <div class="openblock">
 <div class="content">
 <div class="paragraph">
@@ -21657,6 +21651,9 @@ However, when you use this approach, Asciidoctor won&#8217;t recognize it as a U
 <p>For more information, see <a href="https://github.com/asciidoctor/asciidoctor/issues/625">issue #625</a>.</p>
 </div>
 </div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 </div>
@@ -23146,7 +23143,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-18 08:49:56 UTC
+Last updated 2016-03-19 23:46:44 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
