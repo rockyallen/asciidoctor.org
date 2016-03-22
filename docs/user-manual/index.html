@@ -17323,7 +17323,7 @@ The preamble placement only works if your document has a preamble (otherwise, th
 <td class="tableblock halign-left valign-top"><p class="tableblock">Defaults to <code>auto</code> if value is blank.
 When <code>header_footer</code> is disabled, only <code>macro</code> and <code>preamble</code> are recognized.
 Use <code>macro</code> in order to use the <code>toc::[]</code> block macro in the document body.
-DocBook backend sets <code>toc</code> by default.</p></td>
+DocBook converter sets <code>toc</code> by default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html, docbook, pdf</p></td>
 </tr>
 <tr>
@@ -17337,22 +17337,25 @@ DocBook backend sets <code>toc</code> by default.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-title</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">&lt;user defined&gt;</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-title: Rocking the Table</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Default title is <em>Table of Contents</em>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default value is <em>Table of Contents</em>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html, pdf</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-placement</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">auto, preamble, macro</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-placement: preamble</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deprecated: Use <code>toc</code> attribute instead.</em><br>
-Default value is <code>auto</code> when <code>toc</code> is specified.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Should be treated as read-only.</em>
+Use <code>toc</code> attribute to set.
+Default value is <code>auto</code> when <code>toc</code> is specified without a value.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>toc-position</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">left, right</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:toc-position: right</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Deprecated: Use <code>toc</code> attribute instead.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Should be treated as read-only.</em>
+Use <code>toc</code> attribute to set.
+Default value is <code>header</code> when <code>toc</code> is specified without a value.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html</p></td>
 </tr>
 </tbody>
@@ -22479,6 +22482,15 @@ Also used as a fallback when the document title is not specified.
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a></p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc-placement</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location where table of contents is inserted.
+Should be treated as read-only.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Based on value of <code>toc</code> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">auto, preamble, macro</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a></p></td>
+</tr>
+<tr>
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">General content and formatting</p></th>
 </tr>
 <tr>
@@ -23178,7 +23190,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-22 06:32:16 UTC
+Last updated 2016-03-22 07:11:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
