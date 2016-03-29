@@ -839,7 +839,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#attribute-substitution">53.4. Attribute substitution</a></li>
 </ul>
 </li>
-<li><a href="#counter-attributes">54. Counter Attributes</a></li>
+<li><a href="#counters">54. Counters</a></li>
 </ul>
 </li>
 <li><a href="#structuring-navigating-and-referencing-your-content">Structuring, Navigating, and Referencing Your Content</a>
@@ -16891,11 +16891,128 @@ v1.0, 2013-06-01
 </div>
 </div>
 <div class="sect1">
-<h2 id="counter-attributes"><a class="anchor" href="#counter-attributes"></a>54. Counter Attributes</h2>
+<h2 id="counters"><a class="anchor" href="#counters"></a>54. Counters</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Counters are used to store and display ad-hoc sequences of numbers or latin characters.
+They are designed for simple use cases.
+Possible uses include inline itemized lists, paragraph numbers and serial item numbers.</p>
+</div>
+<div class="paragraph">
+<p>A counter is implemented as a specialized document attribute.
+You declare and display a counter using an augmented attribute reference, in which the attribute name is prefixed with <code>counter:</code> (e.g., <code>{counter:name}</code>).
+Since counters are attributes, counter names follow the same rules as attribute names.</p>
+</div>
+<div class="paragraph">
+<p>The counter value is incremented and displayed every time the <code>counter:</code> attribute reference is used.
+The term <em class="term">increment</em> means advance to the next value in the sequence.
+If the counter value is an integer, add 1.
+If the counter value is a character, move to the next letter in the Latin alphabet.
+The default start value of a counter is 1.</p>
+</div>
+<div class="paragraph">
+<p>To create a sequence starting at 1, use the simple form <code>{counter:name}</code> as shown here:</p>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[caption=""]
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The salad calls for {counter:seq1}) apples, {counter:seq1}) oranges and {counter:seq1}) pears.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the resulting output:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The salad calls for 1) apples, 2) oranges and 3) pears.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>To increment the counter without displaying it (i.e., to skip an item in the sequence), use the <code>counter2</code> prefix instead:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">{counter2:seq1}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+A <code>counter2</code> attribute reference on a line by itself will produce an empty paragraph.
+You&#8217;ll need to adjoin it to the nearest content to avoid this side effect.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To display the current value of the counter without incrementing it, reference the counter name as you would any other attribute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">{counter2:pnum}This is paragraph {pnum}.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To create a character sequence, or start a number sequence with a value other than 1, specify a start value by appending it to the first use of the counter:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">Dessert calls for {counter:seq1:A}) mangoes, {counter:seq1}) grapes and {counter:seq1}) cherries.</code></pre>
+</div>
+</div>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+Character sequences either run from a,b,c,&#8230;&#8203;x,y,z,{,|&#8230;&#8203; or A,B,C,&#8230;&#8203;,X,Y,Z,[,&#8230;&#8203; depending on the start value.
+Therefore, they aren&#8217;t really useful for more than 26 items.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The start value of a counter is only recognized if the counter is <em>unset</em> at that point in the document.
+Otherwise, the start value is ignored.</p>
+</div>
+<div class="paragraph">
+<p>To reset a counter attribute, unset the corresponding attribute using an attribute entry.
+The attribute entry must be adjacent to a block or else it is ignored.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">The salad calls for {counter:seq1:1}) apples, {counter:seq1}) oranges and {counter:seq1}) pears.
+
+:!seq1:
+Dessert calls for {counter:seq1:A}) mangoes, {counter:seq1}) grapes and {counter:seq1}) cherries.</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This gives:</p>
+</div>
+<div class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>The salad calls for 1) apples, 2) oranges and 3) pears.</p>
+</div>
+<div class="paragraph">
+<p>Dessert calls for A) mangoes, B) grapes and C) cherries.</p>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s a full example that shows how to use a counter for part numbers in a table.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[caption=&quot;&quot;]
 .Parts{counter2:index:0}
 |===
 |Part Id |Description
@@ -16905,8 +17022,11 @@ v1.0, 2013-06-01
 
 |PX-{counter:index}
 |Description of PX-{index}
-|===</pre>
+|===</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s the output of that table:</p>
 </div>
 <div class="exampleblock">
 <div class="content">
@@ -23190,7 +23310,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-27 10:52:37 UTC
+Last updated 2016-03-29 05:09:30 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
