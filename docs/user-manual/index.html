@@ -532,8 +532,7 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#asciidoctor-on-the-jvm">1.2. Asciidoctor on the JVM</a></li>
 <li><a href="#asciidoctor-js">1.3. Asciidoctor.js</a></li>
 <li><a href="#asciidoctor-s-most-notable-benefits">1.4. Asciidoctor&#8217;s Most Notable Benefits</a></li>
-<li><a href="#compared-to-asciidoc">1.5. Compared to AsciiDoc</a></li>
-<li><a href="#compared-to-markdown">1.6. Compared to MarkDown</a></li>
+<li><a href="#compared-to-markdown">1.5. Compared to MarkDown</a></li>
 </ul>
 </li>
 </ul>
@@ -1162,35 +1161,399 @@ Asciidoctor also offers a modern, responsive theme based on <a href="http://foun
 </div>
 </div>
 <div class="sect2">
-<h3 id="compared-to-asciidoc"><a class="anchor" href="#compared-to-asciidoc"></a>1.5. Compared to AsciiDoc</h3>
-<div class="admonitionblock tip">
+<h3 id="compared-to-markdown"><a class="anchor" href="#compared-to-markdown"></a>1.5. Compared to MarkDown</h3>
+<div class="paragraph">
+<p>The most compelling reason to choose a lightweight markup language for writing is to minimize the technical concepts that content authors must grasp in order for them to be immediately productive.</p>
+</div>
+<div class="paragraph">
+<p>A popular choice is Markdown.
+(At least, that&#8217;s what you call it in the beginning).
+The main advantage of Markdown lies in its primitive syntax: its manual is its own cheatsheet.
+But this advantage is also its greatest shortcoming.</p>
+</div>
+<div class="paragraph">
+<p>As soon as authors need something slightly more complex (tables, cross references, footnotes, embedded YouTube videos, etc.) they find themselves typing directly in HTML, or seeking out alternate implementations.
+Markdown has become a maze of different implementations, termed &#8220;flavors&#8221;, that make a universal definition evasive.</p>
+</div>
+<div class="admonitionblock note">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-<div class="title">Discuss and Contribute</div>
-Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/434">Issue 434</a> to drive development of this section. Your contributions make a difference. No contribution is too small.
+The IETF has declared &#8220;there is no such thing as "invalid" Markdown.&#8221;
+See <a href="https://tools.ietf.org/html/rfc7763#section-1.1">This Is Markdown! Or: Markup and Its Discontents</a>.
 </td>
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>Here&#8217;s how the story inevitably goes.
+You start out with Markdown.
+Then it&#8217;s Markdown + X.
+Then Markdown + X + Y.
+And down the rabbit hole you go.
+What&#8217;s worse, X and Y often take the form of HTML, unnecessarily coupling content with presentation and wrecking portability.</p>
 </div>
-<div class="sect2">
-<h3 id="compared-to-markdown"><a class="anchor" href="#compared-to-markdown"></a>1.6. Compared to MarkDown</h3>
-<div class="admonitionblock tip">
-<table>
+<div class="paragraph">
+<p>AsciiDoc presents an excellent alternative.
+The AsciiDoc syntax is more concise than (or at least as concise as) Markdown.
+At the same time, AsciiDoc offers power and flexibility without requiring the use of HTML or &#8220;flavors&#8221; for essential syntax such as tables, definition lists, admonitions (tips, notes, warnings, etc.) and table of contents.</p>
+</div>
+<div class="paragraph">
+<p>It&#8217;s important to understand that AsciiDoc was initially designed as a plain-text alternative to the DocBook XML schema.
+AsciiDoc isn&#8217;t stuck in a game of whack-a-mole trying to satisfy publishing needs like Markdown.
+Rather, the AsciiDoc syntax was explicitly designed with the needs of publishing in mind, both print and web.
+If the need arises, you can make full use of the huge choice of tools available for a DocBook workflow using Asciidoctor&#8217;s DocBook converter.
+That&#8217;s why mapping to an enterprise documentation format like DocBook remains a key use case for AsciiDoc.</p>
+</div>
+<div class="paragraph">
+<p>And yet, AsciiDoc is simple enough to stand in as a better flavor of Markdown.
+But what truly makes AsciiDoc the right investment is that its syntax was designed to be extended as a core feature.
+This extensibility not only means that AsciiDoc has a much more to offer, with room to grow, it also fulfills the objective of ensuring your content is maximally reusable.</p>
+</div>
+<div class="paragraph">
+<p>You can find more links to discussions about the differences between AsciiDoc and Markdown in the comments of <a href="https://github.com/asciidoctor/asciidoctor.org/issues/34">issue #34</a></p>
+</div>
+<div class="sect3">
+<h4 id="a-basic-comparison-by-example"><a class="anchor" href="#a-basic-comparison-by-example"></a>1.5.1. A basic comparison by example</h4>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 37.5%;">
+<col style="width: 37.5%;">
+</colgroup>
+<thead>
 <tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="title">Discuss and Contribute</div>
-Use <a href="https://github.com/asciidoctor/asciidoctor.org/issues/435">Issue 435</a> to drive development of this section. Your contributions make a difference. No contribution is too small.
-</td>
+<th class="tableblock halign-left valign-top">Formatting Type</th>
+<th class="tableblock halign-left valign-top">Markdown</th>
+<th class="tableblock halign-left valign-top">AsciiDoc</th>
 </tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bold (constrained)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">**bold**</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">*bold*</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bold (unconstrained)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">**b**old</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">**b**old</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Italic (constrained)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">*italic*</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">_italic_</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Italic (unconstrained)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">__i__talic</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monospace (constrained)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">`monospace`</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">`monospace`</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Monospace (unconstrained)</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">`m`onospace</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">``m``onospace</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link with label</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">[AsciiDoc](http://asciidoc.org)</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">http://asciidoc.org[AsciiDoc]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Relative link</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">[directory structure](../structure)</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">link:../structure[directory structure]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File link</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">[get the PDF]({% raw %}{{ site.url }}{% endraw %}/assets/mydoc.pdf)</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">link:{ctx_path}/assets/mydoc.pdf[get the PDF]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cross reference</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">&lt;&lt;attribute-catalog&gt;&gt;</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inline Image w/ Alt Text</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">![Logo](/images/logo.png)</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">image:logo.png[Logo]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Block Image w/ Alt Text</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">image::logo.png[Logo]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Section Heading</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">## Heading 2</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">== Heading 2</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Blockquote</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">&gt; Quoted text.
+&gt;
+&gt; Another paragraph in quote.</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">[quote]
+____
+Quoted text.
+
+Another paragraph in quote.
+____</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code block</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">```java
+public class Person {
+}
+```</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">[source,java]
+----
+public class Person {
+}
+----</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Unordered list</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">* apples
+* orange
+  * temple
+  * navel
+* bananas</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">* apples
+* oranges
+** temple
+** navel
+* bananas</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ordered list</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">1. first
+2. second
+3. third</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">. first
+. second
+. third</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Document header</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="title">As front matter</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="markdown">---
+layout: docs
+title: Writing posts
+prev_section: defining-frontmatter
+next_section: creating-pages
+permalink: /docs/writing-posts/
+---</code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">= Writing posts
+:awestruct-layout: base
+:showtitle:
+:prev_section: defining-frontmatter
+:next_section: creating-pages</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Admonitions</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">[TIP, caption='ProTip(TM)']
+.Show line numbers
+You can add line numbers to source listings by adding the word `numbered` in the attribute list after the language name.</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Typographic (aka &#8220;Smart&#8221;) Quotes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enabled through an extension switch, but offer little control in how they are applied.</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">One of Jekyll's best aspects is that it is &quot;`blog aware`&quot;.</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Includes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">include::intro.adoc[]</code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom CSS classes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
+<td class="tableblock halign-left valign-top"><div><div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="asciidoc">[.path]#Gemfile#</code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
 </table>
+<div class="paragraph">
+<p>You can see that AsciiDoc has the following advantages over Markdown:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>AsciiDoc uses the same number of markup characters or less when compared to Markdown in nearly all cases.</p>
+</li>
+<li>
+<p>AsciiDoc uses a consistent formatting scheme (i.e., it has consistent patterns).</p>
+</li>
+<li>
+<p>AsciiDoc can handle all permutations of nested inline (and block) formatting, whereas Markdown often falls down.</p>
+</li>
+<li>
+<p>AsciiDoc handles cases that Markdown doesn&#8217;t, such as a proper approach to inner-word markup, source code blocks and block-level images.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Asciidoctor, which is used for converting AsciiDoc on GitHub and GitLab, emulates &#8220;the good parts&#8221; of the Markdown syntax, like headings, blockquotes and fenced code blocks, making migration from Markdown to AsciiDoc fairly simple.
+For more details on migration, see <a href="http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#markdown-compatibility">Markdown Compatibility</a>.</p>
+</div>
 </div>
 </div>
 </div>
@@ -23310,7 +23673,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-03-30 05:57:07 UTC
+Last updated 2016-03-30 07:46:13 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
