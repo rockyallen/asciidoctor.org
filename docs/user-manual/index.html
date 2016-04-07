@@ -3613,16 +3613,22 @@ To learn how to setup instant preview, check out the <a href="/docs/editing-asci
 <div class="sectionbody">
 <div class="dlist">
 <dl>
-<dt class="hdlist1">Article</dt>
+<dt class="hdlist1">Article (keyword: <code>article</code>)</dt>
 <dd>
 <p>Default doctype.
-In DocBook, includes the appendix, abstract, bibliography, glossary, and index sections</p>
+In DocBook, includes the appendix, abstract, bibliography, glossary, and index sections.</p>
 </dd>
-<dt class="hdlist1">Book</dt>
+<dt class="hdlist1">Book (keyword: <code>book</code>)</dt>
 <dd>
 <p>The same as articles with the additional ability to use a top level title as part titles, includes the appendix, dedication, preface, bibliography, glossary, index, and colophon.</p>
 </dd>
-<dt class="hdlist1">Inline</dt>
+<dt class="hdlist1">Man page (keyword: <code>manpage</code>)</dt>
+<dd>
+<p>Used for producing a roff or HTML-formatted <a href="https://en.wikipedia.org/wiki/Man_page">man page</a> (short for manual page) for Unix and Unix-like operating systems.
+This doctype instructs the parser to recognize a special document header and section naming conventions for organizing the AsciiDoc content as a manual page.
+Refer to <a href="#man-pages">Man Pages</a> for details on how to compose AsciiDoc for this purpose.</p>
+</dd>
+<dt class="hdlist1">Inline (keyword: <code>inline</code>)</dt>
 <dd>
 <div class="openblock">
 <div class="content">
@@ -3668,11 +3674,6 @@ For example, in the <a href="/docs/install-and-use-asciidoclet/">Asciidoclet pro
 </div>
 </div>
 </div>
-</dd>
-<dt class="hdlist1">Man page</dt>
-<dd>
-<p>Special title and section naming conventions used to generate roff format UNIX manual pages.
-Corresponds to the DocBook refentry document type.</p>
 </dd>
 </dl>
 </div>
@@ -18798,88 +18799,177 @@ To enable it, assign an empty value to the <code>xmlns</code> attribute.</p>
 <h2 id="man-pages"><a class="anchor" href="#man-pages"></a>71. Man Pages</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>One of the most interesting uses of AsciiDoc is for creating man pages (short for manual pages) for Unix and Unix-like operating systems.
-A man page conforms to a special document structure.
-That structure is recognized by Asciidoctor, when the <code>doctype</code> attribute is set to <code>manpage</code>.
-Additionally, Asciidoctor produces the same output when rendering a man page to HTML using the <code>html5</code> backend.</p>
+<p>One of the more specialized uses of AsciiDoc is to serve as a shorthand for generating man pages (short for manual pages) for Unix and Unix-like operating systems.</p>
 </div>
 <div class="paragraph">
-<p>When reading an AsciiDoc document using the manpage doctype, Asciidoctor parses the following man page metadata:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>mantitle</code></p>
-</li>
-<li>
-<p><code>manvolnum</code></p>
-</li>
-<li>
-<p><code>manname</code></p>
-</li>
-<li>
-<p><code>manpurpose</code></p>
-</li>
-</ul>
+<p>A man page is coded in the roff typesetting language.
+By adhering to a specific structure in the man page file, the <code>man</code> command can parse the content and present a formatted document in a textual (command line) pager.
+Manual pages provide a unified help catalog for all commands in the system.
+For a full description, see the <a href="http://man7.org/linux/man-pages/man7/roff.7.html">roff man page</a> (or type <code>man roff</code> or <code>man 7 man</code>).</p>
 </div>
 <div class="paragraph">
-<p>The mantitle and manvolum are captured from the document title.
-The manname and manpurpose are taken from the first section of the document, which must be a level 1 section and have content in the format <code>&lt;manname&gt; - &lt;manpurpose&gt;</code>.</p>
+<p>Asciidoctor can produce roff-formatted man pages if the structure of the AsciiDoc document follows certain rules (described later in this section).</p>
 </div>
 <div class="paragraph">
-<p>Here&#8217;s an example of a man page written in AsciiDoc:</p>
+<p>To produce a roff-formatted man page from an AsciiDoc file, run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -d manpage -b manpage source.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Note that the manpage converter sets the output file name to <code>progname.1</code>, where <code>progname</code> is the name of the command and <code>1</code> is the volume number, as defined in the source document.</p>
+</div>
+<div class="paragraph">
+<p>Asciidoctor can also produce HTML and PDF versions similar to the <code>man</code> output for viewing in other contexts.
+To see the man page in HTML instead, run:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -d manpage source.adoc</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Here is an abbreviated version of the Asciidoctor man page written in AsciiDoc:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= asciidoctor(1)
-:doctype: manpage
+Dan Allen; Sarah White; Ryan Waldron
+v1.5.4
+:manmanual: Asciidoctor
+:mansource: Asciidoctor
+:man-linkstyle: blue R &lt;&gt;
 
 == NAME
-asciidoctor - converts AsciiDoc source files...
+
+asciidoctor - converts AsciiDoc source files
 
 == SYNOPSIS
-*asciidoctor* ['OPTION']... 'FILE'...</code></pre>
+
+*asciidoctor* ['OPTION']... 'FILE'...
+
+== OPTIONS
+
+*-o, --out-file*=_OUT_FILE_::
+  Write output to file _OUT_FILE_.
+
+*-q, --quiet*::
+  Silence warnings.
+
+== EXIT STATUS
+
+*0*::
+  Success.
+
+*1*::
+  Failure.
+
+== RESOURCES
+
+*Project web site:* http://asciidoctor.org
+
+== COPYING
+
+Copyright \(C) 2012-2016 Dan Allen, Ryan Waldron and the Asciidoctor Project.
+Free use of this software is granted under the terms of the MIT License.</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>From this document, Asciidoctor extracts the following man page-related attributes:</p>
+<p>The AsciiDoc document has the following required parts:</p>
 </div>
-<div class="hdlist">
-<table>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Document Header</dt>
+<dd>
+<p>A manpage document header is mandatory.
+The title line contains the man page name followed immediately by the manual section number in round brackets.
+The title name should not contain white space.
+The manual section number is a single digit optionally followed by a single character.</p>
+</dd>
+<dt class="hdlist1">The NAME Section</dt>
+<dd>
+<p>The first manpage section is mandatory, must be titled &#8220;NAME&#8221; and must contain a single paragraph (usually a single line) consisting of a list of one or more comma separated command name(s)
+separated from the command purpose by a dash character.
+The dash must have at least one white space character on either side.</p>
+</dd>
+<dt class="hdlist1">The SYNOPSIS Section</dt>
+<dd>
+<p>The second manpage section is mandatory and must be titled &#8220;SYNOPSIS&#8221;.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>Subsequent sections are optional, but typical sections include &#8220;SEE ALSO&#8221;, &#8220;BUGS REPORTS&#8221;, &#8220;AUTHORS&#8221; and &#8220;COPYRIGHT&#8221;.</p>
+</div>
+<div class="paragraph">
+<p>There are several built-in document attributes that affect only manpages.
+If used, they must be set in the document header.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<caption class="title">Built-in document attributes specific to the manpage doctype</caption>
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 40%;">
+<col style="width: 40%;">
+</colgroup>
+<thead>
 <tr>
-<td class="hdlist1">
-<code>mantitle</code>
-</td>
-<td class="hdlist2">
-<p>asciidoctor</p>
-</td>
+<th class="tableblock halign-left valign-top">Attribute name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+<th class="tableblock halign-left valign-top">Value (as parsed from example above)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mantitle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative way to set the man page name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ASCIIDOCTOR(1)</p></td>
 </tr>
 <tr>
-<td class="hdlist1">
-<code>manvolnum</code>
-</td>
-<td class="hdlist2">
-<p>1</p>
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manvolnum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual section number.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
 </tr>
 <tr>
-<td class="hdlist1">
-<code>manname</code>
-</td>
-<td class="hdlist2">
-<p>asciidoctor</p>
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative way to set the command name.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctor</p></td>
 </tr>
 <tr>
-<td class="hdlist1">
-<code>manpurpose</code>
-</td>
-<td class="hdlist2">
-<p>converts AsciiDoc source files&#8230;&#8203;</p>
-</td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manpurpose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alternative way to set the command purpose.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">converts AsciiDoc source files</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">man-linkstyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Style the links in the manpage output.
+A valid link format sequence.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blue R &lt;&gt;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mansource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source to which the manpage pertains.
+When producing DocBook, it becomes a DocBook <a href="http://www.docbook.org/tdg5/en/html/refmiscinfo.html">refmiscinfo</a> attribute and appears in the footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manversion</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The version of the man page.
+Defaults to revnumber if not specified.
+When producing DocBook, it becomes a DocBook <a href="http://www.docbook.org/tdg5/en/html/refmiscinfo.html">refmiscinfo</a> attribute and appears in the footer.
+Not used by Asciidoctor.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.5.4</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manmanual</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual name.
+When producing DocBook, it becomes a DocBook <a href="http://www.docbook.org/tdg5/en/html/refmiscinfo.html">refmiscinfo</a> attribute and appears in the footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asciidoctor Manual</p></td>
+</tr>
+</tbody>
 </table>
-</div>
 <div class="paragraph">
 <p>Refer to <a href="https://raw.githubusercontent.com/asciidoctor/asciidoctor/master/man/asciidoctor.adoc">the AsciiDoc source of the Asciidoctor man page</a> to see a complete example.
 The man page for Asciidoctor is produced using the built-in manpage converter in Asciidoctor.
@@ -23695,7 +23785,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-04-05 07:15:45 UTC
+Last updated 2016-04-07 04:11:52 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
