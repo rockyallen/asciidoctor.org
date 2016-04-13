@@ -2,7 +2,8 @@
 <li><a href="#distribution">Distribution</a></li>
 <li><a href="#installation">Installation</a></li>
 <li><a href="#converting-documents">Converting documents</a>
-<ul class="sectlevel2">
+<ul class="sectlevel3">
+<li><a href="#safe-mode-and-file-system-access">Safe mode and file system access</a></li>
 <li><a href="#conversion-options">Conversion options</a></li>
 </ul>
 </li>
@@ -18,6 +19,7 @@
 <li><a href="#preprocessor">Preprocessor</a></li>
 <li><a href="#treeprocessor">Treeprocessor</a></li>
 <li><a href="#postprocessor">Postprocessor</a></li>
+<li><a href="#docinfoprocessor">DocinfoProcessor</a></li>
 <li><a href="#block-processor">Block processor</a></li>
 <li><a href="#block-macro-processor">Block macro processor</a></li>
 <li><a href="#inline-macro-processor">Inline macro processor</a></li>
@@ -31,14 +33,15 @@
 <li><a href="#loading-ruby-libraries">Loading Ruby libraries</a></li>
 <li><a href="#jruby-instance">JRuby instance</a></li>
 <li><a href="#gem_path">GEM_PATH</a></li>
+<li><a href="#using-asciidoctorj-in-an-osgi-environment">Using AsciidoctorJ in an OSGi environment</a></li>
 <li><a href="#optimization">Optimization</a></li>
-<li><a href="#running-asciidoctorj-on-wildfly-as">Running AsciidoctorJ on WildFly AS</a></li>
+<li><a href="#wildfly-kludge">Running AsciidoctorJ on WildFly AS</a></li>
 <li><a href="#using-a-pre-release-version">Using a pre-release version</a></li>
 <li><a href="#resources">Resources</a></li>
 </ul></div></div><div class="large-8 columns content"><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> is the official library for running <a href="/docs/what-is-asciidoctor">Asciidoctor</a> on the JVM.
+<p><a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> is the official library for running <a href="/docs/what-is-asciidoctor">Asciidoctor</a> on the JVM.
 Using AsciidoctorJ, you can convert AsciiDoc content or analyze the structure of a parsed AsciiDoc document from Java and other JVM languages.</p>
 </div>
 </div>
@@ -54,10 +57,10 @@ The artifact information can be found in the tables below.</p>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 1. Artifact information for AsciidoctorJ in jCenter (Bintray)</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 8.3333%;">
-<col style="width: 41.6668%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -71,18 +74,30 @@ The artifact information can be found in the tables below.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://bintray.com/asciidoctor/maven/asciidoctorj/view/general">asciidoctorj</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://bintray.com/asciidoctor/maven/asciidoctorj/1.5.2/view">1.5.2</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2.pom">pom</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2.jar">jar</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2-javadoc.jar">javadoc (jar)</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2-sources.jar">sources (jar)</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="https://bintray.com/asciidoctor/maven/asciidoctorj/1.5.4/view">1.5.4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4.pom">pom</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4.jar">jar</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4-javadoc.jar">javadoc (jar)</a> <a href="http://dl.bintray.com/asciidoctor/maven/org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4-sources.jar">sources (jar)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctorj-epub3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1.5.0-alpha.6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctorj-pdf</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1.5.0-alpha.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
 <table class="tableblock frame-all grid-all spread">
 <caption class="title">Table 2. Artifact information for AsciidoctorJ in Maven Central</caption>
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 33.3333%;">
-<col style="width: 8.3333%;">
-<col style="width: 41.6668%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 40%;">
 </colgroup>
 <thead>
 <tr>
@@ -95,9 +110,21 @@ The artifact information can be found in the tables below.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctorj%22%20AND%20v%3A%221.5.2%22">asciidoctorj</a></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctorj%7C1.5.2%7Cjar">1.5.2</a></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.2/asciidoctorj-1.5.2-sources.jar">sources (jar)</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22org.asciidoctor%22%20AND%20a%3A%22asciidoctorj%22%20AND%20v%3A%221.5.4%22">asciidoctorj</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><a href="http://search.maven.org/#artifactdetails%7Corg.asciidoctor%7Casciidoctorj%7C1.5.4%7Cjar">1.5.4</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4.pom">pom</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4.jar">jar</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4-javadoc.jar">javadoc (jar)</a> <a href="http://search.maven.org/remotecontent?filepath=org/asciidoctor/asciidoctorj/1.5.4/asciidoctorj-1.5.4-sources.jar">sources (jar)</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctorj-epub3</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1.5.0-alpha.6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asciidoctorj-pdf</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">1.5.0-alpha.11</p></td>
+<td class="tableblock halign-left valign-top"></td>
 </tr>
 </tbody>
 </table>
@@ -120,7 +147,9 @@ The artifactId changed from <code>asciidoctor-java-integration</code> to <code>a
 <div class="sectionbody">
 <div class="paragraph">
 <p>AsciidoctorJ is a standard <code>.jar</code> file.
-To start using it, you need to add the library to your project&#8217;s classpath.</p>
+To start using it, you need to add the library to your project&#8217;s classpath.
+To start using it under WildFly AS, you can&#8217;t just use it, you also have to <em>modify your WildFly installation</em>
+due to classpath loading issues; see <a href="#wildfly-kludge">Running AsciidoctorJ on WildFly AS</a>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Declaring the dependency in a Maven build file (i.e., pom.xml)</div>
@@ -129,7 +158,7 @@ To start using it, you need to add the library to your project&#8217;s classpath
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctorj<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>1.5.2<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
+    <span class="tag">&lt;version&gt;</span>1.5.4<span class="tag">&lt;/version&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
   <span class="tag">&lt;/dependency&gt;</span>
 <span class="tag">&lt;/dependencies&gt;</span></code></pre>
 </div>
@@ -138,14 +167,14 @@ To start using it, you need to add the library to your project&#8217;s classpath
 <div class="title">Declaring the dependency in a Gradle build file (e.g., build.gradle)</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
-  compile <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctorj:1.5.2</span><span class="delimiter">'</span></span>
+  compile <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctorj:1.5.4</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="listingblock">
 <div class="title">Declaring the dependency in an SBT build file (e.g., build.sbt)</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="scala">libraryDependencies += &quot;org.asciidoctor&quot; % &quot;asciidoctorj&quot; % &quot;1.5.2&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="scala">libraryDependencies += &quot;org.asciidoctor&quot; % &quot;asciidoctorj&quot; % &quot;1.5.4&quot; <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -155,6 +184,12 @@ To start using it, you need to add the library to your project&#8217;s classpath
 <td>Specifying the version of AsciidoctorJ implicitly selects the version of Asciidoctor</td>
 </tr>
 </table>
+</div>
+<div class="listingblock">
+<div class="title">Declaring the dependency in a Leiningen build file (e.g., project.clj)</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="clojure"><span class="symbol">:dependencies</span> [[org.asciidoctor/asciidoctorj <span class="string"><span class="delimiter">&quot;</span><span class="content">1.5.4</span><span class="delimiter">&quot;</span></span>]]</code></pre>
+</div>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -428,6 +463,39 @@ asciidoctor.convert(reader, writer, options().asMap());
 
 <span class="predefined-type">StringBuffer</span> htmlBuffer = writer.getBuffer();
 <span class="predefined-type">System</span>.out.println(htmlBuffer.toString());</code></pre>
+</div>
+</div>
+<div class="sect3">
+<h4 id="safe-mode-and-file-system-access"><a class="anchor" href="#safe-mode-and-file-system-access"></a>Safe mode and file system access</h4>
+<div class="paragraph">
+<p>Asciidoctor provides security levels that control the read and write access of attributes, the include directive, macros, and scripts while a document is processing. Each level includes the restrictions enabled in the prior security level.</p>
+</div>
+<div class="paragraph">
+<p>When Asciidoctor (and AsciidoctorJ) is used as <em>API</em>, it uses <code>SECURE</code> safe mode by default.
+This mode is the most restrictive one and in summary it disallows the document from attempting to read files from the file system and including their contents into the document.</p>
+</div>
+<div class="paragraph">
+<p>We recommend you to set <code>SAFE</code> safe mode when rendering AsciiDoc documents using AsciidoctorJ to have almost all Asciidoctor features such as <em>icons</em>, <em>include directive</em> or retrieving content from <em>URIs</em> enabled.</p>
+</div>
+<div class="paragraph">
+<p>Safe mode is set as option when a document is rendered.
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.OptionsBuilder.options</span>;
+
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = options().safe(SafeMode.SAFE)
+                                       .asMap();
+
+<span class="predefined-type">String</span> outfile = asciidoctor.convertFile(<span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="content">sample.adoc</span><span class="delimiter">&quot;</span></span>), options);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We are going to explain in more detail options in <a href="#conversion-options">next section</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can read more about safe modes in <a href="http://asciidoctor.org/docs/user-manual/#running-asciidoctor-securely" class="bare">http://asciidoctor.org/docs/user-manual/#running-asciidoctor-securely</a></p>
 </div>
 </div>
 <div class="sect2">
@@ -876,7 +944,7 @@ First, it gathers the same information as <code>readDocumentHeader</code> and pu
 The actual content of the file is split into separate ContentParts based on blocks of the content.</p>
 </div>
 <div class="paragraph">
-<p>This feature provides several usecases.</p>
+<p>This feature provides several use cases.</p>
 </div>
 <div class="listingblock">
 <div class="title">AsciiDoc document with two blocks defined by section titles</div>
@@ -895,7 +963,7 @@ And content of section two
 <div class="paragraph">
 <p>Each section defines new content part.
 List of all parts can be get by <code>getParts</code> method on <code>StructuredDocument</code>.
-Each part will than contain of title (ie. "Section one") and converted text content as html.</p>
+Each part will than contain of title (i.e. "Section one") and converted text content as html.</p>
 </div>
 <div class="listingblock">
 <div class="title">Print content of each part</div>
@@ -1140,7 +1208,7 @@ assertThat(findBy, hasSize(<span class="integer">2</span>)); <i class="conum" da
 <div class="paragraph">
 <p>One of the major improvements to Asciidoctor recently is the extensions API.
 AsciidoctorJ brings this extension API to the JVM environment.
-<a href="http://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> allows us to write extensions in Java instead of Ruby.</p>
+<a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> allows us to write extensions in Java instead of Ruby.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor provides seven types of extension points.
@@ -1187,6 +1255,10 @@ Each extension point has an abstract class in Java that maps to the extension AP
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Include processor</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.IncludeProcessor</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Docinfo processor</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">org.asciidoctor.extension.DocinfoProcessor</p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -1226,7 +1298,7 @@ Each extension point has an abstract class in Java that maps to the extension AP
 </td>
 <td class="content">
 In the first two cases, the lifecycle of the instance is managed by JRuby.
-In the last case, the caller is the owner of the lifeycle of the object.
+In the last case, the caller is the owner of the lifecycle of the object.
 </td>
 </tr>
 </table>
@@ -1388,7 +1460,7 @@ It strips the prompt character and styles the command.</p>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>All of the selcect block&#8217;s lines are retrieved.</td>
+<td>All of the select block&#8217;s lines are retrieved.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
@@ -1501,6 +1573,99 @@ extensionRegistry.postprocessor(<span class="keyword">new</span> CustomFooterPos
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
 <td>We can call any <code>convert</code> method as usually, no extra parameters are required.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="docinfoprocessor"><a class="anchor" href="#docinfoprocessor"></a>DocinfoProcessor</h3>
+<div class="paragraph">
+<p>This extension inserts custom content on header or footer of the document.
+For example can be used for adding <code>meta</code> tags on <code>&lt;head&gt;</code> tags.</p>
+</div>
+<div class="listingblock">
+<div class="title">DocinfoProcessor example</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="directive">public</span> <span class="type">class</span> <span class="class">MetaRobotsDocinfoProcessor</span> <span class="directive">extends</span> DocinfoProcessor { <i class="conum" data-value="1"></i><b>(1)</b>
+
+    <span class="directive">public</span> MetaRobotsDocinfoProcessor() {
+        <span class="local-variable">super</span>();
+    }
+
+    <span class="directive">public</span> MetaRobotsDocinfoProcessor(<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; config) {
+        <span class="local-variable">super</span>(config);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="directive">public</span> <span class="predefined-type">String</span> process(<span class="predefined-type">Document</span> document) {
+        <span class="keyword">return</span> <span class="string"><span class="delimiter">&quot;</span><span class="content">&lt;meta name=</span><span class="char">\&quot;</span><span class="content">robots</span><span class="char">\&quot;</span><span class="content"> content=</span><span class="char">\&quot;</span><span class="content">index,follow</span><span class="char">\&quot;</span><span class="content">&gt;</span><span class="delimiter">&quot;</span></span>; <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Class must extend from <code>DocinfoProcessor</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>In this case a meta tag is returned. By default <em>docinfo</em> is placed on header.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>To register the DocinfoProcessor extension just use the <code>JavaExtensionRegistry</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Register a DocinfoProcessor</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">JavaExtensionRegistry javaExtensionRegistry = <span class="local-variable">this</span>.asciidoctor.javaExtensionRegistry(); <i class="conum" data-value="1"></i><b>(1)</b>
+
+javaExtensionRegistry.docinfoProcessor(MetaRobotsDocinfoProcessor.class); <i class="conum" data-value="2"></i><b>(2)</b>
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(
+                classpath.getResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple.adoc</span><span class="delimiter">&quot;</span></span>),
+                options().headerFooter(<span class="predefined-constant">true</span>).safe(SafeMode.SERVER).toFile(<span class="predefined-constant">false</span>).get());</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td><code>JavaExtensionRegistry</code> class is created.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td><code>DocinfoProcessor</code> extension is registered using an already created instance approach.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to place <em>docinfo</em> on footer you need to set <code>location</code> option to <code>footer</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Register a DocinfoProcessor</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">JavaExtensionRegistry javaExtensionRegistry = <span class="local-variable">this</span>.asciidoctor.javaExtensionRegistry();
+
+<span class="predefined-type">Map</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt; options = <span class="keyword">new</span> <span class="predefined-type">HashMap</span>&lt;<span class="predefined-type">String</span>, <span class="predefined-type">Object</span>&gt;();
+options.put(<span class="string"><span class="delimiter">&quot;</span><span class="content">location</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">:footer</span><span class="delimiter">&quot;</span></span>); <i class="conum" data-value="1"></i><b>(1)</b>
+MetaRobotsDocinfoProcessor metaRobotsDocinfoProcessor = <span class="keyword">new</span> MetaRobotsDocinfoProcessor(options);
+
+javaExtensionRegistry.docinfoProcessor(metaRobotsDocinfoProcessor);
+
+<span class="predefined-type">String</span> content = asciidoctor.renderFile(
+                classpath.getResource(<span class="string"><span class="delimiter">&quot;</span><span class="content">simple.adoc</span><span class="delimiter">&quot;</span></span>),
+                options().headerFooter(<span class="predefined-constant">true</span>).safe(SafeMode.SERVER).toFile(<span class="predefined-constant">false</span>).get());</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Sets the location option to footer. Note that a colon (:) is placed before <em>footer</em>.</td>
 </tr>
 </table>
 </div>
@@ -2152,7 +2317,7 @@ Another reason is that you need to instantiate by yourself an Asciidoctor Ruby o
 <div class="sectionbody">
 <div class="paragraph">
 <p>By default, AsciidoctorJ comes with all required gems bundled within the jar.
-But in some circumstances like OSGi environments you may require to store gems in an external folder and be loaded by AsciidoctorJ.
+In certain circumstances, you may want to load gems from an external folder.
 To accomplish this scenario, <code>create</code> method provides a parameter to set folder where gems are present.
 Internally, AsciidoctorJ will set <code>GEM_PATH</code> environment variable to given path.</p>
 </div>
@@ -2172,6 +2337,97 @@ Asciidoctor asciidoctor = create(<span class="string"><span class="delimiter">&q
 <td>Creates an <code>Asciidoctor</code> instance with given <code>GEM_PATH</code> location.</td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-asciidoctorj-in-an-osgi-environment"><a class="anchor" href="#using-asciidoctorj-in-an-osgi-environment"></a>Using AsciidoctorJ in an OSGi environment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In a non OSGi context, the following snippet will successfully create an Asciidoctor object:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
+
+Asciidoctor asciidoctor = create();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In an OSGi context it will not work because JRuby needs some paths to find the gems (the Asciidoctor ones and the Ruby themselves ones). In order to make it work, you will need two more classes (RubyInstanceConfig and JavaEmbedUtils) and a small modification of the previous snippet of code. The modifications take care of the class loaders because in OSGi, which are a key point in OSGi:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java"><span class="keyword">import</span> <span class="include">static</span> <span class="include">org.asciidoctor.Asciidoctor.Factory.create</span>;
+<span class="keyword">import</span> <span class="include">org.asciidoctor.Asciidoctor</span>;
+
+RubyInstanceConfig config = <span class="keyword">new</span> RubyInstanceConfig();
+config.setLoader(<span class="local-variable">this</span>.getClass().getClassLoader()); <i class="conum" data-value="1"></i><b>(1)</b>
+
+JavaEmbedUtils.initialize(<span class="predefined-type">Arrays</span>.asList(<span class="string"><span class="delimiter">&quot;</span><span class="content">META-INF/jruby.home/lib/ruby/2.0</span><span class="delimiter">&quot;</span></span>, <span class="string"><span class="delimiter">&quot;</span><span class="content">gems/asciidoctor-1.5.4/lib</span><span class="delimiter">&quot;</span></span>), config); <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b> <i class="conum" data-value="4"></i><b>(4)</b>
+
+Asciidoctor asciidoctor = create(<span class="local-variable">this</span>.getClass().getClassLoader()); <i class="conum" data-value="5"></i><b>(5)</b></code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The RubyInstanceConfig will use the class loader of the OSGi bundle ;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The JavaEmbedUtils will specify the load paths of the required gems. If they are not specified, you will get JRuby exceptions ;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td><code>META-INF/jruby.home/lib/ruby/2.0</code> specifies where the Ruby gems are located. Actually this path is located inside the <code>jruby-complete-&lt;version&gt;.jar</code> file. Without having this path specified you may get an <code>org.jruby.exceptions.RaiseException: (LoadError) no such file to load&#8201;&#8212;&#8201;set</code> error ;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td><code>gems/asciidoctor-&lt;version&gt;/lib</code> specifies where the gems for Asciidoctor are located. Actually this path is located inside the <code>asciidoctorj-&lt;version&gt;.jar</code> file ;</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>The factory for the Asciidoctor object also specify the class loader to use.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+We consider this code to be placed inside an OSGi bundle
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>This solution has pros and cons:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><em>Pros:</em> you don&#8217;t need to extract the gems located in the asciidoctorj binary ;</p>
+</li>
+<li>
+<p><em>Cons:</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>the version of asciidoctor is hard coded ;</p>
+</li>
+<li>
+<p>the version of ruby is hard coded.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -2268,10 +2524,13 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 </div>
 </div>
 <div class="sect1">
-<h2 id="running-asciidoctorj-on-wildfly-as"><a class="anchor" href="#running-asciidoctorj-on-wildfly-as"></a>Running AsciidoctorJ on WildFly AS</h2>
+<h2 id="wildfly-kludge"><a class="anchor" href="#wildfly-kludge"></a>Running AsciidoctorJ on WildFly AS</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>If you want to use AsciidoctorJ in an application deployed on <em class="app">WildFly AS</em>, you have to follow the instruction below:</p>
+<p>If you want to use AsciidoctorJ in an application deployed on <em class="app">WildFly AS</em>, you have to install AsciidoctorJ as a JBoss Module.</p>
+</div>
+<div class="paragraph">
+<p>Follow the steps below:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -2288,19 +2547,31 @@ Let&#8217;s see a summary of these flags and in which environments they can be u
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
 <span class="tag">&lt;module</span> <span class="attribute-name">xmlns</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">urn:jboss:module:1.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.asciidoctor</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
-  <span class="tag">&lt;resources&gt;</span>
-    <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoctorj-1.5.0.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jcommander-1.32.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jruby-complete-1.7.9.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;/resources&gt;</span>
-
-  <span class="tag">&lt;dependencies&gt;</span>
-    <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.management.j2ee.api</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-    <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.api</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
-  <span class="tag">&lt;/dependencies&gt;</span>
+    <span class="tag">&lt;resources&gt;</span>
+        <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">asciidoctorj-1.5.4.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jcommander-1.35.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;resource-root</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">jruby-complete-1.7.21.jar</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/resources&gt;</span>
+    <span class="tag">&lt;dependencies&gt;</span>
+        <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sun.jdk</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">export</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;imports&gt;</span>
+                <span class="tag">&lt;include</span> <span class="attribute-name">path</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">sun/misc/Unsafe</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span>
+            <span class="tag">&lt;/imports&gt;</span>
+        <span class="tag">&lt;/module&gt;</span>
+        <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.management.j2ee.api</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">javax.api</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+        <span class="tag">&lt;module</span> <span class="attribute-name">name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.slf4j</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+    <span class="tag">&lt;/dependencies&gt;</span>
 <span class="tag">&lt;/module&gt;</span></code></pre>
 </div>
 </div>
+</li>
+<li>
+<p>Copy the jar files into the same folder as the <em>module.xml</em> file.</p>
+</li>
+<li>
+<p>Make sure the version numbers of the jar files agree with what&#8217;s in the current set.
+Restart WildFly for the new module to take effect.</p>
 </li>
 <li>
 <p>Add a dependency on your Java archive to this WildFly module using one of the following options:</p>
@@ -2327,7 +2598,7 @@ Dependencies: org.asciidoctor
   <span class="tag">&lt;dependency&gt;</span>
     <span class="tag">&lt;groupId&gt;</span>org.asciidoctor<span class="tag">&lt;/groupId&gt;</span>
     <span class="tag">&lt;artifactId&gt;</span>asciidoctorj<span class="tag">&lt;/artifactId&gt;</span>
-    <span class="tag">&lt;version&gt;</span>1.5.2<span class="tag">&lt;/version&gt;</span>
+    <span class="tag">&lt;version&gt;</span>1.5.4<span class="tag">&lt;/version&gt;</span>
     <span class="tag">&lt;scope&gt;</span>provided<span class="tag">&lt;/scope&gt;</span> <i class="conum" data-value="1"></i><b>(1)</b>
     ...
   <span class="tag">&lt;/dependency&gt;</span>
@@ -2399,8 +2670,8 @@ Final releases are released to both Maven Central and Bintray.</p>
 <h2 id="resources"><a class="anchor" href="#resources"></a>Resources</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The source code for AsciidoctorJ, including the latest developments and issues, can be found in the project&#8217;s <a href="http://github.com/asciidoctor/asciidoctorj">repository</a> on GitHub.
-If you identify an issue while using AsciidoctorJ, please don&#8217;t hesitate to <a href="http://github.com/asciidoctor/asciidoctorj/issues">file a bug report</a>.
+<p>The source code for AsciidoctorJ, including the latest developments and issues, can be found in the project&#8217;s <a href="https://github.com/asciidoctor/asciidoctorj">repository</a> on GitHub.
+If you identify an issue while using AsciidoctorJ, please don&#8217;t hesitate to <a href="https://github.com/asciidoctor/asciidoctorj/issues">file a bug report</a>.
 Also, don&#8217;t forget to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>, where you can ask questions and leave comments.</p>
 </div>
 </div>
