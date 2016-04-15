@@ -1,18 +1,27 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor Diagram | Asciidoctor</title><meta name="author" content="Pepijn Van Eeckhoudt"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Asciidoctor Diagram</h1></div></div></header><div class="row"><div class="large-4 columns"><ul class="button-group toolbar" style="margin-bottom: -0.3333em"><li><a class="tiny secondary button toggle-navigation" href="#"><i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i> Nav</a></li><li><span class="separator"></span></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoctor-diagram.adoc">Edit</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoctor-diagram.adoc">Raw</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoctor-diagram.adoc">History</a></li><li><i class="fa fa-github fa-fw"></i></li></ul></div></div><div class="row"><div class="large-4 columns secondary navigation"><div id="toc" class="toc"><div class="title" id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Asciidoctor Diagram | Asciidoctor</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Asciidoctor Diagram</h1></div></div></header><div class="row"><div class="large-4 columns"><ul class="button-group toolbar" style="margin-bottom: -0.3333em"><li><a class="tiny secondary button toggle-navigation" href="#"><i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i> Nav</a></li><li><span class="separator"></span></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoctor-diagram.adoc">Edit</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoctor-diagram.adoc">Raw</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoctor-diagram.adoc">History</a></li><li><i class="fa fa-github fa-fw"></i></li></ul></div></div><div class="row"><div class="large-4 columns secondary navigation"><div id="toc" class="toc"><div class="title" id="toctitle">Table of Contents</div><ul class="sectlevel1">
 <li><a href="#installation">Installation</a></li>
 <li><a href="#creating-a-diagram">Creating a Diagram</a></li>
 <li><a href="#generating-a-diagram-from-a-terminal">Generating a Diagram from a Terminal</a></li>
-<li><a href="#generating-a-diagram-from-a-program">Generating a Diagram from a Program</a>
+<li><a href="#advanced-usage">Advanced Usage</a>
 <ul class="sectlevel2">
-<li><a href="#advanced-api-usage">Advanced API Usage</a></li>
+<li><a href="#enabling-extensions">Enabling Extensions</a></li>
+<li><a href="#diagram-block-macro">Diagram Block Macro</a></li>
+<li><a href="#image-output-location">Image Output Location</a></li>
+<li><a href="#specifying-diagram-generator-paths">Specifying Diagram Generator Paths</a></li>
+<li><a href="#meme">The Meme Extension</a></li>
 </ul>
 </li>
 </ul></div></div><div class="large-8 columns content"><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor Diagram is a set of extensions for Asciidoctor that allow you to embed diagrams written using the <a href="http://plantuml.sourceforge.net">PlantUML</a>, <a href="http://www.graphviz.org">Graphviz</a>, <a href="http://ditaa.sourceforge.net/">ditaa</a>, or <a href="https://github.com/christiangoltz/shaape">Shaape</a> syntax inside your AsciiDoc documents.
-The extension runs the diagram processor to generate an SVG, PNG, or TXT file from the input text.
-The generated file is then inserted into your rendered document.</p>
+<p>Asciidoctor Diagram is a set of Asciidoctor extensions that enable you to add diagrams, which you describe using plain text, to your AsciiDoc document.</p>
+</div>
+<div class="paragraph">
+<p>The extensions support BlockDiag (BlockDiag, SeqDiag, ActDiag, NwDiag), Ditaa, GraphViz, Mermaid, PlantUML, Shaape and WaveDrom syntax.</p>
+</div>
+<div class="paragraph">
+<p>Each extension runs the diagram processor to generate an SVG, PNG, or TXT file from the input text.
+The generated file is then inserted into your converted document.</p>
 </div>
 <div class="paragraph">
 <p>Asciidoctor Diagram was inspired by the <a href="https://code.google.com/p/asciidoc-plantuml/">AsciiDoc PlantUML filter</a>.</p>
@@ -23,8 +32,7 @@ The generated file is then inserted into your rendered document.</p>
 <h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor Diagram is a RubyGem.
-You can install it using the <code>gem</code> command or via Bundler by adding it to your application&#8217;s Gemfile.</p>
+<p>Asciidoctor Diagram is a RubyGem, which can be installed using the <code>gem</code> or <code>bundle</code> commands.</p>
 </div>
 <div class="paragraph">
 <p>You can install the Asciidoctor Diagram gem by typing <code>gem install</code> in the CLI.</p>
@@ -35,21 +43,13 @@ You can install it using the <code>gem</code> command or via Bundler by adding i
 </div>
 </div>
 <div class="paragraph">
-<p>Alternatively, you can install it using Bundler.</p>
+<p>by first adding the following entry to your project&#8217;s <em class="path">Gemfile</em>.</p>
 </div>
 <div class="listingblock">
 <div class="title">Gemfile</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">gem <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">~&gt; 1.4.0</span><span class="delimiter">'</span></span> <i class="conum" data-value="1"></i><b>(1)</b></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">gem <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">~&gt; 1.4.0</span><span class="delimiter">'</span></span></code></pre>
 </div>
-</div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>Add this line to your application&#8217;s Gemfile and save the file.</td>
-</tr>
-</table>
 </div>
 <div class="paragraph">
 <p>Then execute <code>bundle</code> in the CLI.</p>
@@ -70,9 +70,9 @@ You can install it using the <code>gem</code> command or via Bundler by adding i
 <div class="listingblock">
 <div class="title">Anatomy of a diagram</div>
 <div class="content">
-<pre class="nowrap">[block-name, generated-file-name, generated-file-extension] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
+<pre class="nowrap">[diagram-type, generated-file-name, generated-image-format] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b>
 .... <i class="conum" data-value="4"></i><b>(4)</b>
-ditaa, Graphviz, or PlantUML syntax
+Diagram in appropriate syntax
 ....</pre>
 </div>
 </div>
@@ -80,44 +80,136 @@ ditaa, Graphviz, or PlantUML syntax
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The first position in the attribute list assigns the block&#8217;s name.</td>
+<td>The first positional attribute in the attribute list specifies the diagram that is being used.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The second, optional position assigns a file name (i.e. <code>target</code>) to the generated diagram. If a target is not specified an auto-generated name will be used.</td>
+<td>The second, optional positional attribute assigns a file name (i.e. <code>target</code>) to the generated diagram. If a target is not specified an auto-generated name will be used.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The third, optional position assigns a file extension (i.e. <code>format</code>) to the generated diagram.</td>
+<td>The third, optional positional attribute specifies the image format to create, specified as a three character file extension.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="4"></i><b>4</b></td>
-<td>Place the attribute list directly on top of the delimited literal block (<code>&#8230;&#8203;.</code>). Diagram block names can also be assigned to open blocks (<code>--</code>).</td>
+<td>Place the attribute list directly on top of the delimited literal block (<code>&#8230;&#8203;.</code>). You can also use an open block as an alternative (<code>--</code>).</td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
-<p>The following block names and output formats are available:</p>
+<p>The following diagram types and output formats are available:</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>plantuml</code></dt>
-<dd>
-<p>Supports <code>png</code>, <code>svg</code> and <code>txt</code> output formats.</p>
-</dd>
-<dt class="hdlist1"><code>graphviz</code></dt>
-<dd>
-<p>Supports <code>png</code> and <code>svg</code> output formats.</p>
-</dd>
-<dt class="hdlist1"><code>ditaa</code></dt>
-<dd>
-<p>Supports the <code>png</code> output format.</p>
-</dd>
-</dl>
-</div>
-<div class="paragraph">
-<p>Detailed descriptions and examples of the diagramming languages is available on the <a href="http://plantuml.sourceforge.net/">PlantUML</a>, <a href="http://www.graphviz.org/content/dot-language">Graphviz</a> and <a href="http://ditaa.sourceforge.net/">ditaa</a> websites.</p>
-</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+<col style="width: 20%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Diagram Type</th>
+<th class="tableblock halign-center valign-top">gif</th>
+<th class="tableblock halign-center valign-top">png</th>
+<th class="tableblock halign-center valign-top">svg</th>
+<th class="tableblock halign-center valign-top">txt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/actdiag/index.html">actdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com">blockdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://ditaa.sourceforge.net/">ditaa</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://www.graphviz.org/content/dot-language">graphviz</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="#meme">meme</a></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://knsv.github.io/mermaid/">mermaid</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">nwdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">packetdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://plantuml.sourceforge.net">plantuml</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">rackdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/seqdiag/index.html">seqdiag</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="https://github.com/christiangoltz/shaape">shaape</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="http://wavedrom.com">wavedrom</a></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-center valign-top"></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
 <p>The example below illustrates the structure of a basic ditaa block written directly in an AsciiDoc document.</p>
 </div>
@@ -150,7 +242,7 @@ ditaa, Graphviz, or PlantUML syntax
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
+<img src="/images/images/asciidoctor-diagram-process.png" alt="Asciidoctor Diagram process diagram" width="650" height="319">
 </div>
 <div class="title">Rendered ditaa diagram</div>
 </div>
@@ -199,21 +291,21 @@ DiagramBlock &lt;|-- PlantUmlBlock
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>The diagram is written in PlantUML so the first potion in the attribute list is assigned the <code>plantuml</code> block name.</td>
+<td>The diagram is written in PlantUML so the first positional attribute is assigned the <code>plantuml</code> diagram type.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>The name of the generated diagram file (target) is written in the second position.</td>
+<td>The name of the generated diagram file (target) is written in the second positional attribute.</td>
 </tr>
 <tr>
 <td><i class="conum" data-value="3"></i><b>3</b></td>
-<td>The output format is entered in the third position.</td>
+<td>The output format is entered in the third positional attribute.</td>
 </tr>
 </table>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="/images/asciidoctor-diagram-classes.png" alt="Asciidoctor Diagram classes diagram">
+<img src="/images/images/asciidoctor-diagram-classes.png" alt="Asciidoctor Diagram classes diagram">
 </div>
 <div class="title">Rendered PlantUML diagram</div>
 </div>
@@ -251,59 +343,239 @@ The command implicitly sets the <code>-r</code> and <code>-b</code> flags for EP
 </div>
 </div>
 <div class="sect1">
-<h2 id="generating-a-diagram-from-a-program"><a class="anchor" href="#generating-a-diagram-from-a-program"></a>Generating a Diagram from a Program</h2>
+<h2 id="advanced-usage"><a class="anchor" href="#advanced-usage"></a>Advanced Usage</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="enabling-extensions"><a class="anchor" href="#enabling-extensions"></a>Enabling Extensions</h3>
 <div class="paragraph">
-<p>If you&#8217;re using Asciidoctor&#8217;s Ruby API, invoke Asciidoctor diagram with a <code>require</code> and the following wrapper script.
-The <code>require</code> statement is the equivalent to the <code>-r</code> flag.</p>
+<p>In your program, you can either load and register the entire set of diagram extensions</p>
 </div>
 <div class="listingblock">
-<div class="title">Load Asciidoctor diagram in a program</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor/cli</span><span class="delimiter">'</span></span>
-require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span>
-
-invoker = <span class="constant">Asciidoctor</span>::<span class="constant">Cli</span>::<span class="constant">Invoker</span>.new <span class="predefined-constant">ARGV</span>
-invoker.invoke!
-exit invoker.code</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="advanced-api-usage"><a class="anchor" href="#advanced-api-usage"></a>Advanced API Usage</h3>
 <div class="paragraph">
-<p>In your program, you can require one or more of the following files:</p>
+<p>or load and register each extension individually.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1"><code>asciidoctor-diagram</code></dt>
-<dd>
-<p>Enable and register all of the diagramming extensions</p>
-</dd>
-<dt class="hdlist1"><code>asciidoctor-diagram/ditaa</code></dt>
-<dd>
-<p>Enable and register the ditaa extension</p>
-</dd>
-<dt class="hdlist1"><code>asciidoctor-diagram/graphviz</code></dt>
-<dd>
-<p>Enable and register the Graphviz extension</p>
-</dd>
-<dt class="hdlist1"><code>asciidoctor-diagram/plantuml</code></dt>
-<dd>
-<p>Enable and register the PlantUML extension</p>
-</dd>
-</dl>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor-diagram/&lt;extension_name&gt;</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>&lt;extension_name&gt;</code> can be one of <code>blockdiag</code>, <code>ditaa</code>, <code>graphviz</code>, <code>meme</code>, <code>mermaid</code>, <code>plantuml</code>, <code>shaape</code>, or <code>wavedrom</code>.</p>
 </div>
 <div class="paragraph">
 <p>Requiring one or more of these files will automatically register the extensions for all processed documents.</p>
 </div>
 <div class="paragraph">
-<p>If you need more fine grained control over when the extensions are enabled, <code>asciidoctor-diagram/ditaa/extension</code>, <code>asciidoctor-diagram/graphviz/extension</code> and <code>asciidoctor-diagram/plantuml/extension</code> can be used instead.
-These load the extensions but do not register them.
+<p>If you need more fine grained control over when the extensions are enabled, <code>asciidoctor-diagram/&lt;extension_name&gt;/extension</code> can be used instead.
+This loads the extensions but does not register it in the Asciidoctor extension registry.
 You can then manually register the extensions at the appropriate times using the <code>Asciidoctor::Extensions</code> API.</p>
 </div>
 <div class="paragraph">
 <p>This document explains the various features of asciidoctor-diagram blocks using ditaa diagrams as an example.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="diagram-block-macro"><a class="anchor" href="#diagram-block-macro"></a>Diagram Block Macro</h3>
+<div class="paragraph">
+<p>The diagram extensions can also be used in in block macro form.</p>
+</div>
+<div class="listingblock">
+<div class="title">Anatomy of a diagram block macro</div>
+<div class="content">
+<pre class="nowrap">block-name::source-file-name[generated-file-extension] <i class="conum" data-value="1"></i><b>(1)</b> <i class="conum" data-value="2"></i><b>(2)</b> <i class="conum" data-value="3"></i><b>(3)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The macro name is the same as the block name in the block form.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The source file name specifies the external file that contains the diagram source code.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The first, optional, positional attribute assigns the file extension (i.e. <code>format</code>) to the generated diagram.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>When the source file name is a relative path it is resolved with respect to the location of the document being processed.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="image-output-location"><a class="anchor" href="#image-output-location"></a>Image Output Location</h3>
+<div class="paragraph">
+<p>When Asciidoctor Diagram writes images to disk it will go over the following options in order to determine where to write the files.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>\{imagesoutdir\}</code> if the <code>imagesoutdir</code> attribute has been specified</p>
+</li>
+<li>
+<p><code>\{outdir\}/\{imagesdir\}</code> if the <code>outdir</code> attribute has been specified</p>
+</li>
+<li>
+<p><code>\{to_dir\}/\{imagesdir\}</code> if the <code>to_dir</code> attribute has been specified</p>
+</li>
+<li>
+<p><code>\{base_dir\}/\{imagesdir\}</code></p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="specifying-diagram-generator-paths"><a class="anchor" href="#specifying-diagram-generator-paths"></a>Specifying Diagram Generator Paths</h3>
+<div class="paragraph">
+<p>Asciidoctor Diagram depends on external tools to generates images.
+In most cases it will locate these tools automatically for you by looking for specific executables in each directory in the <code>PATH</code> environment variable.
+In case you&#8217;ve installed a tool in a way where the executable is not in the <code>PATH</code>, you can override its location manually using document attributes.
+The following table lists the tools that are required for each diagram type, the location where they can be downloaded and the document attribute you can use to override their locations.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-right valign-top">Diagram Type</th>
+<th class="tableblock halign-left valign-top">Tool</th>
+<th class="tableblock halign-left valign-top">Attribute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">actdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/actdiag/index.html">ActDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>actdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">blockdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com">BlockDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>blockdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">ditaa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://java.sun.com">Java</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">graphviz</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.graphviz.org">GraphViz</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>dot</code> or <code>graphvizdot</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">meme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://www.imagemagick.org">ImageMagick</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>convert</code> and <code>identify</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">mermaid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://knsv.github.io/mermaid/">Mermaid</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>mermaid</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">nwdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">NwDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>nwdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">packetdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">NwDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>packetdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">plantuml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://java.sun.com">Java</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>java</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">rackdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/nwdiag/index.html">NwDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rackdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">seqdiag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://blockdiag.com/en/seqdiag/index.html">SeqDiag</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>seqdiag</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock">shaape</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/christiangoltz/shaape">Shaape</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>shaape</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top" rowspan="2"><p class="tableblock">wavedrom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/wavedrom/wavedrom.github.io/releases">WaveDrom Editor</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wavedrom</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-right valign-top"><p class="tableblock"><a href="https://github.com/wavedrom/cli">WaveDrom CLI</a> and <a href="http://phantomjs.org">PhantomJS</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>wavedrom</code> and <code>phantomjs</code></p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>If for instance you installed <code>actdiag</code> in <code>/home/me/actdiag/bin</code> and this path is not included in the <code>PATH</code> you can specify its location on the command line</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -a actdiag=/home/me/actdiag/bin/actdiag -r asciidoctor-diagram sample.adoc</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="meme"><a class="anchor" href="#meme"></a>The Meme Extension</h3>
+<div class="paragraph">
+<p>The meme extension provides a basic <em><code>Advice Animal</code></em> style image generator.
+It&#8217;s usage is easiest to explain with an example.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="nowrap">meme::yunoguy.jpg[Doc writers,Y U NO \\ AsciiDoc]</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The target of the block macro tells the extension which image to use as background.
+The first two positional attributes are <code>top</code> and <code>bottom</code> and are used for the top and bottom label.
+Occurrences of <code>\\</code> surrounded by whitespace are interpreted as line breaks.</p>
+</div>
+<div class="paragraph">
+<p>The block macro also supports the following named attributes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>fillColor</code>: the fill color for the text. Defaults to <code>white</code>.</p>
+</li>
+<li>
+<p><code>strokeColor</code>:  the outline color for the text. Defaults to <code>black</code>.</p>
+</li>
+<li>
+<p><code>strokeWidth</code>:  the width of the text outline. Defaults to <code>2</code>.</p>
+</li>
+<li>
+<p><code>font</code>: the font face to use for the text. Defaults to <code>Impact</code>.</p>
+</li>
+<li>
+<p><code>options</code>: a comma separate list of flags that modify the image rendering. Currently only <code>noupcase</code> is supported which disable upper casing the labels.</p>
+</li>
+<li>
+<p><code>target</code> (3rd positional attribute): the basename of the file to generate. If not specified an auto-generated name will be used.</p>
+</li>
+<li>
+<p><code>format</code> (4th positional attribute): the output image format. The meme extension supports <code>png</code> and <code>gif</code>.</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
