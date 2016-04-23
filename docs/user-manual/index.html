@@ -23164,6 +23164,515 @@ Should be treated as read-only.</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a></p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fragment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hints to parser that document is a fragment and it should not enforce proper section nesting.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">General content and formatting</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">asset-uri-scheme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls which protocol is used for assets hosted on a CDN.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em>, http or https</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cache-uri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, cache content read from URIs.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#caching-uri-content">Caching URI Content</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">data-uri</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Embed graphics as data-uri elements in HTML elements so the file is completely self-contained.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Images are linked, not embedded).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#managing-images">Managing Images</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Read input from one or more DocBook info files.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of the following values: shared, private, shared-head, private-head, shared-footer or private-footer</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docinfo-attributes-and-file-names">Docinfo attributes and file names</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfodir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The location where docinfo files are resolved.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The base directory.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docinfo-attributes-and-file-names">Docinfo attributes and file names</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">docinfosubs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The AsciiDoc substitutions that get applied to docinfo content.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma-separated list of substitution names</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docinfo-attributes-and-file-names">Docinfo attributes and file names</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">doctype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the output document type.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">article</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">article, book, inline or manpage</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#document-types">Document Types</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eqnums</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls automatic equation numbering on LaTeX blocks in HTML output (MathJax).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Equation numbering is off)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (alias for AMS), AMS, all, none</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stem">Equations and Formulas</a>, <a href="https://docs.mathjax.org/en/v2.5-latest/tex.html#automatic-equation-numbering">Equation numbering in MathJax</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hardbreaks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Preserve hard line breaks in the input.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#line-breaks">Line Breaks</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hide-uri-scheme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hides the URI scheme for all raw links.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#url">URLs</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-cdn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the CDN used to resolve the Font Awesome stylesheet.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdnjs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the name of the icon font stylesheet.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font-awesome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-remote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, allows use of a CDN for resolving the icon font.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">icons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chooses icons instead of text for admonitions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font or image</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition-icons">Admonition icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconsdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where admonition icons are stored (when <code>icons</code> is set to <code>image</code>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{imagesdir}/icons (or ./images/icons if imagesdir is not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imagesdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where image files are resolved.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Same directory as document).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">linkattrs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parse attributes inside the link macro.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Do not parse).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#url">URLs</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nofooter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suppresses rendering of the footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#footer-docinfo-files">Footer docinfo files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nofootnotes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Turn off display of footnotes.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-footnotes">Footnotes</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">noheader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Suppresses rendering of the header.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#doc-header">Header</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">outfilesuffix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default file extension of output file (includes leading period).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set according to backend (<code>.html</code> for <code>html</code>, <code>.xml</code> for <code>docbook</code>, etc).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file extension.</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#navigating-between-source-files">Navigating Between Source Files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pagewidth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Page width, used to calculate the absolute width of tables in the DocBook output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">425</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">relfileprefix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The path prefix to add to relative xrefs.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A path segment.</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#navigating-between-source-files">Navigating Between Source Files</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skip-front-matter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, consume YAML-style front matter at the top of the document and store it in the <code>front-matter</code> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#front-matter-added-for-static-site-generators">Front Matter Added for Static Site Generators</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">showtitle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, displays an embedded document&#8217;s title.
+Mutually exclusive with the <code>notitle</code> attribute.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#document-title">Document Title</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stem</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Enables mathematics processing or sets the processor used.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (defaults to asciimath), asciimath or latexmath</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#stem-in">Inline Stem Content</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tabsize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, converts tabs to spaces in verbatim content blocks (e.g. listing, literal).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0 or more</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webfonts</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Control whether webfonts are loaded, and which ones, when using the default stylesheet.
+The value populates the <code>family</code> query string parameter in the Google Fonts URL.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (use default fonts)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em>, collection of Google Fonts</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a Theme</a> and <a href="https://github.com/asciidoctor/asciidoctor.org/issues/410">issue #410</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">xmlns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The XML namespace to add to the DocBook 4.5 document. (The DocBook 5 document always declares a namespace).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (alias for the DocBook namespace) or a valid XML namespace.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docbook">DocBook</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Code highlighting and formatting</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coderay-css</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls whether CodeRay uses CSS classes or inline styles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class or style</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#coderay">CodeRay</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coderay-linenums-mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets how Coderay inserts line numbers into source listings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table or inline</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#coderay">CodeRay</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coderay-unavailable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, tells the processor not to attempt to load CodeRay.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#coderay">CodeRay</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">highlightjsdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of the highlight.js source code highlighter library.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#highlight-js">highlight.js</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">highlightjs-theme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the name of the theme used by the highlight.js source code highlighter.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">github</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A style name recognized by highlight.js.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#highlight-js">highlight.js</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prettifydir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of the prettify source code highlighter library.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Uses CDN).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#source-code-blocks">Source Code and Syntax Highlighting</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prettify-theme</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the name of the theme used by the prettify source code highlighter.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prettify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A style name recognized by prettify.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#source-code-blocks">Source Code and Syntax Highlighting</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">prewrap</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Wrap wide code listings.
+Sets the default behavior only; you can still switch off wrapping on specific listings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (Code listing will wrap long lines, not scroll).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#to-wrap-or-to-scroll">To Wrap or to Scroll</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pygments-css</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Controls whether Pygments uses CSS classes or inline styles.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">class or style</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#pygments">Pygments</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pygments-linenums-mode</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets how Pygments inserts line numbers into source listings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">table or inline</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#pygments">Pygments</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pygments-style</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the name of the style used by the Pygments source code highlighter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A style name recognized by Pygments.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#pygments">Pygments</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pygments-unavailable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, tells the processor not to attempt to load Pygments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#pygments">Pygments</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source-highlighter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source code highlighter to use.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">coderay, highlightjs, prettify or pygments</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#source-code-blocks">Source Code and Syntax Highlighting</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source-indent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Normalize block indentation in code listings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Indentation is not modified).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#normalize-block-indentation">Normalize Block Indentation</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">source-language</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Set the default language for source code listings.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Code language name in lowercase.</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#source-code-blocks">Source Code and Syntax Highlighting</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">HTML styling</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">copycss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, copy the CSS files to the output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (File is copied if <code>linkcss</code> is set).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a Theme</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">css-signature</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, assign the value to the <code>id</code> attribute of the <code>&lt;body&gt;</code> element (HTML only).
+The prefered approach is to assign an ID to the document title.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid XML ID name.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">linkcss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, link to the stylesheet instead of embedding it.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#styling-the-html-with-css">Styling the HTML with CSS</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max-width</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Constrain the maximum width of the document body.
+<strong>Not recommended.
+Use custom CSS instead.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CSS length (e.g. 55em, 12cm, etc)</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stylesdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location for resolving CSS stylesheets.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">. (Same directory as document).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#creating-a-theme">Creating a Theme</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stylesheet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Name of a CSS stylesheet to replace the default one.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (The default stylesheet is used).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File name</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#applying-a-theme">Applying a Theme</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc-class</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The CSS class on the table of contents container.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">toc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid CSS class name.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#user-toc">Table of Contents</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Manpage attributes (relevant only when using the manpage doctype and/or converter)</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mantitle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata for manpage output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Based on content.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manvolnum</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata for manpage output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Based on content.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manname</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata for manpage output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Based on content.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manpurpose</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Metadata for manpage output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Based on content.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">man-linkstyle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Style the links in the manpage output.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">blue R &lt;&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A valid link format sequence.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mansource</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The source (e.g., application and version) to which the manpage pertains.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">manmanual</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Manual name displayed in the manpage footer.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#man-pages">Man Pages</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Secure attributes (can only be set from the commandline or API for security reasons)</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">allow-uri-read</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, allows content to be read from remote URIs.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CLI or API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#include-uri">Include Content from a URI</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">max-include-depth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Safety feature to prevent infinite looping.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">64</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&gt;=0</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock">CLI or API</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#include-directive">Include Directive</a></p></td>
+</tr>
 </tbody>
 </table>
 <div class="paragraph">
@@ -23364,7 +23873,7 @@ Instead, use numeric character references (e.g., &amp;#8364;).</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-04-22 16:53:39 UTC
+Last updated 2016-04-23 01:35:22 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
