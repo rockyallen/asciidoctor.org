@@ -791,8 +791,8 @@ table.CodeRay td.code>pre{padding:0}
 </li>
 <li><a href="#icons">48. Icons</a>
 <ul class="sectlevel2">
-<li><a href="#admonition-icons">48.1. Admonition icons</a></li>
-<li><a href="#inline-icons">48.2. Inline icons</a></li>
+<li><a href="#admonition-icons">48.1. Admonition Icons</a></li>
+<li><a href="#inline-icons">48.2. Inline Icons</a></li>
 </ul>
 </li>
 <li><a href="#source-code-blocks">49. Source Code and Syntax Highlighting</a>
@@ -14890,22 +14890,39 @@ Select a file in the file navigator and click btn:[Open].</code></pre>
 <h2 id="icons"><a class="anchor" href="#icons"></a>48. Icons</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Asciidoctor provides a number of ways to display icons in a document.
-The default stylesheet includes admonition and callout icons for the admonition and callout blocks, but you can also specify custom icons.
-Additionally, Asciidoctor can &#8220;draw&#8221; icons using the <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> font-based icon set.
-You can see the icon name options on the <a href="http://fortawesome.github.io/Font-Awesome//icons/">icons page</a>.</p>
+<p>Icons are used for admonition labels, callout numbers and inline symbols.
+Asciidoctor provides three strategies for display icons: as text, as images or as a characters selected from an icon font.
+The strategy is controlled using the <code>icons</code> attribute.
+The default behavior is to display the fallback text.</p>
 </div>
 <div class="paragraph">
-<p>When you aren&#8217;t using font-based icons, or you are using the DocBook backend, the icon set is limited to which icons you have in your <code>iconsdir</code> directory.</p>
+<p>If you want icons to display using images, set the <code>icons</code> attribute to an empty value in the document header.
+This strategy is recommended if you are converting to DocBook or you want an easy way to make HTML for viewing offline.
+The DocBook toolchain provides images for the admonition and callout icons, which you can replace with your own custom icons.
+If you use the inline icon macro, you&#8217;ll need to provide the images for those icons.</p>
+</div>
+<div class="paragraph">
+<p>Alternatively, you can have Asciidoctor &#8220;draw&#8221; icons using the <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome</a> font-based icon set.
+To use this feature, set the value of the <code>icons</code> document attribute to <code>font</code> in the document header.
+You can see the available icons on the <a href="http://fortawesome.github.io/Font-Awesome//icons/">icons page</a>.
+Using Font Awesome provides many more images, but requires online access by default.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The default CSS stylesheet (or any stylesheet produced by the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory">Asciidoctor stylesheet factory</a>) is required when using font-based icons.
+</td>
+</tr>
+</table>
 </div>
 <div class="sect2">
-<h3 id="admonition-icons"><a class="anchor" href="#admonition-icons"></a>48.1. Admonition icons</h3>
+<h3 id="admonition-icons"><a class="anchor" href="#admonition-icons"></a>48.1. Admonition Icons</h3>
 <div class="paragraph">
-<p>To use this feature, set the value of the <code>icons</code> document attribute to <code>font</code> in the <a href="#doc-header">document header</a>.
-Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block.</p>
-</div>
-<div class="paragraph">
-<p>Here&#8217;s an example, starting with the AsciiDoc source:</p>
+<p>Here&#8217;s an example using font icons, starting with the AsciiDoc source:</p>
 </div>
 <div class="listingblock">
 <div class="title">Set icons attribute in the document header</div>
@@ -14917,7 +14934,7 @@ NOTE: Asciidoctor supports font-based admonition icons, powered by Font Awesome!
 </div>
 </div>
 <div class="paragraph">
-<p>the HTML it produces:</p>
+<p>Asciidoctor will then emit HTML markup that selects an appropriate font character from the Font Awesome font for each admonition block:</p>
 </div>
 <div class="listingblock">
 <div class="title">Result: HTML output when the icons attribute is set</div>
@@ -14965,21 +14982,9 @@ Asciidoctor supports font-based admonition icons, powered by Font Awesome!
   <span class="attribute-name">href</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.min.css</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span></code></pre>
 </div>
 </div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-The default stylesheet (or any stylesheet produced by the <a href="http://github.com/asciidoctor/asciidoctor-stylesheet-factory">Asciidoctor stylesheet factory</a>) is required for this feature to work.
-</td>
-</tr>
-</table>
-</div>
 </div>
 <div class="sect2">
-<h3 id="inline-icons"><a class="anchor" href="#inline-icons"></a>48.2. Inline icons</h3>
+<h3 id="inline-icons"><a class="anchor" href="#inline-icons"></a>48.2. Inline Icons</h3>
 <div class="paragraph">
 <p>An icon can be inserted at an arbitrary place in paragraph content with an inline macro.</p>
 </div>
@@ -15079,7 +15084,7 @@ The file extension is set using the <code>icontype</code> attribute, which defau
 </div>
 </div>
 <div class="sect3">
-<h4 id="size-rotate-and-flip"><a class="anchor" href="#size-rotate-and-flip"></a>48.2.1. Size, rotate, and flip</h4>
+<h4 id="size-rotate-and-flip"><a class="anchor" href="#size-rotate-and-flip"></a>48.2.1. Size, Rotate, and Flip</h4>
 <div class="paragraph">
 <p>The icon macro has a few attributes that can be used to modify the size and orientation of the icon.
 At the moment, these are specific to Font Awesome and therefore only apply to HTML output when icon fonts are enabled.</p>
@@ -15170,7 +15175,7 @@ icon:heart[fw] heart</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="link-and-window"><a class="anchor" href="#link-and-window"></a>48.2.2. Link and window</h4>
+<h4 id="link-and-window"><a class="anchor" href="#link-and-window"></a>48.2.2. Link and Window</h4>
 <div class="paragraph">
 <p>Like an inline image, it&#8217;s possible to add additional metadata to an inline icon.</p>
 </div>
@@ -15207,7 +15212,7 @@ icon:heart[fw] heart</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="regular-icon-attributes"><a class="anchor" href="#regular-icon-attributes"></a>48.2.3. Regular icon attributes</h4>
+<h4 id="image-icon-attributes"><a class="anchor" href="#image-icon-attributes"></a>48.2.3. Image Icon Attributes</h4>
 <div class="paragraph">
 <p>Below are the possible attributes that apply in the case that font-based icons are <strong>not</strong> in use:</p>
 </div>
@@ -23265,54 +23270,6 @@ Should be treated as read-only.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#url">URLs</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-cdn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the CDN used to resolve the Font Awesome stylesheet.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">cdnjs</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-name</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the name of the icon font stylesheet.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">font-awesome</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-remote</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">If set, allows use of a CDN for resolving the icon font.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">icons</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Chooses icons instead of text for admonitions.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">font or image</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#admonition-icons">Admonition icons</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">iconsdir</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Where admonition icons are stored (when <code>icons</code> is set to <code>image</code>).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">{imagesdir}/icons (or ./images/icons if imagesdir is not set)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
-<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">imagesdir</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Where image files are resolved.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Same directory as document).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
-<td class="tableblock halign-center valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a></p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">linkattrs</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Parse attributes inside the link macro.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Do not parse).</p></td>
@@ -23417,6 +23374,70 @@ The value populates the <code>family</code> query string parameter in the Google
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em> (alias for the DocBook namespace) or a valid XML namespace.</p></td>
 <td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#docbook">DocBook</a></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Images and icons</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-cdn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the CDN used to resolve the Font Awesome stylesheet.
+Only used when <code>icons</code> attribute is set to <code>font</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdnjs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">URI</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Overrides the name of the icon font stylesheet.
+Only used when <code>icons</code> attribute is set to <code>font</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font-awesome</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>any</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconfont-remote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If set, allows use of a CDN for resolving the icon font.
+Only used when <code>icons</code> attribute is set to <code>font</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>empty</em></p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">icons</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Chooses icons instead of text for admonitions.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (image)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">font or image</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iconsdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where icons are stored.
+Only used when <code>icons</code> attribute is set to <code>image</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">{imagesdir}/icons (or ./images/icons if imagesdir is not set)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">icontype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">File type for image icons.
+Only used when <code>icons</code> attribute is set to <code>image</code>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">png</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">any, but typically jpg, tiff etc.</p></td>
+<td class="tableblock halign-center valign-top"><p class="tableblock"><span class="icon green"><i class="fa fa-check"></i></span></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#icons">Icons</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">imagesdir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where image files are resolved.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em> (Same directory as document).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Directory</p></td>
+<td class="tableblock halign-center valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#images">Images</a></p></td>
 </tr>
 <tr>
 <th class="tableblock halign-left valign-top" colspan="6"><p class="tableblock">Code highlighting and formatting</p></th>
@@ -24238,7 +24259,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-04-23 21:53:44 UTC
+Last updated 2016-04-26 05:59:14 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
