@@ -752,7 +752,8 @@ table.CodeRay td.code>pre{padding:0}
 <li><a href="#subs-mac">40.5. Macros</a></li>
 <li><a href="#post-replacements">40.6. Post Replacements</a></li>
 <li><a href="#applying-substitutions">40.7. Applying Substitutions</a></li>
-<li><a href="#preventing-substitutions">40.8. Preventing Substitutions</a></li>
+<li><a href="#incremental-substitutions">40.8. Incremental Substitutions</a></li>
+<li><a href="#preventing-substitutions">40.9. Preventing Substitutions</a></li>
 </ul>
 </li>
 <li><a href="#literal-text-and-blocks">41. Literal Text and Blocks</a></li>
@@ -13687,13 +13688,44 @@ System.out.println("Hello *bold* text"). <i class="conum" data-value="2"></i><b>
 </tr>
 </table>
 </div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you are applying the same set of substitutions to numerous blocks, you should consider making them an attribute entry to ensure consistency.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:markup-in-source: verbatim,quotes
+
+[source,java,subs=&quot;{markup-in-source}&quot;]
+----
+System.out.println(&quot;Hello *bold* text&quot;).
+----</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another way to ensure consistency and keep your documents clean and simple is to use the <a href="#treeprocessor-example">Treeprocessor extension</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="incremental-substitutions"><a class="anchor" href="#incremental-substitutions"></a>40.8. Incremental Substitutions</h3>
 <div class="paragraph">
 <p>When you set the subs attribute on a block, you automatically remove all of its default substitutions.
 For example, if you set subs on a literal block, and assign it a value of <code>macros</code>, only macros are substituted.
 However, Asciidoctor also provides syntax to append or remove substitutions to a block&#8217;s default substitutions.</p>
 </div>
 <div class="paragraph">
-<p>You can add or remove a substitution from the default substitution list using the plus (<code>+</code>) and minus (<code>-</code>) modifiers.</p>
+<p>You can add or remove a substitution from the default substitution list using the plus (<code>+</code>) and minus (<code>-</code>) modifiers.
+These are known as <em class="term">incremental substitutions</em>.</p>
 </div>
 <div class="hdlist">
 <table>
@@ -13767,33 +13799,8 @@ content in 1 element
 <div class="paragraph">
 <p>In the above example, the quotes, then the special characters, and then the attributes substitutions will be applied to the listing block.</p>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>If you are applying the same set of substitutions to numerous blocks, you should consider making them an attribute entry to ensure consistency.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:markup-in-source: verbatim,quotes
-
-[source,java,subs=&quot;{markup-in-source}&quot;]
-----
-System.out.println(&quot;Hello *bold* text&quot;).
-----</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Another way to ensure consistency and keep your documents clean and simple is to use the <a href="#treeprocessor-example">Treeprocessor extension</a>.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
+<div class="sect3">
+<h4 id="applying-substitutions-to-inline-elements"><a class="anchor" href="#applying-substitutions-to-inline-elements"></a>40.8.1. Applying Substitutions to Inline Elements</h4>
 <div class="paragraph">
 <p>Custom substitutions can also be applied to some inline elements, such as the <a href="#pass-mac">pass macro</a>.</p>
 </div>
@@ -13813,8 +13820,9 @@ System.out.println(&quot;Hello *bold* text&quot;).
 </div>
 </div>
 </div>
+</div>
 <div class="sect2">
-<h3 id="preventing-substitutions"><a class="anchor" href="#preventing-substitutions"></a>40.8. Preventing Substitutions</h3>
+<h3 id="preventing-substitutions"><a class="anchor" href="#preventing-substitutions"></a>40.9. Preventing Substitutions</h3>
 <div class="paragraph">
 <p>Asciidoctor provides several approaches for preventing substitutions.</p>
 </div>
@@ -24291,7 +24299,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-14 03:37:30 UTC
+Last updated 2016-05-18 03:55:14 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
