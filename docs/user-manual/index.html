@@ -11024,12 +11024,15 @@ However, once inside the documentation, this leading block indent is no longer n
 <div class="ulist">
 <ul>
 <li>
-<p>When <code>indent</code> is 0, the leading block indent is stripped (tabs are also replaced with 4 spaces).</p>
+<p>When <code>indent</code> is 0, the leading block indent is stripped</p>
 </li>
 <li>
-<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped (tabs are also replaced with 4 spaces), then a block is indented by the number of columns equal to this value.</p>
+<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped, then the content is indented by the number of columns equal to this value.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>If the <code>tabsize</code> attribute is set on the block or the document, tabs are also replaced with the number of spaces specified by that attribute, regardless of whether the <code>indent</code> attribute is set.</p>
 </div>
 <div class="paragraph">
 <p>For example, this AsciiDoc source:</p>
@@ -16581,12 +16584,15 @@ However, once inside the documentation, this leading block indent is no longer n
 <div class="ulist">
 <ul>
 <li>
-<p>When <code>indent</code> is 0, the leading block indent is stripped (tabs are also replaced with 4 spaces).</p>
+<p>When <code>indent</code> is 0, the leading block indent is stripped</p>
 </li>
 <li>
-<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped (tabs are also replaced with 4 spaces), then a block is indented by the number of columns equal to this value.</p>
+<p>When <code>indent</code> is &gt; 0, the leading block indent is first stripped, then the content is indented by the number of columns equal to this value.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>If the <code>tabsize</code> attribute is set on the block or the document, tabs are also replaced with the number of spaces specified by that attribute, regardless of whether the <code>indent</code> attribute is set.</p>
 </div>
 <div class="paragraph">
 <p>For example, this AsciiDoc source:</p>
@@ -21961,9 +21967,11 @@ In Asciidoctor this could be implemented using an extension.</p></td>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>tabsize</code> (in-document and include directive)</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">in-document only</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">AsciiDoc Python applies it to all text, with a default of 8.
-Asciidoctor only applies it to blocks with a verbatim content model (listing, literal, etc), and it has no default (so tabs will not be expanded by default).
-For all other text, Asciidoctor tabs are fixed at 4 spaces, see <a href="#normalize-block-indentation">Normalize Block Indentation</a>.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AsciiDoc Python replaces tabs with spaces in all text, using a default tab size of 8.
+Asciidoctor only replaces tabs with spaces in verbatim content blocks (listing, literal, etc), and the attribute has no default.
+In other words, tabs are not expanded in verbatim content blocks unless this attribute is set on the block or the document.
+For all other text, Asciidoctor tabs are fixed at 4 spaces by the CSS.
+See <a href="#normalize-block-indentation">Normalize Block Indentation</a> for more detail.</p></td>
 </tr>
 </tbody>
 </table>
@@ -24300,7 +24308,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-05-18 04:02:53 UTC
+Last updated 2016-05-18 22:40:43 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
