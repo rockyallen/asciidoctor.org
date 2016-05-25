@@ -1,25 +1,33 @@
-<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Installing and Using the Asciidoctor Gradle Plugin | Asciidoctor</title><meta name="author" content="Andres Almiray"><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Installing and Using the Asciidoctor Gradle Plugin</h1></div></div></header><div class="row"><div class="large-4 columns"><ul class="button-group toolbar" style="margin-bottom: -0.3333em"><li><a class="tiny secondary button toggle-navigation" href="#"><i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i> Nav</a></li><li><span class="separator"></span></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoctor-gradle-plugin.adoc">Edit</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoctor-gradle-plugin.adoc">Raw</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoctor-gradle-plugin.adoc">History</a></li><li><i class="fa fa-github fa-fw"></i></li></ul></div></div><div class="row"><div class="large-4 columns secondary navigation"><div id="toc" class="toc"><div class="title" id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<!DOCTYPE html><!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]--><!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]--><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/stylesheets/styles.css"><script src="/javascripts/vendor/custom.modernizr.js"></script><title>Getting Started with the Asciidoctor Gradle Plugin | Asciidoctor</title><link rel="author" href="/humans.txt"></head><body class="antialiased"><nav class="top-bar"><ul class="title-area"><li class="name"><h1><a href="/">Asciidoctor</a></h1></li><li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li></ul><section class="top-bar-section"><ul class="right"><li><a href="/">About</a></li><li class="divider"></li><li><a href="/news/">News</a></li><li class="divider"></li><li><a href="http://gist.asciidoctor.org">Gist</a></li><li class="divider"></li><li><a href="https://github.com/asciidoctor">Code</a></li><li class="divider"></li><li><a href="http://discuss.asciidoctor.org">Discuss</a></li><li class="divider"></li><li><a href="/docs/">Docs</a></li><li class="divider"></li><li class="has-form"><a class="button" href="/docs/asciidoc-writers-guide/">Get Writing!</a></li></ul></section></nav><div class="container"><header><div class="row"><div class="large-12 columns"><h1>Getting Started with the Asciidoctor Gradle Plugin</h1></div></div></header><div class="row"><div class="large-4 columns"><ul class="button-group toolbar" style="margin-bottom: -0.3333em"><li><a class="tiny secondary button toggle-navigation" href="#"><i class="fa fa-toggle-on"></i><i class="fa fa-toggle-off"></i> Nav</a></li><li><span class="separator"></span></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/edit/master/docs/asciidoctor-gradle-plugin.adoc">Edit</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/raw/master/docs/asciidoctor-gradle-plugin.adoc">Raw</a></li><li><a class="tiny secondary button" href="https://github.com/asciidoctor/asciidoctor.org/commits/master/docs/asciidoctor-gradle-plugin.adoc">History</a></li><li><i class="fa fa-github fa-fw"></i></li></ul></div></div><div class="row"><div class="large-4 columns secondary navigation"><div id="toc" class="toc"><div class="title" id="toctitle">Table of Contents</div><ul class="sectlevel1">
 <li><a href="#installation">Installation</a></li>
-<li><a href="#usage">Usage</a></li>
-<li><a href="#compatibility-with-previous-releases">Compatibility With Previous Releases</a>
+<li><a href="#usage">Usage</a>
 <ul class="sectlevel2">
-<li><a href="#task-properties">Task Properties</a></li>
-<li><a href="#behavior">Behavior</a></li>
+<li><a href="#defining-sources">Defining Sources</a></li>
+<li><a href="#processing-auxiliary-files">Processing Auxiliary Files</a></li>
+<li><a href="#options-attributes">Options &amp; Attributes</a></li>
 </ul>
 </li>
 <li><a href="#configuration">Configuration</a></li>
-<li><a href="#custom-extensions">Custom Extensions</a>
+<li><a href="#adding-custom-extensions">Adding Custom Extensions</a>
 <ul class="sectlevel2">
-<li><a href="#external-library">External Library</a></li>
-<li><a href="#project-dependency">Project Dependency</a></li>
-<li><a href="#build-dependency">Build Dependency</a></li>
+<li><a href="#as-external-library">As External Library</a></li>
+<li><a href="#as-project-dependency">As Project Dependency</a></li>
+<li><a href="#as-inline-script">As Inline Script</a></li>
+<li><a href="#as-build-dependency">As Build Dependency</a></li>
 </ul>
 </li>
-<li><a href="#resources-and-help">Resources and Help</a></li>
+<li><a href="#compatibility-with-previous-releases">Appendix A: Compatibility With Previous Releases</a>
+<ul class="sectlevel2">
+<li><a href="#task-properties">Task Properties</a></li>
+<li><a href="#behavior">Behavior</a></li>
+<li><a href="#options-attributes-2">Options &amp; Attributes</a></li>
+</ul>
+</li>
+<li><a href="#resources-and-help">Appendix B: Resources and Help</a></li>
 </ul></div></div><div class="large-8 columns content"><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Asciidoctor Gradle Plugin</a> is the official means of using Asciidoctor to render your AsciiDoc documentation using <a href="http://www.gradle.org">Gradle</a>.</p>
+<p>The Getting Started with the Asciidoctor Gradle Plugin is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://gradle.org/">Gradle</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -28,7 +36,7 @@
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-This project is a port of the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven Plugin</a> founded by <a href="https://github.com/LightGuard">Jason Porter</a> and relies on the <a href="https://github.com/asciidoctor/asciidoctorj">Asciidoctor Java integration</a> founded by <a href="https://github.com/lordofthejars">Alex Soto</a>.
+This is a port of the <a href="https://github.com/asciidoctor/asciidoctor-maven-plugin">Asciidoctor Maven Plugin</a> project founded by <a href="https://github.com/LightGuard">@LightGuard</a> and relies on <a href="https://github.com/asciidoctor/asciidoctorj">AsciidoctorJ</a> founded by <a href="https://github.com/lordofthejars">@lordofthejars</a>.
 </td>
 </tr>
 </table>
@@ -50,11 +58,11 @@ This project is a port of the <a href="https://github.com/asciidoctor/asciidocto
     }
 
     dependencies {
-        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-gradle-plugin:1.5.0</span><span class="delimiter">'</span></span>
+        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-gradle-plugin:1.5.3</span><span class="delimiter">'</span></span>
     }
 }
 
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.gradle.asciidoctor</span><span class="delimiter">'</span></span></code></pre>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -66,48 +74,8 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <p>The plugin adds a new task named <code>asciidoctor</code>. This task exposes a few properties as part of its configuration.</p>
 </div>
 <div class="hdlist">
+<div class="title">Properties</div>
 <table>
-<tr>
-<td class="hdlist1">
-sourceDir
-</td>
-<td class="hdlist2">
-<p>where the asciidoc sources are. Type: File. Default: <code>src/asciidoc</code>.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-sourceDocumentNames
-</td>
-<td class="hdlist2">
-<p>an override to process multiple source files, which may be a subset of all
-files available in <code>${sourceDir}</code>. Type: FileCollection. Defaults to all files in <code>${sourceDir}</code>.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-outputDir
-</td>
-<td class="hdlist2">
-<p>where generated docs go. Type: File. Default: <code>$buildDir/asciidoc</code>.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-backends
-</td>
-<td class="hdlist2">
-<p>the backends to use. Type: Set&lt;String&gt;. Default: [<code>html5</code>].</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-options
-</td>
-<td class="hdlist2">
-<p>a Map specifying different options that can be sent to Asciidoctor.</p>
-</td>
-</tr>
 <tr>
 <td class="hdlist1">
 logDocuments
@@ -118,10 +86,81 @@ logDocuments
 </tr>
 <tr>
 <td class="hdlist1">
+separateOutputDirs
+</td>
+<td class="hdlist2">
+<p>specifies whether each backend should use a separate subfolder under <code>outputDir</code>.
+Default: <code>true</code></p>
+</td>
+</tr>
+</table>
+</div>
+<div class="hdlist">
+<div class="title">Methods</div>
+<table>
+<tr>
+<td class="hdlist1">
+sourceDir
+</td>
+<td class="hdlist2">
+<p>where the asciidoc sources are.
+Use either <code>sourceDir path</code>, <code>setSourceDir path</code> or <code>sourceDir=path</code>
+Type: File, but any object convertible with <code>project.file</code> can be passed.
+Default: <code>src/docs/asciidoc</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+sources
+</td>
+<td class="hdlist2">
+<p>specify which Asciidoctor source files to include by using an
+<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/tasks/util/PatternSet.html">Ant-style PatternSet</a>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+resources
+</td>
+<td class="hdlist2">
+<p>specify which additional files (image etc.) must be copied to output directory using a
+<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/file/CopySpec.html">CopySpec</a>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+outputDir
+</td>
+<td class="hdlist2">
+<p>where generated docs go.
+Use either <code>outputDir path</code>, <code>setOutputDir path</code> or <code>outputDir=path</code>
+Type: File, but any object convertible with <code>project.file</code> can be passed.
+Default: <code>$buildDir/asciidoc</code>.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+backends
+</td>
+<td class="hdlist2">
+<p>the backends to use.
+Use <code>backends</code> to append. Use <code>setBackends</code> or <code>backends=[]</code> to overwrite
+Type: Set&lt;String&gt;, but any type can be converted to String can be used.
+Default: [<code>html5</code>].</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
 gemPath
 </td>
 <td class="hdlist2">
-<p>one or more gem installation directories (separated by the system path separator). Type: String. Default: <code>null</code></p>
+<p>one or more gem installation directories (separated by the system path separator).
+Use <code>gemPath</code> to append. Use <code>setGemPath</code> or <code>gemPath='path</code> to overwrite.
+Use <code>asGemPath</code> to obtain a path string, separated by platform-specific separator.
+For backwards-compatibility, <code>setGemPath</code> and <code>gePath='string'</code> will accept a path string containing the
+platform-specific separator.
+Type: FileCollection, but any collection of objects convertible with <code>project.files</code> can be passed
+Default: empty</p>
 </td>
 </tr>
 <tr>
@@ -129,13 +168,37 @@ gemPath
 requires
 </td>
 <td class="hdlist2">
-<p>a set of Ruby modules to be included. Type: Set&lt;String&gt;. Default: empty.</p>
+<p>a set of Ruby modules to be included.
+Use <code>requires</code> to append. Use <code>setRequires</code> or <code>requires='name'</code> to overwrite.
+Type: Set&lt;String&gt;.
+Default: empty.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+options
+</td>
+<td class="hdlist2">
+<p>a Map specifying different options that can be sent to Asciidoctor.
+Use <code>options</code> to append, Use <code>setOptions</code> or <code>options=</code> to overwrite.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+attributes
+</td>
+<td class="hdlist2">
+<p>a Map specifying various document attributes that can be sent to Asciidoctor
+Use <code>attributes</code> to append, Use <code>setAttributes</code> or <code>attributes=</code> to overwrite.</p>
 </td>
 </tr>
 </table>
 </div>
+<div class="sect2">
+<h3 id="defining-sources"><a class="anchor" href="#defining-sources"></a>Defining Sources</h3>
 <div class="paragraph">
-<p>Sources may have any of the following extensions in order to be discovered:</p>
+<p>By default the plugin will search for sources under <code>sourceDir</code>. Sources may have any of the following extensions in
+order to be discovered:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -154,124 +217,76 @@ requires
 </ul>
 </div>
 <div class="paragraph">
-<p>The following attributes are automatically set by the <code>asciidoctor</code> task:</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-project-name
-</td>
-<td class="hdlist2">
-<p>matches <code>$project.name</code></p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-project-version
-</td>
-<td class="hdlist2">
-<p>matches <code>$project.version</code> (if defined). Empty String value if undefined</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-project-group
-</td>
-<td class="hdlist2">
-<p>matches <code>$project.group</code> (if defined). Empty String value if undefined</p>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>These attributes may be overridden by explicit user input.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="compatibility-with-previous-releases"><a class="anchor" href="#compatibility-with-previous-releases"></a>Compatibility With Previous Releases</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="task-properties"><a class="anchor" href="#task-properties"></a>Task Properties</h3>
-<div class="paragraph">
-<p>The following properties have been marked as deprecated. Developers are encouraged to migrate ASAP to the alternate
-properties.</p>
-</div>
-<div class="hdlist">
-<table>
-<tr>
-<td class="hdlist1">
-sourceDocumentName
-</td>
-<td class="hdlist2">
-<p>an override to process a single source file. Use <code>sourceDocumentNames</code> instead.</p>
-</td>
-</tr>
-<tr>
-<td class="hdlist1">
-backend
-</td>
-<td class="hdlist2">
-<p>the backend to use. Use <code>backends</code> instead.</p>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="behavior"><a class="anchor" href="#behavior"></a>Behavior</h3>
-<div class="paragraph">
-<p>Files specified in <code>sourceDocumentNames</code> must be relative to <code>sourceDir</code> and fully contained in <code>sourceDir</code>, in other words,
-it&#8217;s no longer possible to process documents placed outside of the project&#8217;s sources.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This plugin uses <code>asciidoctorj-1.5.0</code> by default, however, you can change this by
-defining a value on the asciidoctorj extension, like so</p>
+<p>To select only certain files use the <code>sources</code> method. This takes a closure which in turn configures an internal
+<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/tasks/util/PatternSet.html">PatternSet</a></p>
 </div>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctorj {
-    version = <span class="string"><span class="delimiter">'</span><span class="content">1.5.1-SNAPSHOT</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sources {
+  include <span class="string"><span class="delimiter">'</span><span class="content">toplevel.adoc</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Do not forget to add an entry to the <code>repositories</code> block pointing to Maven local if you&#8217;d like to run a local version
-of Asciidoctorj (such as an snapshot build for testing bleeding edge features). The following snippet is all you need.</p>
+<p>Source files are resolved relative to <code>sourceDir</code>.  Source files are also not allowed to start with an underscore.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="processing-auxiliary-files"><a class="anchor" href="#processing-auxiliary-files"></a>Processing Auxiliary Files</h3>
+<div class="paragraph">
+<p>Some backends require that additional files be copied across. The most common example are images for HTML backends. For
+this the <code>resources</code> method is used. It is provided with a closure that configures an internal
+<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/file/CopySpec.html">CopySpec</a></p>
 </div>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">repositories {
-    mavenLocal() <i class="conum" data-value="1"></i><b>(1)</b>
-    jcenter()    <i class="conum" data-value="2"></i><b>(2)</b>
-}
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">resources {
+  from(<span class="string"><span class="delimiter">'</span><span class="content">src/resources/images</span><span class="delimiter">'</span></span>) {
+    include <span class="string"><span class="delimiter">'</span><span class="content">images/**/*.png</span><span class="delimiter">'</span></span>
+    exclude <span class="string"><span class="delimiter">'</span><span class="content">images/**/notThisOne.png</span><span class="delimiter">'</span></span>
+  }
 
-asciidoctorj {
-    version = <span class="string"><span class="delimiter">'</span><span class="content">1.5.1-SNAPSHOT</span><span class="delimiter">'</span></span>
+  from( <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>buildDir<span class="inline-delimiter">}</span></span><span class="content">/downloads</span><span class="delimiter">&quot;</span></span> ) {
+    include <span class="string"><span class="delimiter">'</span><span class="content">deck.js/**</span><span class="delimiter">'</span></span>
+  }
+
+  into <span class="string"><span class="delimiter">&quot;</span><span class="content">./images</span><span class="delimiter">&quot;</span></span>
 }</code></pre>
 </div>
 </div>
-<div class="colist arabic">
-<table>
-<tr>
-<td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>resolves artifacts in your local Maven repository</td>
-</tr>
-<tr>
-<td><i class="conum" data-value="2"></i><b>2</b></td>
-<td>resolves artifacts in Bintray&#8217;s jcenter (where all other dependencies are found)</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>Files will be copied to below <code>${outputDir}/${backend}</code> (or just <code>${outputDir}</code> if <code>separateOutputDirs=false</code>)</p>
 </div>
+<div class="paragraph">
+<p>Unlike <code>sourceDir</code> files can be copied from anywhere in the filesystem.</p>
+</div>
+<div class="paragraph">
+<p>If <code>resources</code> is never set, the default behaviour is as if the following was called</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">resources {
+  from(sourceDir) {
+    include <span class="string"><span class="delimiter">'</span><span class="content">images/**</span><span class="delimiter">'</span></span>
+  }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do not want this behaviour, then it can be turned off by doing</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">resources {}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="options-attributes"><a class="anchor" href="#options-attributes"></a>Options &amp; Attributes</h3>
 <div class="paragraph">
 <p>The following options may be set using the task&#8217;s <code>options</code> property</p>
 </div>
@@ -289,9 +304,6 @@ asciidoctorj {
 <li>
 <p>doctype - String</p>
 </li>
-<li>
-<p>attributes - Map</p>
-</li>
 </ul>
 </div>
 <div class="paragraph">
@@ -302,16 +314,13 @@ a stylesheet for example. The following snippet shows a sample configuration def
 <div class="title">build.gradle</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor { <i class="conum" data-value="1"></i><b>(1)</b>
-    outputDir = <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">$</span>buildDir</span><span class="content">/docs</span><span class="delimiter">&quot;</span></span>)
-    options = [
-        <span class="key">doctype</span>: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>,
-        <span class="key">attributes</span>: [
-            <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
-            toc                 : <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-            idprefix            : <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-            idseparator         : <span class="string"><span class="delimiter">'</span><span class="content">-</span><span class="delimiter">'</span></span>
-        ]
-    ]
+    outputDir <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">${</span>buildDir<span class="inline-delimiter">}</span></span><span class="content">/docs</span><span class="delimiter">&quot;</span></span>
+    options <span class="key">doctype</span>: <span class="string"><span class="delimiter">'</span><span class="content">book</span><span class="delimiter">'</span></span>, <span class="key">ruby</span>: <span class="string"><span class="delimiter">'</span><span class="content">erubis</span><span class="delimiter">'</span></span>
+
+    attributes <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
+                toc                 : <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
+                idprefix            : <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
+                idseparator         : <span class="string"><span class="delimiter">'</span><span class="content">-</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -319,19 +328,38 @@ a stylesheet for example. The following snippet shows a sample configuration def
 <table>
 <tr>
 <td><i class="conum" data-value="1"></i><b>1</b></td>
-<td>append below the line: <code>apply plugin: 'org.asciidoctor.gradle.asciidoctor'</code></td>
+<td>append below the line: <code>apply plugin: 'org.asciidoctor.convert'</code></td>
 </tr>
 </table>
 </div>
 <div class="paragraph">
+<p>The following attributes are automatically set by the <code>asciidoctor</code> task:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>project-name : matches <code>$project.name</code></p>
+</li>
+<li>
+<p>project-version: matches <code>$project.version</code> (if defined). Empty String value if undefined</p>
+</li>
+<li>
+<p>project-group: matches <code>$project.group</code> (if defined). Empty String value if undefined</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These attributes may be overridden by explicit user input.</p>
+</div>
+<div class="paragraph">
 <p>You may need to include extra content into the head of the exported document.
 For example, you might want to include jQuery inside the <code>&lt;head&gt;</code> element of the HTML export.
-To do so, first create a docinfo file <code>src/asciidoc/docinfo.html</code> containing the content to include, in this case the <code>&lt;script&gt;</code> tag to load jQuery.</p>
+To do so, first create a docinfo file <code>src/docs/asciidoc/docinfo.html</code> containing the content to include, in this case the <code>&lt;script&gt;</code> tag to load jQuery.</p>
 </div>
 <div class="listingblock">
-<div class="title">src/asciidoc/docinfo.html</div>
+<div class="title">src/docs/asciidoc/docinfo.html</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="html"><span class="tag">&lt;script</span> <span class="attribute-name">src</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span><span class="tag">&lt;/script&gt;</span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -340,84 +368,88 @@ To do so, first create a docinfo file <code>src/asciidoc/docinfo.html</code> con
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span class="key">attributes</span>: [
-    <span class="comment">// ...</span>
-    <span class="key">docinfo1</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span>,
-    <span class="comment">// ...</span>
-]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">attributes <span class="key">docinfo1</span>: <span class="string"><span class="delimiter">'</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The value of <code>attributes</code> my be specified as a Map, List, Array or String, for example the following Map definition:</p>
-</div>
-<div class="listingblock">
-<div class="title">build.gradle</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">options = [
-    <span class="key">attributes</span>: [
-        <span class="key">toc</span>: <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">toc-title</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Table of Contents</span><span class="delimiter">'</span></span>
-    ]
-]</code></pre>
-</div>
+<p>Refer to the <a href="http://asciidoctor.org/docs/">Asciidoctor documentation</a> to learn more about these options and attributes.</p>
 </div>
 <div class="paragraph">
-<p>may be rewritten in List/Array form as follows</p>
+<div class="title">Note</div>
+<p>Attribute values defined on the build file will win over values defined on the documents themselves. You can change
+this behavior by appending an <code>@</code> at the end of the value when defined in the build file. Please refer to
+<a href="http://asciidoctor.org/docs/user-manual/#attribute-assignment-precedence" target="_blank">Attribute assignment precedence</a>
+for more information.</p>
 </div>
-<div class="listingblock">
-<div class="title">build.gradle</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">options = [
-    <span class="key">attributes</span>: [
-        <span class="string"><span class="delimiter">'</span><span class="content">toc=right</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter=coderay</span><span class="delimiter">'</span></span>,
-        <span class="string"><span class="delimiter">'</span><span class="content">toc-title=Table of Contents</span><span class="delimiter">'</span></span>
-    ]
-]</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>or in String form like so</p>
-</div>
-<div class="listingblock">
-<div class="title">build.gradle</div>
-<div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">options = [
-    <span class="key">attributes</span>: <span class="string"><span class="delimiter">'</span><span class="content">toc=right source-highlighter=coderay toc-title=Table</span><span class="char">\\</span><span class="content"> of</span><span class="char">\\</span><span class="content"> Contents</span><span class="delimiter">'</span></span>
-]</code></pre>
-</div>
-</div>
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-Do not forget to transform Groovy strings into Strings (by explicitly invoking <code>.toString()</code> on them) when
-used as option values, otherwise the Ruby runtime will throw an exception.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Notice how spaces are escaped in the last key/value pair.</p>
-</div>
-<div class="paragraph">
-<p>Refer to the <a href="http://asciidoctor.org/docs">Asciidoctor documentation</a> to learn more about these options and attributes.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="custom-extensions"><a class="anchor" href="#custom-extensions"></a>Custom Extensions</h2>
+<h2 id="configuration"><a class="anchor" href="#configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This plugin uses <code>asciidoctorj-1.5.3.2</code> by default, however, you can change this by
+defining a value on the <code>asciidoctorj</code> extension, like so</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctorj {
+    version = <span class="string"><span class="delimiter">'</span><span class="content">1.6.0-SNAPSHOT</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Do not forget to add an entry to the <code>repositories</code> block pointing to Maven local if you&#8217;d like to run a local version
+of Asciidoctorj (such as an snapshot build for testing bleeding edge features). The following snippet is all you need.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">repositories {
+    mavenLocal() <i class="conum" data-value="1"></i><b>(1)</b>
+    jcenter()    <i class="conum" data-value="2"></i><b>(2)</b>
+}
+
+asciidoctorj {
+    version = <span class="string"><span class="delimiter">'</span><span class="content">1.6.0-MY_SNAPSHOT</span><span class="delimiter">'</span></span>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>resolves artifacts in your local Maven repository</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>resolves artifacts in Bintray&#8217;s jcenter (where all other dependencies are found)</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The plugin also adds Bintray&#8217;s JCenter as a default repository as the place to looks for <code>asciidocotorj</code>. In some contexts
+this behaviour can be considered detrimental or unwanted. In such cases this behaviour can be turned off by doing</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctorj {
+  noDefaultRepositories = <span class="predefined-constant">true</span>
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="adding-custom-extensions"><a class="anchor" href="#adding-custom-extensions"></a>Adding Custom Extensions</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Starting with version 1.5.0 you&#8217;ll be able to write your own Asciidoctor extensions in Groovy, or any other JVM language
 for that matter. There are several options for you to make it happen.</p>
 </div>
 <div class="sect2">
-<h3 id="external-library"><a class="anchor" href="#external-library"></a>External Library</h3>
+<h3 id="as-external-library"><a class="anchor" href="#as-external-library"></a>As External Library</h3>
 <div class="paragraph">
 <p>This is the most versatile option, as it allows you to reuse the same extension in different projects. An external library
 is just like any other Java/Groovy project. You simply define a dependency using the <code>asciidoctor</code> configuration.</p>
@@ -432,7 +464,7 @@ is just like any other Java/Groovy project. You simply define a dependency using
 </div>
 </div>
 <div class="sect2">
-<h3 id="project-dependency"><a class="anchor" href="#project-dependency"></a>Project Dependency</h3>
+<h3 id="as-project-dependency"><a class="anchor" href="#as-project-dependency"></a>As Project Dependency</h3>
 <div class="paragraph">
 <p>The next option is to host the extension project in a multi-project build. This allows for a much quicker development cycle
 as you don&#8217;t have to publish the jar to a repository every time you make adjustments to the code. Take for example the
@@ -478,11 +510,11 @@ following setup:</p>
     }
 
     dependencies {
-        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-gradle-plugin:1.5.0</span><span class="delimiter">'</span></span>
+        classpath <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor:asciidoctor-gradle-plugin:1.5.3</span><span class="delimiter">'</span></span>
     }
 }
 
-apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.gradle.asciidoctor</span><span class="delimiter">'</span></span>
+apply <span class="key">plugin</span>: <span class="string"><span class="delimiter">'</span><span class="content">org.asciidoctor.convert</span><span class="delimiter">'</span></span>
 
 repositories {
     jcenter()
@@ -495,7 +527,59 @@ dependencies {
 </div>
 </div>
 <div class="sect2">
-<h3 id="build-dependency"><a class="anchor" href="#build-dependency"></a>Build Dependency</h3>
+<h3 id="as-inline-script"><a class="anchor" href="#as-inline-script"></a>As Inline Script</h3>
+<div class="paragraph">
+<p>The next option is to define extensions directly in the build script.
+This approach is based on the project asciidoctorj-groovy-dsl that allows to define Asciidoctor extensions in Groovy.
+An extension is registered via the <code>extensions</code> element.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor {
+    extensions {
+        block(<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">BIG</span><span class="delimiter">&quot;</span></span>, <span class="key">contexts</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">:paragraph</span><span class="delimiter">&quot;</span></span>]) {
+            parent, reader, attributes -&gt;
+            <span class="keyword">def</span> upperLines = reader.readLines()
+                .collect {<span class="local-variable">it</span>.toUpperCase()}
+                .inject(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) {a, b -&gt; a + <span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span> + b}
+
+            createBlock(parent, <span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span>, [upperLines], attributes, [:])
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><a href="http://github.com/asciidoctor/asciidoctorj-groovy-dsl" class="bare">http://github.com/asciidoctor/asciidoctorj-groovy-dsl</a> contains a description of the DSL itself.</p>
+</div>
+<div class="paragraph">
+<p>Groovy extensions can also be included as files.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor {
+    extensions <span class="keyword">new</span> <span class="predefined-type">File</span>(<span class="string"><span class="delimiter">'</span><span class="content">big.groovy</span><span class="delimiter">'</span></span>)
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">big.groovy</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">block(<span class="key">name</span>: <span class="string"><span class="delimiter">&quot;</span><span class="content">BIG</span><span class="delimiter">&quot;</span></span>, <span class="key">contexts</span>: [<span class="string"><span class="delimiter">&quot;</span><span class="content">:paragraph</span><span class="delimiter">&quot;</span></span>]) {
+    parent, reader, attributes -&gt;
+    <span class="keyword">def</span> upperLines = reader.readLines()
+        .collect {<span class="local-variable">it</span>.toUpperCase()}
+        .inject(<span class="string"><span class="delimiter">&quot;</span><span class="delimiter">&quot;</span></span>) {a, b -&gt; a + <span class="string"><span class="delimiter">'</span><span class="content">\n</span><span class="delimiter">'</span></span> + b}
+
+    createBlock(parent, <span class="string"><span class="delimiter">&quot;</span><span class="content">paragraph</span><span class="delimiter">&quot;</span></span>, [upperLines], attributes, [:])
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="as-build-dependency"><a class="anchor" href="#as-build-dependency"></a>As Build Dependency</h3>
 <div class="paragraph">
 <p>The last option is to move the <code>extension</code> project into Gradle&#8217;s <code>buildSrc</code> directory. There are no additional dependencies
 to be defined on the consuming projects, as the extension will be automatically picked up by the <code>asciidoctor</code> task,
@@ -505,32 +589,131 @@ as the compiled extension is already in the task&#8217;s classpath.</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Resources and Help</h2>
+<h2 id="compatibility-with-previous-releases"><a class="anchor" href="#compatibility-with-previous-releases"></a>Appendix A: Compatibility With Previous Releases</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="task-properties"><a class="anchor" href="#task-properties"></a>Task Properties</h3>
 <div class="paragraph">
-<p>For more information:</p>
+<p>The following properties have been marked as deprecated. Developers are encouraged to migrate ASAP to the alternate
+properties.</p>
 </div>
+<div class="hdlist">
+<table>
+<tr>
+<td class="hdlist1">
+sourceDocumentNames
+</td>
+<td class="hdlist2">
+<p>an override to process multiple source files, which are relative to <code>sourceDir</code>.
+Use <code>sources { include 'name' }</code> instead.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+sourceDocumentName
+</td>
+<td class="hdlist2">
+<p>an override to process a single source file. Use <code>sources { include 'name' }</code> instead.</p>
+</td>
+</tr>
+<tr>
+<td class="hdlist1">
+backend
+</td>
+<td class="hdlist2">
+<p>the backend to use. Use <code>backends</code> instead.</p>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="behavior"><a class="anchor" href="#behavior"></a>Behavior</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Asciidoctor Gradle Plugin Source Code</a></p>
+<p>The default value for <code>sourceDir</code> has changed from <code>src/asciidoc</code> to <code>src/docs/asciidoc</code>.</p>
 </li>
 <li>
-<p><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues">Asciidoctor Gradle Plugin Issue Tracker</a></p>
+<p>Files specified in <code>sourceDocumentNames</code> must be relative to <code>sourceDir</code> and fully contained in <code>sourceDir</code>, in other words,
+it&#8217;s no longer possible to process documents placed outside of the project&#8217;s sources. Attempts will be made to convert absolute paths
+to relative paths  but conversion will not be guaranteed. Do not pass FileCollections as they will not convert correctly.</p>
 </li>
 <li>
-<p><a href="https://github.com/asciidoctor/asciidoctor">Asciidoctor Source Code</a></p>
+<p>Source files that are not reachable from <code>sourceDir</code>, will no longer cause a build exception, they will just be silently ignored.</p>
 </li>
 <li>
-<p><a href="https://github.com/asciidoctor/asciidoctorj">Asciidoctor Java Integration Source Code</a></p>
+<p>For backwards compatibility with older version, embedding <code>attributes</code> within <code>options</code> are still allowed, including legacy forms.</p>
 </li>
 <li>
-<p><a href="http://asciidoctor.org/docs/asciidoctorj">How do I Install and Use the Asciidoctor Java Integration?</a></p>
+<p>Non-source files are no longer automatically copied, unless they are in the <code>images</code> folder and <code>resources</code> was never
+called.</p>
+</li>
+<li>
+<p>Each backend will now write to a separate subfolder under <code>outputDir</code>. To have the old behaviour use
+<code>separateOutputDirs = false</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="options-attributes-2"><a class="anchor" href="#options-attributes-2"></a>Options &amp; Attributes</h3>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy"><span class="comment">// Map notation</span>
+<span class="key">attributes</span>: <span class="key">toc</span>: <span class="string"><span class="delimiter">'</span><span class="content">right</span><span class="delimiter">'</span></span>,
+            <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">coderay</span><span class="delimiter">'</span></span>,
+            <span class="string"><span class="delimiter">'</span><span class="content">toc-title</span><span class="delimiter">'</span></span>: <span class="string"><span class="delimiter">'</span><span class="content">Table of Contents</span><span class="delimiter">'</span></span>
+
+<span class="comment">// List notation</span>
+<span class="key">attributes</span>: [
+    <span class="string"><span class="delimiter">'</span><span class="content">toc=right</span><span class="delimiter">'</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">source-highlighter=coderay</span><span class="delimiter">'</span></span>,
+    <span class="string"><span class="delimiter">'</span><span class="content">toc-title=Table of Contents</span><span class="delimiter">'</span></span>
+]
+
+<span class="comment">// String notation</span>
+<span class="key">attributes</span>: <span class="string"><span class="delimiter">'</span><span class="content">toc=right source-highlighter=coderay toc-title=Table</span><span class="char">\\</span><span class="content"> of</span><span class="char">\\</span><span class="content"> Contents</span><span class="delimiter">'</span></span></code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Do not forget to transform Groovy strings into Strings (by explicitly invoking <code>.toString()</code> on them) when
+used as option values, otherwise the Ruby runtime will throw an exception.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Notice how spaces are escaped in the last key/value pair.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Appendix B: Resources and Help</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin">Source Code</a></p>
+</li>
+<li>
+<p><a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues">Issue Tracker</a></p>
+</li>
+<li>
+<p><a href="http://discuss.asciidoctor.org">Discussion List</a></p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>If you have questions or would like to help develop this project, please join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>.
+<p>If you have questions or would like to help develop this project, we invite you to join the <a href="http://discuss.asciidoctor.org">Asciidoctor discussion list</a>.
 To file an issue regarding this plugin, visit the <a href="https://github.com/asciidoctor/asciidoctor-gradle-plugin/issues">plugin&#8217;s repository</a>.</p>
 </div>
 </div>
