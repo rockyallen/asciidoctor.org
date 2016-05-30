@@ -23,11 +23,17 @@
 <li><a href="#options-attributes-2">Options &amp; Attributes</a></li>
 </ul>
 </li>
-<li><a href="#resources-and-help">Appendix B: Resources and Help</a></li>
+<li><a href="#tips-tricks">Appendix B: Tips &amp; Tricks</a>
+<ul class="sectlevel2">
+<li><a href="#pre-process-and-post-process">Pre-process and post-process</a></li>
+<li><a href="#force-processing">Force processing</a></li>
+</ul>
+</li>
+<li><a href="#resources-and-help">Appendix C: Resources and Help</a></li>
 </ul></div></div><div class="large-8 columns content"><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Getting Started with the Asciidoctor Gradle Plugin is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to render all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://gradle.org/">Gradle</a>.</p>
+<p>The Getting Started with the Asciidoctor Gradle Plugin is the official means of using <a href="http://asciidoctor.org">Asciidoctor</a> to convert all your <a href="http://asciidoc.org">AsciiDoc</a> documentation using <a href="http://gradle.org/">Gradle</a>.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -71,7 +77,8 @@ apply <span class="key">plugin</span>: <span class="string"><span class="delimit
 <h2 id="usage"><a class="anchor" href="#usage"></a>Usage</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The plugin adds a new task named <code>asciidoctor</code>. This task exposes a few properties as part of its configuration.</p>
+<p>The plugin adds a new task named <strong>asciidoctor</strong>.
+You can configure this task using the following configuration properties and methods.</p>
 </div>
 <div class="hdlist">
 <div class="title">Properties</div>
@@ -194,42 +201,52 @@ Use <code>attributes</code> to append, Use <code>setAttributes</code> or <code>a
 </tr>
 </table>
 </div>
+<div class="paragraph">
+<p>To see examples of many of these configuration options used in practice, refer to the <a href="http://asciidoctor.github.io/asciidoctor-gradle-examples">Asciidoctor Gradle Examples</a> project.</p>
+</div>
 <div class="sect2">
 <h3 id="defining-sources"><a class="anchor" href="#defining-sources"></a>Defining Sources</h3>
 <div class="paragraph">
-<p>By default the plugin will search for sources under <code>sourceDir</code>. Sources may have any of the following extensions in
+<p>The plugin will search for sources under <code>sourceDir</code>. Sources may have any of the following extensions in
 order to be discovered:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
+<p>.adoc <em>(preferred)</em></p>
+</li>
+<li>
 <p>.asciidoc</p>
-</li>
-<li>
-<p>.adoc</p>
-</li>
-<li>
-<p>.asc</p>
 </li>
 <li>
 <p>.ad</p>
 </li>
+<li>
+<p>.asc</p>
+</li>
 </ul>
 </div>
 <div class="paragraph">
-<p>To select only certain files use the <code>sources</code> method. This takes a closure which in turn configures an internal
-<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/tasks/util/PatternSet.html">PatternSet</a></p>
+<p>To select only certain files, use the <code>sources</code> method. This method takes a closure as an argument, which in turn configures an internal
+<a href="http://www.gradle.org/docs/current/javadoc/org/gradle/api/tasks/util/PatternSet.html">PatternSet</a>.</p>
+</div>
+<div class="paragraph">
+<p>To specify a custom output folder, use the <code>outputDir</code> method.</p>
 </div>
 <div class="listingblock">
 <div class="title">build.gradle</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="groovy">sources {
-  include <span class="string"><span class="delimiter">'</span><span class="content">toplevel.adoc</span><span class="delimiter">'</span></span>
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor {
+  sourceDir = file(<span class="string"><span class="delimiter">'</span><span class="content">docs</span><span class="delimiter">'</span></span>)
+  sources {
+    include <span class="string"><span class="delimiter">'</span><span class="content">toplevel.adoc</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">another.adoc</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">third.adoc</span><span class="delimiter">'</span></span>
+  }
+  outputDir = file(<span class="string"><span class="delimiter">'</span><span class="content">build/docs</span><span class="delimiter">'</span></span>)
 }</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Source files are resolved relative to <code>sourceDir</code>.  Source files are also not allowed to start with an underscore.</p>
+<p>Paths defined in this PatternSet are resolved relative to the <code>sourceDir</code>.</p>
 </div>
 </div>
 <div class="sect2">
@@ -252,7 +269,7 @@ this the <code>resources</code> method is used. It is provided with a closure th
     include <span class="string"><span class="delimiter">'</span><span class="content">deck.js/**</span><span class="delimiter">'</span></span>
   }
 
-  into <span class="string"><span class="delimiter">&quot;</span><span class="content">./images</span><span class="delimiter">&quot;</span></span>
+  into <span class="string"><span class="delimiter">'</span><span class="content">./images</span><span class="delimiter">'</span></span>
 }</code></pre>
 </div>
 </div>
@@ -697,7 +714,56 @@ used as option values, otherwise the Ruby runtime will throw an exception.
 </div>
 </div>
 <div class="sect1">
-<h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Appendix B: Resources and Help</h2>
+<h2 id="tips-tricks"><a class="anchor" href="#tips-tricks"></a>Appendix B: Tips &amp; Tricks</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="pre-process-and-post-process"><a class="anchor" href="#pre-process-and-post-process"></a>Pre-process and post-process</h3>
+<div class="paragraph">
+<p>To make your own custom actions before or after asciidoctor processing, use <code>doFirst</code> and <code>doLast</code>. Check out chapters <a href="https://docs.gradle.org/current/userguide/tutorial_using_tasks.html">14</a> and <a href="https://docs.gradle.org/current/userguide/more_about_tasks.html">17</a> in the Gradle docs to learn about the various actions you can perform.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor.doFirst {
+  <span class="comment">// pre-process</span>
+}
+asciidoctor.doLast {
+  <span class="comment">// post-process</span>
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As an example, here&#8217;s how to copy the generated <code>index.html</code> file to the root of the project. This is useful in Windows systems where asciidoctor can&#8217;t output directly to the root.</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor.doLast {
+    copy {
+        from <span class="string"><span class="delimiter">'</span><span class="content">build/docs/html5</span><span class="delimiter">'</span></span>
+        into <span class="string"><span class="delimiter">&quot;</span><span class="inline"><span class="inline-delimiter">$</span>projectDir</span><span class="delimiter">&quot;</span></span>
+        include <span class="string"><span class="delimiter">'</span><span class="content">index.html</span><span class="delimiter">'</span></span>
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="force-processing"><a class="anchor" href="#force-processing"></a>Force processing</h3>
+<div class="paragraph">
+<p>If Gradle detects that there were no changes, asciidoctor processing will be skipped as <code>UP-TO-DATE</code>. To force asciidoctor processing even if there were no changes:</p>
+</div>
+<div class="listingblock">
+<div class="title">build.gradle</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">asciidoctor.outputs.upToDateWhen { <span class="predefined-constant">false</span> }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="resources-and-help"><a class="anchor" href="#resources-and-help"></a>Appendix C: Resources and Help</h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
