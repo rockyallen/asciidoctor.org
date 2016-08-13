@@ -2,6 +2,7 @@
 <li><a href="#vanilla-procedure">Vanilla procedure</a></li>
 <li><a href="#rvm-procedure-recommended">RVM procedure (recommended)</a></li>
 <li><a href="#homebrew-procedure">Homebrew procedure</a></li>
+<li><a href="#macports-procedure">MacPorts procedure</a></li>
 </ul></div></div><div class="large-8 columns content"><div id="content"><div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
@@ -270,6 +271,59 @@ If you decide to uninstall Homebrew, run <a href="https://gist.github.com/117322
 </td>
 </tr>
 </table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="macports-procedure"><a class="anchor" href="#macports-procedure"></a>MacPorts procedure</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.macports.org/">The MacPorts Project</a> is an open-source community initiative to design an easy-to-use system for compiling, installing, and upgrading either command-line, X11 or Aqua based open-source software on the OS X operating system.</p>
+</div>
+<div class="paragraph">
+<p>MacPorts works by installing packages below <em class="path">/opt/local</em>. It allows for multiple versions of packaged software (eg. Ruby 1.9 &amp; 2.2) to coexist and allows for easy switching between those versions.</p>
+</div>
+<div class="paragraph">
+<p>To install and use MacPorts, you must first install <a href="https://developer.apple.com/xcode">XCode</a>.
+XCode is available on the Mac OS X Install DVD or can be downloaded from <a href="https://developer.apple.com/downloads/">Apple&#8217;s Developer site</a>. Be sure to accept XCode&#8217;s license by running:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ xcodebuild -license</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To install MacPorts you will need to download the correct Mac OS X Package Installer for your version of OS X from <a href="https://www.macports.org/install.php" class="bare">https://www.macports.org/install.php</a> and run it. After installing MacPorts you will need to open a <strong>new</strong> shell window and run its <code>selfupdate</code> command to upgrade itself and add new ports to its collection:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo port -v selfupdate</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you are ready to install Asciidoctor by means of:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ sudo port install asciidoctor</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To verify Asciidoctor is installed correrctly you can execute the <code>asciidoctor</code> command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre class="nowrap">$ asciidoctor -V</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you see the Asciidoctor version information in the terminal, then you&#8217;re ready to start processing documents!</p>
+</div>
+<div class="paragraph">
+<p>Troubleshooting:</p>
+</div>
+<div class="paragraph">
+<p>When the <code>port</code> command can&#8217;t be found after installing MacPorts you will need to open a new shell window. MacPorts adjusts the PATH (and MANPATH) definition in your shell start up files (and saves the old ones). By opening a new shell window these start up files will be executed and the new PATH definition comes into affect.</p>
 </div>
 </div>
 </div></div></div></div></div><footer><div class="row full-width"><div class="large-6 columns"><div class="row" style="margin-bottom: 1em"><div class="large-5 columns"><p><i class="fa fa-fw fa-download"></i> Download: <a class="rubygem" href="https://rubygems.org/gems/asciidoctor"><img src="https://img.shields.io/gem/v/asciidoctor.svg" alt="Asciidoctor gem version" style="margin-top: -2px"></a><br><i class="fa fa-fw fa-github"></i> Development: <a href="https://github.com/asciidoctor">GitHub</a><br><i class="fa fa-fw fa-group"></i> Discussions: <a href="http://discuss.asciidoctor.org">Nabble</a></p></div><div class="large-7 columns"><p><i class="fa fa-fw fa-comments"></i> Chat: <a href="https://gitter.im/asciidoctor/asciidoctor">Gitter</a><br><i class="fa fa-fw fa-twitter"></i> Twitter: <a class="twitter" href="https://twitter.com/asciidoctor">@asciidoctor</a><br><i class="fa fa-fw fa-google-plus-sign"></i> Google+: <a href="https://plus.google.com/116431294697916948181" rel="publisher">Asciidoctor</a></p></div></div></div><div class="large-6 large-text-right columns"><p style="margin-bottom: 1em">Thanks to our <a href="/supporters/">supporters</a> and <a href="/contributors/">contributors</a>!</p><p>Composed in AsciiDoc. Styled by Foundation. Baked with Awestruct.<br>&copy; Asciidoctor Project 2016. Content licensed under CC BY 3.0.</p></div></div></footer><script>document.write('<script src=' + ('__proto__' in {} ? '/javascripts/vendor/zepto' : '/javascripts/vendor/jquery') + '.js><\/script>')</script><script>$('.toggle-navigation').click(function() { $('.navigation').toggle(); $('.content').toggleClass('large-8'); $('.content').toggleClass('large-12'); $('.toolbar').toggleClass('off'); });</script><script src="/javascripts/foundation/foundation.js"></script><script src="/javascripts/foundation/foundation.topbar.js"></script><script>$(document).foundation();</script><script>!function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m);}(window,document,'script','//www.google-analytics.com/analytics.js','ga'),ga('create','UA-38215684-1','auto'),ga('send','pageview');</script></body></html>
