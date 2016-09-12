@@ -24161,21 +24161,27 @@ Not enabled by default.</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:attributes</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets additional document attributes, which typically override equivalently named attributes defined by the document.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets additional document attributes, which override equivalently-named attributes defined in the document unless the value ends with <code>@</code>.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Any number of <a href="#builtin-attributes">built-in</a> or user-defined attributes, passed as a Hash (<code>{'name'=&gt;'value'}</code>), Array (<code>['name=value']</code>) or String (<code>'name=value'</code>).</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Any number of <a href="#builtin-attributes">built-in</a> or user-defined attributes in one of the following formats:
+</p><p class="tableblock">Hash:<br>
+<code>{'name'=&gt;'value'}</code><br>
+Array:<br>
+<code>['name=value']</code><br>
+String:<br>
+<code>'name=value'</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-a</code>, <code>--attributes</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:backend</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Selects the converter to use (as registered with this keyword).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">html5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">html5, docbook5, docbook45, manpage, any backend registered through an active converter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">html5, docbook5, docbook45, manpage, or any backend registered through an active converter</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-b</code>, <code>--backend</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:base_dir</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the base directory containing the document and resources.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sets the base (aka working) directory containing the document and resources.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">The directory of the source file, or the working directory if the source is read from a stream.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">file path</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-B</code>, <code>--base-dir</code></p></td>
@@ -24183,18 +24189,20 @@ Not enabled by default.</p>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:catalog_assets</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">If true, tells the parser to capture images and links in the reference table.
-(Normally only ids, footnotes and indexterms are included).
-The reference table is available via the <code>references</code> property on the <code>document</code> AST object.</p></td>
+(Normally only IDs, footnotes and indexterms are included).
+The reference table is available via the <code>references</code> property on the <code>document</code> AST object.
+<em>(Experimental).</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:converter</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a user-supplied <code>Converter</code> instance, used in place of the converter that is automatically resolved from the backend value.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a user-supplied <code>Asciidoctor::Converter</code> instance, used in place of the converter that is automatically resolved from the backend value.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Converter</code> instance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Asciidoctor::Converter</code> instance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em>
+<em>(Can be emulated using a combination of <code>-r</code> and <code>-b</code>).</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:doctype</code></p></td>
@@ -24215,7 +24223,8 @@ The reference table is available via the <code>references</code> property on the
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Ruby block that registers (and possibly defines) Asciidoctor extensions for this instance of the processor.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A Ruby block that conforms to the Asciidoctor extensions API (the same code that would be passed to the <code>Extensions.register</code> method).</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em>
+<em>(Can be emulated using <code>-r</code>).</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:extensions_registry</code></p></td>
@@ -24223,7 +24232,7 @@ The reference table is available via the <code>references</code> property on the
 Instead of providing a Ruby block containing extensions to register, this option lets you replace the extension registry itself, giving you complete control over how extensions are registered for this processor.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>Extensions::Registry</code> instance</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:header_footer</code></p></td>
@@ -24238,7 +24247,8 @@ NOTE: The default value for this option is opposite of the default value for the
 <td class="tableblock halign-left valign-top"><p class="tableblock">If true, the processor will create the necessary output directories if they don&#8217;t yet exist.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em>
+<em>(Implicitly enabled).</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:parse</code></p></td>
@@ -24246,7 +24256,7 @@ NOTE: The default value for this option is opposite of the default value for the
 If false, parsing is deferred until the <code>parse</code> method is explicitly invoked.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:safe</code></p></td>
@@ -24261,7 +24271,7 @@ If false, parsing is deferred until the <code>parse</code> method is explicitly 
 (Useful for tooling applications where the association between the converted output and the source file is important).</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:template_cache</code></p></td>
@@ -24269,12 +24279,12 @@ If false, parsing is deferred until the <code>parse</code> method is explicitly 
 Only relevant if the <code>:template_dirs</code> option is specified.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:template_dir</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Specifies a directory of Tilt-compatible templates to be used instead of the default built-in templates.
-<strong>Please use <code>:template_dirs</code> instead.</strong></p></td>
+<strong>Deprecated. Please use <code>:template_dirs</code> instead.</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">file path</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-T</code>, <code>--template-dir</code></p></td>
@@ -24301,13 +24311,14 @@ This name is also used to build the full path to the custom converter templates.
 <td class="tableblock halign-left valign-top"><p class="tableblock">Low-level options passed directly to the template engine.</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">A nested Hash of options with the template engine name as the top-level key and the option name as the second-level key.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>none</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>n/a</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>:timings</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Display time taken to read, parse and convert.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>boolean</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Capture time taken to read, parse, and convert document.
+<strong>Internal use only.</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>not set</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>Asciidoctor::Timings</code> instance</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>-t</code>, <code>--timings</code></p></td>
 </tr>
 <tr>
@@ -24331,7 +24342,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-08-28 06:56:19 UTC
+Last updated 2016-09-12 19:25:20 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
