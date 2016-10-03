@@ -1747,7 +1747,7 @@ To parse a file into an <code>Asciidoctor::Document</code> object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">doc = <span class="constant">Asciidoctor</span>.load_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">doc = <span class="constant">Asciidoctor</span>.load_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1765,22 +1765,22 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The command will output to the file <code>sample.html</code> in the same directory.</p>
+<p>The command will output to the file <code>mysample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
 <p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code>'docbook'</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">backend</span>: <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The command will output to the file <code>sample.xml</code> in the same directory.
+<p>The command will output to the file <code>mysample.xml</code> in the same directory.
 If you&#8217;re on Linux, you can view the file using <a href="https://wiki.gnome.org/action/show/Apps/Yelp">Yelp</a>.</p>
 </div>
 <div class="paragraph">
@@ -18589,7 +18589,7 @@ As a result, you could save mysample.html to any computer and it will look the s
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 
-<span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -18597,7 +18597,7 @@ As a result, you could save mysample.html to any computer and it will look the s
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">to_file</span>: <span class="predefined-constant">false</span>, <span class="key">header_footer</span>: <span class="predefined-constant">true</span>
 puts html</code></pre>
 </div>
 </div>
@@ -18877,8 +18877,7 @@ To enable it, assign an empty value to the <code>xmlns</code> attribute.</p>
 <div class="listingblock">
 <div class="title">Generate DocBook output from the API</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
-    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>)</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">backend</span>: <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -18917,7 +18916,7 @@ To enable it, assign an empty value to the <code>xmlns</code> attribute.</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -b docbook45 sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -b docbook45 mysample.adoc</pre>
 </div>
 </div>
 </div>
@@ -19890,7 +19889,7 @@ You can reference the stylesheets in <em class="path">stylesheets/</em> from you
 <p>Create an AsciiDoc file like the one below.</p>
 </li>
 <li>
-<p>Save the file as <em class="path">sample.adoc</em>.</p>
+<p>Save the file as <em class="path">mysample.adoc</em>.</p>
 </li>
 </ol>
 </div>
@@ -19940,7 +19939,7 @@ foundation.css   golo.css               readthedocs.css</pre>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Navigate to the directory where you saved <em class="path">sample.adoc</em>.</p>
+<p>Navigate to the directory where you saved <em class="path">mysample.adoc</em>.</p>
 </li>
 <li>
 <p>Call the <code>asciidoctor</code> processor.</p>
@@ -19952,15 +19951,15 @@ foundation.css   golo.css               readthedocs.css</pre>
 <p>Tell the processor where the specified stylesheet is located with the <code>stylesdir</code> attribute.</p>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesheet=colony.css -a stylesdir=../stylesheets sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -a stylesheet=colony.css -a stylesdir=../stylesheets mysample.adoc</pre>
 </div>
 </div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Open a browser, navigate to <em class="path">sample.html</em> and checkout the result!
-If you inspect the <em class="path">sample.html</em> document, you should see that the stylesheet is embedded in the rendered document.</p>
+<p>Open a browser, navigate to <em class="path">mysample.html</em> and checkout the result!
+If you inspect the <em class="path">mysample.html</em> document, you should see that the stylesheet is embedded in the rendered document.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -19970,7 +19969,7 @@ If you inspect the <em class="path">sample.html</em> document, you should see th
 To apply these themes to your document correctly, the applicable images must be copied into the same directory as the generated output.</p>
 </div>
 <div class="paragraph">
-<p>For example, to apply the <em class="path">maker.css</em> stylesheet to <em class="path">sample.adoc</em>:</p>
+<p>For example, to apply the <em class="path">maker.css</em> stylesheet to <em class="path">mysample.adoc</em>:</p>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -19981,14 +19980,14 @@ To apply these themes to your document correctly, the applicable images must be 
 <p>Call the <code>stylesheet</code> and <code>styledir</code> attributes.</p>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -a stylesheet=maker.css -a stylesdir=../stylesheets sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -a stylesheet=maker.css -a stylesdir=../stylesheets mysample.adoc</pre>
 </div>
 </div>
 </li>
 </ol>
 </div>
 <div class="paragraph">
-<p>Navigate to <em class="path">sample.html</em> in your browser. The <em class="path">body-bh.png</em> image should add a graph paper-like background to your generated output.</p>
+<p>Navigate to <em class="path">mysample.html</em> in your browser. The <em class="path">body-bh.png</em> image should add a graph paper-like background to your generated output.</p>
 </div>
 </div>
 </div>
@@ -20408,7 +20407,7 @@ Then, just pass both the directory holding the original templates and the direct
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -T /path/to/original/templates -T /path/to/modified/templates sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -T /path/to/original/templates -T /path/to/modified/templates mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -20416,8 +20415,8 @@ Then, just pass both the directory holding the original templates and the direct
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:safe</span> =&gt; <span class="symbol">:safe</span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
-    <span class="symbol">:template_dirs</span> =&gt; [<span class="string"><span class="delimiter">'</span><span class="content">/path/to/original/templates</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">/path/to/modified/templates</span><span class="delimiter">'</span></span>]</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">safe</span>: <span class="symbol">:safe</span>
+    <span class="key">template_dirs</span>: <span class="string"><span class="delimiter">%w(</span><span class="content">/path/to/original/templates /path/to/modified/templates</span><span class="delimiter">)</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -20777,7 +20776,7 @@ To parse a file into an <code>Asciidoctor::Document</code> object:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">doc = <span class="constant">Asciidoctor</span>.load_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">doc = <span class="constant">Asciidoctor</span>.load_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -20795,22 +20794,22 @@ To render a file containing AsciiDoc markup to HTML 5, use:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The command will output to the file <code>sample.html</code> in the same directory.</p>
+<p>The command will output to the file <code>mysample.html</code> in the same directory.</p>
 </div>
 <div class="paragraph">
 <p>You can render the file to DocBook 5.0 by setting the <code>:backend</code> option to <code>'docbook'</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>, <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">backend</span>: <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The command will output to the file <code>sample.xml</code> in the same directory.
+<p>The command will output to the file <code>mysample.xml</code> in the same directory.
 If you&#8217;re on Linux, you can view the file using <a href="https://wiki.gnome.org/action/show/Apps/Yelp">Yelp</a>.</p>
 </div>
 <div class="sect2">
@@ -24342,7 +24341,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-12 19:30:37 UTC
+Last updated 2016-10-03 08:12:45 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">

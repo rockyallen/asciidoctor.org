@@ -2924,7 +2924,7 @@ Just shove the raw code into a listing block.</p>
 <pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">----
 require 'asciidoctor'
 
-puts Asciidoctor.convert_file('sample.adoc', :header_footer =&gt; true)
+puts Asciidoctor.convert_file 'mysample.adoc', to_file: false
 ----</code></pre>
 </div>
 </div>
@@ -2937,7 +2937,7 @@ puts Asciidoctor.convert_file('sample.adoc', :header_footer =&gt; true)
 ----
 require 'asciidoctor'
 
-puts Asciidoctor.convert_file('sample.adoc', :header_footer =&gt; true)
+puts Asciidoctor.convert_file 'mysample.adoc', to_file: false
 ----</code></pre>
 </div>
 </div>
@@ -2965,7 +2965,7 @@ Here&#8217;s an example:</p>
 ----
 require 'asciidoctor'  # &lt;1&gt;
 
-puts Asciidoctor.convert_file('sample.adoc', :header_footer =&gt; true)  # &lt;2&gt;
+Asciidoctor.convert_file 'mysample.adoc'  # &lt;2&gt;
 ----
 &lt;1&gt; Imports the library
 &lt;2&gt; Reads, parses and renders the file</code></pre>
@@ -2981,7 +2981,7 @@ puts Asciidoctor.convert_file('sample.adoc', :header_footer =&gt; true)  # &lt;2
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>  <i class="conum" data-value="1"></i><b>(1)</b>
 
-puts <span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)  <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
+puts <span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>  <i class="conum" data-value="2"></i><b>(2)</b></code></pre>
 </div>
 </div>
 <div class="colist arabic">
@@ -3351,7 +3351,7 @@ Review the <a href="http://asciidoctor.org/docs/install-toolchain/">Asciidoctor 
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3364,7 +3364,7 @@ Review the <a href="http://asciidoctor.org/docs/install-toolchain/">Asciidoctor 
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
 
-<span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)</code></pre>
+<span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3372,7 +3372,7 @@ Review the <a href="http://asciidoctor.org/docs/install-toolchain/">Asciidoctor 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:header_footer</span> =&gt; <span class="predefined-constant">true</span>)
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby">html = <span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">to_file</span>: <span class="predefined-constant">false</span>, <span class="key">header_footer</span>: <span class="predefined-constant">true</span>
 puts html</code></pre>
 </div>
 </div>
@@ -3381,8 +3381,7 @@ puts html</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file(<span class="string"><span class="delimiter">'</span><span class="content">sample.adoc</span><span class="delimiter">'</span></span>, <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>,
-    <span class="symbol">:backend</span> =&gt; <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span>)</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Asciidoctor</span>.convert_file <span class="string"><span class="delimiter">'</span><span class="content">mysample.adoc</span><span class="delimiter">'</span></span>, <span class="key">backend</span>: <span class="string"><span class="delimiter">'</span><span class="content">docbook</span><span class="delimiter">'</span></span></code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3402,16 +3401,18 @@ To convert the document to Docbook 5.0, call the processor with the backend flag
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ asciidoctor -b docbook5 sample.adoc</pre>
+<pre class="nowrap">$ asciidoctor -b docbook5 mysample.adoc</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A new XML document, named <code>sample.xml</code>, will now be present in the current directory:</p>
+<p>A new XML document, named <code>mysample.xml</code>, will now be present in the current directory:</p>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ ls
-sample.adoc  sample.html  sample.xml</pre>
+<pre class="nowrap">$ ls -1
+mysample.adoc
+mysample.html
+mysample.xml</pre>
 </div>
 </div>
 <div class="paragraph">
@@ -3419,7 +3420,7 @@ sample.adoc  sample.html  sample.xml</pre>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre class="nowrap">$ yelp sample.xml</pre>
+<pre class="nowrap">$ yelp mysample.xml</pre>
 </div>
 </div>
 <div class="paragraph">

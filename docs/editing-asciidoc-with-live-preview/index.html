@@ -225,11 +225,10 @@ Configure <code>Guardfile</code> to monitor the file (or files) you are editing 
 <div class="title">Guardfile</div>
 <div class="content">
 <pre class="CodeRay highlight nowrap"><code data-lang="ruby">require <span class="string"><span class="delimiter">'</span><span class="content">asciidoctor</span><span class="delimiter">'</span></span>
-require <span class="string"><span class="delimiter">'</span><span class="content">erb</span><span class="delimiter">'</span></span>
 
 guard <span class="string"><span class="delimiter">'</span><span class="content">shell</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
   watch(<span class="regexp"><span class="delimiter">/</span><span class="content">^mydoc</span><span class="char">\.</span><span class="content">adoc$</span><span class="delimiter">/</span></span>) {|m|
-    <span class="constant">Asciidoctor</span>.convert_file(m[<span class="integer">0</span>], <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)
+    <span class="constant">Asciidoctor</span>.convert_file m[<span class="integer">0</span>]
   }
 <span class="keyword">end</span></code></pre>
 </div>
@@ -315,11 +314,11 @@ Configure <code>Guardfile</code> to monitor the file (or files) you are editing 
 <div class="listingblock">
 <div class="title">Guardfile</div>
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Bundler</span>.require(<span class="symbol">:default</span>)
+<pre class="CodeRay highlight nowrap"><code data-lang="ruby"><span class="constant">Bundler</span>.require <span class="symbol">:default</span>
 
 guard <span class="string"><span class="delimiter">'</span><span class="content">shell</span><span class="delimiter">'</span></span> <span class="keyword">do</span>
   watch(<span class="regexp"><span class="delimiter">/</span><span class="content">^mydoc</span><span class="char">\.</span><span class="content">adoc$</span><span class="delimiter">/</span></span>) {|m|
-    <span class="constant">Asciidoctor</span>.convert_file(m[<span class="integer">0</span>], <span class="symbol">:in_place</span> =&gt; <span class="predefined-constant">true</span>)
+    <span class="constant">Asciidoctor</span>.convert_file m[<span class="integer">0</span>]
   }
 <span class="keyword">end</span></code></pre>
 </div>
