@@ -18121,87 +18121,151 @@ A chapter title is a level-1 section title when the doctype is book.</p>
 <h2 id="user-appendix"><a class="anchor" href="#user-appendix"></a>62. Appendix</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>You can define that some sections are appendix sections by adding the <code>[appendix]</code> marker before the section header.</p>
+<p>You can indicate that a section, part, or chapter is an appendix by adding an <code>[appendix]</code> line above the section title.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="nowrap">[appendix]
-== Copyright and License</pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">[appendix]
+== Copyright and License</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Sections marked as appendix have different header, built as follow:</p>
+<p>While the AsciiDoc structure allows appendices to be placed anywhere, it&#8217;s customary to place them at the end of the document, after all other sections.</p>
+</div>
+<div class="paragraph">
+<p>Sections marked as appendix have a different title, which is built as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>A fixed prefix (&#8220;Appendix&#8221; is the default value)</p>
+<p>A fixed prefix (taken from the value of the <code>appendix-caption</code> attribute, which defaults to &#8220;Appendix&#8221;)</p>
 </li>
 <li>
-<p>Letters are used to number the section (A, B, C&#8230;&#8203;)</p>
+<p>A letter that represents the number of this appendix within the sequence of appendices (A, B, C, &#8230;&#8203;)</p>
 </li>
 <li>
 <p>A colon</p>
 </li>
 <li>
-<p>The section title</p>
+<p>The original section title</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>The prefix can be modified with the <code>appendix-caption</code> attribute.
-It can be unset with:</p>
+<p>For example:</p>
 </div>
-<div class="listingblock">
+<div class="literalblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">: appendix-caption!:</code></pre>
+<pre class="nowrap">Appendix A: Copyright and License</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Or set to a different value with</p>
+<p>The prefix can be modified by defining the <code>appendix-caption</code> attribute.
+This value can be changed using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">: appendix-caption: App</code></pre>
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:appendix-caption: Appx</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>Appendix sections can be combined with subsections.
-Example:</p>
+<p>Or it can be unset using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:appendix-caption: App
-:numbered:
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">:appendix-caption!:</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Appendices can have subsections.
+However, there are some rules to follow depending on which type of document you are creating.</p>
+</div>
+<div class="paragraph">
+<p>For articles, the appendix must be defined as a level-1 section.
+(If a level-0 section is used, a level-1 section is implied).
+For example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Article Title
+:appendix-caption: Appx
+:sectnums:
+:toc:
 
-== Title
+== First Section
 
 === Subsection
 
 [appendix]
 == First Appendix
 
-=== First subsection
+=== First Subsection
 
-=== Second subsection
+=== Second Subsection
 
 [appendix]
 == Second Appendix</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>The sections will be numbered as follows:</p>
+<p>The table of contents will appear as follows:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">1. Title
-1.1. Subsection
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">1. First Section
+  1.1. Subsection
+Appx A: First Appendix
+  1.1. First Subsection
+  1.2. Second Subsection
+Appx B: Second Appendix</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For books, the appendix must be defined as a level-1 section if you want the appendix to be a adjacent to other chapters (and in the current part if the book has multiple parts).
+In a multi-part book, if you want the appendix to be adjacent to other parts, the appendix must be defined as a level-0 section.
+In either case, the first subsection of the appendix must be a level-3 section, not a level-2 section.
+That&#8217;s because an appendix cannot contain chapters.</p>
+</div>
+<div class="paragraph">
+<p>The following example shows how to define an appendix for a multi-book (take away the part title if you&#8217;re creating a simple book):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">= Book Title
+:doctype: book
+:appendix-caption: Appx
+:sectnums:
+:toc:
 
-App A: First Appendix
-A.1. First subsection
-A.2. Second subsection
+= First Part
 
-App B: Second Appendix</code></pre>
+== First Chapter
+
+=== Subsection
+
+[appendix]
+= First Appendix
+
+=== First Subsection
+
+=== Second Subsection
+
+[appendix]
+= Second Appendix</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The table of contents will appear as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="asciidoc">First Part
+1. First Chapter
+  1.1. Subsection
+Appx A: First Appendix
+  1.1. First Subsection
+  1.2. Second Subsection
+Appx B: Second Appendix</code></pre>
 </div>
 </div>
 </div>
@@ -24341,7 +24405,7 @@ This name is also used to build the full path to the custom converter templates.
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-10-05 07:38:22 UTC
+Last updated 2016-10-05 08:16:48 UTC
 </div>
 </div>
 <script type="text/x-mathjax-config">
