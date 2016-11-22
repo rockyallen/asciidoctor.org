@@ -1499,6 +1499,14 @@ See you when you get back from &lt;&lt;document-b#section-b,Section B&gt;&gt;!</
 <div class="sect1">
 <h2 id="images"><a class="anchor" href="#images"></a>Images</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Images are resolved relative to the value of the <a href="http://asciidoctor.org/docs/user-manual/#set-the-images-directory">imagesdir</a> document attribute, which is empty by default.
+You are encouraged to make use of the <code>imagesdir</code> attribute to avoid hard-coding the common path to your images in every image macro.</p>
+</div>
+<div class="paragraph">
+<p>The <code>imagesdir</code> attribute can be an absolute path, relative path, or base URL.
+When the image target is a URL or absolute path, the imagesdir prefix is <em>not</em> prepended.</p>
+</div>
 <div class="listingblock">
 <div class="title">Block</div>
 <div class="content">
@@ -1537,6 +1545,24 @@ image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
 </div>
 </div>
 </div>
+<div class="listingblock">
+<div class="title">Inline</div>
+<div class="content">
+<pre class="nowrap">Click image:icons/play.png[Play, title="Play"] to get the party started.
+
+Click image:icons/pause.png[title="Pause"] when you need a break.</pre>
+</div>
+</div>
+<div class="exampleblock result">
+<div class="content">
+<div class="paragraph">
+<p>Click <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> to get the party started.</p>
+</div>
+<div class="paragraph">
+<p>Click <span class="image"><img src="/images/icons/pause.png" alt="pause" title="Pause"></span> when you need a break.</p>
+</div>
+</div>
+</div>
 <div class="admonitionblock important">
 <table>
 <tr>
@@ -1544,27 +1570,16 @@ image::http://asciidoctor.org/images/octocat.jpg[GitHub mascot]</pre>
 <i class="fa icon-important" title="Important"></i>
 </td>
 <td class="content">
-Images are resolved relative to the value of the <a href="http://asciidoctor.org/docs/user-manual/#set-the-images-directory">imagesdir document attribute</a>, which defaults to an empty value.
-The <code>imagesdir</code> attribute can be an absolute path, relative path or base URL.
-If the image target is a URL or absolute path, the imagesdir prefix is <em>not</em> added.
-</td>
-</tr>
-</table>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-You should use the <code>imagesdir</code> attribute to avoid hard coding the shared path to your images in every image macro.
+Two colons following the image keyword in the macro (i.e., <code>image::</code>) indicates a block image (aka figure), whereas one colon following the image keyword (i.e., <code>image:</code>) indicates an inline image.
+(All macros follow this pattern).
+You use an inline image when you need to placing the image in a line of text.
+Otherwise, you should prefer the block form.
 </td>
 </tr>
 </table>
 </div>
 <div class="listingblock">
-<div class="title">Image macro using positioning role</div>
+<div class="title">Inline image with positioning role</div>
 <div class="content">
 <pre class="nowrap">image:sunset.jpg[Sunset,150,150,role="right"] What a beautiful sunset!</pre>
 </div>
@@ -1587,24 +1602,6 @@ There are a variety of attributes available to <a href="http://asciidoctor.org/d
 </td>
 </tr>
 </table>
-</div>
-<div class="listingblock">
-<div class="title">Inline</div>
-<div class="content">
-<pre class="nowrap">Click image:icons/play.png[Play, title="Play"] to get the party started.
-
-Click image:icons/pause.png[title="Pause"] when you need a break.</pre>
-</div>
-</div>
-<div class="exampleblock result">
-<div class="content">
-<div class="paragraph">
-<p>Click <span class="image"><img src="/images/icons/play.png" alt="Play" title="Play"></span> to get the party started.</p>
-</div>
-<div class="paragraph">
-<p>Click <span class="image"><img src="/images/icons/pause.png" alt="pause" title="Pause"></span> when you need a break.</p>
-</div>
-</div>
 </div>
 <div class="listingblock">
 <div class="title">Embedded</div>
