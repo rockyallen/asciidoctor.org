@@ -1,0 +1,126 @@
+
+// == Preparing html content for offline viewing
+
+[NOTE]
+The ultimate goal is to build a document on a computer that has never been connected to the internet, and put the built files onto a CD for viewing on another computer that has a browser but has also never been connected to the internet, and have it look exactly like the online version.
+The simpler case (considered here) is to build using an internet connected computer, but view on an unconnected computer.
+
+The default stylesheet uses web resources for:
+
+* text fonts (<<migrate-stylesheet>>)
+
+* admonition, callout, and inline icons (<<icons>>)
+
+* source highlighting (<<source-code-blocks>>)
+
+* equations (<<stem>>)
+
+The quick answer for offline viewing is to change the defaults by generating your document with these options:
+
+ asciidoctor -a webfonts! -a icons=image -a iconsdir=images/icons -a source-highlighter=coderay mydoc.adoc
+
+* Any inline icons you use must be copied to the +images/icons+ folder.
+
+* Admonition icons will be replaced by text.
+
+* System fonts will be used insteads of web fonts.
+
+* Coderay will be used to highlight source code blocks and embed the highlighting directly in the html.
+
+* Equations will not display.
+
+To make the online and offline versions identical requires a bit more work.
+
+=== Text fonts
+
+Asciidoctor uses google fonts. (http://asciidoctor.org/docs/user-manual/#migrate-stylesheet)
+You can legally download them according to https://developers.google.com/fonts/faq
+but I don't know how to install them offline, use them wihtout installation, or tell Asciidoctor where they are.
+
+https://github.com/asciidoctor/asciidoctor.org/pull/415
+
+=== Icons: Font Awesome
+
+Asciidoctor by default uses the online version of Font Awesome for all types of icon.
+If you unset the +iconfont-remote+ attribute, Asciidoctor will instead load Font Awesome from the output directory.
+
+ asciidoctor -a icons=font -a stylesdir=css -a iconfont-remote! document.adoc
+
+This will configure the HTML to reference Font Awesome as follows:
+
+ +<link rel="stylesheet" href="css/font-awesome.css">+
+
+You then need to download Font Awesome and distribute the files as follows:
+
+	mydoc.html
+	css/font-awesome.css
+	fonts/fontawesome-webfont.eot
+	fonts/fontawesome-webfont.svg
+	fonts/fontawesome-webfont.ttf
+	fonts/fontawesome-webfont.woff
+	fonts/fontawesome-webfont.woff2
+
+This is a lot of extra bytes if you only use a few icons.
+You may want to deal with each icon class individually instead.
+
+=== Callout icons
+
+Set `icons` to `image`, then add 1.<type>, 2.<type> etc to +images/icons+.
+
+TIP: The DocBook stylesheets have icons for 1 to 10 in +images/callouts/+.
+What happens if you need more?
+
+=== Inline icons
+
+Same as admonition icons: +icon:wibble[]+ requires images/icons/wibble.<type>
+
+=== Admonition icons
+
+Obtain the icons you want to use as images (type jpg, png or tif, but they must all be the same).
+
+TIP: The DocBook stylesheets have a suitable set in +images/icons/+.
+
+Convert with
+
+ -a icons=image -a iconsdir=images/icons icontype=<type>
+
+Copy the icons to the output folder so that it contains:
+
+ mydoc.html
+ images/icons/TIP.<type>
+ images/icons/NOTE.<type>
+ images/icons/CAUTION.<type>
+ images/icons/WARNING.<type>
+ images/icons/IMPORTANT.<type>
+
+An alterntive to icons (that works for admonitions only) is to use unicode:
+
+ :warning-label:
+ :caution-label: \u26A0
+ :tip-label: &#x1F4A1;
+ :note-label:
+ :important-label:
+
+but you need to check that these characters are in the font you are using.
+
+=== Source highlighting
+
+Only coderay or pygments can be used.
+
+=== Equations
+
+Download and install MathJax as described in http://docs.mathjax.org
+
+Add this to your docinfo.html file:
+
+ <script type="text/javascript" async src="/MathJax/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+And ???
+
+Actually, this seems to work (assuming you are allowed to be online while building it):
+
+Generate normally, view online, then choose save as "web page complete".
+Firefox puts a copy of MathJax.js in the files folder.
+
+Presumably mathjax is doing a lot of preprocessing at build time; I can't imagine that 62K of code can interpret and display arbitrary equations.
+
